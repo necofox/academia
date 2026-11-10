@@ -182,3 +182,7 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   nada" (la página del FBI no se pudo leer); la definición de hash se aclaró como simplificación.
   Pendiente de verificar con fuente oficial: la definición de EDR (marcada en la clase).
   Esperando la aprobación del alumno para aplicar el estándar a las demás clases.
+- **Propuesta de organización curricular** en `PROPUESTA-ORGANIZACION-CURRICULAR.md` (solo
+  planificación; nada implementado): módulos para los 4 cursos (156 clases, 272 h), mapa de las
+  17 clases existentes (todas se conservan), 139 clases nuevas recomendadas, correcciones
+  detectadas y fuentes verificadas. **Pendiente de aprobación del alumno.**
