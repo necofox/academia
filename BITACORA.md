@@ -193,5 +193,7 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   (no enlazadas desde el menú): diagnóstico de solo lectura del avance local, instrucciones,
   pruebas de las 17 clases (17/17 cumplen), pruebas de sincronización (5/10 cumplen: fallan
   R1, conflictos, R2, R3 y reintento) y línea base de identificadores. Sin cambios en clases,
-  motor, `sync.js`, catálogo, páginas principales ni repositorio privado. Pendiente: que el
-  alumno revise sus computadoras y navegadores con el diagnóstico.
+  motor, `sync.js`, catálogo, páginas principales ni repositorio privado. Revisión de
+  navegadores: Chrome en esta PC (enlace y doble clic) verificado con el diagnóstico, 0 registros;
+  el resto confirmado por el alumno (academia reciente, sin avance en otros dispositivos).
+  **Etapa 0 completa, pendiente de aprobación del alumno.**
