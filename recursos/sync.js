@@ -20,7 +20,8 @@
   };
   const token = () => ls.get(K_TOKEN);
   const tiempos = () => { try { return JSON.parse(ls.get(K_TIEMPOS) || '{}'); } catch (e) { return {}; } };
-  const sincronizable = (k) => k.startsWith(PFX) && !NO_SYNC.has(k);
+  // Las voces dependen de cada equipo y navegador: no se sincronizan
+  const sincronizable = (k) => k.startsWith(PFX) && !NO_SYNC.has(k) && !k.startsWith('academia:voz');
 
   function estado(texto, tipo) {
     ls.set(K_ESTADO, JSON.stringify({ texto, tipo, cuando: Date.now() }));

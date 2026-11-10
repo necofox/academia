@@ -72,8 +72,19 @@ una vez por navegador en el menú. **Claude nunca pide ni escribe ese token.**
 
 - **Clases en HTML interactivo** en lugar de solo texto: con voz, reloj, simulaciones y
   ejercicios, porque el alumno quiere aprender de forma práctica y didáctica.
-- **Voz del navegador**, no videos: es gratis e ilimitada. Se recomiendan Microsoft Edge y voces
-  "Natural". Se descartaron Google Vids (límites gratuitos) y la API de video (de pago).
+- **Voz del navegador**, no videos: es gratis e ilimitada. Se descartaron Google Vids (límites
+  gratuitos) y la API de video (de pago).
+- **Una voz por curso** (perfiles en `PERFILES` de `academia.js`, elegidos por el prefijo del `id`
+  de la clase: `ciber-`, `ingles-`, `js-`, `py-`). Toda clase nueva la toma sola:
+  - Ciberseguridad: docente en español de Perú (Edge: Alex/Camila Natural; Chrome: Google español
+    de EE. UU., porque Chrome no trae voces de Perú).
+  - Inglés: inglés americano (Edge: Jenny/Aria; Chrome: Google US English) y explicaciones en
+    español latino.
+  - JavaScript y Python: "Asistente IA estilo Jarvis": voz masculina, tono 0.8 y ritmo 1.06
+    (Edge: Jorge; Chrome: Microsoft Raúl), y en inglés británico masculino.
+  - El alumno usa sobre todo **Chrome**: las voces de Google tienen prioridad cuando no hay "Natural".
+    Un efecto metálico real no es posible con la voz del navegador (solo voz, tono y velocidad).
+  - La voz elegida se guarda por curso y por equipo, y no se sincroniza.
 - **GitHub Pages + repositorio privado de avance**, porque OneDrive está lleno y el alumno pidió
   GitHub expresamente (se descartó publicarlo como Artifact de Claude).
 - **Nada de emojis de banderas:** en el Windows del alumno se ven como letras ("GB") y confunden.
@@ -131,3 +142,5 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
 - 12 clases nuevas: Ciber 03–05, Inglés 02–04, JavaScript 02–04, Python 02–04.
 - Sección de fuentes verificadas en Ciberseguridad 01–05 (49 enlaces comprobados).
 - Se crea esta bitácora.
+- Voces personalizadas por curso (docente de Perú, inglés americano, asistente estilo Jarvis),
+  optimizadas para Chrome y Edge; ajustes de voz por curso con botón de prueba.

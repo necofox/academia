@@ -150,30 +150,71 @@
   /* ---------- Voz ---------- */
   const synth = 'speechSynthesis' in window ? window.speechSynthesis : null;
   let voces = [];
-  const ajustes = Object.assign({ voz: '', vel: 1 }, sget('voz', {}));
+
+  // Perfiles de voz por curso. Cada uno indica qué voces preferir (por idioma/país y por nombre)
+  // y cómo ajustar el tono (pitch) y la velocidad. Las voces "Natural" de Edge suman puntos extra.
+  const MASCULINAS_ES = /Alex|Jorge|Alonso|Alvaro|Álvaro|Gonzalo|Tom[aá]s|Lorenzo|Gerardo|Federico|Mateo|Emilio|Andr[eé]s|Ra[uú]l|Pablo|Pelayo|Sergio/i;
+  const PERFILES = {
+    ciber: {
+      nombre: 'Docente · español de Perú',
+      es: { langs: [/^es-pe/, /^es-(419|us|mx|co|cl|ar|bo|ec)/, /^es/], nombres: [/Alex|Camila/i] },
+      en: { langs: [/^en-us/, /^en/], nombres: [/Jenny|Aria|Guy|Ava|Andrew/i] },
+      tono: 1, ritmo: 0.95,
+      ideal: (es) => !!es && /^es-pe/.test(langDe(es)),
+      prueba: 'Hola, soy tu docente de ciberseguridad. Prepárate, que hoy vamos a investigar un incidente.'
+    },
+    ingles: {
+      nombre: 'Inglés americano',
+      es: { langs: [/^es-(us|419|mx)/, /^es-pe/, /^es/], nombres: [/Paloma|Dalia|Google/i] },
+      en: { langs: [/^en-us/, /^en/], nombres: [/Jenny|Aria|Ava|Emma|Michelle|Guy|Andrew/i] },
+      tono: 1, ritmo: 1,
+      ideal: (es, en) => !!en && /^en-us/.test(langDe(en)),
+      prueba: 'Hello! Welcome to your English class.', pruebaEn: true
+    },
+    codigo: {
+      nombre: 'Asistente IA · estilo Jarvis',
+      // Jorge, Alonso o Álvaro primero, para que no coincida con el docente de ciberseguridad (Alex, Perú)
+      es: { langs: [/^es-(mx|us|419|pe|co|es)/, /^es/], nombres: [/Jorge|Alonso|Alvaro|Álvaro|Gonzalo|Tom[aá]s|Lorenzo/i, MASCULINAS_ES] },
+      en: { langs: [/^en-gb/, /^en/], nombres: [/UK English Male|Ryan|Thomas|George|Brian|Guy|Christopher|Eric|Daniel|David|Mark/i] },
+      tono: 0.8, ritmo: 1.06,
+      ideal: (es) => !!es && MASCULINAS_ES.test(es.name),
+      prueba: 'Sistemas en línea. Módulo de programación cargado. Cuando quieras, empezamos.'
+    }
+  };
+  const PREFIJO = (C.id || '').split('-')[0];
+  const CURSO_VOZ = { ciber: 'ciber', ingles: 'ingles', js: 'codigo', py: 'codigo' }[PREFIJO] || 'ciber';
+  const PERFIL = PERFILES[CURSO_VOZ];
+  const anterior = sget('voz', {}); // ajustes viejos (una sola voz para todo): se aprovecha la velocidad
+  const ajustes = Object.assign({ es: '', en: '', vel: anterior.vel || 1 }, sget('voz:' + CURSO_VOZ, {}));
+  const guardarAjustes = () => sset('voz:' + CURSO_VOZ, ajustes);
+
   function cargarVoces() { if (synth) voces = synth.getVoices(); }
-  function puntuar(v, lang) {
-    const l = (v.lang || '').toLowerCase().replace('_', '-');
-    let p = 0;
-    if (/natural|online|neural/i.test(v.name)) p += 10;
-    if (lang === 'es' && /es-(mx|us|419|pe|co|ar|cl)/.test(l)) p += 3;
-    if (lang === 'en' && /en-us/.test(l)) p += 3;
-    if (/google/i.test(v.name)) p += 2;
+  const langDe = (v) => (v.lang || '').toLowerCase().replace(/_/g, '-');
+  function puntuar(v, criterio) {
+    const l = langDe(v); let p = 0;
+    if (/natural|online|neural/i.test(v.name)) p += 20;
+    (criterio.langs || []).forEach((re, i) => { if (p < 1000 && re.test(l)) p += Math.max(30 - i * 8, 1); });
+    (criterio.nombres || []).forEach((re) => { if (re.test(v.name)) p += 12; });
+    if (/google/i.test(v.name)) p += 8; // en Chrome, las voces de Google suenan mejor que las de Windows
     return p;
   }
-  function mejor(lang, nombre) {
-    const lista = voces.filter((v) => (v.lang || '').toLowerCase().startsWith(lang));
-    const elegida = nombre && lista.find((v) => v.name === nombre);
-    if (elegida) return elegida;
-    return lista.sort((a, b) => puntuar(b, lang) - puntuar(a, lang))[0] || null;
+  function vocesDe(lang) {
+    const crit = PERFIL[lang];
+    return voces.filter((v) => langDe(v).startsWith(lang)).sort((a, b) => puntuar(b, crit) - puntuar(a, crit));
+  }
+  function mejor(lang) {
+    const lista = vocesDe(lang);
+    return lista.find((v) => v.name === ajustes[lang]) || lista[0] || null;
   }
   let ultimaFrase = null; // referencia para que el navegador no la descarte a mitad
   function decir(texto, lang, alTerminar, velocidad) {
     if (!synth) return;
     const u = new SpeechSynthesisUtterance(texto);
-    const v = mejor(lang, lang === 'es' ? ajustes.voz : '');
-    if (v) { u.voice = v; u.lang = v.lang; } else u.lang = lang === 'es' ? 'es-ES' : 'en-US';
-    u.rate = velocidad || (lang === 'en' ? Math.min(ajustes.vel, 1) * 0.85 : ajustes.vel);
+    const v = mejor(lang);
+    if (v) { u.voice = v; u.lang = v.lang; } else u.lang = lang === 'es' ? 'es-PE' : 'en-US';
+    u.pitch = PERFIL.tono;
+    const base = lang === 'en' ? Math.min(ajustes.vel, 1) * 0.88 : ajustes.vel;
+    u.rate = velocidad || Math.min(2, base * PERFIL.ritmo);
     if (alTerminar) { u.onend = alTerminar; u.onerror = alTerminar; }
     ultimaFrase = u;
     synth.speak(u);
@@ -288,32 +329,50 @@
 
   function montarVoz() {
     const z = $('#voz'); if (!z) return;
-    const det = el('details', { class: 'ajustes' }, el('summary', { class: 'btn-mini' }, '🔊 Ajustes de voz'));
+    const det = el('details', { class: 'ajustes' }, el('summary', { class: 'btn-mini' }, '🔊 Voz: ' + PERFIL.nombre));
     const panel = el('div', { class: 'ajustes-panel' });
     det.append(panel); z.append(det);
     if (!synth) { panel.append(el('p', { text: 'Este navegador no puede leer en voz alta. Prueba con Microsoft Edge o Google Chrome.' })); return; }
     const sv = el('select', { id: 'voz-es' });
+    const se = el('select', { id: 'voz-en' });
     const lvel = el('label', { for: 'voz-vel' });
     const rv = el('input', { id: 'voz-vel', type: 'range', min: '0.6', max: '1.6', step: '0.1', value: String(ajustes.vel) });
     const probar = el('button', { type: 'button', class: 'btn btn-sec' }, '▶ Probar voz');
-    panel.append(el('label', { for: 'voz-es' }, 'Voz en español'), sv, lvel, rv, probar,
-      el('p', { text: 'Consejo: abre las clases en Microsoft Edge y elige una voz que diga "Natural" u "Online": suenan mucho más humanas.' }));
+    const aviso = el('p', { class: 'voz-aviso' });
+    panel.append(
+      el('p', { class: 'voz-perfil' }, 'Perfil de este curso: ', el('strong', { text: PERFIL.nombre })),
+      el('label', { for: 'voz-es' }, 'Voz en español'), sv,
+      el('label', { for: 'voz-en' }, 'Voz en inglés'), se,
+      lvel, rv, probar, aviso,
+      el('p', { text: 'La elección se guarda solo para este curso y este equipo.' }));
     const pintarVel = () => { lvel.textContent = 'Velocidad: ' + Number(ajustes.vel).toFixed(1) + 'x'; };
     pintarVel();
+    function llenar(select, lang) {
+      const lista = vocesDe(lang);
+      select.replaceChildren();
+      if (!lista.length) { select.append(el('option', { value: '', text: 'Voz predeterminada del sistema' })); return; }
+      lista.forEach((v, i) => select.append(el('option', { value: v.name, text: (i === 0 ? '★ ' : '') + v.name + ' (' + v.lang + ')' })));
+      const m = mejor(lang); if (m) select.value = m.name;
+    }
     function poblar() {
       cargarVoces();
-      const es = voces.filter((v) => (v.lang || '').toLowerCase().startsWith('es'))
-        .sort((a, b) => puntuar(b, 'es') - puntuar(a, 'es'));
-      sv.replaceChildren();
-      if (!es.length) { sv.append(el('option', { value: '', text: 'Voz predeterminada del sistema' })); return; }
-      es.forEach((v) => sv.append(el('option', { value: v.name, text: v.name + ' (' + v.lang + ')' })));
-      const m = mejor('es', ajustes.voz); if (m) sv.value = m.name;
+      llenar(sv, 'es'); llenar(se, 'en');
+      // Avisar si falta la voz ideal del perfil (por ejemplo, Chrome no trae voces de Perú)
+      aviso.textContent = PERFIL.ideal(mejor('es'), mejor('en')) ? ''
+        : 'Este navegador no trae la voz ideal de este curso; se usa la más parecida. La voz exacta está en Microsoft Edge.';
     }
     poblar();
     synth.onvoiceschanged = poblar;
-    sv.addEventListener('change', () => { ajustes.voz = sv.value; sset('voz', ajustes); });
-    rv.addEventListener('input', () => { ajustes.vel = Number(rv.value); pintarVel(); sset('voz', ajustes); });
-    probar.addEventListener('click', () => { pararTodo(); setTimeout(() => decir('Hola. Esta es la voz que te va a explicar las clases.', 'es'), 60); });
+    sv.addEventListener('change', () => { ajustes.es = sv.value; guardarAjustes(); });
+    se.addEventListener('change', () => { ajustes.en = se.value; guardarAjustes(); });
+    rv.addEventListener('input', () => { ajustes.vel = Number(rv.value); pintarVel(); guardarAjustes(); });
+    probar.addEventListener('click', () => {
+      pararTodo();
+      setTimeout(() => {
+        if (PERFIL.pruebaEn) decir(PERFIL.prueba, 'en', () => decir('Y yo te explico todo en español.', 'es'));
+        else decir(PERFIL.prueba, 'es');
+      }, 60);
+    });
   }
 
   /* ---------- Copiar ---------- */

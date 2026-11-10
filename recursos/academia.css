@@ -89,6 +89,10 @@ a { color: var(--accent2); }
 @media (max-width: 899px) { .ajustes-panel { position: static; margin-top: 8px; } }
 .ajustes-panel label { font-weight: 600; font-size: 14px; }
 .ajustes-panel p { margin: 0; font-size: 13px; color: var(--muted); }
+.ajustes-panel .voz-perfil { font-size: 14px; color: var(--text); }
+.ajustes-panel .voz-perfil strong { color: var(--accent); }
+.ajustes-panel .voz-aviso:empty { display: none; }
+.ajustes-panel .voz-aviso { color: var(--warn); }
 select { width: 100%; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 6px; padding: 8px; font: 14px var(--sans); }
 input[type="range"] { width: 100%; accent-color: var(--accent); }
 
