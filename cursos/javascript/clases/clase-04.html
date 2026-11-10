@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JavaScript · Clase 04 · Condicionales</title>
+<link rel="stylesheet" href="../../../recursos/academia.css">
+</head>
+<body class="tema-js">
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="top">
+  <div class="marca"><span class="logo" aria-hidden="true">JS</span><span>CODE<span class="acento">//</span>ACADEMIA</span></div>
+  <div id="reloj" class="reloj-zona"></div>
+  <div id="voz"></div>
+  <a class="btn-mini" href="../../../inicio.html">☰ Menú</a>
+</header>
+
+<div class="layout">
+  <nav id="agenda" class="agenda" aria-label="Agenda de la clase"></nav>
+
+  <main id="contenido">
+    <div class="portada">
+      <p class="kicker">JavaScript · Nivel 0 · Clase 04</p>
+      <h1>Condicionales: tu programa toma decisiones</h1>
+      <p class="sub"><code>if</code>, <code>else</code>, <code>else if</code>, condiciones combinadas y <code>switch</code>, con retos de la vida real. Duración: 2 horas.</p>
+    </div>
+
+    <section id="j4-repaso" class="bloque" aria-labelledby="t-repaso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-repaso">Repaso de la Clase 03</h2>
+      <div data-quiz="repaso"></div>
+    </section>
+
+    <section id="j4-if" class="bloque" aria-labelledby="t-if">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-if"><code>if</code> y <code>else</code>: el semáforo</h2>
+      <div class="lectura">
+        <p>Hasta ahora tus programas hacían siempre lo mismo, línea por línea. Con un condicional, el programa elige un camino según una condición, como tú frente a un semáforo: si está en verde, avanzas; si no, esperas.</p>
+        <pre class="log" data-decir="if, abre paréntesis, la condición, cierra paréntesis, abre llave. El código si es verdad. Cierra llave, else, abre llave, el código si es falso, cierra llave.">if (condición) {
+  // se ejecuta si la condición es true
+} else {
+  // se ejecuta si es false
+}</pre>
+        <ul>
+          <li>La condición va entre paréntesis y es una comparación que da true o false, como las de la clase pasada.</li>
+          <li>Las llaves agrupan el código de cada camino.</li>
+          <li>El código de adentro se escribe con sangría, unos espacios a la derecha, para que se lea mejor.</li>
+          <li>else es opcional: si no lo pones y la condición es falsa, simplemente no pasa nada.</li>
+        </ul>
+        <div class="nota alerta">
+          <p><strong>Error clásico:</strong> escribir un solo igual dentro del if. Un igual guarda un valor, no compara. Para comparar, usa siempre tres iguales.</p>
+        </div>
+      </div>
+      <div class="reto"><h4>Práctica</h4><p>Ejecuta. Luego cambia la edad a 15 y vuelve a ejecutar: el programa toma el otro camino.</p></div>
+      <div data-editor="ifelse"></div>
+    </section>
+
+    <section id="j4-elseif" class="bloque" aria-labelledby="t-elseif">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-elseif">Varias opciones: <code>else if</code></h2>
+      <div class="lectura">
+        <p>Cuando hay más de dos caminos, encadenas condiciones con else if. JavaScript las revisa de arriba hacia abajo y ejecuta solo la primera que sea verdadera. Por eso el orden importa: pon primero la condición más exigente.</p>
+      </div>
+      <div data-editor="notas"></div>
+      <h3>Actividad: ¿qué muestra?</h3>
+      <div data-actividad="predice"></div>
+    </section>
+
+    <section id="j4-descanso" class="bloque descanso" aria-labelledby="t-descanso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <p class="grande" aria-hidden="true">☕</p>
+      <h2 id="t-descanso">Descanso de 10 minutos</h2>
+      <p>Estira, toma agua y descansa la vista.</p>
+      <p>Reto mental: escribe en tu cabeza un if que decida si llevar paraguas.</p>
+    </section>
+
+    <section id="j4-logicos" class="bloque" aria-labelledby="t-logicos">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-logicos">Condiciones combinadas: un login</h2>
+      <div class="lectura">
+        <p>Con y lógico y o lógico puedes exigir varias cosas a la vez. Un inicio de sesión, por ejemplo, exige que el usuario y la contraseña sean correctos al mismo tiempo.</p>
+        <div class="nota">
+          <p><strong>Seguridad:</strong> fíjate que el mensaje de error no dice cuál de los dos datos falló. Si dijera "la contraseña es incorrecta", un atacante sabría que el usuario sí existe. Las páginas seguras siempre dicen "usuario o contraseña incorrectos".</p>
+        </div>
+        <p>Y un aviso importante: en una página real, la contraseña nunca se revisa así en JavaScript del navegador, porque cualquiera puede leer ese código con F12. Se revisa en el servidor. Esto es solo para practicar la lógica.</p>
+      </div>
+      <div data-editor="login"></div>
+    </section>
+
+    <section id="j4-switch" class="bloque" aria-labelledby="t-switch">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-switch"><code>switch</code> y el operador ternario</h2>
+      <div class="lectura">
+        <p>Cuando comparas una misma variable con muchos valores exactos, switch se lee más ordenado que muchos else if. Cada caso termina con break, para que no siga con el siguiente. default es el camino si ningún caso coincide.</p>
+        <p>El operador ternario es un if de una sola línea: condición, signo de pregunta, valor si es verdad, dos puntos, valor si es falso. Úsalo solo para decisiones cortas.</p>
+      </div>
+      <div data-editor="switch"></div>
+    </section>
+
+    <section id="j4-retos" class="bloque" aria-labelledby="t-retos">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-retos">Retos</h2>
+      <div class="reto"><h4>Reto 1: par o impar</h4><p>Con <code>const numero = 7;</code> usa un <code>if</code> y <code>%</code> para mostrar <code>7 es par</code> o <code>7 es impar</code> según corresponda (usa la variable en el mensaje).</p></div>
+      <div data-editor="parimpar"></div>
+      <div class="reto"><h4>Reto 2: libreta de notas</h4><p>Con <code>const nota = 9;</code> muestra <code>Excelente</code> si es 18 o más, <code>Aprobado</code> si es 11 o más, y <code>Desaprobado</code> en otro caso. Usa <code>if</code>, <code>else if</code> y <code>else</code>.</p></div>
+      <div data-editor="libreta"></div>
+      <div class="reto"><h4>Reto 3: ¿contraseña segura?</h4><p>Con <code>const clave = "hola";</code> muestra <code>Contraseña segura</code> si tiene 8 caracteres o más, y si no, <code>Contraseña débil: usa al menos 8 caracteres</code>. Pista: <code>.length</code>.</p></div>
+      <div data-editor="clave"></div>
+      <div class="reto"><h4>Reto 4: descuento</h4><p>Con <code>const total = 250;</code>, si el total es 200 o más se aplica un 10% de descuento. Muestra <code>Total a pagar: 225</code> (calculado, no escrito a mano).</p></div>
+      <div data-editor="descuento"></div>
+    </section>
+
+    <section id="j4-ingles" class="bloque" aria-labelledby="t-ingles">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-ingles">Inglés técnico del día</h2>
+      <ul class="vocab">
+        <li data-en="if"><span><span class="en" lang="en">if</span><span class="es">si (condición)</span><span class="pr">if</span></span></li>
+        <li data-en="else"><span><span class="en" lang="en">else</span><span class="es">si no, de lo contrario</span><span class="pr">els</span></span></li>
+        <li data-en="switch"><span><span class="en" lang="en">switch</span><span class="es">interruptor, cambiar</span><span class="pr">suích</span></span></li>
+        <li data-en="case"><span><span class="en" lang="en">case</span><span class="es">caso</span><span class="pr">kéis</span></span></li>
+        <li data-en="break"><span><span class="en" lang="en">break</span><span class="es">romper, cortar</span><span class="pr">bréik</span></span></li>
+        <li data-en="default"><span><span class="en" lang="en">default</span><span class="es">por defecto</span><span class="pr">di-fólt</span></span></li>
+        <li data-en="condition"><span><span class="en" lang="en">condition</span><span class="es">condición</span><span class="pr">con-dí-shon</span></span></li>
+        <li data-en="weak password"><span><span class="en" lang="en">weak password</span><span class="es">contraseña débil</span><span class="pr">uík pás-uord</span></span></li>
+      </ul>
+    </section>
+
+    <section id="j4-examen" class="bloque" aria-labelledby="t-examen">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-examen">Examen final</h2>
+      <div data-quiz="examen"></div>
+    </section>
+
+    <section id="cierre" class="bloque" aria-labelledby="t-cierre">
+      <p class="kicker">Cierre</p>
+      <h2 id="t-cierre">Mis notas</h2>
+      <label for="notas-c">Dudas y lo que más te costó:</label>
+      <textarea id="notas-c" data-notas="generales"></textarea>
+      <p>Tu avance y tu código se guardan solos. Al terminar, dile a Claude "revisa mi avance".</p>
+      <div id="resumen"></div>
+    </section>
+  </main>
+</div>
+
+<p class="pie">Code//Academia · JavaScript · Clase 04</p>
+
+<script>
+window.CLASE = {
+  id: 'js-04',
+  titulo: 'JavaScript · Clase 04: Condicionales',
+  bloques: [
+    { id: 'j4-repaso', titulo: 'Repaso de la Clase 03', min: 10 },
+    { id: 'j4-if', titulo: 'if y else', min: 20 },
+    { id: 'j4-elseif', titulo: 'else if', min: 15 },
+    { id: 'j4-descanso', titulo: 'Descanso', min: 10 },
+    { id: 'j4-logicos', titulo: 'Condiciones combinadas', min: 15 },
+    { id: 'j4-switch', titulo: 'switch y ternario', min: 10 },
+    { id: 'j4-retos', titulo: 'Retos', min: 25 },
+    { id: 'j4-ingles', titulo: 'Inglés técnico', min: 5 },
+    { id: 'j4-examen', titulo: 'Examen final', min: 10 }
+  ],
+  editores: {
+    ifelse: { titulo: 'semaforo.js', codigo: 'const edad = 20;\n\nif (edad >= 18) {\n  console.log("Eres mayor de edad");\n} else {\n  console.log("Eres menor de edad");\n}\n\n// Cambia la edad a 15 y vuelve a ejecutar' },
+    notas: { titulo: 'notas.js', codigo: 'const nota = 15;\n\nif (nota >= 18) {\n  console.log("Excelente");\n} else if (nota >= 11) {\n  console.log("Aprobado");\n} else {\n  console.log("Desaprobado");\n}\n\n// Prueba con 19, 11 y 7' },
+    login: { titulo: 'login.js', codigo: 'const usuario = "admin";\nconst clave = "1234";\n\nif (usuario === "admin" && clave === "S3gur4!") {\n  console.log("Bienvenido");\n} else {\n  console.log("Usuario o contraseña incorrectos");\n}\n\n// Cambia la clave para que entre' },
+    switch: { titulo: 'switch.js', codigo: 'const dia = "sábado";\n\nswitch (dia) {\n  case "sábado":\n  case "domingo":\n    console.log("Fin de semana");\n    break;\n  default:\n    console.log("Día de semana");\n}\n\nconst edad = 20;\nconst mensaje = edad >= 18 ? "Puede votar" : "No puede votar";\nconsole.log(mensaje);' },
+    parimpar: {
+      titulo: 'parimpar.js',
+      codigo: 'const numero = 7;\n',
+      validar: { esperado: ['7 es impar'], codigoIncluye: ['if', '%'] },
+      pista: 'if (numero % 2 === 0) { ... "es par" } else { ... "es impar" }. Para el mensaje: console.log(numero, "es impar");',
+      solucion: 'if (numero % 2 === 0) { console.log(numero, "es par"); } else { console.log(numero, "es impar"); }',
+      exito: 'Cambia el número a 10 y comprueba que diga "es par".'
+    },
+    libreta: {
+      titulo: 'libreta.js',
+      codigo: 'const nota = 9;\n',
+      validar: { esperado: ['Desaprobado'], codigoIncluye: ['if', 'else if', 'else'] },
+      pista: 'Empieza por la condición más alta: if (nota >= 18) … else if (nota >= 11) … else …',
+      solucion: 'if (nota >= 18) { console.log("Excelente"); } else if (nota >= 11) { console.log("Aprobado"); } else { console.log("Desaprobado"); }',
+      exito: 'Prueba con 18 y con 11 para ver los otros caminos.'
+    },
+    clave: {
+      titulo: 'clave.js',
+      codigo: 'const clave = "hola";\n',
+      validar: { esperado: ['Contraseña débil: usa al menos 8 caracteres'], codigoIncluye: ['.length', 'if'] },
+      pista: 'if (clave.length >= 8) { … } else { … }',
+      solucion: 'if (clave.length >= 8) { console.log("Contraseña segura"); } else { console.log("Contraseña débil: usa al menos 8 caracteres"); }',
+      exito: '¡Acabas de programar una regla de seguridad real!'
+    },
+    descuento: {
+      titulo: 'descuento.js',
+      codigo: 'const total = 250;\n',
+      validar: { esperado: ['Total a pagar: 225'], codigoIncluye: ['if', 'total'] },
+      pista: 'Usa let pagar = total; y dentro del if (total >= 200) haz pagar = total - total * 10 / 100;',
+      solucion: 'let pagar = total; if (total >= 200) { pagar = total - total * 10 / 100; } console.log("Total a pagar:", pagar);',
+      exito: 'Así funcionan los descuentos de las tiendas online.'
+    }
+  },
+  actividades: {
+    predice: {
+      titulo: '¿Qué muestra?',
+      preguntas: [{ label: 'Con el código de notas.js, ¿qué muestra?', corto: 'Muestra', opciones: ['Excelente', 'Aprobado', 'Desaprobado'] }],
+      items: [
+        { titulo: 'const nota = 20;', respuestas: [['Excelente']], pista: '¿20 es mayor o igual a 18?', explica: 'Cumple la primera condición.' },
+        { titulo: 'const nota = 11;', respuestas: [['Aprobado']], pista: '¿11 >= 18? ¿11 >= 11?', explica: 'No cumple la primera, sí la segunda.' },
+        { titulo: 'const nota = 10;', respuestas: [['Desaprobado']], pista: '¿10 >= 11?', explica: 'No cumple ninguna: va al else.' },
+        { titulo: 'const nota = 18;', respuestas: [['Excelente']], pista: '>= incluye el igual.', explica: '18 >= 18 es true.' }
+      ]
+    }
+  },
+  quizzes: {
+    repaso: {
+      titulo: 'Repaso de la Clase 03',
+      preguntas: [
+        { q: '¿Cuánto da 10 % 2?', opciones: ['0', '5'], correcta: 0, explica: '10 es par: resto 0.' },
+        { q: '¿Qué da 5 === "5"?', opciones: ['true', 'false'], correcta: 1, explica: 'Tipos distintos.' },
+        { q: '&& significa…', opciones: ['y', 'o'], correcta: 0, explica: '|| es o.' },
+        { q: '¿Qué da "5" + 3?', opciones: ['8', '53'], correcta: 1, explica: 'Con texto, + pega.' },
+        { q: '¿Qué hace .toUpperCase()?', opciones: ['Mayúsculas', 'Cuenta letras'], correcta: 0, explica: 'upper = arriba, mayúsculas.' }
+      ]
+    },
+    examen: {
+      titulo: 'Examen final',
+      preguntas: [
+        { q: '¿Qué hace un if?', opciones: ['Ejecuta código solo si una condición es verdadera', 'Repite código'], correcta: 0, explica: 'Toma decisiones.' },
+        { q: '¿Cuándo se ejecuta el else?', opciones: ['Cuando la condición es false', 'Siempre'], correcta: 0, explica: 'Es el camino alternativo.' },
+        { q: '¿Qué está mal en if (edad = 18)?', opciones: ['Un igual guarda, no compara', 'Nada'], correcta: 0, explica: 'Usa ===.' },
+        { q: 'Con varias condiciones else if, JavaScript ejecuta…', opciones: ['Todas las verdaderas', 'Solo la primera verdadera'], correcta: 1, explica: 'Por eso importa el orden.' },
+        { q: 'if (a > 5 && b > 5) se cumple si…', opciones: ['Las dos son mayores que 5', 'Al menos una'], correcta: 0, explica: '&& exige las dos.' },
+        { q: '¿Para qué sirve break en un switch?', opciones: ['Para salir y no seguir con el siguiente caso', 'Para borrar'], correcta: 0, explica: 'Sin break, sigue al siguiente caso.' },
+        { q: '¿Qué muestra edad >= 18 ? "Sí" : "No" con edad = 16?', opciones: ['Sí', 'No'], correcta: 1, explica: 'La condición es false.' },
+        { q: '¿Por qué un login seguro dice "usuario o contraseña incorrectos"?', opciones: ['Para no revelar qué dato falló', 'Por costumbre'], correcta: 0, explica: 'Así el atacante no sabe si el usuario existe.' },
+        { q: '¿Dónde se debe verificar una contraseña real?', opciones: ['En el servidor', 'En el JavaScript del navegador'], correcta: 0, explica: 'El código del navegador lo puede leer cualquiera.' },
+        { q: '¿Qué significa "default"?', opciones: ['Por defecto', 'Defecto o error'], correcta: 0, explica: 'El caso que se usa si ningún otro coincide.' }
+      ]
+    }
+  }
+};
+</script>
+<script src="../../../recursos/sync.js"></script>
+<script src="../../../recursos/academia.js"></script>
+</body>
+</html>

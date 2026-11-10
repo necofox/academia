@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Python · Clase 04 · Condicionales</title>
+<link rel="stylesheet" href="../../../recursos/academia.css">
+</head>
+<body class="tema-python">
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="top">
+  <div class="marca"><span class="logo" aria-hidden="true">Py</span><span>CODE<span class="acento">//</span>ACADEMIA</span></div>
+  <div id="reloj" class="reloj-zona"></div>
+  <div id="voz"></div>
+  <a class="btn-mini" href="../../../inicio.html">☰ Menú</a>
+</header>
+
+<div class="layout">
+  <nav id="agenda" class="agenda" aria-label="Agenda de la clase"></nav>
+
+  <main id="contenido">
+    <div class="portada">
+      <p class="kicker">Python · Nivel 0 · Clase 04</p>
+      <h1>Condicionales: <code>if</code>, <code>elif</code> y <code>else</code></h1>
+      <p class="sub">Tus programas toman decisiones. Aprende la sangría de Python, las condiciones combinadas y crea programas útiles. Duración: 2 horas.</p>
+    </div>
+
+    <section id="p4-repaso" class="bloque" aria-labelledby="t-repaso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-repaso">Repaso de la Clase 03</h2>
+      <div data-quiz="repaso"></div>
+    </section>
+
+    <section id="p4-if" class="bloque" aria-labelledby="t-if">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-if"><code>if</code> y la sangría</h2>
+      <div class="lectura">
+        <p>Un condicional hace que el programa elija un camino. Si la condición es verdadera, ejecuta un bloque de código; si no, lo salta.</p>
+        <pre class="log" data-decir="if edad mayor o igual 18, dos puntos. Debajo, con 4 espacios: print Eres mayor de edad. else, dos puntos. Debajo, con 4 espacios: print Eres menor de edad.">edad = 20
+if edad >= 18:
+    print("Eres mayor de edad")
+else:
+    print("Eres menor de edad")</pre>
+        <h3>Las dos reglas de Python</h3>
+        <ul>
+          <li><strong>Los dos puntos:</strong> la línea del if y la del else terminan con dos puntos.</li>
+          <li><strong>La sangría:</strong> el código que pertenece al if va desplazado 4 espacios a la derecha. En otros lenguajes se usan llaves; Python usa los espacios. Por eso en la clase 1 viste que los espacios importan.</li>
+        </ul>
+        <p>VS Code pone la sangría solo cuando pulsas Enter después de los dos puntos. Para volver al borde, borra los espacios.</p>
+        <div class="nota alerta">
+          <p><strong>Error clásico:</strong> escribir un solo igual en el if. Un igual guarda, dos iguales comparan. if edad igual 18 da SyntaxError; lo correcto es if edad igual igual 18.</p>
+        </div>
+      </div>
+      <h3>Practica en tu computadora: mayor.py</h3>
+<pre data-copiar>edad = int(input("¿Cuántos años tienes? "))
+if edad >= 18:
+    print("Eres mayor de edad")
+else:
+    print("Eres menor de edad")
+print("Gracias por usar el programa")</pre>
+      <p>Ejecútalo dos veces, con 20 y con 15. La última línea no tiene sangría: se ejecuta siempre, sea cual sea el camino.</p>
+    </section>
+
+    <section id="p4-elif" class="bloque" aria-labelledby="t-elif">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-elif">Varias opciones con <code>elif</code></h2>
+      <div class="lectura">
+        <p>elif es la abreviatura de "else if": "si no, si…". Python revisa las condiciones de arriba hacia abajo y ejecuta solo la primera verdadera. Por eso conviene poner primero la más exigente.</p>
+      </div>
+<pre data-copiar>nota = int(input("Tu nota (0 a 20): "))
+if nota >= 18:
+    print("Excelente")
+elif nota >= 11:
+    print("Aprobado")
+else:
+    print("Desaprobado")</pre>
+      <h3>Actividad: ¿qué muestra?</h3>
+      <div data-actividad="predice"></div>
+    </section>
+
+    <section id="p4-descanso" class="bloque descanso" aria-labelledby="t-descanso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <p class="grande" aria-hidden="true">☕</p>
+      <h2 id="t-descanso">Descanso de 10 minutos</h2>
+      <p>Estira, toma agua y descansa la vista.</p>
+      <p>Reto mental: ¿cuántos espacios de sangría usa Python normalmente?</p>
+    </section>
+
+    <section id="p4-combinadas" class="bloque" aria-labelledby="t-combinadas">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-combinadas">Condiciones combinadas</h2>
+      <div class="lectura">
+        <p>Con and, or y not puedes combinar condiciones, y con in puedes preguntar si un texto contiene a otro.</p>
+      </div>
+<pre data-copiar>usuario = input("Usuario: ")
+clave = input("Contraseña: ")
+if usuario == "admin" and clave == "S3gur4!":
+    print("Bienvenido")
+else:
+    print("Usuario o contraseña incorrectos")
+
+correo = input("Tu correo: ")
+if "@" in correo and "." in correo:
+    print("El correo parece válido")
+else:
+    print("Ese correo no es válido")</pre>
+      <div class="nota">
+        <p><strong>Seguridad:</strong> el mensaje de error no dice si falló el usuario o la contraseña, para no darle pistas a un atacante. Y en un sistema real, las contraseñas nunca se escriben dentro del código: se guardan cifradas con hash. Lo verás en el nivel 4.</p>
+      </div>
+    </section>
+
+    <section id="p4-errores" class="bloque" aria-labelledby="t-errores">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-errores">Errores típicos con condicionales</h2>
+      <div data-actividad="errores"></div>
+    </section>
+
+    <section id="p4-retos" class="bloque" aria-labelledby="t-retos">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-retos">Retos en tu computadora</h2>
+      <div class="reto">
+        <h4>Reto 1: parimpar.py</h4>
+        <p>Pide un número y di si es par o impar.</p>
+        <pre class="log">Escribe un número: 7
+7 es impar</pre>
+      </div>
+      <div class="reto">
+        <h4>Reto 2: clave.py</h4>
+        <p>Pide una contraseña y clasifícala: menos de 8 caracteres es débil; de 8 a 11 es aceptable; 12 o más es fuerte.</p>
+        <pre class="log">Crea una contraseña: hola123
+Contraseña débil: usa al menos 8 caracteres</pre>
+      </div>
+      <div class="reto">
+        <h4>Reto 3: tienda.py</h4>
+        <p>Pide el total de una compra. Si es 200 o más, aplica 10% de descuento; si es 500 o más, 20%. Muestra el total a pagar con 2 decimales.</p>
+        <pre class="log">Total de la compra: 250
+Descuento: 10%
+Total a pagar: S/ 225.00</pre>
+        <details class="revelar"><summary>Ver una pista</summary>
+          <p>Revisa primero la condición más alta: <code>if total &gt;= 500:</code> y luego <code>elif total &gt;= 200:</code>. Usa una variable <code>descuento</code> y una f-string con <code>:.2f</code>.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="p4-ingles" class="bloque" aria-labelledby="t-ingles">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-ingles">Inglés técnico del día</h2>
+      <ul class="vocab">
+        <li data-en="if"><span><span class="en" lang="en">if</span><span class="es">si</span><span class="pr">if</span></span></li>
+        <li data-en="else"><span><span class="en" lang="en">else</span><span class="es">si no</span><span class="pr">els</span></span></li>
+        <li data-en="indentation"><span><span class="en" lang="en">indentation</span><span class="es">sangría</span><span class="pr">in-den-téi-shon</span></span></li>
+        <li data-en="expected"><span><span class="en" lang="en">expected</span><span class="es">se esperaba</span><span class="pr">ex-pék-ted</span></span></li>
+        <li data-en="valid"><span><span class="en" lang="en">valid</span><span class="es">válido</span><span class="pr">vá-lid</span></span></li>
+        <li data-en="even"><span><span class="en" lang="en">even</span><span class="es">par</span><span class="pr">í-ven</span></span></li>
+        <li data-en="odd"><span><span class="en" lang="en">odd</span><span class="es">impar</span><span class="pr">od</span></span></li>
+        <li data-en="discount"><span><span class="en" lang="en">discount</span><span class="es">descuento</span><span class="pr">dís-kaunt</span></span></li>
+      </ul>
+    </section>
+
+    <section id="p4-examen" class="bloque" aria-labelledby="t-examen">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-examen">Examen final</h2>
+      <div data-quiz="examen"></div>
+    </section>
+
+    <section id="cierre" class="bloque" aria-labelledby="t-cierre">
+      <p class="kicker">Cierre</p>
+      <h2 id="t-cierre">Mis notas</h2>
+      <label for="notas">Pega aquí el código de tus retos:</label>
+      <textarea id="notas" data-notas="generales"></textarea>
+      <p>Tu avance se guarda solo. Al terminar, dile a Claude "revisa mi avance" y te reviso el código.</p>
+      <div id="resumen"></div>
+    </section>
+  </main>
+</div>
+
+<p class="pie">Code//Academia · Python · Clase 04</p>
+
+<script>
+window.CLASE = {
+  id: 'py-04',
+  titulo: 'Python · Clase 04: Condicionales',
+  bloques: [
+    { id: 'p4-repaso', titulo: 'Repaso de la Clase 03', min: 10 },
+    { id: 'p4-if', titulo: 'if y la sangría', min: 20 },
+    { id: 'p4-elif', titulo: 'elif', min: 20 },
+    { id: 'p4-descanso', titulo: 'Descanso', min: 10 },
+    { id: 'p4-combinadas', titulo: 'Condiciones combinadas', min: 15 },
+    { id: 'p4-errores', titulo: 'Errores típicos', min: 10 },
+    { id: 'p4-retos', titulo: 'Retos en tu PC', min: 20 },
+    { id: 'p4-ingles', titulo: 'Inglés técnico', min: 5 },
+    { id: 'p4-examen', titulo: 'Examen final', min: 10 }
+  ],
+  actividades: {
+    predice: {
+      titulo: '¿Qué muestra notas.py?',
+      preguntas: [{ label: 'Si el usuario escribe…', corto: 'Muestra', opciones: ['Excelente', 'Aprobado', 'Desaprobado'] }],
+      items: [
+        { titulo: '19', respuestas: [['Excelente']], pista: '¿19 >= 18?', explica: 'Cumple la primera condición.' },
+        { titulo: '11', respuestas: [['Aprobado']], pista: '¿11 >= 18? ¿11 >= 11?', explica: 'Falla la primera, cumple la segunda.' },
+        { titulo: '10', respuestas: [['Desaprobado']], pista: '¿10 >= 11?', explica: 'Ninguna se cumple: else.' },
+        { titulo: '18', respuestas: [['Excelente']], pista: '>= incluye el igual.', explica: '18 >= 18 es True.' }
+      ]
+    },
+    errores: {
+      titulo: '¿Qué error es?',
+      variante: 'consola',
+      preguntas: [{ label: '¿Qué error mostrará Python?', corto: 'Error', opciones: ['SyntaxError', 'IndentationError', 'TypeError'] }],
+      items: [
+        { titulo: 'Código 1', log: 'if edad >= 18\n    print("Mayor")', respuestas: [['SyntaxError']], pista: '¿Qué falta al final del if?', explica: 'Faltan los dos puntos. Python dice: SyntaxError: expected \':\' (se esperaba dos puntos).' },
+        { titulo: 'Código 2', log: 'if edad >= 18:\nprint("Mayor")', respuestas: [['IndentationError']], pista: 'Mira el inicio de la segunda línea.', explica: 'El print necesita 4 espacios de sangría: IndentationError: expected an indented block.' },
+        { titulo: 'Código 3', log: 'if edad = 18:\n    print("Tienes 18")', respuestas: [['SyntaxError']], pista: '¿Cuántos iguales para comparar?', explica: 'Un igual guarda; para comparar se usa ==.' },
+        { titulo: 'Código 4', log: 'edad = input("Edad: ")\nif edad >= 18:\n    print("Mayor")', respuestas: [['TypeError']], pista: '¿Qué tipo devuelve input?', explica: 'Comparas texto con número: TypeError. Solución: int(input(...)).' }
+      ]
+    }
+  },
+  quizzes: {
+    repaso: {
+      titulo: 'Repaso de la Clase 03',
+      preguntas: [
+        { q: '"Python"[0] da…', opciones: ['P', 'y'], correcta: 0, explica: 'Desde 0.' },
+        { q: 'f"{nombre}" con nombre = "Ana" da…', opciones: ['Ana', '{nombre}'], correcta: 0, explica: 'La f reemplaza.' },
+        { q: '"y" lógico en Python es…', opciones: ['and', '&&'], correcta: 0, explica: 'Con palabras.' },
+        { q: '"  hola  ".strip() da…', opciones: ['"hola"', '"  hola"'], correcta: 0, explica: 'Quita extremos.' },
+        { q: '5 == "5" da…', opciones: ['False', 'True'], correcta: 0, explica: 'Tipos distintos.' }
+      ]
+    },
+    examen: {
+      titulo: 'Examen final',
+      preguntas: [
+        { q: '¿Con qué termina la línea de un if en Python?', opciones: ['Dos puntos (:)', 'Punto y coma (;)', 'Llave ({)'], correcta: 0, explica: 'if condición:' },
+        { q: '¿Cómo sabe Python qué código pertenece al if?', opciones: ['Por la sangría (4 espacios)', 'Por las llaves'], correcta: 0, explica: 'Python usa la sangría.' },
+        { q: 'elif significa…', opciones: ['Si no, si…', 'Fin'], correcta: 0, explica: 'else if.' },
+        { q: 'Con varias condiciones, Python ejecuta…', opciones: ['Solo la primera verdadera', 'Todas las verdaderas'], correcta: 0, explica: 'Por eso importa el orden.' },
+        { q: '¿Qué está mal en if edad = 18:?', opciones: ['Debe ser ==', 'Nada'], correcta: 0, explica: 'Un igual guarda.' },
+        { q: 'Si falta la sangría después del if, aparece…', opciones: ['IndentationError', 'ValueError'], correcta: 0, explica: 'expected an indented block.' },
+        { q: '¿Cómo compruebas si un número n es par?', opciones: ['n % 2 == 0', 'n / 2 == 0'], correcta: 0, explica: 'Resto 0 al dividir entre 2.' },
+        { q: '"@" in correo pregunta…', opciones: ['Si el correo contiene una arroba', 'Si el correo es largo'], correcta: 0, explica: 'in busca dentro.' },
+        { q: '¿Por qué un login dice "usuario o contraseña incorrectos"?', opciones: ['Para no dar pistas al atacante', 'Por cortesía'], correcta: 0, explica: 'No revela qué dato falló.' },
+        { q: '¿Qué significa "even"?', opciones: ['Par', 'Impar'], correcta: 0, explica: 'odd = impar.' }
+      ]
+    }
+  }
+};
+</script>
+<script src="../../../recursos/sync.js"></script>
+<script src="../../../recursos/academia.js"></script>
+</body>
+</html>

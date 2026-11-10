@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JavaScript · Clase 02 · Variables y tipos de datos</title>
+<link rel="stylesheet" href="../../../recursos/academia.css">
+</head>
+<body class="tema-js">
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="top">
+  <div class="marca"><span class="logo" aria-hidden="true">JS</span><span>CODE<span class="acento">//</span>ACADEMIA</span></div>
+  <div id="reloj" class="reloj-zona"></div>
+  <div id="voz"></div>
+  <a class="btn-mini" href="../../../inicio.html">☰ Menú</a>
+</header>
+
+<div class="layout">
+  <nav id="agenda" class="agenda" aria-label="Agenda de la clase"></nav>
+
+  <main id="contenido">
+    <div class="portada">
+      <p class="kicker">JavaScript · Nivel 0 · Clase 02</p>
+      <h1>Variables y tipos de datos</h1>
+      <p class="sub">Guarda información en variables con <code>let</code> y <code>const</code>, conoce los tipos de datos y úsalos en cálculos. Duración: 2 horas.</p>
+    </div>
+
+    <section id="j2-repaso" class="bloque" aria-labelledby="t-repaso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-repaso">Repaso de la Clase 01</h2>
+      <div data-quiz="repaso"></div>
+    </section>
+
+    <section id="j2-variables" class="bloque" aria-labelledby="t-variables">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-variables">¿Qué es una variable?</h2>
+      <div class="lectura">
+        <p>Una variable es una caja con una etiqueta. Guardas algo dentro y, cuando lo necesitas, lo buscas por el nombre de la etiqueta. Así tu programa recuerda datos: un nombre, una edad, un total.</p>
+        <pre class="log" data-decir="let edad igual 25 punto y coma.">let edad = 25;
+│   │    │ └── el valor que guardas
+│   │    └──── "guarda en"
+│   └───────── el nombre de la caja
+└───────────── crear una caja que puede cambiar</pre>
+        <h3><code>let</code> y <code>const</code></h3>
+        <ul>
+          <li><strong>let:</strong> crea una caja cuyo contenido puede cambiar después. Por ejemplo, una edad que aumenta cada año.</li>
+          <li><strong>const:</strong> crea una caja sellada: su valor no se puede reemplazar. Por ejemplo, tu fecha de nacimiento.</li>
+          <li>Regla de buenos programadores: usa const siempre que puedas, y let solo si el valor va a cambiar.</li>
+          <li>Quizá veas var en código antiguo. Es la forma vieja: no la uses.</li>
+        </ul>
+        <h3>Cómo nombrar las variables</h3>
+        <ul>
+          <li>Usa nombres que expliquen qué guardan: precioTotal es mejor que x.</li>
+          <li>Si el nombre tiene varias palabras, se juntan y cada palabra nueva empieza con mayúscula: nombreCompleto, fechaDeNacimiento. Esto se llama camelCase, por las jorobas del camello.</li>
+          <li>No pueden empezar con un número, no llevan espacios ni tildes, y distinguen mayúsculas: edad y Edad son cajas distintas.</li>
+        </ul>
+        <p>Para cambiar el valor de una variable creada con let, escribes su nombre, el signo igual y el nuevo valor, sin volver a poner let.</p>
+      </div>
+      <div class="reto"><h4>Práctica 1</h4><p>Ejecuta, lee la salida y luego cambia los valores.</p></div>
+      <div data-editor="variables"></div>
+    </section>
+
+    <section id="j2-tipos" class="bloque" aria-labelledby="t-tipos">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-tipos">Tipos de datos</h2>
+      <div class="lectura">
+        <p>No todo lo que guardas es igual: un nombre es texto, una edad es un número, una respuesta de sí o no es otra cosa. Cada tipo se comporta distinto.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Tipo</th><th>Qué guarda</th><th>Ejemplo</th></tr></thead>
+            <tbody>
+              <tr><td>string</td><td>Texto, siempre entre comillas.</td><td><code>"Hola"</code>, <code>'Lima'</code></td></tr>
+              <tr><td>number</td><td>Números enteros o con decimales (con punto).</td><td><code>25</code>, <code>3.5</code></td></tr>
+              <tr><td>boolean</td><td>Solo dos valores: verdadero o falso.</td><td><code>true</code>, <code>false</code></td></tr>
+              <tr><td>undefined</td><td>Una caja creada pero vacía.</td><td><code>let algo;</code></td></tr>
+              <tr><td>null</td><td>"Vacío a propósito": no hay valor.</td><td><code>let ganador = null;</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Con la palabra typeof puedes preguntarle a JavaScript qué tipo de dato es algo.</p>
+        <div class="nota">
+          <p><strong>Dato curioso:</strong> typeof null responde "object". Es un error que tiene JavaScript desde 1995 y que nunca se corrigió para no romper las páginas antiguas.</p>
+        </div>
+      </div>
+      <div data-editor="tipos"></div>
+      <h3>Actividad: ¿qué tipo es?</h3>
+      <div data-actividad="tipos"></div>
+    </section>
+
+    <section id="j2-descanso" class="bloque descanso" aria-labelledby="t-descanso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <p class="grande" aria-hidden="true">☕</p>
+      <h2 id="t-descanso">Descanso de 10 minutos</h2>
+      <p>Estira las manos, toma agua y descansa la vista.</p>
+      <p>Reto mental: ¿qué tipo de dato es "25", con comillas?</p>
+    </section>
+
+    <section id="j2-operaciones" class="bloque" aria-labelledby="t-operaciones">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-operaciones">Usar variables en cálculos</h2>
+      <div class="lectura">
+        <p>La gracia de las variables es combinarlas. Puedes multiplicar un precio por una cantidad y guardar el resultado en otra variable. Si cambias el precio, el resultado cambia solo.</p>
+        <p>Con textos, el signo más los une: "Hola, " más nombre forma "Hola, Ana". A esto se le llama concatenar.</p>
+      </div>
+      <div data-editor="operaciones"></div>
+    </section>
+
+    <section id="j2-errores" class="bloque" aria-labelledby="t-errores">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-errores">Errores comunes con variables</h2>
+      <div class="lectura">
+        <ul>
+          <li><strong>Cambiar una const:</strong> da TypeError, Assignment to constant variable, que significa "asignación a una variable constante".</li>
+          <li><strong>Escribir mal el nombre:</strong> da ReferenceError, is not defined. Recuerda: Ciudad y ciudad son distintas.</li>
+          <li><strong>Crear dos veces la misma variable con let:</strong> da SyntaxError, has already been declared, que significa "ya fue declarada".</li>
+        </ul>
+      </div>
+      <div class="reto"><h4>Arregla el código</h4><p>Este código tiene 2 errores. Debe mostrar exactamente <code>Vivo en Cusco</code>.</p></div>
+      <div data-editor="arregla"></div>
+    </section>
+
+    <section id="j2-retos" class="bloque" aria-labelledby="t-retos">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-retos">Retos</h2>
+      <div class="reto"><h4>Reto 1: tu ficha</h4><p>Crea 4 variables: <code>nombre</code> (texto), <code>edad</code> (número), <code>ciudad</code> (texto) y <code>estudiante</code> (<code>true</code> o <code>false</code>). Muestra 4 líneas que empiecen con <code>Nombre:</code>, <code>Edad:</code>, <code>Ciudad:</code> y <code>Estudiante:</code>, usando las variables.</p></div>
+      <div data-editor="ficha"></div>
+      <div class="reto"><h4>Reto 2: la cuenta de ahorros</h4><p>Crea <code>let saldo = 100;</code>. Luego deposita 50 (súmale 50 al saldo) y retira 30 (réstale 30). Al final muestra exactamente <code>Saldo final: 120</code> usando la variable.</p></div>
+      <div data-editor="saldo"></div>
+      <div class="reto"><h4>Reto 3: detective de tipos</h4><p>Usa <code>typeof</code> para mostrar, en 3 líneas, el tipo de <code>"texto"</code>, de <code>10</code> y de <code>false</code>.</p></div>
+      <div data-editor="detective"></div>
+    </section>
+
+    <section id="j2-ingles" class="bloque" aria-labelledby="t-ingles">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-ingles">Inglés técnico del día</h2>
+      <ul class="vocab">
+        <li data-en="variable"><span><span class="en" lang="en">variable</span><span class="es">variable</span><span class="pr">vé-ria-bol</span></span></li>
+        <li data-en="constant"><span><span class="en" lang="en">constant</span><span class="es">constante</span><span class="pr">cóns-tant</span></span></li>
+        <li data-en="value"><span><span class="en" lang="en">value</span><span class="es">valor</span><span class="pr">vá-liu</span></span></li>
+        <li data-en="type"><span><span class="en" lang="en">type</span><span class="es">tipo</span><span class="pr">táip</span></span></li>
+        <li data-en="true"><span><span class="en" lang="en">true</span><span class="es">verdadero</span><span class="pr">tru</span></span></li>
+        <li data-en="false"><span><span class="en" lang="en">false</span><span class="es">falso</span><span class="pr">fols</span></span></li>
+        <li data-en="declared"><span><span class="en" lang="en">declared</span><span class="es">declarado</span><span class="pr">di-klérd</span></span></li>
+        <li data-en="assignment"><span><span class="en" lang="en">assignment</span><span class="es">asignación</span><span class="pr">a-sáin-ment</span></span></li>
+      </ul>
+    </section>
+
+    <section id="j2-examen" class="bloque" aria-labelledby="t-examen">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-examen">Examen final</h2>
+      <div data-quiz="examen"></div>
+    </section>
+
+    <section id="cierre" class="bloque" aria-labelledby="t-cierre">
+      <p class="kicker">Cierre</p>
+      <h2 id="t-cierre">Mis notas</h2>
+      <label for="notas">Dudas y lo que más te costó:</label>
+      <textarea id="notas" data-notas="generales"></textarea>
+      <p>Tu avance y tu código se guardan solos. Al terminar, dile a Claude "revisa mi avance".</p>
+      <div id="resumen"></div>
+    </section>
+  </main>
+</div>
+
+<p class="pie">Code//Academia · JavaScript · Clase 02</p>
+
+<script>
+window.CLASE = {
+  id: 'js-02',
+  titulo: 'JavaScript · Clase 02: Variables y tipos de datos',
+  bloques: [
+    { id: 'j2-repaso', titulo: 'Repaso de la Clase 01', min: 10 },
+    { id: 'j2-variables', titulo: '¿Qué es una variable?', min: 20 },
+    { id: 'j2-tipos', titulo: 'Tipos de datos', min: 20 },
+    { id: 'j2-descanso', titulo: 'Descanso', min: 10 },
+    { id: 'j2-operaciones', titulo: 'Cálculos con variables', min: 15 },
+    { id: 'j2-errores', titulo: 'Errores comunes', min: 10 },
+    { id: 'j2-retos', titulo: 'Retos', min: 20 },
+    { id: 'j2-ingles', titulo: 'Inglés técnico', min: 5 },
+    { id: 'j2-examen', titulo: 'Examen final', min: 10 }
+  ],
+  editores: {
+    variables: { titulo: 'variables.js', codigo: 'let nombre = "Ana";\nlet edad = 25;\nconst pais = "Perú";\n\nconsole.log(nombre);\nconsole.log("Edad:", edad);\n\nedad = 26; // ¡cumpleaños! Sin let, porque la caja ya existe\nconsole.log("Nueva edad:", edad);\nconsole.log(nombre, "es de", pais);' },
+    tipos: { titulo: 'tipos.js', codigo: 'console.log(typeof "hola");\nconsole.log(typeof 42);\nconsole.log(typeof 3.5);\nconsole.log(typeof true);\n\nlet algo;\nconsole.log(typeof algo);\nconsole.log(typeof null); // ¡el error histórico!' },
+    operaciones: { titulo: 'operaciones.js', codigo: 'const precio = 50;\nconst cantidad = 3;\nconst total = precio * cantidad;\nconsole.log("Total:", total);\n\nconst nombre = "Ana";\nconst saludo = "Hola, " + nombre;\nconsole.log(saludo);\n\n// Prueba: cambia la cantidad a 10 y vuelve a ejecutar' },
+    arregla: {
+      titulo: 'arregla.js',
+      codigo: '// Arregla los 2 errores: debe mostrar "Vivo en Cusco"\nconst ciudad = "Lima";\nciudad = "Cusco";\nconsole.log("Vivo en", Ciudad);',
+      validar: { esperado: ['Vivo en Cusco'], codigoIncluye: ['let ciudad'] },
+      pista: 'Si la ciudad cambia, ¿debe ser const o let? Y revisa las mayúsculas del último nombre.',
+      solucion: 'let ciudad = "Lima"; ciudad = "Cusco"; console.log("Vivo en", ciudad);',
+      exito: '¡Bien! Usaste let para un valor que cambia y corregiste el nombre.'
+    },
+    ficha: {
+      titulo: 'ficha.js',
+      codigo: '// Crea tus 4 variables y muestra tu ficha\n',
+      validar: { minLineas: 4, contiene: ['Nombre:', 'Edad:', 'Ciudad:', 'Estudiante:'], codigoIncluye: ['nombre', 'edad', 'ciudad', 'estudiante'] },
+      pista: 'Ejemplo de una línea: console.log("Nombre:", nombre); Haz lo mismo con las otras tres.',
+      solucion: 'const nombre = "Ana"; const edad = 25; const ciudad = "Lima"; const estudiante = true; console.log("Nombre:", nombre); console.log("Edad:", edad); console.log("Ciudad:", ciudad); console.log("Estudiante:", estudiante);',
+      exito: 'Tu ficha usa los 3 tipos de datos: string, number y boolean.'
+    },
+    saldo: {
+      titulo: 'saldo.js',
+      codigo: 'let saldo = 100;\n// deposita 50 y retira 30\n',
+      validar: { esperado: ['Saldo final: 120'], codigoIncluye: ['let saldo', '50', '30'] },
+      pista: 'Para sumar 50: saldo = saldo + 50; Luego resta 30 de la misma forma.',
+      solucion: 'let saldo = 100; saldo = saldo + 50; saldo = saldo - 30; console.log("Saldo final:", saldo);',
+      exito: 'La variable fue cambiando paso a paso, como una cuenta real.'
+    },
+    detective: {
+      titulo: 'detective.js',
+      codigo: '// Muestra el tipo de "texto", 10 y false\n',
+      validar: { esperado: ['string', 'number', 'boolean'], codigoIncluye: ['typeof'] },
+      pista: 'console.log(typeof "texto"); y lo mismo con los otros dos.',
+      solucion: 'console.log(typeof "texto"); console.log(typeof 10); console.log(typeof false);',
+      exito: 'string, number y boolean: los tres tipos más usados.'
+    }
+  },
+  actividades: {
+    tipos: {
+      titulo: '¿Qué tipo es?',
+      preguntas: [{ label: 'Este valor es…', corto: 'Tipo', opciones: ['string', 'number', 'boolean', 'undefined'] }],
+      items: [
+        { titulo: '"Lima"', respuestas: [['string']], pista: 'Tiene comillas.', explica: 'Entre comillas: texto (string).' },
+        { titulo: '3.14', respuestas: [['number']], pista: 'Sin comillas y con punto decimal.', explica: 'Es un número.' },
+        { titulo: '"25"', respuestas: [['string']], pista: '¡Fíjate en las comillas!', explica: 'Aunque parezca número, con comillas es texto.' },
+        { titulo: 'false', respuestas: [['boolean']], pista: 'Verdadero o falso.', explica: 'true y false son booleanos.' },
+        { titulo: 'let respuesta; (sin valor)', respuestas: [['undefined']], pista: 'La caja existe pero está vacía.', explica: 'Sin valor asignado: undefined.' }
+      ]
+    }
+  },
+  quizzes: {
+    repaso: {
+      titulo: 'Repaso de la Clase 01',
+      preguntas: [
+        { q: '¿Qué muestra console.log(2 + 3)?', opciones: ['5', '2 + 3'], correcta: 0, explica: 'Sin comillas, calcula.' },
+        { q: '¿Qué muestra console.log("2 + 3")?', opciones: ['5', '2 + 3'], correcta: 1, explica: 'Con comillas es texto.' },
+        { q: 'Escribes Console.log("Hola"). ¿Qué error sale?', opciones: ['ReferenceError', 'Ninguno'], correcta: 0, explica: 'JavaScript distingue mayúsculas.' },
+        { q: '¿Qué hace JavaScript en una web?', opciones: ['El comportamiento', 'Los colores'], correcta: 0, explica: 'Los colores son de CSS.' },
+        { q: '¿Para qué sirve //?', opciones: ['Comentario', 'Dividir'], correcta: 0, explica: 'La computadora lo ignora.' }
+      ]
+    },
+    examen: {
+      titulo: 'Examen final',
+      preguntas: [
+        { q: 'Una variable es…', opciones: ['Una caja con nombre que guarda un valor', 'Un error', 'Un comentario'], correcta: 0, explica: 'Una caja con etiqueta.' },
+        { q: '¿Cuándo usar let?', opciones: ['Cuando el valor va a cambiar', 'Nunca'], correcta: 0, explica: 'Si no cambia, const.' },
+        { q: '¿Qué pasa si cambias una const?', opciones: ['TypeError', 'Funciona normal'], correcta: 0, explica: 'Assignment to constant variable.' },
+        { q: '¿Cuál es un buen nombre de variable?', opciones: ['precioTotal', '1precio', 'precio total'], correcta: 0, explica: 'camelCase, sin espacios, sin empezar con número.' },
+        { q: '¿Qué tipo es "25"?', opciones: ['number', 'string'], correcta: 1, explica: 'Tiene comillas.' },
+        { q: '¿Qué tipo es true?', opciones: ['string', 'boolean'], correcta: 1, explica: 'Verdadero o falso.' },
+        { q: '¿Qué muestra typeof 3.5?', opciones: ['number', 'decimal', 'float'], correcta: 0, explica: 'En JavaScript todos los números son number.' },
+        { q: 'let x; ¿qué valor tiene x?', opciones: ['0', 'undefined', 'null'], correcta: 1, explica: 'Caja vacía: undefined.' },
+        { q: '¿Qué muestra "Hola, " + "Ana"?', opciones: ['Hola, Ana', 'Error'], correcta: 0, explica: 'El + une textos.' },
+        { q: '¿Qué significa "value"?', opciones: ['Valor', 'Variable', 'Tipo'], correcta: 0, explica: 'value = valor.' }
+      ]
+    }
+  }
+};
+</script>
+<script src="../../../recursos/sync.js"></script>
+<script src="../../../recursos/academia.js"></script>
+</body>
+</html>

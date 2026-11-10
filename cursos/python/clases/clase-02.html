@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Python · Clase 02 · Variables, tipos e input()</title>
+<link rel="stylesheet" href="../../../recursos/academia.css">
+</head>
+<body class="tema-python">
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="top">
+  <div class="marca"><span class="logo" aria-hidden="true">Py</span><span>CODE<span class="acento">//</span>ACADEMIA</span></div>
+  <div id="reloj" class="reloj-zona"></div>
+  <div id="voz"></div>
+  <a class="btn-mini" href="../../../inicio.html">☰ Menú</a>
+</header>
+
+<div class="layout">
+  <nav id="agenda" class="agenda" aria-label="Agenda de la clase"></nav>
+
+  <main id="contenido">
+    <div class="portada">
+      <p class="kicker">Python · Nivel 0 · Clase 02</p>
+      <h1>Variables, tipos de datos e <code>input()</code></h1>
+      <p class="sub">Guarda datos en variables, conoce los tipos de Python y haz programas que conversan con el usuario. Duración: 2 horas.</p>
+    </div>
+
+    <section id="p2-repaso" class="bloque" aria-labelledby="t-repaso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-repaso">Repaso de la Clase 01</h2>
+      <div data-quiz="repaso"></div>
+    </section>
+
+    <section id="p2-variables" class="bloque" aria-labelledby="t-variables">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-variables">Variables: cajas con nombre</h2>
+      <div class="lectura">
+        <p>Una variable es una caja con una etiqueta donde guardas un dato para usarlo después. En Python crearla es facilísimo: escribes el nombre, el signo igual y el valor. No hace falta ninguna palabra especial antes.</p>
+        <pre class="log" data-decir="nombre igual, entre comillas Ana. edad igual 25.">nombre = "Ana"
+edad = 25</pre>
+        <p>El signo igual en programación no significa "es igual a": significa "guarda esto en". Para cambiar el valor, simplemente vuelves a asignar.</p>
+        <h3>Reglas para los nombres</h3>
+        <ul>
+          <li>En Python, si el nombre tiene varias palabras, se separan con guion bajo: nombre_completo, precio_total. Este estilo se llama snake_case, "estilo serpiente".</li>
+          <li>No pueden empezar con número, no llevan espacios ni tildes, y distinguen mayúsculas: edad y Edad son variables distintas.</li>
+          <li>Usa nombres que expliquen el contenido: precio_total es mejor que x.</li>
+        </ul>
+      </div>
+      <div data-terminal="repl"></div>
+    </section>
+
+    <section id="p2-tipos" class="bloque" aria-labelledby="t-tipos">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-tipos">Tipos de datos y conversiones</h2>
+      <div class="lectura">
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Tipo</th><th>Qué guarda</th><th>Ejemplo</th></tr></thead>
+            <tbody>
+              <tr><td>str</td><td>Texto (string), entre comillas.</td><td><code>"Lima"</code></td></tr>
+              <tr><td>int</td><td>Número entero (integer).</td><td><code>25</code></td></tr>
+              <tr><td>float</td><td>Número con decimales, con punto.</td><td><code>3.5</code></td></tr>
+              <tr><td>bool</td><td>Verdadero o falso, con mayúscula inicial.</td><td><code>True</code>, <code>False</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>La función type te dice el tipo de cualquier dato.</p>
+        <h3>Convertir de un tipo a otro</h3>
+        <ul>
+          <li><code>int("5")</code> convierte el texto "5" en el número 5.</li>
+          <li><code>float("3.5")</code> lo convierte en decimal.</li>
+          <li><code>str(25)</code> convierte el número 25 en el texto "25".</li>
+        </ul>
+        <div class="nota alerta">
+          <p><strong>Python no mezcla texto y números:</strong> si intentas sumar "5" más 3, da TypeError. Primero hay que convertir. Es más estricto que JavaScript, y eso evita errores escondidos.</p>
+        </div>
+      </div>
+      <h3>Actividad: ¿qué tipo es?</h3>
+      <div data-actividad="tipos"></div>
+    </section>
+
+    <section id="p2-descanso" class="bloque descanso" aria-labelledby="t-descanso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <p class="grande" aria-hidden="true">☕</p>
+      <h2 id="t-descanso">Descanso de 10 minutos</h2>
+      <p>Estira, toma agua y descansa la vista.</p>
+      <p>Reto mental: ¿qué tipo es True? ¿Y "True" con comillas?</p>
+    </section>
+
+    <section id="p2-input" class="bloque" aria-labelledby="t-input">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-input"><code>input()</code>: tu programa pregunta</h2>
+      <div class="lectura">
+        <p>La función input muestra una pregunta, espera a que el usuario escriba y pulse Enter, y te devuelve lo que escribió. Así tus programas dejan de ser siempre iguales.</p>
+        <div class="nota alerta">
+          <p><strong>La regla de oro:</strong> input siempre devuelve texto, aunque el usuario escriba un número. Si necesitas hacer cálculos, conviértelo con int o float.</p>
+        </div>
+        <h3>Programa 1: saludo.py</h3>
+        <p>En VS Code, en tu carpeta de proyectos, crea el archivo saludo punto p y con este código, guárdalo y ejecútalo con python saludo punto p y.</p>
+      </div>
+<pre data-copiar>nombre = input("¿Cómo te llamas? ")
+print("Hola,", nombre, "¡bienvenido a Python!")</pre>
+      <p>Si escribes <code>Ana</code>, deberías ver:</p>
+      <pre class="log">¿Cómo te llamas? Ana
+Hola, Ana ¡bienvenido a Python!</pre>
+      <div class="lectura">
+        <h3>Programa 2: edad.py</h3>
+        <p>Aquí convertimos lo que escribe el usuario a número con int, para poder sumarle uno.</p>
+      </div>
+<pre data-copiar>edad = int(input("¿Cuántos años tienes? "))
+print("El próximo año tendrás", edad + 1, "años")</pre>
+      <pre class="log">¿Cuántos años tienes? 25
+El próximo año tendrás 26 años</pre>
+      <p>Prueba quitar el <code>int( )</code> y ejecútalo otra vez: verás el error de la siguiente sección.</p>
+    </section>
+
+    <section id="p2-errores" class="bloque" aria-labelledby="t-errores">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-errores">Errores típicos de esta clase</h2>
+      <div class="lectura">
+        <ul>
+          <li><strong>TypeError: can only concatenate str (not "int") to str.</strong> Significa "solo puedo unir texto con texto, no con un número". Pasa al sumar texto y número.</li>
+          <li><strong>ValueError: invalid literal for int().</strong> Pasa cuando intentas convertir a número algo que no lo es, como int de "hola".</li>
+          <li><strong>NameError: name is not defined.</strong> Usaste una variable que no existe o la escribiste mal.</li>
+        </ul>
+      </div>
+      <div data-actividad="errores"></div>
+    </section>
+
+    <section id="p2-retos" class="bloque" aria-labelledby="t-retos">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-retos">Retos en tu computadora</h2>
+      <div class="reto">
+        <h4>Reto 1: ficha.py</h4>
+        <p>Pregunta al usuario su nombre, su ciudad y su comida favorita, y muestra una ficha. Ejemplo de ejecución:</p>
+        <pre class="log">Nombre: Ana
+Ciudad: Lima
+Comida favorita: ceviche
+--- FICHA ---
+Ana vive en Lima y ama el ceviche</pre>
+      </div>
+      <div class="reto">
+        <h4>Reto 2: futuro.py</h4>
+        <p>Pregunta el año de nacimiento y calcula cuántos años tendrá la persona en 2030.</p>
+        <pre class="log">¿En qué año naciste? 2000
+En 2030 tendrás 30 años</pre>
+        <details class="revelar"><summary>Ver una pista</summary>
+          <p>Convierte con <code>int(input(...))</code> y calcula <code>2030 - anio</code>. Recuerda: sin tildes ni ñ en los nombres de variables.</p>
+        </details>
+      </div>
+      <div class="reto">
+        <h4>Reto 3: tipos.py</h4>
+        <p>Crea una variable de cada tipo (str, int, float y bool) y muestra el tipo de cada una con <code>print(type(...))</code>.</p>
+      </div>
+    </section>
+
+    <section id="p2-ingles" class="bloque" aria-labelledby="t-ingles">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-ingles">Inglés técnico del día</h2>
+      <ul class="vocab">
+        <li data-en="input"><span><span class="en" lang="en">input</span><span class="es">entrada (de datos)</span><span class="pr">ín-put</span></span></li>
+        <li data-en="output"><span><span class="en" lang="en">output</span><span class="es">salida</span><span class="pr">áut-put</span></span></li>
+        <li data-en="integer"><span><span class="en" lang="en">integer</span><span class="es">entero</span><span class="pr">ín-te-yer</span></span></li>
+        <li data-en="boolean"><span><span class="en" lang="en">boolean</span><span class="es">booleano (verdadero/falso)</span><span class="pr">bú-li-an</span></span></li>
+        <li data-en="value error"><span><span class="en" lang="en">value error</span><span class="es">error de valor</span><span class="pr">vá-liu é-rror</span></span></li>
+        <li data-en="concatenate"><span><span class="en" lang="en">concatenate</span><span class="es">concatenar, unir</span><span class="pr">kon-ká-te-neit</span></span></li>
+        <li data-en="invalid"><span><span class="en" lang="en">invalid</span><span class="es">inválido</span><span class="pr">in-vá-lid</span></span></li>
+        <li data-en="snake case"><span><span class="en" lang="en">snake case</span><span class="es">estilo serpiente</span><span class="pr">snéik kéis</span></span></li>
+      </ul>
+    </section>
+
+    <section id="p2-examen" class="bloque" aria-labelledby="t-examen">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-examen">Examen final</h2>
+      <div data-quiz="examen"></div>
+    </section>
+
+    <section id="cierre" class="bloque" aria-labelledby="t-cierre">
+      <p class="kicker">Cierre</p>
+      <h2 id="t-cierre">Mis notas</h2>
+      <label for="notas">Pega aquí el código de tus retos (ficha.py, futuro.py, tipos.py):</label>
+      <textarea id="notas" data-notas="generales"></textarea>
+      <p>Tu avance se guarda solo. Al terminar, dile a Claude "revisa mi avance" y te reviso el código.</p>
+      <div id="resumen"></div>
+    </section>
+  </main>
+</div>
+
+<p class="pie">Code//Academia · Python · Clase 02</p>
+
+<script>
+window.CLASE = {
+  id: 'py-02',
+  titulo: 'Python · Clase 02: Variables, tipos e input()',
+  bloques: [
+    { id: 'p2-repaso', titulo: 'Repaso de la Clase 01', min: 10 },
+    { id: 'p2-variables', titulo: 'Variables', min: 20 },
+    { id: 'p2-tipos', titulo: 'Tipos y conversiones', min: 20 },
+    { id: 'p2-descanso', titulo: 'Descanso', min: 10 },
+    { id: 'p2-input', titulo: 'input()', min: 20 },
+    { id: 'p2-errores', titulo: 'Errores típicos', min: 10 },
+    { id: 'p2-retos', titulo: 'Retos en tu PC', min: 15 },
+    { id: 'p2-ingles', titulo: 'Inglés técnico', min: 5 },
+    { id: 'p2-examen', titulo: 'Examen final', min: 10 }
+  ],
+  terminales: {
+    repl: {
+      titulo: 'Python: modo interactivo (simulación)',
+      prompt: '>>>',
+      mayusculas: true,
+      sinEspacios: true,
+      bienvenida: 'Python (simulación de práctica). Escribe help para ver los ejemplos.',
+      ayuda: 'Ejemplos de esta práctica:\n  nombre = "Ana"\n  nombre\n  edad = 25\n  edad + 1\n  type(edad)\n  type(nombre)\n  type(3.5)\n  type(True)\n  "5" + 3\n  int("5") + 3\n  str(5) + "3"\n  int("hola")',
+      error: '💡 Este Python de práctica solo entiende los ejemplos (escribe help). Prueba «{linea}» en el Python real de tu computadora.',
+      comandos: {
+        'nombre = "Ana"': { alias: ["nombre = 'Ana'"], salida: '', explica: 'Asignar no muestra nada: Python guardó "Ana" en la caja nombre.' },
+        'nombre': { salida: "'Ana'", explica: 'Escribir el nombre de la variable muestra lo que tiene dentro.' },
+        'edad = 25': { salida: '', explica: 'Guardaste 25 en la caja edad.' },
+        'edad + 1': { salida: '26', explica: 'Usaste la variable en un cálculo. La variable sigue valiendo 25: no la cambiaste.' },
+        'type(edad)': { salida: "<class 'int'>", explica: 'int: número entero.' },
+        'type(nombre)': { salida: "<class 'str'>", explica: 'str: texto.' },
+        'type(3.5)': { salida: "<class 'float'>", explica: 'float: número con decimales.' },
+        'type(True)': { salida: "<class 'bool'>", explica: 'bool: verdadero o falso. True va con mayúscula.' },
+        '"5" + 3': { alias: ["'5' + 3"], salida: 'Traceback (most recent call last):\n  File "<stdin>", line 1, in <module>\nTypeError: can only concatenate str (not "int") to str', explica: 'Python no suma texto con número. Lee la última línea: "solo puedo concatenar str con str, no int".' },
+        'int("5") + 3': { alias: ["int('5') + 3"], salida: '8', explica: 'Primero convertiste "5" a número, y entonces sí suma.' },
+        'str(5) + "3"': { alias: ["str(5) + '3'"], salida: "'53'", explica: 'Ahora ambos son texto: el + los une.' },
+        'int("hola")': { alias: ["int('hola')"], salida: 'Traceback (most recent call last):\n  File "<stdin>", line 1, in <module>\nValueError: invalid literal for int() with base 10: \'hola\'', explica: '"hola" no se puede convertir en número: ValueError.' }
+      },
+      misiones: [
+        { texto: 'Crea la variable nombre con el valor "Ana".', cmd: 'nombre = "Ana"' },
+        { texto: 'Muestra lo que guarda nombre.', cmd: 'nombre' },
+        { texto: 'Crea edad = 25 y calcula edad + 1.', cmd: 'edad + 1' },
+        { texto: 'Pregunta el tipo de edad.', cmd: 'type(edad)' },
+        { texto: 'Intenta sumar "5" + 3 (verás un error).', cmd: '"5" + 3' },
+        { texto: 'Arréglalo convirtiendo: int("5") + 3', cmd: 'int("5") + 3' },
+        { texto: 'Provoca un ValueError: int("hola")', cmd: 'int("hola")' }
+      ]
+    }
+  },
+  actividades: {
+    tipos: {
+      titulo: '¿Qué tipo es?',
+      preguntas: [{ label: 'Este valor es…', corto: 'Tipo', opciones: ['str', 'int', 'float', 'bool'] }],
+      items: [
+        { titulo: '"Cusco"', respuestas: [['str']], pista: 'Tiene comillas.', explica: 'Texto: str.' },
+        { titulo: '42', respuestas: [['int']], pista: 'Número sin decimales.', explica: 'Entero: int.' },
+        { titulo: '9.99', respuestas: [['float']], pista: 'Tiene punto decimal.', explica: 'Decimal: float.' },
+        { titulo: 'False', respuestas: [['bool']], pista: 'Verdadero o falso.', explica: 'Booleano: bool.' },
+        { titulo: '"42"', respuestas: [['str']], pista: '¡Comillas!', explica: 'Con comillas es texto, aunque parezca número.' },
+        { titulo: 'Lo que devuelve input()', respuestas: [['str']], pista: 'La regla de oro.', explica: 'input siempre devuelve texto.' }
+      ]
+    },
+    errores: {
+      titulo: '¿Qué error es?',
+      variante: 'consola',
+      preguntas: [{ label: '¿Qué error mostrará?', corto: 'Error', opciones: ['TypeError', 'ValueError', 'NameError'] }],
+      items: [
+        { titulo: 'Código 1', log: 'edad = input("Edad: ")\nprint(edad + 1)', respuestas: [['TypeError']], pista: '¿Qué tipo devuelve input?', explica: 'edad es texto y le sumas un número: TypeError. Solución: int(input(...)).' },
+        { titulo: 'Código 2', log: 'numero = int("diez")', respuestas: [['ValueError']], pista: '¿Se puede convertir "diez" a número?', explica: 'int solo entiende dígitos: ValueError.' },
+        { titulo: 'Código 3', log: 'ciudad = "Lima"\nprint(Ciudad)', respuestas: [['NameError']], pista: 'Mira las mayúsculas.', explica: 'Ciudad no existe; ciudad sí: NameError.' },
+        { titulo: 'Código 4', log: 'print("Total: " + 50)', respuestas: [['TypeError']], pista: 'Texto + número…', explica: 'Usa una coma o str(50).' }
+      ]
+    }
+  },
+  quizzes: {
+    repaso: {
+      titulo: 'Repaso de la Clase 01',
+      preguntas: [
+        { q: '¿Qué muestra print(2 + 3)?', opciones: ['5', '2 + 3'], correcta: 0, explica: 'Sin comillas, calcula.' },
+        { q: '¿Qué da 7 // 2?', opciones: ['3', '3.5'], correcta: 0, explica: 'División entera.' },
+        { q: 'Print("Hola") con mayúscula da…', opciones: ['NameError', 'Hola'], correcta: 0, explica: 'Python distingue mayúsculas.' },
+        { q: '¿Con qué se ejecuta hola.py?', opciones: ['python hola.py', 'run hola'], correcta: 0, explica: 'python hola.py.' },
+        { q: 'Un comentario empieza con…', opciones: ['#', '//'], correcta: 0, explica: '// es de JavaScript.' }
+      ]
+    },
+    examen: {
+      titulo: 'Examen final',
+      preguntas: [
+        { q: '¿Cómo creas una variable en Python?', opciones: ['edad = 25', 'let edad = 25', 'var edad 25'], correcta: 0, explica: 'Nombre, igual, valor.' },
+        { q: '¿Qué estilo de nombres usa Python?', opciones: ['precio_total (snake_case)', 'precioTotal'], correcta: 0, explica: 'Con guion bajo.' },
+        { q: '¿Qué tipo es 3.5?', opciones: ['int', 'float', 'str'], correcta: 1, explica: 'Con decimales.' },
+        { q: '¿Cómo se escribe verdadero en Python?', opciones: ['true', 'True', 'TRUE'], correcta: 1, explica: 'Con mayúscula inicial.' },
+        { q: '¿Qué tipo devuelve input()?', opciones: ['int', 'str', 'Depende'], correcta: 1, explica: 'Siempre texto.' },
+        { q: '¿Cómo pides un número para calcular?', opciones: ['int(input("Edad: "))', 'input(int("Edad: "))'], correcta: 0, explica: 'Primero input, luego int.' },
+        { q: '"5" + 3 da…', opciones: ['8', '53', 'TypeError'], correcta: 2, explica: 'Python no mezcla tipos.' },
+        { q: 'int("hola") da…', opciones: ['0', 'ValueError'], correcta: 1, explica: 'No es un número.' },
+        { q: '¿Qué hace str(25)?', opciones: ['Convierte 25 en texto', 'Borra 25'], correcta: 0, explica: 'Lo vuelve "25".' },
+        { q: '¿Qué significa "input"?', opciones: ['Entrada', 'Salida'], correcta: 0, explica: 'output = salida.' }
+      ]
+    }
+  }
+};
+</script>
+<script src="../../../recursos/sync.js"></script>
+<script src="../../../recursos/academia.js"></script>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JavaScript · Clase 03 · Operadores y textos</title>
+<link rel="stylesheet" href="../../../recursos/academia.css">
+</head>
+<body class="tema-js">
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="top">
+  <div class="marca"><span class="logo" aria-hidden="true">JS</span><span>CODE<span class="acento">//</span>ACADEMIA</span></div>
+  <div id="reloj" class="reloj-zona"></div>
+  <div id="voz"></div>
+  <a class="btn-mini" href="../../../inicio.html">☰ Menú</a>
+</header>
+
+<div class="layout">
+  <nav id="agenda" class="agenda" aria-label="Agenda de la clase"></nav>
+
+  <main id="contenido">
+    <div class="portada">
+      <p class="kicker">JavaScript · Nivel 0 · Clase 03</p>
+      <h1>Operadores y textos</h1>
+      <p class="sub">Cálculos, textos con plantillas, comparaciones y lógica: las herramientas para que tu programa tome decisiones. Duración: 2 horas.</p>
+    </div>
+
+    <section id="j3-repaso" class="bloque" aria-labelledby="t-repaso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-repaso">Repaso de la Clase 02</h2>
+      <div data-quiz="repaso"></div>
+    </section>
+
+    <section id="j3-aritm" class="bloque" aria-labelledby="t-aritm">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-aritm">Operadores aritméticos</h2>
+      <div class="lectura">
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Operador</th><th>Qué hace</th><th>Ejemplo</th><th>Resultado</th></tr></thead>
+            <tbody>
+              <tr><td>+ y -</td><td>Suma y resta</td><td><code>10 - 3</code></td><td>7</td></tr>
+              <tr><td>*</td><td>Multiplica</td><td><code>10 * 3</code></td><td>30</td></tr>
+              <tr><td>/</td><td>Divide</td><td><code>10 / 4</code></td><td>2.5</td></tr>
+              <tr><td>%</td><td>Resto de la división (módulo)</td><td><code>10 % 3</code></td><td>1</td></tr>
+              <tr><td>**</td><td>Potencia</td><td><code>2 ** 3</code></td><td>8</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>El orden es el de las matemáticas del colegio: primero potencias, luego multiplicación y división, y al final suma y resta. Los paréntesis cambian el orden.</p>
+        <p>El módulo, el signo de porcentaje, parece raro pero es muy útil: si un número módulo 2 da cero, el número es par.</p>
+        <h3>Atajos</h3>
+        <ul>
+          <li><code>puntos += 5</code> es lo mismo que <code>puntos = puntos + 5</code>. También existen menos igual, por igual y entre igual.</li>
+          <li><code>puntos++</code> suma 1. <code>puntos--</code> resta 1.</li>
+        </ul>
+      </div>
+      <div data-editor="aritmetica"></div>
+    </section>
+
+    <section id="j3-textos" class="bloque" aria-labelledby="t-textos">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-textos">Trabajar con textos</h2>
+      <div class="lectura">
+        <h3>Plantillas de texto (template literals)</h3>
+        <p>Unir textos con el signo más se vuelve incómodo. La forma moderna usa comillas invertidas, también llamadas backticks, y dentro escribes las variables así: signo de dólar, llave, la variable, y cierras la llave. JavaScript reemplaza eso por el valor.</p>
+        <pre class="log" data-decir="Comilla invertida, Hola, dólar llave nombre llave, comilla invertida.">`Hola ${nombre}, tienes ${edad} años`</pre>
+        <div class="nota">
+          <p><strong>¿Dónde está la comilla invertida en el teclado?</strong> En el teclado latinoamericano suele estar con AltGr más la tecla de la llave de cierre. Si no la encuentras, cópiala del ejemplo del editor.</p>
+        </div>
+        <h3>Herramientas de los textos</h3>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Código</th><th>Qué hace</th><th>Con "Ana Ruiz"</th></tr></thead>
+            <tbody>
+              <tr><td><code>.length</code></td><td>Cuenta los caracteres.</td><td>8</td></tr>
+              <tr><td><code>.toUpperCase()</code></td><td>Todo a mayúsculas.</td><td>ANA RUIZ</td></tr>
+              <tr><td><code>.toLowerCase()</code></td><td>Todo a minúsculas.</td><td>ana ruiz</td></tr>
+              <tr><td><code>.includes("Ruiz")</code></td><td>¿Contiene este texto?</td><td>true</td></tr>
+              <tr><td><code>.trim()</code></td><td>Quita espacios del inicio y del final.</td><td>Útil cuando alguien escribe con espacios de más.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div data-editor="textos"></div>
+    </section>
+
+    <section id="j3-descanso" class="bloque descanso" aria-labelledby="t-descanso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <p class="grande" aria-hidden="true">☕</p>
+      <h2 id="t-descanso">Descanso de 10 minutos</h2>
+      <p>Estira, toma agua y descansa la vista.</p>
+      <p>Reto mental: ¿cuánto da 17 % 5?</p>
+    </section>
+
+    <section id="j3-comparar" class="bloque" aria-labelledby="t-comparar">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-comparar">Comparaciones y lógica</h2>
+      <div class="lectura">
+        <p>Comparar es hacer una pregunta cuya respuesta es true o false. Es la base para que un programa tome decisiones, como verás en la próxima clase.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Operador</th><th>Pregunta</th><th>Ejemplo</th></tr></thead>
+            <tbody>
+              <tr><td><code>===</code></td><td>¿Son iguales (valor y tipo)?</td><td><code>5 === 5</code> da true</td></tr>
+              <tr><td><code>!==</code></td><td>¿Son distintos?</td><td><code>5 !== 3</code> da true</td></tr>
+              <tr><td><code>&gt;</code> <code>&lt;</code></td><td>¿Mayor? ¿Menor?</td><td><code>5 &gt; 3</code> da true</td></tr>
+              <tr><td><code>&gt;=</code> <code>&lt;=</code></td><td>¿Mayor o igual? ¿Menor o igual?</td><td><code>18 &gt;= 18</code> da true</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nota alerta">
+          <p><strong>Usa siempre tres iguales.</strong> Un solo igual guarda un valor; dos iguales comparan pero convierten tipos de forma sorprendente: 5 dos iguales "5" da true. Tres iguales es estricto: 5 tres iguales "5" da false, porque uno es número y el otro texto.</p>
+        </div>
+        <h3>Operadores lógicos</h3>
+        <ul>
+          <li><code>&amp;&amp;</code> (y): true solo si las dos cosas son verdad. "Tiene 18 años y tiene DNI".</li>
+          <li><code>||</code> (o): true si al menos una es verdad. "Paga con tarjeta o con efectivo".</li>
+          <li><code>!</code> (no): invierte. Signo de exclamación true da false.</li>
+        </ul>
+      </div>
+      <div data-editor="comparar"></div>
+      <h3>Actividad: ¿true o false?</h3>
+      <div data-actividad="truefalse"></div>
+    </section>
+
+    <section id="j3-conversion" class="bloque" aria-labelledby="t-conversion">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-conversion">Cuidado: mezclar textos y números</h2>
+      <div class="lectura">
+        <p>Cuando sumas un texto con un número, JavaScript no suma: pega. "5" más 3 da "53". Pero con otros operadores sí convierte a número: "5" por 3 da 15. Por eso, si un número viene como texto, por ejemplo de un formulario, conviértelo primero con Number.</p>
+        <p>Si conviertes algo que no es un número, obtienes NaN, que significa Not a Number: "no es un número".</p>
+      </div>
+      <div data-editor="conversion"></div>
+    </section>
+
+    <section id="j3-retos" class="bloque" aria-labelledby="t-retos">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-retos">Retos</h2>
+      <div class="reto"><h4>Reto 1: calculadora de propinas</h4><p>Con <code>const cuenta = 80;</code> calcula una propina del 10% y el total. Muestra exactamente dos líneas: <code>Propina: 8</code> y <code>Total: 88</code>, calculando con la variable.</p></div>
+      <div data-editor="propina"></div>
+      <div class="reto"><h4>Reto 2: etiqueta de precio</h4><p>Con <code>const producto = "Laptop";</code> y <code>const precio = 2500;</code>, usa una plantilla con <code>${ }</code> para mostrar exactamente: <code>La Laptop cuesta S/ 2500</code>.</p></div>
+      <div data-editor="etiqueta"></div>
+      <div class="reto"><h4>Reto 3: ¿es par?</h4><p>Con <code>const numero = 14;</code> muestra <code>true</code> si es par, usando <code>%</code> y <code>===</code>.</p></div>
+      <div data-editor="par"></div>
+    </section>
+
+    <section id="j3-ingles" class="bloque" aria-labelledby="t-ingles">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-ingles">Inglés técnico del día</h2>
+      <ul class="vocab">
+        <li data-en="length"><span><span class="en" lang="en">length</span><span class="es">longitud, largo</span><span class="pr">lenz</span></span></li>
+        <li data-en="upper case"><span><span class="en" lang="en">upper case</span><span class="es">mayúsculas</span><span class="pr">á-per kéis</span></span></li>
+        <li data-en="lower case"><span><span class="en" lang="en">lower case</span><span class="es">minúsculas</span><span class="pr">ló-uer kéis</span></span></li>
+        <li data-en="includes"><span><span class="en" lang="en">includes</span><span class="es">incluye</span><span class="pr">in-klúds</span></span></li>
+        <li data-en="trim"><span><span class="en" lang="en">trim</span><span class="es">recortar</span><span class="pr">trim</span></span></li>
+        <li data-en="equal"><span><span class="en" lang="en">equal</span><span class="es">igual</span><span class="pr">í-kual</span></span></li>
+        <li data-en="greater than"><span><span class="en" lang="en">greater than</span><span class="es">mayor que</span><span class="pr">gréi-ter dan</span></span></li>
+        <li data-en="not a number"><span><span class="en" lang="en">not a number</span><span class="es">no es un número</span><span class="pr">not a nám-ber</span></span></li>
+      </ul>
+    </section>
+
+    <section id="j3-examen" class="bloque" aria-labelledby="t-examen">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-examen">Examen final</h2>
+      <div data-quiz="examen"></div>
+    </section>
+
+    <section id="cierre" class="bloque" aria-labelledby="t-cierre">
+      <p class="kicker">Cierre</p>
+      <h2 id="t-cierre">Mis notas</h2>
+      <label for="notas">Dudas y lo que más te costó:</label>
+      <textarea id="notas" data-notas="generales"></textarea>
+      <p>Tu avance y tu código se guardan solos. Al terminar, dile a Claude "revisa mi avance".</p>
+      <div id="resumen"></div>
+    </section>
+  </main>
+</div>
+
+<p class="pie">Code//Academia · JavaScript · Clase 03</p>
+
+<script>
+window.CLASE = {
+  id: 'js-03',
+  titulo: 'JavaScript · Clase 03: Operadores y textos',
+  bloques: [
+    { id: 'j3-repaso', titulo: 'Repaso de la Clase 02', min: 10 },
+    { id: 'j3-aritm', titulo: 'Operadores aritméticos', min: 15 },
+    { id: 'j3-textos', titulo: 'Trabajar con textos', min: 20 },
+    { id: 'j3-descanso', titulo: 'Descanso', min: 10 },
+    { id: 'j3-comparar', titulo: 'Comparaciones y lógica', min: 20 },
+    { id: 'j3-conversion', titulo: 'Textos y números', min: 10 },
+    { id: 'j3-retos', titulo: 'Retos', min: 20 },
+    { id: 'j3-ingles', titulo: 'Inglés técnico', min: 5 },
+    { id: 'j3-examen', titulo: 'Examen final', min: 10 }
+  ],
+  editores: {
+    aritmetica: { titulo: 'aritmetica.js', codigo: 'console.log(10 + 3);\nconsole.log(10 / 4);\nconsole.log(10 % 3);\nconsole.log(2 ** 3);\nconsole.log(2 + 3 * 4);   // primero la multiplicación\nconsole.log((2 + 3) * 4); // primero el paréntesis\n\nlet puntos = 10;\npuntos += 5;\npuntos++;\nconsole.log("Puntos:", puntos);' },
+    textos: { titulo: 'textos.js', codigo: 'const nombre = "  Ana Ruiz  ";\nconst limpio = nombre.trim();\nconsole.log(limpio);\nconsole.log(limpio.length);\nconsole.log(limpio.toUpperCase());\nconsole.log(limpio.includes("Ruiz"));\n\nconst curso = "JavaScript";\nconsole.log(`Hola ${limpio}, bienvenida a ${curso}`);\nconsole.log(`2 + 3 = ${2 + 3}`);' },
+    comparar: { titulo: 'comparar.js', codigo: 'console.log(5 > 3);\nconsole.log(5 === 5);\nconsole.log(5 === "5");\nconsole.log(5 == "5");   // ⚠ por eso usamos ===\nconsole.log(5 !== 3);\n\nconst edad = 20;\nconst tieneDNI = true;\nconsole.log(edad >= 18 && tieneDNI);\nconsole.log(edad < 18 || tieneDNI);\nconsole.log(!tieneDNI);' },
+    conversion: { titulo: 'conversion.js', codigo: 'console.log("5" + 3);\nconsole.log("5" * 3);\nconsole.log(Number("5") + 3);\nconsole.log(String(10) + 1);\nconsole.log(Number("hola"));' },
+    propina: {
+      titulo: 'propina.js',
+      codigo: 'const cuenta = 80;\n// calcula la propina (10%) y el total\n',
+      validar: { esperado: ['Propina: 8', 'Total: 88'], codigoIncluye: ['cuenta *', '+'] },
+      pista: 'El 10% es cuenta * 10 / 100. Guárdalo en una variable propina y luego suma cuenta + propina.',
+      solucion: 'const propina = cuenta * 10 / 100; console.log("Propina:", propina); console.log("Total:", cuenta + propina);',
+      exito: 'Si cambias la cuenta, la propina y el total se recalculan solos.'
+    },
+    etiqueta: {
+      titulo: 'etiqueta.js',
+      codigo: 'const producto = "Laptop";\nconst precio = 2500;\n// muestra: La Laptop cuesta S/ 2500\n',
+      validar: { esperado: ['La Laptop cuesta S/ 2500'], codigoIncluye: ['${producto}', '${precio}'] },
+      pista: 'Usa comillas invertidas: console.log(`La ${producto} cuesta S/ ${precio}`);',
+      solucion: 'console.log(`La ${producto} cuesta S/ ${precio}`);',
+      exito: 'Las plantillas hacen el código mucho más fácil de leer.'
+    },
+    par: {
+      titulo: 'par.js',
+      codigo: 'const numero = 14;\n// muestra true si es par\n',
+      validar: { esperado: ['true'], codigoIncluye: ['%', '==='] },
+      pista: 'Un número es par si el resto de dividirlo entre 2 es 0: numero % 2 === 0',
+      solucion: 'console.log(numero % 2 === 0);',
+      exito: 'Esta comparación la usarás muchísimo con los if de la próxima clase.'
+    }
+  },
+  actividades: {
+    truefalse: {
+      titulo: '¿true o false?',
+      preguntas: [{ label: 'El resultado es…', corto: 'Resultado', opciones: ['true', 'false'] }],
+      items: [
+        { titulo: '10 > 20', respuestas: [['false']], pista: '¿10 es mayor que 20?', explica: '10 no es mayor que 20.' },
+        { titulo: '"hola" === "Hola"', respuestas: [['false']], pista: 'Mira la primera letra.', explica: 'Las mayúsculas cuentan: son textos distintos.' },
+        { titulo: '18 >= 18', respuestas: [['true']], pista: 'Mayor o igual…', explica: 'Son iguales, y >= incluye el igual.' },
+        { titulo: '7 === "7"', respuestas: [['false']], pista: 'Tres iguales comparan también el tipo.', explica: 'Uno es number y el otro string.' },
+        { titulo: 'true && false', respuestas: [['false']], pista: '&& necesita que las dos sean verdad.', explica: 'Una es false, así que el resultado es false.' },
+        { titulo: 'true || false', respuestas: [['true']], pista: '|| necesita al menos una verdad.', explica: 'Con una true basta.' }
+      ]
+    }
+  },
+  quizzes: {
+    repaso: {
+      titulo: 'Repaso de la Clase 02',
+      preguntas: [
+        { q: '¿Cuándo usas const?', opciones: ['Cuando el valor no va a cambiar', 'Cuando va a cambiar'], correcta: 0, explica: 'Si cambia, let.' },
+        { q: '¿Qué tipo es "10"?', opciones: ['string', 'number'], correcta: 0, explica: 'Tiene comillas.' },
+        { q: '¿Qué tipo es false?', opciones: ['boolean', 'string'], correcta: 0, explica: 'Verdadero o falso.' },
+        { q: 'Cambiar una const da…', opciones: ['TypeError', 'Nada'], correcta: 0, explica: 'Assignment to constant variable.' },
+        { q: '¿Cuál es un nombre en camelCase?', opciones: ['nombreCompleto', 'nombre completo', 'NOMBRECOMPLETO'], correcta: 0, explica: 'Cada palabra nueva con mayúscula.' }
+      ]
+    },
+    examen: {
+      titulo: 'Examen final',
+      preguntas: [
+        { q: '¿Cuánto da 10 % 3?', opciones: ['3', '1', '0.3'], correcta: 1, explica: 'El resto de 10 entre 3 es 1.' },
+        { q: '¿Cuánto da 2 + 3 * 4?', opciones: ['20', '14'], correcta: 1, explica: 'Primero la multiplicación.' },
+        { q: 'puntos += 5 es lo mismo que…', opciones: ['puntos = puntos + 5', 'puntos = 5'], correcta: 0, explica: 'Es un atajo.' },
+        { q: '¿Qué muestra `Hola ${"Ana"}`?', opciones: ['Hola ${"Ana"}', 'Hola Ana'], correcta: 1, explica: 'La plantilla reemplaza la expresión.' },
+        { q: '¿Qué hace .length?', opciones: ['Cuenta caracteres', 'Pone mayúsculas'], correcta: 0, explica: 'length = longitud.' },
+        { q: '¿Qué da 5 === "5"?', opciones: ['true', 'false'], correcta: 1, explica: 'Tipos distintos.' },
+        { q: '¿Qué operador significa "y"?', opciones: ['&&', '||', '!'], correcta: 0, explica: '&& = y; || = o; ! = no.' },
+        { q: '¿Qué da "5" + 3?', opciones: ['8', '53'], correcta: 1, explica: 'Con un texto, + pega.' },
+        { q: '¿Qué significa NaN?', opciones: ['Not a Number (no es un número)', 'Número nuevo'], correcta: 0, explica: 'Aparece al convertir algo que no es número.' },
+        { q: '¿Qué significa "length"?', opciones: ['Longitud', 'Lento'], correcta: 0, explica: 'length = longitud.' }
+      ]
+    }
+  }
+};
+</script>
+<script src="../../../recursos/sync.js"></script>
+<script src="../../../recursos/academia.js"></script>
+</body>
+</html>

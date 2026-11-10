@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clase 05 · Redes I</title>
+<link rel="stylesheet" href="../../../recursos/academia.css">
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="top">
+  <div class="marca"><span class="logo" aria-hidden="true">&lt;/&gt;</span><span>CYBER<span class="acento">//</span>ACADEMIA</span></div>
+  <div id="reloj" class="reloj-zona"></div>
+  <div id="voz"></div>
+  <a class="btn-mini" href="../../../inicio.html">☰ Menú</a>
+</header>
+
+<div class="layout">
+  <nav id="agenda" class="agenda" aria-label="Agenda de la clase"></nav>
+
+  <main id="contenido">
+    <div class="portada">
+      <p class="kicker">Nivel 0 · Fundamentos · Clase 05</p>
+      <h1>Redes I: IP, MAC, puertos y protocolos</h1>
+      <p class="sub">Cómo viajan los datos por una red, qué son las direcciones IP y los puertos, y los comandos de red que usa todo analista. Duración: 2 horas.</p>
+    </div>
+
+    <section id="c5-repaso" class="bloque" aria-labelledby="t-repaso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-repaso">Repaso de la Clase 04</h2>
+      <div data-quiz="repaso"></div>
+    </section>
+
+    <section id="c5-red" class="bloque" aria-labelledby="t-red">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-red">¿Qué es una red?</h2>
+      <div class="lectura">
+        <p>Una red es un grupo de dispositivos conectados que se envían información. Piensa en una ciudad: las casas son los dispositivos, las calles son los cables o el WiFi, y el correo es la información que viaja.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Tipo</th><th>Qué es</th><th>Ejemplo</th></tr></thead>
+            <tbody>
+              <tr><td>LAN</td><td>Red local, pequeña.</td><td>Tu casa o una oficina.</td></tr>
+              <tr><td>WAN</td><td>Red extensa que une redes lejanas.</td><td>Las sedes de un banco en varias ciudades.</td></tr>
+              <tr><td>Internet</td><td>La red de redes: millones de redes conectadas.</td><td>Todo el mundo.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Los aparatos de la red</h3>
+        <ul>
+          <li><strong>Router:</strong> el cartero entre redes. Conecta tu red de casa con internet y decide por dónde va cada paquete.</li>
+          <li><strong>Switch:</strong> el repartidor dentro del edificio. Conecta los equipos de una misma red local.</li>
+          <li><strong>Punto de acceso WiFi:</strong> permite conectarse sin cables. En casa suele venir dentro del mismo router.</li>
+          <li><strong>Firewall:</strong> el portero. Decide qué tráfico entra y sale según reglas.</li>
+        </ul>
+        <p>Los datos no viajan enteros: se cortan en pedacitos llamados paquetes, como una mudanza en muchas cajas. Cada paquete lleva la dirección de origen y de destino, y al llegar se vuelven a armar.</p>
+      </div>
+    </section>
+
+    <section id="c5-ip" class="bloque" aria-labelledby="t-ip">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-ip">Direcciones IP y MAC</h2>
+      <div class="lectura">
+        <h3>La dirección IP: la dirección de tu casa</h3>
+        <p>Cada dispositivo de una red tiene una dirección IP para que los paquetes sepan a dónde llegar. Una IPv4 son cuatro números del 0 al 255 separados por puntos, por ejemplo 192.168.1.25.</p>
+        <h3>IP privada y pública</h3>
+        <p>Las IP privadas solo funcionan dentro de una red local, como los números de departamento dentro de un edificio. Las públicas son únicas en todo internet, como la dirección del edificio en la calle. Tu router tiene una IP pública y reparte IP privadas a tus equipos.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Rango privado</th><th>Dónde se ve</th></tr></thead>
+            <tbody>
+              <tr><td>10.0.0.0 a 10.255.255.255</td><td>Empresas grandes.</td></tr>
+              <tr><td>172.16.0.0 a 172.31.255.255</td><td>Empresas medianas.</td></tr>
+              <tr><td>192.168.0.0 a 192.168.255.255</td><td>Casas y oficinas pequeñas.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Una IP especial: 127.0.0.1, llamada localhost, siempre significa "este mismo equipo".</p>
+        <div class="nota">
+          <p><strong>Para el analista:</strong> si ves muchos intentos de acceso desde una IP pública desconocida, viene de internet. Si un equipo interno se conecta a una IP pública rara a las 3 de la mañana, podría estar infectado y "llamando a casa" a su atacante.</p>
+        </div>
+        <h3>La dirección MAC: el DNI de la tarjeta de red</h3>
+        <p>La MAC es un número grabado de fábrica en cada tarjeta de red, como 3C-52-82-1A-7F-09. La IP puede cambiar; la MAC normalmente no. Sirve dentro de la red local.</p>
+        <h3>Dos servicios clave</h3>
+        <ul>
+          <li><strong>DHCP:</strong> el recepcionista que te asigna una IP automáticamente al conectarte.</li>
+          <li><strong>DNS:</strong> la agenda de contactos de internet: traduce nombres como google.com a direcciones IP. Lo veremos a fondo en la próxima clase.</li>
+        </ul>
+      </div>
+      <h3>Actividad: ¿privada o pública?</h3>
+      <div data-actividad="ips"></div>
+    </section>
+
+    <section id="c5-descanso" class="bloque descanso" aria-labelledby="t-descanso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <p class="grande" aria-hidden="true">☕</p>
+      <h2 id="t-descanso">Descanso de 10 minutos</h2>
+      <p>Estira, toma agua y descansa la vista.</p>
+      <p>Reto mental: ¿la IP 172.32.0.1 es privada o pública? Revisa bien el rango del 172.</p>
+    </section>
+
+    <section id="c5-modelos" class="bloque" aria-labelledby="t-modelos">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-modelos">Capas, puertos y protocolos</h2>
+      <div class="lectura">
+        <h3>El modelo OSI: 7 capas</h3>
+        <p>Para entender las redes se dividen en capas, como un envío por correo: alguien escribe la carta, otro la mete en un sobre, otro la lleva en camión. Cada capa hace un trabajo y le pasa el resultado a la siguiente.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Capa</th><th>Nombre</th><th>Qué hace</th><th>Ejemplo</th></tr></thead>
+            <tbody>
+              <tr><td>7</td><td>Aplicación</td><td>Lo que usa la persona.</td><td>HTTP, DNS, correo</td></tr>
+              <tr><td>6</td><td>Presentación</td><td>Formato y cifrado.</td><td>TLS, JPG</td></tr>
+              <tr><td>5</td><td>Sesión</td><td>Mantiene la conversación.</td><td>Inicio de sesión</td></tr>
+              <tr><td>4</td><td>Transporte</td><td>Puertos y entrega.</td><td>TCP, UDP</td></tr>
+              <tr><td>3</td><td>Red</td><td>Direcciones IP y rutas.</td><td>IP, router</td></tr>
+              <tr><td>2</td><td>Enlace</td><td>Direcciones MAC en la red local.</td><td>Ethernet, switch</td></tr>
+              <tr><td>1</td><td>Física</td><td>Cables, señales, ondas.</td><td>Cable, WiFi</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>En la práctica se usa una versión simplificada de 4 capas llamada TCP/IP, pero los analistas siguen hablando de "capa 3" o "capa 7", así que conviene conocer las dos.</p>
+        <h3>Puertos: los departamentos del edificio</h3>
+        <p>Si la IP es la dirección del edificio, el puerto es el número de departamento. Un mismo servidor puede ofrecer la web en el puerto 443 y el correo en el 25. Hay 65 535 puertos posibles.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Puerto</th><th>Servicio</th><th>Nota de seguridad</th></tr></thead>
+            <tbody>
+              <tr><td>22</td><td>SSH</td><td>Acceso remoto a Linux. Muy atacado.</td></tr>
+              <tr><td>23</td><td>Telnet</td><td>Como SSH pero sin cifrar: no debería usarse.</td></tr>
+              <tr><td>25</td><td>SMTP</td><td>Envío de correo.</td></tr>
+              <tr><td>53</td><td>DNS</td><td>Traducir nombres a IP.</td></tr>
+              <tr><td>80</td><td>HTTP</td><td>Web sin cifrar.</td></tr>
+              <tr><td>443</td><td>HTTPS</td><td>Web cifrada: el candado del navegador.</td></tr>
+              <tr><td>445</td><td>SMB</td><td>Compartir archivos en Windows. Por aquí se propagó WannaCry.</td></tr>
+              <tr><td>3389</td><td>RDP</td><td>Escritorio remoto de Windows. Nunca debería estar abierto a internet sin protección.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>TCP y UDP</h3>
+        <ul>
+          <li><strong>TCP</strong> es como una carta certificada: confirma que cada paquete llegó y en orden. Lo usan la web y el correo.</li>
+          <li><strong>UDP</strong> es como gritar en un altavoz: rápido, sin confirmar. Lo usan las videollamadas, los juegos y DNS.</li>
+        </ul>
+      </div>
+      <h3>Actividad: ¿qué servicio es?</h3>
+      <div data-actividad="puertos"></div>
+    </section>
+
+    <section id="c5-comandos" class="bloque" aria-labelledby="t-comandos">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-comandos">Comandos de red del analista</h2>
+      <div class="lectura">
+        <ul>
+          <li><strong>ipconfig:</strong> muestra tu IP, máscara y puerta de enlace. Con barra all muestra también la MAC y el DNS.</li>
+          <li><strong>ping:</strong> pregunta "¿estás ahí?" a otro equipo y mide cuánto tarda en responder.</li>
+          <li><strong>tracert:</strong> muestra los routers por los que pasa un paquete hasta su destino.</li>
+          <li><strong>Test-NetConnection:</strong> comprueba si un puerto concreto está abierto.</li>
+          <li><strong>netstat:</strong> muestra las conexiones activas de tu equipo. Clave para descubrir malware que se comunica con su atacante.</li>
+        </ul>
+      </div>
+      <div data-terminal="red"></div>
+      <h3>Pruébalo en tu PowerShell real</h3>
+      <p>Todos solo leen información:</p>
+<pre data-copiar>ipconfig /all</pre>
+<pre data-copiar>ping 8.8.8.8</pre>
+<pre data-copiar>Test-NetConnection google.com -Port 443</pre>
+<pre data-copiar>netstat -ano | Select-String "ESTABLISHED"</pre>
+    </section>
+
+    <section id="c5-soc" class="bloque" aria-labelledby="t-soc">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-soc">Mini-caso SOC: la conexión nocturna</h2>
+      <div class="lectura">
+        <p>En la terminal de arriba, el comando netstat mostró una conexión extraña. Con lo que aprendiste hoy y en las clases anteriores, responde.</p>
+      </div>
+      <div data-actividad="caso"></div>
+    </section>
+
+    <section id="c5-ingles" class="bloque" aria-labelledby="t-ingles">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-ingles">Inglés técnico del día</h2>
+      <ul class="vocab">
+        <li data-en="network"><span><span class="en" lang="en">network</span><span class="es">red</span><span class="pr">nét-uork</span></span></li>
+        <li data-en="address"><span><span class="en" lang="en">address</span><span class="es">dirección</span><span class="pr">á-dres</span></span></li>
+        <li data-en="port"><span><span class="en" lang="en">port</span><span class="es">puerto</span><span class="pr">port</span></span></li>
+        <li data-en="packet"><span><span class="en" lang="en">packet</span><span class="es">paquete</span><span class="pr">pá-ket</span></span></li>
+        <li data-en="gateway"><span><span class="en" lang="en">gateway</span><span class="es">puerta de enlace</span><span class="pr">guéit-uei</span></span></li>
+        <li data-en="established"><span><span class="en" lang="en">established</span><span class="es">establecida</span><span class="pr">es-tá-blisht</span></span></li>
+        <li data-en="listening"><span><span class="en" lang="en">listening</span><span class="es">escuchando</span><span class="pr">lí-se-ning</span></span></li>
+        <li data-en="request timed out"><span><span class="en" lang="en">request timed out</span><span class="es">tiempo de espera agotado</span><span class="pr">ri-kuést táimd áut</span></span></li>
+      </ul>
+    </section>
+
+    <section id="c5-examen" class="bloque" aria-labelledby="t-examen">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-examen">Examen final</h2>
+      <div data-quiz="examen"></div>
+    </section>
+
+    <section id="cierre" class="bloque" aria-labelledby="t-cierre">
+      <p class="kicker">Cierre</p>
+      <h2 id="t-cierre">Mis notas</h2>
+      <label for="notas">Dudas y lo que viste en tu ipconfig y netstat reales:</label>
+      <textarea id="notas" data-notas="generales" placeholder="Por ejemplo: mi IP es 192.168…"></textarea>
+      <p>Tu avance se guarda solo. Al terminar, dile a Claude "revisa mi avance".</p>
+      <div id="resumen"></div>
+    </section>
+  </main>
+</div>
+
+<p class="pie">Cyber//Academia · Clase 05 · Todas las prácticas usan datos ficticios.</p>
+
+<script>
+window.CLASE = {
+  id: 'ciber-05',
+  titulo: 'Ciberseguridad · Clase 05: Redes I (IP, MAC, puertos y protocolos)',
+  bloques: [
+    { id: 'c5-repaso', titulo: 'Repaso de la Clase 04', min: 10 },
+    { id: 'c5-red', titulo: '¿Qué es una red?', min: 15 },
+    { id: 'c5-ip', titulo: 'Direcciones IP y MAC', min: 20 },
+    { id: 'c5-descanso', titulo: 'Descanso', min: 10 },
+    { id: 'c5-modelos', titulo: 'Capas, puertos y protocolos', min: 20 },
+    { id: 'c5-comandos', titulo: 'Comandos de red', min: 20 },
+    { id: 'c5-soc', titulo: 'Mini-caso SOC', min: 10 },
+    { id: 'c5-ingles', titulo: 'Inglés técnico', min: 5 },
+    { id: 'c5-examen', titulo: 'Examen final', min: 10 }
+  ],
+  terminales: {
+    red: {
+      titulo: 'Windows PowerShell (simulación)',
+      prompt: 'PS C:\\Users\\alumno>',
+      bienvenida: 'Terminal de práctica de redes. Escribe help para ver los comandos.',
+      ayuda: 'Comandos de esta práctica:\n  ipconfig\n  ipconfig /all\n  ping 8.8.8.8\n  ping 10.0.0.99\n  tracert google.com\n  Test-NetConnection google.com -Port 443\n  netstat -ano',
+      error: "{cmd} : El término '{cmd}' no se reconoce.\n💡 Escribe help para ver los comandos de esta práctica.",
+      comandos: {
+        'ipconfig': { salida: 'Configuración IP de Windows\n\nAdaptador de LAN inalámbrica Wi-Fi:\n   Dirección IPv4. . . . . . . . . . : 192.168.1.25\n   Máscara de subred . . . . . . . . : 255.255.255.0\n   Puerta de enlace predeterminada . : 192.168.1.1', explica: 'Tu IP privada (192.168…) y la puerta de enlace, que es tu router.' },
+        'ipconfig /all': { salida: 'Adaptador de LAN inalámbrica Wi-Fi:\n   Descripción . . . . . . . . . . . : Intel(R) Wi-Fi 6 AX201\n   Dirección física. . . . . . . . . : 3C-52-82-1A-7F-09\n   DHCP habilitado . . . . . . . . . : sí\n   Dirección IPv4. . . . . . . . . . : 192.168.1.25\n   Puerta de enlace predeterminada . : 192.168.1.1\n   Servidor DHCP . . . . . . . . . . : 192.168.1.1\n   Servidores DNS. . . . . . . . . . : 192.168.1.1', explica: '"Dirección física" es la MAC. DHCP habilitado: el router te dio la IP automáticamente.' },
+        'ping 8.8.8.8': { salida: 'Haciendo ping a 8.8.8.8 con 32 bytes de datos:\nRespuesta desde 8.8.8.8: bytes=32 tiempo=14ms TTL=117\nRespuesta desde 8.8.8.8: bytes=32 tiempo=13ms TTL=117\nRespuesta desde 8.8.8.8: bytes=32 tiempo=15ms TTL=117\nRespuesta desde 8.8.8.8: bytes=32 tiempo=13ms TTL=117\n\nPaquetes: enviados = 4, recibidos = 4, perdidos = 0 (0% perdidos)', explica: '8.8.8.8 es un DNS público de Google. Respondió en unos 14 milisegundos: tienes internet.' },
+        'ping 10.0.0.99': { salida: 'Haciendo ping a 10.0.0.99 con 32 bytes de datos:\nTiempo de espera agotado para esta solicitud.\nTiempo de espera agotado para esta solicitud.\nTiempo de espera agotado para esta solicitud.\nTiempo de espera agotado para esta solicitud.\n\nPaquetes: enviados = 4, recibidos = 0, perdidos = 4 (100% perdidos)', explica: 'Nadie respondió: el equipo no existe, está apagado, o un firewall bloquea el ping. En inglés verás "Request timed out".' },
+        'tracert google.com': { salida: 'Traza a la dirección google.com [142.250.0.100]\nsobre un máximo de 30 saltos:\n  1     2 ms     1 ms     2 ms  192.168.1.1\n  2     9 ms     8 ms     9 ms  10.20.0.1\n  3    12 ms    11 ms    12 ms  200.60.12.9\n  4    14 ms    13 ms    14 ms  142.250.0.100\n\nTraza completa.', explica: 'Cada línea es un "salto": un router en el camino. El primero siempre es tu propio router. (IP de google ficticia para la práctica).' },
+        'Test-NetConnection google.com -Port 443': { alias: ['tnc google.com -port 443'], salida: 'ComputerName     : google.com\nRemoteAddress    : 142.250.0.100\nRemotePort       : 443\nInterfaceAlias   : Wi-Fi\nTcpTestSucceeded : True', explica: 'TcpTestSucceeded: True significa que el puerto 443 (HTTPS) está abierto y responde.' },
+        'netstat -ano': { alias: ['netstat -an', 'netstat'], salida: 'Conexiones activas\n\n  Proto  Dirección local      Dirección remota       Estado        PID\n  TCP    0.0.0.0:135          0.0.0.0:0              LISTENING     1012\n  TCP    0.0.0.0:445          0.0.0.0:0              LISTENING     4\n  TCP    192.168.1.25:52110   142.250.0.100:443      ESTABLISHED   7310\n  TCP    192.168.1.25:52144   203.0.113.50:4444      ESTABLISHED   6612\n  UDP    0.0.0.0:5353         *:*                                  2240', explica: 'LISTENING = esperando conexiones. ESTABLISHED = conexión activa. ¿Viste la conexión al puerto 4444 del PID 6612? En la Clase 02 el PID 6612 era svch0st.exe…' }
+      },
+      misiones: [
+        { texto: 'Mira tu IP con ipconfig.', cmd: 'ipconfig' },
+        { texto: 'Encuentra tu dirección MAC.', cmd: 'ipconfig /all' },
+        { texto: 'Comprueba si tienes internet haciendo ping a 8.8.8.8.', cmd: 'ping 8.8.8.8' },
+        { texto: 'Haz ping a un equipo que no responde: 10.0.0.99.', cmd: 'ping 10.0.0.99' },
+        { texto: 'Mira el camino hasta google.com.', cmd: 'tracert google.com' },
+        { texto: 'Comprueba si el puerto 443 de google.com está abierto.', cmd: 'Test-NetConnection google.com -Port 443' },
+        { texto: 'Revisa las conexiones activas con netstat -ano.', cmd: 'netstat -ano' }
+      ]
+    }
+  },
+  actividades: {
+    ips: {
+      titulo: '¿Privada o pública?',
+      preguntas: [{ label: 'Esta IP es…', corto: 'Respuesta', opciones: ['Privada', 'Pública'] }],
+      items: [
+        { titulo: '192.168.1.10', respuestas: [['Privada']], pista: 'Revisa los rangos que empiezan con 192.168.', explica: 'Está en el rango 192.168.x.x: privada.' },
+        { titulo: '8.8.8.8', respuestas: [['Pública']], pista: '¿Está en alguno de los tres rangos privados?', explica: 'Es el DNS público de Google.' },
+        { titulo: '10.0.0.5', respuestas: [['Privada']], pista: 'Todo lo que empieza con 10.', explica: 'Rango 10.x.x.x: privada.' },
+        { titulo: '172.20.3.4', respuestas: [['Privada']], pista: 'El rango privado del 172 va del 172.16 al 172.31.', explica: '172.20 está entre 172.16 y 172.31: privada.' },
+        { titulo: '172.32.0.1', respuestas: [['Pública']], pista: 'Cuidado: ¿el 32 está entre 16 y 31?', explica: '172.32 queda fuera del rango privado (16 a 31): es pública. ¡Trampa clásica de examen!' },
+        { titulo: '1.1.1.1', respuestas: [['Pública']], pista: '¿Está en algún rango privado?', explica: 'Es un DNS público conocido.' }
+      ]
+    },
+    puertos: {
+      titulo: '¿Qué servicio es?',
+      preguntas: [{ label: 'Este puerto es de…', corto: 'Servicio', opciones: ['SSH', 'HTTPS', 'DNS', 'RDP', 'SMB'] }],
+      items: [
+        { titulo: 'Puerto 443', respuestas: [['HTTPS']], pista: 'El candado del navegador.', explica: '443 = HTTPS, web cifrada.' },
+        { titulo: 'Puerto 22', respuestas: [['SSH']], pista: 'Lo atacaron en la Clase 04.', explica: '22 = SSH.' },
+        { titulo: 'Puerto 3389', respuestas: [['RDP']], pista: 'Escritorio remoto de Windows.', explica: '3389 = RDP.' },
+        { titulo: 'Puerto 53', respuestas: [['DNS']], pista: 'La agenda de internet.', explica: '53 = DNS.' },
+        { titulo: 'Puerto 445', respuestas: [['SMB']], pista: 'Por aquí se propagó WannaCry.', explica: '445 = SMB, compartir archivos.' }
+      ]
+    },
+    caso: {
+      titulo: 'Mini-caso: la conexión nocturna',
+      preguntas: [{ label: 'Tu respuesta:', corto: 'Respuesta', opciones: [], columna: true }],
+      items: [
+        { titulo: 'La conexión al 203.0.113.50:4444, ¿va a una IP privada o pública?', opciones: [['Privada', 'Pública']], respuestas: [['Pública']], pista: '¿Está en algún rango privado?', explica: 'Es una IP de internet.' },
+        { titulo: 'El puerto 4444, ¿es un servicio normal como la web?', opciones: [['Sí, es la web', 'No, no es un puerto de un servicio común']], respuestas: [['No, no es un puerto de un servicio común']], pista: 'Compara con la tabla de puertos.', explica: '4444 no es estándar; las herramientas de ataque lo usan mucho por defecto.' },
+        { titulo: 'El PID 6612, ¿qué proceso era en la Clase 02?', opciones: [['chrome.exe', 'svch0st.exe', 'explorer.exe']], respuestas: [['svch0st.exe']], pista: 'El impostor con un cero.', explica: 'svch0st.exe: el malware disfrazado.' },
+        { titulo: '¿Qué está pasando?', opciones: [['El equipo infectado está conectado con su atacante', 'Es una actualización de Windows', 'Es el navegador']], respuestas: [['El equipo infectado está conectado con su atacante']], pista: 'Malware + IP pública + puerto raro.', explica: 'El malware "llama a casa": es un canal de mando y control (C2).' },
+        { titulo: '¿Cuál es la mejor primera acción?', opciones: [['Aislar el equipo de la red y avisar al equipo de respuesta', 'Apagar el equipo y borrar todo', 'Ignorarlo']], respuestas: [['Aislar el equipo de la red y avisar al equipo de respuesta']], pista: 'Cortar la comunicación sin destruir evidencia.', explica: 'Aislar corta al atacante y conserva la memoria RAM para el análisis forense.' }
+      ]
+    }
+  },
+  quizzes: {
+    repaso: {
+      titulo: 'Repaso de la Clase 04',
+      preguntas: [
+        { q: '¿Dónde están los registros en Linux?', opciones: ['/var/log', '/tmp', '/home'], correcta: 0, explica: '/var/log.' },
+        { q: '¿Qué comando de Linux busca texto?', opciones: ['grep', 'cd', 'pwd'], correcta: 0, explica: 'grep.' },
+        { q: '¿Qué significan los permisos 777?', opciones: ['Todos pueden todo', 'Nadie puede nada', 'Solo root'], correcta: 0, explica: 'Una señal de alarma.' },
+        { q: '¿Qué cuenta comprometieron en web01?', opciones: ['ana', 'deploy', 'root'], correcta: 1, explica: 'deploy, con la contraseña de fábrica.' },
+        { q: '¿Qué hace sudo?', opciones: ['Ejecuta con permisos de root', 'Borra el registro', 'Cambia la IP'], correcta: 0, explica: 'Por eso se vigila.' }
+      ]
+    },
+    examen: {
+      titulo: 'Examen final',
+      preguntas: [
+        { q: 'La dirección IP es como…', opciones: ['La dirección de una casa', 'El DNI de la tarjeta de red', 'Un cable'], correcta: 0, explica: 'La MAC es el DNI; la IP es la dirección.' },
+        { q: '¿Cuál de estas IP es privada?', opciones: ['8.8.8.8', '192.168.0.12', '172.32.5.5'], correcta: 1, explica: '192.168.x.x es privada.' },
+        { q: '¿Qué hace el DNS?', opciones: ['Traduce nombres como google.com a IP', 'Da IP automáticas', 'Bloquea virus'], correcta: 0, explica: 'Es la agenda de internet.' },
+        { q: '¿Qué hace el DHCP?', opciones: ['Asigna IP automáticamente', 'Cifra la web', 'Cuenta paquetes'], correcta: 0, explica: 'Es el recepcionista de la red.' },
+        { q: '¿Qué puerto usa HTTPS?', opciones: ['80', '443', '22'], correcta: 1, explica: '443.' },
+        { q: '¿Por qué puerto se propagó WannaCry?', opciones: ['445 (SMB)', '53 (DNS)', '25 (SMTP)'], correcta: 0, explica: 'SMB, el de compartir archivos.' },
+        { q: 'TCP se parece a…', opciones: ['Una carta certificada', 'Un altavoz'], correcta: 0, explica: 'TCP confirma la entrega; UDP no.' },
+        { q: '¿Qué comando muestra las conexiones activas?', opciones: ['ping', 'netstat', 'tracert'], correcta: 1, explica: 'netstat.' },
+        { q: 'En netstat, ESTABLISHED significa…', opciones: ['Conexión activa', 'Esperando conexiones', 'Error'], correcta: 0, explica: 'LISTENING es esperando.' },
+        { q: '¿Qué significa "network"?', opciones: ['Red', 'Puerto', 'Paquete'], correcta: 0, explica: 'Network = red.' }
+      ]
+    }
+  }
+};
+</script>
+<script src="../../../recursos/sync.js"></script>
+<script src="../../../recursos/academia.js"></script>
+</body>
+</html>
