@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mi Academia · Menú</title>
-<link rel="stylesheet" href="recursos/academia.css">
+<link rel="stylesheet" href="recursos/academia.css?v=2026-11-10">
 </head>
 <body>
 <a class="saltar" href="#contenido">Saltar al contenido</a>
@@ -18,7 +18,7 @@
   <div class="portada">
     <p class="kicker">Menú principal</p>
     <h1>¿Qué vamos a aprender hoy?</h1>
-    <p class="sub">Elige un curso y luego la clase. Las clases que ya hiciste muestran tu nota.</p>
+    <p class="sub">Elige un curso, abre un módulo y entra a la clase. Las clases que ya hiciste muestran tu nota.</p>
   </div>
 
   <section id="diferencias" class="bloque diferencias" aria-labelledby="t-dif" hidden>
@@ -33,10 +33,12 @@
   <h2 id="t-cursos">1. Elige un curso</h2>
   <ul id="cursos" class="cursos" aria-labelledby="t-cursos"></ul>
 
-  <section id="panel" class="bloque" aria-live="polite">
-    <h2 id="t-clases"></h2>
+  <section id="panel" class="bloque" aria-labelledby="t-clases">
+    <h2 id="t-clases" tabindex="-1"></h2>
     <p id="curso-desc" class="sub"></p>
-    <ol id="clases" class="clases" aria-labelledby="t-clases"></ol>
+    <p id="curso-datos" class="meta"></p>
+    <div id="modulos" class="modulos"></div>
+    <p class="meta">Las clases marcadas «Próximamente» se crean en orden: pídeselas a Claude cuando quieras.</p>
   </section>
 
   <section id="sync" class="bloque sync-panel" aria-labelledby="t-sync">
@@ -60,12 +62,20 @@
 
 <p class="pie">Abre las clases en Microsoft Edge para escuchar las voces más naturales.</p>
 
-<script src="recursos/catalogo.js"></script>
-<script src="recursos/sync.js"></script>
+<!-- "?v=" obliga al navegador a usar la versión nueva tras publicar (cambiarlo al modificar estos archivos) -->
+<script src="recursos/catalogo.js?v=2026-11-10"></script>
+<script src="recursos/sync.js?v=2026-11-10"></script>
 <script>
 ((window.AcademiaSync && window.AcademiaSync.listo) || Promise.resolve()).then(() => {
   'use strict';
   const CAT = window.CATALOGO || [];
+  // Si llega un catálogo del formato anterior (sin módulos, por ejemplo desde la caché), se
+  // muestra igual: todas sus clases en un solo grupo.
+  CAT.forEach((curso) => {
+    if (!Array.isArray(curso.modulos)) curso.modulos = [{ n: 1, titulo: 'Clases del curso', objetivo: curso.desc || '', clases: curso.clases || [] }];
+    if (!curso.horasClase) curso.horasClase = /^1 h/.test(curso.duracion || '') ? 1 : 2;
+    curso.clases = curso.modulos.flatMap((m) => m.clases.map((c, i) => Object.assign(c, { modulo: c.modulo === undefined ? m.n : c.modulo, orden: c.orden || i + 1 })));
+  });
   const leer = (k, d) => { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } };
   const guardar = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* sin almacenamiento */ } };
   const el = (tag, attrs, ...kids) => {
@@ -86,15 +96,26 @@
     return { tipo: 'nueva', texto: 'Disponible · sin empezar' };
   }
 
+  // Nombres que ve el alumno: "Módulo 2 · Clase 4" (el número del archivo no cambia)
+  const nombreModulo = (m) => (m.n === 'E' ? 'Electiva' : 'Módulo ' + m.n);
+  const nombreClase = (c) => (c.modulo === 'E' ? 'Electiva' : 'Módulo ' + c.modulo) + ' · Clase ' + c.orden;
+  const plural = (n, uno, varios) => n + ' ' + (n === 1 ? uno : varios);
+  const obligatorios = (curso) => curso.modulos.filter((m) => !m.opcional);
+  const resumenCurso = (curso) => {
+    const total = obligatorios(curso).reduce((a, m) => a + m.clases.length, 0);
+    return { modulos: obligatorios(curso).length, total, listas: curso.clases.filter((c) => c.archivo).length, hechas: curso.clases.filter((c) => estado(c).tipo === 'hecha').length };
+  };
+  // La siguiente clase de un curso: la primera lista y sin terminar, en el orden de los módulos
+  const siguienteDe = (curso) => curso.clases.find((c) => c.archivo && estado(c).tipo !== 'hecha');
+
   const ul = document.getElementById('cursos');
   const botones = CAT.map((curso) => {
-    const disp = curso.clases.filter((c) => c.archivo).length;
-    const hechas = curso.clases.filter((c) => estado(c).tipo === 'hecha').length;
+    const r = resumenCurso(curso);
     const b = el('button', { type: 'button', class: 'curso-btn ' + curso.tema, 'aria-pressed': 'false', 'aria-controls': 'panel' },
       el('span', { class: 'icono', 'aria-hidden': 'true', text: curso.icono }),
       el('span', { class: 'nombre', text: curso.nombre }),
       el('span', { class: 'desc', text: curso.desc }),
-      el('span', { class: 'datos', text: curso.duracion + ' · ' + disp + ' clase(s) lista(s) · ' + hechas + ' terminada(s)' }));
+      el('span', { class: 'datos', text: curso.duracion + ' · ' + plural(r.modulos, 'módulo', 'módulos') + ' · ' + r.listas + ' de ' + r.total + ' clases listas · ' + plural(r.hechas, 'terminada', 'terminadas') }));
     b.addEventListener('click', () => elegir(curso.id, true));
     ul.append(el('li', {}, b));
     return { id: curso.id, b };
@@ -106,28 +127,53 @@
     guardar('academia:menu:curso', curso.id);
     botones.forEach((x) => x.b.setAttribute('aria-pressed', x.id === curso.id ? 'true' : 'false'));
     panel.className = 'bloque ' + curso.tema;
-    document.getElementById('t-clases').textContent = '2. Elige una clase de ' + curso.nombre;
+    document.getElementById('t-clases').textContent = '2. Elige un módulo y una clase de ' + curso.nombre;
     document.getElementById('curso-desc').textContent = curso.desc + ' (' + curso.duracion + ')';
-    const ol = document.getElementById('clases');
-    ol.replaceChildren();
-    curso.clases.forEach((c) => {
-      const est = estado(c);
-      const info = el('div', {}, el('span', { class: 'num', text: 'Clase ' + c.n }), el('strong', { text: c.titulo }), el('span', { class: 'estado', text: est.texto }));
-      const accion = c.archivo
-        ? el('a', { class: 'btn', href: c.archivo }, est.tipo === 'hecha' ? '↺ Repasar' : est.tipo === 'empezada' ? '▶ Continuar' : '▶ Empezar')
-        : el('span', { class: 'estado', text: 'Pídesela a Claude cuando quieras' });
-      ol.append(el('li', { class: 'clase-item' + (c.archivo ? '' : ' prox') }, info, accion));
+    const r = resumenCurso(curso);
+    document.getElementById('curso-datos').textContent = plural(r.modulos, 'módulo', 'módulos') + ' · ' + r.total + ' clases · ' + (r.total * curso.horasClase) + ' h · ' + r.listas + ' lista(s) · ' + plural(r.hechas, 'terminada', 'terminadas');
+    const sigue = siguienteDe(curso);
+    const cont = document.getElementById('modulos');
+    cont.replaceChildren();
+    curso.modulos.forEach((m) => {
+      const listas = m.clases.filter((c) => c.archivo).length;
+      const hechas = m.clases.filter((c) => estado(c).tipo === 'hecha').length;
+      const barra = el('span');
+      barra.style.width = Math.round(100 * hechas / m.clases.length) + '%';
+      const resumen = el('summary', {},
+        el('span', { class: 'mod-cab' }, el('span', { class: 'mod-flecha', 'aria-hidden': 'true', text: '▸' }), el('span', { text: nombreModulo(m) + (m.opcional ? ' · opcional' : '') })),
+        el('span', { class: 'mod-titulo', text: m.titulo }),
+        el('span', { class: 'mod-datos', text: plural(m.clases.length, 'clase', 'clases') + ' · ' + (m.clases.length * curso.horasClase) + ' h · ' + (listas ? listas + ' lista(s) · ' + plural(hechas, 'terminada', 'terminadas') : 'próximamente') }),
+        el('span', { class: 'mod-barra', 'aria-hidden': 'true' }, barra));
+      const ol = el('ol', { class: 'clases', 'aria-label': 'Clases de ' + nombreModulo(m) + ': ' + m.titulo });
+      m.clases.forEach((c) => {
+        const est = estado(c);
+        const esSiguiente = c === sigue;
+        const num = el('span', { class: 'num', text: nombreClase(c) });
+        const info = el('div', {}, num, c.n ? el('span', { class: 'pagina', text: '(en la página: Clase ' + c.n + ')' }) : null,
+          el('strong', { text: c.titulo }), el('span', { class: 'estado', text: (esSiguiente ? 'Te toca esta · ' : '') + est.texto }));
+        const accion = c.archivo
+          ? el('a', { class: 'btn', href: c.archivo }, est.tipo === 'hecha' ? '↺ Repasar' : est.tipo === 'empezada' ? '▶ Continuar' : '▶ Empezar', el('span', { class: 'sr-only', text: ': ' + c.titulo }))
+          : null;
+        ol.append(el('li', { class: 'clase-item' + (c.archivo ? '' : ' prox') + (esSiguiente ? ' siguiente' : '') }, info, accion));
+      });
+      const det = el('details', { class: 'modulo' + (listas ? '' : ' sin-clases') }, resumen,
+        el('div', { class: 'mod-cuerpo' }, el('p', { class: 'mod-objetivo', text: 'Objetivo: ' + m.objetivo }), ol));
+      det.open = listas > 0; // abiertos: los módulos que ya tienen clases listas
+      cont.append(det);
     });
-    if (mover) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (mover) {
+      panel.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+      document.getElementById('t-clases').focus({ preventScroll: true });
+    }
   }
 
   // Sugerencia: la primera clase disponible y no terminada de cada curso con clases listas
   const sug = document.getElementById('sugerencia');
-  const pendientes = CAT.map((curso) => ({ curso, c: curso.clases.find((c) => c.archivo && estado(c).tipo !== 'hecha') })).filter((x) => x.c);
+  const pendientes = CAT.map((curso) => ({ curso, c: siguienteDe(curso) })).filter((x) => x.c);
   if (pendientes.length) {
     sug.append(el('h2', { text: 'Para hoy te sugiero' }));
     const lista = el('div', { class: 'acciones' });
-    pendientes.forEach(({ curso, c }) => lista.append(el('a', { class: 'btn btn-sec ' + curso.tema, href: c.archivo }, curso.icono + ' ' + curso.nombre + ' · Clase ' + c.n)));
+    pendientes.forEach(({ curso, c }) => lista.append(el('a', { class: 'btn btn-sec ' + curso.tema, href: c.archivo }, curso.icono + ' ' + curso.nombre + ' · ' + nombreClase(c), el('span', { class: 'sr-only', text: ': ' + c.titulo }))));
     sug.append(lista);
   }
 
@@ -160,7 +206,7 @@
   function queEs(d) {
     const m = d.clave.match(/^academia:([^:]+):(.*)$/) || [];
     const info = CLASES_POR_ID[m[1]];
-    const donde = info ? info.curso.nombre + ' · Clase ' + info.c.n + ': ' + info.c.titulo : (m[1] || d.clave);
+    const donde = info ? info.curso.nombre + ' · ' + nombreClase(info.c) + ': ' + info.c.titulo : (m[1] || d.clave);
     const resto = m[2] || '';
     let que = 'Dato guardado de la clase';
     if (d.parte) que = d.parte === 'examen' ? 'Resultado del examen final' : d.parte === 'repaso' ? 'Resultado del repaso' : 'Resultado de la actividad «' + d.parte + '»';

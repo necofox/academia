@@ -33,12 +33,16 @@ Una academia personal para aprender **desde cero**, con Claude como profesor y e
 
 ## 2. Estado actual (actualizar al agregar clases)
 
-| Curso | Clases listas | Siguiente clase por crear |
-|-------|---------------|---------------------------|
-| Ciberseguridad | 01 CIA · 02 Procesos y permisos · 03 PowerShell · 04 Linux · 05 Redes I | 06 Redes II: DNS, HTTP/HTTPS, DHCP |
-| Inglés | 01 Saludos · 02 Presentarte · 03 Abecedario · 04 Números | 05 Pronombres |
-| JavaScript | 01 ¿Qué es programar? · 02 Variables · 03 Operadores y textos · 04 Condicionales | 05 Bucles |
-| Python | 01 Instalación y primer programa · 02 Variables e input() · 03 f-strings · 04 Condicionales | 05 Bucles |
+| Curso | Módulos · clases planificadas | Clases listas (dónde están) | Siguiente clase por crear |
+|-------|------|---------------|---------------------------|
+| Ciberseguridad | 9 · 41 (82 h) | 01 → M1·1 · 02 → M2·1 · 03 → M2·2 · 04 → M2·4 · 05 → M3·1 | M1·2 Principios y marcos de seguridad |
+| Inglés | 5 · 40 (40 h) | 01–04 → M1·1 a M1·4 | M1·5 El verbo *to be* completo |
+| JavaScript | 7 · 37 (74 h) | 01–04 → M1·1 a M1·4 | M1·5 Bucles |
+| Python | 9 · 38 (76 h) + electiva de 3 | 01–04 → M1·1 a M1·4 | M1·5 Bucles |
+
+Los módulos y el orden de todas las clases están en `recursos/catalogo.js` (aprobados en
+`PROPUESTA-ORGANIZACION-CURRICULAR.md`). El número de archivo (`clase-04`) no cambia aunque la
+clase se muestre en otro lugar del módulo.
 
 El temario completo de cada curso está en `cursos/<curso>/ruta-aprendizaje.md`.
 
@@ -52,7 +56,7 @@ index.html                redirige a inicio.html (portada de GitHub Pages)
 recursos/
   academia.js             motor de TODAS las clases (no duplicar en cada página)
   academia.css            estilo (tema oscuro; .tema-ingles, .tema-js, .tema-python)
-  catalogo.js             lista de cursos y clases que muestra el menú
+  catalogo.js             cursos → módulos → clases que muestra el menú
   sync.js                 sincroniza el avance con el repositorio privado
 cursos/<curso>/
   instrucciones.md        cómo dar ese curso
@@ -122,7 +126,9 @@ y después `herramientas/pruebas-sync.html` (15 escenarios).
    e incluir las 9 secciones obligatorias, con la sección de fuentes completa.
 2. Los minutos de los bloques deben sumar 120 (o 60 en inglés).
 3. Cargar `recursos/sync.js` antes de `recursos/academia.js`, y el enlace "☰ Menú" a `inicio.html`.
-4. Agregarla a `recursos/catalogo.js` con su `archivo` y su `id` (el mismo de `window.CLASE`).
+4. En `recursos/catalogo.js`, completar su entrada «Próximamente» dentro de su módulo con su
+   `n`, su `archivo` (siguiente número libre del curso) y su `id` (el mismo de `window.CLASE`).
+   El orden dentro del módulo lo da su posición; el menú la muestra como "Módulo X · Clase Y".
 5. Agregar la fila en `cursos/<curso>/progreso.md`.
 6. Probar en el navegador (escritorio y 360 px): servir con
    `python -m http.server 8765 --bind 127.0.0.1` y revisar misiones, retos y examen.
@@ -221,3 +227,14 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   Las 17 clases siguen 17/17 y los 136 identificadores de la línea base están intactos. Sin
   cambios en clases, motor, catálogo ni repositorio privado; nada publicado.
   **Pendiente de aprobación del alumno.**
+- **Etapa 1 (cursos por módulos en el menú)**, autorizada por el alumno. Marca de restauración
+  `respaldo-antes-etapa-1` (→ `530f51d`). Cambios:
+  - `catalogo.js`: cursos → módulos → clases (156 clases planificadas más 3 de la electiva).
+  - `inicio.html`: módulos plegables con avance, «Módulo X · Clase Y» y «Te toca esta», archivos
+    con `?v=` y compatibilidad con el catálogo anterior.
+  - `academia.css`: 20 líneas nuevas.
+  - Nueva herramienta `herramientas/revisar-catalogo.js`.
+
+  Pruebas: 17/17 clases, 15/15 sincronización, 360 px, teclado, contraste y doble clic en Edge y
+  Chrome. Las 17 clases, sus ids y archivos no cambiaron. Nada publicado. Detalle:
+  `herramientas/RESULTADOS-ETAPA-1.md`. **Pendiente de revisión y aprobación del alumno.**

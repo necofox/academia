@@ -37,11 +37,14 @@ El horario de clases está en `horario.md`.
 
 ## Menú de inicio
 
-- `inicio.html` (en la raíz) es el menú donde elijo curso y clase. Lee la lista de
-  `recursos/catalogo.js` y muestra mi avance (lo guarda cada clase en el navegador).
-- **Cada vez que crees una clase**, agrégala a `recursos/catalogo.js` con su `archivo`
-  y su `id` (el mismo `id` de `window.CLASE`), y pon en su barra superior el enlace
-  "☰ Menú" hacia `inicio.html`.
+- `inicio.html` (en la raíz) es el menú donde elijo curso, módulo y clase. Lee
+  `recursos/catalogo.js` (cursos → módulos → clases) y muestra mi avance (lo guarda cada
+  clase en el navegador).
+- **Cada vez que crees una clase**, completa en `recursos/catalogo.js` su lugar dentro de
+  su módulo (ya está como «Próximamente») con su `n`, su `archivo` (el siguiente número libre
+  del curso: `clase-06`, `clase-07`…) y su `id` (el mismo `id` de `window.CLASE`), y pon en
+  su barra superior el enlace "☰ Menú" hacia `inicio.html`. El menú la muestra como
+  "Módulo X · Clase Y". **Nunca cambies el `archivo` ni el `id` de una clase existente.**
 - Para un curso nuevo: agrégalo también al catálogo, con un tema de color en
   `recursos/academia.css` (`.tema-<curso>`).
 

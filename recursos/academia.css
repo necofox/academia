@@ -289,6 +289,26 @@ textarea.codigo-js {
 .clase-item.prox { opacity: .85; border-style: dashed; }
 a.btn, a.btn-mini { text-decoration: none; display: inline-flex; align-items: center; }
 .sugerencia { margin: 0 0 24px; }
+/* Módulos del menú (Etapa 1): cada módulo se abre y se cierra */
+.modulos { display: grid; gap: 12px; margin: 8px 0 12px; }
+.modulo { background: var(--panel2); border: 1px solid var(--line); border-radius: 12px; }
+.modulo.sin-clases { border-style: dashed; }
+.modulo > summary { list-style: none; cursor: pointer; padding: 14px 16px; display: grid; gap: 4px; border-radius: 12px; }
+.modulo > summary::-webkit-details-marker { display: none; }
+.modulo > summary:hover { background: rgba(255, 255, 255, .04); }
+.mod-cab { display: flex; gap: 8px; align-items: center; font: 700 13px/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.mod-flecha { display: inline-block; transition: transform .2s; }
+.modulo[open] .mod-flecha { transform: rotate(90deg); }
+.mod-titulo { font: 700 18px/1.3 var(--sans); color: var(--text); }
+.mod-datos { font: 12px/1.4 var(--mono); color: var(--muted); }
+.mod-barra { display: block; height: 6px; max-width: 320px; background: var(--line); border-radius: 3px; overflow: hidden; margin-top: 4px; }
+.mod-barra > span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+.mod-cuerpo { padding: 0 12px 14px; }
+.mod-objetivo { color: var(--muted); margin: 0 4px 12px; font-size: 15px; }
+.clase-item .pagina { font: 12px/1.4 var(--mono); color: var(--muted); }
+.modulo .clase-item strong { display: block; margin-top: 2px; }
+.clase-item.siguiente { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+@media (prefers-reduced-motion: reduce) { .mod-flecha { transition: none; } }
 
 /* ---------- Sincronización con GitHub ---------- */
 .sync-chip { font: 12px/1.4 var(--mono); color: var(--muted); flex-basis: 100%; }
