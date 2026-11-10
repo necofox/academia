@@ -74,6 +74,16 @@ con retos autocorregidos (`data-editor`) · notas y resumen.
 `academia:<idClase>:…`) y `sync.js` lo sube a `progreso.json` del repositorio privado con un
 token de GitHub de grano fino (solo ese repositorio, permiso Contents). El alumno pega el token
 una vez por navegador en el menú. **Claude nunca pide ni escribe ese token.**
+Desde la Etapa 0B (versión 2) la fusión es de tres vías y **nunca descarta datos**:
+- Los resultados se fusionan actividad por actividad.
+- Las misiones y los retos se suman.
+- Si las notas o el código cambian en dos equipos, se guardan las dos versiones en
+  `academia:sync:conflictos` y el menú pide decidir.
+- Antes de reemplazar algo propio se guarda una copia en `academia-sync:respaldo`.
+- Lo que no se pudo subir queda pendiente y se reintenta solo.
+
+Detalle y pruebas: `herramientas/RESULTADOS-ETAPA-0B.md`. Para cambiar `sync.js`, correr antes
+y después `herramientas/pruebas-sync.html` (15 escenarios).
 
 ## 4. Decisiones importantes (y por qué)
 
@@ -197,3 +207,17 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   navegadores: Chrome en esta PC (enlace y doble clic) verificado con el diagnóstico, 0 registros;
   el resto confirmado por el alumno (academia reciente, sin avance en otros dispositivos).
   **Etapa 0 completa, pendiente de aprobación del alumno.**
+- **Etapa 0 aprobada por el alumno** y cierre de la revisión de dispositivos.
+- **Etapa 0B (sincronización segura)**, autorizada por el alumno. Marca de restauración
+  `respaldo-antes-0b` (→ `656ed76`). Cambios:
+  - `sync.js` versión 2: fusión de tres vías con «base» y por actividad; unión de misiones y
+    retos; diferencias guardadas para decidir; respaldo local; reintentos automáticos y
+    pendientes; conexión sin pisar avance nuevo; protección de la clase abierta.
+  - `inicio.html`: aviso para decidir las diferencias.
+  - `academia.css`: 11 líneas nuevas.
+  - Pruebas de sincronización ampliadas a 15 (15/15; la versión anterior cumplía 7/15).
+  - Diagnóstico actualizado.
+
+  Las 17 clases siguen 17/17 y los 136 identificadores de la línea base están intactos. Sin
+  cambios en clases, motor, catálogo ni repositorio privado; nada publicado.
+  **Pendiente de aprobación del alumno.**

@@ -298,6 +298,17 @@ a.btn, a.btn-mini { text-decoration: none; display: inline-flex; align-items: ce
 .sync-panel { display: grid; gap: 10px; }
 .sync-panel input[type="password"] { width: 100%; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; font: 15px var(--mono); }
 .sync-panel ol { margin: 0; padding-left: 22px; }
+.sync-chip[data-tipo="aviso"] { color: var(--warn); }
+/* Diferencias entre equipos (el alumno decide qué conservar) */
+.diferencias { border-color: var(--warn); }
+.lista-dif { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
+.dif { background: var(--panel2); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+.dif h3 { margin: 0 0 4px; }
+.dif-versiones { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); margin: 12px 0; }
+.dif-version { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; background: var(--panel); min-width: 0; }
+.dif-tit { font: 600 13px/1.4 var(--mono); color: var(--accent2); margin: 0 0 6px; }
+.valor-texto { max-height: 220px; overflow: auto; }
+.valor-res { font: 700 20px/1.3 var(--mono); color: var(--accent); margin: 0; }
 
 /* ---------- Fuentes de referencia ---------- */
 .lista-fuentes { list-style: none; padding: 0; margin: 0 0 8px; display: grid; gap: 8px; }

@@ -6,15 +6,21 @@
 (() => {
   const esAvance = (k) => k.startsWith('academia:') && !k.startsWith('academia:voz') && k !== 'academia:menu:curso';
   const avance = Object.keys(localStorage).filter(esAvance).sort();
-  let tiempos = {}; let estado = null;
-  try { tiempos = JSON.parse(localStorage.getItem('academia-sync:tiempos') || '{}'); } catch (e) { /* sin datos */ }
-  try { estado = JSON.parse(localStorage.getItem('academia-sync:estado') || 'null'); } catch (e) { /* sin datos */ }
+  const leer = (k, d) => { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } };
+  const tiempos = leer('academia-sync:tiempos', {}); const estado = leer('academia-sync:estado', null);
   const conectado = !!localStorage.getItem('academia-sync:token');
+  // Versión 2 de la sincronización: guarda el último valor común con GitHub ("base") de cada registro
+  const base = leer('academia-sync:base', null);
+  const v2 = !!base;
+  const diferencias = Object.values(leer('academia:sync:conflictos', {}) || {}).filter((c) => c && !c.resuelto).length;
+  const respaldosLocales = leer('academia-sync:respaldo', []);
   const porClase = {};
-  avance.forEach((k) => { const c = k.split(':')[1]; porClase[c] = (porClase[c] || 0) + 1; });
+  avance.filter((k) => !k.startsWith('academia:sync:')).forEach((k) => { const c = k.split(':')[1]; porClase[c] = (porClase[c] || 0) + 1; });
   const sinHora = avance.filter((k) => !tiempos[k]).length;
   const ultimoOk = estado && estado.tipo === 'ok' ? estado.cuando : 0;
-  const sinSubir = conectado ? avance.filter((k) => !tiempos[k] || tiempos[k] > ultimoOk).length : avance.length;
+  const sinSubir = !conectado ? avance.length
+    : v2 ? avance.filter((k) => base[k] !== localStorage.getItem(k)).length
+      : avance.filter((k) => !tiempos[k] || tiempos[k] > ultimoOk).length;
   const fecha = (ms) => (ms ? new Date(ms).toLocaleString() : '—');
   const ua = navigator.userAgent;
   const navegador = /Edg\//.test(ua) ? 'Microsoft Edge' : /Chrome\//.test(ua) ? 'Google Chrome' : ua;
@@ -26,8 +32,11 @@
     'Conectado a GitHub en este lugar': conectado ? 'SÍ' : 'NO',
     'Registros de avance': avance.length,
     'Clases con avance': Object.keys(porClase).length,
-    'Registros sin hora (riesgo al conectar)': sinHora,
-    [conectado ? 'Posibles registros sin subir' : 'Registros nunca subidos (no conectado)']: sinSubir,
+    'Versión de la sincronización': v2 ? '2 (fusión segura)' : conectado ? '1 (anterior)' : '—',
+    [v2 ? 'Registros sin hora' : 'Registros sin hora (riesgo al conectar con la versión 1)']: sinHora,
+    [conectado ? (v2 ? 'Registros que aún no están en GitHub' : 'Posibles registros sin subir') : 'Registros nunca subidos (no conectado)']: sinSubir,
+    'Diferencias entre equipos por decidir': diferencias,
+    'Copias en el respaldo local': Array.isArray(respaldosLocales) ? respaldosLocales.length : 0,
     'Último estado de sincronización': estado ? estado.texto + ' (' + fecha(estado.cuando) + ')' : 'Nunca sincronizó'
   };
   console.log('%c Diagnóstico de avance · solo lectura ', 'background:#2ee6a6;color:#03140d;font-weight:bold;padding:2px 6px');
@@ -40,6 +49,7 @@
     lugar, navegador, conectado, registros: {}
   };
   avance.forEach((k) => { respaldo.registros[k] = { valor: localStorage.getItem(k), hora: tiempos[k] || 0 }; });
+  if (Array.isArray(respaldosLocales) && respaldosLocales.length) respaldo.respaldosLocales = respaldosLocales;
   const texto = JSON.stringify(respaldo, null, 1);
   let copiado = false;
   try { copy(texto); copiado = true; } catch (e) { /* copy() solo existe en la consola de DevTools */ }

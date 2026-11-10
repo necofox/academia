@@ -11,7 +11,7 @@
   <div class="portada">
     <p class="kicker">Herramienta interna · no enlazada desde el menú</p>
     <h1>Pruebas de sincronización</h1>
-    <p class="sub">Ejecuta el <code>recursos/sync.js</code> real, sin modificarlo, contra un GitHub simulado y dos dispositivos virtuales. No usa tu token ni internet, y no lee ni escribe el almacenamiento real del navegador.</p>
+    <p class="sub">Ejecuta el <code>recursos/sync.js</code> real (el mismo archivo que usan las clases) contra un GitHub simulado y varios dispositivos virtuales. No usa tu token ni internet, y no lee ni escribe el almacenamiento real del navegador.</p>
   </div>
   <section class="bloque">
     <div class="acciones"><button id="correr" type="button" class="btn">▶ Ejecutar pruebas</button></div>
@@ -41,8 +41,9 @@
 
   // GitHub simulado: un solo archivo progreso.json con control de versiones (sha).
   function crearGitHub() {
-    const gh = { contenido: null, sha: null, n: 0, fallarPut: 0, fallarGet: 0, puts: 0 };
+    const gh = { contenido: null, sha: null, n: 0, fallarPut: 0, fallarGet: 0, puts: 0, llamadas: 0 };
     gh.fetch = async (url, opts = {}) => {
+      gh.llamadas++;
       const metodo = (opts.method || 'GET').toUpperCase();
       const resp = (status, obj) => ({ ok: status >= 200 && status < 300, status, json: async () => obj });
       if (!/\/contents\/progreso\.json$/.test(url)) return resp(200, { full_name: 'necofox/academia-progreso' });
@@ -60,19 +61,25 @@
       return resp(405, {});
     };
     gh.leer = () => (gh.contenido ? JSON.parse(b64dec(gh.contenido)) : { claves: {} });
-    gh.sembrar = (claves) => { gh.contenido = b64enc(JSON.stringify({ actualizado: 'semilla', claves })); gh.sha = 'sha-' + (++gh.n); };
+    gh.sembrar = (datos) => { gh.contenido = b64enc(JSON.stringify(datos)); gh.sha = 'sha-' + (++gh.n); };
     return gh;
   }
 
   let fuente = '';
   // Un "dispositivo": una instancia aislada del sync.js real con su propio almacenamiento.
-  async function crearDispositivo(gh, almacen) {
-    const win = {};
+  // opciones.clase simula una clase abierta (window.CLASE); opciones.sync ajusta las esperas.
+  async function crearDispositivo(gh, almacen, opciones = {}) {
+    const oyentes = {};
+    const win = {
+      AcademiaSyncOpciones: Object.assign({ reintentos: [40, 40, 40], esperaSubida: 30, equipo: opciones.equipo || 'Equipo de prueba' }, opciones.sync || {}),
+      addEventListener(tipo, fn) { (oyentes[tipo] = oyentes[tipo] || []).push(fn); }
+    };
+    if (opciones.clase) win.CLASE = { id: opciones.clase };
     const doc = { addEventListener() {}, dispatchEvent() {}, visibilityState: 'visible' };
     const fabrica = new Function('window', 'document', 'localStorage', 'fetch', fuente + '\nreturn window.AcademiaSync;');
     const sync = fabrica(win, doc, almacen, gh.fetch);
     await sync.listo;
-    return { sync, almacen };
+    return { sync, almacen, emitir: (tipo, ev) => (oyentes[tipo] || []).forEach((fn) => fn(ev)) };
   }
   function almacenConectado(extra = {}) {
     const a = new Almacen(); a.setItem('academia-sync:token', TOKEN_FICTICIO);
@@ -85,6 +92,8 @@
     await dormir(12); // asegura horas distintas entre cambios
   }
   const valorRemoto = (gh, k) => { const e = gh.leer().claves[k]; return e ? JSON.parse(e.v) : undefined; };
+  const conflictosRemotos = (gh) => Object.values(valorRemoto(gh, 'academia:sync:conflictos') || {});
+  const versionesDe = (c) => (c ? c.versiones.map((v) => v.v) : []);
 
   const ESCENARIOS = [
     { n: 1, nombre: 'Clases distintas en dos dispositivos', req: 'Los cambios independientes se conservan', f: async () => {
@@ -100,28 +109,34 @@
       const A = await crearDispositivo(gh, almacenConectado()); const B = await crearDispositivo(gh, almacenConectado());
       await escribir(A, 'academia:ciber-01:res', { conceptos: { ok: 8, total: 8 } }); await A.sync.subirAhora();
       await escribir(B, 'academia:ciber-01:res', { cia: { ok: 12, total: 12 } }); await B.sync.subirAhora();
+      await A.sync.subirAhora();
       const r = valorRemoto(gh, 'academia:ciber-01:res') || {};
-      const ok = !!r.conceptos && !!r.cia;
-      return { ok, detalle: 'En GitHub quedó: ' + JSON.stringify(r) + (ok ? '' : ' → se perdió la actividad del dispositivo A.') };
+      const enA = JSON.parse(A.almacen.getItem('academia:ciber-01:res') || '{}');
+      const ok = !!r.conceptos && !!r.cia && !!enA.conceptos && !!enA.cia && !conflictosRemotos(gh).length;
+      return { ok, detalle: 'En GitHub quedó: ' + JSON.stringify(r) + ' · en el dispositivo A: ' + JSON.stringify(enA) + (ok ? ' (sin avisos innecesarios).' : ' → falta una actividad o hubo un aviso de más.') };
     } },
     { n: 3, nombre: 'La misma actividad cambiada en dos dispositivos', req: 'Conservar ambos resultados y pedir intervención', f: async () => {
       const gh = crearGitHub();
-      const A = await crearDispositivo(gh, almacenConectado()); const B = await crearDispositivo(gh, almacenConectado());
+      const A = await crearDispositivo(gh, almacenConectado(), { equipo: 'Laptop' }); const B = await crearDispositivo(gh, almacenConectado(), { equipo: 'PC' });
       await escribir(A, 'academia:ciber-01:res', { examen: { ok: 8, total: 12 } }); await A.sync.subirAhora();
       await escribir(B, 'academia:ciber-01:res', { examen: { ok: 10, total: 12 } }); await B.sync.subirAhora();
-      const r = valorRemoto(gh, 'academia:ciber-01:res');
-      const conflictos = Object.keys(gh.leer().claves).filter((k) => /conflicto/i.test(k));
-      const ok = conflictos.length > 0;
-      return { ok, detalle: 'Quedó solo ' + JSON.stringify(r) + '; copias de conflicto: ' + conflictos.length + (ok ? '' : ' → el 8/12 se descartó sin avisar.') };
+      await A.sync.subirAhora();
+      const c = conflictosRemotos(gh)[0];
+      const vs = versionesDe(c);
+      const ambos = vs.includes('{"ok":8,"total":12}') && vs.includes('{"ok":10,"total":12}');
+      const avisoEnLosDos = A.sync.diferencias().length === 1 && B.sync.diferencias().length === 1;
+      const ok = ambos && avisoEnLosDos;
+      return { ok, detalle: 'Valor provisional: ' + JSON.stringify(valorRemoto(gh, 'academia:ciber-01:res')) + '. Diferencia guardada con las dos versiones: ' + (ambos ? 'sí (8/12 y 10/12)' : 'NO') + '. Aviso visible en los dos dispositivos: ' + (avisoEnLosDos ? 'sí' : 'NO') + '.' };
     } },
     { n: 4, nombre: 'Notas distintas en dos dispositivos (R2)', req: 'Conservar ambos textos y pedir intervención', f: async () => {
       const gh = crearGitHub();
-      const A = await crearDispositivo(gh, almacenConectado()); const B = await crearDispositivo(gh, almacenConectado());
+      const A = await crearDispositivo(gh, almacenConectado(), { equipo: 'Laptop' }); const B = await crearDispositivo(gh, almacenConectado(), { equipo: 'PC' });
       await escribir(A, 'academia:ciber-01:notas:generales', 'Notas escritas en la laptop'); await A.sync.subirAhora();
       await escribir(B, 'academia:ciber-01:notas:generales', 'Notas escritas en la PC'); await B.sync.subirAhora();
       const r = valorRemoto(gh, 'academia:ciber-01:notas:generales');
       const textoA = JSON.stringify(gh.leer()).includes('Notas escritas en la laptop');
-      return { ok: textoA && r === 'Notas escritas en la PC', detalle: 'En GitHub: "' + r + '". Texto de la laptop presente: ' + (textoA ? 'sí' : 'NO → se perdió') };
+      const aviso = B.sync.diferencias().length === 1;
+      return { ok: textoA && aviso && r === 'Notas escritas en la PC', detalle: 'En GitHub: "' + r + '". Texto de la laptop conservado: ' + (textoA ? 'sí' : 'NO → se perdió') + '. Aviso para decidir: ' + (aviso ? 'sí' : 'NO') + '.' };
     } },
     { n: 5, nombre: 'Datos existentes al sumar un dispositivo nuevo', req: 'Nada existente desaparece', f: async () => {
       const gh = crearGitHub();
@@ -136,29 +151,40 @@
     } },
     { n: 6, nombre: 'Conectar un dispositivo con avance antiguo (R3)', req: 'No pisar avance más nuevo', f: async () => {
       const gh = crearGitHub();
-      const A = await crearDispositivo(gh, almacenConectado());
+      const A = await crearDispositivo(gh, almacenConectado(), { equipo: 'Laptop' });
       await escribir(A, 'academia:ciber-01:notas:generales', 'Notas NUEVAS de la laptop'); await A.sync.subirAhora();
       const viejo = new Almacen(); viejo.setItem('academia:ciber-01:notas:generales', JSON.stringify('Notas VIEJAS sin sincronizar'));
-      const B = await crearDispositivo(gh, viejo); // sin token: todavía no conectado
+      const B = await crearDispositivo(gh, viejo, { equipo: 'Celular' }); // sin token: todavía no conectado
       await dormir(12);
       await B.sync.conectar(TOKEN_FICTICIO);
       const r = valorRemoto(gh, 'academia:ciber-01:notas:generales');
-      const nuevasPresentes = JSON.stringify(gh.leer()).includes('Notas NUEVAS');
-      return { ok: nuevasPresentes, detalle: 'Tras conectar, GitHub tiene: "' + r + '"' + (nuevasPresentes ? '' : ' → las notas nuevas se perdieron.') };
+      const viejasConservadas = versionesDe(conflictosRemotos(gh)[0]).includes(JSON.stringify('Notas VIEJAS sin sincronizar'));
+      const respaldoLocal = B.sync.respaldos().some((x) => x.v.includes('Notas VIEJAS'));
+      const ok = r === 'Notas NUEVAS de la laptop' && viejasConservadas && respaldoLocal && B.sync.diferencias().length === 1;
+      return { ok, detalle: 'Tras conectar, GitHub tiene: "' + r + '". Notas viejas guardadas como diferencia: ' + (viejasConservadas ? 'sí' : 'NO') + '; copia en el respaldo local: ' + (respaldoLocal ? 'sí' : 'NO') + '.' };
     } },
     { n: 7, nombre: 'Error de conexión al subir', req: 'No perder nada y reintentar solo', f: async () => {
-      const gh = crearGitHub();
-      const almacen = almacenConectado();
+      // Caso 1: la página sigue abierta → reintento automático
+      const gh = crearGitHub(); const almacen = almacenConectado();
       const A = await crearDispositivo(gh, almacen);
-      gh.fallarPut = 1; gh.fallarGet = 0;
+      gh.fallarPut = 1;
       await escribir(A, 'academia:ciber-03:res', { verbos: { ok: 6, total: 6 } }); await A.sync.subirAhora();
       const localIntacto = !!almacen.getItem('academia:ciber-03:res');
+      const pendienteTrasFallo = A.sync.pendiente();
       const subioTrasFallo = !!valorRemoto(gh, 'academia:ciber-03:res');
-      const A2 = await crearDispositivo(gh, almacen); // "recargar la página" ya con conexión
-      await dormir(50);
-      const subioAlRecargar = !!valorRemoto(gh, 'academia:ciber-03:res');
-      return { ok: localIntacto && subioAlRecargar, parcial: localIntacto && !subioAlRecargar,
-        detalle: 'Avance local intacto: ' + (localIntacto ? 'sí' : 'NO') + '. Subido tras el fallo: ' + (subioTrasFallo ? 'sí' : 'no') + '. Subido solo al recargar con conexión: ' + (subioAlRecargar ? 'sí' : 'no (queda pendiente hasta el próximo cambio)') };
+      await dormir(250);
+      const subioSolo = !!valorRemoto(gh, 'academia:ciber-03:res');
+      const yaNoPendiente = !A.sync.pendiente();
+      // Caso 2: se cierra la página antes del reintento → se sube al volver a abrirla
+      const gh2 = crearGitHub(); const alm2 = almacenConectado();
+      const B = await crearDispositivo(gh2, alm2, { sync: { reintentos: [600000] } });
+      gh2.fallarPut = 1;
+      await escribir(B, 'academia:ciber-04:res', { carpetas: { ok: 5, total: 5 } }); await B.sync.subirAhora();
+      await crearDispositivo(gh2, alm2); // "recargar la página" ya con conexión
+      await dormir(250);
+      const subioAlRecargar = !!valorRemoto(gh2, 'academia:ciber-04:res');
+      const ok = localIntacto && pendienteTrasFallo && !subioTrasFallo && subioSolo && yaNoPendiente && subioAlRecargar;
+      return { ok, detalle: 'Avance local intacto: ' + (localIntacto ? 'sí' : 'NO') + '. Marcado como pendiente: ' + (pendienteTrasFallo ? 'sí' : 'NO') + '. Reintento automático lo subió: ' + (subioSolo ? 'sí' : 'NO') + '. Al volver a abrir la página lo subió: ' + (subioAlRecargar ? 'sí' : 'NO') + '.' };
     } },
     { n: 8, nombre: 'Guardado simultáneo (choque en GitHub)', req: 'Fusionar sin perder cambios', f: async () => {
       const gh = crearGitHub();
@@ -174,24 +200,99 @@
       const gh = crearGitHub();
       const A = await crearDispositivo(gh, almacenConectado()); const B = await crearDispositivo(gh, almacenConectado());
       await escribir(A, 'academia:ciber-05:res', { ips: { ok: 6, total: 6 } });
+      await escribir(A, 'academia:py-03:term:repl', ['x = 1']); await escribir(B, 'academia:py-03:term:repl', ['x = 1', 'print(x)']);
       for (let i = 0; i < 3; i++) { await A.sync.subirAhora(); await B.sync.subirAhora(); }
       const claves = Object.keys(gh.leer().claves);
-      return { ok: claves.length === 1, detalle: 'Registros en GitHub: ' + claves.length + ' (esperado 1).' };
+      const term = valorRemoto(gh, 'academia:py-03:term:repl') || [];
+      const ok = claves.length === 2 && term.length === 2;
+      return { ok, detalle: 'Registros en GitHub: ' + claves.length + ' (esperados 2). Misiones de terminal sin repetir: ' + JSON.stringify(term) + '.' };
     } },
-    { n: 10, nombre: 'El token nunca se sube', req: 'Ningún dato de la clave en GitHub', f: async () => {
+    { n: 10, nombre: 'El token nunca se sube', req: 'Ningún dato de la clave ni preferencias del equipo en GitHub', f: async () => {
       const gh = crearGitHub();
-      const A = await crearDispositivo(gh, almacenConectado());
+      const A = await crearDispositivo(gh, almacenConectado({ 'academia:voz:ciber': '{"vel":1}', 'academia:menu:curso': '"python"' }));
       await escribir(A, 'academia:ciber-01:res', { soc: { ok: 6, total: 6 } }); await A.sync.subirAhora();
       const texto = JSON.stringify(gh.leer());
-      const ok = !texto.includes(TOKEN_FICTICIO) && !texto.includes('academia-sync');
-      return { ok, detalle: ok ? 'GitHub no contiene el token ni las claves internas.' : 'Se filtró información interna.' };
+      const ok = !texto.includes(TOKEN_FICTICIO) && !texto.includes('academia-sync') && !texto.includes('academia:voz') && !texto.includes('academia:menu');
+      return { ok, detalle: ok ? 'GitHub no contiene el token, ni las claves internas, ni las voces o el curso elegido en este equipo.' : 'Se filtró información interna.' };
+    } },
+    { n: 11, nombre: 'Decidir una diferencia desde el menú', req: 'La decisión se aplica en todos los equipos y nada se borra', f: async () => {
+      const gh = crearGitHub(); const N = 'academia:ciber-01:notas:generales';
+      const A = await crearDispositivo(gh, almacenConectado(), { equipo: 'Laptop' }); const B = await crearDispositivo(gh, almacenConectado(), { equipo: 'PC' });
+      await escribir(A, N, 'Texto de la laptop'); await A.sync.subirAhora();
+      await escribir(B, N, 'Texto de la PC'); await B.sync.subirAhora();
+      const d = B.sync.diferencias();
+      const hecho = d.length === 1 && B.sync.resolver(d[0].id, 'unir'); await B.sync.subirAhora();
+      const final = valorRemoto(gh, N) || '';
+      const unidos = final.includes('Texto de la PC') && final.includes('Texto de la laptop');
+      await A.sync.subirAhora();
+      const enA = JSON.parse(A.almacen.getItem(N) || '""');
+      const registro = conflictosRemotos(gh)[0] || {};
+      // Segunda parte: un resultado de examen, eligiendo la otra versión
+      const gh2 = crearGitHub(); const R = 'academia:ciber-02:res';
+      const C = await crearDispositivo(gh2, almacenConectado(), { equipo: 'Laptop' }); const D = await crearDispositivo(gh2, almacenConectado(), { equipo: 'PC' });
+      await escribir(C, R, { examen: { ok: 9, total: 15 } }); await C.sync.subirAhora();
+      await escribir(D, R, { examen: { ok: 13, total: 15 } }); await D.sync.subirAhora();
+      const d2 = D.sync.diferencias(); D.sync.resolver(d2[0] && d2[0].id, 'otra'); await D.sync.subirAhora(); await C.sync.subirAhora();
+      const ex = (valorRemoto(gh2, R) || {}).examen || {};
+      const reg2 = conflictosRemotos(gh2)[0] || {};
+      const ok = hecho && unidos && enA === final && !A.sync.diferencias().length && !B.sync.diferencias().length && registro.resuelto === true &&
+        ex.ok === 9 && reg2.resuelto === true && reg2.anterior === '{"ok":13,"total":15}' && !C.sync.diferencias().length;
+      return { ok, detalle: 'Notas unidas en GitHub y en la laptop: ' + (unidos && enA === final ? 'sí' : 'NO') + '. Examen tras elegir la otra versión: ' + ex.ok + '/15 (la versión descartada 13/15 queda guardada en el registro: ' + (reg2.anterior === '{"ok":13,"total":15}' ? 'sí' : 'NO') + '). Avisos pendientes después de decidir: ' + (A.sync.diferencias().length + B.sync.diferencias().length + C.sync.diferencias().length) + '.' };
+    } },
+    { n: 12, nombre: 'Clase abierta con datos viejos en memoria', req: 'Lo que guarde la página no pisa el avance que llegó de otro equipo', f: async () => {
+      const gh = crearGitHub(); const K = 'academia:ciber-01:res';
+      const A = await crearDispositivo(gh, almacenConectado(), { clase: 'ciber-01', equipo: 'Laptop' });
+      const memoriaA = { conceptos: { ok: 6, total: 8 } }; // lo que la página de A tiene en memoria
+      await escribir(A, K, memoriaA); await A.sync.subirAhora();
+      const B = await crearDispositivo(gh, almacenConectado(), { equipo: 'PC' });
+      await escribir(B, K, { conceptos: { ok: 8, total: 8 }, examen: { ok: 11, total: 12 } }); await B.sync.subirAhora();
+      await escribir(A, 'academia:ciber-01:notas:generales', 'apunte'); await A.sync.subirAhora(); // A sincroniza en segundo plano
+      memoriaA.soc = { ok: 5, total: 6 };
+      await escribir(A, K, memoriaA); await A.sync.subirAhora(); // la página guarda su mapa viejo + una actividad nueva
+      const r = valorRemoto(gh, K) || {};
+      const ok = r.conceptos && r.conceptos.ok === 8 && !!r.examen && !!r.soc && !conflictosRemotos(gh).length;
+      return { ok, detalle: 'En GitHub: ' + JSON.stringify(r) + (ok ? ' → se conservaron el repaso de la PC (8/8), su examen y la actividad nueva de la laptop.' : ' → se perdió algo.') };
+    } },
+    { n: 13, nombre: 'Otra pestaña cambia las notas de la clase abierta', req: 'Conservar los dos textos y avisar', f: async () => {
+      const gh = crearGitHub(); const K = 'academia:ciber-02:notas:generales';
+      const alm = almacenConectado({ [K]: JSON.stringify('Mis notas') });
+      const A = await crearDispositivo(gh, alm, { clase: 'ciber-02' });
+      const otra = JSON.stringify('Mis notas + lo escrito en la otra pestaña');
+      alm.setItem(K, otra); A.emitir('storage', { key: K, oldValue: JSON.stringify('Mis notas'), newValue: otra });
+      await escribir(A, K, 'Mis notas + lo escrito en esta pestaña'); await A.sync.subirAhora();
+      const conservada = JSON.stringify(gh.leer()).includes('lo escrito en la otra pestaña');
+      const ok = A.sync.diferencias().length === 1 && conservada && valorRemoto(gh, K) === 'Mis notas + lo escrito en esta pestaña';
+      return { ok, detalle: 'Texto de la otra pestaña conservado: ' + (conservada ? 'sí' : 'NO') + '. Aviso para decidir: ' + (A.sync.diferencias().length ? 'sí' : 'NO') + '.' };
+    } },
+    { n: 14, nombre: 'Archivo progreso.json del formato anterior', req: 'Se lee y se conserva compatible', f: async () => {
+      const gh = crearGitHub();
+      gh.sembrar({ actualizado: '2026-11-01T00:00:00.000Z', claves: {
+        'academia:js-01:editores': { v: JSON.stringify({ minutos: true }), t: 1000 },
+        'academia:ingles-02:notas:generales': { v: JSON.stringify('hello'), t: 2000 } } });
+      const A = await crearDispositivo(gh, almacenConectado());
+      const leidos = A.almacen.getItem('academia:js-01:editores') === JSON.stringify({ minutos: true }) && A.almacen.getItem('academia:ingles-02:notas:generales') === JSON.stringify('hello');
+      await escribir(A, 'academia:py-04:res', { predice: { ok: 4, total: 5 } }); await A.sync.subirAhora();
+      const datos = gh.leer();
+      const entradasValidas = Object.values(datos.claves).every((e) => typeof e.v === 'string' && typeof e.t === 'number');
+      const ok = leidos && entradasValidas && Object.keys(datos.claves).length === 3;
+      return { ok, detalle: 'Datos antiguos leídos: ' + (leidos ? 'sí' : 'NO') + '. Registros tras guardar: ' + Object.keys(datos.claves).length + ' (esperados 3), todos con el formato { v, t }: ' + (entradasValidas ? 'sí' : 'NO') + '.' };
+    } },
+    { n: 15, nombre: 'Equipo sin token', req: 'Funciona sin internet y no intenta conectarse', f: async () => {
+      const gh = crearGitHub(); const alm = new Almacen();
+      const A = await crearDispositivo(gh, alm);
+      await escribir(A, 'academia:ciber-01:res', { cia: { ok: 12, total: 12 } }); await dormir(100);
+      const ok = gh.llamadas === 0 && !!alm.getItem('academia:ciber-01:res') && !A.sync.conectado();
+      return { ok, detalle: 'Llamadas a GitHub: ' + gh.llamadas + ' (esperadas 0). Avance guardado en el equipo: ' + (alm.getItem('academia:ciber-01:res') ? 'sí' : 'NO') + '.' };
     } }
   ];
 
   async function correr() {
     $('#correr').disabled = true; $('#filas').replaceChildren();
-    $('#estado').textContent = 'Cargando recursos/sync.js…';
-    fuente = await (await fetch('../recursos/sync.js', { cache: 'no-store' })).text();
+    // ?fuente=archivo.js permite comparar con otra versión guardada junto a esta página (solo rutas locales)
+    const pedido = new URLSearchParams(location.search).get('fuente');
+    const archivo = pedido && /^[\w.-]+\.js$/.test(pedido) ? pedido : '../recursos/sync.js';
+    $('#estado').textContent = 'Cargando ' + archivo + '…';
+    fuente = await (await fetch(archivo, { cache: 'no-store' })).text();
     const resultados = [];
     for (const e of ESCENARIOS) {
       $('#estado').textContent = 'Ejecutando escenario ' + e.n + ' de ' + ESCENARIOS.length + '…';
