@@ -186,3 +186,12 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   planificación; nada implementado): módulos para los 4 cursos (156 clases, 272 h), mapa de las
   17 clases existentes (todas se conservan), 139 clases nuevas recomendadas, correcciones
   detectadas y fuentes verificadas. **Pendiente de aprobación del alumno.**
+- **Etapa 0 (diagnóstico y respaldos)**, autorizada por el alumno. Marca de restauración local
+  `respaldo-etapa-0` (→ `52fe5b2`). Respaldos verificados en `C:\Users\alvar\respaldos-academia\`
+  (copia de `progreso.json` remota con SHA-256, paquetes completos de ambos repositorios y
+  restauración de prueba exitosa; sin tokens). Nuevas herramientas en `herramientas/`
+  (no enlazadas desde el menú): diagnóstico de solo lectura del avance local, instrucciones,
+  pruebas de las 17 clases (17/17 cumplen), pruebas de sincronización (5/10 cumplen: fallan
+  R1, conflictos, R2, R3 y reintento) y línea base de identificadores. Sin cambios en clases,
+  motor, `sync.js`, catálogo, páginas principales ni repositorio privado. Pendiente: que el
+  alumno revise sus computadoras y navegadores con el diagnóstico.

@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pruebas de las clases</title>
+<link rel="stylesheet" href="../recursos/academia.css">
+</head>
+<body>
+<main class="menu">
+  <div class="portada">
+    <p class="kicker">Herramienta interna · no enlazada desde el menú</p>
+    <h1>Pruebas de las clases</h1>
+    <p class="sub">Comprueba cada clase del catálogo: estructura, duración, respuestas, retos, terminales, desbordes a 360 px y los identificadores que guardan avance. Solo funciona en el servidor local de pruebas (<code>127.0.0.1</code> o <code>localhost</code>), nunca con avance real, y al terminar deja el almacenamiento exactamente como estaba.</p>
+  </div>
+  <section class="bloque">
+    <div class="acciones"><button id="correr" type="button" class="btn">▶ Ejecutar pruebas</button></div>
+    <p id="estado" role="status" class="marcador"></p>
+    <div class="tabla"><table><thead><tr><th>Clase</th><th>Minutos</th><th>Actividades</th><th>Exámenes</th><th>Terminales</th><th>Retos</th><th>Pista→solución</th><th>360 px</th><th>Errores JS</th><th>Resultado</th></tr></thead><tbody id="filas"></tbody></table></div>
+    <h2>Identificadores que guardan avance (línea base)</h2>
+    <pre id="ids" class="log" tabindex="0"></pre>
+  </section>
+</main>
+<script src="../recursos/catalogo.js"></script>
+<script>
+(() => {
+  'use strict';
+  const $ = (s) => document.querySelector(s);
+  const dormir = (ms) => new Promise((r) => setTimeout(r, ms));
+  const DURACION = { ciberseguridad: 120, ingles: 60, javascript: 120, python: 120 };
+
+  function puedeCorrer() {
+    if (!['127.0.0.1', 'localhost'].includes(location.hostname)) return 'Esta página solo funciona en el servidor local de pruebas (127.0.0.1 o localhost). Aquí no se ejecuta para proteger tu avance real.';
+    if (localStorage.getItem('academia-sync:token')) return 'Este navegador tiene un token conectado en este lugar. Por seguridad, las pruebas no se ejecutan.';
+    return '';
+  }
+  // Foto del almacenamiento antes de las pruebas y restauración exacta después
+  const foto = () => { const o = {}; Object.keys(localStorage).forEach((k) => { o[k] = localStorage.getItem(k); }); return o; };
+  function restaurar(antes) {
+    Object.keys(localStorage).forEach((k) => { if (!(k in antes)) localStorage.removeItem(k); });
+    Object.entries(antes).forEach(([k, v]) => { if (localStorage.getItem(k) !== v) localStorage.setItem(k, v); });
+  }
+
+  async function abrir(src, ancho) {
+    const f = document.createElement('iframe');
+    f.style.cssText = 'position:fixed;left:-5000px;top:0;height:900px;border:0;width:' + ancho + 'px';
+    const errores = [];
+    document.body.append(f);
+    f.src = src;
+    await new Promise((r) => { f.onload = r; });
+    f.contentWindow.addEventListener('error', (e) => errores.push(e.message));
+    await dormir(1300);
+    return { f, w: f.contentWindow, d: f.contentDocument, errores };
+  }
+
+  async function probarClase(curso, c) {
+    const r = { clase: c.id, archivo: c.archivo };
+    const { f, w, d, errores } = await abrir('../' + c.archivo, 1100);
+    const C = w.CLASE;
+    if (!C) { f.remove(); return Object.assign(r, { fallo: 'La página no definió window.CLASE' }); }
+    r.idCoincide = C.id === c.id;
+    r.minutos = C.bloques.reduce((a, b) => a + b.min, 0);
+    r.minutosOk = r.minutos === DURACION[curso];
+    r.bloquesFaltantes = C.bloques.filter((b) => !d.getElementById(b.id)).map((b) => b.id);
+    // Identificadores que guardan avance (no deben desaparecer nunca)
+    r.ids = {
+      clase: C.id,
+      actividades: Object.keys(C.actividades || {}),
+      examenes: Object.keys(C.quizzes || {}),
+      terminales: Object.keys(C.terminales || {}),
+      editores: Object.keys(C.editores || {}),
+      notas: [...d.querySelectorAll('textarea[data-notas]')].map((t) => t.dataset.notas)
+    };
+    // Camino del error en la primera tarjeta: pista primero, solución después
+    const tarjeta = d.querySelector('[data-actividad] .tarjeta');
+    if (tarjeta) {
+      const idAct = tarjeta.closest('[data-actividad]').dataset.actividad;
+      const it = C.actividades[idAct].items[0];
+      const grupos = tarjeta.querySelectorAll('.grupo');
+      grupos.forEach((g, pi) => { const mala = [...g.querySelectorAll('.opcion')].find((b) => !it.respuestas[pi].includes(b.textContent)); (mala || g.querySelector('.opcion')).click(); });
+      const comprobar = [...tarjeta.querySelectorAll('button')].find((b) => b.textContent === 'Comprobar');
+      comprobar.click(); const p1 = tarjeta.querySelector('.feedback').textContent;
+      comprobar.click(); const p2 = tarjeta.querySelector('.feedback').textContent;
+      r.pistaLuegoSolucion = /Pista/.test(p1) && /La respuesta era/.test(p2);
+    } else r.pistaLuegoSolucion = null;
+    // Actividades: todas las respuestas correctas (en tarjetas sin tocar)
+    let actOk = 0; let actTot = 0;
+    d.querySelectorAll('[data-actividad]').forEach((box) => {
+      const A = C.actividades[box.dataset.actividad];
+      [...box.querySelectorAll('.tarjeta')].forEach((card, i) => {
+        if (card.querySelector('.feedback').textContent) return; // ya usada en la prueba de error
+        actTot++;
+        const it = A.items[i];
+        card.querySelectorAll('.grupo').forEach((g, pi) => it.respuestas[pi].forEach((resp) => [...g.querySelectorAll('.opcion')].find((b) => b.textContent === resp).click()));
+        [...card.querySelectorAll('button')].find((b) => b.textContent === 'Comprobar').click();
+        if (card.querySelector('.feedback').textContent.startsWith('✔')) actOk++;
+      });
+    });
+    r.actividades = actOk + '/' + actTot;
+    // Exámenes: todas las respuestas correctas
+    let qOk = 0; let qTot = 0;
+    d.querySelectorAll('[data-quiz]').forEach((box) => {
+      const Q = C.quizzes[box.dataset.quiz].preguntas;
+      [...box.querySelectorAll('.pregunta')].forEach((li, i) => { qTot++; li.querySelectorAll('.opcion')[Q[i].correcta].click(); if (li.querySelector('.feedback').textContent.startsWith('✔')) qOk++; });
+    });
+    r.examenes = qOk + '/' + qTot;
+    // Terminales: cada misión
+    let mOk = 0; let mTot = 0;
+    d.querySelectorAll('[data-terminal]').forEach((box) => {
+      const T = C.terminales[box.dataset.terminal];
+      const inp = box.querySelector('input'); const form = box.querySelector('form');
+      T.misiones.forEach((m) => { inp.value = m.cmd; form.requestSubmit(); });
+      mTot += T.misiones.length; mOk += box.querySelectorAll('.misiones li.hecha').length;
+    });
+    r.terminales = mOk + '/' + mTot;
+    // Retos de código: se prueba la solución sola (retos de "arreglar código") y, si no basta,
+    // el código inicial + la solución (retos de "completar"). Si ninguna forma se puede ejecutar
+    // (por ejemplo, la solución es una explicación en palabras), se marca para revisión manual.
+    let eOk = 0; let eTot = 0; r.retosManuales = [];
+    for (const box of d.querySelectorAll('[data-editor]')) {
+      const E = C.editores[box.dataset.editor]; if (!E.validar) continue;
+      eTot++;
+      let paso = false;
+      for (const intento of [E.solucion, E.codigo + '\n' + E.solucion]) {
+        box.querySelector('textarea').value = intento;
+        box.querySelector('.editor-acciones .btn').click();
+        await dormir(700);
+        if (box.querySelector(':scope > .feedback').textContent.startsWith('✔')) { paso = true; break; }
+      }
+      if (paso) eOk++; else r.retosManuales.push(box.dataset.editor);
+    }
+    r.retos = eOk + '/' + eTot + (r.retosManuales.length ? ' (manual: ' + r.retosManuales.join(', ') + ')' : '');
+    r.errores = errores;
+    f.remove();
+    // Desbordes a 360 px
+    const m = await abrir('../' + c.archivo, 360);
+    const anchos = [...m.d.querySelectorAll('body *')].filter((e) => { const b = e.getBoundingClientRect(); return b.right > m.w.innerWidth + 1 && m.w.getComputedStyle(e).position !== 'fixed' && !e.closest('.tabla') && !e.closest('pre') && !e.closest('textarea') && !e.closest('.pantalla'); });
+    r.movilOk = anchos.length === 0 && m.d.documentElement.scrollWidth <= m.w.innerWidth;
+    r.errores = r.errores.concat(m.errores);
+    m.f.remove();
+    const igual = (a) => a.split(' ')[0].split('/')[0] === a.split(' ')[0].split('/')[1];
+    const retosOk = eOk + r.retosManuales.length === eTot;
+    r.ok = r.idCoincide && r.minutosOk && !r.bloquesFaltantes.length && igual(r.actividades) && igual(r.examenes) && igual(r.terminales) && retosOk && r.pistaLuegoSolucion !== false && r.movilOk && !r.errores.length;
+    r.requiereManual = r.retosManuales.length > 0;
+    return r;
+  }
+
+  async function correr() {
+    const motivo = puedeCorrer();
+    if (motivo) { $('#estado').textContent = motivo; return; }
+    $('#correr').disabled = true; $('#filas').replaceChildren();
+    const antes = foto();
+    const resultados = [];
+    try {
+      const clases = (window.CATALOGO || []).flatMap((curso) => curso.clases.filter((c) => c.archivo).map((c) => [curso.id, c]));
+      for (const [i, [curso, c]] of clases.entries()) {
+        $('#estado').textContent = 'Probando ' + c.id + ' (' + (i + 1) + ' de ' + clases.length + ')…';
+        const r = await probarClase(curso, c);
+        resultados.push(r);
+        const fila = document.createElement('tr');
+        [r.clase, r.minutos + (r.minutosOk ? ' ✔' : ' ✘'), r.actividades, r.examenes, r.terminales, r.retos,
+          r.pistaLuegoSolucion === null ? '—' : r.pistaLuegoSolucion ? '✔' : '✘', r.movilOk ? '✔' : '✘',
+          r.errores.length ? r.errores.join(' | ') : '0', (r.ok ? 'CUMPLE' : 'REVISAR' + (r.fallo ? ': ' + r.fallo : '')) + (r.requiereManual ? ' · con revisión manual' : '')]
+          .forEach((t) => { const td = document.createElement('td'); td.textContent = t; fila.append(td); });
+        $('#filas').append(fila);
+      }
+    } finally {
+      restaurar(antes);
+    }
+    const ok = resultados.filter((r) => r.ok).length;
+    $('#estado').textContent = 'Terminado: ' + ok + ' de ' + resultados.length + ' clases cumplen. Almacenamiento restaurado tal como estaba.';
+    const linea = { fecha: new Date().toISOString(), clases: resultados.map((r) => r.ids) };
+    $('#ids').textContent = JSON.stringify(linea, null, 1);
+    window.RESULTADOS_CLASES = resultados; window.LINEA_BASE = linea;
+    $('#correr').disabled = false;
+  }
+  $('#correr').addEventListener('click', correr);
+})();
+</script>
+</body>
+</html>

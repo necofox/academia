@@ -1,0 +1,25 @@
+{
+ "descripcion": "Identificadores que guardan avance en cada clase (Etapa 0, 2026-11-10). En cualquier cambio futuro, cada clase debe conservar TODOS estos identificadores: se pueden agregar nuevos, nunca quitar ni renombrar.",
+ "fecha": "2026-11-10",
+ "commit_de_referencia": "52fe5b23a588d8f3d33c379d8e35d3ecd4a514c1",
+ "formato_de_las_claves": "academia:<clase>:res · academia:<clase>:term:<terminal> · academia:<clase>:codigo:<editor> · academia:<clase>:editores · academia:<clase>:notas:<notas> · academia:<clase>:crono",
+ "clases": [
+  {"clase":"ciber-01","actividades":["conceptos","cia","soc"],"examenes":["examen"],"terminales":[],"editores":[],"notas":["generales"]},
+  {"clase":"ciber-02","actividades":["partes","privilegio","caza"],"examenes":["repaso","examen"],"terminales":["ps"],"editores":[],"notas":["generales"]},
+  {"clase":"ciber-03","actividades":["verbos","tuberias","conclusiones"],"examenes":["repaso","examen"],"terminales":["nav","inv"],"editores":[],"notas":["generales"]},
+  {"clase":"ciber-04","actividades":["carpetas","permisos","conclusiones"],"examenes":["repaso","examen"],"terminales":["bash","auth"],"editores":[],"notas":["generales"]},
+  {"clase":"ciber-05","actividades":["ips","puertos","caso"],"examenes":["repaso","examen"],"terminales":["red"],"editores":[],"notas":["generales"]},
+  {"clase":"ingles-01","actividades":["situaciones","escucha"],"examenes":["examen"],"terminales":[],"editores":[],"notas":["generales"]},
+  {"clase":"ingles-02","actividades":["respuestas","escucha"],"examenes":["repaso","examen"],"terminales":[],"editores":[],"notas":["generales"]},
+  {"clase":"ingles-03","actividades":["letras","deletreo"],"examenes":["repaso","examen"],"terminales":[],"editores":[],"notas":["generales"]},
+  {"clase":"ingles-04","actividades":["numeros","situaciones"],"examenes":["repaso","examen"],"terminales":[],"editores":[],"notas":["generales"]},
+  {"clase":"js-01","actividades":["precisa","trio"],"examenes":["examen"],"terminales":[],"editores":["practica1","roto","tarjeta","minutos","semana"],"notas":["generales"]},
+  {"clase":"js-02","actividades":["tipos"],"examenes":["repaso","examen"],"terminales":[],"editores":["variables","tipos","operaciones","arregla","ficha","saldo","detective"],"notas":["generales"]},
+  {"clase":"js-03","actividades":["truefalse"],"examenes":["repaso","examen"],"terminales":[],"editores":["aritmetica","textos","comparar","conversion","propina","etiqueta","par"],"notas":["generales"]},
+  {"clase":"js-04","actividades":["predice"],"examenes":["repaso","examen"],"terminales":[],"editores":["ifelse","notas","login","switch","parimpar","libreta","clave","descuento"],"notas":["generales"]},
+  {"clase":"py-01","actividades":["vf","predice","errores"],"examenes":["examen"],"terminales":["repl"],"editores":[],"notas":["generales"]},
+  {"clase":"py-02","actividades":["tipos","errores"],"examenes":["repaso","examen"],"terminales":["repl"],"editores":[],"notas":["generales"]},
+  {"clase":"py-03","actividades":["predice"],"examenes":["repaso","examen"],"terminales":["repl"],"editores":[],"notas":["generales"]},
+  {"clase":"py-04","actividades":["predice","errores"],"examenes":["repaso","examen"],"terminales":[],"editores":[],"notas":["generales"]}
+ ]
+}
