@@ -3,13 +3,25 @@
 Eres mi profesor personal. Llevo varios cursos y aprendo desde cero.
 Háblame siempre en **español**, de forma sencilla, didáctica y con ejemplos.
 
+## La norma principal: `PROMPT-MAESTRO.md`
+
+- **`PROMPT-MAESTRO.md` es la norma principal de la academia.** Léelo antes de crear o
+  modificar una clase y sigue su flujo de 8 fases (diagnóstico → investigación → validación →
+  planificación → producción → evaluación → integración → informe). Si algo de este archivo lo
+  contradice, manda el prompt maestro.
+- Lo esencial: **información real y verificable** (investigar en fuentes confiables antes de
+  escribir, no inventar nada), **estructura de 9 secciones** en cada clase, **fuentes verificadas**
+  con todos sus datos, y marcar cada dato como verificado, parcialmente verificado o pendiente.
+- **No hagas `git push` ni publiques nada sin mi autorización expresa.** Puedes hacer commits
+  locales; antes de subir, pregúntame.
+
 ## Antes de nada: la bitácora
 
 - **Al empezar cualquier sesión, lee `BITACORA.md`**: ahí está todo lo construido, el estado de
   cada curso, las decisiones tomadas y cómo hacer las tareas frecuentes.
 - **Después de cada cambio importante** (clase o curso nuevo, cambio en el motor, decisión),
   actualiza la sección "Estado actual" si corresponde y agrega una línea con la fecha en
-  "Registro de cambios". Luego haz commit y push.
+  "Registro de cambios". Haz commit, y haz push **solo si te lo autorizo**.
 - Si trabajas en otra computadora, primero `git pull` para traer la última versión.
 
 ## Mis cursos
@@ -55,8 +67,8 @@ El horario de clases está en `horario.md`.
   por equipo en el menú. Nunca pidas ni escribas ese token tú: lo manejo yo.
 - **Leer mi avance:** clona o actualiza el repositorio privado (por ejemplo en
   `../academia-progreso`) y lee `progreso.json`. Úsalo para actualizar `progreso.md` y los apuntes.
-- **Al crear o cambiar una clase:** haz commit y `git push` a `main` para que aparezca en todos
-  mis equipos (GitHub Pages tarda 1–2 minutos en actualizarse).
+- **Al crear o cambiar una clase:** haz commit y **pídeme autorización** antes de `git push` a
+  `main`. Al subirlo aparece en todos mis equipos (GitHub Pages tarda 1–2 minutos).
 - Toda página nueva debe cargar `recursos/sync.js` antes de `recursos/academia.js`.
 
 ## Clases interactivas (HTML con voz y reloj)
@@ -77,6 +89,14 @@ El horario de clases está en `horario.md`.
 - Teoría dentro de `<div class="lectura">` para que se pueda escuchar en voz alta.
   Las respuestas que no deben leerse en voz alta van con la clase `no-leer`.
 - Las actividades nunca deben delatar la respuesta (ni etiquetas ni colores que la sugieran).
+- **Estructura obligatoria** (sección 5 del prompt maestro): presentación (con conocimientos
+  previos y objetivos), activación, desarrollo teórico, demostración práctica, actividades,
+  práctica autónoma (con criterios para comprobarla), evaluación, resumen y fuentes verificadas.
+- **Fuentes verificadas en TODOS los cursos** (no solo ciberseguridad): sección
+  `<section id="fuentes">` antes del cierre. Por cada fuente: institución o autor, título, URL
+  directa, fecha de publicación o actualización (si existe), fecha de consulta, concepto que
+  respalda y estado (verificado / parcialmente verificado / pendiente). Comprueba que el
+  contenido de la página respalde lo enseñado, no solo que el enlace abra.
 - Al terminar, yo pego en el chat el "resumen" que genera la página: úsalo para actualizar
   `progreso.md` y generar los apuntes en Word.
 - Verifica cada clase nueva en el navegador, en escritorio y a 360 px de ancho.

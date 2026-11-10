@@ -1,5 +1,9 @@
 # Curso de Inglés básico — cómo darlo
 
+> **Norma principal:** `PROMPT-MAESTRO.md` (información verificada con fuentes, estructura de
+> 9 secciones, control de calidad y no publicar sin autorización). Si algo de este archivo lo
+> contradice, manda el prompt maestro.
+
 Empiezo con **cero inglés**. Objetivo: llegar a entender, leer y escribir inglés
 básico-intermedio, y al final inglés técnico para trabajar en ciberseguridad.
 

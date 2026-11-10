@@ -35,6 +35,10 @@ inglés técnico (5) y examen final de 10 preguntas (10).
 
 ## Fuentes (obligatorio en cada clase)
 
+> La norma completa está en `PROMPT-MAESTRO.md` (secciones 2, 3 y 10): cada fuente debe indicar
+> institución, título, URL directa, fecha de publicación o actualización, fecha de consulta,
+> concepto que respalda y estado de verificación.
+
 Antes del cierre, cada clase lleva la sección `<section id="fuentes">` (fuera del reloj) con
 enlaces para **comprobar** lo enseñado y para **profundizar**. Reglas:
 - Solo fuentes confiables: NIST, CISA, INCIBE, MITRE ATT&CK, Microsoft Learn (en `es-es`),

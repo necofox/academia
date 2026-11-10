@@ -1,5 +1,9 @@
 # Curso de JavaScript — cómo darlo
 
+> **Norma principal:** `PROMPT-MAESTRO.md` (información verificada con fuentes, estructura de
+> 9 secciones, control de calidad y no publicar sin autorización). Si algo de este archivo lo
+> contradice, manda el prompt maestro.
+
 Objetivo: aprender **desarrollo de software web** desde cero con JavaScript:
 páginas interactivas (frontend), servidores con Node.js (backend) y proyectos reales.
 Empiezo sin saber programar.

@@ -1,5 +1,9 @@
 # Curso de Python — cómo darlo
 
+> **Norma principal:** `PROMPT-MAESTRO.md` (información verificada con fuentes, estructura de
+> 9 secciones, control de calidad y no publicar sin autorización). Si algo de este archivo lo
+> contradice, manda el prompt maestro.
+
 Objetivo: aprender **desarrollo de software** desde cero con Python: programas,
 automatización, APIs, bases de datos y proyectos reales. Empiezo sin saber programar.
 

@@ -9,6 +9,13 @@ de "Registro de cambios" cada vez que hagas un cambio importante.**
 
 ---
 
+## 0. Norma principal
+
+**`PROMPT-MAESTRO.md`** (escrito por el alumno) manda sobre todo lo demás: información real y
+verificada con fuentes confiables, estructura de 9 secciones por clase, control de calidad,
+transparencia (verificado / parcialmente verificado / pendiente) y **no hacer `git push` ni
+publicar sin autorización expresa del alumno**.
+
 ## 1. Qué es esto
 
 Una academia personal para aprender **desde cero**, con Claude como profesor y en español:
@@ -99,15 +106,18 @@ una vez por navegador en el menú. **Claude nunca pide ni escribe ese token.**
 
 ## 5. Cómo hacer las tareas frecuentes
 
-**Crear una clase nueva**
-1. Copiar la estructura de la última clase del curso (`cursos/<curso>/clases/clase-NN.html`).
+**Crear una clase nueva** (seguir las 8 fases de `PROMPT-MAESTRO.md`; resumen técnico:)
+1. Investigar y verificar el tema en fuentes confiables ANTES de escribir.
+1. Copiar la estructura de la última clase del curso (`cursos/<curso>/clases/clase-NN.html`)
+   e incluir las 9 secciones obligatorias, con la sección de fuentes completa.
 2. Los minutos de los bloques deben sumar 120 (o 60 en inglés).
 3. Cargar `recursos/sync.js` antes de `recursos/academia.js`, y el enlace "☰ Menú" a `inicio.html`.
 4. Agregarla a `recursos/catalogo.js` con su `archivo` y su `id` (el mismo de `window.CLASE`).
 5. Agregar la fila en `cursos/<curso>/progreso.md`.
 6. Probar en el navegador (escritorio y 360 px): servir con
    `python -m http.server 8765 --bind 127.0.0.1` y revisar misiones, retos y examen.
-7. `git commit` y `git push` → aparece en el enlace en 1–2 minutos.
+7. `git commit`. **Pedir autorización al alumno** antes de `git push` (al subir, aparece en el
+   enlace en 1–2 minutos).
 8. Actualizar la sección 2 de esta bitácora y anotar el cambio abajo.
 
 **Agregar un curso nuevo:** crear `cursos/<nombre>/` (instrucciones, ruta, progreso, apuntes,
@@ -118,6 +128,19 @@ clases), agregarlo a la tabla de `CLAUDE.md`, a `recursos/catalogo.js` y un tema
 leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
 
 ## 6. Pendientes
+
+**Adecuación de las 17 clases al prompt maestro** (auditoría del 2026-11-10):
+- Ninguna clase tiene todavía: "conocimientos previos", "práctica autónoma con criterios para
+  comprobarla" ni una sección de "resumen" de contenidos (lo que hay es el generador de resumen
+  del avance).
+- Las clases 02 en adelante no tienen una lista explícita de objetivos de aprendizaje.
+- Fuentes: Ciberseguridad 01–05 tienen 49 enlaces (se comprobó que abren y un dato clave, el de
+  Equifax), pero les faltan fecha de publicación, fecha de consulta y estado de verificación
+  por fuente. Inglés, JavaScript y Python (12 clases) no tienen fuentes.
+- Estado de verificación del contenido: Ciberseguridad 01–05 **parcialmente verificado**;
+  las otras 12 clases **pendientes de verificación**.
+- Ya cumplen: duración exacta, repaso de la clase anterior (desde la 02), práctica guiada
+  (terminal/editor/comandos), actividades con pistas y examen autocorregible.
 
 - Definir el horario de clases (`horario.md` está sin completar).
 - Apuntes en Word: solo existe el de Ciberseguridad 01; generar los demás al revisar el avance.
@@ -144,3 +167,5 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
 - Se crea esta bitácora.
 - Voces personalizadas por curso (docente de Perú, inglés americano, asistente estilo Jarvis),
   optimizadas para Chrome y Edge; ajustes de voz por curso con botón de prueba.
+- Se adopta `PROMPT-MAESTRO.md` como norma principal. Desde ahora: push solo con autorización.
+  Auditoría de las 17 clases contra la nueva norma (resultado en "Pendientes").
