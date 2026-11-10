@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Python · Clase 01 · Tu primer programa</title>
+<link rel="stylesheet" href="../../../recursos/academia.css">
+</head>
+<body class="tema-python">
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="top">
+  <div class="marca"><span class="logo" aria-hidden="true">Py</span><span>CODE<span class="acento">//</span>ACADEMIA</span></div>
+  <div id="reloj" class="reloj-zona"></div>
+  <div id="voz"></div>
+  <a class="btn-mini" href="../../../inicio.html">☰ Menú</a>
+</header>
+
+<div class="layout">
+  <nav id="agenda" class="agenda" aria-label="Agenda de la clase"></nav>
+
+  <main id="contenido">
+    <div class="portada">
+      <p class="kicker">Python · Nivel 0 · Clase 01</p>
+      <h1>¿Qué es Python? Instalación y tu primer programa</h1>
+      <p class="sub">Conoce Python, verifica que está listo en tu computadora, prueba el modo interactivo y crea tus primeros programas de verdad con Visual Studio Code. Duración: 2 horas.</p>
+    </div>
+
+    <!-- ================= BLOQUE 1 ================= -->
+    <section id="p-bienvenida" class="bloque" aria-labelledby="t-bienvenida">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-bienvenida">Bienvenida</h2>
+      <div class="lectura">
+        <p>¡Bienvenido a tu primera clase de Python! Hoy vas a programar en tu propia computadora, con las mismas herramientas que usan los desarrolladores profesionales.</p>
+        <h3>Al terminar esta clase podrás:</h3>
+        <ul>
+          <li>Explicar qué es Python y para qué se usa.</li>
+          <li>Comprobar tu instalación de Python y preparar Visual Studio Code.</li>
+          <li>Usar el modo interactivo de Python para hacer cálculos.</li>
+          <li>Crear, guardar y ejecutar tus propios archivos de Python.</li>
+          <li>Leer los mensajes de error más comunes.</li>
+        </ul>
+        <h3>Cómo practicar en esta clase</h3>
+        <p>Vas a trabajar con dos ventanas: esta página para leer y escuchar, y tu computadora para programar. Si tienes una sola pantalla, pon esta página a un lado y Visual Studio Code al otro: arrastra cada ventana hacia un borde de la pantalla.</p>
+      </div>
+    </section>
+
+    <!-- ================= BLOQUE 2 ================= -->
+    <section id="p-que-es" class="bloque" aria-labelledby="t-que-es">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-que-es">¿Qué es programar y qué es Python?</h2>
+      <div class="lectura">
+        <p>Programar es escribir instrucciones precisas para que una computadora haga algo. La computadora es muy rápida pero no piensa: hace exactamente lo que le dices. Una lista ordenada de pasos para resolver un problema se llama algoritmo, como una receta de cocina.</p>
+        <p>Python es un lenguaje de programación creado por Guido van Rossum y publicado en 1991. Su nombre no viene de la serpiente, sino de un programa de comedia británico llamado Monty Python.</p>
+        <h3>¿Por qué Python es tan popular?</h3>
+        <ul>
+          <li><strong>Se lee casi como inglés:</strong> es uno de los lenguajes más fáciles para empezar.</li>
+          <li><strong>Sirve para casi todo:</strong> páginas web y APIs, automatizar tareas aburridas, análisis de datos, inteligencia artificial y ciberseguridad.</li>
+          <li><strong>Tiene miles de librerías:</strong> código ya hecho por otros que puedes usar gratis.</li>
+          <li><strong>Lo usan empresas enormes:</strong> por ejemplo, Instagram está construido en gran parte con Python.</li>
+        </ul>
+        <h3>¿Cómo funciona?</h3>
+        <p>Python es un lenguaje interpretado. Escribes tu programa en un archivo de texto que termina en punto p y, y otro programa llamado intérprete lo lee línea por línea y lo ejecuta. Ese intérprete es lo que instalaste en tu computadora cuando instalaste Python.</p>
+      </div>
+      <h3>Actividad: ¿verdadero o falso?</h3>
+      <div data-actividad="vf"></div>
+    </section>
+
+    <!-- ================= BLOQUE 3 ================= -->
+    <section id="p-instalacion" class="bloque" aria-labelledby="t-instalacion">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-instalacion">Prepara tu computadora</h2>
+      <div class="lectura">
+        <p>Buenas noticias: tu computadora ya tiene Python instalado. Vamos a comprobarlo y a preparar tu editor de código.</p>
+        <h3>Paso 1: comprobar Python</h3>
+        <p>Pulsa la tecla Windows, escribe PowerShell y ábrelo. Luego copia este comando, pégalo con clic derecho y pulsa Enter:</p>
+      </div>
+<pre data-copiar>python --version</pre>
+      <p>Deberías ver algo como esto (el número exacto puede cambiar):</p>
+      <pre class="log">Python 3.12.x</pre>
+      <div class="nota alerta">
+        <p><strong>¿Te sale un error o se abre la Microsoft Store?</strong> Prueba con este otro comando, que usa el lanzador de Python para Windows:</p>
+      </div>
+<pre data-copiar>py --version</pre>
+
+      <div class="lectura">
+        <h3>Paso 2: preparar Visual Studio Code</h3>
+        <p>Visual Studio Code, o VS Code, es el editor donde escribirás tus programas. También ya está instalado en tu computadora.</p>
+        <ul>
+          <li>Abre VS Code.</li>
+          <li>Pulsa Control más Shift más X para abrir las extensiones.</li>
+          <li>Busca Python y elige la extensión cuyo autor es Microsoft. Pulsa Instalar. Esto le enseña a VS Code a entender Python.</li>
+          <li>Ve al menú Archivo, Abrir carpeta, y elige: Escritorio, Cyberseguridad, cursos, python, proyectos. Ahí guardarás todos tus programas.</li>
+          <li>Abre la terminal de VS Code con el menú Terminal, Nuevo terminal. Aparecerá abajo, ya ubicada en tu carpeta de proyectos.</li>
+        </ul>
+        <div class="nota">
+          <p><strong>¿Qué es la terminal?</strong> Es la misma "pantalla negra" de PowerShell, pero dentro de VS Code. Desde ahí ejecutarás tus programas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BLOQUE 4 ================= -->
+    <section id="p-repl" class="bloque" aria-labelledby="t-repl">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-repl">El modo interactivo: Python como calculadora</h2>
+      <div class="lectura">
+        <p>Python tiene un modo interactivo. Escribes una instrucción, pulsas Enter y te responde al instante. Sirve para probar ideas rápidas. Sabrás que estás en ese modo porque aparece el símbolo de tres signos mayor que.</p>
+        <p>Primero practica en esta simulación. Después lo harás en tu computadora real.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Símbolo</th><th>Operación</th><th>Ejemplo</th><th>Resultado</th></tr></thead>
+            <tbody>
+              <tr><td>+  -</td><td>Suma y resta</td><td><code>2 + 3</code></td><td>5</td></tr>
+              <tr><td>*</td><td>Multiplicación</td><td><code>4 * 5</code></td><td>20</td></tr>
+              <tr><td>/</td><td>División (siempre da decimal)</td><td><code>7 / 2</code></td><td>3.5</td></tr>
+              <tr><td>//</td><td>División entera (sin decimales)</td><td><code>7 // 2</code></td><td>3</td></tr>
+              <tr><td>%</td><td>Resto de la división</td><td><code>7 % 2</code></td><td>1</td></tr>
+              <tr><td>**</td><td>Potencia</td><td><code>2 ** 3</code></td><td>8</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nota">
+          <p><strong>Ojo con los decimales:</strong> en Python, como en inglés, los decimales se escriben con punto y no con coma. Tres y medio se escribe 3.5.</p>
+        </div>
+      </div>
+      <div data-terminal="repl"></div>
+      <div class="nota ok">
+        <p><strong>Ahora en tu computadora:</strong> en la terminal de VS Code escribe <code>python</code> y pulsa Enter. Aparecerá <code>&gt;&gt;&gt;</code>. Repite ahí las misiones. Para salir del modo interactivo escribe <code>exit()</code>.</p>
+      </div>
+    </section>
+
+    <!-- ================= BLOQUE 5 ================= -->
+    <section id="p-descanso" class="bloque descanso" aria-labelledby="t-descanso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <p class="grande" aria-hidden="true">☕</p>
+      <h2 id="t-descanso">Descanso de 10 minutos</h2>
+      <p>Levántate, estira las manos y los hombros, toma agua y descansa la vista.</p>
+      <p>Reto mental: ¿cuánto da 17 // 5 y cuánto da 17 % 5? Compruébalo después del descanso.</p>
+    </section>
+
+    <!-- ================= BLOQUE 6 ================= -->
+    <section id="p-programa" class="bloque" aria-labelledby="t-programa">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-programa">Tu primer programa de verdad</h2>
+      <div class="lectura">
+        <p>El modo interactivo olvida todo al cerrarse. Los programas de verdad se guardan en archivos para usarlos las veces que quieras.</p>
+        <h3>Paso 1: crear el archivo</h3>
+        <p>En VS Code, en el panel izquierdo, pulsa el icono de nuevo archivo y llámalo hola punto p y. La extensión punto p y le dice a la computadora que es un programa de Python.</p>
+        <h3>Paso 2: escribir el código</h3>
+        <p>Copia este código en el archivo y cambia la segunda línea por tu nombre. Luego guarda con Control más S.</p>
+      </div>
+<pre data-copiar># Mi primer programa en Python
+print("¡Hola, mundo!")
+print("Me llamo ____ y estoy aprendiendo Python")
+print("2 + 3 =", 2 + 3)</pre>
+      <div class="lectura">
+        <ul>
+          <li>La línea que empieza con numeral es un comentario: Python la ignora.</li>
+          <li>La función print muestra en pantalla lo que pongas entre paréntesis. Su nombre significa "imprimir".</li>
+          <li>Los textos van entre comillas. En programación se llaman strings.</li>
+          <li>Con una coma puedes mostrar varias cosas juntas, y Python las separa con un espacio.</li>
+        </ul>
+        <h3>Paso 3: ejecutarlo</h3>
+        <p>En la terminal de VS Code escribe este comando y pulsa Enter:</p>
+      </div>
+<pre data-copiar>python hola.py</pre>
+      <p>Deberías ver:</p>
+      <pre class="log">¡Hola, mundo!
+Me llamo ____ y estoy aprendiendo Python
+2 + 3 = 5</pre>
+      <div class="nota">
+        <p><strong>Atajo:</strong> con la extensión de Python instalada, también puedes pulsar el botón ▷ que aparece arriba a la derecha en VS Code.</p>
+      </div>
+
+      <div class="reto">
+        <h4>Reto 1: tarjeta.py</h4>
+        <p>Crea un archivo <code>tarjeta.py</code> que muestre tu tarjeta de presentación en 4 líneas: una línea de adorno, tu nombre, tu ciudad y el curso. Ejemplo de salida:</p>
+        <pre class="log">==== MI TARJETA ====
+Nombre: Ana
+Ciudad: Lima
+Curso: Python</pre>
+      </div>
+      <div class="reto">
+        <h4>Reto 2: tiempo.py</h4>
+        <p>Crea un archivo <code>tiempo.py</code> que calcule, sin escribir los resultados a mano, cuántas horas tiene una semana, cuántos minutos tiene un día y cuántos segundos tiene una hora. Ejemplo de salida:</p>
+        <pre class="log">Horas en una semana: 168
+Minutos en un día: 1440
+Segundos en una hora: 3600</pre>
+        <details class="revelar"><summary>Ver una pista</summary>
+          <p>Usa una coma entre el texto y el cálculo: <code>print("Horas en una semana:", 7 * 24)</code></p>
+        </details>
+      </div>
+
+      <h3>Actividad: predice la salida</h3>
+      <p>Antes de pulsar, piensa qué mostraría Python. Luego compruébalo en tu terminal.</p>
+      <div data-actividad="predice"></div>
+    </section>
+
+    <!-- ================= BLOQUE 7 ================= -->
+    <section id="p-errores" class="bloque" aria-labelledby="t-errores">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-errores">Leer errores en Python</h2>
+      <div class="lectura">
+        <p>Cuando algo falla, Python muestra un mensaje llamado traceback, que significa "rastro". Truco de experto: léelo de abajo hacia arriba. La última línea dice qué tipo de error es y por qué. Las líneas de arriba dicen en qué archivo y en qué línea ocurrió.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Error</th><th>Qué significa</th><th>Ejemplo</th></tr></thead>
+            <tbody>
+              <tr><td>SyntaxError</td><td>Algo está mal escrito: falta una comilla o un paréntesis.</td><td><code>print("Hola)</code></td></tr>
+              <tr><td>NameError</td><td>Usaste un nombre que no existe, casi siempre por escribirlo mal.</td><td><code>prin("Hola")</code></td></tr>
+              <tr><td>IndentationError</td><td>Hay espacios de más o de menos al inicio de una línea.</td><td><code>   print("Hola")</code> con espacios al inicio</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nota alerta">
+          <p><strong>Los espacios importan:</strong> en Python, los espacios al inicio de una línea tienen significado. Por ahora, escribe cada instrucción pegada al borde izquierdo. Más adelante aprenderás cuándo sí se usan.</p>
+        </div>
+      </div>
+      <h3>Actividad: ¿qué error es?</h3>
+      <div data-actividad="errores"></div>
+    </section>
+
+    <!-- ================= BLOQUE 8 ================= -->
+    <section id="p-ingles" class="bloque" aria-labelledby="t-ingles">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-ingles">Inglés técnico del día</h2>
+      <p>Python está lleno de palabras en inglés. Pulsa el altavoz y repítelas.</p>
+      <ul class="vocab">
+        <li data-en="print"><span><span class="en" lang="en">print</span><span class="es">imprimir, mostrar</span><span class="pr">print</span></span></li>
+        <li data-en="string"><span><span class="en" lang="en">string</span><span class="es">texto (cadena)</span><span class="pr">string</span></span></li>
+        <li data-en="integer"><span><span class="en" lang="en">integer</span><span class="es">número entero</span><span class="pr">ín-te-yer</span></span></li>
+        <li data-en="float"><span><span class="en" lang="en">float</span><span class="es">número decimal</span><span class="pr">flóut</span></span></li>
+        <li data-en="type"><span><span class="en" lang="en">type</span><span class="es">tipo</span><span class="pr">táip</span></span></li>
+        <li data-en="file"><span><span class="en" lang="en">file</span><span class="es">archivo</span><span class="pr">fáil</span></span></li>
+        <li data-en="run"><span><span class="en" lang="en">run</span><span class="es">ejecutar</span><span class="pr">ran</span></span></li>
+        <li data-en="syntax"><span><span class="en" lang="en">syntax</span><span class="es">sintaxis (forma de escribir)</span><span class="pr">sín-tax</span></span></li>
+      </ul>
+    </section>
+
+    <!-- ================= BLOQUE 9 ================= -->
+    <section id="p-examen" class="bloque" aria-labelledby="t-examen">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-examen">Examen final</h2>
+      <p>Diez preguntas. Solo cuenta tu primera respuesta.</p>
+      <div data-quiz="examen"></div>
+    </section>
+
+    <!-- ================= CIERRE ================= -->
+    <section id="cierre" class="bloque" aria-labelledby="t-cierre">
+      <p class="kicker">Cierre</p>
+      <h2 id="t-cierre">Mis notas y resumen de la clase</h2>
+      <label for="notas">Escribe tus dudas, y pega aquí lo que mostraron tus programas tarjeta.py y tiempo.py:</label>
+      <textarea id="notas" data-notas="generales" placeholder="Por ejemplo: mi tiempo.py mostró…"></textarea>
+      <p>Cuando termines, pulsa "Generar mi resumen", cópialo y pégalo en el chat. Revisaré tus programas, registraré tu avance y prepararé tus apuntes en Word.</p>
+      <div id="resumen"></div>
+    </section>
+  </main>
+</div>
+
+<p class="pie">Code//Academia · Python · Clase 01</p>
+
+<script>
+window.CLASE = {
+  id: 'py-01',
+  titulo: 'Python · Clase 01: ¿Qué es Python? Instalación y tu primer programa',
+  bloques: [
+    { id: 'p-bienvenida', titulo: 'Bienvenida', min: 5 },
+    { id: 'p-que-es', titulo: '¿Qué es Python?', min: 15 },
+    { id: 'p-instalacion', titulo: 'Prepara tu computadora', min: 15 },
+    { id: 'p-repl', titulo: 'Modo interactivo', min: 20 },
+    { id: 'p-descanso', titulo: 'Descanso', min: 10 },
+    { id: 'p-programa', titulo: 'Tu primer programa', min: 25 },
+    { id: 'p-errores', titulo: 'Leer errores', min: 15 },
+    { id: 'p-ingles', titulo: 'Inglés técnico', min: 5 },
+    { id: 'p-examen', titulo: 'Examen final', min: 10 }
+  ],
+  terminales: {
+    repl: {
+      titulo: 'Python: modo interactivo (simulación)',
+      prompt: '>>>',
+      mayusculas: true,
+      sinEspacios: true,
+      bienvenida: 'Python 3.12 (simulación de práctica)\nEscribe help para ver los ejemplos de esta práctica.',
+      ayuda: 'Ejemplos de esta práctica (escríbelos tal cual):\n  print("Hola, mundo")\n  2 + 3\n  10 / 3\n  10 // 3\n  10 % 3\n  2 ** 10\n  "Hola" * 3\n  type(5)    type(3.5)    type("hola")\n  len("Python")\n  Print("Hola")   ← provoca un error a propósito\n  exit()',
+      error: '💡 Este Python de práctica solo entiende los ejemplos de las misiones (escribe help para verlos).\n   Revisa mayúsculas, comillas y paréntesis. Y prueba «{linea}» en el Python real de tu computadora: ahí puedes escribir lo que quieras.',
+      comandos: {
+        'print("Hola, mundo")': { alias: ["print('Hola, mundo')", 'print("Hola mundo")', 'print("hola, mundo")', 'print("Hola, mundo!")', 'print("¡Hola, mundo!")'], salida: 'Hola, mundo', explica: 'print() muestra en pantalla lo que pongas entre paréntesis. Los textos van entre comillas.' },
+        '2 + 3': { salida: '5', explica: 'En el modo interactivo, Python muestra el resultado directamente, sin necesidad de print.' },
+        '10 / 3': { salida: '3.3333333333333335', explica: 'La división con una barra siempre da un número decimal. El 5 del final es una pequeña imprecisión normal de las computadoras con decimales.' },
+        '10 // 3': { salida: '3', explica: 'Con dos barras es división entera: se queda solo con la parte entera.' },
+        '10 % 3': { salida: '1', explica: 'El % da el resto: 10 entre 3 es 3 y sobra 1.' },
+        '2 ** 10': { salida: '1024', explica: 'Dos asteriscos es potencia: 2 elevado a la 10.' },
+        '"Hola" * 3': { alias: ["'Hola' * 3"], salida: "'HolaHolaHola'", explica: 'Multiplicar un texto lo repite. En el modo interactivo, los textos se muestran entre comillas simples.' },
+        'type(5)': { salida: "<class 'int'>", explica: 'int significa integer: número entero.' },
+        'type(3.5)': { salida: "<class 'float'>", explica: 'float es un número con decimales.' },
+        'type("hola")': { alias: ["type('hola')", 'type("Hola")'], salida: "<class 'str'>", explica: 'str significa string: texto.' },
+        'len("Python")': { alias: ["len('Python')"], salida: '6', explica: 'len() cuenta cuántos caracteres tiene un texto: P-y-t-h-o-n son 6.' },
+        'Print("Hola")': { alias: ["Print('Hola')", 'Print("Hola, mundo")'], salida: 'Traceback (most recent call last):\n  File "<stdin>", line 1, in <module>\nNameError: name \'Print\' is not defined. Did you mean: \'print\'?', explica: 'Python distingue mayúsculas: Print no existe, print sí. Fíjate que el propio error te sugiere la corrección: "Did you mean: print?" significa "¿quisiste decir print?".' },
+        'exit()': { alias: ['exit', 'quit()'], salida: '(Saliste del modo interactivo. En tu computadora volverías a la terminal normal.)' }
+      },
+      misiones: [
+        { texto: 'Muestra "Hola, mundo" con print.', cmd: 'print("Hola, mundo")' },
+        { texto: 'Suma 2 + 3.', cmd: '2 + 3' },
+        { texto: 'Divide 10 / 3 (división normal).', cmd: '10 / 3' },
+        { texto: 'Divide 10 // 3 (división entera).', cmd: '10 // 3' },
+        { texto: 'Calcula 2 elevado a la 10.', cmd: '2 ** 10' },
+        { texto: 'Repite "Hola" 3 veces multiplicándolo.', cmd: '"Hola" * 3' },
+        { texto: 'Pregunta el tipo de dato de 5 con type().', cmd: 'type(5)' },
+        { texto: 'Provoca un error a propósito: escribe Print("Hola") con P mayúscula.', cmd: 'Print("Hola")' }
+      ]
+    }
+  },
+  actividades: {
+    vf: {
+      titulo: 'Verdadero o falso',
+      preguntas: [{ label: 'Esta frase es…', corto: 'Respuesta', opciones: ['Verdadero', 'Falso'] }],
+      items: [
+        { titulo: 'Python se llama así por la serpiente pitón.', respuestas: [['Falso']], pista: 'Repasa de dónde viene el nombre.', explica: 'Viene del grupo de comedia británico Monty Python.' },
+        { titulo: 'Con Python se pueden crear APIs, automatizar tareas y hacer inteligencia artificial.', respuestas: [['Verdadero']], pista: '¿Recuerdas la lista de usos?', explica: 'Python sirve para casi todo, por eso es tan popular.' },
+        { titulo: 'Los archivos de Python terminan en .py', respuestas: [['Verdadero']], pista: 'P de Python, y de…', explica: '.py es la extensión de los programas de Python.' },
+        { titulo: 'El intérprete de Python lee el programa línea por línea y lo ejecuta.', respuestas: [['Verdadero']], pista: '¿Qué significa que Python sea interpretado?', explica: 'Por eso se dice que Python es un lenguaje interpretado.' },
+        { titulo: 'Para aprender Python hay que pagar una licencia.', respuestas: [['Falso']], pista: '¿Pagaste algo cuando se instaló?', explica: 'Python es gratuito y de código abierto.' }
+      ]
+    },
+    predice: {
+      titulo: 'Predice la salida',
+      preguntas: [{ label: '¿Qué muestra Python?', corto: 'Muestra', opciones: [] }],
+      items: [
+        { titulo: 'print("2 + 3")', opciones: [['5', '2 + 3', 'Un error']], respuestas: [['2 + 3']], pista: 'Fíjate en las comillas.', explica: 'Entre comillas es un texto y se muestra tal cual.' },
+        { titulo: 'print(2 + 3)', opciones: [['5', '2 + 3', 'Un error']], respuestas: [['5']], pista: 'Sin comillas son números.', explica: 'Sin comillas, Python calcula.' },
+        { titulo: 'print("Hola" + "Mundo")', opciones: [['Hola Mundo', 'HolaMundo', 'Un error']], respuestas: [['HolaMundo']], pista: 'El + pega los textos tal cual, sin agregar nada.', explica: 'El + une textos sin espacio: HolaMundo.' },
+        { titulo: 'print("Hola", "Mundo")', opciones: [['Hola Mundo', 'HolaMundo', 'Hola, Mundo']], respuestas: [['Hola Mundo']], pista: 'La coma separa cosas distintas dentro de print.', explica: 'Con coma, print separa las partes con un espacio.' },
+        { titulo: 'print(7 / 2)', opciones: [['3', '3.5', '1']], respuestas: [['3.5']], pista: 'Una sola barra siempre da decimal.', explica: 'La división normal da 3.5.' },
+        { titulo: 'print(7 // 2)', opciones: [['3', '3.5', '4']], respuestas: [['3']], pista: 'Dos barras: división entera.', explica: 'La división entera descarta los decimales: 3.' }
+      ]
+    },
+    errores: {
+      titulo: '¿Qué error es?',
+      variante: 'consola',
+      preguntas: [{ label: '¿Qué error mostrará Python?', corto: 'Error', opciones: ['SyntaxError', 'NameError', 'IndentationError'] }],
+      items: [
+        { titulo: 'Código 1', log: 'print("Hola)', respuestas: [['SyntaxError']], pista: '¿Todas las comillas se cierran?', explica: 'Falta la comilla de cierre: está mal escrito (SyntaxError).' },
+        { titulo: 'Código 2', log: 'prin("Hola")', respuestas: [['NameError']], pista: '¿Existe algo llamado "prin"?', explica: 'prin no existe: es un nombre no definido (NameError).' },
+        { titulo: 'Código 3', log: 'print("Hola"', respuestas: [['SyntaxError']], pista: 'Cuenta los paréntesis.', explica: 'El paréntesis nunca se cierra (SyntaxError).' },
+        { titulo: 'Código 4', log: '    print("Hola")', respuestas: [['IndentationError']], pista: 'Mira el inicio de la línea.', explica: 'Los espacios al inicio sin motivo dan IndentationError.' },
+        { titulo: 'Código 5', log: 'mensaje = "hola"\nprint(mesaje)', respuestas: [['NameError']], pista: 'Compara letra por letra los dos nombres.', explica: '"mesaje" está mal escrito: no existe (NameError).' }
+      ]
+    }
+  },
+  quizzes: {
+    examen: {
+      titulo: 'Examen final',
+      preguntas: [
+        { q: '¿Quién creó Python?', opciones: ['Guido van Rossum', 'Bill Gates', 'Mark Zuckerberg'], correcta: 0, explica: 'Guido van Rossum lo publicó en 1991.' },
+        { q: '¿Qué comando muestra la versión de Python instalada?', opciones: ['python --version', 'python --show', 'version python'], correcta: 0, explica: 'python --version (o py --version).' },
+        { q: '¿Qué extensión tienen los archivos de Python?', opciones: ['.js', '.py', '.exe'], correcta: 1, explica: '.py es de Python.' },
+        { q: '¿Qué muestra print(2 + 3)?', opciones: ['2 + 3', '5', 'Un error'], correcta: 1, explica: 'Sin comillas, Python calcula.' },
+        { q: '¿Qué da 7 // 2?', opciones: ['3.5', '3', '4'], correcta: 1, explica: 'División entera: 3.' },
+        { q: '¿Qué da 7 % 2?', opciones: ['1', '3', '3.5'], correcta: 0, explica: 'El resto de 7 entre 2 es 1.' },
+        { q: 'Print("Hola") con P mayúscula…', opciones: ['Funciona igual', 'Da NameError, porque Python distingue mayúsculas'], correcta: 1, explica: 'Print no existe; print sí.' },
+        { q: '¿Con qué símbolo empieza un comentario en Python?', opciones: ['//', '#', '--'], correcta: 1, explica: 'El numeral # inicia un comentario.' },
+        { q: '¿Qué significa ver >>> en la terminal?', opciones: ['Que Python está en modo interactivo esperando una orden', 'Que hay un error', 'Que hay un virus'], correcta: 0, explica: 'Es el modo interactivo. Se sale con exit().' },
+        { q: 'Un traceback se lee mejor…', opciones: ['De arriba hacia abajo', 'De abajo hacia arriba', 'No se lee, se ignora'], correcta: 1, explica: 'La última línea dice el tipo de error y la causa.' }
+      ]
+    }
+  }
+};
+</script>
+<script src="../../../recursos/sync.js"></script>
+<script src="../../../recursos/academia.js"></script>
+</body>
+</html>

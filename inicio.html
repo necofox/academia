@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mi Academia · Menú</title>
+<link rel="stylesheet" href="recursos/academia.css">
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="top">
+  <div class="marca"><span class="logo" aria-hidden="true">&lt;/&gt;</span><span>MI<span class="acento">//</span>ACADEMIA</span></div>
+  <div class="r-item"><span class="r-lab">Hora</span><span id="hora" class="r-val">--:--</span></div>
+</header>
+
+<main id="contenido" class="menu">
+  <div class="portada">
+    <p class="kicker">Menú principal</p>
+    <h1>¿Qué vamos a aprender hoy?</h1>
+    <p class="sub">Elige un curso y luego la clase. Las clases que ya hiciste muestran tu nota.</p>
+  </div>
+
+  <div id="sugerencia" class="sugerencia"></div>
+
+  <h2 id="t-cursos">1. Elige un curso</h2>
+  <ul id="cursos" class="cursos" aria-labelledby="t-cursos"></ul>
+
+  <section id="panel" class="bloque" aria-live="polite">
+    <h2 id="t-clases"></h2>
+    <p id="curso-desc" class="sub"></p>
+    <ol id="clases" class="clases" aria-labelledby="t-clases"></ol>
+  </section>
+
+  <section id="sync" class="bloque sync-panel" aria-labelledby="t-sync">
+    <h2 id="t-sync">☁ Mi avance en todos mis equipos</h2>
+    <p id="sync-estado" role="status"></p>
+    <div id="sync-conectar">
+      <p>Pega tu clave de GitHub (token) <strong>una sola vez en cada equipo</strong>. Así tus exámenes, notas y retos se guardan en tu repositorio privado y se ven igual en todas tus computadoras.</p>
+      <label for="sync-token">Clave de GitHub (token)</label>
+      <input id="sync-token" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…">
+      <div class="acciones"><button id="sync-btn" type="button" class="btn">Conectar este equipo</button></div>
+      <p id="sync-msg" role="status"></p>
+    </div>
+    <div id="sync-conectado" hidden>
+      <div class="acciones">
+        <button id="sync-ahora" type="button" class="btn btn-sec">Guardar ahora</button>
+        <button id="sync-quitar" type="button" class="btn-mini">Desconectar este equipo</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<p class="pie">Abre las clases en Microsoft Edge para escuchar las voces más naturales.</p>
+
+<script src="recursos/catalogo.js"></script>
+<script src="recursos/sync.js"></script>
+<script>
+((window.AcademiaSync && window.AcademiaSync.listo) || Promise.resolve()).then(() => {
+  'use strict';
+  const CAT = window.CATALOGO || [];
+  const leer = (k, d) => { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } };
+  const guardar = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* sin almacenamiento */ } };
+  const el = (tag, attrs, ...kids) => {
+    const e = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs || {})) { if (v === null || v === undefined || v === false) continue; if (k === 'class') e.className = v; else if (k === 'text') e.textContent = v; else e.setAttribute(k, v); }
+    kids.flat().forEach((x) => { if (x !== null && x !== undefined) e.append(x instanceof Node ? x : document.createTextNode(String(x))); });
+    return e;
+  };
+
+  // Estado de una clase según lo que guardó la propia página de la clase
+  function estado(c) {
+    if (!c.archivo) return { tipo: 'prox', texto: 'Próximamente' };
+    const res = leer('academia:' + c.id + ':res', {});
+    const crono = leer('academia:' + c.id + ':crono', null);
+    const examen = res.examen;
+    if (examen) return { tipo: 'hecha', texto: 'Terminada · examen ' + examen.ok + '/' + examen.total };
+    if (crono && (crono.acumulado > 0 || crono.inicio)) return { tipo: 'empezada', texto: 'Empezada · continúa donde te quedaste' };
+    return { tipo: 'nueva', texto: 'Disponible · sin empezar' };
+  }
+
+  const ul = document.getElementById('cursos');
+  const botones = CAT.map((curso) => {
+    const disp = curso.clases.filter((c) => c.archivo).length;
+    const hechas = curso.clases.filter((c) => estado(c).tipo === 'hecha').length;
+    const b = el('button', { type: 'button', class: 'curso-btn ' + curso.tema, 'aria-pressed': 'false', 'aria-controls': 'panel' },
+      el('span', { class: 'icono', 'aria-hidden': 'true', text: curso.icono }),
+      el('span', { class: 'nombre', text: curso.nombre }),
+      el('span', { class: 'desc', text: curso.desc }),
+      el('span', { class: 'datos', text: curso.duracion + ' · ' + disp + ' clase(s) lista(s) · ' + hechas + ' terminada(s)' }));
+    b.addEventListener('click', () => elegir(curso.id, true));
+    ul.append(el('li', {}, b));
+    return { id: curso.id, b };
+  });
+
+  const panel = document.getElementById('panel');
+  function elegir(id, mover) {
+    const curso = CAT.find((c) => c.id === id) || CAT[0];
+    guardar('academia:menu:curso', curso.id);
+    botones.forEach((x) => x.b.setAttribute('aria-pressed', x.id === curso.id ? 'true' : 'false'));
+    panel.className = 'bloque ' + curso.tema;
+    document.getElementById('t-clases').textContent = '2. Elige una clase de ' + curso.nombre;
+    document.getElementById('curso-desc').textContent = curso.desc + ' (' + curso.duracion + ')';
+    const ol = document.getElementById('clases');
+    ol.replaceChildren();
+    curso.clases.forEach((c) => {
+      const est = estado(c);
+      const info = el('div', {}, el('span', { class: 'num', text: 'Clase ' + c.n }), el('strong', { text: c.titulo }), el('span', { class: 'estado', text: est.texto }));
+      const accion = c.archivo
+        ? el('a', { class: 'btn', href: c.archivo }, est.tipo === 'hecha' ? '↺ Repasar' : est.tipo === 'empezada' ? '▶ Continuar' : '▶ Empezar')
+        : el('span', { class: 'estado', text: 'Pídesela a Claude cuando quieras' });
+      ol.append(el('li', { class: 'clase-item' + (c.archivo ? '' : ' prox') }, info, accion));
+    });
+    if (mover) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Sugerencia: la primera clase disponible y no terminada de cada curso con clases listas
+  const sug = document.getElementById('sugerencia');
+  const pendientes = CAT.map((curso) => ({ curso, c: curso.clases.find((c) => c.archivo && estado(c).tipo !== 'hecha') })).filter((x) => x.c);
+  if (pendientes.length) {
+    sug.append(el('h2', { text: 'Para hoy te sugiero' }));
+    const lista = el('div', { class: 'acciones' });
+    pendientes.forEach(({ curso, c }) => lista.append(el('a', { class: 'btn btn-sec ' + curso.tema, href: c.archivo }, curso.icono + ' ' + curso.nombre + ' · Clase ' + c.n)));
+    sug.append(lista);
+  }
+
+  elegir(leer('academia:menu:curso', CAT[0] && CAT[0].id), false);
+
+  const hora = document.getElementById('hora');
+  const tick = () => { hora.textContent = new Date().toLocaleTimeString('es', { hour: '2-digit', minute: '2-digit' }); };
+  tick(); setInterval(tick, 15000);
+
+  // Panel de sincronización con GitHub
+  const S = window.AcademiaSync;
+  const est = document.getElementById('sync-estado');
+  const bloqueConectar = document.getElementById('sync-conectar');
+  const bloqueConectado = document.getElementById('sync-conectado');
+  const msg = document.getElementById('sync-msg');
+  const pintarSync = () => {
+    const d = S && S.ultimoEstado();
+    est.textContent = S ? (d ? d.texto : '') + (S.conectado() ? ' · Repositorio privado: ' + S.repo : '') : 'La sincronización no está disponible.';
+    bloqueConectar.hidden = !S || S.conectado();
+    bloqueConectado.hidden = !S || !S.conectado();
+  };
+  document.addEventListener('academia-sync', pintarSync);
+  pintarSync();
+  if (S) {
+    const inp = document.getElementById('sync-token');
+    const btn = document.getElementById('sync-btn');
+    btn.addEventListener('click', async () => {
+      btn.disabled = true; msg.textContent = 'Comprobando la clave…';
+      const r = await S.conectar(inp.value);
+      msg.textContent = r.mensaje; btn.disabled = false;
+      if (r.ok) { inp.value = ''; setTimeout(() => location.reload(), 1200); }
+    });
+    document.getElementById('sync-ahora').addEventListener('click', () => S.subirAhora());
+    document.getElementById('sync-quitar').addEventListener('click', () => {
+      if (window.confirm('¿Desconectar este equipo? Tu avance seguirá guardado en GitHub y en este navegador.')) { S.desconectar(); pintarSync(); }
+    });
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clase 01 · ¿Qué es la ciberseguridad?</title>
+<link rel="stylesheet" href="../../../recursos/academia.css">
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="top">
+  <div class="marca"><span class="logo" aria-hidden="true">&lt;/&gt;</span><span>CYBER<span class="acento">//</span>ACADEMIA</span></div>
+  <div id="reloj" class="reloj-zona"></div>
+  <div id="voz"></div>
+  <a class="btn-mini" href="../../../inicio.html">☰ Menú</a>
+</header>
+
+<div class="layout">
+  <nav id="agenda" class="agenda" aria-label="Agenda de la clase"></nav>
+
+  <main id="contenido">
+    <div class="portada">
+      <p class="kicker">Nivel 0 · Fundamentos · Clase 01</p>
+      <h1>¿Qué es la ciberseguridad?</h1>
+      <p class="sub">La tríada CIA, los conceptos básicos que usa todo analista y tu primer turno en un SOC. Duración: 2 horas.</p>
+    </div>
+
+    <!-- ================= BLOQUE 1 ================= -->
+    <section id="b-bienvenida" class="bloque" aria-labelledby="t-bienvenida">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-bienvenida">Bienvenida y cómo usar esta clase</h2>
+      <div class="lectura">
+        <p>¡Hola! Bienvenido a tu primera clase de ciberseguridad. En las próximas dos horas vas a aprender qué es la ciberseguridad, cuáles son sus tres pilares y cómo piensa un analista cuando aparece un problema.</p>
+        <h3>Al terminar esta clase podrás:</h3>
+        <ul>
+          <li>Explicar con tus palabras qué es la ciberseguridad.</li>
+          <li>Diferenciar un activo, una vulnerabilidad y una amenaza.</li>
+          <li>Usar la tríada CIA para clasificar cualquier incidente.</li>
+          <li>Revisar alertas como lo hace un analista en un SOC.</li>
+        </ul>
+        <h3>Cómo funciona esta página</h3>
+        <ul>
+          <li>Arriba tienes el reloj. Pulsa "Iniciar clase" y te avisará cuando toque cambiar de bloque.</li>
+          <li>En cada parte de teoría hay un botón "Escuchar esta parte": una voz te lee la explicación mientras el texto se resalta.</li>
+          <li>En "Ajustes de voz" puedes elegir la voz y la velocidad. Abre la página en Microsoft Edge para tener las voces más naturales.</li>
+          <li>Las actividades te dan una pista si fallas. Si vuelves a fallar, te muestran la respuesta explicada.</li>
+          <li>Al final generas un resumen y me lo pegas en el chat para que registre tu avance.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= BLOQUE 2 ================= -->
+    <section id="b-que-es" class="bloque" aria-labelledby="t-que-es">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-que-es">¿Qué es la ciberseguridad?</h2>
+      <div class="lectura">
+        <p>Piensa en tu casa. Le pones puertas con llave para que no entre cualquiera. No quieres que nadie mueva ni rompa tus cosas. Y quieres poder entrar tú cuando lo necesites. Eso es seguridad.</p>
+        <p>La ciberseguridad es exactamente lo mismo, pero con información y sistemas: computadoras, celulares, cuentas, redes, páginas web y servidores.</p>
+        <div class="nota ok">
+          <p><strong>Definición:</strong> la ciberseguridad es proteger la información y los sistemas para que solo los vean las personas autorizadas, nadie los altere sin permiso y siempre funcionen cuando se necesitan.</p>
+        </div>
+
+        <h3>¿Por qué es tan importante hoy?</h3>
+        <p>Casi todo en tu vida es digital: tu cuenta del banco, tus fotos, tu historia clínica, tus notas de la universidad, tu WhatsApp. Si alguien ataca esos sistemas, el daño es real: pierdes dinero, se publican tus datos o un hospital deja de atender pacientes.</p>
+        <p>Por eso las empresas necesitan personas que vigilen y defiendan sus sistemas las 24 horas. Ese es el trabajo de un analista de ciberseguridad, y es justo lo que vas a aprender.</p>
+
+        <h3>¿Quién ataca y por qué?</h3>
+        <ul>
+          <li><strong>Ciberdelincuentes:</strong> buscan dinero. Roban tarjetas, secuestran archivos y piden rescate.</li>
+          <li><strong>Espías de gobiernos:</strong> buscan secretos de otros países o empresas.</li>
+          <li><strong>Hacktivistas:</strong> atacan para protestar por una causa política o social.</li>
+          <li><strong>Personas de dentro (insiders):</strong> empleados molestos o descuidados que dañan a su propia empresa.</li>
+          <li><strong>Curiosos y principiantes:</strong> usan herramientas ya hechas solo para "probar" o presumir.</li>
+        </ul>
+
+        <h3>Cuatro palabras que usarás todos los días</h3>
+        <p>Volvamos a la casa para entenderlas.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Concepto</th><th>Qué es</th><th>En la casa</th><th>En una empresa</th></tr></thead>
+            <tbody>
+              <tr><td>Activo</td><td>Algo valioso que hay que proteger</td><td>Tu televisor, tus joyas</td><td>La base de datos de clientes</td></tr>
+              <tr><td>Vulnerabilidad</td><td>Una debilidad que se puede aprovechar</td><td>Una ventana que no cierra</td><td>Un Windows sin actualizar</td></tr>
+              <tr><td>Amenaza</td><td>Algo o alguien que puede causar daño</td><td>Un ladrón</td><td>Un grupo de ransomware</td></tr>
+              <tr><td>Riesgo</td><td>La probabilidad de que la amenaza aproveche la debilidad, y cuánto daño haría</td><td>Que el ladrón entre por la ventana y se lleve el televisor</td><td>Que el ransomware entre por ese Windows y bloquee los datos</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nota">
+          <p><strong>Truco:</strong> la amenaza viene de afuera (el ladrón), la vulnerabilidad es tuya (la ventana rota). Tú no puedes eliminar a todos los ladrones del mundo, pero sí puedes arreglar tu ventana. Por eso la mayor parte del trabajo de seguridad es reducir vulnerabilidades.</p>
+        </div>
+      </div>
+
+      <h3>Actividad: ¿activo, vulnerabilidad o amenaza?</h3>
+      <div data-actividad="conceptos"></div>
+    </section>
+
+    <!-- ================= BLOQUE 3 ================= -->
+    <section id="b-cia" class="bloque" aria-labelledby="t-cia">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-cia">La tríada CIA a fondo</h2>
+      <div class="lectura">
+        <p>Toda la ciberseguridad descansa sobre tres pilares. En inglés se llaman <span lang="en">Confidentiality</span>, <span lang="en">Integrity</span> y <span lang="en">Availability</span>, y por sus iniciales se conocen como la tríada CIA. No tiene nada que ver con la agencia de espías.</p>
+        <p data-decir="Para recordarla: C es ver. I es cambiar. A es funcionar.">Para recordarla: <strong>C = ver · I = cambiar · A = funcionar.</strong></p>
+
+        <div class="grid-cards">
+          <div class="card">
+            <div class="letra" aria-hidden="true">C</div>
+            <h4>Confidencialidad</h4>
+            <p>Solo quien debe puede ver la información.</p>
+            <p><strong>Analogía:</strong> una carta dentro de un sobre cerrado.</p>
+            <p><strong>Ataques:</strong> robo de contraseñas, filtración de datos, espiar una red WiFi.</p>
+            <p><strong>Defensas:</strong> contraseñas, cifrado, permisos, MFA.</p>
+          </div>
+          <div class="card">
+            <div class="letra" aria-hidden="true">I</div>
+            <h4>Integridad</h4>
+            <p>Nadie puede cambiar la información sin permiso, y si alguien la cambia, se nota.</p>
+            <p><strong>Analogía:</strong> un documento firmado y sellado por un notario.</p>
+            <p><strong>Ataques:</strong> cambiar una nota, modificar una factura, alterar una transferencia.</p>
+            <p><strong>Defensas:</strong> firmas digitales, hashes, control de cambios, registros de auditoría.</p>
+          </div>
+          <div class="card">
+            <div class="letra" aria-hidden="true">A</div>
+            <h4>Disponibilidad</h4>
+            <p>La información y los sistemas funcionan cuando se necesitan.</p>
+            <p><strong>Analogía:</strong> un cajero automático que siempre entrega dinero.</p>
+            <p><strong>Ataques:</strong> DDoS, ransomware, cortes de energía, borrar datos.</p>
+            <p><strong>Defensas:</strong> copias de seguridad (backups), servidores de respaldo, protección anti-DDoS.</p>
+          </div>
+        </div>
+
+        <h3>Palabras nuevas de este bloque</h3>
+        <ul>
+          <li><strong>Cifrado:</strong> convertir la información en algo ilegible para quien no tenga la clave. Protege la C.</li>
+          <li><strong>Hash:</strong> una "huella digital" de un archivo. Si cambias una sola letra, la huella cambia por completo. Protege la I.</li>
+          <li><strong>MFA (autenticación multifactor):</strong> entrar con dos pruebas, por ejemplo tu contraseña y un código en el celular. Protege la C.</li>
+          <li><strong>DDoS:</strong> saturar un servicio con muchísimas peticiones falsas hasta tumbarlo. Ataca la A.</li>
+          <li><strong>Ransomware:</strong> programa que bloquea (cifra) tus archivos y pide dinero por liberarlos. Ataca la A, y muchas veces también la I y la C.</li>
+          <li><strong>Backup:</strong> copia de seguridad de tus datos. Es la mejor defensa de la A.</li>
+        </ul>
+
+        <h3>El equilibrio de la CIA</h3>
+        <p>Las tres letras compiten entre sí. Si pones demasiada seguridad, por ejemplo veinte contraseñas distintas para abrir un archivo, proteges muchísimo la confidencialidad, pero la disponibilidad sufre: nadie puede trabajar. Un buen analista busca el equilibrio según lo que la empresa necesita.</p>
+        <p>Un hospital, por ejemplo, prioriza la disponibilidad: un médico debe ver la historia clínica de inmediato en una emergencia. Un banco prioriza la integridad: un cero de más en una transferencia es un desastre.</p>
+
+        <div class="nota alerta">
+          <p><strong>Ojo:</strong> en la vida real un ataque casi nunca afecta una sola letra. Un ransomware moderno bloquea los archivos (A), los modifica (I) y además los roba para amenazar con publicarlos (C). A esto se le llama doble extorsión.</p>
+        </div>
+
+        <h3>Dos pilares extra que oirás pronto</h3>
+        <ul>
+          <li><strong>Autenticidad:</strong> estar seguro de que alguien es quien dice ser. Por ejemplo, que el correo realmente lo envió tu banco.</li>
+          <li><strong>No repudio:</strong> que alguien no pueda negar que hizo algo. Por ejemplo, una firma digital demuestra quién firmó un contrato.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= BLOQUE 4 ================= -->
+    <section id="b-casos" class="bloque" aria-labelledby="t-casos">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-casos">Casos reales que cambiaron la historia</h2>
+      <div class="lectura">
+        <p>Estos ataques ocurrieron de verdad. Lee cada caso, piensa qué letra de la CIA se afectó y luego abre la respuesta para comprobarlo.</p>
+        <div class="grid-cards">
+          <div class="card">
+            <p class="anio">2017 · Mundial</p>
+            <h4>WannaCry</h4>
+            <p>Un ransomware se extendió solo por cientos de miles de computadoras en unos 150 países. Hospitales del Reino Unido tuvieron que cancelar citas y desviar ambulancias.</p>
+            <details class="revelar no-leer"><summary>Ver respuesta</summary>
+              <p><strong>A (Disponibilidad)</strong>, y también la I. Entró por una falla de Windows que ya tenía parche desde hacía dos meses. Lección: actualizar a tiempo.</p></details>
+          </div>
+          <div class="card">
+            <p class="anio">2017 · Estados Unidos</p>
+            <h4>Equifax</h4>
+            <p>Una de las mayores agencias de crédito sufrió el robo de datos personales de unos 147 millones de personas: nombres, números de identificación y fechas de nacimiento.</p>
+            <details class="revelar no-leer"><summary>Ver respuesta</summary>
+              <p><strong>C (Confidencialidad).</strong> Los atacantes aprovecharon un servidor web sin actualizar. Otra vez: los parches importan.</p></details>
+          </div>
+          <div class="card">
+            <p class="anio">2021 · Estados Unidos</p>
+            <h4>Colonial Pipeline</h4>
+            <p>Un ransomware obligó a detener el oleoducto de combustible más grande de la costa este. Hubo escasez de gasolina durante varios días y la empresa pagó millones de dólares de rescate.</p>
+            <details class="revelar no-leer"><summary>Ver respuesta</summary>
+              <p><strong>A (Disponibilidad).</strong> Se informó que los atacantes entraron con una contraseña robada de una cuenta sin MFA. Lección: activar la autenticación multifactor.</p></details>
+          </div>
+          <div class="card">
+            <p class="anio">2010 · Irán</p>
+            <h4>Stuxnet</h4>
+            <p>Un malware muy sofisticado cambió en secreto la velocidad de las centrifugadoras de una planta nuclear mientras mostraba a los operadores que todo estaba normal.</p>
+            <details class="revelar no-leer"><summary>Ver respuesta</summary>
+              <p><strong>I (Integridad).</strong> Los datos y las órdenes fueron alterados sin que nadie lo notara. Demostró que un ciberataque puede causar daño físico.</p></details>
+          </div>
+          <div class="card">
+            <p class="anio">2016 · Mundial</p>
+            <h4>Ataque a Dyn (botnet Mirai)</h4>
+            <p>Miles de cámaras y routers domésticos infectados atacaron a la vez a un proveedor de DNS. Sitios como Twitter y Netflix quedaron inaccesibles durante horas en muchos países.</p>
+            <details class="revelar no-leer"><summary>Ver respuesta</summary>
+              <p><strong>A (Disponibilidad).</strong> Fue un DDoS. Los dispositivos fueron infectados porque tenían las contraseñas de fábrica. Lección: cambiar siempre las contraseñas por defecto.</p></details>
+          </div>
+          <div class="card">
+            <p class="anio">2013 · Mundial</p>
+            <h4>Yahoo</h4>
+            <p>Robaron información de las 3 000 millones de cuentas de Yahoo. Se supo años después, en 2016 y 2017.</p>
+            <details class="revelar no-leer"><summary>Ver respuesta</summary>
+              <p><strong>C (Confidencialidad).</strong> Además muestra otro problema: tardar años en detectar un ataque. Detectar rápido es el trabajo del SOC.</p></details>
+          </div>
+        </div>
+        <div class="nota">
+          <p><strong>¿Notaste el patrón?</strong> Casi todos estos ataques se pudieron evitar con cosas básicas: actualizar los sistemas, usar MFA y cambiar las contraseñas de fábrica. La ciberseguridad empieza por lo básico bien hecho.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BLOQUE 5 ================= -->
+    <section id="b-descanso" class="bloque descanso" aria-labelledby="t-descanso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <p class="grande" aria-hidden="true">☕</p>
+      <h2 id="t-descanso">Descanso de 10 minutos</h2>
+      <p>Levántate, toma agua y descansa la vista. Mira algo lejano durante 20 segundos.</p>
+      <p>Reto mental: ¿qué letra de la CIA se afectaría si se cae WhatsApp en todo el mundo?</p>
+    </section>
+
+    <!-- ================= BLOQUE 6 ================= -->
+    <section id="b-clasifica" class="bloque" aria-labelledby="t-clasifica">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-clasifica">Práctica: clasifica 12 casos</h2>
+      <p>Para cada caso marca qué letra de la CIA se afectó. Algunos casos afectan más de una. Si fallas, primero recibirás una pista.</p>
+      <div data-actividad="cia"></div>
+    </section>
+
+    <!-- ================= BLOQUE 7 ================= -->
+    <section id="b-soc" class="bloque" aria-labelledby="t-soc">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-soc">Simulación: turno nocturno en el SOC</h2>
+      <div class="lectura">
+        <p>Un SOC, o centro de operaciones de seguridad, es el equipo que vigila los sistemas de una empresa las 24 horas. Cuando algo raro pasa, las herramientas generan una alerta y un analista la revisa.</p>
+        <p>Son las dos de la madrugada y estás de turno. Llegan seis alertas. Lee el registro de cada una, decide qué parte de la CIA está en riesgo y elige la mejor primera acción.</p>
+        <div class="nota">
+          <p><strong>Cómo leer un registro (log):</strong> cada línea empieza con la hora, luego el sistema que la generó y después el detalle. No te asustes por el texto técnico: busca palabras clave como FAIL (fallo), SUCCESS (éxito), ALERT (alerta) o los números que se ven anormales.</p>
+        </div>
+      </div>
+      <div data-actividad="soc"></div>
+    </section>
+
+    <!-- ================= BLOQUE 8 ================= -->
+    <section id="b-ingles" class="bloque" aria-labelledby="t-ingles">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-ingles">Inglés técnico del día</h2>
+      <p>Pulsa el altavoz para escuchar cada palabra. Repítela en voz alta tres veces.</p>
+      <ul class="vocab">
+        <li data-en="security"><span><span class="en">security</span><span class="es">seguridad</span><span class="pr">se-kiú-ri-ti</span></span></li>
+        <li data-en="password"><span><span class="en">password</span><span class="es">contraseña</span><span class="pr">pás-uord</span></span></li>
+        <li data-en="attack"><span><span class="en">attack</span><span class="es">ataque</span><span class="pr">a-ták</span></span></li>
+        <li data-en="threat"><span><span class="en">threat</span><span class="es">amenaza</span><span class="pr">zret</span></span></li>
+        <li data-en="data"><span><span class="en">data</span><span class="es">datos</span><span class="pr">déi-ta</span></span></li>
+        <li data-en="user"><span><span class="en">user</span><span class="es">usuario</span><span class="pr">iú-ser</span></span></li>
+        <li data-en="backup"><span><span class="en">backup</span><span class="es">copia de seguridad</span><span class="pr">bák-ap</span></span></li>
+        <li data-en="alert"><span><span class="en">alert</span><span class="es">alerta</span><span class="pr">a-lért</span></span></li>
+      </ul>
+      <p>Frase completa: <span data-en="The attacker stole the password.">The attacker stole the password. <em>(El atacante robó la contraseña.)</em> </span></p>
+    </section>
+
+    <!-- ================= BLOQUE 9 ================= -->
+    <section id="b-examen" class="bloque" aria-labelledby="t-examen">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-examen">Examen final</h2>
+      <p>Diez preguntas. Solo cuenta tu primera respuesta, así que piensa antes de pulsar.</p>
+      <div data-quiz="examen"></div>
+    </section>
+
+    <!-- ================= CIERRE ================= -->
+    <section id="cierre" class="bloque" aria-labelledby="t-cierre">
+      <p class="kicker">Cierre</p>
+      <h2 id="t-cierre">Mis notas y resumen de la clase</h2>
+      <label for="notas">Escribe aquí tus dudas o lo que más te costó:</label>
+      <textarea id="notas" data-notas="generales" placeholder="Por ejemplo: no entendí bien la diferencia entre amenaza y vulnerabilidad…"></textarea>
+      <p>Cuando termines, pulsa "Generar mi resumen", cópialo y pégalo en el chat. Así registro tu avance y te preparo los apuntes en Word.</p>
+      <div id="resumen"></div>
+    </section>
+  </main>
+</div>
+
+<p class="pie">Cyber//Academia · Clase 01 · Todas las prácticas usan datos ficticios.</p>
+
+<script>
+window.CLASE = {
+  id: 'ciber-01',
+  titulo: 'Ciberseguridad · Clase 01: ¿Qué es la ciberseguridad?',
+  bloques: [
+    { id: 'b-bienvenida', titulo: 'Bienvenida', min: 5 },
+    { id: 'b-que-es', titulo: '¿Qué es la ciberseguridad?', min: 20 },
+    { id: 'b-cia', titulo: 'La tríada CIA a fondo', min: 20 },
+    { id: 'b-casos', titulo: 'Casos reales', min: 15 },
+    { id: 'b-descanso', titulo: 'Descanso', min: 10 },
+    { id: 'b-clasifica', titulo: 'Clasifica 12 casos', min: 15 },
+    { id: 'b-soc', titulo: 'Simulación SOC', min: 20 },
+    { id: 'b-ingles', titulo: 'Inglés técnico', min: 5 },
+    { id: 'b-examen', titulo: 'Examen final', min: 10 }
+  ],
+  actividades: {
+    conceptos: {
+      titulo: 'Activo, vulnerabilidad o amenaza',
+      preguntas: [{ label: '¿Qué es?', corto: 'Respuesta', opciones: ['Activo', 'Vulnerabilidad', 'Amenaza'] }],
+      items: [
+        { titulo: 'La base de datos de clientes de una tienda', respuestas: [['Activo']], pista: '¿Es algo valioso que hay que cuidar, una debilidad o alguien que ataca?', explica: 'Es información valiosa para la empresa: un activo.' },
+        { titulo: 'Un empleado que usa la contraseña 123456', respuestas: [['Vulnerabilidad']], pista: 'No es el atacante… es algo que facilita el ataque.', explica: 'Una contraseña débil es una debilidad que un atacante puede aprovechar.' },
+        { titulo: 'Un grupo criminal que envía ransomware', respuestas: [['Amenaza']], pista: '¿Es la ventana rota o es el ladrón?', explica: 'Es quien puede causar el daño: una amenaza.' },
+        { titulo: 'Un Windows sin actualizar desde hace 2 años', respuestas: [['Vulnerabilidad']], pista: 'Recuerda WannaCry y Equifax.', explica: 'Un sistema sin parches tiene fallas conocidas: es una vulnerabilidad.' },
+        { titulo: 'El celular de la empresa con los correos del gerente', respuestas: [['Activo']], pista: '¿Contiene algo que hay que proteger?', explica: 'El equipo y la información que guarda son activos.' },
+        { titulo: 'Un correo falso que intenta robar contraseñas (phishing)', respuestas: [['Amenaza']], pista: '¿Es una debilidad tuya o algo que viene de afuera a hacer daño?', explica: 'El phishing viene de afuera a causar daño: es una amenaza.' },
+        { titulo: 'La puerta del cuarto de servidores que no cierra bien', respuestas: [['Vulnerabilidad']], pista: 'Piensa en la ventana que no cierra de la casa.', explica: 'Es una debilidad física: una vulnerabilidad.' },
+        { titulo: 'Un incendio en la oficina', respuestas: [['Amenaza']], pista: 'Las amenazas no siempre son personas.', explica: 'Los desastres naturales o accidentes también son amenazas.' }
+      ]
+    },
+    cia: {
+      titulo: 'Clasifica 12 casos (CIA)',
+      preguntas: [{ label: '¿Qué se afectó?', corto: 'CIA', opciones: ['C', 'I', 'A'], multiple: true }],
+      items: [
+        { titulo: 'Un hacker publica en internet las fotos privadas de una cuenta en la nube.', respuestas: [['C']], pista: 'Gente sin permiso ahora puede… ¿ver, cambiar o usar?', explica: 'Gente sin permiso puede verlas: Confidencialidad.' },
+        { titulo: 'Un virus cambia los números de cuenta en las facturas que envía una empresa.', respuestas: [['I']], pista: 'La información sigue ahí, pero ¿es la correcta?', explica: 'La información fue modificada sin permiso: Integridad.' },
+        { titulo: 'Se corta la luz del centro de datos y el sistema del banco no funciona por 5 horas.', respuestas: [['A']], pista: 'Nadie robó ni cambió nada… pero algo no se puede usar.', explica: 'El sistema dejó de funcionar: Disponibilidad. No todo problema de A es un ataque.' },
+        { titulo: 'Un empleado curioso revisa las historias clínicas de famosos sin necesitarlo para su trabajo.', respuestas: [['C']], pista: 'Él tiene acceso, pero ¿debería estar viendo eso?', explica: 'Vio información que no le correspondía: Confidencialidad (amenaza interna).' },
+        { titulo: 'Un atacante cambia la página principal de un ministerio y pone un mensaje burlón.', respuestas: [['I']], pista: 'La página sigue funcionando, pero su contenido…', explica: 'El contenido fue alterado: Integridad. A esto se le llama "defacement".' },
+        { titulo: 'Un ransomware cifra los servidores de un hospital y amenaza con publicar los datos de pacientes.', respuestas: [['C', 'I', 'A']], pista: 'Recuerda la "doble extorsión".', explica: 'Las tres: no pueden usar los datos (A), fueron modificados (I) y los robaron (C).' },
+        { titulo: 'Alguien espía la red WiFi pública de un café y captura contraseñas que viajan sin cifrar.', respuestas: [['C']], pista: '¿Qué defensa faltó? Esa defensa protege una letra concreta.', explica: 'Faltó cifrado y alguien vio las contraseñas: Confidencialidad.' },
+        { titulo: 'Una app de delivery se cae en plena hora de almuerzo por millones de peticiones falsas.', respuestas: [['A']], pista: 'Millones de peticiones falsas = un ataque con nombre de tres letras.', explica: 'Es un DDoS: Disponibilidad.' },
+        { titulo: 'Un alumno entra al sistema y se pone 20 en todos los cursos.', respuestas: [['I']], pista: '¿Las notas siguen siendo las correctas?', explica: 'Los datos fueron cambiados sin permiso: Integridad.' },
+        { titulo: 'Encuentran en la basura documentos impresos con datos de tarjetas de clientes.', respuestas: [['C']], pista: 'La seguridad también es física. ¿Quién puede verlos ahora?', explica: 'Cualquiera puede ver esos datos: Confidencialidad.' },
+        { titulo: 'El servidor de correo se llena y nadie puede enviar ni recibir mensajes durante un día.', respuestas: [['A']], pista: 'Nadie robó ni cambió nada.', explica: 'El servicio no está disponible: Disponibilidad.' },
+        { titulo: 'Un atacante cambia la dirección de entrega de pedidos online para robar los paquetes.', respuestas: [['I']], pista: 'El pedido existe, pero un dato fue…', explica: 'Modificó datos del pedido: Integridad.' }
+      ]
+    },
+    soc: {
+      titulo: 'Simulación: turno nocturno en el SOC',
+      variante: 'consola',
+      preguntas: [
+        { label: '¿Qué parte de la CIA está en riesgo?', corto: 'CIA', opciones: ['C', 'I', 'A'], multiple: true },
+        { label: '¿Cuál es la mejor primera acción?', corto: 'Acción', columna: true, opciones: [] }
+      ],
+      items: [
+        {
+          etiqueta: 'ALTA', nivel: 'alta', titulo: 'Tráfico anormal hacia la tienda online', meta: '02:14 · Fuente: firewall perimetral',
+          log: '02:14:03 FW-01  ALERT  peticiones=1 245 000 por minuto  destino=tienda.empresa.local:443\n02:14:03 FW-01  INFO   IPs de origen distintas=4 012  rango principal=203.0.113.0/24\n02:14:05 WEB-01 WARN   tiempo de respuesta=28,4 s  estado=503 Service Unavailable',
+          opciones: [null, ['Apagar el servidor web para siempre', 'Activar la protección anti-DDoS y avisar al proveedor de internet', 'Ignorarla: seguro son muchos clientes comprando']],
+          respuestas: [['A'], ['Activar la protección anti-DDoS y avisar al proveedor de internet']],
+          pista: 'Más de un millón de peticiones por minuto desde miles de IPs, y la web responde "503: servicio no disponible".',
+          explica: 'Es un DDoS contra la Disponibilidad. Se activa la protección anti-DDoS y se pide ayuda al proveedor para filtrar el tráfico. Apagar el servidor le da al atacante justo lo que quiere.'
+        },
+        {
+          etiqueta: 'MEDIA', nivel: 'media', titulo: 'Archivo de sueldos enviado a un correo personal', meta: '02:31 · Fuente: filtro de correo (DLP)',
+          log: '02:31:47 MAIL-GW  DLP_MATCH  regla="Datos de nómina"\n  de=jperez@empresa.local\n  para=juanito.perez1990@correo-gratis.example\n  adjunto=planilla_sueldos_2026.xlsx (2,3 MB)\n  acción=ENTREGADO',
+          opciones: [null, ['Borrar la cuenta del empleado sin preguntar', 'Registrar el caso y escalarlo para investigarlo con su jefe y Recursos Humanos', 'Reenviar el archivo al gerente para que lo revise']],
+          respuestas: [['C'], ['Registrar el caso y escalarlo para investigarlo con su jefe y Recursos Humanos']],
+          pista: 'Los sueldos salieron de la empresa hacia un correo personal. ¿Quién puede verlos ahora? ¿Sabes ya si fue por error o a propósito?',
+          explica: 'Riesgo para la Confidencialidad. DLP significa prevención de fuga de datos. Puede ser un error o algo malicioso: primero se investiga y se escala. Reenviar el archivo lo expone todavía más.'
+        },
+        {
+          etiqueta: 'ALTA', nivel: 'alta', titulo: 'Nota cambiada en la base de datos', meta: '02:47 · Fuente: auditoría de la base de datos',
+          log: "02:47:12 DB-NOTAS  AUDIT  usuario=practicante02  equipo=PC-LAB-07\n  UPDATE notas SET nota = 20 WHERE alumno_id = 4471 AND curso = 'Matemática'\n  valor_anterior=09  valor_nuevo=20",
+          opciones: [null, ['Revisar quién hizo el cambio y restaurar el valor correcto desde el respaldo', 'Dejarlo así: la nota ya está puesta', 'Borrar toda la base de datos para empezar de cero']],
+          respuestas: [['I'], ['Revisar quién hizo el cambio y restaurar el valor correcto desde el respaldo']],
+          pista: 'Un 09 se convirtió en 20 a las 2:47 de la madrugada, hecho por un practicante.',
+          explica: 'Ataque a la Integridad: un dato fue modificado sin autorización. Se investiga al usuario, se restaura el valor real y se revisan sus permisos. ¿Por qué un practicante puede cambiar notas?'
+        },
+        {
+          etiqueta: 'CRÍTICA', nivel: 'critica', titulo: 'Archivos renombrados en masa en el servidor', meta: '03:05 · Fuente: EDR (antivirus avanzado)',
+          log: '03:05:40 EDR  SRV-ARCHIVOS  proceso=update_svc.exe  usuario=SYSTEM\n  archivos modificados=18 442 en 4 minutos\n  nueva extensión=.locked\n  archivo creado=\\\\SRV-ARCHIVOS\\Compartido\\LEEME_RESCATE.txt',
+          opciones: [null, ['Aislar el servidor de la red de inmediato', 'Pagar el rescate rápido para recuperar los archivos', 'Esperar a la mañana para avisar al jefe']],
+          respuestas: [['C', 'I', 'A'], ['Aislar el servidor de la red de inmediato']],
+          pista: 'Miles de archivos con extensión ".locked" y una nota de rescate. Recuerda la doble extorsión.',
+          explica: 'Es ransomware: afecta las tres letras. Lo primero es aislar el equipo para que no se propague a otros. Pagar no garantiza nada y financia a los criminales. Esperar es lo peor: cada minuto cifra más archivos.'
+        },
+        {
+          etiqueta: 'ALTA', nivel: 'alta', titulo: 'Cuenta del gerente: muchos fallos y luego acceso', meta: '03:20 · Fuente: registro de inicios de sesión',
+          log: '03:02:11 AUTH  FAIL     usuario=gerente  origen=198.51.100.23 (país extranjero)\n  … 247 intentos fallidos más …\n03:19:58 AUTH  FAIL     usuario=gerente  origen=198.51.100.23\n03:20:04 AUTH  SUCCESS  usuario=gerente  origen=198.51.100.23  mfa=no',
+          opciones: [null, ['Bloquear la cuenta, cerrar sus sesiones y cambiar la contraseña activando MFA', 'Felicitar al gerente por trabajar de madrugada', 'Borrar los registros para que no se vea el problema']],
+          respuestas: [['C'], ['Bloquear la cuenta, cerrar sus sesiones y cambiar la contraseña activando MFA']],
+          pista: 'Casi 250 fallos seguidos desde otro país y luego un SUCCESS sin MFA.',
+          explica: 'Es un ataque de fuerza bruta que tuvo éxito: alguien ya puede ver todo lo del gerente (Confidencialidad). Se bloquea la cuenta y se activa MFA. Borrar registros jamás: son la evidencia.'
+        },
+        {
+          etiqueta: 'BAJA', nivel: 'baja', titulo: 'La copia de seguridad nocturna falló', meta: '03:40 · Fuente: sistema de backups',
+          log: '01:00:00 BACKUP  tarea=nocturna_servidores  estado=FAILED (disco de destino lleno)\nhistorial: 08/11 FAILED · 09/11 FAILED · 10/11 FAILED',
+          opciones: [null, ['Ignorarla: no es un ataque', 'Crear un ticket para que TI la arregle hoy mismo', 'Apagar todos los servidores por precaución']],
+          respuestas: [['A'], ['Crear un ticket para que TI la arregle hoy mismo']],
+          pista: 'No es un ataque… pero ¿qué pasaría si mañana llega un ransomware y no hay copia?',
+          explica: 'No todas las alertas son ataques, pero esta pone en riesgo la Disponibilidad: sin backups no hay forma de recuperarse. ¡Justo esta noche hubo un ransomware!'
+        }
+      ]
+    }
+  },
+  quizzes: {
+    examen: {
+      titulo: 'Examen final',
+      preguntas: [
+        { q: '¿Qué protege la ciberseguridad?', opciones: ['Solo las computadoras', 'La información y los sistemas', 'Solo las contraseñas', 'Solo los celulares'], correcta: 1, explica: 'Protege la información y todos los sistemas que la guardan o la mueven.' },
+        { q: '¿Qué es una vulnerabilidad?', opciones: ['Una debilidad que se puede aprovechar', 'Un atacante', 'Un antivirus', 'Un dato valioso'], correcta: 0, explica: 'Es la "ventana rota": una debilidad que una amenaza puede aprovechar.' },
+        { q: 'Un atacante cambia el monto de una transferencia bancaria. ¿Qué se afectó?', opciones: ['Confidencialidad', 'Integridad', 'Disponibilidad'], correcta: 1, explica: 'La información fue modificada: Integridad.' },
+        { q: '¿Qué defensa protege mejor la Disponibilidad?', opciones: ['Cifrado', 'Copias de seguridad', 'Una contraseña larga'], correcta: 1, explica: 'Las copias de seguridad permiten recuperar todo y seguir funcionando. El cifrado y las contraseñas protegen la C.' },
+        { q: '¿Qué es un ataque DDoS?', opciones: ['Robar contraseñas por correo', 'Saturar un servicio con muchísimas peticiones falsas para tumbarlo', 'Cambiar notas en una base de datos'], correcta: 1, explica: 'El DDoS ataca la Disponibilidad saturando el servicio.' },
+        { q: '¿Qué enseñan los casos de WannaCry y Equifax?', opciones: ['Que los antivirus no sirven', 'Que actualizar (parchear) los sistemas a tiempo es clave', 'Que hay que apagar internet'], correcta: 1, explica: 'Ambos aprovecharon fallas que ya tenían parche disponible.' },
+        { q: 'El cifrado sirve principalmente para proteger la…', opciones: ['Confidencialidad', 'Disponibilidad', 'Velocidad de internet'], correcta: 0, explica: 'Cifrar hace que nadie sin la clave pueda leer la información.' },
+        { q: 'En el SOC, ¿qué se hace primero ante un ransomware?', opciones: ['Pagar el rescate', 'Aislar el equipo de la red', 'Esperar a la mañana'], correcta: 1, explica: 'Aislar evita que se propague a otros equipos.' },
+        { q: '¿Qué es MFA?', opciones: ['Entrar con dos o más pruebas, por ejemplo contraseña y código en el celular', 'Un tipo de virus', 'Una marca de antivirus'], correcta: 0, explica: 'Con MFA, aunque roben tu contraseña no pueden entrar sin el segundo factor.' },
+        { q: '¿Qué significa "threat" en inglés?', opciones: ['Contraseña', 'Amenaza', 'Usuario', 'Ataque'], correcta: 1, explica: 'Threat = amenaza. Se pronuncia "zret".' }
+      ]
+    }
+  }
+};
+</script>
+<script src="../../../recursos/sync.js"></script>
+<script src="../../../recursos/academia.js"></script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JavaScript · Clase 01 · Tu primer código</title>
+<link rel="stylesheet" href="../../../recursos/academia.css">
+</head>
+<body class="tema-js">
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="top">
+  <div class="marca"><span class="logo" aria-hidden="true">JS</span><span>CODE<span class="acento">//</span>ACADEMIA</span></div>
+  <div id="reloj" class="reloj-zona"></div>
+  <div id="voz"></div>
+  <a class="btn-mini" href="../../../inicio.html">☰ Menú</a>
+</header>
+
+<div class="layout">
+  <nav id="agenda" class="agenda" aria-label="Agenda de la clase"></nav>
+
+  <main id="contenido">
+    <div class="portada">
+      <p class="kicker">JavaScript · Nivel 0 · Clase 01</p>
+      <h1>¿Qué es programar? Tu primer código en JavaScript</h1>
+      <p class="sub">Qué es programar, qué hace JavaScript, la consola y tus primeros programas, con un editor para escribir y ejecutar código aquí mismo. Duración: 2 horas.</p>
+    </div>
+
+    <!-- ================= BLOQUE 1 ================= -->
+    <section id="j-bienvenida" class="bloque" aria-labelledby="t-bienvenida">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-bienvenida">Bienvenida</h2>
+      <div class="lectura">
+        <p>¡Bienvenido a tu primera clase de programación! Hoy no solo vas a leer: vas a escribir código de verdad y verlo funcionar.</p>
+        <h3>Al terminar esta clase podrás:</h3>
+        <ul>
+          <li>Explicar qué es programar y qué es un algoritmo.</li>
+          <li>Saber para qué sirve JavaScript y dónde se ejecuta.</li>
+          <li>Mostrar mensajes y hacer cálculos con <code>console.log</code>.</li>
+          <li>Leer un mensaje de error y arreglar tu código.</li>
+        </ul>
+        <h3>Cómo practicar en esta página</h3>
+        <p>Vas a encontrar editores de código: cajas oscuras donde puedes escribir. Escribe o modifica el código y pulsa el botón Ejecutar, o el atajo Control más Enter. Debajo aparecerá la consola con el resultado.</p>
+        <p>No tengas miedo de romper nada: si algo sale mal, el botón Restaurar código lo deja como estaba. Equivocarse es la forma normal de programar, hasta para los expertos.</p>
+      </div>
+    </section>
+
+    <!-- ================= BLOQUE 2 ================= -->
+    <section id="j-programar" class="bloque" aria-labelledby="t-programar">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-programar">¿Qué es programar?</h2>
+      <div class="lectura">
+        <p>Programar es escribir instrucciones para que una computadora haga algo. Parece fácil, pero hay un detalle: la computadora es muy rápida, pero no piensa. Hace exactamente lo que le dices, ni más ni menos.</p>
+        <h3>El experimento del sándwich</h3>
+        <p>Imagina que le explicas a un robot cómo hacer un sándwich y le dices: "pon la mantequilla en el pan". El robot podría poner el pote de mantequilla entero encima del pan, ¡sin abrirlo! Porque no le dijiste que lo abra, que use un cuchillo y que la unte.</p>
+        <p>Programar es aprender a dar instrucciones tan precisas que no quede ninguna duda. A esa lista ordenada de pasos para resolver un problema se le llama algoritmo.</p>
+        <div class="nota ok">
+          <p><strong>Algoritmo:</strong> una secuencia de pasos claros y ordenados para resolver un problema. Una receta de cocina es un algoritmo. Las instrucciones para armar un mueble también.</p>
+        </div>
+        <h3>¿Qué es un lenguaje de programación?</h3>
+        <p>La computadora, por dentro, solo entiende unos y ceros. Nosotros no podemos escribir así, por eso existen los lenguajes de programación: idiomas a mitad de camino entre el humano y la máquina. Escribes en el lenguaje y un programa especial lo traduce para la computadora.</p>
+        <p>Hay muchos lenguajes: JavaScript, Python, Java, C, Kotlin… Cada uno es mejor para ciertas cosas, pero todos comparten las mismas ideas básicas. Si aprendes bien uno, aprender el siguiente es mucho más fácil.</p>
+        <h3>¿Y qué es un bug?</h3>
+        <p>Un bug es un error en un programa. La palabra significa "bicho" en inglés. Se hizo famosa en 1947, cuando unos ingenieros encontraron una polilla atrapada dentro de una computadora que fallaba, y la pegaron en su cuaderno de notas. Hoy, encontrar y arreglar bugs se llama depurar, y es parte del trabajo diario de todo programador.</p>
+      </div>
+      <h3>Actividad: ¿instrucción precisa o ambigua?</h3>
+      <p>Una computadora solo puede seguir instrucciones precisas. ¿Cuáles lo son?</p>
+      <div data-actividad="precisa"></div>
+    </section>
+
+    <!-- ================= BLOQUE 3 ================= -->
+    <section id="j-js" class="bloque" aria-labelledby="t-js">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-js">¿Qué es JavaScript?</h2>
+      <div class="lectura">
+        <p>JavaScript es el lenguaje de programación de la web. Cada vez que una página reacciona a lo que haces, como un botón que abre un menú, un formulario que te avisa que falta un dato o un chat que se actualiza solo, casi siempre hay JavaScript trabajando.</p>
+        <h3>Los tres idiomas de una página web</h3>
+        <p>Toda página web se construye con tres lenguajes que trabajan juntos. Piensa en una persona:</p>
+        <div class="grid-cards">
+          <div class="card">
+            <h4>HTML = el esqueleto</h4>
+            <p>Define la estructura y el contenido: títulos, párrafos, imágenes, botones.</p>
+          </div>
+          <div class="card">
+            <h4>CSS = la ropa y el estilo</h4>
+            <p>Define cómo se ve: colores, tamaños, tipos de letra, posiciones.</p>
+          </div>
+          <div class="card">
+            <h4>JavaScript = los músculos y el cerebro</h4>
+            <p>Define el comportamiento: qué pasa cuando haces clic, cálculos, mostrar u ocultar cosas.</p>
+          </div>
+        </div>
+        <h3>¿Dónde se ejecuta JavaScript?</h3>
+        <ul>
+          <li><strong>En el navegador:</strong> Edge, Chrome, Firefox y Safari traen un "motor" que entiende JavaScript. No necesitas instalar nada para empezar.</li>
+          <li><strong>Fuera del navegador, con Node.js:</strong> sirve para crear servidores, APIs y herramientas. Lo veremos en el nivel 4 del curso.</li>
+          <li><strong>En celulares y computadoras:</strong> con herramientas especiales también se hacen apps con JavaScript.</li>
+        </ul>
+        <div class="nota alerta">
+          <p><strong>Ojo:</strong> Java y JavaScript no son el mismo lenguaje, aunque sus nombres se parezcan. Es como "carro" y "carroza": comparten un pedazo del nombre, pero son cosas distintas. El parecido fue una decisión de marketing de los años noventa.</p>
+        </div>
+      </div>
+      <h3>Actividad: ¿HTML, CSS o JavaScript?</h3>
+      <div data-actividad="trio"></div>
+    </section>
+
+    <!-- ================= BLOQUE 4 ================= -->
+    <section id="j-consola" class="bloque" aria-labelledby="t-consola">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-consola">La consola y tu primer código</h2>
+      <div class="lectura">
+        <p>La consola es la ventana donde los programadores ven mensajes de su código. Para escribir algo en la consola usamos esta instrucción:</p>
+        <pre class="log" data-decir="console punto log, abre paréntesis, entre comillas Hola mundo, cierra paréntesis, punto y coma.">console.log("Hola, mundo");</pre>
+        <p>Vamos a leerla por partes:</p>
+        <ul>
+          <li><code>console</code> es la consola.</li>
+          <li>El punto significa "de la consola, usa…".</li>
+          <li><code>log</code> significa "registrar" o "anotar". Es la acción de escribir un mensaje.</li>
+          <li>Lo que va entre paréntesis es lo que quieres mostrar.</li>
+          <li>El punto y coma del final marca el fin de la instrucción, como el punto al final de una oración.</li>
+        </ul>
+        <h3>Textos y números</h3>
+        <p>Los textos van siempre entre comillas, por ejemplo "Hola". En programación a los textos se les llama strings, que significa "cadenas", porque son cadenas de letras. Los números van sin comillas, y con ellos puedes hacer cálculos.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Código</th><th>Lo que muestra</th><th>Por qué</th></tr></thead>
+            <tbody>
+              <tr><td><code>console.log(2 + 3);</code></td><td>5</td><td>Son números: JavaScript calcula.</td></tr>
+              <tr><td><code>console.log("2 + 3");</code></td><td>2 + 3</td><td>Está entre comillas: es un texto y se muestra tal cual.</td></tr>
+              <tr><td><code>console.log("Edad:", 25);</code></td><td>Edad: 25</td><td>Con una coma puedes mostrar varias cosas juntas, separadas por un espacio.</td></tr>
+              <tr><td><code>console.log(10 * 3);</code></td><td>30</td><td>El asterisco multiplica y la barra / divide.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Comentarios</h3>
+        <p>Si escribes dos barras, todo lo que sigue en esa línea es un comentario. La computadora lo ignora: sirve para dejar notas a las personas que leen el código, incluido tu yo del futuro.</p>
+        <div class="nota">
+          <p><strong>Importante:</strong> JavaScript distingue mayúsculas y minúsculas. <code>console.log</code> funciona, pero <code>Console.log</code> o <code>console.Log</code> dan error.</p>
+        </div>
+      </div>
+
+      <div class="reto">
+        <h4>Práctica 1: ejecuta y modifica</h4>
+        <p>Pulsa Ejecutar y mira la consola. Luego cambia los mensajes y los números, y vuelve a ejecutar. ¡Experimenta!</p>
+      </div>
+      <div data-editor="practica1"></div>
+
+      <div class="nota">
+        <p><strong>La consola real del navegador:</strong> pulsa F12 en esta misma página y abre la pestaña "Consola". Escribe ahí <code>console.log("Hola desde la consola real")</code> y pulsa Enter. Esa es la herramienta que usan los programadores web todos los días. Para cerrarla, vuelve a pulsar F12.</p>
+      </div>
+    </section>
+
+    <!-- ================= BLOQUE 5 ================= -->
+    <section id="j-descanso" class="bloque descanso" aria-labelledby="t-descanso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <p class="grande" aria-hidden="true">☕</p>
+      <h2 id="t-descanso">Descanso de 10 minutos</h2>
+      <p>Levántate, estira las manos y los hombros, toma agua y descansa la vista.</p>
+      <p>Reto mental: piensa en una tarea de tu día, como preparar café, y escribe mentalmente sus pasos como un algoritmo preciso.</p>
+    </section>
+
+    <!-- ================= BLOQUE 6 ================= -->
+    <section id="j-errores" class="bloque" aria-labelledby="t-errores">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-errores">Leer errores: tu nuevo superpoder</h2>
+      <div class="lectura">
+        <p>Los principiantes se asustan con los mensajes de error en rojo. Los programadores con experiencia se alegran, porque el error les dice exactamente qué falló y muchas veces dónde. Aprende a leerlos con calma.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Error</th><th>Qué significa</th><th>Ejemplo que lo provoca</th></tr></thead>
+            <tbody>
+              <tr><td>SyntaxError</td><td>Algo está mal escrito: falta una comilla, un paréntesis o sobra un símbolo.</td><td><code>console.log("Hola);</code></td></tr>
+              <tr><td>ReferenceError</td><td>Usaste un nombre que no existe, casi siempre por escribirlo mal.</td><td><code>consol.log("Hola");</code></td></tr>
+              <tr><td>TypeError</td><td>Usaste algo de una forma que no se puede. Lo verás más adelante.</td><td><code>console.log.hola();</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>El método para arreglar errores</h3>
+        <ul>
+          <li>Lee el nombre del error: ya te dice qué tipo de problema buscar.</li>
+          <li>Lee el mensaje completo, aunque esté en inglés: busca palabras clave como missing, que significa "falta", o not defined, que significa "no definido".</li>
+          <li>Arregla un error a la vez y vuelve a ejecutar. A veces un error esconde otro.</li>
+        </ul>
+      </div>
+      <div class="reto">
+        <h4>Práctica 2: el código roto</h4>
+        <p>Este código tiene <strong>3 errores</strong>. Arréglalos uno por uno hasta que la consola muestre las tres líneas sin errores.</p>
+      </div>
+      <div data-editor="roto"></div>
+    </section>
+
+    <!-- ================= BLOQUE 7 ================= -->
+    <section id="j-retos" class="bloque" aria-labelledby="t-retos">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-retos">Retos: programa tú solo</h2>
+      <p>Ahora escribes tú el código desde cero. Si fallas, te daré una pista; a los tres intentos te muestro una solución posible.</p>
+
+      <div class="reto">
+        <h4>Reto 1: tu tarjeta de presentación</h4>
+        <p>Muestra 3 líneas en la consola. La primera debe ser exactamente <code>=== MI TARJETA ===</code>. La segunda, tu nombre, por ejemplo <code>Nombre: Ana</code>. La tercera, exactamente <code>Curso: JavaScript</code>.</p>
+      </div>
+      <div data-editor="tarjeta"></div>
+
+      <div class="reto">
+        <h4>Reto 2: ¿cuántos minutos tiene un día?</h4>
+        <p>Muestra solo el número de minutos de un día. Haz que JavaScript lo calcule multiplicando las horas por los minutos: no escribas el resultado a mano.</p>
+      </div>
+      <div data-editor="minutos"></div>
+
+      <div class="reto">
+        <h4>Reto 3: texto y cálculo juntos</h4>
+        <p>Muestra exactamente la línea <code>Una semana tiene 168 horas</code>, pero el número 168 debe calcularlo JavaScript. Pista: puedes mostrar varias cosas separadas por comas dentro de <code>console.log</code>.</p>
+      </div>
+      <div data-editor="semana"></div>
+    </section>
+
+    <!-- ================= BLOQUE 8 ================= -->
+    <section id="j-ingles" class="bloque" aria-labelledby="t-ingles">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-ingles">Inglés técnico del día</h2>
+      <p>El código está lleno de palabras en inglés. Pulsa el altavoz y repítelas.</p>
+      <ul class="vocab">
+        <li data-en="code"><span><span class="en" lang="en">code</span><span class="es">código</span><span class="pr">cóud</span></span></li>
+        <li data-en="bug"><span><span class="en" lang="en">bug</span><span class="es">error en un programa (bicho)</span><span class="pr">bag</span></span></li>
+        <li data-en="string"><span><span class="en" lang="en">string</span><span class="es">texto (cadena)</span><span class="pr">string</span></span></li>
+        <li data-en="number"><span><span class="en" lang="en">number</span><span class="es">número</span><span class="pr">nám-ber</span></span></li>
+        <li data-en="console"><span><span class="en" lang="en">console</span><span class="es">consola</span><span class="pr">cón-soul</span></span></li>
+        <li data-en="log"><span><span class="en" lang="en">log</span><span class="es">registrar, anotar</span><span class="pr">log</span></span></li>
+        <li data-en="missing"><span><span class="en" lang="en">missing</span><span class="es">falta, faltante</span><span class="pr">mí-sing</span></span></li>
+        <li data-en="not defined"><span><span class="en" lang="en">not defined</span><span class="es">no definido</span><span class="pr">not di-fáind</span></span></li>
+      </ul>
+    </section>
+
+    <!-- ================= BLOQUE 9 ================= -->
+    <section id="j-examen" class="bloque" aria-labelledby="t-examen">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-examen">Examen final</h2>
+      <p>Diez preguntas. Solo cuenta tu primera respuesta.</p>
+      <div data-quiz="examen"></div>
+    </section>
+
+    <!-- ================= CIERRE ================= -->
+    <section id="cierre" class="bloque" aria-labelledby="t-cierre">
+      <p class="kicker">Cierre</p>
+      <h2 id="t-cierre">Mis notas y resumen de la clase</h2>
+      <label for="notas">Escribe tus dudas y lo que más te costó:</label>
+      <textarea id="notas" data-notas="generales" placeholder="Por ejemplo: me confundo con las comillas…"></textarea>
+      <p>Cuando termines, pulsa "Generar mi resumen", cópialo y pégalo en el chat para registrar tu avance y preparar tus apuntes en Word.</p>
+      <div id="resumen"></div>
+    </section>
+  </main>
+</div>
+
+<p class="pie">Code//Academia · JavaScript · Clase 01</p>
+
+<script>
+window.CLASE = {
+  id: 'js-01',
+  titulo: 'JavaScript · Clase 01: ¿Qué es programar? Tu primer código',
+  bloques: [
+    { id: 'j-bienvenida', titulo: 'Bienvenida', min: 5 },
+    { id: 'j-programar', titulo: '¿Qué es programar?', min: 20 },
+    { id: 'j-js', titulo: '¿Qué es JavaScript?', min: 15 },
+    { id: 'j-consola', titulo: 'La consola y tu primer código', min: 20 },
+    { id: 'j-descanso', titulo: 'Descanso', min: 10 },
+    { id: 'j-errores', titulo: 'Leer errores', min: 15 },
+    { id: 'j-retos', titulo: 'Retos: programa tú solo', min: 20 },
+    { id: 'j-ingles', titulo: 'Inglés técnico', min: 5 },
+    { id: 'j-examen', titulo: 'Examen final', min: 10 }
+  ],
+  editores: {
+    practica1: {
+      titulo: 'practica1.js',
+      codigo: '// Mi primer programa en JavaScript\nconsole.log("Hola, mundo");\nconsole.log("Estoy aprendiendo a programar");\nconsole.log(2 + 3);\nconsole.log("2 + 3");\nconsole.log("Mi edad es:", 25);'
+    },
+    roto: {
+      titulo: 'roto.js',
+      codigo: '// Este código tiene 3 errores. ¡Arréglalos!\nconsole.log("Hola, soy programador);\nConsole.log("Estoy aprendiendo JavaScript");\nconsole.log("2 + 3 es", 2 + 3;',
+      validar: { esperado: ['Hola, soy programador', 'Estoy aprendiendo JavaScript', '2 + 3 es 5'] },
+      pista: 'Revisa: ¿todas las comillas se cierran? ¿console está escrito con minúscula? ¿todos los paréntesis se cierran?',
+      solucion: 'console.log("Hola, soy programador");  Console → console;  y agrega el ) final: console.log("2 + 3 es", 2 + 3);',
+      exito: '¡Arreglaste tus primeros bugs como un programador de verdad!'
+    },
+    tarjeta: {
+      titulo: 'tarjeta.js',
+      codigo: '// Escribe aquí tu tarjeta de presentación\n',
+      validar: { minLineas: 3, contiene: ['=== MI TARJETA ===', 'Curso: JavaScript'] },
+      pista: 'Necesitas tres console.log, uno por línea. Copia exactamente "=== MI TARJETA ===" y "Curso: JavaScript".',
+      solucion: 'console.log("=== MI TARJETA ==="); console.log("Nombre: Ana"); console.log("Curso: JavaScript");',
+      exito: 'Tu primer programa escrito desde cero.'
+    },
+    minutos: {
+      titulo: 'minutos.js',
+      codigo: '// Calcula los minutos de un día\n',
+      validar: { esperado: ['1440'], codigoIncluye: ['*'] },
+      pista: 'Un día tiene 24 horas y cada hora 60 minutos. Usa el asterisco * para multiplicar.',
+      solucion: 'console.log(24 * 60);',
+      exito: '24 × 60 = 1440 minutos. Dejaste que la computadora calcule por ti.'
+    },
+    semana: {
+      titulo: 'semana.js',
+      codigo: '// Muestra: Una semana tiene 168 horas (calculando el 168)\n',
+      validar: { esperado: ['Una semana tiene 168 horas'], codigoIncluye: ['*'] },
+      pista: 'Usa tres partes separadas por comas: un texto, un cálculo (7 * 24) y otro texto.',
+      solucion: 'console.log("Una semana tiene", 7 * 24, "horas");',
+      exito: 'Combinaste textos y cálculos en una sola línea.'
+    }
+  },
+  actividades: {
+    precisa: {
+      titulo: '¿Precisa o ambigua?',
+      preguntas: [{ label: 'Esta instrucción es…', corto: 'Respuesta', opciones: ['Precisa', 'Ambigua'] }],
+      items: [
+        { titulo: '"Camina un poco."', respuestas: [['Ambigua']], pista: '¿Cuánto es "un poco"?', explica: '"Un poco" puede ser 1 paso o 100. Una computadora necesita un número exacto.' },
+        { titulo: '"Avanza 3 pasos hacia adelante."', respuestas: [['Precisa']], pista: '¿Queda alguna duda de qué hacer?', explica: 'Dice cuánto y hacia dónde: no hay dudas.' },
+        { titulo: '"Ponle bastante azúcar al café."', respuestas: [['Ambigua']], pista: '¿Cuánto es "bastante" para una máquina?', explica: '"Bastante" no es una cantidad. Mejor: "agrega 2 cucharaditas".' },
+        { titulo: '"Si el semáforo está en rojo, detente."', respuestas: [['Precisa']], pista: 'Tiene una condición clara y una acción clara.', explica: 'Una condición y una acción concretas. ¡Así funcionan los if que verás pronto!' },
+        { titulo: '"Arregla la página para que se vea bonita."', respuestas: [['Ambigua']], pista: '¿Qué significa "bonita" para una computadora?', explica: '"Bonita" es una opinión. Hay que decir qué color, qué tamaño y dónde.' },
+        { titulo: '"Repite 5 veces: muestra el mensaje Hola."', respuestas: [['Precisa']], pista: '¿Sabes exactamente cuántas veces y qué mostrar?', explica: 'Cantidad exacta y acción exacta. ¡Eso es un bucle, lo verás en la clase 05!' }
+      ]
+    },
+    trio: {
+      titulo: '¿HTML, CSS o JavaScript?',
+      preguntas: [{ label: '¿Quién se encarga?', corto: 'Respuesta', opciones: ['HTML', 'CSS', 'JavaScript'] }],
+      items: [
+        { titulo: 'Que el título de la página sea de color azul.', respuestas: [['CSS']], pista: 'Es sobre cómo se ve: la ropa.', explica: 'Colores y estilos: CSS.' },
+        { titulo: 'Que al hacer clic en un botón aparezca un mensaje.', respuestas: [['JavaScript']], pista: 'Es una reacción a algo que hace el usuario.', explica: 'Reaccionar a acciones del usuario: JavaScript.' },
+        { titulo: 'Que la página tenga un título, un párrafo y una imagen.', respuestas: [['HTML']], pista: 'Es sobre qué contenido existe: el esqueleto.', explica: 'La estructura y el contenido: HTML.' },
+        { titulo: 'Calcular el total de un carrito de compras.', respuestas: [['JavaScript']], pista: 'Hay que hacer un cálculo.', explica: 'Los cálculos y la lógica: JavaScript.' },
+        { titulo: 'Que el texto use una letra más grande en el celular.', respuestas: [['CSS']], pista: 'Es sobre tamaño y apariencia.', explica: 'Tamaños y diseño adaptable: CSS.' },
+        { titulo: 'Avisar "falta tu correo" si dejas vacío un formulario.', respuestas: [['JavaScript']], pista: 'Hay que revisar algo y decidir qué mostrar.', explica: 'Validar datos y decidir: JavaScript.' }
+      ]
+    }
+  },
+  quizzes: {
+    examen: {
+      titulo: 'Examen final',
+      preguntas: [
+        { q: '¿Qué es programar?', opciones: ['Dar instrucciones precisas a una computadora', 'Arreglar computadoras', 'Navegar en internet'], correcta: 0, explica: 'Programar es escribir instrucciones exactas para que la computadora las siga.' },
+        { q: '¿Qué es un algoritmo?', opciones: ['Un virus', 'Una secuencia de pasos claros para resolver un problema', 'Una marca de computadoras'], correcta: 1, explica: 'Una receta de cocina es un ejemplo de algoritmo.' },
+        { q: 'En una página web, JavaScript se encarga de…', opciones: ['La estructura', 'Los colores y estilos', 'El comportamiento y la interactividad'], correcta: 2, explica: 'HTML = esqueleto, CSS = ropa, JavaScript = músculos y cerebro.' },
+        { q: '¿Java y JavaScript son el mismo lenguaje?', opciones: ['Sí', 'No, son lenguajes distintos'], correcta: 1, explica: 'Solo se parecen en el nombre.' },
+        { q: '¿Qué muestra console.log(2 + 3)?', opciones: ['2 + 3', '5', 'Un error'], correcta: 1, explica: 'Sin comillas son números, y JavaScript calcula.' },
+        { q: '¿Qué muestra console.log("2 + 3")?', opciones: ['5', '2 + 3', 'Un error'], correcta: 1, explica: 'Entre comillas es un texto y se muestra tal cual.' },
+        { q: '¿Qué tecla abre las herramientas de desarrollador en Edge?', opciones: ['F5', 'F12', 'Esc'], correcta: 1, explica: 'F12 abre las herramientas, incluida la consola.' },
+        { q: 'Escribes consol.log("Hola"). ¿Qué error aparece?', opciones: ['ReferenceError', 'SyntaxError', 'Ninguno'], correcta: 0, explica: '"consol" no existe: es un nombre no definido (ReferenceError).' },
+        { q: 'Escribes console.log("Hola); sin cerrar la comilla. ¿Qué error aparece?', opciones: ['ReferenceError', 'SyntaxError', 'TypeError'], correcta: 1, explica: 'Algo mal escrito es un error de sintaxis (SyntaxError).' },
+        { q: '¿Para qué sirve // en JavaScript?', opciones: ['Para dividir', 'Para escribir un comentario que la computadora ignora', 'Para terminar el programa'], correcta: 1, explica: 'Los comentarios son notas para las personas.' }
+      ]
+    }
+  }
+};
+</script>
+<script src="../../../recursos/sync.js"></script>
+<script src="../../../recursos/academia.js"></script>
+</body>
+</html>

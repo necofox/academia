@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clase 02 · El computador por dentro</title>
+<link rel="stylesheet" href="../../../recursos/academia.css">
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="top">
+  <div class="marca"><span class="logo" aria-hidden="true">&lt;/&gt;</span><span>CYBER<span class="acento">//</span>ACADEMIA</span></div>
+  <div id="reloj" class="reloj-zona"></div>
+  <div id="voz"></div>
+  <a class="btn-mini" href="../../../inicio.html">☰ Menú</a>
+</header>
+
+<div class="layout">
+  <nav id="agenda" class="agenda" aria-label="Agenda de la clase"></nav>
+
+  <main id="contenido">
+    <div class="portada">
+      <p class="kicker">Nivel 0 · Fundamentos · Clase 02</p>
+      <h1>El computador por dentro: procesos, usuarios y permisos</h1>
+      <p class="sub">Cómo funciona una computadora vista con los ojos de un analista, tu primera terminal de PowerShell y la caza de un proceso sospechoso. Duración: 2 horas.</p>
+    </div>
+
+    <!-- ================= BLOQUE 1 ================= -->
+    <section id="b-repaso" class="bloque" aria-labelledby="t-repaso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-repaso">Repaso de la Clase 01</h2>
+      <div class="lectura">
+        <p>Antes de avanzar, calentemos con cinco preguntas de la clase anterior. Presta atención a la primera: en tu examen confundiste qué defensa protege cada letra.</p>
+        <p data-decir="Recuerda: contraseña y cifrado protegen la C. Firmas y control de cambios protegen la I. Copias de seguridad protegen la A.">Recuerda: <strong>contraseña y cifrado → C</strong> · <strong>firmas y control de cambios → I</strong> · <strong>copias de seguridad → A</strong>.</p>
+      </div>
+      <div data-quiz="repaso"></div>
+    </section>
+
+    <!-- ================= BLOQUE 2 ================= -->
+    <section id="b-hardware" class="bloque" aria-labelledby="t-hardware">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-hardware">Las partes de un computador</h2>
+      <div class="lectura">
+        <p>Para defender una computadora primero hay que saber cómo funciona. Imagina que la computadora es un restaurante.</p>
+        <div class="grid-cards">
+          <div class="card">
+            <h4>CPU (procesador) = el chef</h4>
+            <p>Hace todos los cálculos y ejecuta las instrucciones de los programas. Es rapidísimo, pero solo trabaja con lo que tiene en la mesa.</p>
+          </div>
+          <div class="card">
+            <h4>RAM (memoria) = la mesa de trabajo</h4>
+            <p>Guarda lo que estás usando en este momento: programas abiertos, la página web que ves, incluso contraseñas mientras las usas. Al apagar la computadora, la mesa se limpia y todo se borra.</p>
+          </div>
+          <div class="card">
+            <h4>Disco = la despensa</h4>
+            <p>Guarda tus archivos, programas y el sistema operativo aunque apagues la computadora. Puede ser un disco duro (HDD) o uno de estado sólido (SSD), que es mucho más rápido.</p>
+          </div>
+          <div class="card">
+            <h4>Tarjeta de red = la puerta del delivery</h4>
+            <p>Por aquí entra y sale todo lo que viene de internet o de la red de la oficina, ya sea por cable o por WiFi.</p>
+          </div>
+        </div>
+        <h3>¿Y esto qué tiene que ver con la seguridad?</h3>
+        <ul>
+          <li><strong>RAM:</strong> muchos malware viven solo en la memoria para no dejar rastro en el disco. Los investigadores forenses copian la RAM antes de apagar un equipo, porque al apagarlo se pierde la evidencia.</li>
+          <li><strong>Disco:</strong> si roban una laptop, pueden sacar el disco y leer los archivos. Por eso se cifra con herramientas como BitLocker en Windows.</li>
+          <li><strong>Red:</strong> es la puerta por donde entran la mayoría de los ataques y por donde salen los datos robados. Los firewalls vigilan esta puerta.</li>
+          <li><strong>CPU:</strong> si una computadora va lentísima y el procesador está al cien por ciento sin razón, podría haber un minero de criptomonedas escondido usando tu equipo.</li>
+        </ul>
+      </div>
+      <h3>Actividad: ¿qué parte es?</h3>
+      <div data-actividad="partes"></div>
+    </section>
+
+    <!-- ================= BLOQUE 3 ================= -->
+    <section id="b-so" class="bloque" aria-labelledby="t-so">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-so">El sistema operativo y los procesos</h2>
+      <div class="lectura">
+        <p>El sistema operativo es el administrador del restaurante. Decide qué chef cocina qué cosa, quién puede entrar a la despensa y en qué orden se atienden los pedidos. Los más conocidos son Windows, Linux, macOS y, en celulares, Android e iOS.</p>
+        <p>En las empresas, la mayoría de las computadoras usan Windows y la mayoría de los servidores usan Linux. Un analista SOC necesita entender los dos. Empezaremos con Windows.</p>
+
+        <h3>Programa vs. proceso</h3>
+        <p>Un programa es como una receta escrita en un libro: está guardada en el disco y no hace nada por sí sola. Un proceso es esa receta mientras el chef la está cocinando: es el programa en ejecución, cargado en la memoria.</p>
+        <p>Cada proceso recibe un número único llamado PID, que significa identificador de proceso. Si abres el bloc de notas dos veces, tendrás dos procesos con el mismo nombre pero con PID distinto.</p>
+        <p>Los servicios son procesos que trabajan en segundo plano, sin ventana, como los ayudantes de cocina que nunca ves. Por ejemplo, el servicio que actualiza Windows o el que guarda los registros de eventos.</p>
+
+        <h3>Procesos de Windows que debes conocer</h3>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Proceso</th><th>Qué hace</th><th>Dónde debe estar</th></tr></thead>
+            <tbody>
+              <tr><td><code>explorer.exe</code></td><td>El escritorio, la barra de tareas y las carpetas</td><td>C:\Windows</td></tr>
+              <tr><td><code>svchost.exe</code></td><td>Contenedor de servicios de Windows. Es normal ver muchos.</td><td>C:\Windows\System32</td></tr>
+              <tr><td><code>lsass.exe</code></td><td>Verifica contraseñas e inicios de sesión. Debe haber solo uno.</td><td>C:\Windows\System32</td></tr>
+              <tr><td><code>winlogon.exe</code></td><td>Maneja el inicio y cierre de sesión</td><td>C:\Windows\System32</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nota alerta">
+          <p><strong>Truco de los atacantes:</strong> el malware se disfraza con nombres parecidos a los legítimos, como <code>svch0st.exe</code> con un cero en vez de la letra o, o se coloca en carpetas raras como Descargas o Temp. Un analista revisa tres cosas: el nombre exacto, la ubicación y si el programa está firmado por un fabricante conocido.</p>
+        </div>
+        <p>El proceso lsass es especialmente importante: como guarda información de las contraseñas en memoria, los atacantes intentan leerlo para robar credenciales. Por eso los antivirus avanzados lo vigilan de cerca.</p>
+
+        <h3>Archivos y extensiones</h3>
+        <p>La extensión es lo que va después del último punto en el nombre de un archivo y le dice a Windows qué tipo de archivo es: .docx es Word, .pdf es un documento PDF, .jpg es una imagen y .exe es un programa que se ejecuta.</p>
+        <p>Windows oculta las extensiones por defecto. Los atacantes lo aprovechan con la doble extensión: un archivo llamado <code>factura.pdf.exe</code> se ve en pantalla como "factura.pdf", pero en realidad es un programa. Al hacerle doble clic, ejecutas el malware.</p>
+        <div class="nota">
+          <p><strong>Consejo de analista:</strong> en el Explorador de archivos, menú Ver, activa "Extensiones de nombre de archivo". Así siempre verás el tipo real de cada archivo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BLOQUE 4 ================= -->
+    <section id="b-usuarios" class="bloque" aria-labelledby="t-usuarios">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-usuarios">Usuarios y permisos</h2>
+      <div class="lectura">
+        <p>En un restaurante no todos tienen la llave de la caja fuerte. El mozo puede entrar al comedor, el chef a la cocina y solo el dueño a la caja. En una computadora pasa lo mismo con las cuentas de usuario.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Tipo de cuenta</th><th>Qué puede hacer</th><th>En el restaurante</th></tr></thead>
+            <tbody>
+              <tr><td>Administrador</td><td>Todo: instalar programas, cambiar configuraciones y ver archivos de otros</td><td>El dueño, con todas las llaves</td></tr>
+              <tr><td>Usuario estándar</td><td>Usar programas y manejar sus propios archivos</td><td>El mozo: trabaja, pero no abre la caja</td></tr>
+              <tr><td>Invitado</td><td>Muy poco; debería estar desactivada</td><td>Un cliente de paso</td></tr>
+              <tr><td>SYSTEM</td><td>La cuenta del propio Windows, con más poder que el administrador</td><td>El edificio mismo</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Permisos</h3>
+        <p>Cada archivo y carpeta tiene permisos que dicen quién puede leerlo, modificarlo o ejecutarlo. Por ejemplo, la carpeta de sueldos solo debería poder leerla Recursos Humanos.</p>
+        <h3>El principio de mínimo privilegio</h3>
+        <p>Es una de las reglas de oro de la seguridad: cada persona y cada programa debe tener solo los permisos que necesita para su trabajo, y nada más.</p>
+        <p>¿Por qué? Si un atacante roba la cuenta de un usuario estándar, el daño es limitado. Si roba la de un administrador, controla toda la máquina. Por eso los atacantes, una vez dentro, intentan "escalar privilegios", es decir, pasar de usuario normal a administrador.</p>
+        <div class="nota">
+          <p><strong>Control de cuentas de usuario (UAC):</strong> es esa ventana de Windows que pregunta "¿Quieres permitir que esta aplicación haga cambios en el dispositivo?". Es una barrera de seguridad: si aparece cuando no estás instalando nada, ¡desconfía y di que no!</p>
+        </div>
+      </div>
+      <h3>Actividad: ¿cumple el mínimo privilegio?</h3>
+      <div data-actividad="privilegio"></div>
+    </section>
+
+    <!-- ================= BLOQUE 5 ================= -->
+    <section id="b-descanso" class="bloque descanso" aria-labelledby="t-descanso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <p class="grande" aria-hidden="true">☕</p>
+      <h2 id="t-descanso">Descanso de 10 minutos</h2>
+      <p>Estira la espalda y los brazos, toma agua y descansa la vista.</p>
+      <p>Reto mental: abre el Administrador de tareas (Ctrl + Shift + Esc) y mira cuántos procesos tienes abiertos ahora mismo. Solo mira, no cierres nada.</p>
+    </section>
+
+    <!-- ================= BLOQUE 6 ================= -->
+    <section id="b-terminal" class="bloque" aria-labelledby="t-terminal">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-terminal">Terminal simulada: tus primeros comandos de PowerShell</h2>
+      <div class="lectura">
+        <p>PowerShell es la "pantalla negra" de Windows donde escribes órdenes en lugar de hacer clic. Los analistas la usan muchísimo porque es más rápida y muestra información que no aparece en las ventanas normales.</p>
+        <p>Los comandos de PowerShell se llaman cmdlets y casi siempre tienen la forma Verbo guion Sustantivo. Por ejemplo, Get-Process significa "obtener procesos" y Get-Service significa "obtener servicios".</p>
+        <p>Esta terminal es una simulación: nada de lo que escribas aquí afecta tu computadora. Escribe cada comando y pulsa Enter. Si te pierdes, escribe help.</p>
+        <p>Un símbolo especial: la barra vertical, que se llama tubería o pipe. Pasa el resultado de un comando al siguiente, como una cadena de montaje. En el teclado en español suele estar a la izquierda del número uno, o con AltGr más el número uno.</p>
+      </div>
+      <div data-terminal="ps"></div>
+    </section>
+
+    <!-- ================= BLOQUE 7 ================= -->
+    <section id="b-caza" class="bloque" aria-labelledby="t-caza">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-caza">Caza del proceso sospechoso</h2>
+      <div class="lectura">
+        <p>Un usuario reporta que su computadora va lenta y que vio una ventana negra abrirse y cerrarse sola. Tu herramienta EDR te muestra estos procesos. Revisa cada uno como un analista: nombre exacto, ubicación, firma, proceso padre y conexiones.</p>
+        <div class="nota">
+          <p><strong>Proceso padre:</strong> es el proceso que abrió a otro. Por ejemplo, si haces doble clic en un programa, su padre es explorer.exe. Es sospechoso que Word abra PowerShell, porque Word no tiene por qué ejecutar comandos.</p>
+        </div>
+      </div>
+      <div data-actividad="caza"></div>
+    </section>
+
+    <!-- ================= BLOQUE 8 ================= -->
+    <section id="b-real" class="bloque" aria-labelledby="t-real">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-real">PowerShell en tu propia computadora</h2>
+      <div class="lectura">
+        <p>Ahora pruébalo de verdad. Estos comandos solo leen información: no cambian ni borran nada.</p>
+        <p>Para abrir PowerShell: pulsa la tecla Windows, escribe PowerShell y pulsa Enter. No hace falta abrirlo como administrador.</p>
+        <p>Copia cada comando, pégalo en PowerShell con clic derecho y pulsa Enter. Si algo sale en rojo, no pasa nada: es solo un mensaje de error.</p>
+      </div>
+      <h3>1. ¿Con qué usuario estoy?</h3>
+<pre data-copiar>whoami</pre>
+      <h3>2. ¿Cómo se llama mi computadora?</h3>
+<pre data-copiar>hostname</pre>
+      <h3>3. ¿Qué usuarios existen en mi PC?</h3>
+<pre data-copiar>Get-LocalUser</pre>
+      <h3>4. Los 5 procesos que más procesador usan</h3>
+<pre data-copiar>Get-Process | Sort-Object CPU -Descending | Select-Object -First 5</pre>
+      <h3>5. Los servicios que están funcionando</h3>
+<pre data-copiar>Get-Service | Where-Object Status -eq 'Running' | Select-Object -First 10</pre>
+      <p>Anota en tus notas, al final de la página, qué usuarios encontraste y cuál fue el proceso que más CPU usaba.</p>
+    </section>
+
+    <!-- ================= BLOQUE 9 ================= -->
+    <section id="b-ingles" class="bloque" aria-labelledby="t-ingles">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-ingles">Inglés técnico del día</h2>
+      <p>Pulsa el altavoz para escuchar cada palabra y repítela en voz alta.</p>
+      <ul class="vocab">
+        <li data-en="process"><span><span class="en">process</span><span class="es">proceso</span><span class="pr">pró-ses</span></span></li>
+        <li data-en="file"><span><span class="en">file</span><span class="es">archivo</span><span class="pr">fáil</span></span></li>
+        <li data-en="folder"><span><span class="en">folder</span><span class="es">carpeta</span><span class="pr">fóul-der</span></span></li>
+        <li data-en="permission"><span><span class="en">permission</span><span class="es">permiso</span><span class="pr">per-mí-shon</span></span></li>
+        <li data-en="administrator"><span><span class="en">administrator</span><span class="es">administrador</span><span class="pr">ad-mí-nis-trei-ter</span></span></li>
+        <li data-en="command"><span><span class="en">command</span><span class="es">comando, orden</span><span class="pr">co-mánd</span></span></li>
+        <li data-en="run"><span><span class="en">run</span><span class="es">ejecutar, correr</span><span class="pr">ran</span></span></li>
+        <li data-en="memory"><span><span class="en">memory</span><span class="es">memoria</span><span class="pr">mé-mo-ri</span></span></li>
+      </ul>
+      <p>Frase completa: <span data-en="Do not run unknown files.">Do not run unknown files. <em>(No ejecutes archivos desconocidos.)</em> </span></p>
+    </section>
+
+    <!-- ================= BLOQUE 10 ================= -->
+    <section id="b-examen" class="bloque" aria-labelledby="t-examen">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-examen">Examen final</h2>
+      <p>Diez preguntas. Solo cuenta tu primera respuesta.</p>
+      <div data-quiz="examen"></div>
+    </section>
+
+    <!-- ================= CIERRE ================= -->
+    <section id="cierre" class="bloque" aria-labelledby="t-cierre">
+      <p class="kicker">Cierre</p>
+      <h2 id="t-cierre">Mis notas y resumen de la clase</h2>
+      <label for="notas">Escribe tus dudas y lo que encontraste en tu PowerShell:</label>
+      <textarea id="notas" data-notas="generales" placeholder="Por ejemplo: mi usuario es…, el proceso que más CPU usaba era…"></textarea>
+      <p>Cuando termines, pulsa "Generar mi resumen", cópialo y pégalo en el chat para registrar tu avance y preparar tus apuntes en Word.</p>
+      <div id="resumen"></div>
+    </section>
+  </main>
+</div>
+
+<p class="pie">Cyber//Academia · Clase 02 · Todas las prácticas usan datos ficticios.</p>
+
+<script>
+window.CLASE = {
+  id: 'ciber-02',
+  titulo: 'Ciberseguridad · Clase 02: El computador por dentro (procesos, usuarios y permisos)',
+  bloques: [
+    { id: 'b-repaso', titulo: 'Repaso de la Clase 01', min: 10 },
+    { id: 'b-hardware', titulo: 'Partes del computador', min: 15 },
+    { id: 'b-so', titulo: 'Sistema operativo y procesos', min: 20 },
+    { id: 'b-usuarios', titulo: 'Usuarios y permisos', min: 15 },
+    { id: 'b-descanso', titulo: 'Descanso', min: 10 },
+    { id: 'b-terminal', titulo: 'Terminal simulada', min: 15 },
+    { id: 'b-caza', titulo: 'Caza del proceso sospechoso', min: 15 },
+    { id: 'b-real', titulo: 'PowerShell en tu PC', min: 5 },
+    { id: 'b-ingles', titulo: 'Inglés técnico', min: 5 },
+    { id: 'b-examen', titulo: 'Examen final', min: 10 }
+  ],
+  actividades: {
+    partes: {
+      titulo: '¿Qué parte del computador es?',
+      preguntas: [{ label: '¿Qué parte es?', corto: 'Respuesta', opciones: ['CPU', 'RAM', 'Disco', 'Tarjeta de red'] }],
+      items: [
+        { titulo: 'Es el "chef": hace los cálculos y ejecuta las instrucciones.', respuestas: [['CPU']], pista: 'Piensa en quién cocina en el restaurante.', explica: 'La CPU o procesador ejecuta las instrucciones.' },
+        { titulo: 'Guarda lo que estás usando ahora y se borra al apagar.', respuestas: [['RAM']], pista: 'La mesa de trabajo se limpia al cerrar el restaurante.', explica: 'La RAM es memoria temporal: se borra al apagar.' },
+        { titulo: 'Guarda tus archivos aunque apagues la computadora.', respuestas: [['Disco']], pista: 'La despensa no se vacía por la noche.', explica: 'El disco guarda la información de forma permanente.' },
+        { titulo: 'Por aquí entra y sale todo lo de internet.', respuestas: [['Tarjeta de red']], pista: 'La puerta del delivery.', explica: 'La tarjeta de red, por cable o WiFi, conecta el equipo con el mundo.' },
+        { titulo: 'Un investigador quiere encontrar contraseñas que un malware dejó cargadas mientras la PC estaba encendida. ¿Dónde busca?', respuestas: [['RAM']], pista: 'Lo que está "en uso ahora mismo" vive en…', explica: 'En la RAM. Por eso no se debe apagar un equipo infectado antes de copiar su memoria.' },
+        { titulo: 'BitLocker cifra esta parte para que, si roban la laptop, no puedan leer tus archivos.', respuestas: [['Disco']], pista: '¿Dónde están guardados los archivos cuando la laptop está apagada?', explica: 'BitLocker cifra el disco: sin la clave, los archivos son ilegibles.' }
+      ]
+    },
+    privilegio: {
+      titulo: 'Mínimo privilegio',
+      preguntas: [{ label: '¿Cumple el principio de mínimo privilegio?', corto: 'Respuesta', opciones: ['Cumple', 'No cumple'] }],
+      items: [
+        { titulo: 'La recepcionista usa una cuenta de administrador para revisar su correo todos los días.', respuestas: [['No cumple']], pista: '¿Necesita instalar programas para leer correos?', explica: 'No necesita ser administradora. Si abre un correo malicioso, el atacante tendría control total.' },
+        { titulo: 'El técnico de TI trabaja con una cuenta normal y usa la de administrador solo cuando instala programas.', respuestas: [['Cumple']], pista: '¿Usa el poder máximo todo el tiempo o solo cuando lo necesita?', explica: 'Es la práctica correcta: privilegios altos solo cuando hacen falta.' },
+        { titulo: 'Todos los empleados pueden leer y modificar la carpeta de sueldos.', respuestas: [['No cumple']], pista: '¿Quién necesita de verdad ver los sueldos?', explica: 'Solo Recursos Humanos debería tener acceso.' },
+        { titulo: 'El practicante solo puede ver la carpeta de su área.', respuestas: [['Cumple']], pista: '¿Tiene más de lo que necesita?', explica: 'Tiene justo lo que necesita para su trabajo.' },
+        { titulo: 'La cuenta de invitado de la PC está activada y sin contraseña.', respuestas: [['No cumple']], pista: '¿Quién podría entrar con esa cuenta?', explica: 'Cualquiera podría entrar. La cuenta de invitado debe estar desactivada.' }
+      ]
+    },
+    caza: {
+      titulo: 'Caza del proceso sospechoso',
+      variante: 'consola',
+      preguntas: [{ label: 'Tu veredicto:', corto: 'Veredicto', opciones: ['Legítimo', 'Sospechoso'] }],
+      items: [
+        { titulo: 'explorer.exe', log: 'PID:      4120\nRuta:     C:\\Windows\\explorer.exe\nUsuario:  alumno\nFirma:    Microsoft Windows (válida)\nPadre:    userinit.exe', respuestas: [['Legítimo']], pista: 'Compara la ruta con la tabla de procesos de Windows.', explica: 'Nombre correcto, ruta correcta y firma válida de Microsoft.' },
+        { titulo: 'svchost.exe', log: 'PID:      888\nRuta:     C:\\Windows\\System32\\svchost.exe\nUsuario:  SYSTEM\nFirma:    Microsoft Windows (válida)\nPadre:    services.exe', respuestas: [['Legítimo']], pista: '¿Dónde debe vivir svchost.exe?', explica: 'Está en System32, firmado y lanzado por services.exe: todo normal.' },
+        { titulo: 'svch0st.exe', log: 'PID:      6612\nRuta:     C:\\Users\\Public\\svch0st.exe\nUsuario:  alumno\nFirma:    (sin firma)\nPadre:    explorer.exe\nRed:      conectado a 203.0.113.50:4444', respuestas: [['Sospechoso']], pista: 'Lee el nombre letra por letra.', explica: 'Tiene un cero en vez de la o, está en una carpeta pública, no tiene firma y se conecta a un puerto extraño. ¡Malware disfrazado!' },
+        { titulo: 'lsass.exe', log: 'PID:      692\nRuta:     C:\\Windows\\System32\\lsass.exe\nUsuario:  SYSTEM\nFirma:    Microsoft Windows (válida)\nPadre:    wininit.exe', respuestas: [['Legítimo']], pista: 'Compara con la tabla del bloque 3.', explica: 'Es el lsass verdadero: en System32 y firmado.' },
+        { titulo: 'lsass.exe (segundo)', log: 'PID:      7720\nRuta:     C:\\Users\\alumno\\AppData\\Local\\Temp\\lsass.exe\nUsuario:  alumno\nFirma:    (sin firma)\nPadre:    cmd.exe', respuestas: [['Sospechoso']], pista: '¿Cuántos lsass.exe debería haber en un equipo?', explica: 'Solo existe un lsass y vive en System32. Uno en la carpeta Temp, sin firma, es malware.' },
+        { titulo: 'chrome.exe', log: 'PID:      7310\nRuta:     C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\nUsuario:  alumno\nFirma:    Google LLC (válida)\nPadre:    explorer.exe', respuestas: [['Legítimo']], pista: 'Revisa la ruta y la firma.', explica: 'El navegador en su carpeta oficial y firmado por Google.' },
+        { titulo: 'factura_noviembre.pdf.exe', log: 'PID:      5120\nRuta:     C:\\Users\\alumno\\Downloads\\factura_noviembre.pdf.exe\nUsuario:  alumno\nFirma:    (sin firma)\nPadre:    explorer.exe\nRed:      conectado a 198.51.100.77:443', respuestas: [['Sospechoso']], pista: 'Fíjate en cómo termina el nombre.', explica: 'Doble extensión: parece un PDF pero es un programa, descargado y sin firma.' },
+        { titulo: 'powershell.exe', log: 'PID:      8044\nRuta:     C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\nUsuario:  alumno\nFirma:    Microsoft Windows (válida)\nPadre:    WINWORD.EXE\nComando:  powershell.exe -WindowStyle Hidden -enc SQBFAFgA…', respuestas: [['Sospechoso']], pista: 'El programa es legítimo… pero mira quién lo abrió y cómo.', explica: 'PowerShell es legítimo, pero Word no debería abrirlo, menos con la ventana oculta y un comando codificado (-enc). Es la "ventana negra" que vio el usuario: un documento malicioso.' },
+        { titulo: 'OneDrive.exe', log: 'PID:      3390\nRuta:     C:\\Users\\alumno\\AppData\\Local\\Microsoft\\OneDrive\\OneDrive.exe\nUsuario:  alumno\nFirma:    Microsoft Corporation (válida)\nPadre:    explorer.exe', respuestas: [['Legítimo']], pista: 'AppData no siempre es malo. ¿Qué dice la firma?', explica: 'OneDrive se instala en AppData y está firmado por Microsoft. Ojo: ninguna pista sola es suficiente; hay que mirar todo el conjunto.' }
+      ]
+    }
+  },
+  terminales: {
+    ps: {
+      titulo: 'Windows PowerShell (simulación)',
+      prompt: 'PS C:\\Users\\alumno>',
+      bienvenida: 'Terminal de práctica. Nada de lo que escribas afecta tu computadora.\nEscribe "help" para ver los comandos disponibles.',
+      ayuda: 'Comandos de esta práctica:\n  whoami          → tu usuario\n  hostname        → nombre de la computadora\n  Get-Date        → fecha y hora\n  Get-Process     → procesos en ejecución (también: ps)\n  Get-Process | Sort-Object CPU -Descending | Select-Object -First 3\n  Get-Service     → servicios\n  Get-LocalUser   → usuarios de la PC\n  ipconfig        → tu dirección IP\n  Get-ChildItem   → archivos de la carpeta (también: dir, ls)\n  cls             → limpiar la pantalla',
+      error: "{cmd} : El término '{cmd}' no se reconoce como nombre de un cmdlet, función o programa ejecutable.\n💡 Revisa cómo lo escribiste o escribe help para ver los comandos de esta práctica.",
+      comandos: {
+        'whoami': { salida: 'pc-practica\\alumno', explica: 'Muestra con qué usuario trabajas, en formato equipo\\usuario.' },
+        'hostname': { salida: 'PC-PRACTICA', explica: 'El nombre de la computadora. En un SOC lo usas para saber qué equipo genera una alerta.' },
+        'Get-Date': { alias: ['date'], salida: 'martes, 10 de noviembre de 2026 19:05:12', explica: 'En un SOC la hora exacta es clave para reconstruir qué pasó primero en un ataque.' },
+        'Get-Process': {
+          alias: ['ps', 'gps'],
+          salida: 'Handles  NPM(K)    PM(K)      WS(K)   CPU(s)     Id ProcessName\n-------  ------    -----      -----   ------     -- -----------\n    512      28    18240      40112     2,45   4120 explorer\n    310      15     6120      12400     0,80    888 svchost\n   1250      30    11200      22800     1,10    692 lsass\n    845      45   152300     210500    35,20   7310 chrome\n    150      10     3200       8100     0,05   5532 notepad',
+          explica: 'Lista los procesos. "Id" es el PID y "ProcessName" el nombre del proceso.'
+        },
+        'Get-Process | Sort-Object CPU -Descending | Select-Object -First 3': {
+          alias: ['ps | sort cpu -descending | select -first 3', 'get-process | sort-object cpu -descending | select -first 3', 'gps | sort cpu -desc | select -first 3'],
+          salida: 'Handles  NPM(K)    PM(K)      WS(K)   CPU(s)     Id ProcessName\n-------  ------    -----      -----   ------     -- -----------\n    845      45   152300     210500    35,20   7310 chrome\n    512      28    18240      40112     2,45   4120 explorer\n   1250      30    11200      22800     1,10    692 lsass',
+          explica: 'La tubería | pasó la lista de procesos a Sort-Object (ordenar por CPU, de mayor a menor) y luego a Select-Object (quedarse con los 3 primeros).'
+        },
+        'Get-Service': {
+          alias: ['gsv'],
+          salida: 'Status   Name          DisplayName\n------   ----          -----------\nRunning  Dhcp          Cliente DHCP\nRunning  EventLog      Registro de eventos de Windows\nRunning  WinDefend     Servicio Antivirus de Microsoft Defender\nStopped  Fax           Fax\nRunning  wuauserv      Windows Update',
+          explica: 'EventLog guarda los registros que revisa un analista. Si un atacante detiene EventLog o WinDefend, es una señal de alarma.'
+        },
+        'Get-LocalUser': {
+          salida: 'Name           Enabled Description\n----           ------- -----------\nAdministrador  False   Cuenta integrada para la administración del equipo\nalumno         True\nInvitado       False   Cuenta integrada para el acceso como invitado\nsoporte_tmp    True',
+          explica: '¿Viste "soporte_tmp"? Una cuenta desconocida, activa y sin descripción es algo que un analista debe investigar: los atacantes crean cuentas para volver a entrar.'
+        },
+        'ipconfig': {
+          salida: 'Configuración IP de Windows\n\nAdaptador de LAN inalámbrica Wi-Fi:\n   Dirección IPv4. . . . . . . . . . : 192.168.1.25\n   Máscara de subred . . . . . . . . : 255.255.255.0\n   Puerta de enlace predeterminada . : 192.168.1.1',
+          explica: 'Tu dirección dentro de la red local. Lo veremos a fondo en las clases de redes.'
+        },
+        'Get-ChildItem': {
+          alias: ['dir', 'ls', 'gci'],
+          salida: '    Directorio: C:\\Users\\alumno\n\nMode    LastWriteTime        Length Name\n----    -------------        ------ ----\nd-----  10/11/2026  18:02           Desktop\nd-----  10/11/2026  18:40           Documents\nd-----  10/11/2026  18:55           Downloads\n-a----  10/11/2026  18:57     88576 factura_noviembre.pdf.exe\n-a----  09/11/2026  09:12     20480 notas_clase.docx',
+          explica: 'La "d" significa carpeta. ¿Viste factura_noviembre.pdf.exe? Parece un PDF, pero termina en .exe: es un programa. ¡Doble extensión!'
+        }
+      },
+      misiones: [
+        { texto: 'Averigua con qué usuario estás conectado.', cmd: 'whoami' },
+        { texto: 'Descubre el nombre de la computadora.', cmd: 'hostname' },
+        { texto: 'Mira la fecha y hora del sistema.', cmd: 'Get-Date' },
+        { texto: 'Lista los procesos en ejecución.', cmd: 'Get-Process' },
+        { texto: 'Muestra los 3 procesos que más CPU usan (usa la tubería |).', cmd: 'Get-Process | Sort-Object CPU -Descending | Select-Object -First 3' },
+        { texto: 'Revisa los servicios.', cmd: 'Get-Service' },
+        { texto: 'Lista los usuarios de la PC y encuentra la cuenta rara.', cmd: 'Get-LocalUser' },
+        { texto: 'Lista los archivos de tu carpeta y encuentra el archivo sospechoso.', cmd: 'Get-ChildItem' }
+      ]
+    }
+  },
+  quizzes: {
+    repaso: {
+      titulo: 'Repaso de la Clase 01',
+      preguntas: [
+        { q: '¿Qué defensa protege mejor la Disponibilidad?', opciones: ['Cifrado', 'Copias de seguridad', 'Contraseñas largas'], correcta: 1, explica: 'Las copias de seguridad permiten recuperarse y seguir funcionando.' },
+        { q: 'El cifrado protege principalmente la…', opciones: ['Confidencialidad', 'Integridad', 'Disponibilidad'], correcta: 0, explica: 'Sin la clave, nadie puede leer la información.' },
+        { q: 'Un ataque DDoS afecta la…', opciones: ['Confidencialidad', 'Integridad', 'Disponibilidad'], correcta: 2, explica: 'Satura el servicio hasta que deja de funcionar.' },
+        { q: 'Una contraseña "123456" es…', opciones: ['Un activo', 'Una vulnerabilidad', 'Una amenaza'], correcta: 1, explica: 'Es una debilidad que un atacante puede aprovechar.' },
+        { q: '¿Qué significa "backup"?', opciones: ['Ataque', 'Copia de seguridad', 'Usuario'], correcta: 1, explica: 'Backup = copia de seguridad.' }
+      ]
+    },
+    examen: {
+      titulo: 'Examen final',
+      preguntas: [
+        { q: '¿Qué parte del computador se borra al apagarlo?', opciones: ['El disco', 'La RAM', 'La CPU'], correcta: 1, explica: 'La RAM es memoria temporal.' },
+        { q: '¿Qué es un proceso?', opciones: ['Un programa en ejecución', 'Un archivo borrado', 'Un cable de red'], correcta: 0, explica: 'Es la receta mientras se está cocinando.' },
+        { q: '¿Qué es el PID?', opciones: ['El número único que identifica a un proceso', 'La contraseña del administrador', 'Un tipo de virus'], correcta: 0, explica: 'Process ID: identificador de proceso.' },
+        { q: '¿Dónde debe estar el svchost.exe legítimo?', opciones: ['C:\\Users\\Public', 'C:\\Windows\\System32', 'En la carpeta Descargas'], correcta: 1, explica: 'Fuera de System32 es sospechoso.' },
+        { q: '"factura.pdf.exe" es…', opciones: ['Un PDF normal', 'Un programa disfrazado de PDF (doble extensión)', 'Una imagen'], correcta: 1, explica: 'La extensión real es la última: .exe.' },
+        { q: 'El principio de mínimo privilegio significa…', opciones: ['Dar a todos permisos de administrador', 'Dar a cada usuario solo los permisos que necesita', 'Quitar todas las contraseñas'], correcta: 1, explica: 'Así, si roban una cuenta, el daño es limitado.' },
+        { q: '¿Qué comando muestra tu usuario?', opciones: ['hostname', 'whoami', 'Get-Date'], correcta: 1, explica: 'whoami significa literalmente "¿quién soy?".' },
+        { q: '¿Para qué sirve el símbolo | en PowerShell?', opciones: ['Para pasar el resultado de un comando al siguiente', 'Para borrar archivos', 'Para apagar la PC'], correcta: 0, explica: 'Es la tubería: una cadena de montaje de comandos.' },
+        { q: 'Word (WINWORD.EXE) abre PowerShell oculto con un comando codificado. Esto es…', opciones: ['Normal: Word siempre lo hace', 'Muy sospechoso: típico de documentos maliciosos', 'Una actualización de Office'], correcta: 1, explica: 'Word no tiene por qué ejecutar PowerShell.' },
+        { q: '¿Qué significa "process" en inglés?', opciones: ['Proceso', 'Permiso', 'Carpeta'], correcta: 0, explica: 'Process = proceso. Se pronuncia "pró-ses".' }
+      ]
+    }
+  }
+};
+</script>
+<script src="../../../recursos/sync.js"></script>
+<script src="../../../recursos/academia.js"></script>
+</body>
+</html>
