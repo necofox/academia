@@ -33,6 +33,17 @@ Reparto típico de los 120 minutos: repaso de la clase anterior (10), 2–3 bloq
 con su actividad corta (45–55), descanso (10), simulación práctica (30–35),
 inglés técnico (5) y examen final de 10 preguntas (10).
 
+## Fuentes (obligatorio en cada clase)
+
+Antes del cierre, cada clase lleva la sección `<section id="fuentes">` (fuera del reloj) con
+enlaces para **comprobar** lo enseñado y para **profundizar**. Reglas:
+- Solo fuentes confiables: NIST, CISA, INCIBE, MITRE ATT&CK, Microsoft Learn (en `es-es`),
+  RFC/IETF, IANA, documentación oficial del software, SANS, Wikipedia para casos históricos.
+- Prioriza las que están en español; marca cada una con "en español" o "en inglés".
+- **Verifica cada enlace antes de publicarlo** (que responda y que diga lo que la clase afirma).
+  Si un dato de la clase no se puede respaldar con una fuente, corrígelo o quítalo.
+- Formato: ver la sección de fuentes de `clases/clase-01.html`.
+
 ## Estilo
 
 - Dentro de la clase de 2 h, bloques de 5–20 minutos. Explica cada término técnico la primera vez.

@@ -295,6 +295,13 @@ a.btn, a.btn-mini { text-decoration: none; display: inline-flex; align-items: ce
 .sync-panel input[type="password"] { width: 100%; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; font: 15px var(--mono); }
 .sync-panel ol { margin: 0; padding-left: 22px; }
 
+/* ---------- Fuentes de referencia ---------- */
+.lista-fuentes { list-style: none; padding: 0; margin: 0 0 8px; display: grid; gap: 8px; }
+.lista-fuentes li { border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; background: var(--panel2); }
+.lista-fuentes a { font-weight: 600; overflow-wrap: anywhere; }
+.lista-fuentes a::after { content: " ↗"; }
+.lista-fuentes .origen { display: block; font: 13px/1.4 var(--mono); color: var(--muted); margin-top: 2px; }
+
 /* ---------- Varios ---------- */
 textarea { width: 100%; min-height: 150px; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 12px; font: 15px/1.5 var(--sans); }
 label { font-weight: 600; }
