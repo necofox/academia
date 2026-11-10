@@ -52,7 +52,7 @@ sin internet y sin tocar el almacenamiento del navegador.
 | Computadora | Navegador | Lugar | Conectado | Registros | Posibles sin subir | Último estado | Respaldo |
 |---|---|---|---|---|---|---|---|
 | Por confirmar cuál | Chrome | GitHub Pages | SÍ | 0 | 0 | ✔ Sincronizado (10/11) | No necesario (vacío) |
-| Esta PC | Chrome | Doble clic | Pendiente | | | | |
+| Esta PC | Chrome | Doble clic | NO | 0 | 0 (nunca subidos: 0) | Nunca sincronizó | No necesario (vacío) |
 | Esta PC | Edge | GitHub Pages | Pendiente | | | | |
 | Esta PC | Edge | Doble clic | Pendiente | | | | |
 | Computadora 2 | Chrome / Edge | GitHub Pages | Pendiente | | | | |
