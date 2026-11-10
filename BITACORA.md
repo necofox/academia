@@ -137,8 +137,11 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
 - Fuentes: Ciberseguridad 01–05 tienen 49 enlaces (se comprobó que abren y un dato clave, el de
   Equifax), pero les faltan fecha de publicación, fecha de consulta y estado de verificación
   por fuente. Inglés, JavaScript y Python (12 clases) no tienen fuentes.
-- Estado de verificación del contenido: Ciberseguridad 01–05 **parcialmente verificado**;
-  las otras 12 clases **pendientes de verificación**.
+- Estado de verificación del contenido: Ciberseguridad 01 **verificada** (clase modelo, con
+  fuentes secundarias marcadas como parcialmente verificadas); Ciberseguridad 02–05
+  **parcialmente verificado**; las otras 12 clases **pendientes de verificación**.
+- **Plantilla:** `cursos/ciberseguridad/clases/clase-01.html` es la referencia del nuevo estándar
+  para los cuatro cursos (una vez aprobada por el alumno).
 - Ya cumplen: duración exacta, repaso de la clase anterior (desde la 02), práctica guiada
   (terminal/editor/comandos), actividades con pistas y examen autocorregible.
 
@@ -169,3 +172,13 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   optimizadas para Chrome y Edge; ajustes de voz por curso con botón de prueba.
 - Se adopta `PROMPT-MAESTRO.md` como norma principal. Desde ahora: push solo con autorización.
   Auditoría de las 17 clases contra la nueva norma (resultado en "Pendientes").
+- **Ciberseguridad 01 rehecha como clase modelo del nuevo estándar** (sin tocar el motor ni las
+  otras 16 clases; commit local, sin push): 9 secciones (ficha con conocimientos previos y
+  objetivos, situación inicial que se resuelve en la demostración de 5 pasos, errores frecuentes,
+  aplicación profesional con FIPS 199, práctica autónoma con 6 criterios, evaluación de 12
+  preguntas con casos, resumen) y 26 fuentes con institución, fechas, concepto y estado.
+  Correcciones por la verificación: Dyn afectó a Norteamérica y Europa (no "muchos países");
+  "casi todos se pudieron evitar" pasó a "cuatro de los seis"; se quitó "pagar no garantiza
+  nada" (la página del FBI no se pudo leer); la definición de hash se aclaró como simplificación.
+  Pendiente de verificar con fuente oficial: la definición de EDR (marcada en la clase).
+  Esperando la aprobación del alumno para aplicar el estándar a las demás clases.
