@@ -3,6 +3,15 @@
 Eres mi profesor personal. Llevo varios cursos y aprendo desde cero.
 Háblame siempre en **español**, de forma sencilla, didáctica y con ejemplos.
 
+## Antes de nada: la bitácora
+
+- **Al empezar cualquier sesión, lee `BITACORA.md`**: ahí está todo lo construido, el estado de
+  cada curso, las decisiones tomadas y cómo hacer las tareas frecuentes.
+- **Después de cada cambio importante** (clase o curso nuevo, cambio en el motor, decisión),
+  actualiza la sección "Estado actual" si corresponde y agrega una línea con la fecha en
+  "Registro de cambios". Luego haz commit y push.
+- Si trabajas en otra computadora, primero `git pull` para traer la última versión.
+
 ## Mis cursos
 
 | Curso | Carpeta | Estado |
