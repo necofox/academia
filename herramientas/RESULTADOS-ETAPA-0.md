@@ -47,5 +47,17 @@ sin internet y sin tocar el almacenamiento del navegador.
 | 9 | Duplicados tras muchas sincronizaciones | Sin duplicados | **CUMPLE** |
 | 10 | El token nunca se sube | Sin datos de la clave en GitHub | **CUMPLE** |
 
+## Revisión de los navegadores del alumno (diagnóstico de solo lectura)
+
+| Computadora | Navegador | Lugar | Conectado | Registros | Posibles sin subir | Último estado | Respaldo |
+|---|---|---|---|---|---|---|---|
+| Por confirmar cuál | Chrome | GitHub Pages | SÍ | 0 | 0 | ✔ Sincronizado (10/11) | No necesario (vacío) |
+| Esta PC | Chrome | Doble clic | Pendiente | | | | |
+| Esta PC | Edge | GitHub Pages | Pendiente | | | | |
+| Esta PC | Edge | Doble clic | Pendiente | | | | |
+| Computadora 2 | Chrome / Edge | GitHub Pages | Pendiente | | | | |
+| Computadora 3 | Chrome / Edge | GitHub Pages | Pendiente | | | | |
+| Celular | — | — | Pendiente (sin consola) | | | | |
+
 **Conclusión:** la sincronización actual cumple 5 de 10 requisitos. Los fallos (2, 3, 4, 6 y 7) se
 corregirían en la Etapa 0B, que requiere autorización para modificar `sync.js`.
