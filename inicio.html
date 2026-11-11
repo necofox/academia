@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mi Academia · Menú</title>
-<link rel="stylesheet" href="recursos/academia.css?v=2026-11-10">
+<link rel="stylesheet" href="recursos/academia.css?v=2026-11-11">
 </head>
 <body>
 <a class="saltar" href="#contenido">Saltar al contenido</a>
@@ -63,8 +63,9 @@
 <p class="pie">Abre las clases en Microsoft Edge para escuchar las voces más naturales.</p>
 
 <!-- "?v=" obliga al navegador a usar la versión nueva tras publicar (cambiarlo al modificar estos archivos) -->
-<script src="recursos/catalogo.js?v=2026-11-10"></script>
-<script src="recursos/sync.js?v=2026-11-10"></script>
+<script src="recursos/catalogo.js?v=2026-11-11"></script>
+<script src="recursos/sync.js?v=2026-11-11"></script>
+<script src="recursos/diferencias.js?v=2026-11-11"></script>
 <script>
 ((window.AcademiaSync && window.AcademiaSync.listo) || Promise.resolve()).then(() => {
   'use strict';
@@ -198,73 +199,16 @@
   document.addEventListener('academia-sync', pintarSync);
   pintarSync();
 
-  // Diferencias entre equipos: se muestran las dos versiones y el alumno decide
-  const CLASES_POR_ID = {};
-  CAT.forEach((curso) => curso.clases.forEach((c) => { if (c.id) CLASES_POR_ID[c.id] = { curso, c }; }));
-  const fecha = (t) => (t ? new Date(t).toLocaleString('es', { dateStyle: 'short', timeStyle: 'short' }) : 'fecha desconocida');
-  const valorDe = (raw) => { try { return JSON.parse(raw); } catch (e) { return raw; } };
-  function queEs(d) {
-    const m = d.clave.match(/^academia:([^:]+):(.*)$/) || [];
-    const info = CLASES_POR_ID[m[1]];
-    const donde = info ? info.curso.nombre + ' · ' + nombreClase(info.c) + ': ' + info.c.titulo : (m[1] || d.clave);
-    const resto = m[2] || '';
-    let que = 'Dato guardado de la clase';
-    if (d.parte) que = d.parte === 'examen' ? 'Resultado del examen final' : d.parte === 'repaso' ? 'Resultado del repaso' : 'Resultado de la actividad «' + d.parte + '»';
-    else if (/^notas:/.test(resto)) que = 'Tus notas y dudas';
-    else if (/^codigo:/.test(resto)) que = 'Tu código del reto «' + resto.slice(7) + '»';
-    return { donde, que };
-  }
-  function mostrarValor(d, raw) {
-    if (raw === null || raw === undefined) return el('p', { class: 'meta', text: '(sin dato)' });
-    const v = valorDe(raw);
-    if (d.parte && v && typeof v === 'object') return el('p', { class: 'valor-res', text: v.ok + ' de ' + v.total + ' correctas' });
-    return el('pre', { class: 'log valor-texto', tabindex: '0', text: typeof v === 'string' ? (v || '(vacío)') : JSON.stringify(v, null, 1) });
-  }
-  const difMsg = document.getElementById('dif-msg');
-  function pintarDiferencias() {
-    const sec = document.getElementById('diferencias'); const ol = document.getElementById('lista-dif');
-    const lista = S && S.diferencias ? S.diferencias() : [];
-    sec.hidden = !lista.length && !difMsg.textContent;
-    ol.replaceChildren();
-    ol.dataset.ids = lista.map((d) => d.id).join(',');
-    lista.forEach((d) => {
-      const { donde, que } = queEs(d);
-      const iguales = d.actual === d.otra.v;
-      const li = el('li', { class: 'dif' }, el('h3', { text: que }), el('p', { class: 'meta', text: donde }));
-      li.append(el('div', { class: 'dif-versiones' },
-        el('div', { class: 'dif-version' }, el('p', { class: 'dif-tit', text: 'Versión que se usa ahora' }), mostrarValor(d, d.actual)),
-        el('div', { class: 'dif-version' }, el('p', { class: 'dif-tit', text: 'La otra versión · ' + d.otra.equipo + ' · ' + fecha(d.otra.t) }), mostrarValor(d, d.otra.v))));
-      if (iguales) li.append(el('p', { class: 'meta', text: 'Las dos versiones ya son iguales: solo confirma que lo revisaste.' }));
-      const acc = el('div', { class: 'acciones' });
-      const boton = (texto, eleccion, cls) => {
-        const b = el('button', { type: 'button', class: cls }, texto);
-        b.addEventListener('click', () => decidirDiferencia(d, eleccion, que));
-        return b;
-      };
-      acc.append(boton(iguales ? 'Marcar como revisada' : 'Quedarme con la que se usa ahora', 'actual', 'btn'));
-      if (!iguales) {
-        acc.append(boton('Usar la otra versión', 'otra', 'btn btn-sec'));
-        if (!d.parte && typeof valorDe(d.actual) === 'string' && typeof valorDe(d.otra.v) === 'string') acc.append(boton('Unir las dos (no se pierde nada)', 'unir', 'btn btn-sec'));
-      }
-      li.append(acc);
-      ol.append(li);
+  // Diferencias entre equipos (recursos/diferencias.js): se muestran las dos versiones y el alumno decide
+  if (S && S.diferencias && window.AcademiaDiferencias) {
+    const avisoDif = window.AcademiaDiferencias.crear({
+      sync: S, catalogo: CAT,
+      seccion: document.getElementById('diferencias'), lista: document.getElementById('lista-dif'),
+      mensaje: document.getElementById('dif-msg'), titulo: document.getElementById('t-dif'),
+      alDecidir: () => elegir(leer('academia:menu:curso', CAT[0] && CAT[0].id), false)
     });
-  }
-  function decidirDiferencia(d, eleccion, que) {
-    if (eleccion === 'otra' && !window.confirm('Se usará la otra versión. La que se usa ahora quedará guardada como respaldo. ¿Continuar?')) return;
-    if (!S.resolver(d.id, eleccion)) { difMsg.textContent = 'No se pudo aplicar la decisión. Recarga la página e inténtalo otra vez.'; return; }
-    difMsg.textContent = '✔ ' + que + ': ' + (eleccion === 'otra' ? 'se usa la otra versión.' : eleccion === 'unir' ? 'se unieron las dos versiones.' : 'se conserva la que se usaba.') + (S.conectado() ? ' Guardando en GitHub…' : '');
-    if (S.conectado()) S.subirAhora();
-    pintarDiferencias();
-    elegir(leer('academia:menu:curso', CAT[0] && CAT[0].id), false);
-    const siguiente = document.querySelector('#lista-dif button');
-    (siguiente || document.getElementById('t-dif')).focus();
-  }
-  if (S && S.diferencias) {
-    document.getElementById('t-dif').tabIndex = -1;
-    pintarDiferencias();
     // Si llegan diferencias nuevas al sincronizar, se vuelve a dibujar la lista (sin mover el foco si no cambió)
-    document.addEventListener('academia-sync', () => { if (S.diferencias().map((x) => x.id).join(',') !== document.getElementById('lista-dif').dataset.ids) pintarDiferencias(); });
+    document.addEventListener('academia-sync', () => { if (S.diferencias().map((x) => x.id).join(',') !== avisoDif.ids()) avisoDif.pintar(); });
   }
 
   if (S) {

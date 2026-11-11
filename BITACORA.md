@@ -51,16 +51,19 @@ El temario completo de cada curso está en `cursos/<curso>/ruta-aprendizaje.md`.
 ```
 CLAUDE.md                 reglas generales (Claude las lee siempre)
 BITACORA.md               este archivo
-inicio.html               menú: elegir curso y clase, ver avance, conectar GitHub
+inicio.html               menú: elegir curso, módulo y clase, ver avance, conectar GitHub
 index.html                redirige a inicio.html (portada de GitHub Pages)
 recursos/
   academia.js             motor de TODAS las clases (no duplicar en cada página)
   academia.css            estilo (tema oscuro; .tema-ingles, .tema-js, .tema-python)
-  catalogo.js             cursos → módulos → clases que muestra el menú
+  catalogo.js             cursos → módulos → clases (fuente única del menú y de las rutas)
   sync.js                 sincroniza el avance con el repositorio privado
+  diferencias.js          aviso «Tus equipos guardaron cosas distintas» (menú y demostración)
+herramientas/             pruebas, diagnóstico, generador de rutas, revisiones y demostración
+                          (no se enlazan desde el menú)
 cursos/<curso>/
   instrucciones.md        cómo dar ese curso
-  ruta-aprendizaje.md     temario
+  ruta-aprendizaje.md     temario por módulos (la parte de módulos se genera desde catalogo.js)
   clases/clase-NN.html    las clases (públicas)
   progreso.md             avance y notas      (privado, no se publica)
   apuntes/                apuntes en Word     (privado, no se publica)
@@ -129,6 +132,8 @@ y después `herramientas/pruebas-sync.html` (15 escenarios).
 4. En `recursos/catalogo.js`, completar su entrada «Próximamente» dentro de su módulo con su
    `n`, su `archivo` (siguiente número libre del curso) y su `id` (el mismo de `window.CLASE`).
    El orden dentro del módulo lo da su posición; el menú la muestra como "Módulo X · Clase Y".
+   Después: `node herramientas/generar-rutas.js` (actualiza la ruta de aprendizaje),
+   `node herramientas/revisar-catalogo.js` y `node herramientas/revisar-coherencia.js`.
 5. Agregar la fila en `cursos/<curso>/progreso.md`.
 6. Probar en el navegador (escritorio y 360 px): servir con
    `python -m http.server 8765 --bind 127.0.0.1` y revisar misiones, retos y examen.
@@ -238,3 +243,21 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   Pruebas: 17/17 clases, 15/15 sincronización, 360 px, teclado, contraste y doble clic en Edge y
   Chrome. Las 17 clases, sus ids y archivos no cambiaron. Nada publicado. Detalle:
   `herramientas/RESULTADOS-ETAPA-1.md`. **Pendiente de revisión y aprobación del alumno.**
+
+### 2026-11-11
+
+- **Pendientes de la Etapa 1**, pedidos por el alumno (la organización por módulos ya está aprobada visualmente):
+  - `catalogo.js`: cada módulo suma competencias, logro, previos, evaluación, proyecto y fuentes
+    previstas, tomados de la propuesta. Se completaron 9 títulos de clases futuras para parecerse
+    más a la propuesta. Las 17 clases no cambiaron.
+  - Las 4 `ruta-aprendizaje.md` se reescribieron por módulos. La parte de módulos y clases la genera
+    `herramientas/generar-rutas.js` desde el catálogo; `--comprobar` revisa que coincidan.
+  - Nueva `herramientas/revisar-coherencia.js`: compara catálogo y propuesta módulo por módulo. Todo
+    coincide; deja anotados 10 objetivos que la propuesta no traía (resultado en
+    `herramientas/RESULTADOS-COHERENCIA.md`).
+  - Nueva demostración `herramientas/demo-diferencias.html`, con datos ficticios, equipos y GitHub
+    simulados. El aviso de diferencias pasó a `recursos/diferencias.js`, compartido por el menú y
+    la demostración.
+
+  Pruebas: 17/17 clases con contenido idéntico a `respaldo-etapa-0`, 136 identificadores intactos y
+  15/15 de sincronización. Nada publicado. **Pendiente de aprobación del alumno.**

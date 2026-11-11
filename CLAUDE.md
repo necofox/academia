@@ -45,6 +45,7 @@ El horario de clases está en `horario.md`.
   del curso: `clase-06`, `clase-07`…) y su `id` (el mismo `id` de `window.CLASE`), y pon en
   su barra superior el enlace "☰ Menú" hacia `inicio.html`. El menú la muestra como
   "Módulo X · Clase Y". **Nunca cambies el `archivo` ni el `id` de una clase existente.**
+  Luego ejecuta `node herramientas/generar-rutas.js` para actualizar su `ruta-aprendizaje.md`.
 - Para un curso nuevo: agrégalo también al catálogo, con un tema de color en
   `recursos/academia.css` (`.tema-<curso>`).
 

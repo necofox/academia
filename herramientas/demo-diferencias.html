@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demostración de diferencias</title>
+<link rel="stylesheet" href="../recursos/academia.css">
+<style>
+  .pasos-demo { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+  .pasos-demo li { background: var(--panel2); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; }
+  .pasos-demo li.hecho { border-color: var(--accent); }
+  .pasos-demo li.hecho h3::after { content: " ✔"; color: var(--accent); }
+  .pasos-demo h3 { margin: 0 0 4px; }
+  .pasos-demo p { margin: 0 0 8px; }
+  .celda-texto { white-space: pre-wrap; font: 13px/1.45 var(--mono); }
+  .distinto { color: var(--warn); font-weight: 700; }
+  .lista-registro { padding-left: 20px; display: grid; gap: 8px; }
+</style>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="top">
+  <div class="marca"><span class="logo" aria-hidden="true">&lt;/&gt;</span><span>MI<span class="acento">//</span>ACADEMIA</span></div>
+  <a class="btn-mini" href="../inicio.html">☰ Menú</a>
+</header>
+
+<main id="contenido" class="menu">
+  <div class="portada">
+    <p class="kicker">Demostración · datos ficticios</p>
+    <h1>¿Qué pasa si dos equipos guardan cosas distintas?</h1>
+    <p class="sub">Sigue la historia de una Laptop y una PC inventadas que estudian la misma clase sin internet. Verás qué une la academia por su cuenta y qué te pregunta.</p>
+  </div>
+
+  <div class="nota alerta" role="note">
+    <p><strong>Nada de esto es real.</strong> Los dos equipos y GitHub están simulados dentro de esta página. No usa tu token, no se conecta a internet y no lee ni cambia tu avance. Usa el mismo programa de sincronización (<code>sync.js</code>) y el mismo aviso que el menú.</p>
+  </div>
+
+  <section class="bloque" aria-labelledby="t-pasos">
+    <h2 id="t-pasos">La historia, paso a paso</h2>
+    <ol class="pasos-demo">
+      <li id="paso-1">
+        <h3>1. Dos equipos al día</h3>
+        <p>La Laptop hace una actividad y el examen final de Ciberseguridad (Módulo 1 · Clase 1) y escribe sus notas. La PC se sincroniza y queda igual.</p>
+        <button id="b1" type="button" class="btn" disabled>▶ Preparar los dos equipos</button>
+      </li>
+      <li id="paso-2">
+        <h3>2. Sin internet, cada uno estudia por su lado</h3>
+        <p>La Laptop hace la actividad «CIA», repite el examen y agrega una nota. La PC hace la actividad «SOC», también repite el examen y agrega otra nota.</p>
+        <button id="b2" type="button" class="btn" disabled>▶ Trabajar sin conexión</button>
+      </li>
+      <li id="paso-3">
+        <h3>3. Vuelve internet</h3>
+        <p>Primero se sincroniza la Laptop y después la PC. Lo que no choca se une solo. Lo que cambió en los dos lados se guarda dos veces y se te pregunta.</p>
+        <button id="b3" type="button" class="btn" disabled>▶ Volver a conectarse</button>
+      </li>
+      <li id="paso-4">
+        <h3>4. Decides tú (así se ve en el menú)</h3>
+        <p>Aparece el aviso «Tus equipos guardaron cosas distintas» en la PC. Elige qué conservar en cada caso.</p>
+      </li>
+      <li id="paso-5">
+        <h3>5. La Laptop recibe tu decisión</h3>
+        <p>Cuando la Laptop vuelve a sincronizarse, recibe lo que decidiste. Las versiones que no elegiste quedan en el registro.</p>
+        <button id="b5" type="button" class="btn" disabled>▶ Sincronizar la Laptop</button>
+      </li>
+    </ol>
+    <p id="relato" role="status" class="marcador"></p>
+    <div class="acciones"><button id="reiniciar" type="button" class="btn-mini">↺ Empezar de nuevo</button></div>
+  </section>
+
+  <section id="diferencias" class="bloque diferencias" aria-labelledby="t-dif" hidden>
+    <h2 id="t-dif">⚠ Tus equipos guardaron cosas distintas</h2>
+    <p class="sub">No se perdió nada: guardé las dos versiones. Elige qué conservar en cada caso. Lo que no elijas sigue guardado en el historial.</p>
+    <p id="dif-msg" role="status" class="marcador"></p>
+    <ol id="lista-dif" class="lista-dif"></ol>
+  </section>
+
+  <section class="bloque" aria-labelledby="t-estado">
+    <h2 id="t-estado">Qué tiene guardado cada equipo</h2>
+    <p class="meta">Ciberseguridad · Módulo 1 · Clase 1. Se actualiza en cada paso.</p>
+    <div class="tabla">
+      <table>
+        <caption class="sr-only">Avance ficticio guardado en la Laptop, en la PC y en GitHub simulado</caption>
+        <thead><tr><th scope="col">Dato</th><th scope="col">Laptop</th><th scope="col">PC</th><th scope="col">GitHub (simulado)</th><th scope="col">¿Iguales?</th></tr></thead>
+        <tbody id="filas-estado"></tbody>
+      </table>
+    </div>
+    <h3>Registro de diferencias (nada se borra)</h3>
+    <ul id="registro" class="lista-registro"><li>Todavía no hay diferencias.</li></ul>
+  </section>
+</main>
+
+<script src="../recursos/catalogo.js"></script>
+<script src="../recursos/diferencias.js"></script>
+<script>
+(() => {
+  'use strict';
+  const $ = (s) => document.querySelector(s);
+  const dormir = (ms) => new Promise((r) => setTimeout(r, ms));
+  const K_RES = 'academia:ciber-01:res';
+  const K_NOTAS = 'academia:ciber-01:notas:generales';
+  const K_DIF = 'academia:sync:conflictos';
+
+  // ---------- Simulación: almacenamiento falso, GitHub falso y equipos ficticios ----------
+  class Almacen {
+    getItem(k) { return Object.prototype.hasOwnProperty.call(this, k) ? String(this[k]) : null; }
+    setItem(k, v) { this[k] = String(v); }
+    removeItem(k) { delete this[k]; }
+  }
+  const b64enc = (s) => { let bin = ''; new TextEncoder().encode(s).forEach((b) => { bin += String.fromCharCode(b); }); return btoa(bin); };
+  const b64dec = (s) => new TextDecoder().decode(Uint8Array.from(atob(s), (c) => c.charCodeAt(0)));
+  function crearGitHub() {
+    const gh = { contenido: null, sha: null, n: 0, sinConexion: false };
+    gh.fetch = async (url, opts = {}) => {
+      if (gh.sinConexion) throw new TypeError('Sin conexión (simulado)');
+      const metodo = (opts.method || 'GET').toUpperCase();
+      const resp = (status, obj) => ({ ok: status >= 200 && status < 300, status, json: async () => obj });
+      if (!/\/contents\/progreso\.json$/.test(url)) return resp(200, {});
+      if (metodo === 'GET') return gh.contenido ? resp(200, { content: gh.contenido, sha: gh.sha }) : resp(404, {});
+      const cuerpo = JSON.parse(opts.body);
+      if ((gh.sha || null) !== (cuerpo.sha || null)) return resp(409, {});
+      gh.contenido = cuerpo.content; gh.sha = 'sha-' + (++gh.n);
+      return resp(200, {});
+    };
+    gh.valor = (k) => { if (!gh.contenido) return null; const e = JSON.parse(b64dec(gh.contenido)).claves[k]; return e ? e.v : null; };
+    return gh;
+  }
+  let fuente = '';
+  // Un equipo ficticio: el sync.js real, pero con almacenamiento y red falsos
+  async function crearEquipo(gh, nombre) {
+    const almacen = new Almacen();
+    almacen.setItem('academia-sync:token', 'TOKEN-FICTICIO-DE-LA-DEMOSTRACION');
+    const win = { AcademiaSyncOpciones: { equipo: nombre, reintentos: [600000], esperaSubida: 600000 }, addEventListener() {} };
+    const doc = { addEventListener() {}, dispatchEvent() {}, visibilityState: 'visible' };
+    const sync = new Function('window', 'document', 'localStorage', 'fetch', fuente + '\nreturn window.AcademiaSync;')(win, doc, almacen, gh.fetch);
+    await sync.listo;
+    return { nombre, almacen, sync };
+  }
+  async function escribir(eq, clave, valor) {
+    eq.almacen.setItem(clave, JSON.stringify(valor));
+    eq.sync.guardado(clave);
+    await dormir(20);
+  }
+  const resDe = (eq) => JSON.parse(eq.almacen.getItem(K_RES) || '{}');
+  const notasDe = (eq) => JSON.parse(eq.almacen.getItem(K_NOTAS) || '""');
+
+  // ---------- Tabla de estado y registro ----------
+  let gh = null; let laptop = null; let pc = null; let aviso = null;
+  const nota = (x) => (x ? x.ok + ' de ' + x.total : '—');
+  function actualizar() {
+    const filas = $('#filas-estado'); filas.replaceChildren();
+    const lado = (eq) => (eq ? { res: resDe(eq), notas: notasDe(eq) } : null);
+    const remoto = gh && gh.valor(K_RES) ? { res: JSON.parse(gh.valor(K_RES)), notas: JSON.parse(gh.valor(K_NOTAS) || '""') } : null;
+    const columnas = [lado(laptop), lado(pc), remoto];
+    const datos = [
+      ['Actividad «Conceptos»', (c) => nota(c.res.conceptos)],
+      ['Actividad «CIA»', (c) => nota(c.res.cia)],
+      ['Actividad «SOC»', (c) => nota(c.res.soc)],
+      ['Examen final', (c) => nota(c.res.examen)],
+      ['Notas y dudas', (c) => c.notas || '—']
+    ];
+    datos.forEach(([nombre, f]) => {
+      const tr = document.createElement('tr');
+      const th = document.createElement('th'); th.scope = 'row'; th.textContent = nombre; tr.append(th);
+      const valores = columnas.map((c) => (c ? f(c) : '(sin datos)'));
+      valores.forEach((v, i) => { const td = document.createElement('td'); td.textContent = v; if (i < 3 && nombre === 'Notas y dudas') td.className = 'celda-texto'; tr.append(td); });
+      const iguales = valores.every((v) => v === valores[0]);
+      const td = document.createElement('td'); td.textContent = iguales ? '✔ Sí' : '≠ No'; if (!iguales) td.className = 'distinto'; tr.append(td);
+      filas.append(tr);
+    });
+    // Registro: las diferencias guardadas en GitHub, con lo que decidió el alumno
+    const reg = $('#registro'); reg.replaceChildren();
+    const lista = gh && gh.valor(K_DIF) ? Object.values(JSON.parse(gh.valor(K_DIF))) : [];
+    if (!lista.length) { const li = document.createElement('li'); li.textContent = 'Todavía no hay diferencias.'; reg.append(li); }
+    const corto = (c, v) => { const x = JSON.parse(v); const t = String(x).split('\n').join(' / '); return c.parte ? nota(x) : '«' + (t.length > 80 ? t.slice(0, 80) + '…' : t) + '»'; };
+    const ELECCION = { actual: 'quedarse con la que se usaba', otra: 'usar la otra versión', unir: 'unir las dos' };
+    lista.forEach((c) => {
+      const li = document.createElement('li');
+      const que = c.parte === 'examen' ? 'Examen final' : c.parte ? 'Actividad «' + c.parte + '»' : 'Notas y dudas';
+      li.textContent = que + ': ' + c.versiones.map((v) => corto(c, v.v) + ' (' + v.equipo + ')').join(' y ') + ' · ' +
+        (c.resuelto ? 'decidiste ' + ELECCION[c.eleccion] + (c.anterior && c.anterior !== c.final ? '; la versión reemplazada quedó guardada: ' + corto(c, c.anterior) : '') : 'pendiente de tu decisión');
+      reg.append(li);
+    });
+  }
+
+  // ---------- Pasos ----------
+  const relato = (t) => { $('#relato').textContent = t; };
+  const hecho = (n) => $('#paso-' + n).classList.add('hecho');
+  async function paso1() {
+    $('#b1').disabled = true;
+    gh = crearGitHub();
+    laptop = await crearEquipo(gh, 'Laptop ficticia');
+    await escribir(laptop, K_RES, { conceptos: { ok: 7, total: 8 }, examen: { ok: 8, total: 12 } });
+    await escribir(laptop, K_NOTAS, 'La tríada CIA: confidencialidad, integridad y disponibilidad.');
+    await laptop.sync.subirAhora();
+    pc = await crearEquipo(gh, 'PC ficticia');
+    hecho(1); actualizar();
+    relato('Paso 1 listo: la Laptop guardó su avance en GitHub y la PC lo recibió. Los dos equipos tienen lo mismo.');
+    $('#b2').disabled = false; $('#b2').focus();
+  }
+  async function paso2() {
+    $('#b2').disabled = true;
+    gh.sinConexion = true;
+    const rl = resDe(laptop); rl.cia = { ok: 5, total: 6 }; rl.examen = { ok: 10, total: 12 };
+    await escribir(laptop, K_RES, rl);
+    await escribir(laptop, K_NOTAS, notasDe(laptop) + '\nPhishing: correo falso para robar datos.');
+    const rp = resDe(pc); rp.soc = { ok: 6, total: 6 }; rp.examen = { ok: 9, total: 12 };
+    await escribir(pc, K_RES, rp);
+    await escribir(pc, K_NOTAS, notasDe(pc) + '\nRansomware: secuestra archivos y pide un rescate.');
+    hecho(2); actualizar();
+    relato('Paso 2 listo: sin internet, cada equipo guardó lo suyo. GitHub todavía tiene lo del paso 1 (mira la columna «¿Iguales?»).');
+    $('#b3').disabled = false; $('#b3').focus();
+  }
+  async function paso3() {
+    $('#b3').disabled = true;
+    gh.sinConexion = false;
+    await laptop.sync.subirAhora();
+    await pc.sync.subirAhora();
+    hecho(3); actualizar();
+    const n = pc.sync.diferencias().length;
+    relato('Paso 3 listo: en la PC y en GitHub se unieron solas las actividades «CIA» y «SOC», porque no chocan (la Laptop las recibe en el paso 5). Quedan ' + n + ' diferencias que cambiaron en los dos equipos: tú decides abajo.');
+    aviso = window.AcademiaDiferencias.crear({
+      sync: pc.sync, catalogo: window.CATALOGO || [],
+      seccion: $('#diferencias'), lista: $('#lista-dif'), mensaje: $('#dif-msg'), titulo: $('#t-dif'),
+      alDecidir: () => {
+        pc.sync.subirAhora().then(() => {
+          actualizar();
+          if (!pc.sync.diferencias().length) {
+            hecho(4);
+            relato('Paso 4 listo: decidiste todo en la PC y se guardó en GitHub. Falta que la Laptop lo reciba.');
+            $('#b5').disabled = false;
+          }
+        });
+      }
+    });
+    $('#t-dif').focus();
+  }
+  async function paso5() {
+    $('#b5').disabled = true;
+    await laptop.sync.subirAhora();
+    hecho(5); actualizar();
+    relato('Paso 5 listo: la Laptop recibió tu decisión. Los dos equipos y GitHub tienen lo mismo, y el registro conserva las versiones que no elegiste.');
+  }
+  function reiniciar() {
+    gh = null; laptop = null; pc = null; aviso = null;
+    document.querySelectorAll('.pasos-demo li').forEach((li) => li.classList.remove('hecho'));
+    $('#lista-dif').replaceChildren(); $('#dif-msg').textContent = ''; $('#diferencias').hidden = true;
+    ['#b2', '#b3', '#b5'].forEach((b) => { $(b).disabled = true; });
+    $('#b1').disabled = false;
+    relato('Listo para empezar: pulsa «Preparar los dos equipos».');
+    actualizar();
+  }
+  const seguro = (f) => async () => { try { await f(); } catch (e) { relato('La demostración tuvo un error: ' + e.message + '. Pulsa «Empezar de nuevo».'); } };
+  $('#b1').addEventListener('click', seguro(paso1));
+  $('#b2').addEventListener('click', seguro(paso2));
+  $('#b3').addEventListener('click', seguro(paso3));
+  $('#b5').addEventListener('click', seguro(paso5));
+  $('#reiniciar').addEventListener('click', reiniciar);
+
+  fetch('../recursos/sync.js', { cache: 'no-store' }).then((r) => r.text()).then((t) => { fuente = t; reiniciar(); })
+    .catch(() => relato('No se pudo cargar recursos/sync.js. Abre esta página desde el servidor local (python -m http.server 8765 --bind 127.0.0.1) o desde GitHub Pages.'));
+})();
+</script>
+</body>
+</html>
