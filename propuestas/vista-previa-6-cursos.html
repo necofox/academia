@@ -25,42 +25,15 @@
     <p><strong>Funciona aislada:</strong> dentro del marco el menú usa un almacenamiento temporal en memoria (nunca el de tu navegador), no sincroniza con GitHub, tiene los enlaces desactivados y no cambia ningún archivo. Por eso no aparece tu avance ni el panel de GitHub. Los cursos nuevos no tienen clases todavía: todas dicen «Próximamente».</p>
     <p>Detalle completo: <code>PROPUESTA-AMPLIACION-6-CURSOS.md</code>.</p>
   </div>
-  <p id="estado-previa" role="status" class="marcador"></p>
-  <iframe id="previa" class="marco-previa" title="Vista previa del menú con 6 cursos" sandbox="allow-scripts allow-same-origin"></iframe>
+  <p class="marcador">Elige «Redes y Telecomunicaciones» o «IA: Claude y productividad» dentro del marco. Para abrir directo un curso: <a href="vista-previa-6-cursos.html?curso=redes">Redes</a> · <a href="vista-previa-6-cursos.html?curso=ia">IA: Claude</a></p>
+  <iframe id="previa" class="marco-previa" title="Vista previa del menú con 6 cursos" src="vista-previa-menu.html"></iframe>
 </main>
 <script>
+// El menú de la vista previa es un archivo generado (vista-previa-menu.html), así que funciona con
+// doble clic y con el servidor. Aquí solo se le pasa ?curso= si viene en la dirección.
 (() => {
-  'use strict';
-  const estado = document.getElementById('estado-previa');
-  const raiz = new URL('../', location.href).href;
-  // Colores propuestos para los cursos nuevos (aún no están en academia.css)
-  const CSS_NUEVOS = '.tema-redes{--accent:#6ea8fe;--accent2:#9ad1ff}.tema-ia{--accent:#c9a7ff;--accent2:#ffb38a}#sync{display:none}' +
-    '.aviso-previa{position:fixed;left:16px;right:16px;bottom:16px;z-index:60;background:var(--panel2);border:1px solid var(--warn);border-radius:10px;padding:12px 16px}';
-  // Se ejecuta antes que todo dentro del marco: almacenamiento en memoria (nunca el real) y enlaces desactivados
-  // ?curso=redes (o ia) abre la vista previa con ese curso elegido (solo en la memoria del marco)
   const pedido = new URLSearchParams(location.search).get('curso');
-  const inicial = pedido && /^[a-z-]{2,20}$/.test(pedido) ? JSON.stringify({ 'academia:menu:curso': JSON.stringify(pedido) }) : '{}';
-  const AISLAR = '<script>(function(){var d=' + inicial + ';var f={getItem:function(k){return Object.prototype.hasOwnProperty.call(d,k)?d[k]:null},' +
-    'setItem:function(k,v){d[k]=String(v)},removeItem:function(k){delete d[k]},clear:function(){d={}},key:function(i){return Object.keys(d)[i]||null}};' +
-    'Object.defineProperty(f,"length",{get:function(){return Object.keys(d).length}});' +
-    'try{Object.defineProperty(window,"localStorage",{value:f,configurable:true})}catch(e){}' +
-    'if(window.localStorage!==f){location.replace("about:blank");return}' +
-    'document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a||a.getAttribute("href").charAt(0)==="#")return;e.preventDefault();' +
-    'var t=document.querySelector(".aviso-previa");if(!t){t=document.createElement("p");t.className="aviso-previa";t.setAttribute("role","status");document.body.append(t)}' +
-    't.textContent="En la vista previa los enlaces están desactivados: aquí solo se muestra cómo se verían los cursos y módulos."},true);})();<\/script>';
-  fetch(raiz + 'inicio.html', { cache: 'no-store' })
-    .then((r) => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
-    .then((html) => {
-      let h = html.replace(/<head>/i, '<head><base href="' + raiz + '">' + AISLAR);
-      h = h.replace(/<\/head>/i, '<style>' + CSS_NUEVOS + '</style></head>');
-      h = h.replace(/<script src="recursos\/sync\.js[^"]*"><\/script>\s*/i, ''); // sin sincronización
-      h = h.replace(/<script src="recursos\/diferencias\.js[^"]*"><\/script>\s*/i, '');
-      h = h.replace(/(<script src="recursos\/catalogo\.js[^"]*"><\/script>)/i, '$1\n<script src="propuestas/cursos-nuevos.borrador.js"><\/script>');
-      if (!/cursos-nuevos\.borrador\.js/.test(h)) throw new Error('no se encontró el catálogo en inicio.html');
-      document.getElementById('previa').srcdoc = h;
-      estado.textContent = 'Vista previa cargada: elige «Redes y Telecomunicaciones» o «IA: Claude y productividad» dentro del marco.';
-    })
-    .catch((e) => { estado.textContent = 'No se pudo cargar la vista previa (' + e.message + '). Ábrela desde el servidor local: python -m http.server 8765 --bind 127.0.0.1 y luego http://127.0.0.1:8765/propuestas/vista-previa-6-cursos.html'; });
+  if (pedido && /^[a-z-]{2,20}$/.test(pedido)) document.getElementById('previa').src = 'vista-previa-menu.html?curso=' + pedido;
 })();
 </script>
 </body>

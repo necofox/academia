@@ -135,6 +135,45 @@ function catalogo() {
     c.modulos.map((m) => (m.n === 'E' ? 'Electiva' : 'M' + m.n) + ' ' + m.titulo + ' (' + m.clases.length + ')').join(' · ')).join('\n');
 }
 
+// Menú de la vista previa (propuestas/vista-previa-menu.html): tu inicio.html real con el borrador,
+// generado como archivo para que funcione también con doble clic (file://), donde fetch no está
+// permitido. Aislado: almacenamiento en memoria (nunca el real), sin sincronización y sin enlaces.
+function vistaPrevia() {
+  const AISLAR = '<script>/* AISLAMIENTO DE LA VISTA PREVIA: va antes que todo */\n(function () {\n' +
+    '  var d = {};\n' +
+    '  var pedido = new URLSearchParams(location.search).get("curso"); // ?curso=redes abre ese curso\n' +
+    '  if (pedido && /^[a-z-]{2,20}$/.test(pedido)) d["academia:menu:curso"] = JSON.stringify(pedido);\n' +
+    '  var f = { getItem: function (k) { return Object.prototype.hasOwnProperty.call(d, k) ? d[k] : null; }, setItem: function (k, v) { d[k] = String(v); },\n' +
+    '    removeItem: function (k) { delete d[k]; }, clear: function () { d = {}; }, key: function (i) { return Object.keys(d)[i] || null; } };\n' +
+    '  Object.defineProperty(f, "length", { get: function () { return Object.keys(d).length; } });\n' +
+    '  try { Object.defineProperty(window, "localStorage", { value: f, configurable: true }); } catch (e) {}\n' +
+    '  if (window.localStorage !== f) { location.replace("about:blank"); return; } // si no se puede aislar, no se muestra\n' +
+    '  document.addEventListener("click", function (e) {\n' +
+    '    var a = e.target.closest && e.target.closest("a[href]");\n' +
+    '    if (!a || a.getAttribute("href").charAt(0) === "#") return;\n' +
+    '    e.preventDefault();\n' +
+    '    var t = document.querySelector(".aviso-previa");\n' +
+    '    if (!t) { t = document.createElement("p"); t.className = "aviso-previa"; t.setAttribute("role", "status"); document.body.append(t); }\n' +
+    '    t.textContent = "En la vista previa los enlaces están desactivados: aquí solo se muestra cómo se verían los cursos y módulos.";\n' +
+    '  }, true);\n})();\n</script>';
+  const CSS = '<style>/* Colores propuestos para los cursos nuevos y ajustes de la vista previa */\n' +
+    '.tema-redes{--accent:#6ea8fe;--accent2:#9ad1ff}.tema-ia{--accent:#c9a7ff;--accent2:#ffb38a}#sync{display:none}\n' +
+    '.aviso-previa{position:fixed;left:16px;right:16px;bottom:16px;z-index:60;background:var(--panel2);border:1px solid var(--warn);border-radius:10px;padding:12px 16px}\n</style>';
+  let h = fs.readFileSync(path.join(raiz, 'inicio.html'), 'utf8').replace(/\r\n/g, '\n');
+  const pasos = [
+    [/<head>/i, '<head>\n<!-- ARCHIVO GENERADO por propuestas/generar-propuesta-ampliacion.js a partir de inicio.html. No editar a mano. -->\n<base href="../">\n' + AISLAR],
+    [/<\/head>/i, CSS + '\n</head>'],
+    [/<script src="recursos\/sync\.js[^"]*"><\/script>\s*/i, ''],
+    [/<script src="recursos\/diferencias\.js[^"]*"><\/script>\s*/i, ''],
+    [/(<script src="recursos\/catalogo\.js[^"]*"><\/script>)/i, '$1\n<script src="propuestas/cursos-nuevos.borrador.js"></script>']
+  ];
+  pasos.forEach(([re, rep]) => { if (!re.test(h)) throw new Error('inicio.html cambió: no se encontró ' + re); h = h.replace(re, rep); });
+  if (/recursos\/sync\.js/.test(h)) throw new Error('La vista previa no debe cargar sync.js');
+  fs.writeFileSync(path.join(__dirname, 'vista-previa-menu.html'), h, 'utf8');
+  console.log('✎ propuestas/vista-previa-menu.html generado desde inicio.html');
+}
+vistaPrevia();
+
 codigos(CAT.find((x) => x.id === 'redes'), 'R');
 codigos(CAT.find((x) => x.id === 'ia'), 'C');
 let texto = fs.readFileSync(path.join(__dirname, 'plantilla-propuesta-ampliacion.md'), 'utf8').replace(/\r\n/g, '\n');

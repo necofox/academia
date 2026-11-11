@@ -337,9 +337,11 @@ clase. Cada clase actualizada tendrá su sección de videos, junto a la de fuent
   - los videos de cada clase.
 
   Se agrega al catálogo real **sin modificarlo**.
-- **Vista previa:** sirve la carpeta (`python -m http.server 8765 --bind 127.0.0.1`) y abre
-  `http://127.0.0.1:8765/propuestas/vista-previa-6-cursos.html`.
-  - Muestra el menú real con los 6 cursos.
+- **Vista previa:** abre con doble clic `propuestas/vista-previa-6-cursos.html` (o, desde el
+  servidor local, `http://127.0.0.1:8765/propuestas/vista-previa-6-cursos.html`).
+  - Muestra tu menú real con los 6 cursos. El menú de la vista previa
+    (`propuestas/vista-previa-menu.html`) se genera desde `inicio.html` con el mismo comando que
+    este documento.
   - Con `?curso=redes` o `?curso=ia` al final de la dirección se abre en ese curso.
   - Funciona aislada: usa un almacenamiento temporal en memoria, no sincroniza con GitHub, tiene
     los enlaces desactivados y no modifica ningún archivo.
