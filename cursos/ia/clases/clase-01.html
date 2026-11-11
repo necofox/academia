@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IA · Clase 01 · ¿Qué es la IA generativa?</title>
+<link rel="stylesheet" href="../../../recursos/academia.css">
+</head>
+<body class="tema-ia">
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="top">
+  <div class="marca"><span class="logo" aria-hidden="true">&lt;/&gt;</span><span>IA<span class="acento">//</span>ACADEMIA</span></div>
+  <div id="reloj" class="reloj-zona"></div>
+  <div id="voz"></div>
+  <a class="btn-mini" href="../../../inicio.html">☰ Menú</a>
+</header>
+
+<div class="layout">
+  <nav id="agenda" class="agenda" aria-label="Agenda de la clase"></nav>
+
+  <main id="contenido">
+    <div class="portada">
+      <p class="kicker">Módulo 1 · Fundamentos de la IA generativa y de Claude · Clase 01</p>
+      <h1>¿Qué es la IA generativa?</h1>
+      <p class="sub">Modelos de lenguaje, cómo se entrenan, qué hacen bien y cuáles son sus límites. Duración: 2 horas.</p>
+    </div>
+
+    <!-- ================= 1. PRESENTACIÓN Y 2. ACTIVACIÓN ================= -->
+    <section id="b-bienvenida" class="bloque" aria-labelledby="t-bienvenida">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-bienvenida">Presentación y punto de partida</h2>
+      <div class="lectura">
+        <p>¡Bienvenido a tu primera clase sobre Claude! Antes de aprender a darle buenas instrucciones, necesitas entender qué es por dentro: qué es la inteligencia artificial generativa, cómo aprende un modelo de lenguaje, en qué es muy bueno y en qué se equivoca. Ese conocimiento es lo que separa a quien «le pregunta cosas a la IA» de quien la usa con criterio.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Ficha de la clase</th><th>Detalle</th></tr></thead>
+            <tbody>
+              <tr><td>Número y título</td><td>Clase 01: ¿Qué es la IA generativa? Modelos de lenguaje, capacidades y límites.</td></tr>
+              <tr><td>Módulo</td><td>Módulo 1 · Fundamentos de la IA generativa y de Claude (clase 1 de 4).</td></tr>
+              <tr><td>Duración</td><td>120 minutos, con un descanso de 10.</td></tr>
+              <tr><td>Nivel</td><td>Desde cero.</td></tr>
+              <tr><td>Conocimientos previos</td><td>Ninguno. Solo necesitas saber usar el navegador.</td></tr>
+              <tr><td>Plan de Claude</td><td><strong>Gratis.</strong> La práctica se hace con el plan gratuito. No necesitas la API ni pagar nada.</td></tr>
+              <tr><td>Dónde se practica</td><td>En el chat de Claude (claude.ai, en la web, en la aplicación de escritorio o en el celular).</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Objetivos: al terminar podrás</h3>
+        <ul>
+          <li>Explicar qué es la inteligencia artificial, el aprendizaje automático y la IA generativa, y en qué se diferencian.</li>
+          <li>Describir cómo funciona un modelo de lenguaje: tokens, predicción de la siguiente palabra y ventana de contexto.</li>
+          <li>Nombrar las etapas con las que se entrena un asistente como Claude.</li>
+          <li>Reconocer qué tareas hace bien Claude y cuáles son sus límites, en especial las alucinaciones y la fecha de corte de su conocimiento.</li>
+          <li>Aplicar tres técnicas oficiales para reducir errores y decidir qué información nunca se le entrega.</li>
+        </ul>
+        <h3>Antes de empezar, piensa</h3>
+        <ul>
+          <li>¿Has usado alguna vez un asistente de IA? ¿Te dio alguna respuesta que resultó ser falsa?</li>
+          <li>Si una IA escribe con total seguridad, ¿eso significa que tiene razón?</li>
+          <li>¿Crees que la IA «sabe» lo que pasó ayer en las noticias?</li>
+        </ul>
+        <p>No hace falta escribir las respuestas: al final de la clase las podrás contestar con argumentos.</p>
+        <div class="nota alerta">
+          <p><strong>Situación de partida (caso ficticio):</strong> Lucía prepara un informe para su trabajo. Le pide a un asistente de IA «tres estudios que prueben que el teletrabajo aumenta la productividad». Recibe tres títulos con autores, años y revistas, muy bien redactados. Los copia en su informe. Su jefa intenta buscarlos… y dos de ellos no existen. ¿Qué pasó? ¿Mintió la IA? ¿Cómo lo habría evitado Lucía? En el bloque de demostración lo resolvemos.</p>
+        </div>
+        <h3>Cómo usar esta página</h3>
+        <ul>
+          <li>Pulsa «Iniciar clase» en el reloj de arriba: te avisará al cambiar de bloque.</li>
+          <li>El botón «Escuchar esta parte» lee la teoría en voz alta. Los términos en inglés se leen con voz inglesa.</li>
+          <li>Si fallas una actividad, primero recibes una pista; si vuelves a fallar, ves la respuesta explicada.</li>
+          <li>Verás etiquetas como «definición oficial» o «ejemplo didáctico». Los ejemplos de respuestas de IA de esta página fueron <strong>redactados para la clase</strong>: no son respuestas reales copiadas de Claude.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= 3. DESARROLLO TEÓRICO (I) ================= -->
+    <section id="b-ia" class="bloque" aria-labelledby="t-ia">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-ia">IA, aprendizaje automático e IA generativa</h2>
+      <div class="lectura">
+        <p>Piensa en tres cajas, una dentro de otra. La caja grande es la <strong>inteligencia artificial</strong>. Dentro está el <strong>aprendizaje automático</strong>. Y dentro de esta, la <strong>IA generativa</strong>, que es la que usa Claude.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Concepto</th><th>Definición oficial</th><th>En simple</th></tr></thead>
+            <tbody>
+              <tr><td>Inteligencia artificial (IA)</td><td>Según el glosario del NIST, un sistema basado en máquinas que, para unos objetivos definidos por personas, hace predicciones, recomendaciones o decisiones que influyen en entornos reales o virtuales.</td><td>Máquinas que hacen tareas que parecen requerir inteligencia.</td></tr>
+              <tr><td>Aprendizaje automático (<span lang="en">machine learning</span>)</td><td>Según el NIST, el desarrollo y uso de sistemas que se adaptan y aprenden de los datos con el objetivo de mejorar su precisión.</td><td>En vez de programar cada regla, el sistema aprende de muchos ejemplos.</td></tr>
+              <tr><td>IA generativa</td><td>El perfil de IA generativa del NIST (AI 600-1) cita esta definición: la clase de modelos de IA que imitan la estructura y las características de los datos de entrada para generar contenido sintético derivado.</td><td>IA que <strong>crea</strong> contenido nuevo: texto, imágenes, audio o código.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nota">
+          <p><strong>Ejemplo didáctico:</strong> un filtro de correo basura aprende de millones de correos a decidir «basura» o «no basura»: es aprendizaje automático, pero no genera nada nuevo. Un asistente que te redacta un correo desde cero sí es IA generativa.</p>
+        </div>
+        <div class="nota alerta">
+          <p><strong>Error frecuente:</strong> creer que toda la IA es como un chat. Muchísimos sistemas de IA no conversan ni crean contenido: clasifican, recomiendan o predicen. La IA generativa es solo una parte, la más visible hoy.</p>
+        </div>
+      </div>
+      <h3>Actividad: ¿es IA generativa?</h3>
+      <div data-actividad="generativa"></div>
+    </section>
+
+    <!-- ================= 3. DESARROLLO TEÓRICO (II) ================= -->
+    <section id="b-llm" class="bloque" aria-labelledby="t-llm">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-llm">¿Cómo funciona un modelo de lenguaje?</h2>
+      <div class="lectura">
+        <p>Claude es un <strong>gran modelo de lenguaje</strong>, en inglés <span lang="en">large language model</span>, o <span lang="en">LLM</span>. Anthropic, la empresa que lo crea, define estos modelos como modelos de IA con muchos parámetros, capaces de hacer una variedad de tareas sorprendentemente útiles, entrenados con enormes cantidades de texto para generar texto parecido al humano.</p>
+        <h3>1. Todo se mide en tokens</h3>
+        <p>Un modelo no lee letras ni palabras como tú. Según el glosario de Anthropic, los <span lang="en">tokens</span> son las unidades más pequeñas de un modelo de lenguaje y pueden corresponder a palabras, partes de palabras, caracteres o incluso bytes.</p>
+        <div class="nota">
+          <p><strong>Ejemplo didáctico:</strong> una frase como «Los gatos duermen» podría dividirse en piezas como «Los», «gat», «os», «duer», «men». La división real depende de cada modelo; esto solo muestra la idea.</p>
+        </div>
+        <h3>2. Predecir la siguiente palabra</h3>
+        <p>Imagina el autocompletar del teclado de tu celular, pero entrenado con muchísimo más texto y mucho más capaz. Anthropic explica que en el <strong>preentrenamiento</strong> el modelo aprende con un gran conjunto de texto sin etiquetar a predecir la siguiente palabra. Al responder, va eligiendo token tras token lo que es más probable que siga.</p>
+        <div class="nota alerta">
+          <p><strong>Consecuencia importante:</strong> el modelo genera lo que <em>suena</em> probable, y lo probable casi siempre es correcto, pero no siempre. Por eso puede escribir con total seguridad algo falso. Lo verás en el bloque de límites.</p>
+        </div>
+        <h3>3. De modelo a asistente</h3>
+        <p>Un modelo recién preentrenado solo continúa textos; no conversa ni sigue instrucciones. Anthropic aclara que Claude no es un modelo de lenguaje «en bruto»: ya fue <strong>ajustado</strong> para ser un asistente útil. Estas son las etapas:</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Etapa</th><th>Qué pasa, según Anthropic</th></tr></thead>
+            <tbody>
+              <tr><td>Preentrenamiento (<span lang="en">pretraining</span>)</td><td>El modelo aprende con un gran volumen de texto sin etiquetar a predecir la siguiente palabra.</td></tr>
+              <tr><td>Ajuste fino (<span lang="en">fine-tuning</span>)</td><td>Se sigue entrenando el modelo preentrenado con datos adicionales.</td></tr>
+              <tr><td><span lang="en">RLHF</span>: aprendizaje por refuerzo con retroalimentación humana</td><td>Se entrena el modelo para que se comporte de acuerdo con las preferencias humanas. Las personas ordenan dos o más textos de ejemplo según cuál prefieren.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>4. La ventana de contexto: su memoria de trabajo</h3>
+        <p>Anthropic define la <strong>ventana de contexto</strong>, en inglés <span lang="en">context window</span>, como la cantidad de texto que el modelo puede revisar y usar como referencia al generar texto nuevo; la compara con una «memoria de trabajo». Ahí entran tus mensajes, sus respuestas y los archivos que le das en esa conversación.</p>
+        <h3>5. ¿Por qué no responde siempre igual?</h3>
+        <p>Al elegir cada token hay un margen de azar. Anthropic explica que la llamada <span lang="en">temperature</span>, temperatura, regula ese azar: más temperatura da resultados más creativos y variados; e incluso con temperatura cero, los resultados no son totalmente deterministas. Por eso la misma pregunta puede recibir respuestas distintas.</p>
+      </div>
+      <h3>Actividad: ¿qué etapa o concepto es?</h3>
+      <div data-actividad="etapas"></div>
+    </section>
+
+    <!-- ================= 3. DESARROLLO TEÓRICO (III) ================= -->
+    <section id="b-limites" class="bloque" aria-labelledby="t-limites">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-limites">Lo que hace bien y sus límites</h2>
+      <div class="lectura">
+        <h3>Lo que Claude hace bien</h3>
+        <p>Según la documentación oficial de Anthropic, Claude puede ayudar con muchas tareas que involucran texto, código e imágenes: resumir textos, responder preguntas, extraer datos, traducir, explicar y generar código, y analizar imágenes. Los modelos actuales son multilingües: entienden y escriben en muchos idiomas, incluido el español.</p>
+        <h3>Sus límites</h3>
+        <div class="grid-cards">
+          <div class="card">
+            <h4>1. Alucinaciones</h4>
+            <p>Anthropic explica que los modelos a veces generan texto que es falso o incoherente con el contexto dado, y que a esto se le llama «alucinación». El NIST lo llama <strong>confabulación</strong>: contenido erróneo o falso dicho con seguridad, que puede engañar a quien lo lee.</p>
+          </div>
+          <div class="card">
+            <h4>2. Fecha de corte</h4>
+            <p>El modelo aprendió con textos hasta cierta fecha. La documentación oficial de los modelos indica su «fecha de corte de conocimiento fiable»: hasta cuándo su conocimiento es más amplio y fiable. Para los modelos actuales, consultada el 11/11/2026, es junio de 2026. Lo que pasó después no lo sabe, salvo que busque en la web.</p>
+          </div>
+          <div class="card">
+            <h4>3. Ventana de contexto limitada</h4>
+            <p>Su memoria de trabajo es grande, pero tiene un tamaño máximo. En conversaciones o documentos muy largos, no todo cabe a la vez.</p>
+          </div>
+          <div class="card">
+            <h4>4. No siempre igual</h4>
+            <p>Por el margen de azar, la misma pregunta puede recibir respuestas distintas. Si algo importa, compáralo y verifícalo.</p>
+          </div>
+        </div>
+        <div class="nota ok">
+          <p><strong>La regla de oro, en palabras del centro de ayuda oficial de Claude:</strong> Claude puede escribir cosas que parecen correctas pero están muy equivocadas, y no hay que usarlo como única fuente de verdad. Cuando usa la búsqueda web, hay que revisar las fuentes que cita.</p>
+        </div>
+        <div class="nota alerta">
+          <p><strong>Error frecuente:</strong> pensar que una alucinación es una mentira. Mentir es engañar a propósito. El modelo no tiene esa intención: genera texto probable, y a veces lo probable es falso. El resultado, eso sí, puede engañarte igual.</p>
+        </div>
+      </div>
+      <h3>Actividad: ¿confías o verificas?</h3>
+      <div data-actividad="verificar"></div>
+    </section>
+
+    <!-- ================= DESCANSO ================= -->
+    <section id="b-descanso" class="bloque descanso" aria-labelledby="t-descanso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <p class="grande" aria-hidden="true">☕</p>
+      <h2 id="t-descanso">Descanso de 10 minutos</h2>
+      <p>Levántate, toma agua y descansa la vista. Mira algo lejano durante 20 segundos.</p>
+      <p>Reto mental: ¿qué pregunta le harías a una IA para descubrir hasta qué fecha llega su conocimiento?</p>
+    </section>
+
+    <!-- ================= 4. DEMOSTRACIÓN PRÁCTICA ================= -->
+    <section id="b-demo" class="bloque" aria-labelledby="t-demo">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-demo">Demostración: el informe de Lucía, bien hecho</h2>
+      <div class="lectura">
+        <p>Volvamos a Lucía. Los estudios inventados son un caso típico de alucinación: el modelo generó títulos, autores y revistas que <em>sonaban</em> verosímiles. La documentación de Anthropic propone técnicas básicas para reducir las alucinaciones. Mira cómo cambia la instrucción.</p>
+        <h3>La instrucción de Lucía</h3>
+      </div>
+      <pre class="log" aria-label="Instrucción original">Dame tres estudios que prueben que el teletrabajo aumenta la productividad.</pre>
+      <div class="lectura">
+        <p><strong>Problemas:</strong> pide que algo «se pruebe», así que empuja a encontrarlo aunque no exista; no permite decir «no sé»; no pide fuentes que se puedan comprobar.</p>
+        <h3>La instrucción mejorada</h3>
+      </div>
+      <pre class="log" aria-label="Instrucción mejorada">Busca en la web estudios sobre el efecto del teletrabajo en la productividad.
+Incluye estudios con resultados a favor y en contra.
+Para cada uno, da: título, autores, año, enlace y una cita textual del resumen.
+Si no encuentras un dato o no estás seguro, escribe «no lo encontré».
+No inventes estudios ni autores.</pre>
+      <div class="lectura">
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Técnica oficial</th><th>Dónde está en la instrucción</th></tr></thead>
+            <tbody>
+              <tr><td>Permitir que diga «no sé»</td><td>«Si no encuentras un dato o no estás seguro, escribe "no lo encontré".»</td></tr>
+              <tr><td>Usar citas textuales como base</td><td>«Una cita textual del resumen.»</td></tr>
+              <tr><td>Verificar con citas y fuentes</td><td>«Título, autores, año, enlace», para poder comprobar cada afirmación.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Además, la instrucción mejorada pide resultados a favor y en contra: así no empuja al modelo a «probar» una idea fija.</p>
+        <div class="nota ok">
+          <p><strong>Resultado esperado:</strong> una lista con enlaces que Lucía <strong>abre uno por uno</strong> para comprobar que el estudio existe y dice lo que Claude resume. Anthropic advierte que estas técnicas reducen mucho las alucinaciones, pero no las eliminan por completo. La última verificación siempre es tuya.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 5. ACTIVIDADES: USO RESPONSABLE ================= -->
+    <section id="b-seguro" class="bloque" aria-labelledby="t-seguro">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-seguro">Uso seguro y responsable</h2>
+      <div class="lectura">
+        <p>Anthropic entrena a Claude con un marco de investigación llamado <span lang="en">HHH</span>: <span lang="en">helpful, honest, harmless</span>, es decir, útil, honesto e inofensivo. Según su glosario, una IA honesta da información precisa y no alucina ni confabula. Es un objetivo del entrenamiento, no una garantía: por eso tu verificación sigue siendo necesaria.</p>
+        <h3>La regla de seguridad de este curso</h3>
+        <ul>
+          <li>Nunca pegues en Claude <strong>contraseñas, tokens, claves ni códigos de verificación</strong>.</li>
+          <li>Nunca pegues <strong>datos personales</strong> tuyos o de otras personas: documento de identidad, dirección, datos médicos o bancarios.</li>
+          <li>Antes de compartir un documento del trabajo, quita lo confidencial.</li>
+          <li>Todo lo importante que Claude afirma se comprueba: fuentes, fechas y cifras.</li>
+        </ul>
+        <h3>¿Qué puedes hacer con el plan gratuito?</h3>
+        <p>Según la página oficial de planes, consultada el 11/11/2026, el plan gratuito permite chatear en la web, el escritorio y el celular, buscar en la web, crear archivos y ejecutar código, con un uso limitado cada 5 horas y cada semana. Claude Code y la investigación profunda (<span lang="en">Research</span>) son de los planes de pago. Todo lo de este primer módulo se hace gratis.</p>
+      </div>
+      <h3>Actividad: ¿lo pegarías en Claude?</h3>
+      <div data-actividad="pegar"></div>
+    </section>
+
+    <!-- ================= VOCABULARIO ================= -->
+    <section id="b-vocab" class="bloque" aria-labelledby="t-vocab">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-vocab">Vocabulario de la IA</h2>
+      <p>La documentación oficial de Claude está en inglés, y muchos términos se usan tal cual. Pulsa el altavoz para escuchar cada uno.</p>
+      <ul class="vocab">
+        <li data-en="prompt"><span><span class="en" lang="en">prompt</span><span class="es">instrucción o mensaje que le das al modelo</span><span class="pr">prómpt</span></span></li>
+        <li data-en="token"><span><span class="en" lang="en">token</span><span class="es">unidad mínima de texto del modelo</span><span class="pr">tóu-ken</span></span></li>
+        <li data-en="large language model"><span><span class="en" lang="en">large language model</span><span class="es">gran modelo de lenguaje</span><span class="pr">larch lén-güich mó-del</span></span></li>
+        <li data-en="training data"><span><span class="en" lang="en">training data</span><span class="es">datos de entrenamiento</span><span class="pr">tréi-ning déi-ta</span></span></li>
+        <li data-en="context window"><span><span class="en" lang="en">context window</span><span class="es">ventana de contexto</span><span class="pr">cón-text uín-dou</span></span></li>
+        <li data-en="hallucination"><span><span class="en" lang="en">hallucination</span><span class="es">alucinación</span><span class="pr">ja-lu-si-néi-shon</span></span></li>
+        <li data-en="knowledge cutoff"><span><span class="en" lang="en">knowledge cutoff</span><span class="es">fecha de corte del conocimiento</span><span class="pr">nó-lich cát-of</span></span></li>
+        <li data-en="output"><span><span class="en" lang="en">output</span><span class="es">resultado, respuesta</span><span class="pr">áut-put</span></span></li>
+      </ul>
+      <p>Frase completa: <span data-en="Always verify the sources.">Always verify the sources. <em>(Verifica siempre las fuentes.)</em> </span></p>
+    </section>
+
+    <!-- ================= 6. PRÁCTICA AUTÓNOMA ================= -->
+    <section id="b-autonoma" class="bloque" aria-labelledby="t-autonoma">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-autonoma">Práctica autónoma: pon a prueba a Claude</h2>
+      <div class="lectura">
+        <p>Ahora te toca a ti. En estos cinco minutos lee la consigna; la práctica la haces después de la clase, en el chat de Claude, con el plan gratuito.</p>
+        <h3>Objetivo</h3>
+        <p>Comprobar por ti mismo dos límites del modelo y aplicar las técnicas para reducir errores.</p>
+        <h3>Qué hacer</h3>
+        <ul>
+          <li><strong>Prueba 1, fecha de corte:</strong> pregúntale a Claude hasta qué fecha llega su conocimiento y qué hace si le preguntas por algo más reciente.</li>
+          <li><strong>Prueba 2, misma pregunta:</strong> abre dos conversaciones nuevas y haz en cada una la misma pregunta creativa, por ejemplo «escribe un lema para una panadería». Compara las respuestas.</li>
+          <li><strong>Prueba 3, verificación:</strong> pide información sobre un tema que te interese usando las tres técnicas de la demostración: permitir «no lo encontré», pedir citas textuales y pedir enlaces. Abre al menos dos enlaces y comprueba si dicen lo que Claude resumió.</li>
+          <li>Anota en «Mis notas», al final de la página, qué pasó en cada prueba.</li>
+        </ul>
+        <div class="nota alerta">
+          <p><strong>Recuerda la regla:</strong> en ninguna prueba escribas contraseñas ni datos personales.</p>
+        </div>
+      </div>
+      <div class="reto">
+        <h4>Criterios para comprobar que lo hiciste bien</h4>
+        <ul>
+          <li>Anotaste la fecha de corte que dio Claude y la comparaste con la de la documentación oficial (en la sección de fuentes).</li>
+          <li>Describiste en qué se parecían y en qué se diferenciaban las dos respuestas de la prueba 2, y explicaste por qué pasa.</li>
+          <li>Tu instrucción de la prueba 3 incluye las tres técnicas.</li>
+          <li>Abriste al menos dos enlaces y anotaste si cada uno respaldaba o no lo que dijo Claude.</li>
+          <li>No compartiste ningún dato sensible.</li>
+        </ul>
+        <p>Si cumples los cinco criterios, ¡lo lograste! Al terminar, dile a Claude «revisa mi avance» y te dará retroalimentación.</p>
+      </div>
+    </section>
+
+    <!-- ================= 7. EVALUACIÓN ================= -->
+    <section id="b-examen" class="bloque" aria-labelledby="t-examen">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-examen">Evaluación final</h2>
+      <p>Doce preguntas: conceptos, casos prácticos y problemas de aplicación. Solo cuenta tu primera respuesta, y cada una te explica el porqué.</p>
+      <div data-quiz="examen"></div>
+    </section>
+
+    <!-- ================= 8. RESUMEN ================= -->
+    <section id="b-resumen" class="bloque" aria-labelledby="t-resumen">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-resumen">Resumen de la clase</h2>
+      <div class="lectura">
+        <h3>Conceptos que debes recordar</h3>
+        <ul>
+          <li>La IA generativa es la parte de la IA que crea contenido nuevo; está dentro del aprendizaje automático.</li>
+          <li>Un modelo de lenguaje trabaja con tokens y genera texto prediciendo lo que es más probable que siga.</li>
+          <li>Claude se preentrenó con mucho texto y luego se ajustó, también con retroalimentación humana (RLHF), para ser un asistente útil.</li>
+          <li>La ventana de contexto es su memoria de trabajo en cada conversación.</li>
+          <li>Hace muy bien tareas de texto, código e imágenes, pero puede alucinar, tiene fecha de corte y no responde siempre igual.</li>
+          <li>Tres técnicas oficiales: permitir «no sé», pedir citas textuales y pedir fuentes verificables. Reducen los errores, pero no los eliminan.</li>
+          <li>Nunca le entregues contraseñas, tokens ni datos personales.</li>
+        </ul>
+        <h3>Ya deberías ser capaz de</h3>
+        <ul>
+          <li>Explicar cómo funciona un modelo de lenguaje con tus palabras.</li>
+          <li>Decidir cuándo una respuesta de IA necesita verificación.</li>
+          <li>Mejorar una instrucción para reducir las alucinaciones.</li>
+        </ul>
+        <h3>Prepárate para la Clase 02</h3>
+        <p>En la próxima clase conocerás Claude por dentro: sus modelos, cómo se usa en la web, el escritorio y el celular, y qué incluye cada plan. Ten a mano tu cuenta de Claude; si aún no la tienes, la crearás tú mismo con el plan gratuito.</p>
+      </div>
+    </section>
+
+    <!-- ================= VIDEOS COMPLEMENTARIOS ================= -->
+    <section id="videos" class="bloque fuentes" aria-labelledby="t-videos">
+      <p class="kicker">Material complementario · fuera del reloj</p>
+      <h2 id="t-videos">🎬 Video complementario</h2>
+      <p>El video complementa la clase: no la reemplaza. Se verificó el 11 de noviembre de 2026 con la herramienta de la academia: existe, está disponible y sus datos son los de la ficha. Lo que enseña se revisó con su título y su descripción; no se vio completo.</p>
+      <ul class="lista-fuentes">
+        <li><a href="https://www.youtube.com/watch?v=0K5Knnq2ZRk" target="_blank" rel="noopener">¿Qué son los Grandes Modelos de Lenguaje? Explicación Sencilla de la IA Generativa<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Canal: Derivando (divulgación, terceros) · en español · 9:12 · publicado el 22/01/2025 · verificado el 11/11/2026</span>
+          <span class="origen">Subtítulos en español: sí (automáticos).</span>
+          <span class="origen">Qué enseña: qué son los grandes modelos de lenguaje, cómo se entrenan y cómo funcionan, de forma sencilla. Refuerza el bloque «¿Cómo funciona un modelo de lenguaje?».</span>
+          <span class="origen">Alternativa escrita, por si el video desaparece: el curso gratuito Elements of AI, en español (en la sección de fuentes), y el glosario oficial de Anthropic.</span></li>
+      </ul>
+    </section>
+
+    <!-- ================= 9. FUENTES VERIFICADAS ================= -->
+    <section id="fuentes" class="bloque fuentes" aria-labelledby="t-fuentes">
+      <p class="kicker">Lectura extra · fuera del reloj</p>
+      <h2 id="t-fuentes">📚 Fuentes verificadas</h2>
+      <p>Cada afirmación de esta clase se comprobó leyendo estas fuentes el 11 de noviembre de 2026. Las funciones y los planes de Claude cambian con frecuencia: si lees esto mucho después, vuelve a comprobarlos. Estado <strong>verificado</strong> significa que el dato se leyó en una fuente oficial o primaria. Las que están en inglés las puedes leer en español: en el navegador, haz clic derecho y elige <strong>Traducir a español</strong>.</p>
+
+      <h3>Anthropic (oficial)</h3>
+      <ul class="lista-fuentes">
+        <li><a href="https://platform.claude.com/docs/en/about-claude/glossary" target="_blank" rel="noopener">Glossary<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Anthropic · documentación de Claude · sin fecha visible · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: definiciones de LLM, tokens, preentrenamiento (predecir la siguiente palabra), ajuste fino, que Claude ya está ajustado como asistente, RLHF, ventana de contexto («memoria de trabajo»), temperatura (no totalmente determinista ni con 0) y el marco HHH.</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-hallucinations" target="_blank" rel="noopener">Reduce hallucinations<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Anthropic · documentación de Claude · sin fecha visible · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: qué es una alucinación; las técnicas básicas (permitir «no sé», usar citas textuales, verificar con citas y fuentes); que reducen las alucinaciones pero no las eliminan.</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://platform.claude.com/docs/en/intro" target="_blank" rel="noopener">Intro to Claude<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Anthropic · documentación de Claude · sin fecha visible · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: lo que Claude puede hacer con texto, código e imágenes, y que los modelos actuales son multilingües.</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://platform.claude.com/docs/en/about-claude/models/overview" target="_blank" rel="noopener">Models overview<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Anthropic · documentación de Claude · sin fecha visible · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: la «fecha de corte de conocimiento fiable» (Reliable knowledge cutoff) y su definición; junio de 2026 para los modelos actuales (Fable 5.2, Opus 5.5, Sonnet 5.5 y Haiku 5.5).</span>
+          <span class="origen">Estado: verificado. Este dato cambia con cada modelo nuevo.</span></li>
+        <li><a href="https://support.claude.com/en/articles/8525154-claude-is-providing-incorrect-or-misleading-responses-what-s-going-on" target="_blank" rel="noopener">Claude is providing incorrect or misleading responses. What's going on?<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Anthropic · centro de ayuda de Claude · fecha indicada en la página: 16/03/2026 · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: que Claude puede escribir cosas que parecen correctas pero están muy equivocadas, que no debe ser la única fuente de verdad y que hay que revisar las fuentes citadas en la búsqueda web.</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://claude.com/pricing" target="_blank" rel="noopener">Plans &amp; pricing<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Anthropic · sin fecha visible · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: lo que incluye el plan gratuito (chat en web, escritorio y celular; búsqueda web, archivos y código; uso limitado cada 5 horas y semanal) y que Claude Code y Research no están en el plan gratuito.</span>
+          <span class="origen">Estado: verificado. Los planes cambian con frecuencia.</span></li>
+      </ul>
+
+      <h3>Instituciones públicas</h3>
+      <ul class="lista-fuentes">
+        <li><a href="https://csrc.nist.gov/glossary/term/artificial_intelligence" target="_blank" rel="noopener">Glosario CSRC: artificial intelligence<span class="sr-only"> (se abre en otra pestaña)</span></a> y
+          <a href="https://csrc.nist.gov/glossary/term/machine_learning" target="_blank" rel="noopener">machine learning<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">NIST · definiciones de NIST SP 800-218A (IA) y NIST SP 800-55v1 (aprendizaje automático) · sin fecha de actualización visible · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: las definiciones de inteligencia artificial y de aprendizaje automático.</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://doi.org/10.6028/NIST.AI.600-1" target="_blank" rel="noopener">NIST AI 600-1: Artificial Intelligence Risk Management Framework: Generative Artificial Intelligence Profile<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">NIST · publicado en julio de 2024 (ficha de la publicación actualizada el 08/04/2026) · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: la definición de IA generativa que cita el documento (tomada de la orden ejecutiva 14110) y la definición del riesgo de confabulación.</span>
+          <span class="origen">Estado: verificado (texto extraído del PDF oficial).</span></li>
+      </ul>
+
+      <h3>Universidad (curso gratuito en español)</h3>
+      <ul class="lista-fuentes">
+        <li><a href="https://www.elementsofai.com/es/" target="_blank" rel="noopener">Elements of AI<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Universidad de Helsinki y MinnaLearn · sin fecha visible · consultado el 11/11/2026 · en español</span>
+          <span class="origen">Uso: lectura complementaria y alternativa escrita al video. No respalda ningún dato concreto de la clase.</span>
+          <span class="origen">Estado: verificado (portada en español). El contenido de sus capítulos no se pudo leer con las herramientas de verificación, porque se carga con JavaScript.</span></li>
+      </ul>
+    </section>
+
+    <!-- ================= CIERRE ================= -->
+    <section id="cierre" class="bloque" aria-labelledby="t-cierre">
+      <p class="kicker">Cierre</p>
+      <h2 id="t-cierre">Mis notas y mis pruebas con Claude</h2>
+      <label for="notas">Escribe aquí lo que pasó en tus tres pruebas, tus dudas o lo que más te costó:</label>
+      <textarea id="notas" data-notas="generales" placeholder="Prueba 1 (fecha de corte): … · Prueba 2 (misma pregunta): … · Prueba 3 (verificación): mi instrucción… enlaces revisados…"></textarea>
+      <p>Tu avance se guarda solo. Al terminar, dile a Claude «revisa mi avance».</p>
+      <div id="resumen"></div>
+    </section>
+  </main>
+</div>
+
+<p class="pie">IA//Academia · Clase 01 · Los ejemplos de instrucciones y casos son didácticos y ficticios.</p>
+
+<script>
+window.CLASE = {
+  id: 'ia-01',
+  titulo: 'IA · Clase 01: ¿Qué es la IA generativa?',
+  bloques: [
+    { id: 'b-bienvenida', titulo: 'Presentación y punto de partida', min: 10 },
+    { id: 'b-ia', titulo: 'IA, aprendizaje automático e IA generativa', min: 15 },
+    { id: 'b-llm', titulo: 'Cómo funciona un modelo de lenguaje', min: 20 },
+    { id: 'b-limites', titulo: 'Capacidades y límites', min: 15 },
+    { id: 'b-descanso', titulo: 'Descanso', min: 10 },
+    { id: 'b-demo', titulo: 'Demostración: el informe de Lucía', min: 15 },
+    { id: 'b-seguro', titulo: 'Uso seguro y responsable', min: 10 },
+    { id: 'b-vocab', titulo: 'Vocabulario de la IA', min: 5 },
+    { id: 'b-autonoma', titulo: 'Práctica autónoma', min: 5 },
+    { id: 'b-examen', titulo: 'Evaluación final', min: 10 },
+    { id: 'b-resumen', titulo: 'Resumen', min: 5 }
+  ],
+  actividades: {
+    generativa: {
+      titulo: '¿Es IA generativa?',
+      preguntas: [{ label: 'Este sistema es…', corto: 'Tipo', opciones: ['IA generativa', 'IA que no genera contenido', 'No es IA'] }],
+      items: [
+        { titulo: 'Un asistente que redacta un correo de disculpa a partir de tres ideas', respuestas: [['IA generativa']], pista: '¿Crea un texto que antes no existía?', explica: 'Crea texto nuevo a partir de tus ideas: IA generativa.' },
+        { titulo: 'El filtro que manda correos a la carpeta de correo basura', respuestas: [['IA que no genera contenido']], pista: 'Aprende de ejemplos, pero ¿crea algo o solo decide?', explica: 'Aprende a clasificar («basura» o «no basura»), pero no crea contenido: aprendizaje automático, no generativo.' },
+        { titulo: 'Una calculadora que suma 2 + 2', respuestas: [['No es IA']], pista: '¿Aprendió de datos o sigue una regla fija programada?', explica: 'Sigue reglas fijas programadas: no aprende de datos ni genera contenido. No es IA.' },
+        { titulo: 'Un sistema que crea una imagen de «un gato astronauta» a partir de esa frase', respuestas: [['IA generativa']], pista: 'La imagen no existía antes.', explica: 'Genera una imagen nueva: IA generativa (no solo de texto).' },
+        { titulo: 'La tienda en línea que te recomienda productos según tus compras', respuestas: [['IA que no genera contenido']], pista: '¿Crea productos nuevos o elige entre los que ya existen?', explica: 'Predice y recomienda entre productos existentes: IA, pero no generativa.' },
+        { titulo: 'Claude escribiendo una función en JavaScript que le pediste', respuestas: [['IA generativa']], pista: 'El código también es contenido.', explica: 'Genera código nuevo: IA generativa.' }
+      ]
+    },
+    etapas: {
+      titulo: '¿Qué etapa o concepto es?',
+      preguntas: [{ label: 'Esto describe…', corto: 'Concepto', opciones: ['Preentrenamiento', 'RLHF', 'Ventana de contexto', 'Token'] }],
+      items: [
+        { titulo: 'El modelo lee enormes cantidades de texto sin etiquetar y aprende a predecir la siguiente palabra', respuestas: [['Preentrenamiento']], pista: 'Es la primera etapa, antes de cualquier ajuste.', explica: 'Es el preentrenamiento: la base de todo el conocimiento del modelo.' },
+        { titulo: 'Personas ordenan varias respuestas de ejemplo según cuál prefieren, y el modelo aprende de eso', respuestas: [['RLHF']], pista: 'Hay retroalimentación humana.', explica: 'Es el aprendizaje por refuerzo con retroalimentación humana (RLHF).' },
+        { titulo: 'La pieza mínima de texto con la que trabaja el modelo: puede ser una palabra o parte de ella', respuestas: [['Token']], pista: 'Es la unidad con que se mide todo.', explica: 'Es un token: palabras, partes de palabras, caracteres o bytes.' },
+        { titulo: 'Todo lo que el modelo puede tener presente a la vez en una conversación: tus mensajes, sus respuestas y los archivos', respuestas: [['Ventana de contexto']], pista: 'Anthropic la compara con una memoria de trabajo.', explica: 'Es la ventana de contexto, su memoria de trabajo.' },
+        { titulo: 'Un documento larguísimo no cabe completo y el modelo no puede usar una parte', respuestas: [['Ventana de contexto']], pista: '¿Qué tiene un tamaño máximo?', explica: 'Se superó el tamaño de la ventana de contexto.' }
+      ]
+    },
+    verificar: {
+      titulo: '¿Confías o verificas?',
+      preguntas: [{ label: '¿Qué haces?', corto: 'Decisión', opciones: ['Puedo usarlo con una revisión rápida', 'Debo verificarlo en una fuente confiable'] }],
+      items: [
+        { titulo: 'Claude te propone diez ideas de nombres para tu emprendimiento', respuestas: [['Puedo usarlo con una revisión rápida']], pista: '¿Hay un dato que pueda ser falso, o es una tarea creativa?', explica: 'Es una tarea creativa: no hay un dato que verificar. Basta con elegir lo que te guste (y, si lo vas a registrar, comprobar que el nombre esté libre).' },
+        { titulo: 'Claude te da la dosis de un medicamento para un niño', respuestas: [['Debo verificarlo en una fuente confiable']], pista: '¿Qué pasa si el dato está mal?', explica: 'Un error aquí es grave. Se consulta con un profesional de la salud o con fuentes médicas oficiales.' },
+        { titulo: 'Claude cita tres estudios científicos con autores y años', respuestas: [['Debo verificarlo en una fuente confiable']], pista: 'Recuerda el caso de Lucía.', explica: 'Las referencias son un caso típico de alucinación: hay que abrir cada fuente y comprobar que existe.' },
+        { titulo: 'Claude reescribe tu propio texto para que suene más formal', respuestas: [['Puedo usarlo con una revisión rápida']], pista: 'Tú conoces el contenido original.', explica: 'Tú tienes el texto original: basta con revisar que no haya cambiado el sentido.' },
+        { titulo: 'Claude te dice quién ganó una elección que fue la semana pasada, sin usar la búsqueda web', respuestas: [['Debo verificarlo en una fuente confiable']], pista: 'Piensa en la fecha de corte.', explica: 'Es posterior a su fecha de corte y no buscó en la web: podría estar inventando o desactualizado.' },
+        { titulo: 'Claude te explica un artículo de una ley para un trámite importante', respuestas: [['Debo verificarlo en una fuente confiable']], pista: '¿Las leyes cambian? ¿Qué pasa si se equivoca?', explica: 'Las leyes cambian y un error puede costarte caro: se verifica en el texto oficial o con un profesional.' }
+      ]
+    },
+    pegar: {
+      titulo: '¿Lo pegarías en Claude?',
+      preguntas: [{ label: '¿Lo compartes?', corto: 'Decisión', opciones: ['Sí, se puede compartir', 'No, nunca'] }],
+      items: [
+        { titulo: 'Un artículo público de una revista para que te lo resuma', respuestas: [['Sí, se puede compartir']], pista: '¿Tiene datos privados o secretos?', explica: 'Es información pública: se puede compartir.' },
+        { titulo: 'La contraseña de tu correo, «para que Claude te ayude a recordar dónde la usaste»', respuestas: [['No, nunca']], pista: 'Revisa la regla de seguridad del curso.', explica: 'Las contraseñas nunca se comparten con nadie, tampoco con una IA.' },
+        { titulo: 'Un token de acceso de GitHub que no funciona', respuestas: [['No, nunca']], pista: 'Un token es como una contraseña.', explica: 'Un token da acceso a tu cuenta: nunca se pega en un chat. Pide ayuda describiendo el error, sin el token.' },
+        { titulo: 'Tu propio ensayo, sin datos personales, para que te sugiera mejoras', respuestas: [['Sí, se puede compartir']], pista: '¿Hay algo sensible?', explica: 'Es tu texto y no tiene datos sensibles: se puede compartir.' },
+        { titulo: 'Una planilla con nombres, documentos de identidad y sueldos de tus compañeros', respuestas: [['No, nunca']], pista: 'Son datos personales de otras personas.', explica: 'Son datos personales ajenos y confidenciales. Si necesitas ayuda con la planilla, usa datos inventados.' },
+        { titulo: 'El código de verificación que te llegó por SMS', respuestas: [['No, nunca']], pista: 'Es un factor de autenticación.', explica: 'Ese código es la segunda llave de tu cuenta: nunca se comparte.' }
+      ]
+    }
+  },
+  quizzes: {
+    examen: {
+      titulo: 'Evaluación final',
+      preguntas: [
+        { q: '¿Qué distingue a la IA generativa?', opciones: ['Que crea contenido nuevo, como texto, imágenes o código', 'Que nunca se equivoca', 'Que no necesita datos', 'Que solo clasifica correos'], correcta: 0, explica: 'La IA generativa crea contenido nuevo a partir de lo que aprendió.' },
+        { q: '¿Qué es un token?', opciones: ['Una contraseña', 'La unidad mínima de texto con la que trabaja el modelo', 'Un plan de pago', 'Un tipo de virus'], correcta: 1, explica: 'Los tokens pueden ser palabras, partes de palabras, caracteres o bytes.' },
+        { q: '¿Qué aprende un modelo en el preentrenamiento?', opciones: ['A predecir la siguiente palabra a partir de mucho texto', 'A usar contraseñas', 'A navegar por internet', 'Nada: viene programado regla por regla'], correcta: 0, explica: 'En el preentrenamiento aprende a predecir la siguiente palabra con un gran volumen de texto.' },
+        { q: '¿Para qué sirve el RLHF?', opciones: ['Para que el modelo se comporte según las preferencias humanas', 'Para borrar datos', 'Para acelerar internet', 'Para traducir tokens'], correcta: 0, explica: 'Personas ordenan respuestas según su preferencia y el modelo aprende de eso.' },
+        { q: '¿Qué es la ventana de contexto?', opciones: ['La ventana del navegador', 'Lo que el modelo puede tener presente a la vez, su memoria de trabajo', 'La fecha de corte', 'El historial de todas tus conversaciones de siempre'], correcta: 1, explica: 'Es la cantidad de texto que el modelo puede revisar al generar su respuesta.' },
+        { q: '¿Qué es una alucinación?', opciones: ['Un error de conexión', 'Contenido falso dicho con seguridad', 'Una respuesta muy larga', 'Una imagen generada'], correcta: 1, explica: 'Es texto falso o incoherente que puede parecer correcto. El NIST lo llama confabulación.' },
+        { q: '¿Qué significa la fecha de corte del conocimiento?', opciones: ['La fecha en que se borra la conversación', 'Hasta cuándo el conocimiento del modelo es amplio y fiable', 'Cuándo vence tu plan', 'La hora de la última respuesta'], correcta: 1, explica: 'Lo posterior no lo conoce, salvo que busque en la web.' },
+        { q: '¿Por qué la misma pregunta puede recibir respuestas distintas?', opciones: ['Porque Claude está roto', 'Porque al elegir cada token hay un margen de azar', 'Porque alguien la cambia a mano', 'Porque se acabó el plan'], correcta: 1, explica: 'Ese margen de azar se regula con la temperatura; ni con temperatura cero es totalmente determinista.' },
+        { q: '¿Cuál de estas es una técnica oficial para reducir alucinaciones?', opciones: ['Pedir que responda más rápido', 'Permitir que diga «no lo sé»', 'Escribir en mayúsculas', 'Repetir la pregunta diez veces'], correcta: 1, explica: 'Permitir «no sé», pedir citas textuales y pedir fuentes verificables son técnicas de la documentación de Anthropic.' },
+        { q: 'Caso práctico: Claude te da tres referencias bibliográficas perfectas para tu tesis. ¿Qué haces?', opciones: ['Las copio: están muy bien escritas', 'Abro cada una y compruebo que existe y dice eso', 'Le pregunto si está seguro y, si dice que sí, las copio'], correcta: 1, explica: 'Preguntarle si está seguro no basta: la verificación es abrir la fuente real.' },
+        { q: 'Caso práctico: un compañero pega en Claude su contraseña para que le ayude con un error de inicio de sesión. ¿Qué le dices?', opciones: ['Está bien, Claude es seguro', 'Que nunca comparta contraseñas y que la cambie ahora', 'Que la pegue dos veces para confirmar'], correcta: 1, explica: 'Una contraseña compartida debe considerarse expuesta: se cambia. Para pedir ayuda basta con describir el error.' },
+        { q: '¿Qué significa «hallucination»?', opciones: ['Alucinación', 'Ventana', 'Instrucción', 'Resultado'], correcta: 0, explica: 'Hallucination = alucinación: contenido falso que parece correcto.' }
+      ]
+    }
+  }
+};
+</script>
+<script src="../../../recursos/sync.js"></script>
+<script src="../../../recursos/academia.js"></script>
+</body>
+</html>

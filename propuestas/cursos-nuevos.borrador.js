@@ -1,4 +1,4 @@
-/* BORRADOR (pendiente de aprobación) — Cursos 5 y 6 de la academia.
+/* BORRADOR HISTÓRICO (ya implementado en recursos/catalogo.js el 11/11/2026) — Cursos 5 y 6 de la academia.
    Propuesta: PROPUESTA-AMPLIACION-6-CURSOS.md (11/11/2026).
    NO lo carga el menú real. Se usa solo en la vista previa (propuestas/vista-previa-6-cursos.html)
    y en las revisiones. Se carga DESPUÉS de recursos/catalogo.js y le agrega los dos cursos, sin
@@ -7,6 +7,9 @@
    oficial que cubre la clase) y plan (qué plan de Claude necesita la clase). */
 (function () {
   'use strict';
+  // Desde el 11/11/2026 los dos cursos viven en recursos/catalogo.js (implementación real).
+  // Este borrador queda como registro de la propuesta: si el catálogo ya los tiene, no agrega nada.
+  if (window.CATALOGO.some((c) => c.id === 'redes' || c.id === 'ia')) return;
   const nuevos = [
     {
       id: 'redes',

@@ -39,9 +39,11 @@ Una academia personal para aprender **desde cero**, con Claude como profesor y e
 | Inglés | 5 · 40 (40 h) | 01–04 → M1·1 a M1·4 | M1·5 El verbo *to be* completo |
 | JavaScript | 7 · 37 (74 h) | 01–04 → M1·1 a M1·4 | M1·5 Bucles |
 | Python | 9 · 38 (76 h) + electiva de 3 | 01–04 → M1·1 a M1·4 | M1·5 Bucles |
+| Redes y Telecomunicaciones | 11 · 51 (102 h) | 01 → M1·1 | M1·2 Modelos OSI y TCP/IP |
+| IA: Claude y productividad | 11 · 55 (110 h) | 01 → M1·1 | M1·2 (ver `cursos/ia/ruta-aprendizaje.md`) |
 
 Los módulos y el orden de todas las clases están en `recursos/catalogo.js` (aprobados en
-`PROPUESTA-ORGANIZACION-CURRICULAR.md`). El número de archivo (`clase-04`) no cambia aunque la
+`PROPUESTA-ORGANIZACION-CURRICULAR.md`; Redes e IA, en `PROPUESTA-AMPLIACION-6-CURSOS.md`). El número de archivo (`clase-04`) no cambia aunque la
 clase se muestre en otro lugar del módulo.
 
 El temario completo de cada curso está en `cursos/<curso>/ruta-aprendizaje.md`.
@@ -171,7 +173,11 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
 - Conectar con el token las demás computadoras (y el celular si se quiere).
 - El alumno debe activar la verificación en dos pasos de GitHub antes del 13/12/2026.
 - El token de GitHub vence (plazo elegido al crearlo): cuando venza, crear otro y pegarlo de nuevo.
-- Fuentes verificadas: hechas en ciberseguridad; ofrecidas para JavaScript, Python e inglés.
+- Fuentes verificadas: hechas en Ciberseguridad, JavaScript y Python (11/11/2026); falta Inglés.
+- Resumen y videos complementarios: hechos en Ciberseguridad 02–05, JavaScript y Python (11/11/2026).
+  Faltan Ciberseguridad 01 (no se toca hasta que el alumno la apruebe) e Inglés 01–04.
+- Cursos nuevos: 104 clases pendientes de creación (Redes 50 e IA 54). Falta el horario de ambos y
+  saber qué plan de Claude usa el alumno.
 
 ---
 
@@ -293,3 +299,22 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
 
   No se modificaron clases, catálogo real, menú ni motor; nada publicado. **Pendiente de
   aprobación del alumno.**
+
+### 2026-11-11 (implementación de los cursos 5 y 6)
+- **Cursos nuevos en la academia real:** Redes y Telecomunicaciones (`redes`) e IA: Claude y
+  productividad (`ia`), copiados del borrador aprobado a `recursos/catalogo.js` (solo líneas nuevas),
+  con colores `.tema-redes` y `.tema-ia` en `academia.css` y `?v=2026-11-11b` en `inicio.html`.
+  Carpetas `cursos/redes/` y `cursos/ia/` con instrucciones, ruta, progreso, apuntes, clases y proyectos.
+- **Clases creadas:** `redes-01` (¿Qué es una red?) e `ia-01` (¿Qué es la IA generativa?), de 120 min,
+  con las 9 secciones, fuentes verificadas y video complementario. Las otras 104 clases figuran como
+  «Próximamente». El motor no se modificó (la voz de los cursos nuevos es la de docente).
+- **Herramientas:** `generar-rutas.js` muestra plan de Claude, temario oficial y videos solo en los
+  cursos que tienen esos datos; `pruebas-clases.html` acepta 120 min en Redes e IA;
+  `revisar-coherencia.js` omite los dos cursos nuevos (vienen de otra propuesta). El borrador
+  `propuestas/cursos-nuevos.borrador.js` ya no agrega cursos si el catálogo los tiene.
+- **Clases existentes (pedido del alumno):** se agregaron, sin cambiar nada más, un resumen y videos
+  complementarios verificados a Ciberseguridad 02–05, JavaScript 01–04 y Python 01–04, y fuentes
+  verificadas (MDN y documentación oficial de Python) a JavaScript y Python. Solo líneas nuevas: no
+  cambia ningún id ni el avance guardado. Ciberseguridad 01 e Inglés no se tocaron.
+- **Pruebas:** `pruebas-clases` 19/19, `pruebas-sync` 15/15, catálogo, rutas y coherencia correctos;
+  menú con 6 cursos. Nada publicado (sin push).

@@ -27,7 +27,7 @@
   'use strict';
   const $ = (s) => document.querySelector(s);
   const dormir = (ms) => new Promise((r) => setTimeout(r, ms));
-  const DURACION = { ciberseguridad: 120, ingles: 60, javascript: 120, python: 120 };
+  const DURACION = { ciberseguridad: 120, ingles: 60, javascript: 120, python: 120, redes: 120, ia: 120 };
 
   function puedeCorrer() {
     if (!['127.0.0.1', 'localhost'].includes(location.hostname)) return 'Esta página solo funciona en el servidor local de pruebas (127.0.0.1 o localhost). Aquí no se ejecuta para proteger tu avance real.';

@@ -32,6 +32,8 @@ Háblame siempre en **español**, de forma sencilla, didáctica y con ejemplos.
 | Inglés básico (desde cero) | `cursos/ingles/` | En curso |
 | JavaScript (desarrollo web) | `cursos/javascript/` | En curso |
 | Python (desarrollo de software) | `cursos/python/` | En curso |
+| Redes y Telecomunicaciones | `cursos/redes/` | En curso |
+| IA: Claude y productividad | `cursos/ia/` | En curso |
 
 El horario de clases está en `horario.md`.
 
@@ -83,7 +85,7 @@ El horario de clases está en `horario.md`.
   La página define `window.CLASE` con sus bloques, actividades, exámenes y terminales
   (ver `clase-01.html` como modelo). No dupliques el motor en cada página.
 - Duración: **ciberseguridad 2 horas** por clase; **inglés 1 hora** por clase;
-  **JavaScript y Python 2 horas** por clase.
+  **JavaScript, Python, Redes e IA 2 horas** por clase.
   La suma de los minutos de los bloques debe dar exactamente esa duración.
 - Palabras o frases en inglés dentro de la teoría: márcalas con `<span lang="en">…</span>`
   para que se lean con voz inglesa. Con `data-en="…"` (y `data-lento`) llevan botones de audio.

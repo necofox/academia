@@ -22,6 +22,8 @@ const previosCorto = (m) => (m.previos.length ? lista(m.previos) : m.previosNota
 const etiquetaModulo = (m) => (m.n === 'E' ? 'Electiva (opcional)' : 'Módulo ' + m.n);
 const etiquetaClase = (m, i) => (m.n === 'E' ? 'E' : 'M' + m.n) + '·' + (i + 1);
 const celda = (s) => String(s).replace(/\|/g, '\\|');
+// Videos complementarios verificados ('código' o 'código@segundo'): enlaces cortos a YouTube
+const videos = (c) => (c.videos || []).map((v, i) => { const [id, t] = v.split('@'); return '[▶ ' + (i + 1) + '](https://www.youtube.com/watch?v=' + id + (t ? '&t=' + t + 's' : '') + ')'; }).join(' ') || '—';
 
 function generar(curso) {
   const obligatorios = curso.modulos.filter((m) => !m.opcional);
@@ -49,15 +51,19 @@ function generar(curso) {
     if (m.competencias) L.push('- **Competencias:** ' + m.competencias);
     if (m.logro) L.push('- **Al terminar serás capaz de:** ' + m.logro);
     L.push('- **Necesitas antes:** ' + previos(m));
+    if (m.practica) L.push('- **Práctica:** ' + m.practica);
     if (m.evaluacion) L.push('- **Evaluación del módulo:** ' + m.evaluacion);
     if (m.proyecto) L.push('- **Proyecto:** ' + m.proyecto);
     if (m.fuentes) L.push('- **Fuentes previstas** (se verifican al crear cada clase): ' + m.fuentes);
-    L.push('', '| Clase | Tema | Estado |', '|---|---|---|');
+    // Columnas extra solo en los cursos que tienen esos datos (Redes e IA); los demás quedan igual
+    const extras = [['plan', 'Plan de Claude', (c) => (c.plan || '—') + (c.donde ? ' · ' + c.donde : '')],
+      ['ref', 'Temario oficial que cubre', (c) => c.ref || '—'], ['videos', 'Videos', videos]].filter(([k]) => curso.clases.some((c) => c[k]));
+    L.push('', '| Clase | Tema |' + extras.map((e) => ' ' + e[1] + ' |').join('') + ' Estado |', '|---|---|' + extras.map(() => '---|').join('') + '---|');
     m.clases.forEach((c, i) => {
       const estado = c.archivo
         ? '✔ Lista: `' + c.archivo.replace('cursos/' + curso.id + '/', '') + '` (id `' + c.id + '`)'
         : 'Próximamente' + (siguiente && siguiente.c === c ? ' · **siguiente por crear**' : '');
-      L.push('| ' + etiquetaClase(m, i) + ' | ' + celda(c.titulo) + ' | ' + estado + ' |');
+      L.push('| ' + etiquetaClase(m, i) + ' | ' + celda(c.titulo) + ' | ' + extras.map((e) => celda(e[2](c)) + ' | ').join('') + estado + ' |');
     });
     L.push('');
   });

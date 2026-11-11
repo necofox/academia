@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redes · Clase 01 · ¿Qué es una red?</title>
+<link rel="stylesheet" href="../../../recursos/academia.css">
+</head>
+<body class="tema-redes">
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="top">
+  <div class="marca"><span class="logo" aria-hidden="true">&lt;/&gt;</span><span>REDES<span class="acento">//</span>ACADEMIA</span></div>
+  <div id="reloj" class="reloj-zona"></div>
+  <div id="voz"></div>
+  <a class="btn-mini" href="../../../inicio.html">☰ Menú</a>
+</header>
+
+<div class="layout">
+  <nav id="agenda" class="agenda" aria-label="Agenda de la clase"></nav>
+
+  <main id="contenido">
+    <div class="portada">
+      <p class="kicker">Módulo 1 · Fundamentos de redes · Clase 01</p>
+      <h1>¿Qué es una red?</h1>
+      <p class="sub">Componentes, tipos de red (LAN, WAN y WLAN) y topologías. Tu primer mapa de una red real. Duración: 2 horas.</p>
+    </div>
+
+    <!-- ================= 1. PRESENTACIÓN Y 2. ACTIVACIÓN ================= -->
+    <section id="b-bienvenida" class="bloque" aria-labelledby="t-bienvenida">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-bienvenida">Presentación y punto de partida</h2>
+      <div class="lectura">
+        <p>¡Bienvenido a tu primera clase de redes! En las próximas dos horas vas a descubrir qué es una red, qué equipos la forman, qué tipos de red existen y cómo se dibujan. Al final harás el mapa de una red de verdad: la de tu casa.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Ficha de la clase</th><th>Detalle</th></tr></thead>
+            <tbody>
+              <tr><td>Número y título</td><td>Clase 01: ¿Qué es una red? Componentes, tipos (LAN, WAN, WLAN) y topologías.</td></tr>
+              <tr><td>Módulo</td><td>Módulo 1 · Fundamentos de redes (clase 1 de 5).</td></tr>
+              <tr><td>Duración</td><td>120 minutos, con un descanso de 10.</td></tr>
+              <tr><td>Nivel</td><td>Desde cero.</td></tr>
+              <tr><td>Conocimientos previos</td><td>Ninguno. Solo necesitas saber usar el computador y el navegador.</td></tr>
+              <tr><td>Temario oficial que cubre</td><td>Temas 1.1 (componentes de la red) y 1.2 (arquitecturas de topología) del temario CCNA 200-301 v1.1 de Cisco. La versión v2.0 ya no los detalla, pero son la base para todo lo demás.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Objetivos: al terminar podrás</h3>
+        <ul>
+          <li>Explicar con tus palabras qué es una red y para qué sirve.</li>
+          <li>Reconocer los componentes de una red: dispositivos finales, equipos intermediarios y medios.</li>
+          <li>Diferenciar una LAN, una WLAN y una WAN con ejemplos.</li>
+          <li>Identificar las topologías más comunes y lo que pasa cuando falla un equipo en cada una.</li>
+          <li>Usar <code>ipconfig</code>, <code>ping</code> y <code>tracert</code> para ver tu red desde la terminal.</li>
+          <li>Dibujar el mapa de una red pequeña.</li>
+        </ul>
+        <h3>Antes de empezar, piensa</h3>
+        <ul>
+          <li>¿Cuántos aparatos de tu casa se conectan a internet? Cuenta también el televisor, la consola o el reloj.</li>
+          <li>Cuando imprimes desde el celular en una impresora Wi-Fi, ¿esa información sale a internet o se queda en tu casa?</li>
+          <li>¿Qué hay dentro de la cajita que instaló tu proveedor de internet, y por qué tiene luces y puertos atrás?</li>
+        </ul>
+        <p>No hace falta escribir las respuestas: al final de la clase podrás contestarlas con los términos correctos.</p>
+        <div class="nota alerta">
+          <p><strong>Situación de partida (caso ficticio):</strong> la panadería «La Espiga» tiene una computadora en caja, otra en la oficina, una impresora, un celular para cobrar y Wi-Fi para sus clientes. La dueña llama y dice: «¡No tengo internet!». Para ayudarla, primero hay que saber cómo es su red: qué equipos tiene, cómo se conectan y dónde termina su red y empieza internet. En el bloque de demostración dibujaremos juntos ese mapa.</p>
+        </div>
+        <h3>Cómo usar esta página</h3>
+        <ul>
+          <li>Pulsa «Iniciar clase» en el reloj de arriba: te avisará al cambiar de bloque.</li>
+          <li>El botón «Escuchar esta parte» lee la teoría en voz alta. Los términos en inglés se leen con voz inglesa.</li>
+          <li>Si fallas una actividad, primero recibes una pista; si vuelves a fallar, ves la respuesta explicada.</li>
+          <li>Verás etiquetas como «definición oficial», «ejemplo didáctico» o «simulación», para que sepas siempre qué es un dato verificado y qué es un ejemplo.</li>
+          <li>Todas las direcciones de los ejemplos están reservadas para documentación o son privadas: no corresponden a ningún equipo real.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= 3. DESARROLLO TEÓRICO (I) ================= -->
+    <section id="b-que-es" class="bloque" aria-labelledby="t-que-es">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-que-es">¿Qué es una red?</h2>
+      <div class="lectura">
+        <p>Piensa en el sistema de carreteras de una ciudad. Hay casas y edificios, que son los lugares de donde salen y a donde llegan las personas. Hay calles y autopistas, por donde se viaja. Y hay semáforos, rotondas y señales, que deciden por dónde se va. Una red de computadoras se parece mucho: hay equipos que envían y reciben información, caminos por donde viaja y equipos que la dirigen.</p>
+        <div class="nota">
+          <p><strong>Ojo, es una simplificación:</strong> en una red, la información no viaja como un auto entero, sino dividida en pequeños paquetes que pueden tomar caminos distintos y se vuelven a juntar al llegar. Lo verás en la Clase 2.</p>
+        </div>
+        <div class="nota ok">
+          <p><strong>Definición oficial:</strong> el NIST, el instituto de estándares de Estados Unidos, define una red como un sistema formado por un conjunto de componentes interconectados, y menciona como ejemplos los routers, los hubs y el cableado.</p>
+        </div>
+        <h3>¿Para qué sirve una red?</h3>
+        <p>Para <strong>compartir</strong>: información, como un archivo o un mensaje; recursos, como una impresora o una conexión a internet; y servicios, como una página web o el correo.</p>
+        <h3>Tres palabras básicas</h3>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Palabra</th><th>Qué es</th><th>En las carreteras</th></tr></thead>
+            <tbody>
+              <tr><td><span lang="en">Host</span></td><td>Según el NIST, cualquier dispositivo físico capaz de permitir el acceso a una red. Por ejemplo, tu computadora o tu celular.</td><td>Una casa.</td></tr>
+              <tr><td>Servidor</td><td>Según el NIST, una computadora o dispositivo de la red que administra recursos de la red, como archivos, impresoras o bases de datos.</td><td>Un supermercado: atiende a muchos.</td></tr>
+              <tr><td>Cliente</td><td>El equipo o programa que pide un servicio a un servidor. Tu navegador es cliente cuando pide una página web.</td><td>La persona que va a comprar.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nota">
+          <p><strong>Ejemplo didáctico:</strong> ser cliente o servidor es un papel, no un tipo de aparato. Tu computadora es cliente cuando abres una página web, y podría ser servidor si compartes una carpeta con otra persona de tu casa.</p>
+        </div>
+        <div class="nota alerta">
+          <p><strong>Error frecuente:</strong> creer que red e internet son lo mismo. La red de tu casa existe aunque se corte internet: puedes seguir imprimiendo desde el celular en la impresora Wi-Fi. Internet es otra cosa: el NIST la define como el sistema mundial único de redes de computadoras interconectadas, comerciales, gubernamentales, educativas y de otros tipos. Es decir, una red de redes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 3. DESARROLLO TEÓRICO (II) ================= -->
+    <section id="b-componentes" class="bloque" aria-labelledby="t-componentes">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-componentes">Los componentes de una red</h2>
+      <div class="lectura">
+        <p>Toda red tiene tres tipos de componentes: los <strong>dispositivos finales</strong>, donde empieza o termina la información; los <strong>equipos intermediarios</strong>, que la conectan y la dirigen; y los <strong>medios</strong>, por donde viaja.</p>
+        <h3>1. Dispositivos finales</h3>
+        <p>En inglés se llaman <span lang="en">endpoints</span>. El NIST los describe como cualquier dispositivo que se usa para acceder a una identidad digital en una red, como laptops, computadoras de escritorio y teléfonos móviles. También lo son las impresoras, los televisores inteligentes, las cámaras y los servidores.</p>
+        <h3>2. Equipos intermediarios</h3>
+        <div class="grid-cards">
+          <div class="card">
+            <h4><span lang="en">Switch</span> (conmutador)</h4>
+            <p><strong>Qué hace:</strong> conecta los equipos de una misma red local. Según el NIST, canaliza los datos que entran por cualquiera de sus puertos hacia el puerto de salida concreto que los llevará a su destino.</p>
+            <p><strong>En simple:</strong> el que reparte dentro de la casa.</p>
+          </div>
+          <div class="card">
+            <h4><span lang="en">Router</span> (enrutador)</h4>
+            <p><strong>Qué hace:</strong> une redes distintas. El NIST lo define como una computadora que hace de puerta de enlace entre dos redes y que retransmite y dirige los paquetes de datos. Cisco lo resume así: recibe y envía datos en las redes.</p>
+            <p><strong>En simple:</strong> la salida de tu casa hacia otras redes, como internet.</p>
+          </div>
+          <div class="card">
+            <h4>Punto de acceso (<span lang="en">access point</span>)</h4>
+            <p><strong>Qué hace:</strong> según el NIST, conecta lógicamente los dispositivos inalámbricos entre sí y, normalmente, también con la red cableada.</p>
+            <p><strong>En simple:</strong> la puerta inalámbrica de la red: el Wi-Fi.</p>
+          </div>
+          <div class="card">
+            <h4><span lang="en">Firewall</span> (cortafuegos)</h4>
+            <p><strong>Qué hace:</strong> según el NIST, es una puerta de enlace que limita el acceso entre redes de acuerdo con la política de seguridad local.</p>
+            <p><strong>En simple:</strong> el portero que decide qué entra y qué sale.</p>
+          </div>
+        </div>
+        <div class="nota">
+          <p><strong>La diferencia clave:</strong> Cisco lo explica así: el switch conecta los dispositivos, como computadoras, impresoras y servidores, para que compartan recursos; el router conecta varios switches, con sus redes, para formar una red todavía más grande.</p>
+        </div>
+        <h3>3. Medios</h3>
+        <p>Son los caminos: el <strong>cable de cobre</strong>, como el cable de red que va de la computadora al router; la <strong>fibra óptica</strong>, que lleva la información con luz; y el <strong>aire</strong>, por donde viajan las ondas del Wi-Fi. Los verás a fondo en la Clase 3.</p>
+        <h3>¿Y la cajita de mi proveedor?</h3>
+        <p>Cisco explica que un router puede combinar las funciones de otros componentes, como los módems, los hubs y los switches, y que algunos routers también traen un firewall. El equipo que instala tu proveedor suele ser uno de estos aparatos «todo en uno».</p>
+        <div class="nota">
+          <p><strong>Ejemplo didáctico (compruébalo en tu equipo):</strong> los puertos de atrás, donde enchufas cables de red, cumplen el papel de un switch pequeño. Si el aparato emite Wi-Fi, además hace de punto de acceso. Y la conexión que viene de la calle es la salida del router hacia tu proveedor.</p>
+        </div>
+        <div class="nota alerta">
+          <p><strong>Lo verás más adelante:</strong> el temario oficial del CCNA también menciona switches de capa 3, firewalls de nueva generación con IPS, controladores de Wi-Fi y PoE, que es la alimentación eléctrica por el mismo cable de red. Por ahora basta con conocer los cuatro equipos de arriba.</p>
+        </div>
+      </div>
+      <h3>Actividad: ¿qué tipo de componente es?</h3>
+      <div data-actividad="componentes"></div>
+    </section>
+
+    <!-- ================= 3. DESARROLLO TEÓRICO (III) ================= -->
+    <section id="b-tipos" class="bloque" aria-labelledby="t-tipos">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-tipos">Tipos de red: LAN, WLAN y WAN</h2>
+      <div class="lectura">
+        <p>Las redes se clasifican sobre todo por el <strong>área que cubren</strong> y por <strong>cómo se conectan</strong> los equipos. Las siglas vienen del inglés.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Tipo</th><th>Definición oficial (NIST)</th><th>Ejemplo</th></tr></thead>
+            <tbody>
+              <tr><td><strong>LAN</strong>: <span lang="en">Local Area Network</span>, red de área local</td><td>Un grupo de computadoras y otros dispositivos repartidos en un área relativamente limitada y conectados por un enlace de comunicaciones.</td><td>La red de tu casa, de una oficina o de un colegio.</td></tr>
+              <tr><td><strong>WLAN</strong>: <span lang="en">Wireless Local Area Network</span>, red de área local inalámbrica</td><td>Un grupo de puntos de acceso inalámbricos y su infraestructura dentro de un área geográfica limitada. El NIST agrega que normalmente se implementa como una extensión de una LAN cableada.</td><td>El Wi-Fi de tu casa o el Wi-Fi para clientes de un café.</td></tr>
+              <tr><td><strong>WAN</strong>: <span lang="en">Wide Area Network</span>, red de área amplia</td><td>Una red física o lógica que da comunicación a más usuarios independientes de los que suele atender una LAN, en un área geográfica mucho mayor.</td><td>La red que une las sucursales de un banco en distintas ciudades. Internet es la WAN más grande.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nota">
+          <p><strong>¿Quién define cómo funcionan?</strong> El comité IEEE 802 desarrolla y mantiene los estándares de las redes locales y metropolitanas. Dos de sus grupos de trabajo los usarás siempre: el 802.3, que es Ethernet, la red por cable; y el 802.11, que es la LAN inalámbrica, conocida como Wi-Fi.</p>
+        </div>
+        <div class="nota alerta">
+          <p><strong>Error frecuente:</strong> pensar que la WLAN es una red distinta de la LAN. En casa, el Wi-Fi y los cables suelen ser la misma red local: tu celular por Wi-Fi y tu computadora por cable pueden verse entre sí. La WLAN es la parte inalámbrica de la LAN.</p>
+        </div>
+        <h3>¿Y la red de la panadería?</h3>
+        <p>Según el temario del CCNA, una red como la de «La Espiga» es de tipo SOHO, del inglés <span lang="en">Small Office/Home Office</span>: oficina pequeña o red doméstica. Tiene una LAN con su parte inalámbrica, la WLAN, y se conecta a la WAN de su proveedor para llegar a internet.</p>
+      </div>
+      <h3>Actividad: ¿LAN, WLAN o WAN?</h3>
+      <div data-actividad="tipos"></div>
+    </section>
+
+    <!-- ================= DESCANSO ================= -->
+    <section id="b-descanso" class="bloque descanso" aria-labelledby="t-descanso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <p class="grande" aria-hidden="true">☕</p>
+      <h2 id="t-descanso">Descanso de 10 minutos</h2>
+      <p>Levántate, toma agua y descansa la vista. Mira algo lejano durante 20 segundos.</p>
+      <p>Reto mental: busca la cajita de tu proveedor de internet. ¿Cuántos puertos tiene atrás? ¿Tiene antenas?</p>
+    </section>
+
+    <!-- ================= 3. DESARROLLO TEÓRICO (IV) ================= -->
+    <section id="b-topologias" class="bloque" aria-labelledby="t-topologias">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-topologias">Topologías: la forma de la red</h2>
+      <div class="lectura">
+        <p>La topología es el dibujo de la red: cómo están conectados sus equipos. IBM distingue dos miradas:</p>
+        <ul>
+          <li><strong>Topología física:</strong> dónde está cada componente y cómo se conecta físicamente, con qué cables y a qué puertos.</li>
+          <li><strong>Topología lógica:</strong> cómo parecen estar conectados los dispositivos entre sí y cómo fluyen los datos por la red, sin importar las conexiones físicas.</li>
+        </ul>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Topología</th><th>Cómo es</th><th>Qué pasa si algo falla</th></tr></thead>
+            <tbody>
+              <tr><td>Punto a punto</td><td>Un enlace directo entre dos equipos.</td><td>Es fácil de montar, pero por su sencillez se usa poco en las redes modernas.</td></tr>
+              <tr><td>Bus</td><td>Todos los equipos cuelgan de un mismo cable principal, el <span lang="en">backbone</span>.</td><td>Es barata y fácil de instalar, pero si falla el cable principal se cae toda la red.</td></tr>
+              <tr><td>Anillo</td><td>Cada equipo se une con el siguiente, hasta cerrar un círculo.</td><td>Su punto débil: la falla de un solo equipo puede tumbar toda la red. Por eso existe el anillo doble.</td></tr>
+              <tr><td>Estrella</td><td>Todos los equipos se conectan a un equipo central, por ejemplo un switch.</td><td>Si falla un equipo, el resto sigue funcionando; pero si falla el equipo central, se cae toda la red.</td></tr>
+              <tr><td>Árbol</td><td>Combina bus y estrella en forma jerárquica: varias estrellas colgando de un tronco.</td><td>Permite conectar muchos equipos, pero el equipo central sigue siendo un punto único de falla.</td></tr>
+              <tr><td>Malla</td><td>Cada equipo se conecta directamente con varios otros. En la malla completa, todos con todos; en la parcial, solo algunos.</td><td>Hay caminos de repuesto (redundancia), pero cuesta más instalarla y mantenerla, sobre todo la malla completa.</td></tr>
+              <tr><td>Híbrida</td><td>Mezcla varias topologías para cubrir necesidades concretas.</td><td>Depende de las topologías que combine.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nota">
+          <p><strong>Punto único de falla:</strong> es una pieza que, si se rompe, tumba toda la red. Diseñar una red es, en gran parte, decidir qué puntos únicos de falla se aceptan y cuáles se protegen con caminos de repuesto.</p>
+        </div>
+        <div class="nota alerta">
+          <p><strong>Error frecuente:</strong> creer que la red de tu casa es una «bus» porque todo pasa por una sola caja. Esa caja es el centro: los equipos se conectan a ella, por cable o por Wi-Fi. Físicamente es una <strong>estrella</strong>.</p>
+        </div>
+      </div>
+      <h3>Actividad: ¿qué topología es?</h3>
+      <p>Mira cada diagrama. Los guiones y las barras son los cables; las letras, los equipos.</p>
+      <div data-actividad="topologias"></div>
+    </section>
+
+    <!-- ================= 4. DEMOSTRACIÓN PRÁCTICA ================= -->
+    <section id="b-demo" class="bloque" aria-labelledby="t-demo">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-demo">Demostración: el mapa de la red de «La Espiga»</h2>
+      <div class="lectura">
+        <p>Volvamos a la panadería. Para entender cualquier red, un técnico sigue siempre los mismos cuatro pasos. Mira cómo se aplican aquí.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Paso</th><th>Pregunta</th><th>En «La Espiga»</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td>¿Qué dispositivos finales hay?</td><td>Computadora de caja, computadora de oficina, impresora, celular de cobro y los celulares de los clientes.</td></tr>
+              <tr><td>2</td><td>¿Qué equipos intermediarios hay?</td><td>Un solo aparato del proveedor que hace de router, de switch con cuatro puertos y de punto de acceso Wi-Fi.</td></tr>
+              <tr><td>3</td><td>¿Cómo se conectan?</td><td>Las dos computadoras y la impresora, por cable; los celulares, por Wi-Fi. Todo llega al aparato central: es una estrella.</td></tr>
+              <tr><td>4</td><td>¿Dónde termina la LAN y empieza la WAN?</td><td>En el router: hacia adentro está la LAN, con su parte inalámbrica; hacia afuera, la WAN del proveedor que lleva a internet.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Este es el mapa, dibujado con texto:</p>
+      </div>
+      <pre class="log" aria-label="Diagrama de la red de la panadería">          INTERNET (WAN del proveedor)
+                    |
+        [ Router + switch + Wi-Fi ]
+        /        |        \      )))  Wi-Fi
+   PC caja   PC oficina  Impresora  )))  celulares
+   ------------ LAN (cable) ------------  WLAN</pre>
+      <div class="lectura">
+        <div class="nota ok">
+          <p><strong>Resultado esperado:</strong> con este mapa, la frase «no tengo internet» ya se puede investigar. Si la impresora sí imprime desde la computadora de caja, la LAN funciona y el problema está más allá del router: en la WAN o en el proveedor. Esa forma de pensar, por partes, es la base del diagnóstico de redes que practicarás en todo el curso.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 5. ACTIVIDADES: TERMINAL ================= -->
+    <section id="b-terminal" class="bloque" aria-labelledby="t-terminal">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-terminal">Práctica guiada: mira tu red desde la terminal</h2>
+      <div class="lectura">
+        <p>Windows trae comandos para ver la red. Hoy usarás tres. Esta terminal es una <strong>simulación</strong> de la computadora de caja de la panadería; al final del bloque te digo cómo probarlos en tu propio computador.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Comando</th><th>Qué hace, según Microsoft</th></tr></thead>
+            <tbody>
+              <tr><td><code>ipconfig</code></td><td>Muestra la configuración de red TCP/IP actual. Sin parámetros, muestra las direcciones IPv4 e IPv6, la máscara de subred y la puerta de enlace predeterminada de cada adaptador.</td></tr>
+              <tr><td><code>ping</code></td><td>Comprueba la conectividad con otro equipo enviando mensajes ICMP de solicitud de eco. Es el comando principal para diagnosticar conectividad.</td></tr>
+              <tr><td><code>tracert</code></td><td>Determina el camino que siguen los datos hasta un destino. Por defecto revisa hasta 30 saltos.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nota">
+          <p><strong>Pista para leer los resultados:</strong> la «puerta de enlace predeterminada» es el router: la salida de tu LAN. Las direcciones que empiezan con 192.168 son privadas, solo para redes locales. Las que empiezan con 198.51.100 y 203.0.113 están reservadas para documentación, así que aquí hacen el papel de equipos de internet.</p>
+        </div>
+      </div>
+      <div data-terminal="pc"></div>
+      <div class="lectura">
+        <h3>Pruébalo en tu computador (opcional, real)</h3>
+        <p>Pulsa la tecla Windows, escribe <code>cmd</code> y abre el «Símbolo del sistema». Escribe <code>ipconfig</code> y busca tu puerta de enlace. Luego haz <code>ping</code> a esa dirección. Estos comandos solo leen información: no cambian nada en tu equipo.</p>
+      </div>
+    </section>
+
+    <!-- ================= VOCABULARIO ================= -->
+    <section id="b-vocab" class="bloque" aria-labelledby="t-vocab">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-vocab">Vocabulario de redes</h2>
+      <p>En redes, muchos términos se usan en inglés: aparecen en los equipos, en los manuales y en el examen CCNA, que solo se rinde en inglés o en japonés. Pulsa el altavoz para escuchar cada uno.</p>
+      <ul class="vocab">
+        <li data-en="network"><span><span class="en" lang="en">network</span><span class="es">red</span><span class="pr">nét-uork</span></span></li>
+        <li data-en="router"><span><span class="en" lang="en">router</span><span class="es">enrutador</span><span class="pr">ráu-ter</span></span></li>
+        <li data-en="switch"><span><span class="en" lang="en">switch</span><span class="es">conmutador</span><span class="pr">suích</span></span></li>
+        <li data-en="access point"><span><span class="en" lang="en">access point</span><span class="es">punto de acceso</span><span class="pr">ák-ses póint</span></span></li>
+        <li data-en="wireless"><span><span class="en" lang="en">wireless</span><span class="es">inalámbrico</span><span class="pr">uái-er-les</span></span></li>
+        <li data-en="default gateway"><span><span class="en" lang="en">default gateway</span><span class="es">puerta de enlace predeterminada</span><span class="pr">di-fólt guéit-uei</span></span></li>
+        <li data-en="topology"><span><span class="en" lang="en">topology</span><span class="es">topología</span><span class="pr">to-pó-lo-yi</span></span></li>
+        <li data-en="endpoint"><span><span class="en" lang="en">endpoint</span><span class="es">dispositivo final</span><span class="pr">énd-point</span></span></li>
+      </ul>
+      <p>Frase completa: <span data-en="The router connects the local network to the Internet.">The router connects the local network to the Internet. <em>(El router conecta la red local con internet.)</em> </span></p>
+    </section>
+
+    <!-- ================= 6. PRÁCTICA AUTÓNOMA ================= -->
+    <section id="b-autonoma" class="bloque" aria-labelledby="t-autonoma">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-autonoma">Práctica autónoma: el mapa de tu red</h2>
+      <div class="lectura">
+        <p>Ahora te toca a ti, sin ayuda. En estos cinco minutos lee la consigna; el mapa lo haces después de la clase, a tu ritmo.</p>
+        <h3>Objetivo</h3>
+        <p>Dibujar el mapa de la red de tu casa con los cuatro pasos de la demostración.</p>
+        <h3>Qué hacer</h3>
+        <ul>
+          <li>Haz el inventario: anota todos los dispositivos finales de tu casa y cómo se conectan, por cable o por Wi-Fi.</li>
+          <li>Mira el aparato de tu proveedor y decide qué funciones cumple: router, switch, punto de acceso, módem.</li>
+          <li>En tu computador, ejecuta <code>ipconfig</code> y anota solo la puerta de enlace predeterminada. No copies otros datos.</li>
+          <li>Escribe en «Mis notas», al final de la página, tu mapa en texto, como el de la panadería, e indica dónde termina tu LAN y dónde empieza la WAN.</li>
+        </ul>
+        <div class="nota alerta">
+          <p><strong>Privacidad:</strong> no anotes el nombre ni la contraseña de tu Wi-Fi, ni la dirección MAC de tus equipos. Para el mapa no hacen falta.</p>
+        </div>
+      </div>
+      <div class="reto">
+        <h4>Criterios para comprobar que lo hiciste bien</h4>
+        <ul>
+          <li>Tu inventario tiene al menos cinco dispositivos finales.</li>
+          <li>Indicaste para cada uno si se conecta por cable o por Wi-Fi.</li>
+          <li>Nombraste al menos dos funciones del aparato del proveedor y explicaste por qué lo sabes.</li>
+          <li>Tu mapa muestra la topología y la nombraste.</li>
+          <li>Marcaste dónde está el límite entre tu LAN y la WAN.</li>
+          <li>Anotaste tu puerta de enlace y explicaste qué equipo es.</li>
+        </ul>
+        <p>Si cumples los seis criterios, ¡lo lograste! Al terminar, dile a Claude «revisa mi avance» y te dará retroalimentación sobre tu mapa.</p>
+      </div>
+    </section>
+
+    <!-- ================= 7. EVALUACIÓN ================= -->
+    <section id="b-examen" class="bloque" aria-labelledby="t-examen">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-examen">Evaluación final</h2>
+      <p>Doce preguntas: conceptos, casos prácticos y problemas de aplicación. Solo cuenta tu primera respuesta, y cada una te explica el porqué.</p>
+      <div data-quiz="examen"></div>
+    </section>
+
+    <!-- ================= 8. RESUMEN ================= -->
+    <section id="b-resumen" class="bloque" aria-labelledby="t-resumen">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-resumen">Resumen de la clase</h2>
+      <div class="lectura">
+        <h3>Conceptos que debes recordar</h3>
+        <ul>
+          <li>Una red es un conjunto de componentes interconectados para compartir información, recursos y servicios.</li>
+          <li>Red e internet no son lo mismo: internet es la red mundial de redes.</li>
+          <li>Componentes: dispositivos finales, equipos intermediarios y medios.</li>
+          <li>El switch conecta equipos dentro de una red; el router une redes distintas; el punto de acceso da el Wi-Fi; el firewall controla lo que entra y sale.</li>
+          <li>LAN: área limitada. WLAN: la parte inalámbrica de la red local. WAN: área amplia; internet es la más grande.</li>
+          <li>Topologías: punto a punto, bus, anillo, estrella, árbol, malla e híbrida. En la estrella, si falla el equipo central, se cae toda la red.</li>
+          <li><code>ipconfig</code> muestra tu configuración, <code>ping</code> comprueba si llegas a otro equipo y <code>tracert</code> muestra el camino.</li>
+        </ul>
+        <h3>Ya deberías ser capaz de</h3>
+        <ul>
+          <li>Explicar qué es una red y nombrar sus componentes.</li>
+          <li>Clasificar una red como LAN, WLAN o WAN.</li>
+          <li>Reconocer una topología en un diagrama y su punto único de falla.</li>
+          <li>Dibujar el mapa de una red pequeña.</li>
+        </ul>
+        <h3>Prepárate para la Clase 02</h3>
+        <p>En la próxima clase verás los modelos OSI y TCP/IP: cómo se organiza una red en capas y cómo se empaqueta un mensaje para viajar. Ten a mano el mapa de tu red: lo usaremos.</p>
+      </div>
+    </section>
+
+    <!-- ================= VIDEOS COMPLEMENTARIOS ================= -->
+    <section id="videos" class="bloque fuentes" aria-labelledby="t-videos">
+      <p class="kicker">Material complementario · fuera del reloj</p>
+      <h2 id="t-videos">🎬 Video complementario</h2>
+      <p>El video complementa la clase: no la reemplaza. Se verificó el 11 de noviembre de 2026 con la herramienta de la academia: existe, está disponible y sus datos son los de la ficha. Lo que enseña se revisó con su título y su descripción; no se vio completo.</p>
+      <ul class="lista-fuentes">
+        <li><a href="https://www.youtube.com/watch?v=H8W9oMNSuwo" target="_blank" rel="noopener"><span lang="en">Free CCNA | Network Devices | Day 1 | CCNA 200-301 Complete Course</span><span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Canal: Jeremy's IT Lab (educador independiente, terceros) · en inglés · 30:25 · publicado el 13/10/2019 · verificado el 11/11/2026</span>
+          <span class="origen">Subtítulos en español: solo con la traducción automática de YouTube (tiene subtítulos escritos en inglés). Para activarla: botón de subtítulos, luego Configuración, Subtítulos, Traducir automáticamente y Español.</span>
+          <span class="origen">Qué enseña: qué es una red y sus dispositivos: clientes, servidores, switches, routers y firewalls. Refuerza el bloque de componentes.</span>
+          <span class="origen">Alternativa escrita, por si el video desaparece: el temario oficial CCNA v1.1, tema 1.1 (en la sección de fuentes) y el bloque «Los componentes de una red» de esta clase.</span></li>
+      </ul>
+    </section>
+
+    <!-- ================= 9. FUENTES VERIFICADAS ================= -->
+    <section id="fuentes" class="bloque fuentes" aria-labelledby="t-fuentes">
+      <p class="kicker">Lectura extra · fuera del reloj</p>
+      <h2 id="t-fuentes">📚 Fuentes verificadas</h2>
+      <p>Cada afirmación de esta clase se comprobó leyendo estas fuentes el 11 de noviembre de 2026. Cada una indica qué respalda y su estado: <strong>verificado</strong> significa que el dato se leyó en una fuente oficial o primaria. Las que están en inglés las puedes leer en español: en el navegador, haz clic derecho y elige <strong>Traducir a español</strong>.</p>
+
+      <h3>Definiciones oficiales</h3>
+      <ul class="lista-fuentes">
+        <li><a href="https://csrc.nist.gov/glossary/term/network" target="_blank" rel="noopener">Glosario CSRC: network<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">NIST · definición de NIST SP 800-171r3, SP 800-37 Rev. 2 y SP 800-53 Rev. 5 · la página no muestra fecha de actualización · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: la definición de red como sistema de componentes interconectados (routers, hubs, cableado).</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://csrc.nist.gov/glossary/term/internet" target="_blank" rel="noopener">Glosario CSRC: internet<span class="sr-only"> (se abre en otra pestaña)</span></a>,
+          <a href="https://csrc.nist.gov/glossary/term/host" target="_blank" rel="noopener">host<span class="sr-only"> (se abre en otra pestaña)</span></a>,
+          <a href="https://csrc.nist.gov/glossary/term/server" target="_blank" rel="noopener">server<span class="sr-only"> (se abre en otra pestaña)</span></a> y
+          <a href="https://csrc.nist.gov/glossary/term/endpoint" target="_blank" rel="noopener">endpoint<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">NIST · definiciones de CNSSI 4009-2022 (internet, a partir del RFC 4949; host), NIST SP 1800-15B (server) y NIST SP 800-63-4 (endpoint) · sin fecha de actualización visible · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: internet como sistema mundial de redes interconectadas; host, servidor y dispositivo final.</span>
+          <span class="origen">Estado: verificado. La definición de «cliente» de esta clase es didáctica: el glosario del NIST solo trae definiciones de cliente para contextos específicos (nube y certificados).</span></li>
+        <li><a href="https://csrc.nist.gov/glossary/term/router" target="_blank" rel="noopener">Glosario CSRC: router<span class="sr-only"> (se abre en otra pestaña)</span></a>,
+          <a href="https://csrc.nist.gov/glossary/term/switch" target="_blank" rel="noopener">switch<span class="sr-only"> (se abre en otra pestaña)</span></a>,
+          <a href="https://csrc.nist.gov/glossary/term/access_point" target="_blank" rel="noopener">access point<span class="sr-only"> (se abre en otra pestaña)</span></a> y
+          <a href="https://csrc.nist.gov/glossary/term/firewall" target="_blank" rel="noopener">firewall<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">NIST · definiciones de NIST SP 800-82r3 (router, adaptada del RFC 4949), NISTIR 8183 (switch, adaptada de whatis.com), NIST SP 800-121 Rev. 2 (access point) y NIST SP 800-12 Rev. 1 (firewall) · sin fecha de actualización visible · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: qué hace cada equipo intermediario.</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://csrc.nist.gov/glossary/term/local_area_network" target="_blank" rel="noopener">Glosario CSRC: local area network<span class="sr-only"> (se abre en otra pestaña)</span></a>,
+          <a href="https://csrc.nist.gov/glossary/term/wireless_local_area_network" target="_blank" rel="noopener">wireless local area network<span class="sr-only"> (se abre en otra pestaña)</span></a> y
+          <a href="https://csrc.nist.gov/glossary/term/wide_area_network" target="_blank" rel="noopener">wide area network<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">NIST · definiciones de NIST SP 1800-21C y SP 800-82r3 (LAN), SP 800-121 Rev. 2 (WLAN) y SP 800-82r3 (WAN) · sin fecha de actualización visible · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: las definiciones de LAN, WLAN (y que suele ser una extensión de la LAN cableada) y WAN.</span>
+          <span class="origen">Estado: verificado.</span></li>
+      </ul>
+
+      <h3>Fabricantes, estándares y documentación técnica</h3>
+      <ul class="lista-fuentes">
+        <li><a href="https://www.cisco.com/site/us/en/learn/topics/small-business/what-is-a-router.html" target="_blank" rel="noopener">What is a Router? Definition and Uses<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Cisco · sin fecha visible · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: el router recibe y envía datos; puede combinar funciones de módems, hubs y switches; algunos traen firewall.</span>
+          <span class="origen">Estado: verificado. La página no dice que el router incluya el punto de acceso: por eso esa parte se presenta como ejemplo didáctico para comprobar en tu equipo.</span></li>
+        <li><a href="https://www.cisco.com/c/en/us/solutions/small-business/resource-center/networking/network-switch-vs-router.html" target="_blank" rel="noopener">What is a Switch vs a Router?<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Cisco · sin fecha visible · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: el switch conecta los dispositivos para compartir recursos; el router conecta varios switches y sus redes.</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://www.ieee802.org/" target="_blank" rel="noopener">IEEE 802 LAN/MAN Standards Committee<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">IEEE · última actualización indicada en la página: 28/07/2026 · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: el comité desarrolla los estándares de redes locales y metropolitanas; 802.3 es Ethernet y 802.11 es la LAN inalámbrica.</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://www.ibm.com/think/topics/network-topology" target="_blank" rel="noopener">What is network topology?<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">IBM Think · autores: Tasmiha Khan, Gita Jackson y Michael Goodwin · sin fecha visible · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: topología física y lógica; los siete tipos de topología y lo que pasa cuando falla un equipo en cada uno.</span>
+          <span class="origen">Estado: verificado (fuente de un fabricante, no un estándar).</span></li>
+        <li><a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ipconfig" target="_blank" rel="noopener">ipconfig<span class="sr-only"> (se abre en otra pestaña)</span></a>,
+          <a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ping" target="_blank" rel="noopener">ping<span class="sr-only"> (se abre en otra pestaña)</span></a> y
+          <a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/tracert" target="_blank" rel="noopener">tracert<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Microsoft Learn · actualizadas el 16/02/2026 · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: qué hace cada comando y que tracert revisa hasta 30 saltos por defecto.</span>
+          <span class="origen">Estado: verificado. Las salidas de la terminal son una simulación con datos ficticios.</span></li>
+        <li><a href="https://www.rfc-editor.org/rfc/rfc5737" target="_blank" rel="noopener">RFC 5737: IPv4 Address Blocks Reserved for Documentation<span class="sr-only"> (se abre en otra pestaña)</span></a> y
+          <a href="https://www.rfc-editor.org/rfc/rfc1918" target="_blank" rel="noopener">RFC 1918: Address Allocation for Private Internets<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">IETF / RFC Editor · enero de 2010 (RFC 5737) y febrero de 1996 (RFC 1918) · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: que 198.51.100.0/24 y 203.0.113.0/24 están reservadas para documentación y que 192.168.0.0/16 es privada.</span>
+          <span class="origen">Estado: verificado.</span></li>
+      </ul>
+
+      <h3>Temario oficial</h3>
+      <ul class="lista-fuentes">
+        <li><a href="https://learningcontent.cisco.com/documents/marketing/exam-topics/200-301-CCNA-v1.1.pdf" target="_blank" rel="noopener">CCNA Exam v1.1 (CCNA 200-301), temario en PDF<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Cisco · 2024 · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: tema 1.1 (routers, switches de capa 2 y 3, firewalls de nueva generación e IPS, puntos de acceso, controladores, dispositivos finales, servidores y PoE) y tema 1.2 (arquitecturas de topología, entre ellas SOHO).</span>
+          <span class="origen">Estado: verificado (texto extraído del PDF).</span></li>
+        <li><a href="https://learningnetwork.cisco.com/s/ccna-v2-exam-topics" target="_blank" rel="noopener">200-301 CCNA v2.0 Exam Topics<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Cisco Learning Network · primera fecha de examen: 03/02/2027 · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: que el examen se rinde solo en inglés o japonés y que la v2.0 ya no detalla los temas de componentes y topologías.</span>
+          <span class="origen">Estado: verificado (página generada con JavaScript, leída con un navegador sin ventana).</span></li>
+      </ul>
+    </section>
+
+    <!-- ================= CIERRE ================= -->
+    <section id="cierre" class="bloque" aria-labelledby="t-cierre">
+      <p class="kicker">Cierre</p>
+      <h2 id="t-cierre">Mis notas y el mapa de mi red</h2>
+      <label for="notas">Escribe aquí el mapa de tu red, tus dudas o lo que más te costó:</label>
+      <textarea id="notas" data-notas="generales" placeholder="Inventario: … · Aparato del proveedor: funciones… · Topología: … · Límite LAN/WAN: … · Puerta de enlace: …"></textarea>
+      <p>Tu avance se guarda solo. Al terminar, dile a Claude «revisa mi avance».</p>
+      <div id="resumen"></div>
+    </section>
+  </main>
+</div>
+
+<p class="pie">Redes//Academia · Clase 01 · Las simulaciones usan datos ficticios y direcciones de documentación.</p>
+
+<script>
+window.CLASE = {
+  id: 'redes-01',
+  titulo: 'Redes · Clase 01: ¿Qué es una red?',
+  bloques: [
+    { id: 'b-bienvenida', titulo: 'Presentación y punto de partida', min: 10 },
+    { id: 'b-que-es', titulo: '¿Qué es una red?', min: 10 },
+    { id: 'b-componentes', titulo: 'Componentes de la red', min: 15 },
+    { id: 'b-tipos', titulo: 'LAN, WLAN y WAN', min: 15 },
+    { id: 'b-descanso', titulo: 'Descanso', min: 10 },
+    { id: 'b-topologias', titulo: 'Topologías', min: 15 },
+    { id: 'b-demo', titulo: 'Demostración: el mapa de una red', min: 10 },
+    { id: 'b-terminal', titulo: 'Práctica guiada en la terminal', min: 10 },
+    { id: 'b-vocab', titulo: 'Vocabulario de redes', min: 5 },
+    { id: 'b-autonoma', titulo: 'Práctica autónoma', min: 5 },
+    { id: 'b-examen', titulo: 'Evaluación final', min: 10 },
+    { id: 'b-resumen', titulo: 'Resumen', min: 5 }
+  ],
+  terminales: {
+    pc: {
+      titulo: 'Símbolo del sistema de Windows (simulación)',
+      prompt: 'C:\\Users\\caja>',
+      bienvenida: 'Computadora de caja de la panadería «La Espiga» (simulación con datos ficticios). Escribe help para ver los comandos.',
+      ayuda: 'Comandos de esta práctica:\n  ipconfig\n  ping 192.168.1.1\n  ping 192.168.1.30\n  ping 203.0.113.10\n  tracert 203.0.113.10',
+      error: "'{cmd}' no se reconoce como un comando interno o externo,\nprograma o archivo por lotes ejecutable.\n💡 Escribe help para ver los comandos de esta práctica.",
+      comandos: {
+        'ipconfig': {
+          salida: 'Configuración IP de Windows\n\nAdaptador de Ethernet Ethernet:\n\n   Sufijo DNS específico para la conexión. . :\n   Dirección IPv4. . . . . . . . . . . . . . : 192.168.1.20\n   Máscara de subred . . . . . . . . . . . . : 255.255.255.0\n   Puerta de enlace predeterminada . . . . . : 192.168.1.1',
+          explica: 'Esta computadora se conecta por cable (adaptador Ethernet). Su dirección en la LAN es 192.168.1.20, y su puerta de enlace, 192.168.1.1, es el router: la salida hacia otras redes.'
+        },
+        'ping 192.168.1.1': {
+          salida: 'Haciendo ping a 192.168.1.1 con 32 bytes de datos:\nRespuesta desde 192.168.1.1: bytes=32 tiempo<1m TTL=64\nRespuesta desde 192.168.1.1: bytes=32 tiempo<1m TTL=64\nRespuesta desde 192.168.1.1: bytes=32 tiempo<1m TTL=64\nRespuesta desde 192.168.1.1: bytes=32 tiempo<1m TTL=64\n\nEstadísticas de ping para 192.168.1.1:\n    Paquetes: enviados = 4, recibidos = 4, perdidos = 0\n    (0% perdidos),',
+          explica: 'El router responde: la LAN funciona entre esta computadora y la caja del proveedor. Tiempo menor a 1 milisegundo, porque está muy cerca.'
+        },
+        'ping 192.168.1.30': {
+          salida: 'Haciendo ping a 192.168.1.30 con 32 bytes de datos:\nRespuesta desde 192.168.1.30: bytes=32 tiempo=2ms TTL=64\nRespuesta desde 192.168.1.30: bytes=32 tiempo=1ms TTL=64\nRespuesta desde 192.168.1.30: bytes=32 tiempo=1ms TTL=64\nRespuesta desde 192.168.1.30: bytes=32 tiempo=1ms TTL=64\n\nEstadísticas de ping para 192.168.1.30:\n    Paquetes: enviados = 4, recibidos = 4, perdidos = 0\n    (0% perdidos),',
+          explica: 'En esta simulación, 192.168.1.30 es la impresora. Responde: dos equipos de la misma LAN se comunican sin salir a internet.'
+        },
+        'ping 203.0.113.10': {
+          salida: 'Haciendo ping a 203.0.113.10 con 32 bytes de datos:\nTiempo de espera agotado para esta solicitud.\nTiempo de espera agotado para esta solicitud.\nTiempo de espera agotado para esta solicitud.\nTiempo de espera agotado para esta solicitud.\n\nEstadísticas de ping para 203.0.113.10:\n    Paquetes: enviados = 4, recibidos = 0, perdidos = 4\n    (100% perdidos),',
+          explica: 'El servidor de internet de la simulación no responde. Como el router y la impresora sí responden, la LAN está bien: el problema está más allá del router. ¡Este es el «no tengo internet» de la panadería!'
+        },
+        'tracert 203.0.113.10': {
+          salida: 'Traza a 203.0.113.10 sobre caminos de 30 saltos como máximo.\n\n  1    <1 ms    <1 ms    <1 ms  192.168.1.1\n  2     *        *        *     Tiempo de espera agotado para esta solicitud.\n  3     *        *        *     Tiempo de espera agotado para esta solicitud.\n  …\nTraza completa.',
+          explica: 'El primer salto, el router (192.168.1.1), responde. Desde el segundo salto, que ya es la WAN del proveedor, no hay respuesta. Conclusión: hay que llamar al proveedor. Ojo: algunos equipos de internet no responden a tracert aunque funcionen; aquí lo confirma que el ping también falla.'
+        }
+      },
+      misiones: [
+        { texto: 'Mira la configuración de red con ipconfig y busca la puerta de enlace.', cmd: 'ipconfig' },
+        { texto: 'Haz ping a la puerta de enlace (el router).', cmd: 'ping 192.168.1.1' },
+        { texto: 'Haz ping a la impresora, 192.168.1.30.', cmd: 'ping 192.168.1.30' },
+        { texto: 'Haz ping al servidor de internet de la simulación, 203.0.113.10.', cmd: 'ping 203.0.113.10' },
+        { texto: 'Mira hasta dónde llega el camino con tracert 203.0.113.10.', cmd: 'tracert 203.0.113.10' }
+      ]
+    }
+  },
+  actividades: {
+    componentes: {
+      titulo: '¿Qué tipo de componente es?',
+      preguntas: [{ label: 'Es un…', corto: 'Componente', opciones: ['Dispositivo final', 'Equipo intermediario', 'Medio'] }],
+      items: [
+        { titulo: 'La computadora portátil de la oficina', respuestas: [['Dispositivo final']], pista: '¿La información empieza o termina aquí, o solo pasa por aquí?', explica: 'Ahí se crea y se usa la información: es un dispositivo final (endpoint).' },
+        { titulo: 'Un switch de 24 puertos', respuestas: [['Equipo intermediario']], pista: '¿Alguien trabaja frente a él, o solo conecta a otros?', explica: 'Conecta los equipos de la red local: es un equipo intermediario.' },
+        { titulo: 'El cable de red que va de la PC al router', respuestas: [['Medio']], pista: 'Es el camino, no un aparato.', explica: 'Es el camino por donde viaja la información: un medio (cobre).' },
+        { titulo: 'Una impresora con Wi-Fi', respuestas: [['Dispositivo final']], pista: 'La información que envías termina en ella, impresa en papel.', explica: 'Recibe e imprime la información: es un dispositivo final.' },
+        { titulo: 'El router que une la red de la empresa con internet', respuestas: [['Equipo intermediario']], pista: 'Une dos redes: ¿empieza la información ahí?', explica: 'Dirige el tráfico entre redes: es un equipo intermediario.' },
+        { titulo: 'Las ondas de radio del Wi-Fi', respuestas: [['Medio']], pista: 'Por aquí viaja la información, aunque no se vea.', explica: 'El aire es el medio de las redes inalámbricas.' },
+        { titulo: 'Un punto de acceso en el techo de un café', respuestas: [['Equipo intermediario']], pista: '¿Qué hace?: conecta los celulares de los clientes con la red.', explica: 'Conecta los dispositivos inalámbricos con la red: es un equipo intermediario.' },
+        { titulo: 'El servidor donde se guardan las facturas', respuestas: [['Dispositivo final']], pista: 'Atiende a muchos, pero ¿la información termina ahí o solo pasa?', explica: 'Un servidor guarda y entrega información: es un dispositivo final, aunque atienda a muchos clientes.' }
+      ]
+    },
+    tipos: {
+      titulo: '¿LAN, WLAN o WAN?',
+      preguntas: [{ label: 'Esta red es una…', corto: 'Tipo', opciones: ['LAN', 'WLAN', 'WAN'] }],
+      items: [
+        { titulo: 'Las computadoras de un laboratorio del colegio, conectadas con cables a un switch', respuestas: [['LAN']], pista: '¿Área pequeña o grande? ¿Con cables o sin cables?', explica: 'Área limitada y por cable: una LAN.' },
+        { titulo: 'El Wi-Fi gratuito para los clientes de un café', respuestas: [['WLAN']], pista: 'Área pequeña… y sin cables.', explica: 'Red local inalámbrica: una WLAN.' },
+        { titulo: 'La red que une las oficinas de un banco en Lima, Cusco y Arequipa', respuestas: [['WAN']], pista: 'Piensa en la distancia entre esas ciudades.', explica: 'Cubre un área geográfica amplia: una WAN.' },
+        { titulo: 'Tu celular conectado al Wi-Fi de tu casa', respuestas: [['WLAN']], pista: '¿Cómo se conecta el celular?', explica: 'Es la parte inalámbrica de la red local de tu casa: la WLAN.' },
+        { titulo: 'Internet', respuestas: [['WAN']], pista: 'Es la red de redes, de alcance mundial.', explica: 'Internet es la WAN más grande que existe.' },
+        { titulo: 'La PC y la impresora de una oficina, unidas por cable al mismo switch', respuestas: [['LAN']], pista: 'Misma oficina, cables.', explica: 'Área limitada y por cable: una LAN.' }
+      ]
+    },
+    topologias: {
+      titulo: '¿Qué topología es?',
+      preguntas: [{ label: 'Esta topología es…', corto: 'Topología', opciones: ['Bus', 'Anillo', 'Estrella', 'Malla completa', 'Punto a punto'] }],
+      items: [
+        { titulo: 'Diagrama 1', log: '  A     B     C\n  |     |     |\n--+-----+-----+--\n  |     |\n  D     E', respuestas: [['Bus']], pista: 'Todos cuelgan de una misma línea horizontal.', explica: 'Todos los equipos comparten un cable principal: bus. Si ese cable falla, se cae toda la red.' },
+        { titulo: 'Diagrama 2', log: '    A   B\n     \\ /\n D--[SW]--C\n     / \\\n    E   F', respuestas: [['Estrella']], pista: '¿Hay un equipo en el centro al que llegan todos?', explica: 'Todos se conectan a un equipo central (SW, un switch): estrella.' },
+        { titulo: 'Diagrama 3', log: '  A --- B\n  |     |\n  D --- C', respuestas: [['Anillo']], pista: 'Sigue el camino desde A: ¿vuelves a A?', explica: 'Cada equipo se une con el siguiente hasta cerrar el círculo: anillo.' },
+        { titulo: 'Diagrama 4', log: '  A --- B\n  | \\ / |\n  |  X  |\n  | / \\ |\n  D --- C', respuestas: [['Malla completa']], pista: 'Cuenta los enlaces de A: ¿con cuántos equipos se une?', explica: 'Cada equipo se une con todos los demás (A-B, A-C, A-D, B-C, B-D, C-D): malla completa.' },
+        { titulo: 'Diagrama 5', log: '  [Sede]=========[Sucursal]', respuestas: [['Punto a punto']], pista: 'Solo hay dos extremos.', explica: 'Un enlace directo entre dos equipos: punto a punto.' },
+        { titulo: 'Diagrama 6 (la red de tu casa)', log: '  Laptop   TV   Celular\n      \\    |    /\n       [Router]\n      /        \\\n   PC         Impresora', respuestas: [['Estrella']], pista: 'Todo llega a la misma caja.', explica: 'Todos los equipos se conectan al router, por cable o Wi-Fi: estrella.' }
+      ]
+    }
+  },
+  quizzes: {
+    examen: {
+      titulo: 'Evaluación final',
+      preguntas: [
+        { q: '¿Qué es una red?', opciones: ['Un conjunto de componentes interconectados para compartir información y recursos', 'Solo internet', 'Un tipo de cable', 'Un programa para navegar'], correcta: 0, explica: 'Una red es un sistema de componentes interconectados. Internet es solo una red, la más grande.' },
+        { q: '¿Qué equipo une redes distintas, por ejemplo la de tu casa con internet?', opciones: ['El switch', 'El router', 'La impresora', 'El cable'], correcta: 1, explica: 'El router hace de puerta de enlace entre redes. El switch conecta equipos dentro de una misma red.' },
+        { q: '¿Qué equipo conecta las computadoras de una misma oficina para que compartan recursos?', opciones: ['El switch', 'El firewall', 'El servidor', 'El módem'], correcta: 0, explica: 'El switch conecta los dispositivos de la red local y envía los datos al puerto correcto.' },
+        { q: '¿Cuál de estos es un dispositivo final?', opciones: ['Un punto de acceso', 'Un switch', 'Un celular', 'Un cable de fibra'], correcta: 2, explica: 'El celular crea y usa información. El punto de acceso y el switch son intermediarios; la fibra es un medio.' },
+        { q: '¿Qué es una WLAN?', opciones: ['Una red mundial', 'La parte inalámbrica de una red local', 'Un tipo de cable', 'Una red entre ciudades'], correcta: 1, explica: 'WLAN es una red de área local inalámbrica, normalmente una extensión de la LAN cableada.' },
+        { q: '¿Qué estándar de IEEE corresponde al Wi-Fi?', opciones: ['802.3', '802.11', '5737', '1918'], correcta: 1, explica: '802.11 es la LAN inalámbrica (Wi-Fi). 802.3 es Ethernet, la red por cable.' },
+        { q: 'En una topología en estrella, ¿qué pasa si falla el equipo central?', opciones: ['Nada, los demás siguen conectados', 'Se cae toda la red', 'Solo falla un equipo', 'La red se vuelve un anillo'], correcta: 1, explica: 'El equipo central es un punto único de falla: si cae, se cae toda la red. Si falla otro equipo, el resto sigue funcionando.' },
+        { q: '¿Qué ventaja tiene una malla completa?', opciones: ['Es la más barata', 'Usa un solo cable', 'Tiene caminos de repuesto (redundancia)', 'No necesita equipos'], correcta: 2, explica: 'Cada equipo tiene varios caminos. A cambio, cuesta más instalarla y mantenerla.' },
+        { q: '¿Qué muestra el comando ipconfig?', opciones: ['La configuración de red del equipo, como la IP y la puerta de enlace', 'El camino hasta un servidor', 'Las contraseñas del Wi-Fi', 'La velocidad de internet'], correcta: 0, explica: 'ipconfig muestra la configuración TCP/IP: dirección IP, máscara y puerta de enlace predeterminada.' },
+        { q: 'Caso práctico: el ping al router responde, pero el ping a un servidor de internet no. ¿Dónde está el problema más probable?', opciones: ['En el cable de la computadora', 'Más allá del router: en la WAN o en el proveedor', 'En la impresora', 'En el teclado'], correcta: 1, explica: 'Si llegas al router, tu LAN funciona. El fallo está después: en la WAN o en el proveedor.' },
+        { q: 'Caso práctico: en una oficina, el Wi-Fi y los cables llegan a un solo aparato del proveedor. ¿Qué topología física es?', opciones: ['Bus', 'Anillo', 'Estrella', 'Malla completa'], correcta: 2, explica: 'Todos los equipos se conectan a un equipo central: estrella.' },
+        { q: '¿Qué significa «default gateway»?', opciones: ['Punto de acceso', 'Puerta de enlace predeterminada', 'Red inalámbrica', 'Servidor web'], correcta: 1, explica: 'Default gateway es la puerta de enlace predeterminada: el router, la salida de tu red local.' }
+      ]
+    }
+  }
+};
+</script>
+<script src="../../../recursos/sync.js"></script>
+<script src="../../../recursos/academia.js"></script>
+</body>
+</html>

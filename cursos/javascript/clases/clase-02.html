@@ -152,6 +152,77 @@
       <div data-quiz="examen"></div>
     </section>
 
+    <!-- ================= RESUMEN (agregado el 11/11/2026) ================= -->
+    <section id="resumen-clase" class="bloque" aria-labelledby="t-resumen-clase">
+      <p class="kicker">Repaso · fuera del reloj</p>
+      <h2 id="t-resumen-clase">Resumen de la clase</h2>
+      <div class="lectura">
+        <h3>Conceptos que debes recordar</h3>
+        <ul>
+          <li>Una variable es una caja con etiqueta: guarda un dato para usarlo después por su nombre.</li>
+          <li><code>let</code> crea una variable que puede cambiar; <code>const</code>, una que no. Cambiar una const da <code>TypeError</code>.</li>
+          <li>Los nombres distinguen mayúsculas: <code>Ciudad</code> y <code>ciudad</code> son variables distintas. Un nombre mal escrito da <code>ReferenceError</code>.</li>
+          <li>Tipos de datos: string (texto entre comillas), number (con punto decimal), boolean (<code>true</code> o <code>false</code>), undefined y null. <code>typeof</code> te dice el tipo.</li>
+          <li>Con el signo más se suman números y se unen textos (concatenar).</li>
+          <li>Declarar dos veces la misma variable con let da <code>SyntaxError</code>.</li>
+        </ul>
+        <h3>Ya deberías ser capaz de</h3>
+        <ul>
+          <li>Crear variables con let y const y elegir la adecuada.</li>
+          <li>Reconocer el tipo de un dato.</li>
+          <li>Combinar variables en cálculos y mensajes.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= VIDEOS COMPLEMENTARIOS (agregado el 11/11/2026) ================= -->
+    <section id="videos" class="bloque fuentes" aria-labelledby="t-videos">
+      <p class="kicker">Material complementario · fuera del reloj</p>
+      <h2 id="t-videos">🎬 Videos complementarios</h2>
+      <p>Los videos complementan la clase: no la reemplazan. Se verificaron el 11/11/2026 con la herramienta de la academia: existen, están disponibles y sus datos son los de la ficha. Lo que enseñan se revisó con su título, su descripción y sus capítulos oficiales; no se vieron completos. En los cursos largos, el enlace te lleva directo al minuto del tema de esta clase.</p>
+      <ul class="lista-fuentes">
+        <li><a href="https://www.youtube.com/watch?v=1glVfFxj8a4&amp;t=3049s" target="_blank" rel="noopener">Curso COMPLETO de JavaScript DESDE CERO para Principiantes<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Canal: MoureDev by Brais Moure (educador con trayectoria, terceros) · en español · 6:20:30 · empieza en el minuto 50:49 · publicado el 22/11/2024 · verificado el 11/11/2026</span>
+          <span class="origen">Subtítulos: sí, automáticos en español.</span>
+          <span class="origen">Qué enseña: variables (capítulo 16 del curso).</span>
+          <span class="origen">Alternativa escrita, por si el video desaparece: la guía de JavaScript de MDN, en español (en la sección de fuentes).</span></li>
+        <li><a href="https://www.youtube.com/watch?v=1glVfFxj8a4&amp;t=3599s" target="_blank" rel="noopener">Curso COMPLETO de JavaScript DESDE CERO para Principiantes<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Canal: MoureDev by Brais Moure (educador con trayectoria, terceros) · en español · 6:20:30 · empieza en el minuto 59:59 · publicado el 22/11/2024 · verificado el 11/11/2026</span>
+          <span class="origen">Subtítulos: sí, automáticos en español.</span>
+          <span class="origen">Qué enseña: tipos de datos (capítulo 17 del curso).</span>
+          <span class="origen">Alternativa escrita, por si el video desaparece: la guía de JavaScript de MDN, en español (en la sección de fuentes).</span></li>
+      </ul>
+    </section>
+
+    <!-- ================= FUENTES VERIFICADAS (agregado el 11/11/2026) ================= -->
+    <section id="fuentes" class="bloque fuentes" aria-labelledby="t-fuentes">
+      <p class="kicker">Lectura extra · fuera del reloj</p>
+      <h2 id="t-fuentes">📚 Fuentes verificadas</h2>
+      <p>Los conceptos principales de esta clase se comprobaron en la documentación oficial el 11/11/2026. Cada fuente indica qué respalda y su estado. Las que están en inglés las puedes leer en español: en el navegador, haz clic derecho y elige <strong>Traducir a español</strong>.</p>
+      <ul class="lista-fuentes">
+        <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Grammar_and_types" target="_blank" rel="noopener">Gramática y tipos<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">MDN Web Docs (Mozilla) · versión en español · modificada el 23/07/2026 · consultado el 11/11/2026</span>
+          <span class="origen">Respalda: que JavaScript distingue mayúsculas y minúsculas; los comentarios // y /* */; las declaraciones var, let y const; los tipos de datos (string, number, boolean, undefined, null…).</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Statements/let" target="_blank" rel="noopener">let<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">MDN Web Docs (Mozilla) · versión en español · modificada el 21/07/2025 · consultado el 11/11/2026</span>
+          <span class="origen">Respalda: que volver a declarar con let la misma variable da SyntaxError.</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Statements/const" target="_blank" rel="noopener">const<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">MDN Web Docs (Mozilla) · versión en español · modificada el 29/05/2026 · consultado el 11/11/2026</span>
+          <span class="origen">Respalda: que una constante no se puede reasignar (TypeError).</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/typeof" target="_blank" rel="noopener">typeof<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">MDN Web Docs (Mozilla) · versión en español · modificada el 05/08/2023 · consultado el 11/11/2026</span>
+          <span class="origen">Respalda: que typeof devuelve un texto con el tipo del dato.</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Errors" target="_blank" rel="noopener">Referencia de errores de JavaScript<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">MDN Web Docs (Mozilla) · versión en español · modificada el 20/06/2025 · consultado el 11/11/2026</span>
+          <span class="origen">Respalda: los tipos de error SyntaxError, ReferenceError («x is not defined») y TypeError (asignar a una constante).</span>
+          <span class="origen">Estado: verificado.</span></li>
+      </ul>
+    </section>
+
     <section id="cierre" class="bloque" aria-labelledby="t-cierre">
       <p class="kicker">Cierre</p>
       <h2 id="t-cierre">Mis notas</h2>

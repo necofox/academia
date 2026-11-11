@@ -266,6 +266,8 @@ textarea.codigo-js {
 .tema-ingles { --accent: #ffb86b; --accent2: #8fd3ff; }
 .tema-js { --accent: #f7df1e; --accent2: #8fd3ff; }
 .tema-python { --accent: #ffd43b; --accent2: #7db8ff; }
+.tema-redes { --accent: #6ea8fe; --accent2: #9ad1ff; }
+.tema-ia { --accent: #c9a7ff; --accent2: #ffb38a; }
 
 /* ---------- Menú de inicio ---------- */
 .menu { max-width: 1100px; margin: 0 auto; padding: 16px; }
