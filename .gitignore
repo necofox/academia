@@ -4,3 +4,6 @@ horario.md
 cursos/*/apuntes/
 cursos/*/progreso.md
 cursos/*/proyectos/
+
+# Caché de Python (se genera sola al ejecutar las herramientas)
+__pycache__/
