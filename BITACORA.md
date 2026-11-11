@@ -277,3 +277,19 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
 
   No se modificaron clases, catálogo real, menú ni motor; nada publicado. **Pendiente de
   aprobación del alumno.**
+- **Complemento de la propuesta de ampliación** (pedido por el alumno; solo propuesta):
+  - Curso 6 rediseñado con una formación completa de ingeniería de instrucciones en seis niveles:
+    11 módulos, 55 clases y 110 h. 43 clases se hacen con el plan gratuito, 12 necesitan un plan de
+    pago y ninguna necesita la API. Proyecto integrador: biblioteca profesional de prompts.
+  - Materiales oficiales clasificados:
+    - el tutorial interactivo de Anthropic requiere clave de API, así que sus ejercicios se
+      adaptan al chat;
+    - el repositorio `anthropics/courses` está archivado;
+    - Claude Academy es gratuita.
+  - Estándar de videos para los seis cursos, más 65 videos de YouTube verificados con
+    `herramientas/verificar-videos.py` (título, canal, duración, disponibilidad, subtítulos y doblaje
+    al español). Datos en `propuestas/videos-verificados.json` y `propuestas/videos-anotaciones.json`.
+  - Academia con 6 cursos: 262 clases y 484 h.
+
+  No se modificaron clases, catálogo real, menú ni motor; nada publicado. **Pendiente de
+  aprobación del alumno.**

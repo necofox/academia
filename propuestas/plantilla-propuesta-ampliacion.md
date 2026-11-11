@@ -2,11 +2,12 @@
 
 > **Estado:** propuesta para revisión. **No implementada.** No se modificó ninguna de las 17 clases,
 > ni el catálogo real (`recursos/catalogo.js`), ni el menú, ni el motor. No se publicó nada en GitHub.
-> **Fecha:** 11 de noviembre de 2026. **Norma aplicada:** `PROMPT-MAESTRO.md`.
+> **Fecha:** 11 de noviembre de 2026 (segunda versión: formación completa de ingeniería de
+> instrucciones en el curso 6 y videos verificados). **Norma aplicada:** `PROMPT-MAESTRO.md`.
 > **Relación con lo aprobado:** amplía `PROPUESTA-ORGANIZACION-CURRICULAR.md`. Si la apruebas, se
 > integra en ese documento y en el catálogo real.
 > *(Archivo generado con `node propuestas/generar-propuesta-ampliacion.js`: la plantilla está en
-> `propuestas/` y las tablas de módulos salen del borrador del catálogo.)*
+> `propuestas/`; las tablas de módulos, clases, videos y totales salen de los datos.)*
 
 ---
 
@@ -15,31 +16,39 @@
 1. Resumen
 2. Cómo encajan los dos cursos nuevos
 3. Curso 5: Redes y Telecomunicaciones
-4. Curso 6: IA: Claude y productividad
-5. Qué se comparte entre cursos y cómo se evita duplicar
-6. La academia con 6 cursos: totales
-7. Cómo quedaría el catálogo
-8. Cómo se integraría sin romper nada
-9. Fuentes consultadas y estado de verificación
-10. Decisiones que necesito que apruebes
+4. Curso 6: IA: Claude y productividad (con la formación completa de prompt engineering)
+5. Videos complementarios: estándar para los 6 cursos y videos verificados
+6. Qué se comparte entre cursos y cómo se evita duplicar
+7. La academia con 6 cursos: totales
+8. Cómo quedaría el catálogo
+9. Cómo se integraría sin romper nada
+10. Fuentes consultadas y estado de verificación
+11. Decisiones que necesito que apruebes
 
 ---
 
 ## 1. Resumen
 
-- **Redes y Telecomunicaciones:** 11 módulos, 51 clases y 102 h (2 h por clase). Va desde qué es
-  una red hasta diseñar, configurar, administrar y diagnosticar la red de una empresa, con un
-  proyecto empresarial al final. Sigue el temario oficial del examen **CCNA 200-301 v2.0** de Cisco
-  (vigente desde el 3 de febrero de 2027), más un módulo de telecomunicaciones (fibra, redes
-  móviles 4G/5G, WAN e Internet). Todo se practica con herramientas gratuitas: **Cisco Packet
-  Tracer** (gratis con una cuenta de Networking Academy) y los comandos de tu propio PC.
-- **IA: Claude y productividad:** 9 módulos, 36 clases y 72 h. Va del primer chat a las técnicas
-  avanzadas de instrucciones, la investigación, el análisis de documentos, Claude Code, agentes,
-  subagentes, skills y automatizaciones. **No usa la API de pago.** 21 de las 36 clases funcionan
-  con el plan gratuito; Claude Code y lo que depende de él (módulos 6 a 8) requiere un plan de pago
-  (Pro o superior).
-- **La academia pasa de 4 a 6 cursos:** de 156 clases y 272 h a **243 clases y 446 h**, más la
-  electiva opcional de Python (3 clases, 6 h). Las 17 clases existentes no cambian.
+- **Redes y Telecomunicaciones:** 11 módulos, {{REDES_CLASES}} clases y {{REDES_HORAS}} h (2 h
+  por clase). Va desde qué es una red hasta diseñar, configurar, administrar y diagnosticar la red
+  de una empresa, con un proyecto empresarial al final.
+  - Sigue el temario oficial del examen **CCNA 200-301 v2.0** de Cisco (vigente desde el
+    3/02/2027) e incluye un módulo de telecomunicaciones.
+  - Se practica gratis con **Cisco Packet Tracer** y los comandos de tu PC.
+- **IA: Claude y productividad:** {{IA_MODULOS}} módulos, {{IA_CLASES}} clases y {{IA_HORAS}} h
+  (antes 36 clases y 72 h).
+  - Integra una **formación completa de ingeniería de instrucciones (prompt engineering) en seis
+    niveles**: fundamentos, técnicas, prompting estructurado, avanzado, aplicaciones profesionales,
+    y context engineering con Claude Code.
+  - Termina con un proyecto integrador: tu **biblioteca profesional de prompts**.
+  - **No necesita la API de pago:** {{IA_GRATIS}} de las {{IA_CLASES}} clases se hacen con el plan
+    gratuito, y las demás con un plan de pago (Pro o superior).
+- **Videos complementarios:** {{VIDEOS_TOTAL}} videos de YouTube verificados el 11/11/2026, uno o
+  más por clase cuando aportan valor. En español siempre que existe una buena opción; si no, se
+  indica si tiene subtítulos o doblaje al español. Cada video tiene una alternativa escrita.
+- **La academia pasa de 4 a 6 cursos:** de 156 clases y 272 h a **{{TOTAL_CLASES}} clases y
+  {{TOTAL_HORAS}} h**, más la electiva opcional de Python (3 clases, 6 h). Las 17 clases
+  existentes no cambian.
 - **Vista previa:** `propuestas/vista-previa-6-cursos.html` muestra el menú con los 6 cursos, sin
   tocar tu menú real ni tu avance.
 
@@ -68,7 +77,8 @@
 - **Meta:** diseñar, configurar, administrar y diagnosticar la red de una empresa pequeña o mediana,
   con una base alineada al temario oficial del CCNA 200-301 v2.0 y práctica en Cisco Packet Tracer.
 - **Para quién:** desde cero. **Conocimientos previos:** ninguno; basta con saber usar el computador.
-- **Duración:** 11 módulos, 51 clases y 102 h (2 h por clase), más la práctica autónoma.
+- **Duración:** 11 módulos, {{REDES_CLASES}} clases y {{REDES_HORAS}} h (2 h por clase), más la
+  práctica autónoma.
 - **Cómo se practica:**
   1. Terminal simulada del motor, para los comandos de Cisco IOS dentro de la página de la clase.
   2. Laboratorios en Cisco Packet Tracer, en tu PC.
@@ -109,25 +119,48 @@
   entender una red: los modelos de topología, la tabla MAC y NTP. Las clases que los tratan lo
   indican en la columna «Temario oficial que cubre».
 
+Los códigos de la columna «Videos» (R01, R02…) remiten a la tabla de la sección 5.
+
 {{CURSO:redes}}
 
 ## 4. Curso 6: IA: Claude y productividad
 
-- **Meta:** usar Claude de forma eficaz, segura y responsable para aprender, investigar, analizar
-  documentos, programar y automatizar tareas, desde el chat hasta Claude Code y sus agentes,
-  **sin depender de la API de pago**.
-- **Para quién:** desde cero. **Conocimientos previos:** ninguno para los módulos 1 a 5. Para
-  Claude Code (módulos 6 a 8) se recomienda el Módulo 1 de JavaScript o de Python, porque aquí no
+- **Meta:** usar Claude de forma eficaz, segura y responsable, con una formación completa en
+  ingeniería de instrucciones (prompt engineering): desde formular una pregunta clara hasta diseñar,
+  evaluar, corregir y reutilizar instrucciones profesionales, y aplicar el context engineering con
+  Claude Code y sus agentes. **Sin depender de la API de pago.**
+- **Para quién:** desde cero. **Conocimientos previos:** ninguno para los módulos 1 a 8. Para
+  Claude Code (módulos 9 y 10) se recomienda el Módulo 1 de JavaScript o de Python, porque aquí no
   se enseña a programar.
-- **Duración:** 9 módulos, 36 clases y 72 h (2 h por clase), más la práctica autónoma.
+- **Duración:** {{IA_MODULOS}} módulos, {{IA_CLASES}} clases y {{IA_HORAS}} h (2 h por clase), más
+  la práctica autónoma. La formación de ingeniería de instrucciones ocupa los módulos 2, 3, 5, 6,
+  8 y 9; los módulos 1, 4, 7, 10 y 11 la acompañan (fundamentos, espacio de trabajo, skills,
+  agentes y proyecto).
 - **Cómo se practica:**
   - La página de cada clase enseña y evalúa (actividades y examen).
-  - La práctica se hace en Claude (web, escritorio o Claude Code), con criterios para comprobar
-    el resultado por tu cuenta.
+  - La práctica se hace en Claude (chat web o de escritorio, o Claude Code), con criterios para
+    comprobar el resultado por tu cuenta.
+  - Las pruebas de calidad se hacen con una **hoja de evaluación** propia (casos de prueba,
+    criterios y resultados) directamente en el chat, sin la API.
 - **Regla de seguridad del curso:**
   - Nunca se pegan en Claude tokens, contraseñas ni datos personales.
   - Claude Code se practica en carpetas y repositorios de prueba, **nunca en la academia real**.
   - Se revisan los permisos antes de aceptar cada acción.
+
+**La formación de ingeniería de instrucciones, nivel por nivel**
+
+| Nivel pedido | Módulo del curso | Temas que cubre |
+|---|---|---|
+| 1. Fundamentos del prompting | M2 (4 clases) | Qué es un prompt y cómo funciona la interacción; preguntas e instrucciones claras; vago frente a bien definido; contexto, objetivo y restricciones; resultado esperado; errores frecuentes |
+| 2. Técnicas fundamentales | M3 (5 clases) | Roles y responsabilidades; instrucciones directas y específicas; contexto y alcance; ejemplos (few-shot); restricciones y criterios de aceptación; formatos de respuesta; separar instrucciones, datos y referencias |
+| 3. Prompting estructurado | M5 (6 clases) | Etiquetas XML; estructuras reutilizables; varias condiciones; documentos extensos; investigación, comparación y síntesis; informes, tablas, planes y documentación; ambigüedades y contradicciones |
+| 4. Prompt engineering avanzado | M6 (6 clases) | Descomposición; encadenamiento (prompt chaining); mejora iterativa; errores y alucinaciones; verificación con fuentes; evaluación de calidad; pruebas y criterios de éxito; bibliotecas reutilizables |
+| 5. Aplicaciones profesionales | M8 (7 clases) | Desarrollo de software; HTML, CSS, JavaScript y Python; análisis y corrección de código; automatización; investigación técnica; PDF y Word; informes y documentación; gestión de proyectos; diseño web; oportunidades laborales y negocios; productividad personal |
+| 6. Context engineering y Claude Code | M9 (7 clases) y M10 (5 clases) | Prompt frente a context engineering; Claude frente a Claude Code, con requisitos y límites; contexto del proyecto; CLAUDE.md; skills y reglas; subagentes y delegación; planificar antes de implementar; permisos y supervisión; hooks; MCP; evaluar agentes; flujos con varios agentes |
+
+**Dónde se practica y qué plan necesita cada clase** (detalle por clase en las tablas de abajo):
+
+{{IA_RESUMEN}}
 
 **Qué necesitas en cada parte** (verificado el 11/11/2026 en la página de planes y en el centro de
 ayuda oficial):
@@ -140,20 +173,21 @@ ayuda oficial):
 | Memoria | Sí | Sí | Buscar en chats anteriores es de pago |
 | Skills | Sí | Sí | Requiere activar la ejecución de código; se pueden crear y subir skills propios |
 | Conectores personalizados (MCP remoto) | Sí, 1 | Sí | |
-| Research (investigación profunda) | No | Sí | Requiere la búsqueda web activada |
+| Research (investigación profunda) | No | Sí | Requiere la búsqueda web activada; la alternativa gratuita es la búsqueda web |
 | Claude in Chrome | No | Sí | Extensión que lee, hace clic y navega sitios contigo |
 | Cowork | No | Sí | Misma arquitectura de agente que Claude Code, sin terminal; usa la app de escritorio |
 | Claude Code (terminal, escritorio, web y VS Code) | **No** | Sí | Comparte los límites de uso con el chat |
 | Tareas programadas en la nube | No | Sí | En vista previa; máximo 100 ejecuciones programadas por hora |
-| API y Agent SDK | Pago aparte | Pago aparte | **Fuera del curso** |
+| API, Console y Agent SDK | Pago aparte | Pago aparte | **Fuera del curso.** Los cuadernos del tutorial oficial usan la API: son opcionales |
 
 - **Precios** (página oficial, 11/11/2026; en dólares y sin impuestos):
   - Pro: US$17 al mes con pago anual o US$20 con pago mensual.
   - Max: desde US$100 al mes. Ultra: US$200 al mes.
   - Team y Enterprise: para organizaciones.
   - La página advierte que precios y planes pueden cambiar.
-- **Ruta gratuita:** con el plan gratuito se pueden hacer 21 de las 36 clases (módulos 1 a 5
-  casi completos) y la versión básica del proyecto final.
+- **Ruta gratuita:** {{IA_GRATIS}} de las {{IA_CLASES}} clases y la biblioteca profesional del
+  proyecto final se hacen con el plan gratuito. Sin plan de pago solo quedan fuera Claude Code y
+  sus agentes, Research, Claude in Chrome y Cowork.
 - **Privacidad** (se enseña en el Módulo 1):
   - En las cuentas Free, Pro y Max, incluido Claude Code, tú decides si tus chats se usan para
     entrenar modelos (Configuración → Privacidad → «Help improve our AI models»).
@@ -162,9 +196,108 @@ ayuda oficial):
   - La política de uso tiene una versión nueva que entra en vigor el 12/11/2026; se revisará al
     crear la clase.
 
+**Materiales de apoyo y de qué tipo es cada uno**
+
+| Material | Tipo | Cómo se usa en el curso | Costo y acceso |
+|---|---|---|---|
+| Tutorial interactivo de prompt engineering de Anthropic (9 capítulos y un apéndice) | Oficial (Anthropic) | Guía la secuencia de los módulos 2, 3, 5 y 6 (ver el mapa de abajo). Las lecciones se leen y los ejercicios se rehacen en el chat de Claude | Las lecciones se leen gratis en GitHub. Los cuadernos **requieren una clave de API** (de pago): son opcionales |
+| Guía oficial «Prompting best practices» | Oficial (Anthropic) | Referencia principal de técnicas para los modelos actuales | Gratis |
+| Documentación «Define success criteria and build evaluations» | Oficial (Anthropic) | Criterios de éxito y casos de prueba (M6·5 y M10·4), aplicados con una hoja de evaluación en el chat | Gratis; la herramienta de evaluación de la Console usa la API y no se exige |
+| Artículos oficiales «Building effective agents» (19/12/2024) y «Effective context engineering for AI agents» (29/09/2025) | Oficial (Anthropic) | Patrones de agentes (M6·1 y M10) y diferencia entre prompt y context engineering (M9·1) | Gratis |
+| Documentación de Claude Code (incluida «Best practices for Claude Code») | Oficial (Anthropic) | Módulos 9 y 10 | Gratis; Claude Code requiere un plan de pago |
+| Claude Academy (academy.claude.com): «AI Fluency», «AI capabilities and limitations», «Introduction to agent skills», «Introduction to subagents»… | Oficial (Anthropic), con profesores de University College Cork y Ringling College en «AI Fluency» | Lecturas y videos de apoyo en los módulos 1, 7 y 10 | Gratis |
+| Repositorio de cursos de Anthropic (github.com/anthropics/courses) | Oficial (Anthropic) | Solo lectura de apoyo («Real world prompting» y «Prompt evaluations») | **Archivado desde el 15/09/2026** (solo lectura). Sus cuadernos usan la API |
+| Elements of AI | Universidad (Universidad de Helsinki con MinnaLearn) | Lectura complementaria del Módulo 1, en español | Gratis |
+| Prompt Engineering Guide (DAIR.AI) | Terceros | Consulta opcional; tiene una versión en español parcial | Gratis |
+| Videos de DevTalles, MoureDev, Derivando y otros | Terceros | Videos complementarios (sección 5) | Gratis |
+| Explicaciones, ejercicios, hojas de evaluación y rúbricas de cada clase | Original de la academia | Contenido principal de las clases | Gratis |
+
+> **Nota de vigencia:** el tutorial oficial se escribió para los modelos Claude 3. En la academia se
+> indicará en cada clase qué partes ya no aplican. Por ejemplo, la técnica de «prellenar» la
+> respuesta (*Speaking for Claude*, capítulo 5) ya no funciona en los modelos actuales, según la
+> guía de buenas prácticas, y tampoco se puede usar en el chat.
+
+**Mapa: material oficial que apoya cada clase**
+
+{{IA_TUTORIAL}}
+
+**Proyecto integrador: tu biblioteca profesional de prompts**
+
+- **Contenido de la biblioteca:** instrucciones para investigación, análisis de documentos,
+  programación, revisión y corrección de código, automatización, planificación de proyectos, y
+  agentes y subagentes.
+- **Ficha de cada instrucción:**
+  - propósito y caso de uso;
+  - variables (lo que cambia en cada uso);
+  - la instrucción completa, con su estructura (rol, contexto, etiquetas XML, ejemplos y formato);
+  - criterios de aceptación;
+  - casos de prueba con los resultados obtenidos;
+  - historial de versiones con lo que cambió y por qué.
+- **Demostración obligatoria:** transformar al menos cinco instrucciones deficientes en
+  profesionales, justificar cada cambio con la técnica aplicada y comprobar con la hoja de
+  evaluación si el resultado cumple los criterios.
+- **Dónde se guarda:** en un proyecto de Claude (plan gratuito, hasta 5 proyectos) y como archivos
+  propios. Las mejores instrucciones pueden convertirse en skills (Módulo 7).
+- **Rúbrica:**
+  - cobertura de los casos de uso;
+  - calidad de cada instrucción;
+  - pruebas y resultados medidos;
+  - transformaciones justificadas;
+  - seguridad (sin datos sensibles);
+  - presentación.
+- **Versión gratuita y versión completa:** la biblioteca completa se hace con el plan gratuito.
+  Las instrucciones para agentes y subagentes se diseñan y revisan en el chat. Solo ejecutarlas
+  con Claude Code requiere un plan de pago.
+
+Los códigos de la columna «Videos» (C01, C02…) remiten a la tabla de la sección 5. Cuando un video
+es largo, se indica el minuto en que empieza la parte que corresponde a la clase.
+
 {{CURSO:ia}}
 
-## 5. Qué se comparte entre cursos y cómo se evita duplicar
+## 5. Videos complementarios: estándar para los 6 cursos y videos verificados
+
+**Estándar** (se propone para los seis cursos):
+
+1. Los videos **complementan** la clase. No reemplazan las explicaciones escritas, los ejercicios
+   ni la evaluación.
+2. Se recomiendan solo cuando aportan valor a una clase o a un tema importante.
+3. **Prioridad:** canales oficiales, universidades, y docentes o educadores con trayectoria.
+4. **Primero en español.** Si el mejor recurso está en inglés, se indica si tiene subtítulos en
+   español (escritos o automáticos), solo traducción automática, o doblaje al español.
+5. **Ficha de cada video:**
+   - título exacto, canal y tipo (oficial, universidad o terceros);
+   - idioma, duración y fecha de publicación;
+   - qué enseña;
+   - enlace directo y fecha de verificación;
+   - una alternativa escrita, por si el video desaparece.
+6. **Se verifica con una herramienta** (`herramientas/verificar-videos.py`) que comprueba en
+   YouTube que el video existe y está disponible, su título exacto, canal, duración, fecha y
+   subtítulos o doblaje en español.
+   - Qué enseña se revisa con la descripción y los capítulos oficiales de cada video.
+   - Ningún video se vio completo, y así se declara.
+7. **Nada de enlaces de búsqueda** ni de videos que solo mencionan el tema en el título.
+8. **Videos largos:** se prefiere uno breve si es igual de claro. Si el largo es el mejor, se
+   enlaza el minuto exacto del capítulo que corresponde a la clase.
+9. **Se vuelven a verificar** al crear cada clase y antes de publicarla, porque los videos pueden
+   desaparecer o cambiar.
+
+**Cómo se aplica a los cuatro cursos existentes:** progresivamente, al actualizar cada clase al
+estándar (después de que apruebes Ciberseguridad 01 como modelo). Por ahora no se modifica ninguna
+clase. Cada clase actualizada tendrá su sección de videos, junto a la de fuentes verificadas.
+
+**Resultado de la verificación (11/11/2026):**
+
+{{VIDEOS_RESUMEN}}
+
+**Videos de Redes y Telecomunicaciones**
+
+{{VIDEOS:redes}}
+
+**Videos de IA: Claude y productividad**
+
+{{VIDEOS:ia}}
+
+## 6. Qué se comparte entre cursos y cómo se evita duplicar
 
 | Tema | Dónde aparece | Decisión |
 |---|---|---|
@@ -174,34 +307,44 @@ ayuda oficial):
 | Capturas de tráfico (Wireshark) | Ciber M3·4 · Redes M11·2 | Wireshark a fondo solo en Ciberseguridad. Redes interpreta salidas de captura y enlaza |
 | Ataques de red | Ciber M3·5 · Redes M10 | Ciberseguridad detecta y analiza. Redes configura las defensas en los equipos (ACL y seguridad de capa 2) |
 | HTTP, APIs REST y JSON | JS M4·2 · Python M7·1 · Ciber M3·2 · Redes M10·5 | Redes los trata solo para la gestión de equipos de red y enlaza con JavaScript y Python |
-| Automatización | Python M7 · Redes M10·5 · Claude M8 | Python enseña a programar la automatización. Redes muestra controladores y Ansible. Claude automatiza con Claude Code |
-| Git y GitHub | JS M5·2 · Python M5·1 · Claude M6·4 | Claude M6·4 no enseña Git: muestra cómo trabajar con Git junto a Claude y enlaza a la clase compartida |
-| Programación | JavaScript · Python · Claude M6 | Claude M6 no enseña a programar; recomienda JS M1 o Python M1 |
-| Instrucciones (prompts) | Claude M2 · Redes M10·6 | La técnica general está en Claude M2. Redes la aplica a la operación de redes (tema 5.2 del CCNA v2.0) y enlaza |
+| Automatización | Python M7 · Redes M10·5 · Claude M8·4 y M10·5 | Python enseña a programar la automatización. Redes muestra controladores y Ansible. Claude enseña a pedirla y a automatizar con Claude Code |
+| Git y GitHub | JS M5·2 · Python M5·1 · Claude M9 | Claude no enseña Git: muestra cómo trabajar con Git junto a Claude Code y enlaza a la clase compartida |
+| Programación (HTML, CSS, JavaScript y Python) | JavaScript · Python · Claude M8·1 a M8·3 y M9 | Claude no enseña a programar: enseña a pedir, revisar y corregir código, con ejercicios tomados de esos cursos. Recomienda JS M1 o Python M1 |
+| Instrucciones (prompts) | Claude M2, M3, M5, M6 y M8 · Redes M10·6 | La técnica está en Claude. Redes la aplica a la operación de redes (tema 5.2 del CCNA v2.0) y enlaza |
+| Verificación de fuentes | Norma de la academia (`PROMPT-MAESTRO.md`) · Claude M6·4 | Claude M6·4 enseña a aplicar con Claude la misma norma de fuentes de la academia |
 | Datos sensibles | Ciber M7·3 · Claude M1·4 | La misma regla en los dos: nunca subir datos sensibles. Claude profundiza en la configuración de la cuenta |
-| Inglés técnico | Inglés M5 · examen CCNA · documentación de Claude | Se recomienda Inglés M5 a quien quiera certificarse. Propuesta: permitir el «inglés técnico del día» también en Redes |
+| Inglés técnico | Inglés M5 · examen CCNA · documentación y videos oficiales de Claude | Se recomienda Inglés M5 a quien quiera certificarse. Propuesta: permitir el «inglés técnico del día» también en Redes |
 
-## 6. La academia con 6 cursos: totales
+## 7. La academia con 6 cursos: totales
 
 {{TOTALES}}
 
-Las horas son de clase; la práctica autónoma de cada clase se suma aparte, a tu ritmo. La
-electiva de Python sigue siendo opcional y no se cuenta en el total.
+- Las horas son de clase; la práctica autónoma de cada clase se suma aparte, a tu ritmo.
+- La electiva de Python sigue siendo opcional y no se cuenta en el total.
+- **Efecto de esta versión:** el curso 6 sube de 36 a {{IA_CLASES}} clases y de 72 h a
+  {{IA_HORAS}} h por la formación completa de ingeniería de instrucciones. La academia pasa de
+  243 clases y 446 h (primera versión de esta propuesta) a {{TOTAL_CLASES}} clases y
+  {{TOTAL_HORAS}} h. Los otros cinco cursos no cambian.
 
-## 7. Cómo quedaría el catálogo
+## 8. Cómo quedaría el catálogo
 
 {{CATALOGO}}
 
-- **Borrador:** `propuestas/cursos-nuevos.borrador.js` contiene los dos cursos completos, con
-  módulos, clases, ejercicios, evaluación, proyecto, fuentes, el tema oficial del CCNA y el plan de
-  Claude que necesita cada clase. Se agrega al catálogo real **sin modificarlo**.
-- **Vista previa:** sirve la carpeta (`python -m http.server 8765 --bind 127.0.0.1`) y abre
-  `http://127.0.0.1:8765/propuestas/vista-previa-6-cursos.html`. Muestra el menú real con los
-  6 cursos; con `?curso=redes` o `?curso=ia` al final de la dirección se abre en ese curso.
-  Funciona aislada: dentro de la vista previa el menú usa un almacenamiento temporal en memoria,
-  no sincroniza con GitHub, tiene los enlaces desactivados y no modifica ningún archivo.
+- **Borrador:** `propuestas/cursos-nuevos.borrador.js` contiene los dos cursos completos. Incluye:
+  - módulos y clases, con ejercicios, evaluación, proyecto y fuentes;
+  - el tema oficial del CCNA que cubre cada clase de Redes;
+  - el plan de Claude y el lugar de práctica de cada clase del curso 6;
+  - los videos de cada clase.
 
-## 8. Cómo se integraría sin romper nada
+  Se agrega al catálogo real **sin modificarlo**.
+- **Vista previa:** sirve la carpeta (`python -m http.server 8765 --bind 127.0.0.1`) y abre
+  `http://127.0.0.1:8765/propuestas/vista-previa-6-cursos.html`.
+  - Muestra el menú real con los 6 cursos.
+  - Con `?curso=redes` o `?curso=ia` al final de la dirección se abre en ese curso.
+  - Funciona aislada: usa un almacenamiento temporal en memoria, no sincroniza con GitHub, tiene
+    los enlaces desactivados y no modifica ningún archivo.
+
+## 9. Cómo se integraría sin romper nada
 
 Solo después de tu aprobación:
 
@@ -216,15 +359,21 @@ Solo después de tu aprobación:
    - Redes: puede quedarse con esa voz, sin cambios en el motor.
    - Claude: si prefieres la voz «Jarvis» de JavaScript y Python, hay que cambiar una línea de
      `recursos/academia.js`. Ese cambio necesita tu autorización.
-5. **Reglas:** agregar los dos cursos a la tabla de CLAUDE.md y a las duraciones, y preguntarte el
+5. **Videos en las clases:** cada clase nueva tendrá una sección de videos complementarios con su
+   ficha, generada desde los datos verificados.
+   - Agregar esta regla a CLAUDE.md y al prompt maestro requiere tu autorización.
+   - Mostrar los videos en las páginas de las clases podría requerir un pequeño cambio en el motor;
+     se te consultará antes.
+6. **Reglas:** agregar los dos cursos a la tabla de CLAUDE.md y a las duraciones, y preguntarte el
    horario (`horario.md`).
-6. **Menú:** actualizar la versión `?v=` de `inicio.html`.
-7. **Pruebas:**
+7. **Menú:** actualizar la versión `?v=` de `inicio.html`.
+8. **Pruebas:**
    - `revisar-catalogo.js` y `generar-rutas.js --comprobar`.
+   - `verificar-videos.py` antes de publicar.
    - Ampliar `revisar-coherencia.js` para que también lea esta propuesta.
    - `pruebas-clases.html` a medida que existan clases nuevas.
 
-## 9. Fuentes consultadas y estado de verificación
+## 10. Fuentes consultadas y estado de verificación
 
 Todas se consultaron el **11/11/2026**.
 - **Verificada:** se leyó el contenido y respalda el uso que se le da.
@@ -255,6 +404,17 @@ Todas se consultaron el **11/11/2026**.
 
 | Fuente | URL | Fecha | Qué respalda | Estado |
 |---|---|---|---|---|
+| Anthropic · Tutorial interactivo de prompt engineering (GitHub) | https://github.com/anthropics/prompt-eng-interactive-tutorial | Última actualización: 28/08/2026 | 9 capítulos (principiante, intermedio y avanzado) y apéndice (Chaining Prompts, Tool Use, Search & Retrieval); escrito para Claude 3 Haiku; los cuadernos requieren una clave de API («requires an API key»); versión en Google Sheets | Verificada (README y cuaderno de inicio) |
+| Anthropic · Cursos (GitHub) | https://github.com/anthropics/courses | Archivado el 15/09/2026 | Cinco cursos (API fundamentals, tutorial, Real world prompting, Prompt evaluations, Tool use); usan Claude 3 Haiku «to keep API costs down» | Verificada |
+| Claude Platform · Prompt engineering overview / Prompting best practices | https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview · https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices | — | Técnicas actuales (claridad, contexto, ejemplos, XML, rol, contextos largos, razonamiento); el prellenado de respuestas ya no es compatible con los modelos actuales | Verificada (la parte final de la página, por resumen) |
+| Claude Platform · Define success criteria and build evaluations | https://platform.claude.com/docs/en/test-and-evaluate/develop-tests | — | Criterios específicos, medibles, alcanzables y relevantes; principios para diseñar evaluaciones | Verificada |
+| Anthropic · Building effective agents | https://www.anthropic.com/engineering/building-effective-agents | 19/12/2024 | Flujos de trabajo frente a agentes; patrones (encadenamiento, enrutamiento, paralelización, orquestador-trabajadores, evaluador-optimizador) | Verificada |
+| Anthropic · Effective context engineering for AI agents | https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents | 29/09/2025 | El context engineering como evolución del prompt engineering | Verificada |
+| Claude Code · Best practices for Claude Code | https://code.claude.com/docs/en/best-practices | — | CLAUDE.md corto, verificación, hooks, permisos y subagentes | Verificada (una parte, por resumen) |
+| Claude Academy | https://academy.claude.com/ | — | Cursos gratuitos de Anthropic: «AI Fluency» (14 lecciones, 4 h), «AI capabilities and limitations» (13 lecciones, 3,5 h), entre otros | Verificada (portada; no se vio un curso específico de prompting) |
+| Anthropic Academy · AI Fluency: Framework & Foundations | https://anthropic.skilljar.com/ai-fluency-framework-foundations | — | Marco 4D (Delegation, Description, Discernment, Diligence); desarrollado con profesores de University College Cork y Ringling College; gratis | Verificada |
+| Elements of AI | https://www.elementsofai.com/es/ | — | Curso gratuito de la Universidad de Helsinki y MinnaLearn, con versión en español | Verificada (portada en español) |
+| DAIR.AI · Prompt Engineering Guide | https://www.promptingguide.ai/es | — | Guía de terceros con traducción parcial al español | Verificada (material de terceros, opcional) |
 | Claude · Planes y precios | https://claude.com/pricing | Consultada el 11/11/2026 | Planes, precios y funciones por plan | Verificada (la pestaña de precios de la API no se leyó) |
 | Ayuda de Claude · Use Claude Code with your Pro, Max, or Ultra plan | https://support.claude.com/en/articles/11145838-using-claude-code-with-your-pro-or-max-plan | Actualizada hace más de una semana | Claude Code incluido en los planes de pago; límites compartidos con el chat | Verificada |
 | Ayuda de Claude · How do usage and length limits work? | https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work | Actualizada esta semana | Límite que se reinicia cada 5 horas y límite semanal | Verificada |
@@ -273,36 +433,45 @@ Todas se consultaron el **11/11/2026**.
 | Claude Code · Scheduled tasks (routines) y /loop | https://code.claude.com/docs/en/routines · https://code.claude.com/docs/en/scheduled-tasks | — | Tareas programadas en la nube (vista previa; planes de pago; máximo 100 por hora) y tareas dentro de la sesión | Parcialmente verificada (los límites salieron de un resumen) |
 | Claude Code · Use Claude Code in the cloud | https://code.claude.com/docs/en/claude-code-on-the-web | — | Sesiones en la nube en planes de pago | Verificada |
 | Claude Code · Manage costs effectively | https://code.claude.com/docs/en/costs | — | El uso con suscripción está incluido; comando `/usage` | Verificada |
-| Claude Platform · Prompting best practices / Prompt engineering overview | https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices | — | Técnicas del Módulo 2 (claridad, contexto, ejemplos, XML, rol, contextos largos y razonamiento) | Verificada (la parte final de la página, por resumen) |
 | Claude Platform · Models overview | https://platform.claude.com/docs/en/about-claude/models/overview | — | Modelos actuales y anteriores (cambian con el tiempo) | Verificada |
-| Anthropic Academy | https://anthropic.skilljar.com/ | — | Cursos gratuitos complementarios (Claude 101, Claude Code in Action, Introduction to agent skills, AI Fluency, MCP…) | Verificada (gratis en los 3 cursos abiertos; duraciones no publicadas) |
 | Anthropic · Updates to Consumer Terms and Privacy Policy | https://www.anthropic.com/news/updates-to-our-consumer-terms | 28/08/2025 | Elegir si los chats entrenan modelos (Free, Pro y Max, incluido Claude Code); retención de 5 años si se permite o 30 días si no | Verificada; la retención actual se comprobará al crear la clase |
 | Centro de privacidad · How do I change my model improvement privacy settings? / Is my data used for model training? | https://privacy.claude.com/en/articles/12109829-how-do-i-change-my-model-improvement-privacy-settings · https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training | 03/08/2026 · 16/03/2026 | Cómo cambiar el ajuste; los chats de incógnito no se usan | Verificada |
 | Anthropic · Consumer Terms of Service | https://www.anthropic.com/legal/consumer-terms | Vigentes desde 08/10/2025 | Edad mínima de 18 años (o la de tu país, si es mayor) | Verificada |
 | Anthropic · Usage Policy | https://www.anthropic.com/legal/aup | Entra en vigor el 12/11/2026 | Uso responsable | Verificada |
+
+**Videos:** sus fuentes y su estado están en la sección 5 (verificados con
+`herramientas/verificar-videos.py` el 11/11/2026; los datos completos están en
+`propuestas/videos-verificados.json`).
 
 **No accesibles o no usadas como respaldo:**
 - El catálogo de cursos de Networking Academy (se genera con JavaScript y no cargó).
 - La página del programa GET de IEEE (error 418).
 - La pestaña de la API en la página de precios.
 - Las duraciones de los cursos de Anthropic Academy (no están publicadas).
+- Las transcripciones de los videos (YouTube no las entrega sin un navegador real): lo que enseña
+  cada video se revisó con su título, descripción y capítulos oficiales.
 
-## 10. Decisiones que necesito que apruebes
+## 11. Decisiones que necesito que apruebes
 
-1. **Los dos planes de estudio** (secciones 3 y 4), o los cambios que quieras.
-2. **La duración:** 2 h por clase en los dos cursos, como Ciberseguridad, JavaScript y Python.
-3. **La referencia del curso de Redes:** temario CCNA v2.0, vigente desde el 03/02/2027.
-4. **El ajuste de Ciberseguridad M3·3** para no repetir DHCP, ARP y NAT (sección 5). Esa clase aún
+1. **Los dos planes de estudio** (secciones 3 y 4), incluida la formación de ingeniería de
+   instrucciones en seis niveles dentro del curso 6, o los cambios que quieras.
+2. **La duración:** 2 h por clase en los dos cursos. El curso 6 queda en {{IA_CLASES}} clases y
+   {{IA_HORAS}} h.
+3. **El estándar de videos** (sección 5) para los seis cursos, y su aplicación progresiva a los
+   cuatro existentes al actualizar cada clase.
+4. **Agregar ese estándar a las reglas** (CLAUDE.md y prompt maestro).
+5. **La referencia del curso de Redes:** temario CCNA v2.0, vigente desde el 03/02/2027.
+6. **El ajuste de Ciberseguridad M3·3** para no repetir DHCP, ARP y NAT (sección 6). Esa clase aún
    no existe; ninguna de las 17 clases cambia.
-5. **El curso de Claude y tu plan:** dime qué plan usas (Free, Pro, Max…) para adaptar las
-   prácticas. La propuesta mantiene una ruta gratuita.
-6. **La voz de cada curso nuevo:** Redes, docente (sin cambios); Claude, docente o «Jarvis» (esta
+7. **Tu plan de Claude:** dime cuál usas (Free, Pro, Max…) para adaptar las prácticas. La propuesta
+   mantiene una ruta gratuita.
+8. **La voz de cada curso nuevo:** Redes, docente (sin cambios); Claude, docente o «Jarvis» (esta
    última requiere tocar una línea del motor).
-7. **El «inglés técnico del día» en Redes**, como excepción a la regla de no mezclar cursos.
-8. **Nombres, íconos y colores** de los cursos nuevos (🌐 Redes y Telecomunicaciones · 🤖 IA:
-   Claude y productividad).
-9. **El horario** para los dos cursos nuevos.
-10. **El orden de trabajo:** los cursos nuevos se crearían después de que apruebes Ciberseguridad 01
+9. **El «inglés técnico del día» en Redes**, como excepción a la regla de no mezclar cursos.
+10. **Nombres, íconos y colores** de los cursos nuevos (🌐 Redes y Telecomunicaciones · 🤖 IA:
+    Claude y productividad).
+11. **El horario** para los dos cursos nuevos.
+12. **El orden de trabajo:** los cursos nuevos se crearían después de que apruebes Ciberseguridad 01
     como modelo, igual que el resto.
 
 > Hasta tu aprobación explícita no se implementa nada de esta propuesta.
