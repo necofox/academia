@@ -199,6 +199,17 @@
    "verificado": "2026-11-11",
    "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
   },
+  "9hJ4fgfePfg": {
+   "titulo": "Conceptos de amenaza, riesgo y vulnerabilidad (URJCx)",
+   "canal": "universidadurjc",
+   "duracion": "2:35",
+   "publicado": "2016-02-26",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "subtítulos"
+  },
   "AAtvnv6LNMk": {
    "titulo": "Qué es Flexbox y para qué sirve | Curso Flexbox CSS (1/13)",
    "canal": "jonmircha",
@@ -496,6 +507,17 @@
    "verificado": "2026-11-11",
    "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
   },
+  "TM-OT1U3P0k": {
+   "titulo": "Introducción a la ciberseguridad",
+   "canal": "INCIBE",
+   "duracion": "12:14",
+   "publicado": "2015-12-04",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "subtítulos"
+  },
   "TNtrAvNNxTY": {
    "titulo": "Entornos Virtuales con Python (Módulo virtualenv) ✅ | Curso Python 3 🐍 # 63",
    "canal": "UskoKruM2010",
@@ -688,6 +710,17 @@
    "canal": "AWS Security Users Group LatAm",
    "duracion": "38:24",
    "publicado": "2024-06-25",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "subtítulos"
+  },
+  "_MJt0ugOc_E": {
+   "titulo": "¿Qué es la triada CIA en ciberseguridad? | Curso CIBERSEGURIDAD desde 0 2025",
+   "canal": "RINKU",
+   "duracion": "5:01",
+   "publicado": "2025-07-13",
    "idioma": "español",
    "subtitulosEs": "Sí, en español (automáticos)",
    "dobladoEs": false,
@@ -1542,6 +1575,14 @@
   "aws-shared": {
    "titulo": "AWS: Modelo de responsabilidad compartida",
    "url": "https://aws.amazon.com/es/compliance/shared-responsibility-model/"
+  },
+  "nist-800-30": {
+   "titulo": "NIST SP 800-30 Rev. 1: Guide for Conducting Risk Assessments",
+   "url": "https://csrc.nist.gov/pubs/sp/800/30/r1/final"
+  },
+  "nist-cia": {
+   "titulo": "NIST CSRC: glosario, confidentiality / integrity / availability",
+   "url": "https://csrc.nist.gov/glossary/term/confidentiality"
   }
  }
 }

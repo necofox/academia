@@ -50,7 +50,7 @@ Llegar al nivel de entrada de un analista SOC. La referencia es el rol "Defensiv
 
 | Clase | Tema | Videos | Estado |
 |---|---|---|---|
-| M1·1 | ¿Qué es la ciberseguridad? La tríada CIA | — | ✔ Lista: `clases/clase-01.html` (id `ciber-01`) |
+| M1·1 | ¿Qué es la ciberseguridad? La tríada CIA | [▶ 1](https://www.youtube.com/watch?v=TM-OT1U3P0k) [▶ 2](https://www.youtube.com/watch?v=9hJ4fgfePfg) [▶ 3](https://www.youtube.com/watch?v=_MJt0ugOc_E) | ✔ Lista: `clases/clase-01.html` (id `ciber-01`) |
 | M1·2 | Principios y marcos de seguridad: defensa en profundidad, mínimo privilegio, NIST CSF 2.0 y ética | [▶ 1](https://www.youtube.com/watch?v=dDHMro1NxM0) [▶ 2](https://www.youtube.com/watch?v=pPPiaGU12Og) [▶ 3](https://www.youtube.com/watch?v=rvsaVA_orPU) | Próximamente · **siguiente por crear** |
 | M1·3 | Gestión del riesgo e higiene digital: contraseñas, MFA, actualizaciones y copias de seguridad | [▶ 1](https://www.youtube.com/watch?v=wZU25uB_iuA) [▶ 2](https://www.youtube.com/watch?v=aGggJPdW6MQ) [▶ 3](https://www.youtube.com/watch?v=YH_4JWKfzIk) | Próximamente |
 
@@ -58,6 +58,9 @@ Llegar al nivel de entrada de un analista SOC. La referencia es el rol "Defensiv
 
 | Clase | Video | Canal · duración · idioma | Desde | Ayuda a comprender | Contraste documental |
 |---|---|---|---|---|---|
+| M1·1 | [Introducción a la ciberseguridad](https://www.youtube.com/watch?v=TM-OT1U3P0k) | INCIBE · 12:14 · español | inicio | qué es la ciberseguridad y por qué la información es un activo | [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework) |
+| M1·1 | [Conceptos de amenaza, riesgo y vulnerabilidad (URJCx)](https://www.youtube.com/watch?v=9hJ4fgfePfg) | universidadurjc · 2:35 · español | inicio | diferencias entre amenaza, riesgo y vulnerabilidad (lección universitaria) | [NIST SP 800-30 Rev. 1: Guide for Conducting Risk Assessments](https://csrc.nist.gov/pubs/sp/800/30/r1/final) |
+| M1·1 | [¿Qué es la triada CIA en ciberseguridad? \| Curso CIBERSEGURIDAD desde 0 2025](https://www.youtube.com/watch?v=_MJt0ugOc_E) | RINKU · 5:01 · español | inicio | la tríada CIA: confidencialidad, integridad y disponibilidad | [NIST CSRC: glosario, confidentiality / integrity / availability](https://csrc.nist.gov/glossary/term/confidentiality) |
 | M1·2 | [NIST Cybersecurity Framework 2.0 \| Todo lo que necesitas saber sobre la nueva versión](https://www.youtube.com/watch?v=dDHMro1NxM0) | SEGURIDAD CERO · 24:22 · español | inicio | el marco NIST CSF 2.0 y sus funciones, incluida la nueva función Gobernar | [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework) |
 | M1·2 | [The NIST Cybersecurity Framework (CSF) 2.0](https://www.youtube.com/watch?v=pPPiaGU12Og) | National Institute of Standards and Technology · 3:54 · inglés | inicio | presentación oficial del NIST CSF 2.0 (en inglés) | [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework) |
 | M1·2 | [Defensa en Profundidad \| Zero Trust \| Wild IT Academy](https://www.youtube.com/watch?v=rvsaVA_orPU) | Wild IT Academy · 22:56 · español | inicio | defensa en profundidad y Zero Trust | [NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final) |

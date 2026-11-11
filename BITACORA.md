@@ -176,8 +176,8 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
 - Fuentes verificadas: hechas en los 4 cursos originales (Inglés, el 11/11/2026). En Inglés quedan 4 datos
   «pendientes de fuente escrita» (señalados en cada clase): los diccionarios de Cambridge y Oxford bloquean
   la consulta automática.
-- Resumen y videos complementarios: hechos en las 16 clases originales salvo Ciberseguridad 01, que no se
-  toca hasta que el alumno la revise y lo autorice.
+- Resumen y videos complementarios: hechos en las 17 clases originales. Ciberseguridad 01 fue revisada y
+  aprobada por el alumno el 11/11/2026 y es la clase modelo.
 - Recursos audiovisuales de JavaScript, Python y Ciberseguridad: registrados en el catálogo para todas las
   clases (también las que aún no existen). Quedan 17 clases sin video, con el motivo anotado en el catálogo y en
   las rutas (sobre todo proyectos). Al crear cada clase, sus videos del catálogo pasan a su página.
@@ -376,3 +376,11 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   `herramientas/generar-rutas.js`, y las rutas de JavaScript, Python y Ciberseguridad (generadas).
 - **Pruebas:** pruebas-clases 19/19, pruebas-sync 15/15, revisar-catalogo, generar-rutas --comprobar y
   revisar-coherencia correctos; menú revisado en escritorio y a 360 px. Inglés, Redes e IA sin cambios.
+
+### 2026-11-11 (Ciberseguridad 01 aprobada y con videos)
+- El alumno revisó y aprobó Ciberseguridad 01, y autorizó agregarle los recursos audiovisuales.
+- Se agregó solo la sección de videos (antes de las fuentes), sin cambiar el contenido, las actividades ni el
+  examen: INCIBE «Introducción a la ciberseguridad» (oficial), URJC «Conceptos de amenaza, riesgo y
+  vulnerabilidad» (universidad) y RINKU «¿Qué es la triada CIA en ciberseguridad?». Comprobados con sus
+  subtítulos. También en el catálogo, en `recursos/videos.json` y en la ruta de Ciberseguridad.
+- Pruebas: pruebas-clases 19/19 (ciber-01: 120 min, actividades 25/25, examen 12/12, sin errores, 360 px OK).
