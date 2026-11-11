@@ -12,6 +12,8 @@ const path = require('path');
 const raiz = path.join(__dirname, '..');
 const win = {};
 new Function('window', fs.readFileSync(path.join(raiz, 'recursos/catalogo.js'), 'utf8'))(win);
+// Opcional: --agregar <archivo> carga un borrador después del catálogo (por ejemplo, cursos propuestos)
+process.argv.forEach((a, i) => { if (a === '--agregar') new Function('window', fs.readFileSync(path.resolve(process.argv[i + 1]), 'utf8'))(win); });
 const CAT = win.CATALOGO;
 const base = JSON.parse(fs.readFileSync(path.join(__dirname, 'linea-base-identificadores.json'), 'utf8'));
 const errores = [];

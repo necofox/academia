@@ -261,3 +261,19 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
 
   Pruebas: 17/17 clases con contenido idéntico a `respaldo-etapa-0`, 136 identificadores intactos y
   15/15 de sincronización. Nada publicado. **Pendiente de aprobación del alumno.**
+- **Propuesta de ampliación a 6 cursos** (pedida por el alumno; solo propuesta, nada implementado):
+  - `PROPUESTA-AMPLIACION-6-CURSOS.md`:
+    - Redes y Telecomunicaciones: 11 módulos, 51 clases, 102 h; alineado al CCNA 200-301 v2.0
+      (vigente desde el 03/02/2027); Packet Tracer 9.0.1, gratis con cuenta de Networking Academy.
+    - IA: Claude y productividad: 9 módulos, 36 clases, 72 h; sin API de pago; 21 clases funcionan
+      con el plan gratuito.
+    - Academia con 6 cursos: 243 clases y 446 h.
+  - En `propuestas/`:
+    - borrador de los dos cursos (se agrega al catálogo real sin modificarlo);
+    - vista previa aislada del menú con 6 cursos;
+    - generador del documento.
+  - `herramientas/revisar-catalogo.js` acepta `--agregar <borrador>`.
+  - Comprobado: las 17 clases siguen intactas y los 28 temas del CCNA v2.0 tienen al menos una clase.
+
+  No se modificaron clases, catálogo real, menú ni motor; nada publicado. **Pendiente de
+  aprobación del alumno.**
