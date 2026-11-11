@@ -178,6 +178,9 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   la consulta automática.
 - Resumen y videos complementarios: hechos en las 16 clases originales salvo Ciberseguridad 01, que no se
   toca hasta que el alumno la revise y lo autorice.
+- Recursos audiovisuales de JavaScript, Python y Ciberseguridad: registrados en el catálogo para todas las
+  clases (también las que aún no existen). Quedan 17 clases sin video, con el motivo anotado en el catálogo y en
+  las rutas (sobre todo proyectos). Al crear cada clase, sus videos del catálogo pasan a su página.
 - **Objetivo principal pendiente:** completar Redes y Telecomunicaciones e IA: Claude. Que estén en el menú
   no significa que estén hechos: faltan 104 clases (Redes 50 e IA 54). La ampliación no está terminada hasta
   que todo el contenido esté creado, integrado y probado. Falta el horario de ambos y
@@ -332,3 +335,44 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   verificado» (Wikipedia) o «pendiente».
 - Pruebas: pruebas-clases 19/19 (Inglés 60 min, actividades y exámenes completos) y pruebas-sync 15/15.
   Nada publicado (sin push). Ciberseguridad 01 sigue sin cambios, a la espera de la revisión del alumno.
+
+### 2026-11-11 (recursos audiovisuales de JavaScript, Python y Ciberseguridad)
+- **Revisado:** JavaScript (7 módulos, 37 clases), Python (9 módulos + electiva, 41 clases) y Ciberseguridad
+  (9 módulos, 41 clases). Las clases que ya existen (JS y Python 01–04, Ciberseguridad 02–05) ya tenían sus
+  videos en la página; las demás solo existen en el catálogo, que es donde se guardan sus recursos (igual que en
+  Redes e IA). No se modificó ninguna página de clase.
+- **Dónde quedó:** cada clase de `recursos/catalogo.js` tiene `videos: [{ v, temas, doc }]` (código del video con
+  su minuto, qué ayuda a comprender y la fuente documental de contraste) o `videosPendiente` con el motivo. El
+  Módulo 1 de JavaScript y de Python tiene `videoPrincipal`. Las fichas de los 104 videos (título exacto, canal,
+  duración, idioma, subtítulos, fecha de verificación y cómo se comprobó su contenido) y las fuentes de contraste
+  están en `recursos/videos.json`. `herramientas/generar-rutas.js` las muestra en cada `ruta-aprendizaje.md`
+  (sección «Recursos audiovisuales del módulo»).
+- **Videos principales del Módulo 1 (elegidos por el alumno):** JavaScript, MoureDev «Curso COMPLETO de
+  JavaScript DESDE CERO para Principiantes» (1glVfFxj8a4); Python, MoureDev «Curso COMPLETO de PYTHON desde CERO
+  para PRINCIPIANTES» (Kp4Mvapo5kc). Cada clase del módulo enlaza su capítulo exacto.
+- **Selección por módulo (resumen):** JS M2 jonmircha (HTML y CSS, Flexbox, Grid); M3 freeCodeCamp Español (DOM)
+  y jonmircha (validación, localStorage, módulos); M4 jonmircha (callbacks, promesas, async/await, fetch) y midulive
+  (errores de red); M5 MoureDev (Git y terminal), jonmircha (npm), midulive (ESLint, Vitest); M6 jonmircha (Node.js
+  y Express), JePaFe Dev (SQLite), midulive (autenticación) y The Coder Cave (OWASP). Python M2 midudev y Soy Dalto;
+  M3 MoureDev intermedio, Soy Dalto y UskoKruM2010; M4 UskoKruM2010 y codigofacilito; M5 MoureDev (Git),
+  UskoKruM2010, Pildoras de programación y Charly Cimino; M6 MoureDev (SQL), Dimas y MoureDev intermedio (regex);
+  M7 luisetindev, Código Espinoza, ChepeCarlos y Frank Andrade; M8 MoureDev backend (FastAPI), Andrés Cruz y Código
+  Espinoza; electiva Luis Cabrera, Adrian Dolinay y El Pingüino de Mario. Ciberseguridad: NIST (oficial), INCIBE y
+  la OSI (oficiales), AEPD (oficial), UCAM y URJC (universidades), Red Hat e IBM Technology (fabricantes), y
+  especialistas como SEGURIDAD CERO, RedesCiber, David Pereira, RINKU, Profe Sang, Pelado Nerd, Alberto López,
+  Alvaro Chirou y El Pingüino de Mario. Detalle completo en cada ruta y en `recursos/videos.json`.
+- **Comprobación:** los 104 videos existen y están disponibles (verificar-videos.py); su contenido se comprobó con
+  los capítulos oficiales, los subtítulos o, en lecciones de un solo tema, el título y la descripción. Las 99
+  fuentes de contraste (MDN, JavaScript.info, documentación de Python, OWASP, NIST, INCIBE, MITRE, Microsoft…)
+  responden; CISA bloquea la lectura automática y se comprobó en el navegador. Videos en inglés: marcados.
+- **Descartados:** webinar de Cisco sobre respuesta a incidentes (promoción de productos); análisis de malware de
+  Cyberhill-Security (sin subtítulos: no se pudo comprobar); Wazuh de Fredy CiberSec (solo instalación); despliegue
+  de midulive (usa FL0, plataforma que puede no existir); video de contraseñas de la OSI de 2012 (desactualizado);
+  un video de «reporte de incidentes» que era de seguridad laboral.
+- **Pendientes (17 clases, con motivo):** JS M6·7 (parte de despliegue) y M7·1–3 (proyecto); Python M2·4, M3·4,
+  M4·4, M9·1–3 (proyectos), M4·2 (composición) y E·1; Ciberseguridad M6·3, M6·5, M7·4, M8·2 y M8·5.
+  Ciberseguridad 01 no se tocó (ni su página ni su entrada del catálogo).
+- **Archivos:** `recursos/catalogo.js` (solo campos de videos), `recursos/videos.json` (nuevo),
+  `herramientas/generar-rutas.js`, y las rutas de JavaScript, Python y Ciberseguridad (generadas).
+- **Pruebas:** pruebas-clases 19/19, pruebas-sync 15/15, revisar-catalogo, generar-rutas --comprobar y
+  revisar-coherencia correctos; menú revisado en escritorio y a 360 px. Inglés, Redes e IA sin cambios.

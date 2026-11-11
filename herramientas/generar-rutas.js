@@ -22,8 +22,34 @@ const previosCorto = (m) => (m.previos.length ? lista(m.previos) : m.previosNota
 const etiquetaModulo = (m) => (m.n === 'E' ? 'Electiva (opcional)' : 'Módulo ' + m.n);
 const etiquetaClase = (m, i) => (m.n === 'E' ? 'E' : 'M' + m.n) + '·' + (i + 1);
 const celda = (s) => String(s).replace(/\|/g, '\\|');
-// Videos complementarios verificados ('código' o 'código@segundo'): enlaces cortos a YouTube
-const videos = (c) => (c.videos || []).map((v, i) => { const [id, t] = v.split('@'); return '[▶ ' + (i + 1) + '](https://www.youtube.com/watch?v=' + id + (t ? '&t=' + t + 's' : '') + ')'; }).join(' ') || '—';
+// Videos complementarios verificados: 'código' o 'código@segundo' (Redes e IA), u objetos
+// { v: 'código@segundo', temas, doc } con su ficha en recursos/videos.json (JavaScript, Python y Ciberseguridad)
+const codigoDe = (v) => (typeof v === 'string' ? v : v.v);
+const urlVideo = (v) => { const [id, t] = codigoDe(v).split('@'); return 'https://www.youtube.com/watch?v=' + id + (t ? '&t=' + t + 's' : ''); };
+const videos = (c) => (c.videos || []).map((v, i) => '[▶ ' + (i + 1) + '](' + urlVideo(v) + ')').join(' ') || '—';
+const archivoFichas = path.join(raiz, 'recursos/videos.json');
+const FICHAS = fs.existsSync(archivoFichas) ? JSON.parse(fs.readFileSync(archivoFichas, 'utf8')) : { videos: {}, fuentes: {} };
+const mmss = (s) => (s >= 3600 ? Math.floor(s / 3600) + ':' + String(Math.floor(s % 3600 / 60)).padStart(2, '0') : Math.floor(s / 60)) + ':' + String(s % 60).padStart(2, '0');
+// Tabla de recursos audiovisuales del módulo (solo si sus clases tienen fichas completas o pendientes anotados)
+function recursosAV(m, L) {
+  const conFicha = m.clases.some((c) => (c.videos || []).some((v) => typeof v !== 'string') || c.videosPendiente);
+  if (!conFicha && !m.videoPrincipal) return;
+  L.push('', '#### Recursos audiovisuales del módulo', '');
+  if (m.videoPrincipal) {
+    const f = FICHAS.videos[m.videoPrincipal] || {};
+    L.push('**Recurso principal:** [' + celda(f.titulo || m.videoPrincipal) + '](https://www.youtube.com/watch?v=' + m.videoPrincipal + ') · ' + (f.canal || '') + ' · ' + (f.duracion || '') + '. ' + (m.videoPrincipalNota || ''), '');
+  }
+  L.push('| Clase | Video | Canal · duración · idioma | Desde | Ayuda a comprender | Contraste documental |', '|---|---|---|---|---|---|');
+  m.clases.forEach((c, i) => {
+    (c.videos || []).filter((v) => typeof v !== 'string').forEach((v) => {
+      const [id, t] = v.v.split('@'); const f = FICHAS.videos[id] || {};
+      const docs = (v.doc || []).map((d) => FICHAS.fuentes[d] ? '[' + FICHAS.fuentes[d].titulo + '](' + FICHAS.fuentes[d].url + ')' : d).join('; ') || 'las fuentes de la clase';
+      L.push('| ' + etiquetaClase(m, i) + ' | [' + celda(f.titulo || id) + '](' + urlVideo(v) + ') | ' + celda((f.canal || '?') + ' · ' + (f.duracion || '?') + ' · ' + (f.idioma || '?')) + ' | ' +
+        (t ? mmss(Number(t)) : 'inicio') + ' | ' + celda(v.temas) + ' | ' + celda(docs) + ' |');
+    });
+    if (c.videosPendiente) L.push('| ' + etiquetaClase(m, i) + ' | Pendiente | — | — | ' + celda(c.videosPendiente) + ' | — |');
+  });
+}
 
 function generar(curso) {
   const obligatorios = curso.modulos.filter((m) => !m.opcional);
@@ -65,6 +91,7 @@ function generar(curso) {
         : 'Próximamente' + (siguiente && siguiente.c === c ? ' · **siguiente por crear**' : '');
       L.push('| ' + etiquetaClase(m, i) + ' | ' + celda(c.titulo) + ' | ' + extras.map((e) => celda(e[2](c)) + ' | ').join('') + estado + ' |');
     });
+    recursosAV(m, L);
     L.push('');
   });
   return L.join('\n').trim();

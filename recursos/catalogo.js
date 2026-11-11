@@ -38,8 +38,8 @@ window.CATALOGO = [
         fuentes: 'NIST CSF 2.0, CIS Controls v8.1, glosario NIST.',
         clases: [
           { n: '01', titulo: '¿Qué es la ciberseguridad? La tríada CIA', archivo: 'cursos/ciberseguridad/clases/clase-01.html', id: 'ciber-01' },
-          { titulo: 'Principios y marcos de seguridad: defensa en profundidad, mínimo privilegio, NIST CSF 2.0 y ética' },
-          { titulo: 'Gestión del riesgo e higiene digital: contraseñas, MFA, actualizaciones y copias de seguridad' }
+          { titulo: 'Principios y marcos de seguridad: defensa en profundidad, mínimo privilegio, NIST CSF 2.0 y ética', videos: [{ v: 'dDHMro1NxM0', temas: 'el marco NIST CSF 2.0 y sus funciones, incluida la nueva función Gobernar', doc: ['nist-csf'] }, { v: 'pPPiaGU12Og', temas: 'presentación oficial del NIST CSF 2.0 (en inglés)', doc: ['nist-csf'] }, { v: 'rvsaVA_orPU', temas: 'defensa en profundidad y Zero Trust', doc: ['nist-zt'] }] },
+          { titulo: 'Gestión del riesgo e higiene digital: contraseñas, MFA, actualizaciones y copias de seguridad', videos: [{ v: 'wZU25uB_iuA', temas: 'cómo construir contraseñas seguras y fáciles de recordar', doc: ['nist-800-63b', 'incibe-ciudadania'] }, { v: 'aGggJPdW6MQ', temas: 'por qué hay que mantener el equipo actualizado', doc: ['incibe-ciudadania'] }, { v: 'YH_4JWKfzIk', temas: 'proteger los datos con copias de seguridad', doc: ['incibe-ciudadania'] }] }
         ] },
       { n: 2, titulo: 'Sistemas operativos para analistas',
         objetivo: 'Saber cómo funcionan Windows y Linux por dentro, y dónde mira un analista.',
@@ -50,11 +50,11 @@ window.CATALOGO = [
         proyecto: 'Opcional: instalar Linux en una máquina virtual propia, como laboratorio personal.',
         fuentes: 'Microsoft Learn (Sysmon, eventos), MITRE ATT&CK (táctica de persistencia), póster SANS "Hunt Evil".',
         clases: [
-          { n: '02', titulo: 'El computador por dentro: procesos, usuarios y permisos', archivo: 'cursos/ciberseguridad/clases/clase-02.html', id: 'ciber-02' },
-          { n: '03', titulo: 'Línea de comandos: PowerShell para analistas', archivo: 'cursos/ciberseguridad/clases/clase-03.html', id: 'ciber-03' },
-          { titulo: 'Windows a fondo: servicios, registro, tareas programadas y persistencia' },
-          { n: '04', titulo: 'Linux básico para seguridad', archivo: 'cursos/ciberseguridad/clases/clase-04.html', id: 'ciber-04' },
-          { titulo: 'Linux para analistas: procesos, servicios, journalctl, cron y persistencia' }
+          { n: '02', titulo: 'El computador por dentro: procesos, usuarios y permisos', archivo: 'cursos/ciberseguridad/clases/clase-02.html', id: 'ciber-02', videos: [{ v: 'CUsHYhyyQA0', temas: 'primeros pasos en PowerShell (lección universitaria)', doc: [] }] },
+          { n: '03', titulo: 'Línea de comandos: PowerShell para analistas', archivo: 'cursos/ciberseguridad/clases/clase-03.html', id: 'ciber-03', videos: [{ v: 'Hk7bHAFNuVA', temas: 'sintaxis de los comandos de PowerShell', doc: [] }, { v: '1zVIKuHU30E', temas: 'el sistema de ayuda de PowerShell', doc: [] }] },
+          { titulo: 'Windows a fondo: servicios, registro, tareas programadas y persistencia', videos: [{ v: 'LFjflD8_RqU@923', temas: 'detectar persistencia en Windows: servicios, tareas programadas, claves Run y carpetas de inicio', doc: ['mitre-persist'] }] },
+          { n: '04', titulo: 'Linux básico para seguridad', archivo: 'cursos/ciberseguridad/clases/clase-04.html', id: 'ciber-04', videos: [{ v: 'M3AayeYuzMI', temas: 'Linux desde cero: comandos y permisos', doc: [] }, { v: 'ABgLEKFhlZE@2934', temas: 'comandos de navegación', doc: [] }, { v: 'ABgLEKFhlZE@10885', temas: 'permisos en Linux', doc: [] }] },
+          { titulo: 'Linux para analistas: procesos, servicios, journalctl, cron y persistencia', videos: [{ v: 'k_jFLEVJ7UE@955', temas: 'detectar persistencia en Linux: arranque, cuentas y escalada de privilegios', doc: ['mitre-persist'] }] }
         ] },
       { n: 3, titulo: 'Redes y comunicaciones',
         objetivo: 'Entender cómo viajan los datos y cómo se ven los ataques en la red.',
@@ -65,11 +65,11 @@ window.CATALOGO = [
         proyecto: 'Mapa de la red de tu propia casa, solo con tus dispositivos.',
         fuentes: 'RFC 1918, RFC 5737, RFC 9110, documentación de Wireshark, IANA (puertos).',
         clases: [
-          { n: '05', titulo: 'Redes I: IP, MAC, puertos y protocolos', archivo: 'cursos/ciberseguridad/clases/clase-05.html', id: 'ciber-05' },
-          { titulo: 'Redes II: DNS, HTTP y HTTPS (TLS y certificados)' },
-          { titulo: 'Servicios y arquitectura de red: DHCP, ARP, NAT, VPN, segmentación y firewalls' },
-          { titulo: 'Análisis de tráfico con Wireshark (capturas de ejemplo)' },
-          { titulo: 'Ataques de red y redes inalámbricas, desde la detección' }
+          { n: '05', titulo: 'Redes I: IP, MAC, puertos y protocolos', archivo: 'cursos/ciberseguridad/clases/clase-05.html', id: 'ciber-05', videos: [{ v: 'gVUE2IDwWA0', temas: 'qué es la IP pública', doc: [] }, { v: '-7DiO35rbN8', temas: 'puertos y sockets', doc: [] }, { v: 'iNh-62Mf0O4', temas: 'modelos OSI y TCP/IP', doc: [] }] },
+          { titulo: 'Redes II: DNS, HTTP y HTTPS (TLS y certificados)', videos: [{ v: 'gAstDaSaaWU', temas: 'cómo funciona el protocolo DNS', doc: ['mdn-dns'] }, { v: '6HJAWFenYx8', temas: 'HTTP, HTTPS, SSL y TLS explicados', doc: ['mdn-tls', 'mdn-http'] }] },
+          { titulo: 'Servicios y arquitectura de red: DHCP, ARP, NAT, VPN, segmentación y firewalls', videos: [{ v: 'OsaOKS7Q-cE', temas: 'seguridad perimetral: firewalls y DMZ (lección de un curso universitario)', doc: ['nist-firewall'] }, { v: 'Z6j3ZsqJMKg', temas: 'segmentación de redes: firewalls, VLAN, ACL, IDS e IPS', doc: ['nist-firewall'] }] },
+          { titulo: 'Análisis de tráfico con Wireshark (capturas de ejemplo)', videos: [{ v: 'u0aHPeuAU1E', temas: 'metodología para analizar tráfico con Wireshark', doc: ['wireshark'] }, { v: 'mwqBUih8FG8', temas: 'análisis de tráfico de red con Wireshark', doc: ['wireshark'] }] },
+          { titulo: 'Ataques de red y redes inalámbricas, desde la detección', videos: [{ v: 'UAypyo5RT_U', temas: 'envenenamiento ARP y ataques de intermediario (man-in-the-middle)', doc: ['mitre-aitm'] }] }
         ] },
       { n: 4, titulo: 'Criptografía, identidad y acceso',
         objetivo: 'Entender cómo se protegen los datos y cómo se controla quién entra.',
@@ -79,9 +79,9 @@ window.CATALOGO = [
         evaluacion: 'Caso de una cuenta comprometida.',
         fuentes: 'Glosario NIST; Microsoft Learn (evento 4624).',
         clases: [
-          { titulo: 'Criptografía aplicada: cifrado, hash, firmas y certificados' },
-          { titulo: 'Autenticación e identidades: contraseñas, MFA, SSO y OAuth básico' },
-          { titulo: 'Active Directory y Entra ID para analistas: usuarios, grupos y eventos de inicio de sesión' }
+          { titulo: 'Criptografía aplicada: cifrado, hash, firmas y certificados', videos: [{ v: 'eZzCuGzwpdg', temas: 'criptografía simétrica y asimétrica (lección universitaria)', doc: ['nist-crypto'] }, { v: 'wDpqrasDmxM', temas: 'cifrado simétrico y asimétrico con ejemplos', doc: ['nist-crypto'] }] },
+          { titulo: 'Autenticación e identidades: contraseñas, MFA, SSO y OAuth básico', videos: [{ v: 'HoQJhs00wk8', temas: 'formas de autenticación: sesiones, tokens, OAuth y más', doc: ['nist-800-63b'] }, { v: 'woFaVMP_Kio', temas: 'conceptos de OAuth 2.0', doc: ['oauth'] }] },
+          { titulo: 'Active Directory y Entra ID para analistas: usuarios, grupos y eventos de inicio de sesión', videos: [{ v: 'M3fAyZGZQKc', temas: 'eventos de inicio de sesión de Windows 4624, 4625 y 4634', doc: ['ms-4624'] }] }
         ] },
       { n: 5, titulo: 'Amenazas, vulnerabilidades y ataques',
         objetivo: 'Conocer al adversario y las debilidades que aprovecha.',
@@ -91,11 +91,11 @@ window.CATALOGO = [
         evaluacion: 'Asignar técnicas de ATT&CK a un ataque narrado.',
         fuentes: 'MITRE ATT&CK, OWASP Top 10, CVE.org, FIRST (CVSS v4.0).',
         clases: [
-          { titulo: 'Malware: tipos y comportamiento' },
-          { titulo: 'Ingeniería social y phishing' },
-          { titulo: 'Vulnerabilidades: CVE, CVSS, catálogo KEV y gestión de parches' },
-          { titulo: 'Seguridad web: OWASP Top 10:2025, con laboratorio local' },
-          { titulo: 'Cómo atacan: Cyber Kill Chain y MITRE ATT&CK (con la evaluación del módulo)' }
+          { titulo: 'Malware: tipos y comportamiento', videos: [{ v: 'b7kEr04BjxM', temas: 'qué es el malware y sus tipos', doc: ['incibe-malware'] }] },
+          { titulo: 'Ingeniería social y phishing', videos: [{ v: 'pnyOBx_m6CQ', temas: 'cómo identificar un phishing (taller de INCIBE)', doc: ['incibe-phishing'] }] },
+          { titulo: 'Vulnerabilidades: CVE, CVSS, catálogo KEV y gestión de parches', videos: [{ v: 'sIJ5WbCoUB8', temas: 'qué es un CVE, un CPE y un exploit, y el papel de MITRE y NIST', doc: ['nvd-cvss', 'cisa-kev'] }, { v: 'oSyEGkX6sX0', temas: 'CVE y CVSS explicados por Red Hat (en inglés)', doc: ['nvd-cvss'] }] },
+          { titulo: 'Seguridad web: OWASP Top 10:2025, con laboratorio local', videos: [{ v: '7fv0j1krRJg', temas: 'el OWASP Top 10:2025, sus cambios y ejemplos prácticos', doc: ['owasp-2025'] }] },
+          { titulo: 'Cómo atacan: Cyber Kill Chain y MITRE ATT&CK (con la evaluación del módulo)', videos: [{ v: '2eRE-yLoTlM', temas: 'qué es MITRE ATT&CK y cómo se usa', doc: ['mitre-attack'] }, { v: 'II91fiUax2g', temas: 'la Cyber Kill Chain y cómo romper la cadena (en inglés)', doc: ['mitre-attack'] }] }
         ] },
       { n: 6, titulo: 'Registros y monitoreo de seguridad',
         objetivo: 'Encontrar señales de ataque en los registros y automatizar su detección.',
@@ -106,12 +106,12 @@ window.CATALOGO = [
         proyecto: 'Un mini-SOC casero en una máquina virtual, si tu PC lo permite, o en simulación.',
         fuentes: 'NIST SP 800-92, Microsoft Learn (eventos y Sysmon), repositorio SigmaHQ, documentación de Wazuh.',
         clases: [
-          { titulo: 'Registros: qué son, de dónde vienen y cómo se gestionan' },
-          { titulo: 'Eventos de Windows (4624, 4625, 4688, 4720, 7045) y Sysmon' },
-          { titulo: 'Registros de Linux, servidores web y firewall' },
-          { titulo: 'SIEM I: conceptos, ingesta de datos y búsquedas' },
-          { titulo: 'SIEM II: correlación, paneles y alertas' },
-          { titulo: 'Reglas de detección con Sigma' }
+          { titulo: 'Registros: qué son, de dónde vienen y cómo se gestionan', videos: [{ v: 'TlB-vGW-xLQ', temas: 'cómo leer registros como un analista SOC (en inglés)', doc: ['nist-800-92'] }] },
+          { titulo: 'Eventos de Windows (4624, 4625, 4688, 4720, 7045) y Sysmon', videos: [{ v: 'PIbhoD68TPE@68', temas: 'Sysmon: configuración y búsqueda de actividad maliciosa (en inglés)', doc: ['ms-sysmon'] }, { v: 'MjU3JpnFc8E', temas: 'leer eventos de procesos de Windows: 4688 y Sysmon (en inglés)', doc: ['ms-sysmon'] }] },
+          { titulo: 'Registros de Linux, servidores web y firewall', videosPendiente: 'No se encontró un video de calidad suficiente sobre registros de Linux, servidores web y firewall.' },
+          { titulo: 'SIEM I: conceptos, ingesta de datos y búsquedas', videos: [{ v: 'xgxJUUaD3lg', temas: 'qué es un SIEM y para qué sirve', doc: ['nist-800-92'] }, { v: '9RfsRn7m7OE', temas: 'qué es un SIEM, explicado por IBM (en inglés)', doc: ['nist-800-92'] }] },
+          { titulo: 'SIEM II: correlación, paneles y alertas', videosPendiente: 'El único video encontrado sobre Wazuh trata sobre todo de instalarlo; no cubre correlación, paneles y alertas.' },
+          { titulo: 'Reglas de detección con Sigma', videos: [{ v: 'dThOKXxcHMM', temas: 'reglas Sigma: estructura, modificadores y correlación (en inglés, nivel algo avanzado)', doc: ['sigma'] }] }
         ] },
       { n: 7, titulo: 'Análisis de eventos e inteligencia de amenazas',
         objetivo: 'Decidir rápido y bien qué es real, qué es grave y qué hacer.',
@@ -121,10 +121,10 @@ window.CATALOGO = [
         evaluacion: 'Atender una cola de 10 alertas simuladas.',
         fuentes: 'RFC 7489 (DMARC), MITRE ATT&CK.',
         clases: [
-          { titulo: 'Triage de alertas: severidad, falsos positivos y escalamiento' },
-          { titulo: 'Análisis de correos sospechosos: cabeceras, SPF, DKIM y DMARC' },
-          { titulo: 'Indicadores de compromiso e inteligencia de amenazas' },
-          { titulo: 'Análisis básico de malware sin ejecutarlo' }
+          { titulo: 'Triage de alertas: severidad, falsos positivos y escalamiento', videos: [{ v: 'VAEbftO0OK0@626', temas: 'eventos, alertas, propiedades, priorización y triaje (en inglés)', doc: ['nist-800-61'] }] },
+          { titulo: 'Análisis de correos sospechosos: cabeceras, SPF, DKIM y DMARC', videos: [{ v: 'fz4Ny5QBKHM', temas: 'SPF, DKIM y DMARC para autenticar el correo', doc: ['dmarc'] }] },
+          { titulo: 'Indicadores de compromiso e inteligencia de amenazas', videos: [{ v: 'UQtg9FeYMNQ', temas: 'la pirámide del dolor y los indicadores de compromiso', doc: ['nist-800-150'] }, { v: 'vDygXGJzWCY', temas: 'qué es la inteligencia de amenazas (en inglés)', doc: ['nist-800-150'] }] },
+          { titulo: 'Análisis básico de malware sin ejecutarlo', videosPendiente: 'El único video adecuado en español no tiene subtítulos y no se pudo comprobar su contenido.' }
         ] },
       { n: 8, titulo: 'Respuesta a incidentes',
         objetivo: 'Responder a un incidente de principio a fin.',
@@ -134,11 +134,11 @@ window.CATALOGO = [
         evaluacion: 'Simulacro de ransomware con informe final.',
         fuentes: 'NIST SP 800-61r3, guía #StopRansomware de CISA.',
         clases: [
-          { titulo: 'El ciclo de respuesta a incidentes (NIST SP 800-61r3)' },
-          { titulo: 'Contención, erradicación y recuperación' },
-          { titulo: 'Forense básico: evidencia, cadena de custodia y línea de tiempo' },
-          { titulo: 'Playbooks y comunicación del incidente' },
-          { titulo: 'Redacción del informe de incidente' }
+          { titulo: 'El ciclo de respuesta a incidentes (NIST SP 800-61r3)', videos: [{ v: 'Vv-FJINU2f0', temas: 'NIST SP 800-61 Rev. 3 y ejercicios de mesa (transmisión en vivo, en inglés)', doc: ['nist-800-61'] }] },
+          { titulo: 'Contención, erradicación y recuperación', videosPendiente: 'Los videos encontrados eran de promoción de productos; ninguno explica bien contención, erradicación y recuperación.' },
+          { titulo: 'Forense básico: evidencia, cadena de custodia y línea de tiempo', videos: [{ v: 'bIZrGJrkGBM', temas: 'cadena de custodia y uso de hashes en la evidencia digital', doc: ['nist-800-86'] }] },
+          { titulo: 'Playbooks y comunicación del incidente', videos: [{ v: 'JFRH3lWPFUg', temas: 'SOAR: orquestar y automatizar la respuesta con playbooks', doc: ['nist-800-61'] }] },
+          { titulo: 'Redacción del informe de incidente', videosPendiente: 'No se encontró un video que enseñe a redactar un informe de incidente de ciberseguridad.' }
         ] },
       { n: 9, titulo: 'Operaciones SOC y carrera',
         objetivo: 'Trabajar como lo hace un SOC real y prepararte para buscar empleo.',
@@ -148,11 +148,11 @@ window.CATALOGO = [
         proyecto: 'Proyecto final del curso (ver más arriba).',
         fuentes: 'NCSC (SOC), Centro Canadiense de Ciberseguridad (SOC), marco NICE.',
         clases: [
-          { titulo: 'Cómo funciona un SOC: roles, turnos y métricas' },
-          { titulo: 'Búsqueda proactiva de amenazas (threat hunting) básica' },
-          { titulo: 'Seguridad y monitoreo en la nube' },
-          { titulo: 'Simulacro integral SOC: de la alerta al informe' },
-          { titulo: 'Carrera: certificaciones, portafolio y entrevista técnica' }
+          { titulo: 'Cómo funciona un SOC: roles, turnos y métricas', videos: [{ v: 'f0jiMDaHe1E', temas: 'qué es un SOC, sus actividades y responsabilidades', doc: ['nice-soc'] }, { v: 'Z2kzsOpH-_A', temas: 'curso exprés de analista SOC para principiantes', doc: ['nice-soc'] }] },
+          { titulo: 'Búsqueda proactiva de amenazas (threat hunting) básica', videos: [{ v: 'VNp35Uw_bSM', temas: 'qué es la búsqueda proactiva de amenazas, explicado por IBM (en inglés)', doc: ['mitre-attack'] }] },
+          { titulo: 'Seguridad y monitoreo en la nube', videos: [{ v: 'ZuPxHCwT0ws', temas: 'seguridad en la nube de AWS y la responsabilidad compartida', doc: ['aws-shared'] }] },
+          { titulo: 'Simulacro integral SOC: de la alerta al informe', videos: [{ v: 'E8mkSKTczLk@445', temas: 'cómo gestionar una alerta de principio a fin como analista SOC', doc: ['nist-800-61'] }] },
+          { titulo: 'Carrera: certificaciones, portafolio y entrevista técnica', videos: [{ v: '1YEO2MYMEGw', temas: 'ruta para empezar en ciberseguridad en 2026', doc: ['nice-soc'] }] }
         ] }
     ]
   },
@@ -265,6 +265,7 @@ window.CATALOGO = [
     proyectoFinal: 'Aplicación web completa, con frontend, API en Node.js y base de datos. Por ejemplo, un gestor de tareas o un panel de alertas.',
     modulos: [
       { n: 1, titulo: 'Fundamentos de programación',
+        videoPrincipal: '1glVfFxj8a4', videoPrincipalNota: 'Recurso audiovisual principal del Módulo 1, elegido por el alumno: cada clase del módulo enlaza el capítulo que le corresponde.',
         objetivo: 'Pensar como programador y dominar la lógica básica.',
         competencias: 'Variables y tipos, operadores, condicionales, bucles, funciones, arrays, objetos, JSON y depuración.',
         logro: 'Resolver problemas con lógica y estructuras de datos.',
@@ -273,15 +274,15 @@ window.CATALOGO = [
         proyecto: 'Juego de adivinar el número (última clase del módulo).',
         fuentes: 'Guía de JavaScript de MDN (en español), especificación ECMA-262.',
         clases: [
-          { n: '01', titulo: '¿Qué es programar? Tu primer código en JavaScript', archivo: 'cursos/javascript/clases/clase-01.html', id: 'js-01' },
-          { n: '02', titulo: 'Variables y tipos de datos', archivo: 'cursos/javascript/clases/clase-02.html', id: 'js-02' },
-          { n: '03', titulo: 'Operadores y textos', archivo: 'cursos/javascript/clases/clase-03.html', id: 'js-03' },
-          { n: '04', titulo: 'Condicionales: tu programa toma decisiones', archivo: 'cursos/javascript/clases/clase-04.html', id: 'js-04' },
-          { titulo: 'Bucles: for, while y for...of' },
-          { titulo: 'Funciones, parámetros y valores de retorno' },
-          { titulo: 'Arrays y sus métodos (map, filter, find)' },
-          { titulo: 'Objetos y JSON' },
-          { titulo: 'Depuración, manejo de errores (try/catch) y proyecto: adivina el número' }
+          { n: '01', titulo: '¿Qué es programar? Tu primer código en JavaScript', archivo: 'cursos/javascript/clases/clase-01.html', id: 'js-01', videos: [{ v: '1glVfFxj8a4@174', temas: 'qué es JavaScript, su historia y para qué se usa (capítulos 1 a 4)', doc: ['mdn-js'] }, { v: '1glVfFxj8a4@2390', temas: 'el primer programa con console.log (capítulo 15, «Hola mundo»)', doc: ['mdn-js'] }] },
+          { n: '02', titulo: 'Variables y tipos de datos', archivo: 'cursos/javascript/clases/clase-02.html', id: 'js-02', videos: [{ v: '1glVfFxj8a4@3049', temas: 'variables (capítulo 16, «Variables»)', doc: ['mdn-gramatica'] }, { v: '1glVfFxj8a4@3599', temas: 'tipos de datos (capítulo 17, «Tipos de datos»)', doc: ['mdn-gramatica'] }] },
+          { n: '03', titulo: 'Operadores y textos', archivo: 'cursos/javascript/clases/clase-03.html', id: 'js-03', videos: [{ v: '1glVfFxj8a4@4937', temas: 'operadores (capítulo 19, «Operadores»)', doc: ['mdn-operadores'] }, { v: '1glVfFxj8a4@6565', temas: 'textos (capítulo 21, «Strings»)', doc: ['mdn-operadores'] }] },
+          { n: '04', titulo: 'Condicionales: tu programa toma decisiones', archivo: 'cursos/javascript/clases/clase-04.html', id: 'js-04', videos: [{ v: '1glVfFxj8a4@7277', temas: 'condicionales (capítulo 23, «Condicionales»)', doc: ['mdn-if'] }] },
+          { titulo: 'Bucles: for, while y for...of', videos: [{ v: '1glVfFxj8a4@11575', temas: 'bucles (capítulo 29, «Bucles»)', doc: ['mdn-bucles'] }] },
+          { titulo: 'Funciones, parámetros y valores de retorno', videos: [{ v: '1glVfFxj8a4@12829', temas: 'funciones (capítulo 31, «Funciones»)', doc: ['mdn-funciones'] }] },
+          { titulo: 'Arrays y sus métodos (map, filter, find)', videos: [{ v: '1glVfFxj8a4@8741', temas: 'arrays (capítulo 25, «Arrays»)', doc: ['mdn-array'] }] },
+          { titulo: 'Objetos y JSON', videos: [{ v: '1glVfFxj8a4@14229', temas: 'objetos (capítulo 33, «Objetos»)', doc: ['mdn-objetos'] }, { v: 'd1XijkyZRvM', temas: 'JSON: convertir objetos a texto y de vuelta (JSON.stringify y JSON.parse). Complementa a MoureDev, cuyo índice no tiene un capítulo de JSON', doc: ['mdn-json'] }] },
+          { titulo: 'Depuración, manejo de errores (try/catch) y proyecto: adivina el número', videos: [{ v: '1glVfFxj8a4@18751', temas: 'manejo de errores con try/catch (capítulo 40)', doc: ['mdn-trycatch'] }, { v: '1glVfFxj8a4@20444', temas: 'la consola como herramienta de depuración (capítulo 42)', doc: ['mdn-trycatch'] }] }
         ] },
       { n: 2, titulo: 'HTML y CSS para programadores',
         objetivo: 'Construir la estructura y el diseño que JavaScript va a manejar.',
@@ -291,10 +292,10 @@ window.CATALOGO = [
         proyecto: 'Una página personal adaptable al celular.',
         fuentes: 'Ruta de aprendizaje web de MDN, WCAG 2 (W3C).',
         clases: [
-          { titulo: 'HTML semántico y formularios' },
-          { titulo: 'CSS: selectores, cascada y modelo de caja' },
-          { titulo: 'Flexbox, Grid y diseño adaptable' },
-          { titulo: 'Accesibilidad web (WCAG) básica' }
+          { titulo: 'HTML semántico y formularios', videos: [{ v: '-oK6zL01fNM@6215', temas: 'etiquetas semánticas de texto y de estructura (capítulos 17 a 21)', doc: ['mdn-semantica'] }, { v: '-oK6zL01fNM@18434', temas: 'elementos y atributos de formularios (capítulos 38 a 41)', doc: ['mdn-forms'] }] },
+          { titulo: 'CSS: selectores, cascada y modelo de caja', videos: [{ v: 'K3xmRF8ab1o@2853', temas: 'selectores de etiqueta, clase e identificador (capítulo 7)', doc: ['mdn-cascada'] }, { v: 'K3xmRF8ab1o@11605', temas: 'la cascada y la especificidad (capítulos 18 a 20)', doc: ['mdn-cascada'] }, { v: 'K3xmRF8ab1o@17294', temas: 'el modelo de caja (capítulos 24 a 27)', doc: ['mdn-caja'] }] },
+          { titulo: 'Flexbox, Grid y diseño adaptable', videos: [{ v: 'AAtvnv6LNMk', temas: 'qué es Flexbox y para qué sirve (lección 1 de su curso de Flexbox)', doc: ['mdn-flexbox'] }, { v: 'Wz8cP6Kykuw', temas: 'Grid: grid-template-columns, la unidad fr y repeat() (lección 2 de su curso de Grid)', doc: ['mdn-grid'] }, { v: 'udGrXWeJp1Y@719', temas: 'introducción al diseño adaptable y media queries (capítulos 3 a 13)', doc: ['mdn-responsive'] }] },
+          { titulo: 'Accesibilidad web (WCAG) básica', videos: [{ v: '-oK6zL01fNM@26349', temas: 'accesibilidad web (capítulo 45)', doc: ['mdn-a11y'] }] }
         ] },
       { n: 3, titulo: 'JavaScript en el navegador',
         objetivo: 'Crear páginas interactivas.',
@@ -304,12 +305,12 @@ window.CATALOGO = [
         proyecto: 'App de tareas (última clase del módulo).',
         fuentes: 'MDN.',
         clases: [
-          { titulo: 'El DOM' },
-          { titulo: 'Eventos' },
-          { titulo: 'Formularios y validación' },
-          { titulo: 'localStorage y JSON' },
-          { titulo: 'Módulos de JavaScript (ES)' },
-          { titulo: 'Proyecto: app de tareas' }
+          { titulo: 'El DOM', videos: [{ v: 'koiPxFFiqJ4@268', temas: 'qué es el DOM y cómo seleccionar elementos (getElementById, querySelector…)', doc: ['mdn-dom'] }] },
+          { titulo: 'Eventos', videos: [{ v: 'koiPxFFiqJ4@8246', temas: 'eventos del DOM y addEventListener()', doc: ['mdn-eventos'] }] },
+          { titulo: 'Formularios y validación', videos: [{ v: 'dyaH-gdiD34', temas: 'validación de formularios con los atributos de HTML5', doc: ['mdn-validacion'] }, { v: 'AGPalf1C8Ms', temas: 'validación de formularios con JavaScript', doc: ['mdn-validacion'] }] },
+          { titulo: 'localStorage y JSON', videos: [{ v: '16geDhp5Xmg', temas: 'guardar datos en el navegador con la API localStorage', doc: ['mdn-localstorage'] }] },
+          { titulo: 'Módulos de JavaScript (ES)', videos: [{ v: '0GEUyQXe3NI', temas: 'módulos de JavaScript: import y export', doc: ['mdn-modulos'] }] },
+          { titulo: 'Proyecto: app de tareas', videos: [{ v: 'koiPxFFiqJ4@17007', temas: 'proyecto guiado: lista de tareas pendientes con el DOM', doc: ['mdn-dom'] }] }
         ] },
       { n: 4, titulo: 'Asincronía y APIs',
         objetivo: 'Comunicarse con servidores y servicios externos.',
@@ -319,10 +320,10 @@ window.CATALOGO = [
         proyecto: 'App con una API pública (última clase del módulo).',
         fuentes: 'MDN, RFC 9110 (HTTP).',
         clases: [
-          { titulo: 'Asincronía: callbacks, promesas y async/await' },
-          { titulo: 'HTTP, REST y fetch' },
-          { titulo: 'Errores de red y estados de carga' },
-          { titulo: 'Proyecto: app con una API pública' }
+          { titulo: 'Asincronía: callbacks, promesas y async/await', videos: [{ v: 'TYG2_iUr8XY', temas: 'callbacks', doc: ['jsinfo-async'] }, { v: 'ppzrpTjwEC8', temas: 'promesas', doc: ['mdn-promise', 'jsinfo-async'] }, { v: 'PbI5EEpodPM', temas: 'async y await', doc: ['jsinfo-async'] }] },
+          { titulo: 'HTTP, REST y fetch', videos: [{ v: 'GP8OCiJLeN4', temas: 'peticiones HTTP con fetch y async/await', doc: ['mdn-fetch', 'mdn-http'] }] },
+          { titulo: 'Errores de red y estados de carga', videos: [{ v: 'FJ-w0tf3d_w', temas: 'consumir una API REST con fetch y gestionar los errores de la respuesta', doc: ['mdn-fetch'] }] },
+          { titulo: 'Proyecto: app con una API pública', videos: [{ v: 'UorxESPSZNA', temas: 'proyecto guiado con una API pública: paginación con fetch', doc: ['mdn-fetch'] }] }
         ] },
       { n: 5, titulo: 'Herramientas del desarrollador',
         objetivo: 'Trabajar con las herramientas de un equipo profesional.',
@@ -331,10 +332,10 @@ window.CATALOGO = [
         previos: [1], previosNota: 'Se recomienda haber hecho el Módulo 3.',
         fuentes: 'Libro Pro Git (en español), documentación de Node.js.',
         clases: [
-          { titulo: 'Terminal y estructura de un proyecto' },
-          { titulo: 'Git y GitHub' },
-          { titulo: 'npm y calidad de código (ESLint, Prettier)' },
-          { titulo: 'Pruebas automáticas (la herramienta se decide al investigar la clase)' }
+          { titulo: 'Terminal y estructura de un proyecto', videos: [{ v: '3GymExBkKjE@1440', temas: 'comandos básicos de la terminal (capítulo 4 del curso de Git)', doc: ['mdn-terminal'] }] },
+          { titulo: 'Git y GitHub', videos: [{ v: '3GymExBkKjE@195', temas: 'Git desde cero: commits, ramas y fusiones (capítulos 1 a 22)', doc: ['git-libro'] }, { v: '3GymExBkKjE@8547', temas: 'GitHub: repositorios remotos, push, pull y pull requests (capítulos 23 a 36)', doc: ['git-libro'] }] },
+          { titulo: 'npm y calidad de código (ESLint, Prettier)', videos: [{ v: '0f26_Enlv38@10721', temas: 'npm, package.json y scripts (capítulos 17 a 25)', doc: ['npm-docs'] }, { v: 'QpDpRmlFfqI', temas: 'configurar ESLint para encontrar errores en el código', doc: ['eslint'] }] },
+          { titulo: 'Pruebas automáticas (la herramienta se decide al investigar la clase)', videos: [{ v: '_t9l2TwGioc@844', temas: 'escribir y ejecutar pruebas con Vitest (desde el capítulo «Implementación y primer test»)', doc: ['vitest'] }] }
         ] },
       { n: 6, titulo: 'Node.js y backend',
         objetivo: 'Construir el servidor de una aplicación.',
@@ -343,13 +344,13 @@ window.CATALOGO = [
         previos: [4, 5],
         fuentes: 'Documentación de Node.js (versiones LTS), Express, guías de OWASP (Cheat Sheet Series).',
         clases: [
-          { titulo: 'Node.js: el entorno de ejecución y sus módulos' },
-          { titulo: 'Servidor HTTP y conceptos de backend' },
-          { titulo: 'Express: rutas y middleware' },
-          { titulo: 'API REST completa (crear, leer, actualizar y borrar)' },
-          { titulo: 'Bases de datos con SQLite' },
-          { titulo: 'Autenticación y seguridad web (OWASP)' },
-          { titulo: 'Pruebas de la API y despliegue' }
+          { titulo: 'Node.js: el entorno de ejecución y sus módulos', videos: [{ v: '0f26_Enlv38@379', temas: 'qué es Node.js, su bucle de eventos y sus módulos (capítulos 2 a 16)', doc: ['node-intro'] }] },
+          { titulo: 'Servidor HTTP y conceptos de backend', videos: [{ v: 'tDF644vI-gs@258', temas: 'modelo cliente-servidor y crear un servidor HTTP con Node.js (capítulos 2 y 8)', doc: ['node-http', 'mdn-http'] }] },
+          { titulo: 'Express: rutas y middleware', videos: [{ v: 'tDF644vI-gs@6502', temas: 'Express: rutas, objeto request y response (capítulos 12 a 17)', doc: ['express-rutas'] }] },
+          { titulo: 'API REST completa (crear, leer, actualizar y borrar)', videos: [{ v: 'tDF644vI-gs@1272', temas: 'qué es una API REST y los códigos de estado HTTP (capítulos 4 y 5)', doc: ['mdn-metodos'] }, { v: 'tDF644vI-gs@19381', temas: 'construir una API REST completa con Express (capítulos 35 a 41)', doc: ['mdn-metodos', 'express-rutas'] }] },
+          { titulo: 'Bases de datos con SQLite', videos: [{ v: '6ZkFco3sTUk@60', temas: 'CRUD completo con Node.js, Express y SQLite', doc: ['node-sqlite'] }] },
+          { titulo: 'Autenticación y seguridad web (OWASP)', videos: [{ v: 'UqnnhAZxRac', temas: 'autenticación con sesiones, cookies y JWT, y guardar contraseñas con hash', doc: ['owasp-auth'] }, { v: 'jVLcvLB4IJs', temas: 'qué es el OWASP Top 10 y cómo proteger una aplicación de los riesgos más comunes', doc: ['owasp-top10'] }] },
+          { titulo: 'Pruebas de la API y despliegue', videos: [{ v: 'tDF644vI-gs@22979', temas: 'probar los endpoints de la API con un cliente REST (capítulo 41)', doc: ['mdn-metodos'] }], videosPendiente: 'La parte de despliegue queda sin video: el que se encontró usa una plataforma (FL0) que puede ya no existir.' }
         ] },
       { n: 7, titulo: 'Proyecto final',
         objetivo: 'Diseñar, construir y presentar una aplicación completa.',
@@ -357,9 +358,9 @@ window.CATALOGO = [
         previos: [], previosNota: 'La propuesta no fija previos; conviene haber terminado los módulos anteriores.',
         proyecto: 'Proyecto final del curso (ver más arriba).',
         clases: [
-          { titulo: 'Diseño del proyecto' },
-          { titulo: 'Construcción guiada' },
-          { titulo: 'Presentación y revisión' }
+          { titulo: 'Diseño del proyecto', videosPendiente: 'Proyecto final: es trabajo aplicado; no se encontró un video que aporte más que los de los módulos anteriores.' },
+          { titulo: 'Construcción guiada', videosPendiente: 'Proyecto final: se apoya en los videos de los módulos 1 a 6.' },
+          { titulo: 'Presentación y revisión', videosPendiente: 'Proyecto final: presentación y revisión; no requiere un video.' }
         ] }
     ]
   },
@@ -375,6 +376,7 @@ window.CATALOGO = [
     proyectoFinal: 'Aplicación con API, base de datos y automatización. Por ejemplo, un sistema de inventario con reportes automáticos.',
     modulos: [
       { n: 1, titulo: 'Fundamentos',
+        videoPrincipal: 'Kp4Mvapo5kc', videoPrincipalNota: 'Recurso audiovisual principal del Módulo 1, elegido por el alumno: cada clase del módulo enlaza el capítulo que le corresponde.',
         objetivo: 'Escribir y ejecutar programas con lógica básica.',
         competencias: 'Entorno de trabajo (terminal y VS Code), variables y tipos, entrada de datos, operadores, f-strings, condicionales, bucles, funciones y excepciones.',
         logro: 'Escribir programas con lógica, funciones y manejo de errores.',
@@ -382,13 +384,13 @@ window.CATALOGO = [
         proyecto: 'Menú de consola (última clase del módulo).',
         fuentes: 'Tutorial oficial de Python (en español), PEP 8.',
         clases: [
-          { n: '01', titulo: '¿Qué es Python? Instalación y tu primer programa', archivo: 'cursos/python/clases/clase-01.html', id: 'py-01' },
-          { n: '02', titulo: 'Variables, tipos de datos e input()', archivo: 'cursos/python/clases/clase-02.html', id: 'py-02' },
-          { n: '03', titulo: 'Operadores, textos y f-strings', archivo: 'cursos/python/clases/clase-03.html', id: 'py-03' },
-          { n: '04', titulo: 'Condicionales: if, elif y else', archivo: 'cursos/python/clases/clase-04.html', id: 'py-04' },
-          { titulo: 'Bucles for y while' },
-          { titulo: 'Funciones' },
-          { titulo: 'Errores y excepciones (try/except) y proyecto: menú de consola' }
+          { n: '01', titulo: '¿Qué es Python? Instalación y tu primer programa', archivo: 'cursos/python/clases/clase-01.html', id: 'py-01', videos: [{ v: 'Kp4Mvapo5kc@243', temas: 'qué es Python y para qué se usa (contexto)', doc: ['py-faq'] }, { v: 'Kp4Mvapo5kc@848', temas: 'instalar y configurar el entorno (lección 01)', doc: ['py-intro'] }, { v: 'Kp4Mvapo5kc@1517', temas: 'el primer programa, «Hola mundo» (lección 02)', doc: ['py-intro'] }] },
+          { n: '02', titulo: 'Variables, tipos de datos e input()', archivo: 'cursos/python/clases/clase-02.html', id: 'py-02', videos: [{ v: 'Kp4Mvapo5kc@2937', temas: 'variables (lección 03, «Variables»)', doc: ['py-intro'] }, { v: 'nKPbfIU442g@9563', temas: 'pedir datos al usuario con input() (capítulo «Entrada de datos»)', doc: ['py-intro'] }] },
+          { n: '03', titulo: 'Operadores, textos y f-strings', archivo: 'cursos/python/clases/clase-03.html', id: 'py-03', videos: [{ v: 'Kp4Mvapo5kc@5664', temas: 'operadores (lección 04, «Operadores»)', doc: ['py-intro'] }, { v: 'Kp4Mvapo5kc@8643', temas: 'textos (lección 05, «Strings»)', doc: ['py-stdtypes'] }] },
+          { n: '04', titulo: 'Condicionales: if, elif y else', archivo: 'cursos/python/clases/clase-04.html', id: 'py-04', videos: [{ v: 'Kp4Mvapo5kc@21441', temas: 'condicionales (lección 10, «Condicionales»)', doc: ['py-control'] }, { v: 'nKPbfIU442g@6043', temas: 'operadores lógicos and, or y not', doc: ['py-stdtypes'] }] },
+          { titulo: 'Bucles for y while', videos: [{ v: 'Kp4Mvapo5kc@23822', temas: 'bucles (lección 11, «Bucles/Loops/Ciclos»)', doc: ['py-control'] }] },
+          { titulo: 'Funciones', videos: [{ v: 'Kp4Mvapo5kc@26619', temas: 'funciones (lección 12, «Funciones»)', doc: ['py-control'] }] },
+          { titulo: 'Errores y excepciones (try/except) y proyecto: menú de consola', videos: [{ v: 'Kp4Mvapo5kc@32030', temas: 'excepciones (lección 14, «Excepciones»)', doc: ['py-errores'] }] }
         ] },
       { n: 2, titulo: 'Estructuras de datos',
         objetivo: 'Elegir la estructura adecuada para cada problema.',
@@ -396,10 +398,10 @@ window.CATALOGO = [
         previos: [1],
         proyecto: 'Agenda de contactos (última clase del módulo).',
         clases: [
-          { titulo: 'Listas y tuplas' },
-          { titulo: 'Diccionarios y conjuntos' },
-          { titulo: 'Cadenas a fondo y comprensiones de listas' },
-          { titulo: 'Proyecto: agenda de contactos' }
+          { titulo: 'Listas y tuplas', videos: [{ v: 'TkN2i-_4N4g@6760', temas: 'listas: crear, modificar y añadir elementos', doc: ['py-estructuras'] }, { v: 'nKPbfIU442g@3382', temas: 'datos compuestos: listas, tuplas, conjuntos y diccionarios', doc: ['py-estructuras'] }] },
+          { titulo: 'Diccionarios y conjuntos', videos: [{ v: 'TkN2i-_4N4g@15416', temas: 'diccionarios', doc: ['py-estructuras'] }] },
+          { titulo: 'Cadenas a fondo y comprensiones de listas', videos: [{ v: 'nKPbfIU442g@6368', temas: 'métodos de las cadenas de texto', doc: ['py-stdtypes'] }, { v: 'TkN2i-_4N4g@11496', temas: 'comprensiones de listas', doc: ['py-estructuras'] }] },
+          { titulo: 'Proyecto: agenda de contactos', videosPendiente: 'Proyecto del módulo: se apoya en los videos de las clases 1 a 3.' }
         ] },
       { n: 3, titulo: 'Archivos, módulos y entorno',
         objetivo: 'Guardar datos y organizar proyectos.',
@@ -408,10 +410,10 @@ window.CATALOGO = [
         proyecto: 'Gestor de gastos (última clase del módulo).',
         fuentes: 'Documentación oficial de venv y guía de empaquetado de Python.',
         clases: [
-          { titulo: 'Archivos de texto, CSV y JSON' },
-          { titulo: 'Módulos y biblioteca estándar (pathlib, datetime)' },
-          { titulo: 'pip, entornos virtuales y paquetes' },
-          { titulo: 'Proyecto: gestor de gastos' }
+          { titulo: 'Archivos de texto, CSV y JSON', videos: [{ v: 'TbcEqkabAWU@15524', temas: 'manejo de ficheros: texto, JSON y CSV (lección 07 del curso intermedio)', doc: ['py-io', 'py-csv'] }] },
+          { titulo: 'Módulos y biblioteca estándar (pathlib, datetime)', videos: [{ v: 'nKPbfIU442g@19061', temas: 'módulos: importar y crear los tuyos', doc: ['py-modulos'] }, { v: 'TbcEqkabAWU@202', temas: 'fechas con datetime (lección 01 del curso intermedio)', doc: ['py-datetime'] }] },
+          { titulo: 'pip, entornos virtuales y paquetes', videos: [{ v: 'TNtrAvNNxTY', temas: 'entornos virtuales para aislar las dependencias de cada proyecto', doc: ['py-venv'] }, { v: 'TbcEqkabAWU@24010', temas: 'manejo de paquetes con pip (lección 09 del curso intermedio)', doc: ['py-venv'] }] },
+          { titulo: 'Proyecto: gestor de gastos', videosPendiente: 'Proyecto del módulo: se apoya en los videos de las clases 1 a 3.' }
         ] },
       { n: 4, titulo: 'Programación orientada a objetos',
         objetivo: 'Modelar problemas reales con objetos.',
@@ -419,10 +421,10 @@ window.CATALOGO = [
         previos: [3],
         proyecto: 'Sistema de inventario (última clase del módulo).',
         clases: [
-          { titulo: 'Clases y objetos' },
-          { titulo: 'Herencia y composición' },
-          { titulo: 'Dataclasses y anotaciones de tipo' },
-          { titulo: 'Proyecto: sistema de inventario' }
+          { titulo: 'Clases y objetos', videos: [{ v: 'NKjmmxlyU_Y', temas: 'clases y objetos', doc: ['py-clases'] }] },
+          { titulo: 'Herencia y composición', videos: [{ v: '0xt806gLghg', temas: 'herencia y el método super()', doc: ['py-clases'] }], videosPendiente: 'La composición no aparece en el video elegido; se verá con la documentación oficial.' },
+          { titulo: 'Dataclasses y anotaciones de tipo', videos: [{ v: 'waPKR-zLGwM', temas: 'dataclasses', doc: ['py-dataclasses'] }, { v: '_y9qQZXE24A@1810', temas: 'anotaciones de tipo (type hints), capítulo 03 del curso de backend', doc: ['py-typing'] }] },
+          { titulo: 'Proyecto: sistema de inventario', videosPendiente: 'Proyecto del módulo: se apoya en los videos de las clases 1 a 3.' }
         ] },
       { n: 5, titulo: 'Calidad de software',
         objetivo: 'Código mantenible y probado.',
@@ -430,10 +432,10 @@ window.CATALOGO = [
         previos: [4],
         fuentes: 'Documentación de pytest, PEP 8, libro Pro Git.',
         clases: [
-          { titulo: 'Git y GitHub' },
-          { titulo: 'Pruebas con pytest' },
-          { titulo: 'Estilo, calidad y registros (PEP 8, linters y logging)' },
-          { titulo: 'Depuración profesional' }
+          { titulo: 'Git y GitHub', videos: [{ v: '3GymExBkKjE@195', temas: 'Git y GitHub desde cero (es la misma clase compartida con JavaScript, por eso usa el mismo curso)', doc: ['git-libro'] }] },
+          { titulo: 'Pruebas con pytest', videos: [{ v: 'JZ0TMkwMgp8', temas: 'pruebas unitarias con pytest', doc: ['pytest'] }] },
+          { titulo: 'Estilo, calidad y registros (PEP 8, linters y logging)', videos: [{ v: 'nx4E5LWWMvM', temas: 'revisar el estilo y la calidad del código con Ruff (reglas de PEP 8)', doc: ['pep8'] }, { v: 'mXy0M46Ikwg', temas: 'registros (logging) y archivos .log', doc: ['py-logging'] }] },
+          { titulo: 'Depuración profesional', videos: [{ v: 'VL5xJmdAHes', temas: 'depurar paso a paso con el depurador de VS Code', doc: ['py-pdb'] }] }
         ] },
       { n: 6, titulo: 'Datos y bases de datos',
         objetivo: 'Guardar y consultar datos.',
@@ -441,9 +443,9 @@ window.CATALOGO = [
         previos: [3],
         fuentes: 'Documentación oficial de sqlite3.',
         clases: [
-          { titulo: 'SQL básico con SQLite' },
-          { titulo: 'El módulo sqlite3 en Python' },
-          { titulo: 'Expresiones regulares' }
+          { titulo: 'SQL básico con SQLite', videos: [{ v: 'OuJerKzV5T0@233', temas: 'bases de datos SQL, SELECT y los modificadores más usados', doc: ['sqlite-select'] }] },
+          { titulo: 'El módulo sqlite3 en Python', videos: [{ v: 'uB0928SOTEQ@347', temas: 'usar SQLite desde Python con sqlite3: crear tablas, insertar, consultar y actualizar', doc: ['py-sqlite3'] }] },
+          { titulo: 'Expresiones regulares', videos: [{ v: 'TbcEqkabAWU@19762', temas: 'expresiones regulares (lección 08 del curso intermedio)', doc: ['py-re'] }] }
         ] },
       { n: 7, titulo: 'Internet y automatización',
         objetivo: 'Automatizar tareas reales.',
@@ -451,10 +453,10 @@ window.CATALOGO = [
         previos: [3, 6],
         fuentes: 'Documentación de Requests.',
         clases: [
-          { titulo: 'HTTP y APIs con requests' },
-          { titulo: 'Automatizar archivos y carpetas' },
-          { titulo: 'Scripts de línea de comandos (argparse) y tareas programadas' },
-          { titulo: 'Reportes en Excel' }
+          { titulo: 'HTTP y APIs con requests', videos: [{ v: 'ibBAoNq0tl8', temas: 'consumir APIs con requests y un mini proyecto con la API de Pokémon', doc: ['requests'] }] },
+          { titulo: 'Automatizar archivos y carpetas', videos: [{ v: 't5XPubT2AEI', temas: 'organizar archivos automáticamente por tipo con un script', doc: ['py-pathlib', 'py-shutil'] }] },
+          { titulo: 'Scripts de línea de comandos (argparse) y tareas programadas', videos: [{ v: '06l9Jra97-A', temas: 'crear herramientas de línea de comandos con argparse', doc: ['py-argparse'] }] },
+          { titulo: 'Reportes en Excel', videos: [{ v: 'PqiwVp53ftU', temas: 'automatizar reportes de Excel con openpyxl', doc: ['openpyxl'] }] }
         ] },
       { n: 8, titulo: 'Desarrollo de aplicaciones',
         objetivo: 'Construir y publicar una aplicación.',
@@ -462,11 +464,11 @@ window.CATALOGO = [
         previos: [5, 6, 7],
         fuentes: 'Documentación de FastAPI, guías de OWASP.',
         clases: [
-          { titulo: 'APIs con FastAPI' },
-          { titulo: 'API con base de datos' },
-          { titulo: 'Seguridad de aplicaciones: contraseñas con hash, validación y secretos' },
-          { titulo: 'Interfaz web sencilla' },
-          { titulo: 'Despliegue' }
+          { titulo: 'APIs con FastAPI', videos: [{ v: '_y9qQZXE24A@834', temas: 'qué es una API, FastAPI y el primer servidor (capítulos 02 a 05)', doc: ['fastapi'] }] },
+          { titulo: 'API con base de datos', videos: [{ v: '_y9qQZXE24A@20480', temas: 'conectar la API a una base de datos (MongoDB, capítulo 16)', doc: ['fastapi'] }] },
+          { titulo: 'Seguridad de aplicaciones: contraseñas con hash, validación y secretos', videos: [{ v: '_y9qQZXE24A@17664', temas: 'autenticación con JWT y contraseñas cifradas con hash (capítulo 15)', doc: ['fastapi-sec', 'owasp-auth'] }] },
+          { titulo: 'Interfaz web sencilla', videos: [{ v: 'FWA1wHYvLG0', temas: 'páginas HTML con FastAPI y plantillas Jinja', doc: ['fastapi-templates'] }] },
+          { titulo: 'Despliegue', videos: [{ v: '2gB6DPDJ4fI', temas: 'desplegar una API de FastAPI en Render y en un servidor', doc: ['fastapi-deploy'] }] }
         ] },
       { n: 9, titulo: 'Proyecto final',
         objetivo: 'Diseñar, construir y presentar una aplicación completa.',
@@ -474,17 +476,17 @@ window.CATALOGO = [
         previos: [], previosNota: 'La propuesta no fija previos; conviene haber terminado los módulos anteriores.',
         proyecto: 'Proyecto final del curso (ver más arriba).',
         clases: [
-          { titulo: 'Diseño del proyecto' },
-          { titulo: 'Construcción guiada' },
-          { titulo: 'Presentación y revisión' }
+          { titulo: 'Diseño del proyecto', videosPendiente: 'Proyecto final: trabajo aplicado con los videos de los módulos anteriores.' },
+          { titulo: 'Construcción guiada', videosPendiente: 'Proyecto final: trabajo aplicado con los videos de los módulos anteriores.' },
+          { titulo: 'Presentación y revisión', videosPendiente: 'Proyecto final: presentación y revisión; no requiere un video.' }
         ] },
       { n: 'E', titulo: 'Python aplicado a la ciberseguridad', opcional: true,
         objetivo: 'Usar Python en tareas de un analista de seguridad (opcional).',
         previos: [7], previosNota: 'Se recomienda, sin ser obligatorio, el Módulo 6 de Ciberseguridad.',
         clases: [
-          { titulo: 'Analizar registros de autenticación' },
-          { titulo: 'Hashes e integridad de archivos' },
-          { titulo: 'Automatizar consultas de indicadores de compromiso' }
+          { titulo: 'Analizar registros de autenticación', videosPendiente: 'No se encontró un video de calidad suficiente sobre analizar registros de autenticación con Python.' },
+          { titulo: 'Hashes e integridad de archivos', videos: [{ v: 'NUEOvdZujP0', temas: 'qué es un hash y para qué sirve (MD5, SHA-1, SHA-256)', doc: ['py-hashlib'] }, { v: 'cMdgDTgxx6o', temas: 'comprobar la integridad de un archivo con hashlib', doc: ['py-hashlib'] }] },
+          { titulo: 'Automatizar consultas de indicadores de compromiso', videos: [{ v: '1FCSqV__Ot0', temas: 'consultar la API de VirusTotal con Python para analizar indicadores', doc: ['virustotal'] }] }
         ] }
     ]
   },

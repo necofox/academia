@@ -1,0 +1,1547 @@
+{
+ "_descripcion": "Fichas verificadas de los videos complementarios de JavaScript, Python y Ciberseguridad (catalogo.js los cita por su código) y fuentes documentales usadas para contrastar cada tema. Datos de herramientas/verificar-videos.py.",
+ "videos": {
+  "-7DiO35rbN8": {
+   "titulo": "Qué es un puerto y un socket. Curso de redes desde 0 | Cap 5 |",
+   "canal": "NASeros",
+   "duracion": "12:42",
+   "publicado": "2020-05-27",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (escritos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "-oK6zL01fNM": {
+   "titulo": "Curso HTML & CSS ( 1 / 5 ): Fundamentos HTML - jonmircha",
+   "canal": "jonmircha",
+   "duracion": "7:42:22",
+   "publicado": "2021-08-05",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "capítulos oficiales"
+  },
+  "06l9Jra97-A": {
+   "titulo": "🐍  Aprende a crear tus propias Herramientas CLI en python con argparse",
+   "canal": "ChepeCarlos",
+   "duracion": "10:49",
+   "publicado": "2021-07-09",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "0GEUyQXe3NI": {
+   "titulo": "Curso JavaScript: 33. Módulos ( import / export ) - #jonmircha",
+   "canal": "jonmircha",
+   "duracion": "40:34",
+   "publicado": "2020-03-24",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "0f26_Enlv38": {
+   "titulo": "Curso Fundamentos de Node.js - jonmircha",
+   "canal": "jonmircha",
+   "duracion": "7:59:01",
+   "publicado": "2023-08-05",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "capítulos oficiales"
+  },
+  "0xt806gLghg": {
+   "titulo": "Herencia en Python. Método super() | Programación Orientada a Objetos | Curso Python 3 🐍 # 35",
+   "canal": "UskoKruM2010",
+   "duracion": "7:54",
+   "publicado": "2020-07-13",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "16geDhp5Xmg": {
+   "titulo": "Curso JavaScript: 89. DOM: Ejercicios Prácticos | API localStorage - #jonmircha",
+   "canal": "jonmircha",
+   "duracion": "25:55",
+   "publicado": "2020-06-10",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "1FCSqV__Ot0": {
+   "titulo": "🟡 Cómo Usar la API de VIRUSTOTAL | Automatizar ANÁLISIS DE MALWARE con PYTHON 🐍",
+   "canal": "El Pingüino de Mario",
+   "duracion": "17:09",
+   "publicado": "2023-04-09",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "1YEO2MYMEGw": {
+   "titulo": "Cómo empezar en Ciberseguridad en 2026 (Roadmap REAL desde cero)",
+   "canal": "Fernando Alaniz CloudSec",
+   "duracion": "14:38",
+   "publicado": "2026-02-04",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "1glVfFxj8a4": {
+   "titulo": "Curso COMPLETO de JavaScript DESDE CERO para Principiantes",
+   "canal": "MoureDev by Brais Moure",
+   "duracion": "6:20:30",
+   "publicado": "2024-11-22",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "capítulos oficiales"
+  },
+  "1zVIKuHU30E": {
+   "titulo": "El sistema de ayuda de Windows PowerShell | 3/14 | UPV",
+   "canal": "Universitat Politècnica de València - UPV",
+   "duracion": "8:19",
+   "publicado": "2017-10-04",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (escritos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "2eRE-yLoTlM": {
+   "titulo": "¿Qué es MITRE ATT&CK y por qué está en boca de todos en ciberseguridad?",
+   "canal": "Hablemos de Ciberseguridad",
+   "duracion": "18:07",
+   "publicado": "2025-06-05",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "2gB6DPDJ4fI": {
+   "titulo": "🚀 Despliega tu API FastAPI en Producción en 15 Minutos (Render, EC2 y GitHub) 🔧",
+   "canal": "Código Espinoza - Automatiza tu Vida",
+   "duracion": "19:24",
+   "publicado": "2025-05-09",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "subtítulos"
+  },
+  "3GymExBkKjE": {
+   "titulo": "Curso COMPLETO de GIT y GITHUB desde CERO para PRINCIPIANTES",
+   "canal": "MoureDev by Brais Moure",
+   "duracion": "5:05:22",
+   "publicado": "2023-02-16",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "capítulos oficiales"
+  },
+  "6HJAWFenYx8": {
+   "titulo": "SSL, TLS, HTTPS, HTTP - Explicado Fácilmente",
+   "canal": "Profe Sang",
+   "duracion": "8:50",
+   "publicado": "2021-04-14",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "6ZkFco3sTUk": {
+   "titulo": "Aprende a crear un CRUD completo con Node.js, Express y SQLite",
+   "canal": "JePaFe Dev",
+   "duracion": "51:32",
+   "publicado": "2025-01-07",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (escritos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "capítulos oficiales"
+  },
+  "7fv0j1krRJg": {
+   "titulo": "Domina el Nuevo OWASP Top 10 2025 de forma practica - Analisis de cambios, ejemplos y laboratorios",
+   "canal": "SEGURIDAD CERO",
+   "duracion": "56:09",
+   "publicado": "2026-02-06",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "subtítulos"
+  },
+  "9RfsRn7m7OE": {
+   "titulo": "What Is SIEM?",
+   "canal": "IBM Technology",
+   "duracion": "4:28",
+   "publicado": "2022-12-29",
+   "idioma": "inglés",
+   "subtitulosEs": "Solo traducción automática de YouTube",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "AAtvnv6LNMk": {
+   "titulo": "Qué es Flexbox y para qué sirve | Curso Flexbox CSS (1/13)",
+   "canal": "jonmircha",
+   "duracion": "9:49",
+   "publicado": "2019-11-20",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "ABgLEKFhlZE": {
+   "titulo": "Curso de BASH y Terminal desde CERO en Español",
+   "canal": "MoureDev by Brais Moure",
+   "duracion": "5:51:25",
+   "publicado": "2025-11-20",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "capítulos oficiales"
+  },
+  "AGPalf1C8Ms": {
+   "titulo": "Curso JavaScript: 102. DOM: Ejercicios Prácticos | Validación de Formularios - #jonmircha",
+   "canal": "jonmircha",
+   "duracion": "29:39",
+   "publicado": "2020-07-07",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "CUsHYhyyQA0": {
+   "titulo": "Primeros pasos en Windows PowerShell | 1/14 | UPV",
+   "canal": "Universitat Politècnica de València - UPV",
+   "duracion": "9:37",
+   "publicado": "2017-10-04",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (escritos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "E8mkSKTczLk": {
+   "titulo": "Curso Analista de Seguridad (SOC Analyst) gratuito en español",
+   "canal": "RINKU",
+   "duracion": "1:00:37",
+   "publicado": "2025-03-09",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "capítulos oficiales"
+  },
+  "FJ-w0tf3d_w": {
+   "titulo": "Cómo CONSUMIR una API REST con JAVASCRIPT y Fetch + Promises con gestión de Errores",
+   "canal": "midulive",
+   "duracion": "7:48",
+   "publicado": "2022-07-17",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "FWA1wHYvLG0": {
+   "titulo": "⚡ FastAPI y Jinja como motor de plantillas para crear páginas HTML | 1",
+   "canal": "Andrés Cruz",
+   "duracion": "5:17",
+   "publicado": "2023-07-04",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "GP8OCiJLeN4": {
+   "titulo": "Curso JavaScript: 108. AJAX: API Fetch + Async-Await - #jonmircha",
+   "canal": "jonmircha",
+   "duracion": "17:01",
+   "publicado": "2020-07-15",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "Hk7bHAFNuVA": {
+   "titulo": "Sintaxis de los mandatos en Windows PowerShell | 4/14 | UPV",
+   "canal": "Universitat Politècnica de València - UPV",
+   "duracion": "10:05",
+   "publicado": "2017-10-19",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (escritos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "HoQJhs00wk8": {
+   "titulo": "Las 4 Formas de Autenticación que TODO Programador Debe Conocer",
+   "canal": "Fazt Code",
+   "duracion": "26:55",
+   "publicado": "2025-12-09",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "II91fiUax2g": {
+   "titulo": "Cyber Kill Chain Explained: Breaking the Kill Chain",
+   "canal": "The CISO Perspective",
+   "duracion": "13:18",
+   "publicado": "2019-02-05",
+   "idioma": "inglés",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": true,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "JFRH3lWPFUg": {
+   "titulo": "¿QUÉ es SOAR en CIBERSEGURIDAD? Orquestación, Automatización, Respuesta a Incidentes | Alberto López",
+   "canal": "AlbertoLopez TECH TIPS",
+   "duracion": "12:55",
+   "publicado": "2025-02-25",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "JZ0TMkwMgp8": {
+   "titulo": "PyTest: Pruebas Unitarias en Python 🐍 | Unit Tests | Testing Automatizado con Python ✅",
+   "canal": "UskoKruM2010",
+   "duracion": "20:04",
+   "publicado": "2022-11-15",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "K3xmRF8ab1o": {
+   "titulo": "Curso HTML & CSS ( 2 / 5 ): Fundamentos CSS - jonmircha",
+   "canal": "jonmircha",
+   "duracion": "9:58:22",
+   "publicado": "2021-08-19",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "capítulos oficiales"
+  },
+  "Kp4Mvapo5kc": {
+   "titulo": "Curso COMPLETO de PYTHON desde CERO para PRINCIPIANTES",
+   "canal": "MoureDev by Brais Moure",
+   "duracion": "10:07:34",
+   "publicado": "2022-09-30",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "capítulos oficiales"
+  },
+  "LFjflD8_RqU": {
+   "titulo": "Windows Threat Detection 3 | TryHackMe | SOC Level 1 2025",
+   "canal": "WireDogSec",
+   "duracion": "37:37",
+   "publicado": "2026-05-04",
+   "idioma": "inglés",
+   "subtitulosEs": "Solo traducción automática de YouTube",
+   "dobladoEs": true,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "capítulos oficiales"
+  },
+  "M3AayeYuzMI": {
+   "titulo": "🐧 Curso de LINUX desde CERO para PRINCIPIANTES",
+   "canal": "El Pingüino de Mario",
+   "duracion": "33:17",
+   "publicado": "2024-01-30",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "M3fAyZGZQKc": {
+   "titulo": "Windows Logon Events 4624, 4625, 4634 Explained",
+   "canal": "Infosec Wizard",
+   "duracion": "14:53",
+   "publicado": "2026-07-12",
+   "idioma": "inglés",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": true,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "MjU3JpnFc8E": {
+   "titulo": "Read Windows Process Logs Like a SOC Analyst (4688 + Sysmon)",
+   "canal": "Infosec Wizard",
+   "duracion": "18:14",
+   "publicado": "2026-07-15",
+   "idioma": "inglés",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": true,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "NKjmmxlyU_Y": {
+   "titulo": "Programación Orientada a Objetos (POO) en Python: Clases y Objetos | Curso Python 3 🐍 # 29",
+   "canal": "UskoKruM2010",
+   "duracion": "9:09",
+   "publicado": "2020-05-18",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "NUEOvdZujP0": {
+   "titulo": "¿Qué es un HASH y para qué sirve? | Explicación sencilla de Hashing, MD5, SHA-1, SHA-256 y más",
+   "canal": "Luis Cabrera",
+   "duracion": "16:30",
+   "publicado": "2024-11-17",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "OsaOKS7Q-cE": {
+   "titulo": "Seguridad perimetral: Firewalls y DMZ (URJCx)",
+   "canal": "universidadurjc",
+   "duracion": "5:07",
+   "publicado": "2016-02-29",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "OuJerKzV5T0": {
+   "titulo": "Curso COMPLETO de SQL y BASES DE DATOS Desde Cero para PRINCIPIANTES",
+   "canal": "MoureDev by Brais Moure",
+   "duracion": "6:52:12",
+   "publicado": "2024-01-12",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "capítulos oficiales"
+  },
+  "PIbhoD68TPE": {
+   "titulo": "Sysmon for Beginners | A Deep Dive into Windows Logging | TryHackMe | SOC Level 1",
+   "canal": "WireDogSec",
+   "duracion": "1:08:42",
+   "publicado": "2025-08-22",
+   "idioma": "inglés",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": true,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "capítulos oficiales"
+  },
+  "PbI5EEpodPM": {
+   "titulo": "Curso JavaScript: 48. Async - Await - #jonmircha",
+   "canal": "jonmircha",
+   "duracion": "18:41",
+   "publicado": "2020-04-14",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "PqiwVp53ftU": {
+   "titulo": "Automatiza tus Reportes de Excel con Python - Curso de Openpyxl desde 0",
+   "canal": "Frank Andrade",
+   "duracion": "54:56",
+   "publicado": "2021-05-05",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "QpDpRmlFfqI": {
+   "titulo": "¡Tu CÓDIGO JAVASCRIPT sin ERRORES! 🛑🐛 - Configurando el LINTER con ESLint y STANDARD JS",
+   "canal": "midulive",
+   "duracion": "8:03",
+   "publicado": "2021-02-27",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "TNtrAvNNxTY": {
+   "titulo": "Entornos Virtuales con Python (Módulo virtualenv) ✅ | Curso Python 3 🐍 # 63",
+   "canal": "UskoKruM2010",
+   "duracion": "12:02",
+   "publicado": "2021-06-16",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "TYG2_iUr8XY": {
+   "titulo": "Curso JavaScript: 46. Callbacks - #jonmircha",
+   "canal": "jonmircha",
+   "duracion": "17:53",
+   "publicado": "2020-04-10",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "TbcEqkabAWU": {
+   "titulo": "Curso COMPLETO de PYTHON desde CERO para PRINCIPIANTES [Intermedio]",
+   "canal": "MoureDev by Brais Moure",
+   "duracion": "7:18:01",
+   "publicado": "2022-11-18",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "capítulos oficiales"
+  },
+  "TkN2i-_4N4g": {
+   "titulo": "Curso COMPLETO de Python DESDE CERO para Principiantes 2025",
+   "canal": "midudev",
+   "duracion": "8:32:52",
+   "publicado": "2025-03-25",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "capítulos oficiales"
+  },
+  "TlB-vGW-xLQ": {
+   "titulo": "how to CORRECTLY read logs as a Cybersecurity SOC Analyst",
+   "canal": "Tech with Jono",
+   "duracion": "8:29",
+   "publicado": "2024-06-17",
+   "idioma": "inglés",
+   "subtitulosEs": "Solo traducción automática de YouTube",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "UAypyo5RT_U": {
+   "titulo": "Envenenamiento ARP - Ataque Man-in-the-Middle - ARP Poisoning | Spoofing",
+   "canal": "RedesCiber - Tu Academia de Redes y Ciberseguridad",
+   "duracion": "9:16",
+   "publicado": "2024-10-23",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "UQtg9FeYMNQ": {
+   "titulo": "¿Qué es la PYRAMID OF PAIN en Ciberseguridad?",
+   "canal": "TiziMass",
+   "duracion": "18:26",
+   "publicado": "2024-10-17",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "UorxESPSZNA": {
+   "titulo": "Curso JavaScript: 134. Ejercicios AJAX - APIs: Paginación de Pokémons con Fetch (1/2) - #jonmircha",
+   "canal": "jonmircha",
+   "duracion": "31:56",
+   "publicado": "2020-08-26",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "UqnnhAZxRac": {
+   "titulo": "Aprende Autenticación de Usuario, Sesión, Cookies y JWT con Node.js",
+   "canal": "midulive",
+   "duracion": "1:40:59",
+   "publicado": "2024-06-13",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "capítulos oficiales"
+  },
+  "VAEbftO0OK0": {
+   "titulo": "SOC 1 (2025-2026) | EP4 | SOC L1 Alert Triage | TryHackMe SOC 1 | Alert Triage Techniques",
+   "canal": "Hank Hackerson",
+   "duracion": "57:48",
+   "publicado": "2025-11-24",
+   "idioma": "inglés",
+   "subtitulosEs": "Solo traducción automática de YouTube",
+   "dobladoEs": true,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "capítulos oficiales"
+  },
+  "VL5xJmdAHes": {
+   "titulo": "DEBUG 🪲 en Python 🐍 con VSCode 👨🏻_💻 Ejecutá tu CÓDIGO LÍNEA a LÍNEA 🐾",
+   "canal": "Charly Cimino",
+   "duracion": "6:57",
+   "publicado": "2023-05-13",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "VNp35Uw_bSM": {
+   "titulo": "Cybersecurity Threat Hunting Explained",
+   "canal": "IBM Technology",
+   "duracion": "6:50",
+   "publicado": "2023-01-09",
+   "idioma": "inglés",
+   "subtitulosEs": "Solo traducción automática de YouTube",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "Vv-FJINU2f0": {
+   "titulo": "NIST SP 800-61 Rev. 3 Explained | Incident Response and Tabletop Exercises",
+   "canal": "ProfessorBlackOps - CyberSecurity for the people",
+   "duracion": "48:49",
+   "publicado": "2026-10-28",
+   "idioma": "inglés",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": true,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "subtítulos"
+  },
+  "Wz8cP6Kykuw": {
+   "titulo": "Grid explícita: grid-template-columns, fr y repeat() | Curso Grid CSS (2/17)",
+   "canal": "jonmircha",
+   "duracion": "30:59",
+   "publicado": "2020-12-01",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "YH_4JWKfzIk": {
+   "titulo": "Cómo proteger nuestros datos haciendo copias de seguridad",
+   "canal": "Oficina de Seguridad del Internauta",
+   "duracion": "2:04",
+   "publicado": "2015-08-17",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (escritos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "Z2kzsOpH-_A": {
+   "titulo": "🛡️ Curso de SOC ANALYST para PRINCIPIANTES",
+   "canal": "El Pingüino de Mario",
+   "duracion": "24:11",
+   "publicado": "2025-04-03",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "subtítulos"
+  },
+  "Z6j3ZsqJMKg": {
+   "titulo": "¿SEGMENTACIÓN de redes? Firewalls, Routers, VLANs, NGFW, ACL, IPS, IDS y más! Aprende CIBERSEGURIDAD",
+   "canal": "RedesCiber - Tu Academia de Redes y Ciberseguridad",
+   "duracion": "14:46",
+   "publicado": "2023-01-22",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "ZuPxHCwT0ws": {
+   "titulo": "Seguridad en la nube de AWS",
+   "canal": "AWS Security Users Group LatAm",
+   "duracion": "38:24",
+   "publicado": "2024-06-25",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "subtítulos"
+  },
+  "_t9l2TwGioc": {
+   "titulo": "Curso de Test Driven Development desde Cero con JavaScript, React y Vitest",
+   "canal": "midulive",
+   "duracion": "1:58:45",
+   "publicado": "2022-09-28",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "capítulos oficiales"
+  },
+  "_y9qQZXE24A": {
+   "titulo": "Curso COMPLETO de PYTHON desde CERO para BACKEND",
+   "canal": "MoureDev by Brais Moure",
+   "duracion": "7:55:47",
+   "publicado": "2023-01-05",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "subtítulos"
+  },
+  "aGggJPdW6MQ": {
+   "titulo": "Sigue sin actualizar y mira lo que te puede ocurrir",
+   "canal": "Oficina de Seguridad del Internauta",
+   "duracion": "2:24",
+   "publicado": "2015-06-08",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (escritos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "b7kEr04BjxM": {
+   "titulo": "🦠 ¿Qué es un MALWARE? TIPOS de VIRUS ► Diccionario de hacking ético",
+   "canal": "RINKU",
+   "duracion": "4:13",
+   "publicado": "2023-09-22",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "bIZrGJrkGBM": {
+   "titulo": "Cadena de Custodia y Hash - 📚Aprende 🕵️‍♂️Informática Forense con 10 ⏰Minutos al dia. Cap 04",
+   "canal": "Alvaro Chirou",
+   "duracion": "9:02",
+   "publicado": "2020-04-21",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "cMdgDTgxx6o": {
+   "titulo": "Cybersecurity with Python! Checking File Integrity with Hashing",
+   "canal": "Adrian Dolinay",
+   "duracion": "5:52",
+   "publicado": "2025-06-25",
+   "idioma": "inglés",
+   "subtitulosEs": "Sí, en español (escritos)",
+   "dobladoEs": true,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "subtítulos"
+  },
+  "d1XijkyZRvM": {
+   "titulo": "Curso JavaScript: 59. JSON - #jonmircha",
+   "canal": "jonmircha",
+   "duracion": "29:43",
+   "publicado": "2020-04-29",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "dDHMro1NxM0": {
+   "titulo": "NIST Cybersecurity Framework 2.0 | Todo lo que necesitas saber sobre la nueva versión",
+   "canal": "SEGURIDAD CERO",
+   "duracion": "24:22",
+   "publicado": "2025-03-06",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "subtítulos"
+  },
+  "dThOKXxcHMM": {
+   "titulo": "Sigma v2 Explained: Modifiers, pySigma, & Correlation Rules",
+   "canal": "Adam Goss",
+   "duracion": "16:57",
+   "publicado": "2026-08-24",
+   "idioma": "inglés",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": true,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "dyaH-gdiD34": {
+   "titulo": "Curso JavaScript: 101. DOM: Ejercicios Prácticos | Validación de Formularios con HTML5 - #jonmircha",
+   "canal": "jonmircha",
+   "duracion": "39:12",
+   "publicado": "2020-07-06",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "eZzCuGzwpdg": {
+   "titulo": "Seguridad en la Información  - Criptografía Simétrica y Asimétrica - Fernando Pereñíguez",
+   "canal": "UCAM Universidad Católica de Murcia",
+   "duracion": "6:40",
+   "publicado": "2015-03-13",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (escritos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "f0jiMDaHe1E": {
+   "titulo": "📌[SOC] ¿Qué es un SOC? ►Actividades y Responsabilidad de un CENTRO de OPERACIONES de SEGURIDAD",
+   "canal": "AlbertoLopez TECH TIPS",
+   "duracion": "7:30",
+   "publicado": "2020-08-02",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "fz4Ny5QBKHM": {
+   "titulo": "Descubre el poder de SPF, DKIM y DMARC",
+   "canal": "Pelado Nerd",
+   "duracion": "26:15",
+   "publicado": "2026-02-24",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "gAstDaSaaWU": {
+   "titulo": "Protocolo DNS - Cómo funciona - Fundamentos de Networking para redes IP",
+   "canal": "RedesCiber - Tu Academia de Redes y Ciberseguridad",
+   "duracion": "12:33",
+   "publicado": "2021-12-13",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "gVUE2IDwWA0": {
+   "titulo": "Qué es la IP pública. Curso de redes desde 0 | Cap 1 |",
+   "canal": "NASeros",
+   "duracion": "16:49",
+   "publicado": "2020-05-13",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (escritos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "iNh-62Mf0O4": {
+   "titulo": "Modelo de capas OSI y TCP/IP. Curso de redes desde 0 | Cap 12 |",
+   "canal": "NASeros",
+   "duracion": "24:02",
+   "publicado": "2021-01-10",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (escritos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "ibBAoNq0tl8": {
+   "titulo": "Aprende a usar APIS en tus proyectos de Python + mini-PROYECTO con API de pokemon en Python",
+   "canal": "luisetindev",
+   "duracion": "16:17",
+   "publicado": "2024-09-02",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "jVLcvLB4IJs": {
+   "titulo": "Curso de SEGURIDAD en Programación - OWASP Top 10 - Aprende A PROTEGER Tus Aplicaciones",
+   "canal": "The Coder Cave | Programación y Tecnología",
+   "duracion": "20:40",
+   "publicado": "2025-04-05",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "subtítulos"
+  },
+  "k_jFLEVJ7UE": {
+   "titulo": "How SOC Analysts Detect Linux Persistence | Linux Threat Detection 3   TryHackMe | SOC Level 1 2025",
+   "canal": "WireDogSec",
+   "duracion": "33:38",
+   "publicado": "2026-05-18",
+   "idioma": "inglés",
+   "subtitulosEs": "Solo traducción automática de YouTube",
+   "dobladoEs": true,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "capítulos oficiales"
+  },
+  "koiPxFFiqJ4": {
+   "titulo": "JavaScript para Manipulación del DOM - Curso con Proyectos",
+   "canal": "freeCodeCamp Español",
+   "duracion": "5:30:16",
+   "publicado": "2023-06-19",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "capítulos oficiales"
+  },
+  "mXy0M46Ikwg": {
+   "titulo": "Logger en Python | Logging | Generar Archivo de Logs (.log) con Python | Curso Python 3 🐍 # 72",
+   "canal": "UskoKruM2010",
+   "duracion": "10:43",
+   "publicado": "2024-03-10",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "mwqBUih8FG8": {
+   "titulo": "Análisis de Tráfico de Red:  Análisis de tráfico con Wireshark | Curso CIBERSEGURIDAD desde 0 2025",
+   "canal": "RINKU",
+   "duracion": "16:24",
+   "publicado": "2025-08-31",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "nKPbfIU442g": {
+   "titulo": "Curso de PYTHON desde CERO (Completo)",
+   "canal": "Soy Dalto",
+   "duracion": "8:06:30",
+   "publicado": "2023-01-22",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (escritos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "capítulos oficiales"
+  },
+  "nx4E5LWWMvM": {
+   "titulo": "RUFF la mejor extensión para Python",
+   "canal": "Pildoras de programación",
+   "duracion": "24:31",
+   "publicado": "2025-08-20",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "subtítulos"
+  },
+  "oSyEGkX6sX0": {
+   "titulo": "CVE and CVSS explained | Security Detail",
+   "canal": "Red Hat",
+   "duracion": "3:44",
+   "publicado": "2023-03-21",
+   "idioma": "inglés",
+   "subtitulosEs": "Solo traducción automática de YouTube",
+   "dobladoEs": true,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "pPPiaGU12Og": {
+   "titulo": "The NIST Cybersecurity Framework (CSF) 2.0",
+   "canal": "National Institute of Standards and Technology",
+   "duracion": "3:54",
+   "publicado": "2024-10-21",
+   "idioma": "inglés",
+   "subtitulosEs": "Solo traducción automática de YouTube",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "pnyOBx_m6CQ": {
+   "titulo": "Introducción e identificación de phishing",
+   "canal": "INCIBE",
+   "duracion": "23:09",
+   "publicado": "2020-09-24",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (escritos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "ppzrpTjwEC8": {
+   "titulo": "Curso JavaScript: 47. Promesas - #jonmircha",
+   "canal": "jonmircha",
+   "duracion": "19:08",
+   "publicado": "2020-04-13",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "rvsaVA_orPU": {
+   "titulo": "Defensa en Profundidad | Zero Trust | Wild IT Academy",
+   "canal": "Wild IT Academy",
+   "duracion": "22:56",
+   "publicado": "2022-08-18",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "subtítulos"
+  },
+  "sIJ5WbCoUB8": {
+   "titulo": "¿Qué es un CVE - CPE - EXPLOIT? ¿Cómo funciona MITRE - NIST? Aprende ciberseguridad desde 0.",
+   "canal": "ShellDredd Informática",
+   "duracion": "21:16",
+   "publicado": "2024-06-30",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "subtítulos"
+  },
+  "t5XPubT2AEI": {
+   "titulo": "🔥 ¡Organiza TODOS tus archivos con 30 líneas de Python! | Script completo paso a paso 💻📂",
+   "canal": "Código Espinoza - Automatiza tu Vida",
+   "duracion": "14:37",
+   "publicado": "2025-07-04",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "subtítulos"
+  },
+  "tDF644vI-gs": {
+   "titulo": "Curso Desarrollo Web con Node.js y Express.js - jonmircha",
+   "canal": "jonmircha",
+   "duracion": "8:01:45",
+   "publicado": "2023-10-12",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "capítulos oficiales"
+  },
+  "u0aHPeuAU1E": {
+   "titulo": "Metodología de análisis de tráfico con Wireshark",
+   "canal": "David Pereira",
+   "duracion": "42:33",
+   "publicado": "2024-06-07",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "uB0928SOTEQ": {
+   "titulo": "🔰 ¿Cómo usar SQLite3 en PYTHON? - Tutorial ESPAÑOL",
+   "canal": "Dimas",
+   "duracion": "41:31",
+   "publicado": "2021-09-09",
+   "idioma": "inglés",
+   "subtitulosEs": "No",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "capítulos oficiales"
+  },
+  "udGrXWeJp1Y": {
+   "titulo": "Curso HTML & CSS ( 5 / 5 ): Responsive Design y Arquitectura CSS - jonmircha",
+   "canal": "jonmircha",
+   "duracion": "9:53:46",
+   "publicado": "2021-10-28",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "capítulos oficiales"
+  },
+  "vDygXGJzWCY": {
+   "titulo": "Cyber Threat Intelligence Explained: A Quick Guide for Beginners",
+   "canal": "Adam Goss",
+   "duracion": "10:31",
+   "publicado": "2024-10-20",
+   "idioma": "inglés",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": true,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "wDpqrasDmxM": {
+   "titulo": "Encriptación (Cifrado) Simétrica y Asimétrica - Explicado Fácilmente",
+   "canal": "Profe Sang",
+   "duracion": "15:53",
+   "publicado": "2021-04-16",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "wZU25uB_iuA": {
+   "titulo": "CONSTRUYENDO CONTRASEÑAS SEGURAS",
+   "canal": "Agencia Española de Protección de Datos",
+   "duracion": "5:21",
+   "publicado": "2017-10-20",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "subtítulos"
+  },
+  "waPKR-zLGwM": {
+   "titulo": "DataClasses en Python",
+   "canal": "codigofacilito",
+   "duracion": "7:41",
+   "publicado": "2020-07-03",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "woFaVMP_Kio": {
+   "titulo": "Introducción a OAuth 2.0: Los conceptos que necesitas entender",
+   "canal": "Leo Códigos",
+   "duracion": "13:43",
+   "publicado": "2026-01-11",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "xgxJUUaD3lg": {
+   "titulo": "📌 ¿Qué es un SIEM? ► Software para la Gestión de Información y Eventos de Seguridad | Alberto López",
+   "canal": "AlbertoLopez TECH TIPS",
+   "duracion": "8:47",
+   "publicado": "2023-05-01",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-11",
+   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  }
+ },
+ "fuentes": {
+  "mdn-js": {
+   "titulo": "MDN: ¿Qué es JavaScript?",
+   "url": "https://developer.mozilla.org/es/docs/Learn_web_development/Core/Scripting/What_is_JavaScript"
+  },
+  "mdn-gramatica": {
+   "titulo": "MDN: Gramática y tipos",
+   "url": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Grammar_and_types"
+  },
+  "mdn-operadores": {
+   "titulo": "MDN: Expresiones y operadores",
+   "url": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Expressions_and_operators"
+  },
+  "mdn-if": {
+   "titulo": "MDN: if...else",
+   "url": "https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Statements/if...else"
+  },
+  "mdn-bucles": {
+   "titulo": "MDN: Bucles e iteración",
+   "url": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Loops_and_iteration"
+  },
+  "mdn-funciones": {
+   "titulo": "MDN: Funciones",
+   "url": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Functions"
+  },
+  "mdn-array": {
+   "titulo": "MDN: Array",
+   "url": "https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array"
+  },
+  "mdn-objetos": {
+   "titulo": "MDN: Trabajando con objetos",
+   "url": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Working_with_objects"
+  },
+  "mdn-json": {
+   "titulo": "MDN: JSON",
+   "url": "https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/JSON"
+  },
+  "mdn-trycatch": {
+   "titulo": "MDN: try...catch",
+   "url": "https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Statements/try...catch"
+  },
+  "mdn-semantica": {
+   "titulo": "MDN: Estructurando la web con HTML (HTML semántico)",
+   "url": "https://developer.mozilla.org/es/docs/Learn_web_development/Core/Structuring_content"
+  },
+  "mdn-forms": {
+   "titulo": "MDN: Formularios web",
+   "url": "https://developer.mozilla.org/es/docs/Learn_web_development/Extensions/Forms"
+  },
+  "mdn-cascada": {
+   "titulo": "MDN: Cascada, especificidad y herencia",
+   "url": "https://developer.mozilla.org/es/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts"
+  },
+  "mdn-caja": {
+   "titulo": "MDN: El modelo de caja",
+   "url": "https://developer.mozilla.org/es/docs/Learn_web_development/Core/Styling_basics/Box_model"
+  },
+  "mdn-flexbox": {
+   "titulo": "MDN: Flexbox",
+   "url": "https://developer.mozilla.org/es/docs/Learn_web_development/Core/CSS_layout/Flexbox"
+  },
+  "mdn-grid": {
+   "titulo": "MDN: Grids",
+   "url": "https://developer.mozilla.org/es/docs/Learn_web_development/Core/CSS_layout/Grids"
+  },
+  "mdn-responsive": {
+   "titulo": "MDN: Diseño adaptable",
+   "url": "https://developer.mozilla.org/es/docs/Learn_web_development/Core/CSS_layout/Responsive_Design"
+  },
+  "mdn-a11y": {
+   "titulo": "MDN: Accesibilidad",
+   "url": "https://developer.mozilla.org/es/docs/Web/Accessibility"
+  },
+  "mdn-dom": {
+   "titulo": "MDN: Document Object Model (DOM)",
+   "url": "https://developer.mozilla.org/es/docs/Web/API/Document_Object_Model"
+  },
+  "mdn-eventos": {
+   "titulo": "MDN: addEventListener()",
+   "url": "https://developer.mozilla.org/es/docs/Web/API/EventTarget/addEventListener"
+  },
+  "mdn-validacion": {
+   "titulo": "MDN: Validación de formularios",
+   "url": "https://developer.mozilla.org/es/docs/Learn_web_development/Extensions/Forms/Form_validation"
+  },
+  "mdn-localstorage": {
+   "titulo": "MDN: localStorage",
+   "url": "https://developer.mozilla.org/es/docs/Web/API/Window/localStorage"
+  },
+  "mdn-modulos": {
+   "titulo": "MDN: Módulos de JavaScript",
+   "url": "https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Modules"
+  },
+  "mdn-promise": {
+   "titulo": "MDN: Promise",
+   "url": "https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Promise"
+  },
+  "jsinfo-async": {
+   "titulo": "JavaScript.info: Promesas y async/await",
+   "url": "https://es.javascript.info/async"
+  },
+  "mdn-fetch": {
+   "titulo": "MDN: Uso de Fetch",
+   "url": "https://developer.mozilla.org/es/docs/Web/API/Fetch_API/Using_Fetch"
+  },
+  "mdn-http": {
+   "titulo": "MDN: Generalidades del protocolo HTTP",
+   "url": "https://developer.mozilla.org/es/docs/Web/HTTP/Guides/Overview"
+  },
+  "mdn-terminal": {
+   "titulo": "MDN: Command line crash course (en inglés)",
+   "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Getting_started/Environment_setup/Command_line"
+  },
+  "git-libro": {
+   "titulo": "Pro Git (libro oficial de Git), en español",
+   "url": "https://git-scm.com/book/es/v2"
+  },
+  "npm-docs": {
+   "titulo": "Documentación de npm: package.json",
+   "url": "https://docs.npmjs.com/cli/configuring-npm/package-json/"
+  },
+  "eslint": {
+   "titulo": "ESLint: Getting Started",
+   "url": "https://eslint.org/docs/latest/use/getting-started"
+  },
+  "vitest": {
+   "titulo": "Vitest: Getting Started",
+   "url": "https://vitest.dev/guide/"
+  },
+  "node-intro": {
+   "titulo": "Node.js: Introduction to Node.js",
+   "url": "https://nodejs.org/learn/getting-started/introduction-to-nodejs"
+  },
+  "node-http": {
+   "titulo": "Node.js: módulo http",
+   "url": "https://nodejs.org/api/http.html"
+  },
+  "express-rutas": {
+   "titulo": "Express: Direccionamiento (routing)",
+   "url": "https://expressjs.com/es/guide/routing/"
+  },
+  "mdn-metodos": {
+   "titulo": "MDN: Métodos de petición HTTP",
+   "url": "https://developer.mozilla.org/es/docs/Web/HTTP/Reference/Methods"
+  },
+  "node-sqlite": {
+   "titulo": "Node.js: módulo sqlite",
+   "url": "https://nodejs.org/api/sqlite.html"
+  },
+  "owasp-top10": {
+   "titulo": "OWASP Top 10",
+   "url": "https://top10.owasp.org/"
+  },
+  "owasp-auth": {
+   "titulo": "OWASP Cheat Sheet: Password Storage",
+   "url": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html"
+  },
+  "py-faq": {
+   "titulo": "Python: Preguntas frecuentes generales",
+   "url": "https://docs.python.org/es/3/faq/general.html"
+  },
+  "py-intro": {
+   "titulo": "Tutorial de Python: Una introducción informal",
+   "url": "https://docs.python.org/es/3/tutorial/introduction.html"
+  },
+  "py-control": {
+   "titulo": "Tutorial de Python: Control de flujo (for, while, funciones)",
+   "url": "https://docs.python.org/es/3/tutorial/controlflow.html"
+  },
+  "py-errores": {
+   "titulo": "Tutorial de Python: Errores y excepciones",
+   "url": "https://docs.python.org/es/3/tutorial/errors.html"
+  },
+  "py-estructuras": {
+   "titulo": "Tutorial de Python: Estructuras de datos",
+   "url": "https://docs.python.org/es/3/tutorial/datastructures.html"
+  },
+  "py-stdtypes": {
+   "titulo": "Python: Tipos incorporados (métodos de str)",
+   "url": "https://docs.python.org/es/3/builtins/stdtypes.html"
+  },
+  "py-io": {
+   "titulo": "Tutorial de Python: Entrada y salida (archivos)",
+   "url": "https://docs.python.org/es/3/tutorial/inputoutput.html"
+  },
+  "py-csv": {
+   "titulo": "Python: módulo csv",
+   "url": "https://docs.python.org/es/3/library/csv.html"
+  },
+  "py-modulos": {
+   "titulo": "Tutorial de Python: Módulos",
+   "url": "https://docs.python.org/es/3/tutorial/modules.html"
+  },
+  "py-datetime": {
+   "titulo": "Python: módulo datetime",
+   "url": "https://docs.python.org/es/3/library/datetime.html"
+  },
+  "py-pathlib": {
+   "titulo": "Python: módulo pathlib",
+   "url": "https://docs.python.org/es/3/library/pathlib.html"
+  },
+  "py-venv": {
+   "titulo": "Tutorial de Python: Entornos virtuales y paquetes",
+   "url": "https://docs.python.org/es/3/tutorial/venv.html"
+  },
+  "py-clases": {
+   "titulo": "Tutorial de Python: Clases",
+   "url": "https://docs.python.org/es/3/tutorial/classes.html"
+  },
+  "py-dataclasses": {
+   "titulo": "Python: módulo dataclasses",
+   "url": "https://docs.python.org/es/3/library/dataclasses.html"
+  },
+  "py-typing": {
+   "titulo": "Python: módulo typing",
+   "url": "https://docs.python.org/es/3/library/typing.html"
+  },
+  "pytest": {
+   "titulo": "Documentación de pytest: Get Started",
+   "url": "https://docs.pytest.org/en/stable/getting-started.html"
+  },
+  "pep8": {
+   "titulo": "PEP 8: guía de estilo para código Python",
+   "url": "https://peps.python.org/pep-0008/"
+  },
+  "py-logging": {
+   "titulo": "Python: HOWTO de logging",
+   "url": "https://docs.python.org/es/3/howto/logging.html"
+  },
+  "py-pdb": {
+   "titulo": "Python: pdb, el depurador",
+   "url": "https://docs.python.org/es/3/library/pdb.html"
+  },
+  "py-sqlite3": {
+   "titulo": "Python: módulo sqlite3",
+   "url": "https://docs.python.org/es/3/library/sqlite3.html"
+  },
+  "sqlite-select": {
+   "titulo": "SQLite: sentencia SELECT",
+   "url": "https://www.sqlite.org/lang_select.html"
+  },
+  "py-re": {
+   "titulo": "Python: HOWTO de expresiones regulares",
+   "url": "https://docs.python.org/es/3/howto/regex.html"
+  },
+  "requests": {
+   "titulo": "Requests: Quickstart",
+   "url": "https://requests.readthedocs.io/en/latest/user/quickstart/"
+  },
+  "py-shutil": {
+   "titulo": "Python: módulo shutil",
+   "url": "https://docs.python.org/es/3/library/shutil.html"
+  },
+  "py-argparse": {
+   "titulo": "Python: tutorial de argparse",
+   "url": "https://docs.python.org/es/3/howto/argparse.html"
+  },
+  "openpyxl": {
+   "titulo": "openpyxl: Tutorial",
+   "url": "https://openpyxl.readthedocs.io/en/stable/tutorial.html"
+  },
+  "fastapi": {
+   "titulo": "FastAPI: Tutorial (en español)",
+   "url": "https://fastapi.tiangolo.com/es/tutorial/"
+  },
+  "fastapi-sec": {
+   "titulo": "FastAPI: OAuth2 con contraseña (y hashing) y JWT",
+   "url": "https://fastapi.tiangolo.com/es/tutorial/security/oauth2-jwt/"
+  },
+  "fastapi-templates": {
+   "titulo": "FastAPI: Templates",
+   "url": "https://fastapi.tiangolo.com/es/advanced/templates/"
+  },
+  "fastapi-deploy": {
+   "titulo": "FastAPI: Despliegue",
+   "url": "https://fastapi.tiangolo.com/es/deployment/"
+  },
+  "py-hashlib": {
+   "titulo": "Python: módulo hashlib",
+   "url": "https://docs.python.org/es/3/library/hashlib.html"
+  },
+  "virustotal": {
+   "titulo": "VirusTotal API v3: Overview",
+   "url": "https://docs.virustotal.com/reference/overview"
+  },
+  "nist-csf": {
+   "titulo": "NIST Cybersecurity Framework",
+   "url": "https://www.nist.gov/cyberframework"
+  },
+  "nist-zt": {
+   "titulo": "NIST SP 800-207: Zero Trust Architecture",
+   "url": "https://csrc.nist.gov/pubs/sp/800/207/final"
+  },
+  "incibe-ciudadania": {
+   "titulo": "INCIBE: Ciudadanía (consejos de ciberseguridad)",
+   "url": "https://www.incibe.es/ciudadania"
+  },
+  "nist-800-63b": {
+   "titulo": "NIST SP 800-63B: Digital Identity Guidelines (autenticación)",
+   "url": "https://pages.nist.gov/800-63-4/sp800-63b.html"
+  },
+  "mitre-persist": {
+   "titulo": "MITRE ATT&CK: Persistence (TA0003)",
+   "url": "https://attack.mitre.org/tactics/TA0003/"
+  },
+  "mdn-dns": {
+   "titulo": "MDN: DNS (glosario, en inglés)",
+   "url": "https://developer.mozilla.org/en-US/docs/Glossary/DNS"
+  },
+  "mdn-tls": {
+   "titulo": "MDN: Transport Layer Security (glosario, en inglés)",
+   "url": "https://developer.mozilla.org/en-US/docs/Glossary/TLS"
+  },
+  "nist-firewall": {
+   "titulo": "NIST SP 800-41 Rev. 1: Guidelines on Firewalls and Firewall Policy",
+   "url": "https://csrc.nist.gov/pubs/sp/800/41/r1/final"
+  },
+  "wireshark": {
+   "titulo": "Wireshark User’s Guide",
+   "url": "https://www.wireshark.org/docs/wsug_html_chunked/"
+  },
+  "mitre-aitm": {
+   "titulo": "MITRE ATT&CK: Adversary-in-the-Middle (T1557)",
+   "url": "https://attack.mitre.org/techniques/T1557/"
+  },
+  "nist-crypto": {
+   "titulo": "NIST CSRC: glosario, cryptography",
+   "url": "https://csrc.nist.gov/glossary/term/cryptography"
+  },
+  "oauth": {
+   "titulo": "OAuth 2.0 (sitio oficial)",
+   "url": "https://oauth.net/2/"
+  },
+  "ms-4624": {
+   "titulo": "Microsoft Learn: 4624, An account was successfully logged on",
+   "url": "https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4624"
+  },
+  "incibe-malware": {
+   "titulo": "INCIBE: Aprende ciberseguridad, Malware",
+   "url": "https://www.incibe.es/aprendeciberseguridad/malware"
+  },
+  "incibe-phishing": {
+   "titulo": "INCIBE: Aprende ciberseguridad, Phishing",
+   "url": "https://www.incibe.es/aprendeciberseguridad/phishing"
+  },
+  "nvd-cvss": {
+   "titulo": "FIRST: Common Vulnerability Scoring System (CVSS)",
+   "url": "https://www.first.org/cvss/"
+  },
+  "cisa-kev": {
+   "titulo": "CISA: Known Exploited Vulnerabilities Catalog",
+   "url": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog"
+  },
+  "owasp-2025": {
+   "titulo": "OWASP Top 10:2025",
+   "url": "https://top10.owasp.org/2025/"
+  },
+  "mitre-attack": {
+   "titulo": "MITRE ATT&CK",
+   "url": "https://attack.mitre.org/"
+  },
+  "nist-800-92": {
+   "titulo": "NIST SP 800-92: Guide to Computer Security Log Management",
+   "url": "https://csrc.nist.gov/pubs/sp/800/92/final"
+  },
+  "ms-sysmon": {
+   "titulo": "Microsoft Learn: Sysmon",
+   "url": "https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon"
+  },
+  "sigma": {
+   "titulo": "SigmaHQ: documentación de reglas Sigma",
+   "url": "https://sigmahq.io/docs/basics/rules.html"
+  },
+  "nist-800-61": {
+   "titulo": "NIST SP 800-61 Rev. 3: Incident Response Recommendations",
+   "url": "https://csrc.nist.gov/pubs/sp/800/61/r3/final"
+  },
+  "dmarc": {
+   "titulo": "DMARC.org: Overview",
+   "url": "https://dmarc.org/overview/"
+  },
+  "nist-800-86": {
+   "titulo": "NIST SP 800-86: Integrating Forensic Techniques into Incident Response",
+   "url": "https://csrc.nist.gov/pubs/sp/800/86/final"
+  },
+  "nist-800-150": {
+   "titulo": "NIST SP 800-150: Guide to Cyber Threat Information Sharing",
+   "url": "https://csrc.nist.gov/pubs/sp/800/150/final"
+  },
+  "nice-soc": {
+   "titulo": "NICE Framework (NIST): roles de ciberseguridad",
+   "url": "https://www.nist.gov/itl/applied-cybersecurity/nice/nice-framework-resource-center"
+  },
+  "aws-shared": {
+   "titulo": "AWS: Modelo de responsabilidad compartida",
+   "url": "https://aws.amazon.com/es/compliance/shared-responsibility-model/"
+  }
+ }
+}
