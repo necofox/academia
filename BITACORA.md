@@ -173,10 +173,14 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
 - Conectar con el token las demás computadoras (y el celular si se quiere).
 - El alumno debe activar la verificación en dos pasos de GitHub antes del 13/12/2026.
 - El token de GitHub vence (plazo elegido al crearlo): cuando venza, crear otro y pegarlo de nuevo.
-- Fuentes verificadas: hechas en Ciberseguridad, JavaScript y Python (11/11/2026); falta Inglés.
-- Resumen y videos complementarios: hechos en Ciberseguridad 02–05, JavaScript y Python (11/11/2026).
-  Faltan Ciberseguridad 01 (no se toca hasta que el alumno la apruebe) e Inglés 01–04.
-- Cursos nuevos: 104 clases pendientes de creación (Redes 50 e IA 54). Falta el horario de ambos y
+- Fuentes verificadas: hechas en los 4 cursos originales (Inglés, el 11/11/2026). En Inglés quedan 4 datos
+  «pendientes de fuente escrita» (señalados en cada clase): los diccionarios de Cambridge y Oxford bloquean
+  la consulta automática.
+- Resumen y videos complementarios: hechos en las 16 clases originales salvo Ciberseguridad 01, que no se
+  toca hasta que el alumno la revise y lo autorice.
+- **Objetivo principal pendiente:** completar Redes y Telecomunicaciones e IA: Claude. Que estén en el menú
+  no significa que estén hechos: faltan 104 clases (Redes 50 e IA 54). La ampliación no está terminada hasta
+  que todo el contenido esté creado, integrado y probado. Falta el horario de ambos y
   saber qué plan de Claude usa el alumno.
 
 ---
@@ -318,3 +322,13 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   cambia ningún id ni el avance guardado. Ciberseguridad 01 e Inglés no se tocaron.
 - **Pruebas:** `pruebas-clases` 19/19, `pruebas-sync` 15/15, catálogo, rutas y coherencia correctos;
   menú con 6 cursos. Nada publicado (sin push).
+
+### 2026-11-11 (Inglés 01–04: resumen, videos y fuentes)
+- Se agregaron a Inglés 01–04, sin cambiar nada más, un resumen basado en el contenido de cada clase,
+  dos videos complementarios por clase (uno explicado en español y otro en inglés) y fuentes verificadas:
+  lista oficial de vocabulario de Cambridge English (2025), páginas A1 del British Council (LearnEnglish y
+  LearnEnglish Teens) y Cambridge Dictionary (good evening). Los videos se comprobaron leyendo sus
+  subtítulos completos. Los datos de pronunciación sin fuente oficial legible quedan como «parcialmente
+  verificado» (Wikipedia) o «pendiente».
+- Pruebas: pruebas-clases 19/19 (Inglés 60 min, actividades y exámenes completos) y pruebas-sync 15/15.
+  Nada publicado (sin push). Ciberseguridad 01 sigue sin cambios, a la espera de la revisión del alumno.
