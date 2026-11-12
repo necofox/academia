@@ -1,7 +1,8 @@
-# Resultados del Lote 2: integración de la estructura aprobada (etapas 0 a 3)
+# Resultados del Lote 2: integración de la estructura aprobada (etapas 0 a 5)
 
-> **Fecha:** 12/11/2026. **Documento creado en la Etapa 4.** La Etapa 5 lo completará con la verificación final,
-> la lista de archivos temporales eliminados y el hash del commit de la Etapa 4.
+> **Fecha:** 12/11/2026. Documento creado en la Etapa 4 y completado en la Etapa 5, con la verificación final, la
+> lista de archivos temporales eliminados y el hash del commit de la Etapa 4. **El Lote 2 está terminado**
+> (sección 12).
 > **Regla de este informe:** solo se registran pruebas que se ejecutaron. Lo que no se ejecutó se indica como
 > pendiente o como no ejecutado, con su motivo.
 > **Estructura aprobada:** `DIAGNOSTICO-ESTRUCTURA-ACADEMICA.md`.
@@ -25,6 +26,8 @@
 | Huella de los identificadores de avance | `d355163a…7933d`, **idéntica a la línea base** | SHA-256 de la lista que genera `pruebas-clases.html` |
 | Push a GitHub | **Ninguno** | `git ls-remote`: `main` sigue en `43e8d6e` |
 | `academia-progreso` | **Sin cambios** | Copia local en `14d8233`, sin cambios |
+
+Todos estos datos se volvieron a comprobar en la Etapa 5 sobre el estado final (sección 12).
 
 ---
 
@@ -166,7 +169,12 @@ autorizado.
 | `349066f` | 2 | 5 | +132 −67 |
 | `2c4ae91` | 3 | 1 | +1 −1 |
 | `bd4b1f8` | 3 (corrección) | 1 | +1 −1 |
-| Commit de la Etapa 4 | 4 | `CLAUDE.md`, `BITACORA.md`, `DIAGNOSTICO-ESTRUCTURA-ACADEMICA.md` y este archivo (nuevo) | Su hash se registrará en la Etapa 5 |
+| `d6d07b0` | 4 | `CLAUDE.md`, `BITACORA.md`, `DIAGNOSTICO-ESTRUCTURA-ACADEMICA.md` y este archivo (nuevo) | +356 −28 |
+| Commit de la Etapa 5 | 5 | Solo este archivo | Su hash figura en el informe de cierre de la Etapa 5 |
+
+Después de la Etapa 4, y fuera del Lote 2, el alumno aprobó otros dos cambios: `5fdc761` (fuentes reforzadas en
+JavaScript y Python 01–04) y `a57d0b2` (Python 02: las tildes en los nombres son una recomendación). La
+verificación final de la Etapa 5 se hizo sobre el estado que ya los incluye.
 
 Para deshacer una etapa sin tocar las demás: `git revert <commit>`. La etiqueta `respaldo-antes-lote-2` conserva el
 estado anterior a todo el Lote 2.
@@ -194,25 +202,23 @@ estado anterior a todo el Lote 2.
 
 | Prueba | Línea base (0-A) | Etapa 1 | Etapa 2 | Etapa 3 | Corrección | Etapa 5 |
 |---|---|---|---|---|---|---|
-| `revisar-catalogo.js` | ✔ | ✔ | ✔ | ✔ | ✔ | Pendiente |
-| `generar-rutas.js --comprobar` | 6/6 | 7/7 | 7/7 | 7/7 | 7/7 | Pendiente |
-| `revisar-coherencia.js` | ✔ | ✔ | ✔ | No ejecutada | No ejecutada | Pendiente |
+| `revisar-catalogo.js` | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
+| `generar-rutas.js --comprobar` | 6/6 | 7/7 | 7/7 | 7/7 | 7/7 | 7/7 |
+| `revisar-coherencia.js` | ✔ | ✔ | ✔ | No ejecutada | No ejecutada | ✔ |
 | Verificación del borrador (32) | 32/32 | — | — | — | — | — |
-| Equivalencia estricta del catálogo | — | ✔ | — | — | — | — |
-| Huellas de archivos | Base | ✔ | ✔ | ✔ | ✔ | Pendiente |
-| `pruebas-clases.html` | 22/22 | 22/22 | No ejecutada | 22/22 | 22/22 | Pendiente |
-| Huella de identificadores | Base | Igual | No ejecutada | Igual | Igual | Pendiente |
-| `pruebas-sync.html` | 15/15 | 15/15 | No ejecutada | 15/15 | 15/15 | Pendiente |
-| Menú real en el navegador | — | ✔ | — | — | — | Pendiente |
+| Equivalencia estricta del catálogo | — | ✔ | — | — | — | ✔ |
+| Huellas de archivos | Base | ✔ | ✔ | ✔ | ✔ | ✔ |
+| `pruebas-clases.html` | 22/22 | 22/22 | No ejecutada | 22/22 | 22/22 | 22/22 |
+| Huella de identificadores | Base | Igual | No ejecutada | Igual | Igual | Igual |
+| `pruebas-sync.html` | 15/15 | 15/15 | No ejecutada | 15/15 | 15/15 | 15/15 |
+| Menú real en el navegador | — | ✔ | — | — | — | ✔ (escritorio y 360 px) |
 | Referencias de los textos | — | — | 32/32 | — | — | — |
-| GitHub y `academia-progreso` | ✔ | ✔ | ✔ | ✔ | ✔ | Pendiente |
+| GitHub y `academia-progreso` | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
 
 «No ejecutada» significa que esa prueba no se corrió en esa etapa, por no ser pertinente al cambio. El motivo
 está en la sección de cada etapa. Ninguna prueba falló sin quedar resuelta antes de seguir.
 
-**Pendiente en la Etapa 5:** repetir todas las pruebas sobre el estado final, revisar el menú en escritorio y a
-360 px, eliminar los archivos temporales (están fuera del proyecto) con su lista y registrar el hash del commit
-de la Etapa 4.
+**Etapa 5:** hecha. El detalle está en la sección 12.
 
 **Fuera del Lote 2:** comprobar la sincronización real en un equipo con token. Solo es posible después de un push,
 que requiere autorización expresa del alumno.
@@ -233,3 +239,58 @@ que requiere autorización expresa del alumno.
    revisó la copia local. Ningún paso tuvo acceso a ese repositorio: las pruebas de sincronización usan un GitHub
    simulado y el navegador de pruebas no tiene token.
 7. **Sitio en línea:** la academia publicada no tiene estos cambios, porque no hubo push.
+8. **Etapa 5:**
+   - La primera captura del menú a 360 px salió incompleta porque se tomó antes de que la página terminara de
+     dibujarse; se repitió con más tiempo y salió completa.
+   - La primera comprobación del foco de teclado fue no concluyente, porque enfocar desde código no activa
+     `:focus-visible`. Se repitió con la tecla Tab: el foco es visible.
+   - En la prueba de sincronización, la pestaña solo conservaba las últimas peticiones de red, así que «0
+     peticiones a GitHub» se refiere a las que pudo listar. Lo que garantiza que no hay escritura real es el
+     diseño de la prueba (GitHub simulado, token ficticio).
+
+---
+
+## 12. Etapa 5: verificación final y limpieza (12/11/2026, a partir de las 04:02, hora local)
+
+**Estado de partida:** árbol limpio; HEAD `a57d0b2`; desde la etiqueta, 7 commits (`e0a5d69`, `349066f`,
+`2c4ae91`, `bd4b1f8`, `d6d07b0`, `5fdc761` y `a57d0b2`). Las etiquetas locales están intactas
+(`respaldo-antes-lote-2` → `05e83d1`, más las 6 de respaldos anteriores). GitHub tiene 0 etiquetas.
+
+**Pruebas ejecutadas sobre el estado final:**
+
+| Prueba | Resultado |
+|---|---|
+| `revisar-catalogo.js` | Correcto: 7 cursos, 22 clases listas y línea base de identificadores intacta |
+| `generar-rutas.js --comprobar` | 7/7 |
+| `revisar-coherencia.js` | Coherente |
+| Equivalencia estricta del catálogo (catálogo de la etiqueta + borrador aprobado = catálogo actual) | 10/10: valores y orden idénticos; Redes 51, IA 71 y Prompt 32; 154 planificadas, 5 creadas y 149 pendientes |
+| Páginas de clase (22) | 9 cambiaron desde la etiqueta (IA 02, más JavaScript y Python 01–04 por `5fdc761` y `a57d0b2`). **En las 22, `window.CLASE` es idéntico al de la etiqueta** |
+| Núcleo | Sin cambios desde la etiqueta: `academia.js`, `sync.js` (apunta a `necofox/academia-progreso`), `diferencias.js`, `academia.css`, `videos.json`, `linea-base-identificadores.json`, `pruebas-clases.html`, `pruebas-sync.html` y `.gitignore` |
+| `pruebas-clases.html` | 22/22 (js-01 «con revisión manual», igual que siempre). Huella de identificadores `d355163a…7933d`, **idéntica a la línea base**. Almacenamiento del navegador de pruebas igual al terminar; sin token |
+| `pruebas-sync.html` | 15/15 |
+| Menú real (`inicio.html`) | 7 cursos; Redes con 11 módulos, IA con 21 y Prompt con 6; IA 01 e IA 02 enlazan a sus archivos; `catalogo.js?v=2026-11-12a`; 0 errores en la consola. Sin desborde horizontal a 302 px (ancho del panel), 360 px y 1280 px. Foco de teclado visible (borde de 2,4 px). Capturas en escritorio y a 360 px correctas. Se borraron las 2 claves de preferencia que el menú crea en el navegador de pruebas |
+| GitHub | `main` en `43e8d6e`; el repositorio local va 36 commits por delante. **Sin push** |
+| `academia-progreso` | Copia local en `14d8233` (10/11/2026), 0 cambios |
+
+**Archivos temporales.** Todos estaban en la carpeta temporal de la sesión, fuera del proyecto. Se identificaron por
+nombre y por fecha de creación (todos del 12/11/2026, durante el Lote 2), y se confirmó que ningún archivo de la
+academia los usa.
+
+| Elemento | Origen | Acción |
+|---|---|---|
+| Carpeta `lote2/` (41 archivos: evidencias, candidato del catálogo, catálogo anterior extraído de la etiqueta y capturas) | Creada a las 02:42 (Etapa 0-A) y usada hasta la Etapa 5 | **Eliminada** (sus resultados están en este documento) |
+| `lote2-catalogo.js` | Script de la Etapa 1 (02:49) | **Eliminado** |
+| `lote2-equivalencia.js` | Script de la Etapa 1 (02:49) | **Eliminado** |
+| `lote2-rutas-manual.js` | Script de la Etapa 2 (02:59) | **Eliminado** |
+| `verificar-3-cursos.js` | Creado a las 02:10, **antes** del Lote 2, para la consolidación de la estructura; solo se reutilizó en la Etapa 0-A | **Conservado** (no es exclusivo del Lote 2) |
+| 20 perfiles de Chrome antiguos, verificación de fuentes de JavaScript y Python, y marcos de captura | Otras tareas y sesiones anteriores | **Conservados** |
+
+Los perfiles de Chrome que se crearon durante el Lote 2 se borraron al terminar cada captura.
+
+**No se cambió:** ninguna clase, curso, catálogo, ruta, motor ni sincronización; tampoco commits anteriores,
+etiquetas ni respaldos, ni las dos líneas históricas de `BITACORA.md` con una ruta local. El commit `a57d0b2` se
+mantiene. El único archivo modificado en esta etapa es este informe.
+
+**Pendiente de decisión del alumno (no se cambió):** `BITACORA.md` («Pendientes» dice «Lote 2: falta la Etapa
+5») y `DIAGNOSTICO-ESTRUCTURA-ACADEMICA.md` (sección 9.4, fila 5 «Pendiente») quedan desactualizados ahora que la
+Etapa 5 terminó. Esta etapa solo autorizaba este informe.
