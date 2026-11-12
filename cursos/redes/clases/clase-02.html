@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redes · Clase 02 · Modelos OSI y TCP/IP</title>
+<link rel="stylesheet" href="../../../recursos/academia.css">
+</head>
+<body class="tema-redes">
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="top">
+  <div class="marca"><span class="logo" aria-hidden="true">&lt;/&gt;</span><span>REDES<span class="acento">//</span>ACADEMIA</span></div>
+  <div id="reloj" class="reloj-zona"></div>
+  <div id="voz"></div>
+  <a class="btn-mini" href="../../../inicio.html">☰ Menú</a>
+</header>
+
+<div class="layout">
+  <nav id="agenda" class="agenda" aria-label="Agenda de la clase"></nav>
+
+  <main id="contenido">
+    <div class="portada">
+      <p class="kicker">Módulo 1 · Fundamentos de redes · Clase 02</p>
+      <h1>Modelos OSI y TCP/IP</h1>
+      <p class="sub">Las capas de una red, cómo se empaqueta un mensaje para viajar (encapsulamiento) y qué protocolo trabaja en cada capa. Duración: 2 horas.</p>
+    </div>
+
+    <!-- ================= 1. PRESENTACIÓN Y 2. ACTIVACIÓN ================= -->
+    <section id="b-bienvenida" class="bloque" aria-labelledby="t-bienvenida">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-bienvenida">Presentación y repaso</h2>
+      <div class="lectura">
+        <p>En la Clase 01 dibujaste el mapa de una red: dispositivos finales, equipos intermediarios y medios. Hoy vas a mirar <strong>dentro</strong> de esa red: qué le pasa a un mensaje desde que lo escribes hasta que llega al otro lado. Para entenderlo, los ingenieros dividieron el trabajo en <strong>capas</strong>.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Ficha de la clase</th><th>Detalle</th></tr></thead>
+            <tbody>
+              <tr><td>Número y título</td><td>Clase 02: Modelos OSI y TCP/IP: capas, encapsulamiento y protocolos.</td></tr>
+              <tr><td>Módulo</td><td>Módulo 1 · Fundamentos de redes (clase 2 de 5).</td></tr>
+              <tr><td>Duración</td><td>120 minutos, con un descanso de 10.</td></tr>
+              <tr><td>Nivel</td><td>Inicial.</td></tr>
+              <tr><td>Conocimientos previos</td><td>La Clase 01: qué es una red, sus componentes (switch, router, punto de acceso) y los tipos LAN, WLAN y WAN.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Repaso rápido de la Clase 01</h3>
+        <ul>
+          <li>¿Qué equipo une redes distintas, el switch o el router?</li>
+          <li>¿Cómo se llama la parte inalámbrica de una red local?</li>
+          <li>Si el ping al router responde pero el ping a internet no, ¿dónde está el problema?</li>
+        </ul>
+        <details class="revelar no-leer"><summary>Ver las respuestas</summary><p>El router. La WLAN. Más allá del router: en la WAN o en el proveedor.</p></details>
+        <h3>Objetivos: al terminar podrás</h3>
+        <ul>
+          <li>Explicar por qué una red se organiza en capas.</li>
+          <li>Nombrar las 7 capas del modelo OSI y decir qué hace cada una.</li>
+          <li>Nombrar las 4 capas del modelo TCP/IP y relacionarlas con las de OSI.</li>
+          <li>Explicar el encapsulamiento y el desencapsulamiento, y el nombre que recibe el mensaje en cada capa.</li>
+          <li>Ubicar protocolos conocidos (HTTP, TCP, UDP, IP, Ethernet, Wi-Fi) en su capa.</li>
+          <li>Usar las capas para ordenar el diagnóstico de un problema.</li>
+        </ul>
+        <h3>Antes de empezar, piensa</h3>
+        <ul>
+          <li>Cuando envías un regalo por courier, ¿cuántas personas intervienen? ¿Necesita cada una saber qué hay dentro de la caja?</li>
+          <li>Un celular Samsung y un iPhone se envían mensajes sin problema. ¿Cómo es posible, si los fabrican empresas distintas?</li>
+        </ul>
+        <div class="nota alerta">
+          <p><strong>Situación de partida (caso ficticio):</strong> en la panadería «La Espiga», la computadora de caja abre sin problema la página del banco, pero el sistema de pedidos en línea no carga. La dueña pregunta: «¿Es el cable? ¿Es internet? ¿Es la página?». Un técnico que piensa por capas puede descartar posibilidades en orden en vez de adivinar. Al final de la clase podrás hacerlo tú.</p>
+        </div>
+        <h3>Cómo usar esta página</h3>
+        <ul>
+          <li>Pulsa «Iniciar clase» en el reloj de arriba: te avisará al cambiar de bloque.</li>
+          <li>El botón «Escuchar esta parte» lee la teoría en voz alta. Los términos en inglés se leen con voz inglesa.</li>
+          <li>Si fallas una actividad, primero recibes una pista; si vuelves a fallar, ves la respuesta explicada.</li>
+          <li>Las capturas de tráfico de esta página son simulaciones con datos ficticios y direcciones reservadas para documentación o privadas.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= 3. DESARROLLO TEÓRICO (I) ================= -->
+    <section id="b-capas" class="bloque" aria-labelledby="t-capas">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-capas">¿Por qué organizar la red en capas?</h2>
+      <div class="lectura">
+        <p>Piensa en un envío por courier. Tú escribes la carta y la metes en un sobre; la empresa le pega una etiqueta con la dirección; un camión la lleva por la carretera. Quien maneja el camión no necesita leer tu carta, y tú no necesitas saber qué ruta toma el camión. Cada uno hace <strong>su parte</strong> y le pasa el resultado al siguiente.</p>
+        <p>Una red funciona igual. El trabajo de comunicar dos equipos se divide en capas: cada capa resuelve un problema concreto, usa lo que le da la capa de abajo y le ofrece un servicio a la capa de arriba.</p>
+        <h3>Tres ventajas de trabajar por capas</h3>
+        <ul>
+          <li><strong>Equipos de distintos fabricantes se entienden</strong>, porque todos siguen las mismas reglas en cada capa. Esas reglas se llaman protocolos.</li>
+          <li><strong>Se puede cambiar una capa sin tocar las demás.</strong> Por ejemplo, pasar del cable al Wi-Fi no obliga a cambiar el navegador.</li>
+          <li><strong>El diagnóstico se ordena:</strong> se revisa capa por capa en vez de adivinar.</li>
+        </ul>
+        <div class="nota ok">
+          <p><strong>Dato verificado:</strong> el modelo de referencia OSI, en inglés <span lang="en">Open Systems Interconnection</span>, está publicado por la UIT, el organismo de telecomunicaciones de las Naciones Unidas, en la recomendación ITU-T X.200, «Modelo de referencia básico». La versión vigente es la de julio de 1994. IBM lo describe como un modelo conceptual que divide la comunicación de red en siete capas abstractas.</p>
+        </div>
+        <div class="nota alerta">
+          <p><strong>Error frecuente:</strong> creer que OSI es un programa o un protocolo que se instala. Es un <strong>modelo</strong>: una forma de ordenar y explicar las funciones de una red. Los protocolos reales, como TCP o IP, se ubican dentro de esas capas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 3. DESARROLLO TEÓRICO (II) ================= -->
+    <section id="b-osi" class="bloque" aria-labelledby="t-osi">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-osi">Las 7 capas del modelo OSI</h2>
+      <div class="lectura">
+        <p>Las capas se numeran desde abajo, desde lo físico, hasta arriba, lo que usa la persona. Esta tabla resume cómo las describe IBM:</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Capa</th><th>Nombre</th><th>Qué hace</th><th>Ejemplos</th></tr></thead>
+            <tbody>
+              <tr><td>7</td><td>Aplicación</td><td>Es la capa más cercana a la persona usuaria.</td><td>HTTP, DNS, correo (SMTP)</td></tr>
+              <tr><td>6</td><td>Presentación</td><td>Transforma los datos a un formato que la aplicación pueda aceptar: traducción, compresión y cifrado.</td><td>TLS, JPEG, MPEG</td></tr>
+              <tr><td>5</td><td>Sesión</td><td>Establece, mantiene y termina las conexiones (sesiones) entre aplicaciones.</td><td>—</td></tr>
+              <tr><td>4</td><td>Transporte</td><td>Divide los datos en segmentos y les agrega los números de puerto de origen y destino.</td><td>TCP, UDP</td></tr>
+              <tr><td>3</td><td>Red</td><td>Lleva los datos de un equipo a otro a través de redes distintas: direccionamiento, enrutamiento y reenvío.</td><td>IPv4, IPv6</td></tr>
+              <tr><td>2</td><td>Enlace de datos</td><td>Transfiere datos sin errores entre equipos de la misma red y agrega las direcciones MAC de origen y destino.</td><td>Ethernet, ARP</td></tr>
+              <tr><td>1</td><td>Física</td><td>Los componentes físicos que transmiten los datos en bruto: los bits.</td><td>Cables, conectores, fibra óptica</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p data-decir="Un truco para recordarlas de abajo hacia arriba: Física, Enlace, Red, Transporte, Sesión, Presentación, Aplicación.">Un truco para recordarlas de abajo hacia arriba: <strong>F</strong>ísica, <strong>E</strong>nlace, <strong>R</strong>ed, <strong>T</strong>ransporte, <strong>S</strong>esión, <strong>P</strong>resentación, <strong>A</strong>plicación. Inventa una frase con esas iniciales; por ejemplo: «<strong>F</strong>ernando <strong>E</strong>s <strong>R</strong>ápido <strong>T</strong>rayendo <strong>S</strong>opa <strong>P</strong>ara <strong>A</strong>na».</p>
+        <h3>¿Y los equipos de la Clase 01?</h3>
+        <ul>
+          <li>El <strong>router</strong> trabaja en la capa 3: el NIST lo define como una puerta de enlace entre dos redes en la capa 3 del modelo OSI.</li>
+          <li>El <strong>switch</strong> clásico trabaja en la capa 2, con direcciones MAC. El temario del CCNA distingue, además, switches de capa 2 y de capa 3.</li>
+          <li>Los <strong>cables y la fibra</strong> son capa 1.</li>
+        </ul>
+        <div class="nota alerta">
+          <p><strong>Error frecuente:</strong> confundir la dirección MAC con la IP. La MAC identifica a la tarjeta de red dentro de la red local (capa 2). La IP sirve para llegar a equipos de otras redes (capa 3). En el courier, la MAC sería el nombre de quien recibe en el edificio y la IP, la dirección de la calle.</p>
+        </div>
+      </div>
+      <h3>Actividad: ¿qué capa OSI lo hace?</h3>
+      <div data-actividad="capas"></div>
+    </section>
+
+    <!-- ================= 3. DESARROLLO TEÓRICO (III) ================= -->
+    <section id="b-tcpip" class="bloque" aria-labelledby="t-tcpip">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-tcpip">El modelo TCP/IP: el que usa internet</h2>
+      <div class="lectura">
+        <p>OSI es el modelo de referencia para explicar y comparar. El que se usa en internet es el modelo <strong>TCP/IP</strong>, que agrupa las funciones en menos capas. El RFC 1122, documento de la IETF que fija los requisitos de los equipos conectados a internet, nombra estas cuatro capas:</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Capa TCP/IP (RFC 1122)</th><th>Qué hace</th><th>Equivale en OSI a</th></tr></thead>
+            <tbody>
+              <tr><td>Aplicación (<span lang="en">Application</span>)</td><td>La capa superior. Según el RFC 1122, combina las funciones de las dos capas superiores de OSI, presentación y aplicación.</td><td>7, 6 y, en la práctica, también la 5</td></tr>
+              <tr><td>Transporte (<span lang="en">Transport</span>)</td><td>Da servicios de comunicación de extremo a extremo a las aplicaciones (TCP y UDP).</td><td>4</td></tr>
+              <tr><td>Internet (<span lang="en">Internet</span>)</td><td>IP: un servicio de envío de datagramas entre redes, sin conexión previa.</td><td>3</td></tr>
+              <tr><td>Enlace (<span lang="en">Link</span>)</td><td>El protocolo que maneja el medio de la red local, por ejemplo Ethernet.</td><td>2 y 1</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nota">
+          <p><strong>Nombres distintos, misma idea:</strong> IBM llama a la capa de enlace «acceso a la red» (<span lang="en">Network access</span>). Verás ambos nombres en libros y videos. Algunos autores separan la capa física y hablan de un TCP/IP de cinco capas: es una forma didáctica de presentarlo.</p>
+        </div>
+        <div class="nota">
+          <p><strong>Ejemplo didáctico:</strong> la sesión (capa 5 de OSI) no desaparece en TCP/IP: la manejan las propias aplicaciones. Por eso, en la práctica, la capa de aplicación de TCP/IP cubre las capas 5, 6 y 7 de OSI.</p>
+        </div>
+        <div class="nota alerta">
+          <p><strong>Error frecuente:</strong> pensar que hay que elegir entre OSI y TCP/IP. Se usan juntos: TCP/IP es lo que funciona en los equipos, y OSI es el idioma común para explicar y diagnosticar. Por eso los técnicos dicen «es un problema de capa 2» aunque la red use TCP/IP.</p>
+        </div>
+      </div>
+      <h3>Actividad: ¿en qué capa de TCP/IP trabaja?</h3>
+      <div data-actividad="tcpip"></div>
+    </section>
+
+    <!-- ================= DESCANSO ================= -->
+    <section id="b-descanso" class="bloque descanso" aria-labelledby="t-descanso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <p class="grande" aria-hidden="true">☕</p>
+      <h2 id="t-descanso">Descanso de 10 minutos</h2>
+      <p>Levántate, toma agua y descansa la vista. Mira algo lejano durante 20 segundos.</p>
+      <p>Reto mental: di las 7 capas de OSI de abajo hacia arriba sin mirar. Luego, de arriba hacia abajo.</p>
+    </section>
+
+    <!-- ================= 3. DESARROLLO TEÓRICO (IV) ================= -->
+    <section id="b-encapsula" class="bloque" aria-labelledby="t-encapsula">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-encapsula">Encapsulamiento: cómo se empaqueta un mensaje</h2>
+      <div class="lectura">
+        <p>Cuando envías algo, el mensaje <strong>baja</strong> por las capas de tu equipo, y cada capa le agrega su propia información de control, como quien mete una carta en un sobre y luego el sobre en una caja con etiqueta. A eso se le llama <strong>encapsulamiento</strong>. En el equipo que recibe pasa lo contrario: el mensaje <strong>sube</strong> por las capas y cada una quita y lee su parte. Eso es el <strong>desencapsulamiento</strong>.</p>
+        <p>Dos ejemplos concretos, según IBM: la capa de transporte agrega al encabezado los números de puerto de origen y destino, y la capa de enlace de datos agrega las direcciones MAC del emisor y del receptor al encabezado de cada trama.</p>
+        <h3>El nombre del mensaje en cada capa</h3>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Capa</th><th>Cómo se llama el mensaje</th><th>Lo que se agregó</th></tr></thead>
+            <tbody>
+              <tr><td>Aplicación</td><td>Datos</td><td>El contenido, por ejemplo una petición HTTP.</td></tr>
+              <tr><td>Transporte</td><td>Segmento</td><td>Puertos de origen y destino.</td></tr>
+              <tr><td>Red</td><td>Paquete</td><td>Direcciones IP de origen y destino.</td></tr>
+              <tr><td>Enlace de datos</td><td>Trama</td><td>Direcciones MAC y una marca al final para detectar errores.</td></tr>
+              <tr><td>Física</td><td>Bits</td><td>Nada nuevo: la trama se convierte en señales eléctricas, de luz o de radio.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <pre class="log" aria-label="Diagrama del encapsulamiento">Aplicación  [ DATOS: GET /pedidos ]
+Transporte  [ TCP puertos | DATOS ]                    → segmento
+Red         [ IP origen/destino | TCP | DATOS ]        → paquete
+Enlace      [ MAC | IP | TCP | DATOS | control ]      → trama
+Física      0110100101011100...                        → bits</pre>
+      <div class="lectura">
+        <div class="nota">
+          <p><strong>Ejemplo didáctico:</strong> el router de la panadería recibe la trama, quita el encabezado de capa 2, lee la IP de destino (capa 3), decide por dónde enviarla y la vuelve a encapsular en una trama nueva para el siguiente tramo. Las direcciones MAC cambian en cada salto; las IP de origen y destino viajan de extremo a extremo.</p>
+        </div>
+        <div class="nota alerta">
+          <p><strong>Error frecuente:</strong> creer que cada equipo del camino abre el mensaje completo. Un switch solo mira hasta la capa 2 y un router hasta la capa 3. Solo el equipo de destino sube hasta la aplicación.</p>
+        </div>
+      </div>
+      <h3>Actividad: ¿cómo se llama el mensaje?</h3>
+      <div data-actividad="pdu"></div>
+    </section>
+
+    <!-- ================= 3. DESARROLLO TEÓRICO (V) ================= -->
+    <section id="b-protocolos" class="bloque" aria-labelledby="t-protocolos">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-protocolos">Protocolos: las reglas de cada capa</h2>
+      <div class="lectura">
+        <p>Un <strong>protocolo</strong> es un conjunto de reglas que dos equipos siguen para entenderse en una capa. Estos son los que verás todo el tiempo:</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Protocolo</th><th>Capa (TCP/IP)</th><th>Para qué sirve</th><th>Documento oficial</th></tr></thead>
+            <tbody>
+              <tr><td>HTTP</td><td>Aplicación</td><td>Pedir y entregar páginas web.</td><td>RFC 9110 (2022)</td></tr>
+              <tr><td>DNS</td><td>Aplicación</td><td>Traducir nombres como «ejemplo.com» a direcciones IP. Lo verás en el Módulo 3.</td><td>RFC 1034 y 1035</td></tr>
+              <tr><td>TCP</td><td>Transporte</td><td>Entrega confiable y ordenada de los datos.</td><td>RFC 9293 (2022)</td></tr>
+              <tr><td>UDP</td><td>Transporte</td><td>Entrega rápida sin confirmación, útil para video y voz.</td><td>RFC 768</td></tr>
+              <tr><td>IP</td><td>Internet</td><td>Direccionar y enviar paquetes entre redes.</td><td>RFC 791 (1981)</td></tr>
+              <tr><td>Ethernet y Wi-Fi</td><td>Enlace</td><td>Mover tramas dentro de la red local, por cable o por aire.</td><td>IEEE 802.3 y 802.11</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nota">
+          <p><strong>¿Qué es un RFC?</strong> Es un documento de la IETF, la organización que define los estándares de internet. Son públicos y gratuitos: cualquiera puede leerlos en rfc-editor.org.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 4. DEMOSTRACIÓN PRÁCTICA ================= -->
+    <section id="b-demo" class="bloque" aria-labelledby="t-demo">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-demo">Demostración: abrir un paquete capa por capa</h2>
+      <div class="lectura">
+        <p>Volvamos a «La Espiga». El técnico captura el tráfico de la computadora de caja mientras intenta abrir el sistema de pedidos. Una herramienta de captura, como Wireshark, muestra cada paquete separado por capas. Esta es una <strong>simulación</strong> de cómo se vería uno:</p>
+      </div>
+      <pre class="log" aria-label="Captura simulada de un paquete">Trama 57: 74 bytes capturados
+Ethernet II, Origen: 00:00:5e:00:53:20, Destino: 00:00:5e:00:53:01
+Internet Protocol Version 4, Origen: 192.168.1.20, Destino: 203.0.113.10
+Transmission Control Protocol, Puerto origen: 51514, Puerto destino: 80
+Hypertext Transfer Protocol: GET /pedidos HTTP/1.1</pre>
+      <div class="lectura">
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Línea</th><th>Capa</th><th>Qué nos dice</th></tr></thead>
+            <tbody>
+              <tr><td>Ethernet II</td><td>Enlace (2)</td><td>La trama va de la tarjeta de red de la PC a la del router (direcciones MAC).</td></tr>
+              <tr><td>Internet Protocol Version 4</td><td>Red / Internet (3)</td><td>El paquete va de la PC (192.168.1.20, privada) al servidor de pedidos (203.0.113.10).</td></tr>
+              <tr><td>Transmission Control Protocol</td><td>Transporte (4)</td><td>Usa TCP y va al puerto 80, el de la web sin cifrar.</td></tr>
+              <tr><td>Hypertext Transfer Protocol</td><td>Aplicación (7)</td><td>La petición: «dame la página /pedidos».</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nota ok">
+          <p><strong>Diagnóstico por capas, de abajo hacia arriba:</strong> 1) ¿Hay trama? Sí: el cable y la tarjeta funcionan (capas 1 y 2). 2) ¿El paquete sale hacia la IP correcta? Sí (capa 3). 3) ¿Llega respuesta del puerto 80? Si no llega, el problema está en el servidor de pedidos o en el camino hacia él, no en la panadería. Como la página del banco sí abre, internet funciona: el fallo es del servidor de pedidos. ¡Ese es el poder de pensar por capas!</p>
+        </div>
+      </div>
+      <h3>Actividad: lee la captura</h3>
+      <p>Para cada línea de captura simulada, decide a qué capa del modelo TCP/IP pertenece.</p>
+      <div data-actividad="captura"></div>
+    </section>
+
+    <!-- ================= VOCABULARIO ================= -->
+    <section id="b-vocab" class="bloque" aria-labelledby="t-vocab">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-vocab">Vocabulario de redes</h2>
+      <p>Pulsa el altavoz para escuchar cada término. Así aparecen en las herramientas, los equipos y el examen CCNA.</p>
+      <ul class="vocab">
+        <li data-en="layer"><span><span class="en" lang="en">layer</span><span class="es">capa</span><span class="pr">léi-er</span></span></li>
+        <li data-en="protocol"><span><span class="en" lang="en">protocol</span><span class="es">protocolo</span><span class="pr">próu-to-col</span></span></li>
+        <li data-en="header"><span><span class="en" lang="en">header</span><span class="es">encabezado</span><span class="pr">jé-der</span></span></li>
+        <li data-en="encapsulation"><span><span class="en" lang="en">encapsulation</span><span class="es">encapsulamiento</span><span class="pr">en-cap-siu-léi-shon</span></span></li>
+        <li data-en="segment"><span><span class="en" lang="en">segment</span><span class="es">segmento</span><span class="pr">ség-ment</span></span></li>
+        <li data-en="packet"><span><span class="en" lang="en">packet</span><span class="es">paquete</span><span class="pr">pá-ket</span></span></li>
+        <li data-en="frame"><span><span class="en" lang="en">frame</span><span class="es">trama</span><span class="pr">fréim</span></span></li>
+        <li data-en="port"><span><span class="en" lang="en">port</span><span class="es">puerto</span><span class="pr">port</span></span></li>
+      </ul>
+      <p>Frase completa: <span data-en="The router reads the packet header at layer three.">The router reads the packet header at layer three. <em>(El router lee el encabezado del paquete en la capa tres.)</em> </span></p>
+    </section>
+
+    <!-- ================= 6. PRÁCTICA AUTÓNOMA ================= -->
+    <section id="b-autonoma" class="bloque" aria-labelledby="t-autonoma">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-autonoma">Práctica autónoma: las capas de un día normal</h2>
+      <div class="lectura">
+        <p>Ahora te toca a ti. En estos cinco minutos lee la consigna; la ficha la haces después, a tu ritmo.</p>
+        <h3>Objetivo</h3>
+        <p>Describir por capas tres cosas que haces todos los días con la red.</p>
+        <h3>Qué hacer</h3>
+        <ul>
+          <li>Elige tres acciones: por ejemplo, ver un video, enviar un mensaje y abrir una página web.</li>
+          <li>Para cada una, escribe en «Mis notas» qué pasa en cada capa de TCP/IP: aplicación, transporte, internet y enlace. Usa la tabla de protocolos.</li>
+          <li>En tu computador, ejecuta <code>ipconfig /all</code> en el Símbolo del sistema e identifica tu dirección física (MAC, capa 2) y tu dirección IPv4 (capa 3). No copies los valores en tus notas: basta con decir dónde los encontraste.</li>
+          <li>Escribe un diagnóstico por capas para este caso: «El Wi-Fi está conectado, pero ninguna página abre».</li>
+        </ul>
+      </div>
+      <div class="reto">
+        <h4>Criterios para comprobar que lo hiciste bien</h4>
+        <ul>
+          <li>Para cada acción nombraste al menos un protocolo de aplicación y uno de transporte.</li>
+          <li>Indicaste si cada acción usa TCP o UDP y justificaste por qué.</li>
+          <li>Ubicaste correctamente la MAC en la capa 2 y la IP en la capa 3.</li>
+          <li>Tu diagnóstico revisa las capas en orden, de abajo hacia arriba.</li>
+          <li>Usaste bien las palabras segmento, paquete y trama.</li>
+        </ul>
+        <p>Si cumples los cinco criterios, ¡lo lograste! Al terminar, dile a Claude «revisa mi avance» y te dará retroalimentación.</p>
+      </div>
+    </section>
+
+    <!-- ================= 7. EVALUACIÓN ================= -->
+    <section id="b-examen" class="bloque" aria-labelledby="t-examen">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-examen">Evaluación final</h2>
+      <p>Doce preguntas: conceptos, casos prácticos y problemas de aplicación. Solo cuenta tu primera respuesta, y cada una te explica el porqué.</p>
+      <div data-quiz="examen"></div>
+    </section>
+
+    <!-- ================= 8. RESUMEN ================= -->
+    <section id="b-resumen" class="bloque" aria-labelledby="t-resumen">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-resumen">Resumen de la clase</h2>
+      <div class="lectura">
+        <h3>Conceptos que debes recordar</h3>
+        <ul>
+          <li>Las redes se organizan en capas: cada una resuelve un problema y le pasa el resultado a la siguiente.</li>
+          <li>OSI (ITU-T X.200) tiene 7 capas: física, enlace de datos, red, transporte, sesión, presentación y aplicación.</li>
+          <li>TCP/IP (RFC 1122) tiene 4: enlace, internet, transporte y aplicación. Es el que usa internet; OSI es el idioma común para explicar.</li>
+          <li>Encapsulamiento: al bajar, cada capa agrega su encabezado; al subir, cada capa lo quita. El mensaje se llama datos, segmento, paquete, trama y bits.</li>
+          <li>La MAC es capa 2 y cambia en cada salto; la IP es capa 3 y viaja de extremo a extremo; los puertos son capa 4.</li>
+          <li>Protocolos: HTTP y DNS (aplicación), TCP y UDP (transporte), IP (internet), Ethernet y Wi-Fi (enlace).</li>
+          <li>Para diagnosticar, revisa las capas en orden, de abajo hacia arriba.</li>
+        </ul>
+        <h3>Ya deberías ser capaz de</h3>
+        <ul>
+          <li>Nombrar las capas de OSI y TCP/IP y relacionarlas.</li>
+          <li>Explicar el encapsulamiento con un ejemplo.</li>
+          <li>Leer por capas una captura sencilla de tráfico.</li>
+        </ul>
+        <h3>Prepárate para la Clase 03</h3>
+        <p>En la próxima clase bajarás a la capa 1: los medios físicos. Verás el cable de cobre, la fibra óptica y el inalámbrico, y las fallas típicas de una interfaz.</p>
+      </div>
+    </section>
+
+    <!-- ================= VIDEOS COMPLEMENTARIOS ================= -->
+    <section id="videos" class="bloque fuentes" aria-labelledby="t-videos">
+      <p class="kicker">Material complementario · fuera del reloj</p>
+      <h2 id="t-videos">🎬 Videos complementarios</h2>
+      <p>Los videos complementan la clase: no la reemplazan. Se verificaron el 11 de noviembre de 2026 con la herramienta de la academia: existen, están disponibles y sus datos son los de la ficha. Su contenido se comprobó con sus subtítulos y capítulos; no se vieron completos.</p>
+      <ul class="lista-fuentes">
+        <li><a href="https://www.youtube.com/watch?v=4GEHbsBF0Yw" target="_blank" rel="noopener">Redes de ordenadores. Modelo OSI | 38/48 | UPV<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Canal: Universitat Politècnica de València (universidad, lección de un curso en línea) · en español · 10:46 · publicado el 15/12/2016 · verificado el 11/11/2026</span>
+          <span class="origen">Subtítulos: sí, escritos en español.</span>
+          <span class="origen">Qué enseña: qué es una pila de protocolos y el modelo OSI, con sus capas de aplicación y de transporte, y su uso actual.</span>
+          <span class="origen">Alternativa escrita, por si el video desaparece: la página de IBM sobre el modelo OSI (en las fuentes).</span></li>
+        <li><a href="https://www.youtube.com/watch?v=iNh-62Mf0O4" target="_blank" rel="noopener">Modelo de capas OSI y TCP/IP. Curso de redes desde 0 | Cap 12 |<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Canal: NASeros (educador especializado en redes, terceros) · en español · 24:02 · publicado el 10/01/2021 · verificado el 11/11/2026</span>
+          <span class="origen">Subtítulos: sí, escritos en español.</span>
+          <span class="origen">Qué enseña: los modelos de capas OSI y TCP/IP y cómo se relacionan.</span>
+          <span class="origen">Alternativa escrita, por si el video desaparece: el RFC 1122, sección 1.1.3 (en las fuentes).</span></li>
+      </ul>
+    </section>
+
+    <!-- ================= 9. FUENTES VERIFICADAS ================= -->
+    <section id="fuentes" class="bloque fuentes" aria-labelledby="t-fuentes">
+      <p class="kicker">Lectura extra · fuera del reloj</p>
+      <h2 id="t-fuentes">📚 Fuentes verificadas</h2>
+      <p>Cada afirmación de esta clase se comprobó leyendo estas fuentes el 11 de noviembre de 2026. <strong>Verificado</strong> significa que el dato se leyó en una fuente oficial o primaria. Las que están en inglés las puedes leer en español: clic derecho y <strong>Traducir a español</strong>.</p>
+
+      <h3>Estándares oficiales</h3>
+      <ul class="lista-fuentes">
+        <li><a href="https://www.itu.int/rec/T-REC-X.200" target="_blank" rel="noopener">ITU-T X.200: Open Systems Interconnection - Basic Reference Model: The basic model<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">UIT (ITU-T) · versión vigente: 07/1994 · página actualizada el 24/12/2019 · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: que el modelo OSI es un modelo de referencia básico publicado por la UIT, y su versión vigente.</span>
+          <span class="origen">Estado: verificado. La página no enumera las capas; las 7 capas se respaldan con la fuente de IBM.</span></li>
+        <li><a href="https://www.rfc-editor.org/rfc/rfc1122" target="_blank" rel="noopener">RFC 1122: Requirements for Internet Hosts - Communication Layers<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">IETF · R. Braden (ed.) · octubre de 1989 · estándar de internet STD 3 · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: las 4 capas de TCP/IP (aplicación, transporte, internet y enlace), qué hace cada una y que la de aplicación combina las capas de presentación y aplicación de OSI.</span>
+          <span class="origen">Estado: verificado (sección 1.1.3).</span></li>
+        <li><a href="https://www.rfc-editor.org/rfc/rfc9110" target="_blank" rel="noopener">RFC 9110: HTTP Semantics<span class="sr-only"> (se abre en otra pestaña)</span></a>,
+          <a href="https://www.rfc-editor.org/rfc/rfc9293" target="_blank" rel="noopener">RFC 9293: Transmission Control Protocol (TCP)<span class="sr-only"> (se abre en otra pestaña)</span></a> y
+          <a href="https://www.rfc-editor.org/rfc/rfc791" target="_blank" rel="noopener">RFC 791: Internet Protocol<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">IETF · junio de 2022 (HTTP), agosto de 2022 (TCP, reemplaza al RFC 793) y septiembre de 1981 (IP) · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: el documento oficial y la fecha de cada protocolo de la tabla.</span>
+          <span class="origen">Estado: verificado (título y fecha). Los RFC 768, 1034 y 1035 se citan por su número; su registro se verificó en la propuesta del curso.</span></li>
+        <li><a href="https://www.ieee802.org/" target="_blank" rel="noopener">IEEE 802 LAN/MAN Standards Committee<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">IEEE · última actualización indicada: 28/07/2026 · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: 802.3 es Ethernet y 802.11 es la LAN inalámbrica.</span>
+          <span class="origen">Estado: verificado (en la Clase 01).</span></li>
+      </ul>
+
+      <h3>Explicaciones técnicas y definiciones</h3>
+      <ul class="lista-fuentes">
+        <li><a href="https://www.ibm.com/think/topics/osi-model" target="_blank" rel="noopener">What is the OSI model?<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">IBM Think · autores: Chrystal R. China y Michael Goodwin · sin fecha visible · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: que OSI es un modelo conceptual de siete capas; qué hace cada capa y sus ejemplos (HTTP, DNS, SMTP; TLS, JPEG, MPEG; TCP y UDP; IPv4 e IPv6; ARP; cables y fibra); que transporte agrega puertos y enlace agrega MAC; los nombres segmento, paquete, trama y bits; y que TCP/IP tiene cuatro capas.</span>
+          <span class="origen">Estado: verificado (fuente de un fabricante). La regla general de que cada capa agrega su encabezado es una explicación didáctica coherente con estos ejemplos.</span></li>
+        <li><a href="https://csrc.nist.gov/glossary/term/router" target="_blank" rel="noopener">Glosario CSRC: router<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">NIST · definición de NIST SP 800-82r3 (adaptada del RFC 4949) · sin fecha visible · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: que el router es una puerta de enlace entre dos redes en la capa 3 de OSI.</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://learningcontent.cisco.com/documents/marketing/exam-topics/200-301-CCNA-v1.1.pdf" target="_blank" rel="noopener">CCNA Exam v1.1 (CCNA 200-301), temario en PDF<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Cisco · 2024 · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: que el temario distingue switches de capa 2 y de capa 3 (tema 1.1.b).</span>
+          <span class="origen">Estado: verificado (texto extraído del PDF).</span></li>
+      </ul>
+    </section>
+
+    <!-- ================= CIERRE ================= -->
+    <section id="cierre" class="bloque" aria-labelledby="t-cierre">
+      <p class="kicker">Cierre</p>
+      <h2 id="t-cierre">Mis notas y mis capas</h2>
+      <label for="notas">Escribe aquí tu práctica autónoma, tus dudas o lo que más te costó:</label>
+      <textarea id="notas" data-notas="generales" placeholder="Acción 1: aplicación… transporte… internet… enlace… · Acción 2… · Acción 3… · Diagnóstico del Wi-Fi sin páginas: …"></textarea>
+      <p>Tu avance se guarda solo. Al terminar, dile a Claude «revisa mi avance».</p>
+      <div id="resumen"></div>
+    </section>
+  </main>
+</div>
+
+<p class="pie">Redes//Academia · Clase 02 · Las capturas son simulaciones con datos ficticios y direcciones de documentación o privadas.</p>
+
+<script>
+window.CLASE = {
+  id: 'redes-02',
+  titulo: 'Redes · Clase 02: Modelos OSI y TCP/IP',
+  bloques: [
+    { id: 'b-bienvenida', titulo: 'Presentación y repaso', min: 10 },
+    { id: 'b-capas', titulo: '¿Por qué capas?', min: 10 },
+    { id: 'b-osi', titulo: 'Las 7 capas de OSI', min: 15 },
+    { id: 'b-tcpip', titulo: 'El modelo TCP/IP', min: 15 },
+    { id: 'b-descanso', titulo: 'Descanso', min: 10 },
+    { id: 'b-encapsula', titulo: 'Encapsulamiento', min: 15 },
+    { id: 'b-protocolos', titulo: 'Protocolos por capa', min: 10 },
+    { id: 'b-demo', titulo: 'Demostración: un paquete por capas', min: 10 },
+    { id: 'b-vocab', titulo: 'Vocabulario de redes', min: 5 },
+    { id: 'b-autonoma', titulo: 'Práctica autónoma', min: 5 },
+    { id: 'b-examen', titulo: 'Evaluación final', min: 10 },
+    { id: 'b-resumen', titulo: 'Resumen', min: 5 }
+  ],
+  actividades: {
+    capas: {
+      titulo: '¿Qué capa OSI lo hace?',
+      preguntas: [{ label: 'Lo hace la capa…', corto: 'Capa', opciones: ['1 Física', '2 Enlace de datos', '3 Red', '4 Transporte', '5 Sesión', '6 Presentación', '7 Aplicación'] }],
+      items: [
+        { titulo: 'Convertir los datos en señales eléctricas que viajan por el cable', respuestas: [['1 Física']], pista: '¿Es lo más cercano al cable o a la persona?', explica: 'Transmitir los bits en bruto por el medio es tarea de la capa física.' },
+        { titulo: 'Agregar las direcciones MAC de origen y destino a la trama', respuestas: [['2 Enlace de datos']], pista: 'MAC y trama van juntas.', explica: 'La capa de enlace de datos arma la trama con las direcciones MAC.' },
+        { titulo: 'Decidir por qué red enviar un paquete hacia otra ciudad', respuestas: [['3 Red']], pista: 'Es el trabajo del router.', explica: 'El enrutamiento entre redes es de la capa de red, la del protocolo IP.' },
+        { titulo: 'Dividir los datos en segmentos y agregar los puertos de origen y destino', respuestas: [['4 Transporte']], pista: 'Puertos, TCP y UDP.', explica: 'La capa de transporte segmenta y agrega los puertos.' },
+        { titulo: 'Establecer, mantener y terminar la conexión entre dos aplicaciones', respuestas: [['5 Sesión']], pista: 'Piensa en «iniciar y cerrar sesión».', explica: 'La gestión de las sesiones es la capa 5.' },
+        { titulo: 'Cifrar los datos con TLS o comprimir una imagen en JPEG', respuestas: [['6 Presentación']], pista: 'Cambia el formato de los datos, no su destino.', explica: 'Traducir, comprimir y cifrar el formato de los datos es la capa de presentación.' },
+        { titulo: 'El navegador pide una página web con HTTP', respuestas: [['7 Aplicación']], pista: 'Es lo más cercano a la persona usuaria.', explica: 'HTTP es un protocolo de la capa de aplicación.' }
+      ]
+    },
+    tcpip: {
+      titulo: '¿En qué capa de TCP/IP trabaja?',
+      preguntas: [{ label: 'Trabaja en la capa…', corto: 'Capa TCP/IP', opciones: ['Aplicación', 'Transporte', 'Internet', 'Enlace'] }],
+      items: [
+        { titulo: 'HTTP', respuestas: [['Aplicación']], pista: '¿Lo usa directamente el navegador?', explica: 'HTTP es de la capa de aplicación.' },
+        { titulo: 'TCP', respuestas: [['Transporte']], pista: 'Entrega confiable de extremo a extremo.', explica: 'TCP es un protocolo de transporte.' },
+        { titulo: 'IP', respuestas: [['Internet']], pista: 'Datagramas entre redes.', explica: 'IP es el protocolo de la capa internet.' },
+        { titulo: 'Ethernet', respuestas: [['Enlace']], pista: 'Tramas dentro de la red local, por cable.', explica: 'Ethernet (IEEE 802.3) es de la capa de enlace.' },
+        { titulo: 'UDP', respuestas: [['Transporte']], pista: 'Es el «hermano rápido» de TCP.', explica: 'UDP también es de transporte, pero sin confirmación de entrega.' },
+        { titulo: 'DNS', respuestas: [['Aplicación']], pista: 'Traduce nombres que escribe una persona.', explica: 'DNS es un servicio de la capa de aplicación.' },
+        { titulo: 'Wi-Fi (IEEE 802.11)', respuestas: [['Enlace']], pista: 'Es Ethernet, pero por aire.', explica: 'El Wi-Fi mueve tramas en la red local: capa de enlace.' }
+      ]
+    },
+    pdu: {
+      titulo: '¿Cómo se llama el mensaje?',
+      preguntas: [{ label: 'En esa capa se llama…', corto: 'Nombre', opciones: ['Datos', 'Segmento', 'Paquete', 'Trama', 'Bits'] }],
+      items: [
+        { titulo: 'En la capa de red, con las direcciones IP de origen y destino', respuestas: [['Paquete']], pista: 'IP trabaja con…', explica: 'En la capa de red el mensaje se llama paquete.' },
+        { titulo: 'En la capa de enlace, con las direcciones MAC', respuestas: [['Trama']], pista: 'MAC va con…', explica: 'En la capa de enlace se llama trama.' },
+        { titulo: 'En la capa de transporte, con los puertos', respuestas: [['Segmento']], pista: 'TCP divide los datos en…', explica: 'En la capa de transporte se llama segmento.' },
+        { titulo: 'Viajando por el cable como señales eléctricas', respuestas: [['Bits']], pista: 'Unos y ceros.', explica: 'En la capa física son bits.' },
+        { titulo: 'La petición «GET /pedidos» que arma el navegador', respuestas: [['Datos']], pista: 'Todavía no se agregó ningún encabezado de red.', explica: 'En la capa de aplicación hablamos simplemente de datos.' }
+      ]
+    },
+    captura: {
+      titulo: 'Lee la captura',
+      variante: 'consola',
+      preguntas: [{ label: '¿A qué capa TCP/IP pertenece esta línea?', corto: 'Capa', opciones: ['Aplicación', 'Transporte', 'Internet', 'Enlace'] }],
+      items: [
+        { etiqueta: 'LÍNEA', nivel: 'baja', titulo: 'Línea 1 de la captura', meta: 'Simulación con datos ficticios', log: 'Ethernet II, Origen: 00:00:5e:00:53:20, Destino: 00:00:5e:00:53:01', respuestas: [['Enlace']], pista: 'Esos números con dos puntos son direcciones MAC.', explica: 'Ethernet II con direcciones MAC: capa de enlace.' },
+        { etiqueta: 'LÍNEA', nivel: 'baja', titulo: 'Línea 2 de la captura', meta: 'Simulación con datos ficticios', log: 'Internet Protocol Version 4, Origen: 192.168.1.20, Destino: 203.0.113.10', respuestas: [['Internet']], pista: '¿Qué protocolo usa direcciones como 192.168.1.20?', explica: 'IPv4 con direcciones IP: capa internet (red).' },
+        { etiqueta: 'LÍNEA', nivel: 'baja', titulo: 'Línea 3 de la captura', meta: 'Simulación con datos ficticios', log: 'Transmission Control Protocol, Puerto origen: 51514, Puerto destino: 80', respuestas: [['Transporte']], pista: 'Aparecen puertos.', explica: 'TCP con puertos: capa de transporte.' },
+        { etiqueta: 'LÍNEA', nivel: 'baja', titulo: 'Línea 4 de la captura', meta: 'Simulación con datos ficticios', log: 'Hypertext Transfer Protocol: GET /pedidos HTTP/1.1', respuestas: [['Aplicación']], pista: 'Es lo que pidió el navegador.', explica: 'HTTP es la capa de aplicación.' },
+        { etiqueta: 'LÍNEA', nivel: 'baja', titulo: 'Línea de otra captura', meta: 'Simulación con datos ficticios', log: 'User Datagram Protocol, Puerto origen: 50122, Puerto destino: 53', respuestas: [['Transporte']], pista: 'UDP es pariente de TCP.', explica: 'UDP con puertos: capa de transporte. El puerto 53 es el de DNS.' }
+      ]
+    }
+  },
+  quizzes: {
+    examen: {
+      titulo: 'Evaluación final',
+      preguntas: [
+        { q: '¿Por qué se organizan las redes en capas?', opciones: ['Para que cada parte resuelva un problema y equipos distintos se entiendan', 'Para que la red sea más lenta', 'Porque los cables tienen capas', 'Para no necesitar protocolos'], correcta: 0, explica: 'Las capas dividen el trabajo, permiten la interoperabilidad y ordenan el diagnóstico.' },
+        { q: '¿Cuántas capas tiene el modelo OSI?', opciones: ['4', '5', '7', '9'], correcta: 2, explica: 'OSI tiene 7 capas, de la física a la de aplicación.' },
+        { q: '¿Cuáles son las 4 capas de TCP/IP según el RFC 1122?', opciones: ['Física, red, sesión y aplicación', 'Enlace, internet, transporte y aplicación', 'Cable, Wi-Fi, IP y web', 'Datos, segmento, paquete y trama'], correcta: 1, explica: 'El RFC 1122 nombra las capas de enlace, internet, transporte y aplicación.' },
+        { q: '¿En qué capa de OSI trabaja el router?', opciones: ['1', '2', '3', '7'], correcta: 2, explica: 'El router trabaja en la capa 3, la de red, con direcciones IP.' },
+        { q: '¿Qué capa agrega los números de puerto?', opciones: ['Enlace', 'Red', 'Transporte', 'Física'], correcta: 2, explica: 'La capa de transporte agrega los puertos de origen y destino.' },
+        { q: 'En la capa de enlace de datos, el mensaje se llama…', opciones: ['Segmento', 'Paquete', 'Trama', 'Bit'], correcta: 2, explica: 'En la capa de enlace se llama trama, y lleva direcciones MAC.' },
+        { q: '¿Qué es el encapsulamiento?', opciones: ['Cifrar todos los datos', 'Que cada capa agregue su información de control al bajar el mensaje', 'Guardar los paquetes en una caja', 'Borrar los encabezados'], correcta: 1, explica: 'Al bajar por las capas, cada una agrega su encabezado. Al subir, en el destino, se quitan.' },
+        { q: '¿Qué protocolo es de la capa de transporte?', opciones: ['HTTP', 'UDP', 'IP', 'Ethernet'], correcta: 1, explica: 'UDP, igual que TCP, es de transporte.' },
+        { q: '¿Qué dirección cambia en cada salto del camino?', opciones: ['La IP de destino', 'La dirección MAC', 'El puerto de destino', 'La URL'], correcta: 1, explica: 'Cada router arma una trama nueva con nuevas MAC; las IP viajan de extremo a extremo.' },
+        { q: 'Caso práctico: el Wi-Fi está conectado, el ping al router responde, pero ninguna página web abre. ¿Qué capas ya funcionan?', opciones: ['Ninguna', 'Las de enlace e internet hasta el router', 'Solo la de aplicación', 'Todas'], correcta: 1, explica: 'Si el router responde al ping, el enlace y la capa internet funcionan hasta ahí. Hay que seguir revisando más arriba o más allá del router.' },
+        { q: 'Caso práctico: en una captura ves «Transmission Control Protocol, Puerto destino: 443». ¿Qué capa estás leyendo?', opciones: ['Enlace', 'Internet', 'Transporte', 'Física'], correcta: 2, explica: 'TCP y los puertos son de la capa de transporte.' },
+        { q: '¿Qué significa «header»?', opciones: ['Capa', 'Encabezado', 'Trama', 'Puerto'], correcta: 1, explica: 'Header es encabezado: la información de control que agrega cada capa.' }
+      ]
+    }
+  }
+};
+</script>
+<script src="../../../recursos/sync.js"></script>
+<script src="../../../recursos/academia.js"></script>
+</body>
+</html>

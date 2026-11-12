@@ -39,8 +39,8 @@ Una academia personal para aprender **desde cero**, con Claude como profesor y e
 | Inglés | 5 · 40 (40 h) | 01–04 → M1·1 a M1·4 | M1·5 El verbo *to be* completo |
 | JavaScript | 7 · 37 (74 h) | 01–04 → M1·1 a M1·4 | M1·5 Bucles |
 | Python | 9 · 38 (76 h) + electiva de 3 | 01–04 → M1·1 a M1·4 | M1·5 Bucles |
-| Redes y Telecomunicaciones | 11 · 51 (102 h) | 01 → M1·1 | M1·2 Modelos OSI y TCP/IP |
-| IA: Claude y productividad | 11 · 55 (110 h) | 01 → M1·1 | M1·2 (ver `cursos/ia/ruta-aprendizaje.md`) |
+| Redes y Telecomunicaciones | 11 · 51 (102 h) | 01–02 → M1·1 a M1·2 | M1·3 Medios físicos |
+| IA: Claude y productividad | 11 · 55 (110 h) | 01–02 → M1·1 a M1·2 | M1·3 Primeros pasos en el chat |
 
 Los módulos y el orden de todas las clases están en `recursos/catalogo.js` (aprobados en
 `PROPUESTA-ORGANIZACION-CURRICULAR.md`; Redes e IA, en `PROPUESTA-AMPLIACION-6-CURSOS.md`). El número de archivo (`clase-04`) no cambia aunque la
@@ -182,7 +182,7 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   clases (también las que aún no existen). Quedan 17 clases sin video, con el motivo anotado en el catálogo y en
   las rutas (sobre todo proyectos). Al crear cada clase, sus videos del catálogo pasan a su página.
 - **Objetivo principal pendiente:** completar Redes y Telecomunicaciones e IA: Claude. Que estén en el menú
-  no significa que estén hechos: faltan 104 clases (Redes 50 e IA 54). La ampliación no está terminada hasta
+  no significa que estén hechos: faltan 102 clases (Redes 49 e IA 53). La ampliación no está terminada hasta
   que todo el contenido esté creado, integrado y probado. Falta el horario de ambos y
   saber qué plan de Claude usa el alumno.
 
@@ -384,3 +384,16 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   vulnerabilidad» (universidad) y RINKU «¿Qué es la triada CIA en ciberseguridad?». Comprobados con sus
   subtítulos. También en el catálogo, en `recursos/videos.json` y en la ruta de Ciberseguridad.
 - Pruebas: pruebas-clases 19/19 (ciber-01: 120 min, actividades 25/25, examen 12/12, sin errores, 360 px OK).
+
+### 2026-11-11 (Redes 02 e IA 02)
+- **`redes-02`** «Modelos OSI y TCP/IP: capas, encapsulamiento y protocolos» (`cursos/redes/clases/clase-02.html`):
+  120 min, 9 secciones, 4 actividades (capas OSI, capas TCP/IP, nombre del mensaje y lectura de una captura
+  simulada), examen de 12 preguntas y videos UPV y NASeros. Fuentes: ITU-T X.200, RFC 1122, IBM, RFC 9110,
+  9293 y 791, NIST (router) e IEEE 802.
+- **`ia-02`** «Claude y Claude Code: planes, apps, modelos y límites de uso» (`cursos/ia/clases/clase-02.html`):
+  120 min, 9 secciones, 4 actividades (herramienta, plan, modelo y límites), examen de 12 preguntas y videos de
+  Datademia y MoureDev (capítulo de modelos). Planes, precios, modelos y límites verificados el 11/11/2026 en
+  las páginas oficiales de Anthropic (pricing, centro de ayuda, models overview, download y Claude Code).
+- Catálogo y rutas actualizados. Ninguna clase anterior cambió. Pruebas: pruebas-clases 21/21, pruebas-sync
+  15/15, catálogo, rutas y coherencia correctos, revisión visual en escritorio y a 360 px.
+- Punto de control: el alumno revisa estas dos clases antes de seguir con las clases 03.

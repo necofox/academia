@@ -20,15 +20,15 @@ la acompañan (fundamentos, espacio de trabajo, skills, agentes y proyecto).
 Usar Claude de forma eficaz, segura y responsable, con una formación completa en ingeniería de instrucciones (prompt engineering) en seis niveles: desde formular una pregunta clara hasta diseñar, evaluar, corregir y reutilizar instrucciones profesionales, y aplicar el context engineering con Claude Code y sus agentes, sin depender de la API de pago.
 
 - **Duración:** 11 módulos · 55 clases · 110 h de clase (2 h por clase). La práctica autónoma de cada clase se suma aparte.
-- **Clases listas:** 1 de 55.
-- **Siguiente clase por crear:** Módulo 1 · Clase 2: Claude y Claude Code: planes, apps, modelos y límites de uso.
+- **Clases listas:** 2 de 55.
+- **Siguiente clase por crear:** Módulo 1 · Clase 3: Primeros pasos: conversaciones, archivos, búsqueda web y estilos.
 - **Proyecto final del curso:** Biblioteca profesional de prompts para Claude: instrucciones para investigación, análisis de documentos, programación, revisión de código, automatización, planificación de proyectos, y agentes y subagentes, cada una con sus criterios de prueba. Incluye la transformación documentada de instrucciones deficientes en profesionales. Tiene una versión completa con el plan gratuito; la parte de agentes con Claude Code requiere un plan de pago.
 
 ## Resumen de módulos
 
 | Módulo | Clases | Horas | Listas | Necesitas antes |
 |---|---|---|---|---|
-| Módulo 1 · Fundamentos de la IA generativa y de Claude | 4 | 8 | 1 | Ninguno obligatorio |
+| Módulo 1 · Fundamentos de la IA generativa y de Claude | 4 | 8 | 2 | Ninguno obligatorio |
 | Módulo 2 · Prompting · Nivel 1: Fundamentos | 4 | 8 | 0 | Módulo 1 |
 | Módulo 3 · Prompting · Nivel 2: Técnicas fundamentales | 5 | 10 | 0 | Módulo 2 |
 | Módulo 4 · Espacio de trabajo con Claude: proyectos, artefactos, memoria y conectores | 4 | 8 | 0 | Módulo 2 |
@@ -39,7 +39,7 @@ Usar Claude de forma eficaz, segura y responsable, con una formación completa e
 | Módulo 9 · Prompting · Nivel 6: Context engineering y Claude Code | 7 | 14 | 0 | Módulo 6 |
 | Módulo 10 · Agentes, subagentes y automatización | 5 | 10 | 0 | Módulo 9 |
 | Módulo 11 · Proyecto integrador: biblioteca profesional de prompts | 4 | 8 | 0 | Módulos 7 y 8 |
-| **Total** | **55** | **110** | **1** | |
+| **Total** | **55** | **110** | **2** | |
 
 ## Módulo 1 · Fundamentos de la IA generativa y de Claude (4 clases · 8 h)
 
@@ -54,8 +54,8 @@ Usar Claude de forma eficaz, segura y responsable, con una formación completa e
 | Clase | Tema | Plan de Claude | Temario oficial que cubre | Videos | Estado |
 |---|---|---|---|---|---|
 | M1·1 | ¿Qué es la IA generativa? Modelos de lenguaje, capacidades y límites | Gratis · Chat de Claude | — | [▶ 1](https://www.youtube.com/watch?v=0K5Knnq2ZRk) | ✔ Lista: `clases/clase-01.html` (id `ia-01`) |
-| M1·2 | Claude y Claude Code: planes, apps, modelos y límites de uso | Gratis · Chat de Claude | — | — | Próximamente · **siguiente por crear** |
-| M1·3 | Primeros pasos: conversaciones, archivos, búsqueda web y estilos | Gratis · Chat de Claude | — | — | Próximamente |
+| M1·2 | Claude y Claude Code: planes, apps, modelos y límites de uso | Gratis · Chat de Claude | — | [▶ 1](https://www.youtube.com/watch?v=vW4MFfw8taU) [▶ 2](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=2018s) | ✔ Lista: `clases/clase-02.html` (id `ia-02`) |
+| M1·3 | Primeros pasos: conversaciones, archivos, búsqueda web y estilos | Gratis · Chat de Claude | — | — | Próximamente · **siguiente por crear** |
 | M1·4 | Fluidez en IA y uso responsable: el marco 4D, privacidad, verificación y política de uso | Gratis · Chat de Claude | — | [▶ 1](https://www.youtube.com/watch?v=W4Ua6XFfX9w) [▶ 2](https://www.youtube.com/watch?v=EljzyfdYkrc) | Próximamente |
 
 ## Módulo 2 · Prompting · Nivel 1: Fundamentos (4 clases · 8 h)

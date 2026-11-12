@@ -515,7 +515,7 @@ window.CATALOGO = [
         fuentes: 'ITU-T X.200 (modelo OSI), RFC 1122 (capas TCP/IP), ITU-T G.652 (fibra monomodo), temario CCNA, guía de instalación de Packet Tracer.',
         clases: [
           { n: '01', titulo: '¿Qué es una red? Componentes, tipos (LAN, WAN, WLAN) y topologías', archivo: 'cursos/redes/clases/clase-01.html', id: 'redes-01', ref: 'CCNA v1.1 1.1–1.2', videos: ['H8W9oMNSuwo'] },
-          { titulo: 'Modelos OSI y TCP/IP: capas, encapsulamiento y protocolos', videos: ['4GEHbsBF0Yw', 'iNh-62Mf0O4'] },
+          { n: '02', titulo: 'Modelos OSI y TCP/IP: capas, encapsulamiento y protocolos', archivo: 'cursos/redes/clases/clase-02.html', id: 'redes-02', videos: ['4GEHbsBF0Yw', 'iNh-62Mf0O4'] },
           { titulo: 'Medios físicos: cobre, fibra óptica e inalámbrico; cables y fallas de interfaz', ref: 'CCNA v2.0 1.1', videos: ['ieTH5lVhNaY', 'CdAl3cECvJI'] },
           { titulo: 'Ethernet y switching: tramas, direcciones MAC y tabla MAC', ref: 'CCNA v1.1 1.13', videos: ['w_CArT71qHc', 'u2n762WG0Vo'] },
           { titulo: 'Cisco Packet Tracer: tu primera red y los comandos de diagnóstico del PC', ref: 'CCNA v2.0 1.6', videos: ['a1Im6GYaSno'] }
@@ -692,7 +692,7 @@ window.CATALOGO = [
         fuentes: 'Claude Academy: «AI Fluency: Framework and foundations» y «AI capabilities and limitations» (oficial); Elements of AI (Universidad de Helsinki); página de planes; centro de privacidad; política de uso.',
         clases: [
           { n: '01', titulo: '¿Qué es la IA generativa? Modelos de lenguaje, capacidades y límites', archivo: 'cursos/ia/clases/clase-01.html', id: 'ia-01', plan: 'Gratis', donde: 'Chat de Claude', videos: ['0K5Knnq2ZRk'] },
-          { titulo: 'Claude y Claude Code: planes, apps, modelos y límites de uso', plan: 'Gratis', donde: 'Chat de Claude' },
+          { n: '02', titulo: 'Claude y Claude Code: planes, apps, modelos y límites de uso', archivo: 'cursos/ia/clases/clase-02.html', id: 'ia-02', plan: 'Gratis', donde: 'Chat de Claude', videos: ['vW4MFfw8taU', 'TCq7eZ9Lhc8@2018'] },
           { titulo: 'Primeros pasos: conversaciones, archivos, búsqueda web y estilos', plan: 'Gratis', donde: 'Chat de Claude' },
           { titulo: 'Fluidez en IA y uso responsable: el marco 4D, privacidad, verificación y política de uso', plan: 'Gratis', donde: 'Chat de Claude', videos: ['W4Ua6XFfX9w', 'EljzyfdYkrc'] }
         ] },

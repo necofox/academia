@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IA · Clase 02 · Claude y Claude Code</title>
+<link rel="stylesheet" href="../../../recursos/academia.css">
+</head>
+<body class="tema-ia">
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="top">
+  <div class="marca"><span class="logo" aria-hidden="true">&lt;/&gt;</span><span>IA<span class="acento">//</span>ACADEMIA</span></div>
+  <div id="reloj" class="reloj-zona"></div>
+  <div id="voz"></div>
+  <a class="btn-mini" href="../../../inicio.html">☰ Menú</a>
+</header>
+
+<div class="layout">
+  <nav id="agenda" class="agenda" aria-label="Agenda de la clase"></nav>
+
+  <main id="contenido">
+    <div class="portada">
+      <p class="kicker">Módulo 1 · Fundamentos de la IA generativa y de Claude · Clase 02</p>
+      <h1>Claude y Claude Code</h1>
+      <p class="sub">Las formas de usar Claude, qué incluye cada plan, qué modelo elegir y cómo funcionan los límites de uso. Duración: 2 horas.</p>
+    </div>
+
+    <!-- ================= 1. PRESENTACIÓN Y 2. ACTIVACIÓN ================= -->
+    <section id="b-bienvenida" class="bloque" aria-labelledby="t-bienvenida">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-bienvenida">Presentación y repaso</h2>
+      <div class="lectura">
+        <p>En la Clase 01 viste qué es un modelo de lenguaje y cuáles son sus límites. Hoy vas a conocer el «producto»: las distintas formas de usar Claude, qué puedes hacer gratis, qué necesita un plan de pago, qué modelo conviene para cada tarea y por qué a veces aparece el aviso de que llegaste al límite.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Ficha de la clase</th><th>Detalle</th></tr></thead>
+            <tbody>
+              <tr><td>Número y título</td><td>Clase 02: Claude y Claude Code: planes, apps, modelos y límites de uso.</td></tr>
+              <tr><td>Módulo</td><td>Módulo 1 · Fundamentos de la IA generativa y de Claude (clase 2 de 4).</td></tr>
+              <tr><td>Duración</td><td>120 minutos, con un descanso de 10.</td></tr>
+              <tr><td>Conocimientos previos</td><td>La Clase 01: qué es un modelo de lenguaje, los tokens, la ventana de contexto y las alucinaciones.</td></tr>
+              <tr><td>Plan de Claude</td><td><strong>Gratis.</strong> Toda la práctica se hace con el plan gratuito; Claude Code se estudia, pero no se usa en esta clase.</td></tr>
+              <tr><td>Dónde se practica</td><td>En el chat de Claude (claude.ai, la aplicación de escritorio o la del celular).</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Repaso rápido de la Clase 01</h3>
+        <ul>
+          <li>¿Qué es un token?</li>
+          <li>¿Por qué un modelo puede escribir con seguridad algo falso?</li>
+          <li>¿Qué es la ventana de contexto?</li>
+        </ul>
+        <details class="revelar no-leer"><summary>Ver las respuestas</summary><p>La unidad mínima de texto del modelo. Porque genera lo más probable, y lo probable no siempre es verdad (alucinación). La cantidad de texto que el modelo puede tener presente a la vez: su memoria de trabajo.</p></details>
+        <h3>Objetivos: al terminar podrás</h3>
+        <ul>
+          <li>Distinguir el chat de Claude, Claude Code y la API, y saber dónde se usa cada uno.</li>
+          <li>Comparar los planes de Claude y decidir cuál necesita cada persona.</li>
+          <li>Elegir un modelo (Haiku, Sonnet, Opus o Fable) según la tarea.</li>
+          <li>Explicar cómo funcionan los límites de uso de 5 horas y semanales, y qué los consume.</li>
+          <li>Recomendar un plan y un modelo para un caso real, con argumentos.</li>
+        </ul>
+        <h3>Antes de empezar, piensa</h3>
+        <ul>
+          <li>¿Usarías la misma herramienta para conversar sobre una idea que para programar una aplicación completa?</li>
+          <li>Si un servicio es gratis, ¿qué crees que te limita?</li>
+        </ul>
+        <div class="nota alerta">
+          <p><strong>Situación de partida (caso ficticio):</strong> Diego es estudiante. Una amiga le dijo: «Paga Claude Max, que es lo mejor». Él solo quiere resumir sus apuntes y, algún día, aprender a programar. ¿Necesita pagar? ¿Cuánto? ¿Qué modelo debería usar? Al final de la clase le darás una recomendación con argumentos.</p>
+        </div>
+        <div class="nota">
+          <p><strong>Importante:</strong> los planes, los precios y los modelos de Claude cambian con frecuencia. Todo lo de esta clase se verificó en las páginas oficiales el 11/11/2026. Antes de pagar algo, revisa siempre la página oficial de planes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 3. DESARROLLO TEÓRICO (I) ================= -->
+    <section id="b-familia" class="bloque" aria-labelledby="t-familia">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-familia">Un modelo, varias formas de usarlo</h2>
+      <div class="lectura">
+        <p>Piensa en un chef. Puedes pedirle consejo por teléfono, invitarlo a tu cocina para que cocine contigo, o contratarlo para que tu restaurante use sus recetas. Es el mismo chef, pero de tres formas distintas. Con Claude pasa algo parecido.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Forma</th><th>Qué es</th><th>Dónde funciona</th><th>¿Gratis?</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Las apps de Claude</strong> (el chat)</td><td>Conversas con Claude: le pides que explique, resuma, escriba o analice archivos.</td><td>En la web (claude.ai), en el escritorio (Windows, macOS y Linux en beta) y en el celular (iOS y Android).</td><td>Sí. Según la página oficial, las apps están disponibles en todos los planes, aunque algunas funciones son solo de pago.</td></tr>
+              <tr><td><strong><span lang="en">Claude Code</span></strong></td><td>Según su documentación, es un asistente de programación con IA que ayuda a crear funciones, corregir errores y automatizar tareas de desarrollo: lee tu código, edita archivos y ejecuta comandos.</td><td>En la terminal, en editores como VS Code y JetBrains, en la app de escritorio y en la web.</td><td>No. Necesita un plan de pago (Pro o superior).</td></tr>
+              <tr><td><strong>La API</strong></td><td>La puerta para programadores: sus programas le hablan a Claude directamente.</td><td>Desde código propio.</td><td>Se paga aparte, según el uso. Este curso no la necesita.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nota">
+          <p><strong>La diferencia clave:</strong> en el chat, Claude te <strong>responde</strong> y tú decides qué hacer. En Claude Code, Claude <strong>actúa</strong>: modifica archivos y ejecuta comandos en tu computador, siempre con los permisos que tú le das. Por eso Claude Code se practica en carpetas de prueba, como dice la regla de seguridad del curso.</p>
+        </div>
+        <div class="nota alerta">
+          <p><strong>Error frecuente:</strong> creer que Claude Code es «otro Claude más inteligente». Usa los mismos modelos que el chat. Lo que cambia es la herramienta: tiene acceso a tus archivos y a la terminal.</p>
+        </div>
+      </div>
+      <h3>Actividad: ¿qué herramienta usarías?</h3>
+      <div data-actividad="herramienta"></div>
+    </section>
+
+    <!-- ================= 3. DESARROLLO TEÓRICO (II) ================= -->
+    <section id="b-planes" class="bloque" aria-labelledby="t-planes">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-planes">Los planes de Claude</h2>
+      <div class="lectura">
+        <p>Esta es la información de la página oficial de planes, consultada el 11/11/2026. Los precios están en dólares estadounidenses.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Plan</th><th>Precio</th><th>Uso incluido</th></tr></thead>
+            <tbody>
+              <tr><td>Free</td><td>US$0</td><td>Uso limitado cada 5 horas y cada semana.</td></tr>
+              <tr><td>Pro</td><td>US$20 al mes, o US$17 al mes con pago anual (US$200 por adelantado)</td><td>Más uso que Free.</td></tr>
+              <tr><td>Max</td><td>US$100 al mes</td><td>5 veces el uso de Pro, cada 5 horas y cada semana.</td></tr>
+              <tr><td>Ultra</td><td>US$200 al mes</td><td>10 veces el uso semanal de Pro, sin límite de 5 horas en cuentas verificadas.</td></tr>
+              <tr><td>Team</td><td>Por persona: US$25 al mes, o US$20 con pago anual (asiento estándar)</td><td>Para equipos de 2 a 150 personas.</td></tr>
+              <tr><td>Enterprise</td><td>Desde US$20 por persona al mes, con pago anual y un mínimo de 20 personas</td><td>Para organizaciones grandes.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Qué incluye cada plan individual</h3>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Función</th><th>Free</th><th>Pro</th><th>Max y Ultra</th></tr></thead>
+            <tbody>
+              <tr><td>Modelos Sonnet y Haiku</td><td>Sí</td><td>Sí</td><td>Sí</td></tr>
+              <tr><td>Modelo Opus</td><td>No</td><td>Sí</td><td>Sí</td></tr>
+              <tr><td>Modelo Fable</td><td>No</td><td>Con créditos de uso</td><td>Hasta el 50% de los límites semanales</td></tr>
+              <tr><td>Búsqueda web y memoria</td><td>Sí</td><td>Sí</td><td>Sí</td></tr>
+              <tr><td>Proyectos</td><td>Hasta 5</td><td>Sí</td><td>Sí</td></tr>
+              <tr><td>Research (investigación profunda)</td><td>No</td><td>Sí</td><td>Sí</td></tr>
+              <tr><td>Claude Code</td><td>No</td><td>Sí</td><td>Sí</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nota ok">
+          <p><strong>Para este curso:</strong> los Módulos 1 a 8 se hacen con el plan gratuito. Solo los Módulos 9 y 10, de Claude Code, necesitan un plan de pago. Y siempre hay una alternativa gratuita: diseñar y probar la instrucción en el chat.</p>
+        </div>
+        <div class="nota alerta">
+          <p><strong>Error frecuente:</strong> pagar el plan más caro «por si acaso». Un plan superior da más uso, no respuestas mágicamente mejores para tareas simples. Empieza gratis y sube de plan solo cuando el límite te frene de verdad o necesites una función de pago.</p>
+        </div>
+      </div>
+      <h3>Actividad: ¿gratis o de pago?</h3>
+      <div data-actividad="plan"></div>
+    </section>
+
+    <!-- ================= DESCANSO ================= -->
+    <section id="b-descanso" class="bloque descanso" aria-labelledby="t-descanso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <p class="grande" aria-hidden="true">☕</p>
+      <h2 id="t-descanso">Descanso de 10 minutos</h2>
+      <p>Levántate, toma agua y descansa la vista. Mira algo lejano durante 20 segundos.</p>
+      <p>Reto mental: ¿qué tres tareas de tu semana podrías hacer con Claude gratis?</p>
+    </section>
+
+    <!-- ================= 3. DESARROLLO TEÓRICO (III) ================= -->
+    <section id="b-modelos" class="bloque" aria-labelledby="t-modelos">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-modelos">Los modelos: cuál elegir</h2>
+      <div class="lectura">
+        <p>Claude no es un solo modelo, sino una familia. Es como tener varios vehículos: una moto ágil para trayectos cortos, un auto para el día a día y un camión para cargas pesadas. Así describe la documentación oficial los modelos actuales:</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Modelo</th><th>Para qué es, según Anthropic</th><th>Velocidad</th></tr></thead>
+            <tbody>
+              <tr><td><span lang="en">Claude Haiku 5.5</span></td><td>Para tareas de gran volumen que necesitan rapidez, como clasificar, extraer datos o dirigir solicitudes.</td><td>La más rápida</td></tr>
+              <tr><td><span lang="en">Claude Sonnet 5.5</span></td><td>La mejor combinación de velocidad e inteligencia.</td><td>Rápida</td></tr>
+              <tr><td><span lang="en">Claude Opus 5.5</span></td><td>Para programación con agentes de larga duración y trabajo intelectual.</td><td>Moderada</td></tr>
+              <tr><td><span lang="en">Claude Fable 5.2</span></td><td>Para razonamiento exigente y trabajo con agentes de largo plazo.</td><td>Moderada</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Los cuatro tienen una ventana de contexto de hasta 1 millón de tokens y una fecha de corte de conocimiento fiable de junio de 2026.</p>
+        <div class="nota">
+          <p><strong>¿Cuál uso?</strong> La documentación recomienda empezar con Opus 5.5 si no sabes cuál elegir. Pero en el plan gratuito no está Opus, así que allí lo razonable es <strong>Sonnet</strong> para casi todo y <strong>Haiku</strong> para tareas simples y rápidas. Esto último es una recomendación didáctica basada en las descripciones oficiales.</p>
+        </div>
+        <div class="nota alerta">
+          <p><strong>Error frecuente:</strong> usar siempre el modelo más potente. Los modelos más exigentes consumen más de tu límite de uso, y para resumir un texto o corregir un párrafo no hace falta el camión: basta con la moto.</p>
+        </div>
+      </div>
+      <h3>Actividad: ¿qué modelo elegirías?</h3>
+      <div data-actividad="modelo"></div>
+    </section>
+
+    <!-- ================= 3. DESARROLLO TEÓRICO (IV) ================= -->
+    <section id="b-limites" class="bloque" aria-labelledby="t-limites">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-limites">Los límites de uso</h2>
+      <div class="lectura">
+        <p>Todos los planes tienen límites para que el servicio funcione bien para todos. El centro de ayuda oficial explica dos tipos:</p>
+        <ul>
+          <li><strong>Límite de sesión de 5 horas:</strong> el periodo de cinco horas empieza cuando envías tu primer mensaje y luego se reinicia.</li>
+          <li><strong>Límites semanales:</strong> se reinician una vez por semana y se aplican a todos los modelos. Algunos planes tienen, además, un límite semanal aparte para Fable.</li>
+        </ul>
+        <h3>Qué consume más de tu límite</h3>
+        <p>Según la ayuda oficial, influyen la longitud y la complejidad de tus conversaciones, las funciones que usas y el modelo con el que conversas. La página de planes agrega el tamaño de los archivos que adjuntas.</p>
+        <div class="nota">
+          <p><strong>Un límite compartido:</strong> el uso de todas las formas de Claude, es decir, claude.ai, Claude Code y la app de escritorio, cuenta para el mismo límite. Si programas mucho con Claude Code, te queda menos para el chat, y al revés.</p>
+        </div>
+        <h3>Consejos para que te rinda el plan</h3>
+        <ul>
+          <li>Abre una conversación nueva cuando cambies de tema: así Claude no arrastra todo el texto anterior.</li>
+          <li>Elige el modelo adecuado: Haiku o Sonnet para lo simple.</li>
+          <li>Adjunta solo lo necesario: la parte del documento que importa, no el archivo entero.</li>
+          <li>Pide lo que quieres de forma clara desde el principio, para evitar idas y vueltas.</li>
+        </ul>
+        <div class="nota alerta">
+          <p><strong>Ojo:</strong> estos consejos son recomendaciones didácticas que se deducen de lo que la ayuda oficial dice que consume el límite. No son reglas oficiales.</p>
+        </div>
+      </div>
+      <h3>Actividad: ¿verdadero o falso?</h3>
+      <div data-actividad="limites"></div>
+    </section>
+
+    <!-- ================= 4. DEMOSTRACIÓN PRÁCTICA ================= -->
+    <section id="b-demo" class="bloque" aria-labelledby="t-demo">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-demo">Demostración: la recomendación para Diego</h2>
+      <div class="lectura">
+        <p>Volvamos a Diego. Para recomendar un plan y un modelo, conviene hacerse siempre las mismas cuatro preguntas:</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Pregunta</th><th>Respuesta de Diego</th><th>Qué implica</th></tr></thead>
+            <tbody>
+              <tr><td>1. ¿Qué tareas hará?</td><td>Resumir apuntes y hacer preguntas sobre sus cursos.</td><td>Son tareas de chat: no necesita Claude Code.</td></tr>
+              <tr><td>2. ¿Necesita alguna función de pago?</td><td>No: chat, archivos, búsqueda web y proyectos están en el plan gratuito.</td><td>Puede empezar gratis.</td></tr>
+              <tr><td>3. ¿Cuánto lo usará?</td><td>Un rato cada día.</td><td>Probablemente le baste el límite gratuito; si lo alcanza seguido, puede pasar a Pro.</td></tr>
+              <tr><td>4. ¿Qué modelo conviene?</td><td>Tareas de texto de dificultad media.</td><td>Sonnet; Haiku para lo muy simple.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nota ok">
+          <p><strong>Recomendación:</strong> plan gratuito con Sonnet. Cuando empiece a programar en serio y quiera usar Claude Code, el siguiente paso sería Pro (US$20 al mes, o US$17 con pago anual), no Max. Max tiene sentido si ya usa Claude intensamente todos los días y Pro se le queda corto.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= VOCABULARIO ================= -->
+    <section id="b-vocab" class="bloque" aria-labelledby="t-vocab">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-vocab">Vocabulario de la IA</h2>
+      <p>Así aparecen estos términos en las páginas oficiales de Claude. Pulsa el altavoz para escuchar cada uno.</p>
+      <ul class="vocab">
+        <li data-en="plan"><span><span class="en" lang="en">plan</span><span class="es">plan (de suscripción)</span><span class="pr">plan</span></span></li>
+        <li data-en="usage limit"><span><span class="en" lang="en">usage limit</span><span class="es">límite de uso</span><span class="pr">iú-sich lí-mit</span></span></li>
+        <li data-en="weekly"><span><span class="en" lang="en">weekly</span><span class="es">semanal</span><span class="pr">uí-kli</span></span></li>
+        <li data-en="model"><span><span class="en" lang="en">model</span><span class="es">modelo</span><span class="pr">mó-del</span></span></li>
+        <li data-en="coding"><span><span class="en" lang="en">coding</span><span class="es">programación</span><span class="pr">cóu-ding</span></span></li>
+        <li data-en="terminal"><span><span class="en" lang="en">terminal</span><span class="es">terminal, consola</span><span class="pr">tér-mi-nal</span></span></li>
+        <li data-en="subscription"><span><span class="en" lang="en">subscription</span><span class="es">suscripción</span><span class="pr">sab-scríp-shon</span></span></li>
+        <li data-en="billed annually"><span><span class="en" lang="en">billed annually</span><span class="es">facturado anualmente</span><span class="pr">bíld á-niu-a-li</span></span></li>
+      </ul>
+      <p>Frase completa: <span data-en="Your usage limit resets every five hours.">Your usage limit resets every five hours. <em>(Tu límite de uso se reinicia cada cinco horas.)</em> </span></p>
+    </section>
+
+    <!-- ================= 6. PRÁCTICA AUTÓNOMA ================= -->
+    <section id="b-autonoma" class="bloque" aria-labelledby="t-autonoma">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-autonoma">Práctica autónoma: conoce tu cuenta</h2>
+      <div class="lectura">
+        <p>Ahora te toca a ti, con tu cuenta gratuita de Claude. En estos cinco minutos lee la consigna; la práctica la haces después de la clase.</p>
+        <h3>Objetivo</h3>
+        <p>Conocer qué incluye tu cuenta y aplicar el método de las cuatro preguntas.</p>
+        <h3>Qué hacer</h3>
+        <ul>
+          <li>Entra a Claude y busca el selector de modelos. Anota qué modelos aparecen en tu plan.</li>
+          <li>Haz la misma pregunta sencilla con Haiku y con Sonnet, por ejemplo «resume en tres frases qué es una red LAN». Compara la rapidez y el resultado.</li>
+          <li>Abre la página oficial de planes (está en las fuentes) y comprueba si algún precio o función cambió desde el 11/11/2026.</li>
+          <li>Aplica las cuatro preguntas de la demostración a tu propio caso y escribe tu recomendación en «Mis notas».</li>
+        </ul>
+        <div class="nota alerta">
+          <p><strong>Seguridad:</strong> no compartas datos de pago ni tu contraseña con nadie, tampoco con Claude. Si un día decides pagar, hazlo solo en la página oficial.</p>
+        </div>
+      </div>
+      <div class="reto">
+        <h4>Criterios para comprobar que lo hiciste bien</h4>
+        <ul>
+          <li>Anotaste los modelos disponibles en tu plan y coinciden con la tabla de la clase (o anotaste qué cambió).</li>
+          <li>Describiste una diferencia concreta entre la respuesta de Haiku y la de Sonnet.</li>
+          <li>Tu recomendación responde las cuatro preguntas: tareas, funciones de pago, cuánto uso y qué modelo.</li>
+          <li>Justificaste por qué ese plan y no uno más caro.</li>
+        </ul>
+        <p>Si cumples los cuatro criterios, ¡lo lograste! Al terminar, dile a Claude «revisa mi avance» y te dará retroalimentación.</p>
+      </div>
+    </section>
+
+    <!-- ================= 7. EVALUACIÓN ================= -->
+    <section id="b-examen" class="bloque" aria-labelledby="t-examen">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-examen">Evaluación final</h2>
+      <p>Doce preguntas: conceptos, casos prácticos y problemas de aplicación. Solo cuenta tu primera respuesta, y cada una te explica el porqué.</p>
+      <div data-quiz="examen"></div>
+    </section>
+
+    <!-- ================= 8. RESUMEN ================= -->
+    <section id="b-resumen" class="bloque" aria-labelledby="t-resumen">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-resumen">Resumen de la clase</h2>
+      <div class="lectura">
+        <h3>Conceptos que debes recordar</h3>
+        <ul>
+          <li>Hay tres formas de usar Claude: las apps (el chat, en web, escritorio y celular), Claude Code (programación, actúa sobre tus archivos) y la API (para programadores, de pago aparte).</li>
+          <li>Planes: Free (US$0), Pro (US$20 al mes o US$17 con pago anual), Max (US$100, 5 veces Pro), Ultra (US$200), Team y Enterprise. Los precios cambian: revisa siempre la página oficial.</li>
+          <li>El plan gratuito incluye Sonnet, Haiku, búsqueda web, memoria y hasta 5 proyectos; no incluye Opus, Research ni Claude Code.</li>
+          <li>Modelos: Haiku es el más rápido; Sonnet combina velocidad e inteligencia; Opus y Fable son para el trabajo más exigente.</li>
+          <li>Límites: una sesión de 5 horas que empieza con tu primer mensaje y límites semanales, compartidos entre el chat y Claude Code.</li>
+          <li>Consumen más los chats largos y complejos, algunas funciones, los modelos más exigentes y los archivos grandes.</li>
+        </ul>
+        <h3>Ya deberías ser capaz de</h3>
+        <ul>
+          <li>Decidir si una tarea es para el chat o para Claude Code.</li>
+          <li>Recomendar un plan con las cuatro preguntas.</li>
+          <li>Elegir el modelo adecuado y cuidar tu límite de uso.</li>
+        </ul>
+        <h3>Prepárate para la Clase 03</h3>
+        <p>En la próxima clase darás tus primeros pasos en el chat: conversaciones, archivos, búsqueda web y estilos de respuesta. Ten a mano tu cuenta gratuita de Claude.</p>
+      </div>
+    </section>
+
+    <!-- ================= VIDEOS COMPLEMENTARIOS ================= -->
+    <section id="videos" class="bloque fuentes" aria-labelledby="t-videos">
+      <p class="kicker">Material complementario · fuera del reloj</p>
+      <h2 id="t-videos">🎬 Videos complementarios</h2>
+      <p>Los videos complementan la clase: no la reemplazan. Se verificaron el 11 de noviembre de 2026 con la herramienta de la academia: existen, están disponibles y sus datos son los de la ficha. Su contenido se comprobó con sus capítulos oficiales y sus subtítulos; no se vieron completos. Los precios y planes que mencione un video pueden haber cambiado: manda la página oficial.</p>
+      <ul class="lista-fuentes">
+        <li><a href="https://www.youtube.com/watch?v=vW4MFfw8taU" target="_blank" rel="noopener">Claude Chat, Claude Code y Claude Cowork: no son lo mismo<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Canal: Datademia (academia de datos en español, terceros) · en español · 6:00 · publicado el 20/04/2026 · verificado el 11/11/2026</span>
+          <span class="origen">Subtítulos: sí, automáticos en español.</span>
+          <span class="origen">Qué enseña: las diferencias entre el chat de Claude, Claude Cowork y Claude Code, y cuándo usar cada uno. Refuerza el bloque «Un modelo, varias formas de usarlo».</span>
+          <span class="origen">Alternativa escrita, por si el video desaparece: la documentación oficial de Claude Code (en las fuentes).</span></li>
+        <li><a href="https://www.youtube.com/watch?v=TCq7eZ9Lhc8&amp;t=2018s" target="_blank" rel="noopener">Claude Code: Curso completo desde cero en 3 horas (2026)<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Canal: MoureDev by Brais Moure (educador con trayectoria, terceros) · en español · 3:07:54 · empieza en el minuto 33:38 · publicado el 13/08/2026 · verificado el 11/11/2026</span>
+          <span class="origen">Subtítulos: sí, automáticos en español.</span>
+          <span class="origen">Qué enseña: el capítulo «Modelos (Haiku, Sonnet, Opus y Fable), esfuerzo y modo thinking». Al inicio del video (capítulo «¿Qué es Claude Code y qué voy a aprender?») explica qué es Claude Code. El resto del curso corresponde a los Módulos 9 y 10.</span>
+          <span class="origen">Alternativa escrita, por si el video desaparece: la página oficial de modelos (en las fuentes).</span></li>
+      </ul>
+    </section>
+
+    <!-- ================= 9. FUENTES VERIFICADAS ================= -->
+    <section id="fuentes" class="bloque fuentes" aria-labelledby="t-fuentes">
+      <p class="kicker">Lectura extra · fuera del reloj</p>
+      <h2 id="t-fuentes">📚 Fuentes verificadas</h2>
+      <p>Cada dato de esta clase se comprobó en las páginas oficiales de Anthropic el 11 de noviembre de 2026. Los planes, precios y modelos <strong>cambian con frecuencia</strong>: si lees esto mucho después, vuelve a comprobarlos. Las páginas están en inglés; puedes traducirlas con clic derecho y <strong>Traducir a español</strong>.</p>
+      <ul class="lista-fuentes">
+        <li><a href="https://claude.com/pricing" target="_blank" rel="noopener">Plans &amp; pricing<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Anthropic · sin fecha visible («los precios y planes pueden cambiar a discreción de Anthropic») · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: los planes Free, Pro, Max, Ultra, Team y Enterprise, sus precios y el uso incluido; qué modelos y funciones incluye cada plan (Opus, Fable, Claude Code, Research, proyectos, memoria y búsqueda web).</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://support.claude.com/en/articles/11647753-how-do-usage-and-length-limits-work" target="_blank" rel="noopener">How do usage and length limits work?<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Anthropic · centro de ayuda de Claude · «actualizado hace más de una semana» · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: el límite de sesión de 5 horas que empieza con el primer mensaje, los límites semanales, qué consume el límite y que el uso de claude.ai, Claude Code y la app de escritorio cuenta para el mismo límite.</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://support.claude.com/en/articles/11145838-using-claude-code-with-your-pro-or-max-plan" target="_blank" rel="noopener">Use Claude Code with your Pro, Max, or Ultra plan<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Anthropic · centro de ayuda de Claude · «actualizado hace más de una semana» · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: que Claude Code está incluido en Pro, Max y Ultra, que los límites se comparten entre Claude y Claude Code, y que también funciona en editores como VS Code.</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://platform.claude.com/docs/en/about-claude/models/overview" target="_blank" rel="noopener">Models overview<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Anthropic · documentación de Claude · sin fecha visible · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: los modelos Fable 5.2, Opus 5.5, Sonnet 5.5 y Haiku 5.5, su descripción, su velocidad relativa, la ventana de contexto de 1 millón de tokens, la fecha de corte de junio de 2026 y la recomendación de empezar con Opus 5.5.</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://claude.com/download" target="_blank" rel="noopener">Download Claude<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Anthropic · sin fecha visible · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: las apps para macOS, Windows, Linux (beta) e iOS, y que las apps están disponibles en todos los planes, con algunas funciones solo de pago. Android aparece en la página de planes.</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://code.claude.com/docs/en/overview" target="_blank" rel="noopener">Claude Code overview<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Anthropic · documentación de Claude Code · sin fecha visible · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: qué es Claude Code y que funciona en la terminal, en editores (VS Code y JetBrains), en la app de escritorio y en la web.</span>
+          <span class="origen">Estado: verificado.</span></li>
+      </ul>
+    </section>
+
+    <!-- ================= CIERRE ================= -->
+    <section id="cierre" class="bloque" aria-labelledby="t-cierre">
+      <p class="kicker">Cierre</p>
+      <h2 id="t-cierre">Mis notas y mi recomendación</h2>
+      <label for="notas">Escribe aquí tu práctica autónoma, tus dudas o lo que más te costó:</label>
+      <textarea id="notas" data-notas="generales" placeholder="Modelos en mi plan: … · Haiku frente a Sonnet: … · ¿Cambió algo en la página de planes? … · Mi recomendación (4 preguntas): …"></textarea>
+      <p>Tu avance se guarda solo. Al terminar, dile a Claude «revisa mi avance».</p>
+      <div id="resumen"></div>
+    </section>
+  </main>
+</div>
+
+<p class="pie">IA//Academia · Clase 02 · Datos de planes, precios y modelos verificados el 11/11/2026; pueden cambiar.</p>
+
+<script>
+window.CLASE = {
+  id: 'ia-02',
+  titulo: 'IA · Clase 02: Claude y Claude Code',
+  bloques: [
+    { id: 'b-bienvenida', titulo: 'Presentación y repaso', min: 10 },
+    { id: 'b-familia', titulo: 'Las formas de usar Claude', min: 15 },
+    { id: 'b-planes', titulo: 'Los planes', min: 20 },
+    { id: 'b-descanso', titulo: 'Descanso', min: 10 },
+    { id: 'b-modelos', titulo: 'Los modelos', min: 15 },
+    { id: 'b-limites', titulo: 'Los límites de uso', min: 15 },
+    { id: 'b-demo', titulo: 'Demostración: elegir un plan', min: 10 },
+    { id: 'b-vocab', titulo: 'Vocabulario de la IA', min: 5 },
+    { id: 'b-autonoma', titulo: 'Práctica autónoma', min: 5 },
+    { id: 'b-examen', titulo: 'Evaluación final', min: 10 },
+    { id: 'b-resumen', titulo: 'Resumen', min: 5 }
+  ],
+  actividades: {
+    herramienta: {
+      titulo: '¿Qué herramienta usarías?',
+      preguntas: [{ label: 'Lo haría con…', corto: 'Herramienta', opciones: ['El chat de Claude', 'Claude Code', 'La API'] }],
+      items: [
+        { titulo: 'Resumir un PDF de apuntes y hacerle preguntas', respuestas: [['El chat de Claude']], pista: '¿Hay que modificar archivos de un proyecto o solo conversar?', explica: 'Es una tarea de conversación con un archivo: el chat basta, y es gratis.' },
+        { titulo: 'Que Claude corrija un error en tu proyecto, editando los archivos y ejecutando las pruebas', respuestas: [['Claude Code']], pista: 'Claude tiene que actuar sobre tus archivos y la terminal.', explica: 'Editar archivos y ejecutar comandos es lo que hace Claude Code.' },
+        { titulo: 'Un programador quiere que su propia aplicación genere respuestas con Claude automáticamente', respuestas: [['La API']], pista: 'Es un programa, no una persona, el que habla con Claude.', explica: 'Para integrar Claude en un programa propio se usa la API, que se paga según el uso.' },
+        { titulo: 'Pedir ideas para el nombre de un emprendimiento', respuestas: [['El chat de Claude']], pista: 'Es pura conversación.', explica: 'Generar ideas conversando es tarea del chat.' },
+        { titulo: 'Que Claude cree la estructura de carpetas y los primeros archivos de una aplicación web en tu computador', respuestas: [['Claude Code']], pista: 'Tiene que crear archivos de verdad.', explica: 'Crear y editar archivos en tu equipo, con tu permiso, es Claude Code.' }
+      ]
+    },
+    plan: {
+      titulo: '¿Gratis o de pago?',
+      preguntas: [{ label: 'Esto se puede hacer…', corto: 'Plan', opciones: ['Con el plan gratuito', 'Necesita un plan de pago'] }],
+      items: [
+        { titulo: 'Conversar con Claude usando el modelo Sonnet', respuestas: [['Con el plan gratuito']], pista: 'Revisa la fila de Sonnet en la tabla.', explica: 'Sonnet está disponible en el plan gratuito.' },
+        { titulo: 'Usar Claude Code en la terminal', respuestas: [['Necesita un plan de pago']], pista: 'Revisa la fila de Claude Code.', explica: 'Claude Code no está en Free: necesita Pro o superior.' },
+        { titulo: 'Buscar información actual en la web desde el chat', respuestas: [['Con el plan gratuito']], pista: 'Revisa la fila de búsqueda web.', explica: 'La búsqueda web está incluida en el plan gratuito.' },
+        { titulo: 'Usar el modelo Opus', respuestas: [['Necesita un plan de pago']], pista: 'Revisa la fila de Opus.', explica: 'Opus no está disponible en el plan gratuito.' },
+        { titulo: 'Organizar tus chats en 3 proyectos', respuestas: [['Con el plan gratuito']], pista: 'El plan gratuito permite hasta cierto número de proyectos.', explica: 'Free permite hasta 5 proyectos: 3 entran.' },
+        { titulo: 'Usar Research, la investigación profunda', respuestas: [['Necesita un plan de pago']], pista: 'Revisa la fila de Research.', explica: 'Research es solo para planes de pago.' }
+      ]
+    },
+    modelo: {
+      titulo: '¿Qué modelo elegirías?',
+      preguntas: [{ label: 'Elegiría…', corto: 'Modelo', opciones: ['Haiku', 'Sonnet', 'Opus'] }],
+      items: [
+        { titulo: 'Clasificar 200 comentarios de clientes en «positivo», «negativo» o «neutro», lo más rápido posible', respuestas: [['Haiku']], pista: 'Mucho volumen, tarea simple, rapidez.', explica: 'Anthropic describe a Haiku para tareas de gran volumen y rápidas, como clasificar.' },
+        { titulo: 'Redactar un informe claro a partir de tus notas, con el plan gratuito', respuestas: [['Sonnet']], pista: 'En el plan gratuito no está Opus.', explica: 'Sonnet combina velocidad e inteligencia y está en el plan gratuito.' },
+        { titulo: 'Un desarrollador con plan Pro quiere que Claude Code trabaje un buen rato en una tarea de programación compleja', respuestas: [['Opus']], pista: 'Programación con agentes de larga duración.', explica: 'Anthropic describe a Opus para programación con agentes de larga duración.' },
+        { titulo: 'Extraer el nombre y la fecha de 50 facturas escaneadas', respuestas: [['Haiku']], pista: 'Extraer datos de muchos documentos.', explica: 'Extraer datos en gran volumen es uno de los usos que Anthropic da para Haiku.' }
+      ]
+    },
+    limites: {
+      titulo: 'Límites de uso: ¿verdadero o falso?',
+      preguntas: [{ label: 'Esta afirmación es…', corto: 'V/F', opciones: ['Verdadera', 'Falsa'] }],
+      items: [
+        { titulo: 'El periodo de 5 horas empieza cuando envías tu primer mensaje', respuestas: [['Verdadera']], pista: 'Revisa cómo lo explica el centro de ayuda.', explica: 'Así lo dice la ayuda oficial: empieza con tu primer mensaje.' },
+        { titulo: 'Lo que usas en Claude Code no afecta tu límite del chat', respuestas: [['Falsa']], pista: '¿El límite es separado o compartido?', explica: 'Falso: claude.ai, Claude Code y la app de escritorio cuentan para el mismo límite.' },
+        { titulo: 'Una conversación muy larga consume más que una corta', respuestas: [['Verdadera']], pista: '¿Qué dice la ayuda sobre la longitud?', explica: 'La longitud y la complejidad de la conversación influyen en el consumo.' },
+        { titulo: 'El plan gratuito no tiene ningún límite semanal', respuestas: [['Falsa']], pista: 'Revisa el uso incluido en Free.', explica: 'Free tiene uso limitado cada 5 horas y cada semana.' },
+        { titulo: 'Adjuntar archivos grandes hace que llegues antes al límite', respuestas: [['Verdadera']], pista: 'La página de planes menciona el tamaño de los archivos.', explica: 'Según la página de planes, el tamaño de los archivos influye en lo rápido que llegas al límite.' }
+      ]
+    }
+  },
+  quizzes: {
+    examen: {
+      titulo: 'Evaluación final',
+      preguntas: [
+        { q: '¿Cuál es la principal diferencia entre el chat de Claude y Claude Code?', opciones: ['Claude Code usa un modelo secreto más inteligente', 'En el chat Claude responde; en Claude Code actúa sobre tus archivos y la terminal', 'El chat solo funciona en el celular', 'No hay ninguna diferencia'], correcta: 1, explica: 'Usan los mismos modelos; Claude Code puede editar archivos y ejecutar comandos, con tu permiso.' },
+        { q: '¿Qué plan necesitas para usar Claude Code?', opciones: ['El gratuito', 'Pro o superior', 'Solo Enterprise', 'Ninguno: se descarga gratis'], correcta: 1, explica: 'Claude Code no está en Free; se incluye desde Pro.' },
+        { q: '¿Qué modelo NO está en el plan gratuito?', opciones: ['Sonnet', 'Haiku', 'Opus', 'Todos están'], correcta: 2, explica: 'Opus no está en Free; Sonnet y Haiku sí.' },
+        { q: '¿Cuánto cuesta el plan Pro con pago mensual, según la página oficial consultada?', opciones: ['US$0', 'US$20 al mes', 'US$100 al mes', 'US$200 al mes'], correcta: 1, explica: 'Pro cuesta US$20 al mes, o US$17 al mes con pago anual. Los precios pueden cambiar.' },
+        { q: '¿Cuánto uso incluye Max?', opciones: ['Igual que Free', 'Ilimitado', '5 veces el uso de Pro', 'La mitad que Pro'], correcta: 2, explica: 'Max incluye 5 veces el uso de Pro, cada 5 horas y cada semana.' },
+        { q: '¿Qué modelo describe Anthropic como «la mejor combinación de velocidad e inteligencia»?', opciones: ['Haiku', 'Sonnet', 'Opus', 'Fable'], correcta: 1, explica: 'Así describe la documentación a Sonnet 5.5.' },
+        { q: '¿Cuándo empieza el periodo de 5 horas del límite de sesión?', opciones: ['A medianoche', 'Cuando envías tu primer mensaje', 'Cuando pagas el plan', 'Cada lunes'], correcta: 1, explica: 'Empieza con tu primer mensaje, según la ayuda oficial.' },
+        { q: '¿El uso de Claude Code y el del chat se cuentan por separado?', opciones: ['Sí, cada uno tiene su propio límite', 'No, cuentan para el mismo límite', 'Claude Code no tiene límites', 'Depende del día'], correcta: 1, explica: 'claude.ai, Claude Code y la app de escritorio comparten el mismo límite.' },
+        { q: '¿Qué hace que llegues antes al límite?', opciones: ['Conversaciones cortas y simples', 'Conversaciones largas, modelos exigentes y archivos grandes', 'Usar el celular', 'Escribir en español'], correcta: 1, explica: 'Influyen la longitud y complejidad, las funciones, el modelo y el tamaño de los archivos.' },
+        { q: 'Caso práctico: Ana solo quiere resumir artículos y preparar exámenes. ¿Qué le recomiendas?', opciones: ['Ultra con Fable', 'Empezar con el plan gratuito y Sonnet', 'La API', 'Claude Code'], correcta: 1, explica: 'Son tareas de chat que el plan gratuito cubre; Sonnet es adecuado para texto.' },
+        { q: 'Caso práctico: Luis programa todos los días con Claude Code y Pro se le queda corto. ¿Qué opción tiene sentido evaluar?', opciones: ['Volver al plan gratuito', 'Max', 'Dejar de usar Claude Code', 'Usar solo Haiku en el chat'], correcta: 1, explica: 'Max da 5 veces el uso de Pro y también incluye Claude Code.' },
+        { q: '¿Qué significa «usage limit»?', opciones: ['Plan anual', 'Límite de uso', 'Modelo rápido', 'Ventana de contexto'], correcta: 1, explica: 'Usage limit es límite de uso.' }
+      ]
+    }
+  }
+};
+</script>
+<script src="../../../recursos/sync.js"></script>
+<script src="../../../recursos/academia.js"></script>
+</body>
+</html>
