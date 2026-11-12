@@ -21,21 +21,21 @@ Inteligencia Artificial: Claude, Módulo 1.
 Diseñar instrucciones que produzcan resultados precisos, útiles y reproducibles, en seis niveles: desde formular una pregunta clara hasta diseñar, evaluar, corregir y reutilizar instrucciones profesionales para distintos tipos de trabajo, sin depender de la API de pago.
 
 - **Duración:** 6 módulos · 32 clases · 64 h de clase (2 h por clase). La práctica autónoma de cada clase se suma aparte.
-- **Clases listas:** 0 de 32.
-- **Siguiente clase por crear:** Módulo 1 · Clase 1: ¿Qué es un prompt? Cómo interpreta Claude lo que escribes.
+- **Clases listas:** 1 de 32.
+- **Siguiente clase por crear:** Módulo 1 · Clase 2: Preguntas e instrucciones claras: de lo vago a lo bien definido.
 - **Proyecto final del curso:** Biblioteca profesional de prompts para Claude: instrucciones para investigación, análisis de documentos, programación, revisión de código, automatización, planificación de proyectos, y agentes y subagentes, cada una con sus criterios de prueba. Incluye la transformación documentada de instrucciones deficientes en profesionales. Se hace con Claude gratis; ejecutar en Claude Code las instrucciones de agentes recomienda Claude Pro.
 
 ## Resumen de módulos
 
 | Módulo | Clases | Horas | Listas | Necesitas antes |
 |---|---|---|---|---|
-| Módulo 1 · Prompting · Nivel 1: Fundamentos | 4 | 8 | 0 | Ninguno obligatorio |
+| Módulo 1 · Prompting · Nivel 1: Fundamentos | 4 | 8 | 1 | Ninguno obligatorio |
 | Módulo 2 · Prompting · Nivel 2: Técnicas fundamentales | 5 | 10 | 0 | Módulo 1 |
 | Módulo 3 · Prompting · Nivel 3: Prompting estructurado | 6 | 12 | 0 | Módulo 2 |
 | Módulo 4 · Prompting · Nivel 4: Avanzado | 6 | 12 | 0 | Módulo 3 |
 | Módulo 5 · Prompting · Nivel 5: Aplicaciones profesionales | 7 | 14 | 0 | Módulo 4 |
 | Módulo 6 · Proyecto integrador: biblioteca profesional de prompts | 4 | 8 | 0 | Módulo 5 |
-| **Total** | **32** | **64** | **0** | |
+| **Total** | **32** | **64** | **1** | |
 
 ## Módulo 1 · Prompting · Nivel 1: Fundamentos (4 clases · 8 h)
 
@@ -49,8 +49,8 @@ Diseñar instrucciones que produzcan resultados precisos, útiles y reproducible
 
 | Clase | Tema | Plan de Claude | Temario oficial que cubre | Videos | Estado |
 |---|---|---|---|---|---|
-| M1·1 | ¿Qué es un prompt? Cómo interpreta Claude lo que escribes | Claude gratis · Chat de Claude | Tutorial de Anthropic, cap. 1: Basic Prompt Structure | [▶ 1](https://www.youtube.com/watch?v=jrucUmU_l8s) | Próximamente · **siguiente por crear** |
-| M1·2 | Preguntas e instrucciones claras: de lo vago a lo bien definido | Claude gratis · Chat de Claude | Tutorial de Anthropic, cap. 2: Being Clear and Direct | [▶ 1](https://www.youtube.com/watch?v=A-uJeV7pSEY) | Próximamente |
+| M1·1 | ¿Qué es un prompt? Cómo interpreta Claude lo que escribes | Claude gratis · Chat de Claude | Tutorial de Anthropic, cap. 1: Basic Prompt Structure | [▶ 1](https://www.youtube.com/watch?v=jrucUmU_l8s) | ✔ Lista: `clases/clase-01.html` (id `prompt-01`) |
+| M1·2 | Preguntas e instrucciones claras: de lo vago a lo bien definido | Claude gratis · Chat de Claude | Tutorial de Anthropic, cap. 2: Being Clear and Direct | [▶ 1](https://www.youtube.com/watch?v=A-uJeV7pSEY) | Próximamente · **siguiente por crear** |
 | M1·3 | Contexto, objetivo y restricciones | Claude gratis · Chat de Claude | Prompting best practices: «Add context to improve performance» | [▶ 1](https://www.youtube.com/watch?v=1bXdjvRBvWk) | Próximamente |
 | M1·4 | Definir el resultado esperado y evitar errores frecuentes (evaluación del módulo) | Claude gratis · Chat de Claude | — | [▶ 1](https://www.youtube.com/watch?v=UeuZM5Ulf6A) | Próximamente |
 

@@ -994,7 +994,7 @@ window.CATALOGO = [
         evaluacion: 'Mejorar cinco instrucciones reales y explicar qué cambió y por qué.',
         fuentes: 'Tutorial interactivo de Anthropic (capítulos 1 y 2); guía oficial «Prompting best practices»; DevTalles (terceros).',
         clases: [
-          { titulo: '¿Qué es un prompt? Cómo interpreta Claude lo que escribes', plan: 'Claude gratis', donde: 'Chat de Claude', ref: 'Tutorial de Anthropic, cap. 1: Basic Prompt Structure', videos: ['jrucUmU_l8s'] },
+          { n: '01', titulo: '¿Qué es un prompt? Cómo interpreta Claude lo que escribes', archivo: 'cursos/prompt/clases/clase-01.html', id: 'prompt-01', plan: 'Claude gratis', donde: 'Chat de Claude', ref: 'Tutorial de Anthropic, cap. 1: Basic Prompt Structure', videos: ['jrucUmU_l8s'] },
           { titulo: 'Preguntas e instrucciones claras: de lo vago a lo bien definido', plan: 'Claude gratis', donde: 'Chat de Claude', ref: 'Tutorial de Anthropic, cap. 2: Being Clear and Direct', videos: ['A-uJeV7pSEY'] },
           { titulo: 'Contexto, objetivo y restricciones', plan: 'Claude gratis', donde: 'Chat de Claude', ref: 'Prompting best practices: «Add context to improve performance»', videos: ['1bXdjvRBvWk'] },
           { titulo: 'Definir el resultado esperado y evitar errores frecuentes (evaluación del módulo)', plan: 'Claude gratis', donde: 'Chat de Claude', videos: ['UeuZM5Ulf6A'] }

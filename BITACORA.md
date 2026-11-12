@@ -41,7 +41,7 @@ Una academia personal para aprender **desde cero**, con Claude como profesor y e
 | Python | 9 · 38 (76 h) + electiva de 3 | 01–04 → M1·1 a M1·4 | M1·5 Bucles |
 | Redes y Telecomunicaciones | 11 · 51 (102 h) | 01–03 → M1·1 a M1·3 | M1·4 Ethernet y switching |
 | Inteligencia Artificial: Claude | 21 · 71 (142 h), en 5 bloques | 01–02 → M1·1 a M1·2 | M1·3 Primeros pasos: conversaciones, archivos, búsqueda web y estilos |
-| Prompt Engineering | 6 · 32 (64 h) | — | M1·1 ¿Qué es un prompt? Cómo interpreta Claude lo que escribes |
+| Prompt Engineering | 6 · 32 (64 h) | 01 → M1·1 | M1·2 Preguntas e instrucciones claras: de lo vago a lo bien definido |
 
 Los módulos y el orden de todas las clases están en `recursos/catalogo.js` (aprobados en
 `PROPUESTA-ORGANIZACION-CURRICULAR.md`; Redes, en `PROPUESTA-AMPLIACION-6-CURSOS.md`; Inteligencia
@@ -537,3 +537,26 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
     proyecto; se conservó lo que no era exclusivo.
   - Resultados completos en `herramientas/RESULTADOS-LOTE-2.md`.
 - Sin push (GitHub sigue en `43e8d6e`) y `academia-progreso` sin cambios (`14d8233`).
+
+### 2026-11-12 (Prompt Engineering 01: clase piloto del equipo de agentes)
+- **El equipo:** 6 agentes (coordinador, investigador, disenador-pedagogico, desarrollador, revisor, integrador), sus
+  reglas y 7 perfiles de curso, en `.claude/agents/` y `.claude/equipo/`. Son archivos locales: `.claude/` está en
+  `.gitignore`, no se versionan ni se publican.
+- **La clase:** `cursos/prompt/clases/clase-01.html`, id `prompt-01`, 120 minutos, 11 bloques, 4 actividades
+  (25 tarjetas) y examen de 12 preguntas. «Claude gratis · Chat de Claude» confirmado.
+- **Fuentes y video:** 16 fuentes (14 verificadas y 2 parcialmente verificadas: memoria y proyectos del centro de
+  ayuda). 1 video (`jrucUmU_l8s`, DevTalles, verificado); no hubo un segundo video adecuado, y se justificó en el
+  expediente.
+- **Revisión 1:** devuelta con 2 observaciones obligatorias (longitud de las opciones del examen y ficha del video) y
+  5 sugerencias; todo corregido y aprobado en la segunda pasada.
+- **Revisión 2:** pruebas-clases 23/23, huella de identificadores de las 22 clases anteriores idéntica a la línea base
+  (`d355163a…7933d`), catálogo correcto, rutas 7/7, coherencia correcta y menú con la clase disponible.
+- **Catálogo:** solo cambió la entrada de M1·1 (`n`, `archivo`, `id`) y `?v=2026-11-12b` en `inicio.html`; la ruta de
+  Prompt se regeneró.
+- **Aprendido para el equipo:** comprobar que la respuesta correcta del examen no sea la opción más larga (añadido a
+  las fichas del diseñador y del revisor). Las clases ya aprobadas IA 01 y Ciberseguridad 01 tienen esa pista (9 y 7
+  de 12) y no se tocaron.
+- **Decisión del alumno (mismo día):** en cada curso se completan todas las clases de los Módulos 1 y 2 antes de
+  pasar a otros módulos. Faltan 53: Ciberseguridad 4, Inglés 13, JavaScript 9, Python 7, Redes 7, IA: Claude 5 y
+  Prompt Engineering 8. Las clases que ya existen en otros módulos (Ciberseguridad M3·1) se conservan.
+- Sin push. Pendiente de la aprobación del piloto por el alumno.

@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prompt Engineering · Clase 01 · ¿Qué es un prompt?</title>
+<link rel="stylesheet" href="../../../recursos/academia.css">
+</head>
+<body class="tema-prompt">
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="top">
+  <div class="marca"><span class="logo" aria-hidden="true">&gt;_</span><span>PROMPT<span class="acento">//</span>ACADEMIA</span></div>
+  <div id="reloj" class="reloj-zona"></div>
+  <div id="voz"></div>
+  <a class="btn-mini" href="../../../inicio.html">☰ Menú</a>
+</header>
+
+<div class="layout">
+  <nav id="agenda" class="agenda" aria-label="Agenda de la clase"></nav>
+
+  <main id="contenido">
+    <div class="portada">
+      <p class="kicker">Módulo 1 · Prompting · Nivel 1: Fundamentos · Clase 01</p>
+      <h1>¿Qué es un prompt? Cómo interpreta Claude lo que escribes</h1>
+      <p class="sub">Qué es un prompt, cómo funciona una conversación por turnos y qué recibe Claude cuando le escribes. Duración: 2 horas.</p>
+    </div>
+
+    <!-- ================= 1. PRESENTACIÓN Y 2. ACTIVACIÓN ================= -->
+    <section id="b-bienvenida" class="bloque" aria-labelledby="t-bienvenida">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-bienvenida">Presentación y punto de partida</h2>
+      <div class="lectura">
+        <p>¡Bienvenido a la primera clase de <span lang="en">Prompt Engineering</span>! Cada vez que le escribes a Claude, le das un prompt. En esta clase verás qué es exactamente, qué recibe Claude cuando le escribes y por qué una sola palabra, o un mensaje anterior, puede cambiar su respuesta. Es la base de todo el curso.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Ficha de la clase</th><th>Detalle</th></tr></thead>
+            <tbody>
+              <tr><td>Número y título</td><td>Clase 01: ¿Qué es un prompt? Cómo interpreta Claude lo que escribes.</td></tr>
+              <tr><td>Módulo</td><td>Módulo 1 · Prompting · Nivel 1: Fundamentos (clase 1 de 4).</td></tr>
+              <tr><td>Duración</td><td>120 minutos, con un descanso de 10.</td></tr>
+              <tr><td>Nivel</td><td>Desde cero.</td></tr>
+              <tr><td>Conocimientos previos</td><td>Ninguno obligatorio. Recomendado: IA: Claude, Módulo 1. Necesitas una cuenta de Claude con el plan gratis y saber abrir un chat.</td></tr>
+              <tr><td>Plan de Claude</td><td><strong>Claude gratis.</strong> Toda la práctica se hace con el plan gratuito (0 USD), que incluye el chat en la web, el escritorio y el celular, con un uso limitado cada 5 horas y cada semana. No necesitas la API ni pagar nada.</td></tr>
+              <tr><td>Dónde se practica</td><td>En el chat de Claude: en la web, en la aplicación de escritorio o en el celular.</td></tr>
+              <tr><td>Referencia oficial</td><td>Tutorial interactivo de Anthropic, capítulo 1, <span lang="en">Basic Prompt Structure</span>. La clase toma solo sus conceptos: el tutorial se escribió para Claude 3 y sus ejercicios usan la API, que la academia no usa.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Objetivos: al terminar podrás</h3>
+        <ul>
+          <li><strong>Explicar</strong> con tus palabras qué es un prompt y <strong>reconocer</strong> sus ingredientes: pregunta, instrucción y datos.</li>
+          <li><strong>Distinguir</strong> en una conversación el turno del usuario, el turno del asistente y la instrucción de sistema.</li>
+          <li><strong>Explicar</strong> por qué cambiar una palabra, o lo que dijiste antes en el mismo chat, cambia la respuesta de Claude.</li>
+          <li><strong>Predecir</strong> qué información recibe Claude en el mismo chat, en un chat nuevo, en un proyecto y en un chat de incógnito.</li>
+          <li><strong>Comparar</strong> dos respuestas de Claude con una lista de comprobación, en lugar de palabra por palabra.</li>
+        </ul>
+        <p><strong>Recordatorio:</strong> es la primera clase del curso, así que no hay repaso. Si hiciste IA: Claude 01, ya sabes que un modelo de lenguaje genera texto prediciendo lo que sigue: hoy verás qué significa eso para lo que tú escribes.</p>
+        <h3>Antes de empezar, piensa</h3>
+        <ol>
+          <li>Cuando le escribes a Claude, ¿lee solo tu último mensaje o toda la conversación?</li>
+          <li>Si haces la misma pregunta con otras palabras, ¿esperas la misma respuesta?</li>
+          <li>¿Sabe Claude qué día es hoy, aunque no se lo digas?</li>
+        </ol>
+        <p>No hace falta escribir las respuestas: al final de la clase las podrás contestar.</p>
+        <div class="nota alerta">
+          <p><strong>Situación de partida (caso ficticio):</strong> Sofía escribe un cuento para niños sobre un faro. Un día le cuenta a Claude, en un chat, de qué trata. Al día siguiente abre un chat de incógnito y escribe solo «Dame tres títulos». Lo que recibe no tiene nada que ver con su faro. ¿Claude falló? ¿Qué recibió Claude, en realidad? Lo resolvemos en la demostración.</p>
+        </div>
+        <h3>Cómo usar esta página</h3>
+        <ul>
+          <li>Pulsa «Iniciar clase» en el reloj de arriba: te avisará al cambiar de bloque.</li>
+          <li>El botón «Escuchar esta parte» lee la teoría en voz alta. Los términos en inglés se leen con voz inglesa.</li>
+          <li>Si fallas una actividad, primero recibes una pista; si vuelves a fallar, ves la respuesta explicada.</li>
+          <li>Las respuestas de Claude que aparecen en esta página <strong>se describen</strong> o son <strong>ejemplos redactados para la clase</strong>: no son respuestas reales copiadas de Claude. La práctica la harás tú en tu chat.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= 3. DESARROLLO TEÓRICO (I) ================= -->
+    <section id="b-prompt" class="bloque" aria-labelledby="t-prompt">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-prompt">¿Qué es un prompt?</h2>
+      <div class="lectura">
+        <p>Empecemos con una comparación, que es una simplificación para empezar y tiene límites. Piensa en un encargo por escrito, como la nota que le dejas a alguien que te va a ayudar. Puede ser una pregunta («¿a qué hora cierra la biblioteca?»), un pedido («compra pan») o un papel que le pasas para que trabaje con él («revisa esta lista»). Un prompt es eso, pero para Claude.</p>
+        <div class="nota ok">
+          <p><strong>Un <span lang="en">prompt</span> es el texto que le escribes a Claude —una pregunta, una instrucción, datos o una mezcla— y a partir del cual Claude genera su respuesta.</strong></p>
+        </div>
+        <p>Esta definición está redactada para la clase, apoyada en cómo usa la palabra la documentación oficial: en los ejercicios del tutorial oficial de Anthropic, el prompt es el texto que va en el mensaje del usuario, y el glosario oficial usa la palabra para hablar de lo que el modelo responde a partir de un prompt.</p>
+        <h3>Los tres ingredientes de un prompt</h3>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Ingrediente</th><th>Qué es</th><th>Ejemplo</th></tr></thead>
+            <tbody>
+              <tr><td>Pregunta</td><td>Algo que quieres saber, escrito como pregunta.</td><td>«¿Por qué el cielo se ve azul?»</td></tr>
+              <tr><td>Instrucción</td><td>Un pedido o una orden: escribe, resume, traduce, ordena…</td><td>«Escribe un poema de cuatro versos sobre la lluvia.»</td></tr>
+              <tr><td>Datos</td><td>El material que le pasas para que trabaje con él: un texto, una lista, unos números.</td><td>«Traduce al inglés: “La reunión es el martes.”» (instrucción + datos)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nota">
+          <p><strong>Importante para la actividad:</strong> el <strong>tema</strong> de un pedido («sobre la lluvia») no es un dato: es parte de la instrucción. Datos son el texto, la lista o los números que Claude tiene que revisar o transformar. Muchos prompts mezclan varios ingredientes.</p>
+        </div>
+        <h3>La meta del curso: la ingeniería de prompts</h3>
+        <p>El blog oficial de Claude describe la <strong>ingeniería de prompts</strong> (<span lang="en">prompt engineering</span>) como la práctica de estructurar las instrucciones para obtener mejores resultados de un modelo de IA: cómo formulas, el estilo, el contexto. Según ese mismo blog, la diferencia entre una instrucción vaga y una bien hecha puede ser la diferencia entre un resultado genérico y lo que de verdad necesitas, y un prompt mal planteado puede obligarte a varias idas y vueltas. Cómo pasar de lo vago a lo claro es el tema de la Clase 02.</p>
+        <p>Y es normal ajustar: el primer prompt rara vez sale perfecto.</p>
+        <div class="nota alerta">
+          <p><strong>Error frecuente:</strong> creer que el prompt es solo la pregunta. Todo lo que escribes <strong>o pegas</strong> en tu mensaje forma parte del prompt y le llega a Claude.</p>
+          <p><strong>Regla de seguridad del curso:</strong> nunca escribas ni pegues contraseñas, tokens, claves ni datos personales (tuyos o ajenos). En las prácticas, usa datos inventados. Y lo importante que Claude afirma se comprueba.</p>
+        </div>
+        <p><strong>Aplicación profesional:</strong> en el trabajo, cada encargo que le haces a Claude —redactar un correo, resumir un informe, preparar un material— es un prompt. Este curso termina con tu propia biblioteca profesional de prompts probados.</p>
+        <p>Si quieres reforzar este bloque, el <a href="#videos">video complementario</a> al final de la página explica en unos 4 minutos qué es un prompt.</p>
+      </div>
+      <h3>Actividad: ¿qué ingredientes tiene este prompt?</h3>
+      <div data-actividad="ingredientes"></div>
+    </section>
+
+    <!-- ================= 3. DESARROLLO TEÓRICO (II) ================= -->
+    <section id="b-lectura" class="bloque" aria-labelledby="t-lectura">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-lectura">Cómo lee Claude lo que escribes</h2>
+      <div class="lectura">
+        <p><strong>Repaso rápido:</strong> si hiciste IA: Claude 01, ya lo viste: un modelo de lenguaje se preentrena para predecir la siguiente palabra a partir del texto anterior. ¿Qué significa eso para este curso? Que Claude genera su respuesta a partir de lo que recibe: si cambian tus palabras, cambia el material con el que trabaja, y puede cambiar la respuesta.</p>
+        <h3>Un ejemplo de la guía oficial</h3>
+        <p>La guía oficial «Mejores prácticas de <span lang="en">prompting</span>» explica que, si escribes «¿puedes sugerir algunos cambios?», Claude a veces te da sugerencias en lugar de hacer los cambios. Pediste sugerencias… y eso recibiste. Lo verás en la demostración.</p>
+        <h3>Claude solo cuenta con lo que recibe</h3>
+        <p>El tutorial oficial de Anthropic lo dice así: Claude no tiene más contexto que lo que le dices literalmente. En el bloque «Qué recibe Claude en cada chat» verás que, además de tu mensaje, en el chat le pueden llegar otras cosas: el historial, la memoria, un proyecto.</p>
+        <h3>Un modelo mental útil</h3>
+        <p>La guía oficial propone pensar en Claude como un empleado brillante pero nuevo, que no conoce tus normas ni tu forma de trabajar. El centro de ayuda de Claude lo compara con un contratista recién contratado que no sabe nada de ti ni de tu tarea. Dicho de otro modo: es muy capaz, pero acaba de llegar. Es solo una comparación: Claude no es una persona.</p>
+        <h3>Claude puede equivocarse</h3>
+        <p>El centro de ayuda explica que Claude puede dar respuestas incorrectas o engañosas, lo que se llama «alucinar»: puede escribir cosas que parecen correctas y están muy equivocadas. Por eso no hay que tomarlo como única fuente de verdad: los consejos importantes y las fuentes que cita se revisan.</p>
+        <h3>No siempre responde igual</h3>
+        <p>Otro repaso: incluso con la misma entrada, la salida puede cambiar. En el chat, la misma pregunta puede recibir respuestas con otras palabras (puede pasar; no es una regla). Por eso en este curso no comparamos palabra por palabra: usamos una <strong>lista de comprobación</strong> que pregunta «¿cumple lo que necesito?».</p>
+        <div class="nota alerta">
+          <p><strong>Errores frecuentes:</strong></p>
+          <ul>
+            <li>Suponer que Claude lee la mente: lo que no escribes no le llega.</li>
+            <li>Creer que, si lo dice con seguridad, es verdad.</li>
+            <li>Esperar las mismas palabras exactas cada vez.</li>
+          </ul>
+        </div>
+        <p><strong>Aplicación profesional:</strong> revisar respuestas con una lista de comprobación es el germen de cómo se evalúan las instrucciones de forma profesional. Lo harás a fondo en el Módulo 4, con criterios de éxito y casos de prueba.</p>
+      </div>
+      <h3>Actividad: ¿correcta o incorrecta?</h3>
+      <div data-actividad="ideas"></div>
+    </section>
+
+    <!-- ================= 3. DESARROLLO TEÓRICO (III) ================= -->
+    <section id="b-turnos" class="bloque" aria-labelledby="t-turnos">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-turnos">Una conversación por turnos</h2>
+      <div class="lectura">
+        <p>Otra comparación para empezar, también simplificada: una conversación con Claude es como una partida de ping-pong. Tú lanzas, Claude devuelve, tú lanzas otra vez.</p>
+        <h3>Turno del usuario y turno del asistente</h3>
+        <p>El <strong>turno del usuario</strong> (<span lang="en">user</span>) es lo que escribes tú; el <strong>turno del asistente</strong> (<span lang="en">assistant</span>) es lo que responde Claude. Se alternan, y la conversación empieza con un turno del usuario. En el chat no tienes que preocuparte por el formato: la interfaz organiza los turnos sola.</p>
+        <h3>En cada turno, Claude recibe todo lo anterior</h3>
+        <p>La entrada de cada turno contiene todo el historial de la conversación más tu mensaje nuevo, y la respuesta de Claude pasa a formar parte de la entrada del turno siguiente. Así se ve:</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Cuando envías…</th><th>Lo que recibe Claude para responder</th></tr></thead>
+            <tbody>
+              <tr><td>Tu mensaje 1</td><td>Mensaje 1</td></tr>
+              <tr><td>Tu mensaje 2</td><td>Mensaje 1 + respuesta 1 + mensaje 2</td></tr>
+              <tr><td>Tu mensaje 3</td><td>Mensaje 1 + respuesta 1 + mensaje 2 + respuesta 2 + mensaje 3</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>(Además, la instrucción de sistema, que verás en un momento.) Por eso lo que dijiste antes en el mismo chat influye en lo que responde después, y sus propias respuestas anteriores también cuentan.</p>
+        <h3>Repaso: la ventana de contexto</h3>
+        <p>Todo eso cabe en su <strong>ventana de contexto</strong> (<span lang="en">context window</span>), su memoria de trabajo, distinta de lo que aprendió en el entrenamiento. Más no siempre es mejor: con muchísimo texto bajan la precisión y la capacidad de recordar detalles; y en conversaciones muy largas, interfaces como claude.ai pueden dejar fuera lo más antiguo (es una posibilidad, no una regla).</p>
+        <h3>La instrucción de sistema</h3>
+        <p>La <strong>instrucción de sistema</strong> (<span lang="en">system prompt</span>) es una forma de darle a Claude contexto, instrucciones y pautas <strong>antes</strong> de la pregunta del usuario; va aparte de los turnos. Según el tutorial oficial, una instrucción de sistema bien escrita puede mejorar el rendimiento de Claude, por ejemplo para seguir reglas. Una comparación simplificada: son las indicaciones que recibe quien atiende un mostrador antes de que llegue el primer cliente.</p>
+        <h3>En el chat ya hay una, de Anthropic</h3>
+        <p>Anthropic explica en sus notas de versión que claude.ai y las apps móviles usan una instrucción de sistema al empezar cada conversación, para dar información actual, como la fecha, y fomentar ciertos comportamientos, por ejemplo escribir el código en formato <span lang="en">Markdown</span>. Anthropic la actualiza de vez en cuando, la publica en esas notas, y no se aplica a la API.</p>
+        <div class="nota ok">
+          <p><strong>Conclusión:</strong> en el chat tú no escribes la instrucción de sistema; tú escribes los turnos del usuario, y tus pautas van dentro de tu mensaje (o, como verás después, en las instrucciones de un proyecto).</p>
+        </div>
+        <div class="nota alerta">
+          <p><strong>Errores frecuentes:</strong></p>
+          <ul>
+            <li>Pensar que Claude solo lee tu último mensaje: en el mismo chat recibe todo el historial, así que lo anterior puede seguir influyendo aunque cambies de tema.</li>
+            <li>Confundir tu primer mensaje con la instrucción de sistema: tu primer mensaje es un turno del usuario.</li>
+          </ul>
+        </div>
+        <p><strong>Aplicación profesional:</strong> quien construye aplicaciones con Claude a través de la API escribe su propia instrucción de sistema; así lo enseña el tutorial oficial. En esta academia no usamos la API: en el chat, tus pautas van en tu mensaje.</p>
+      </div>
+      <h3>Actividad: ¿qué parte de la conversación es?</h3>
+      <div data-actividad="partes"></div>
+    </section>
+
+    <!-- ================= DESCANSO ================= -->
+    <section id="b-descanso" class="bloque descanso" aria-labelledby="t-descanso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <p class="grande" aria-hidden="true">☕</p>
+      <h2 id="t-descanso">Descanso de 10 minutos</h2>
+      <p>Levántate, toma agua y descansa la vista. Mira algo lejano durante 20 segundos.</p>
+      <p>Reto mental: si escribes tu tercer mensaje en un chat, ¿qué recibe Claude para responderte?</p>
+    </section>
+
+    <!-- ================= 3. DESARROLLO TEÓRICO (IV) ================= -->
+    <section id="b-chats" class="bloque" aria-labelledby="t-chats">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-chats">Qué recibe Claude en cada chat</h2>
+      <div class="lectura">
+        <p>Ya sabes qué recibe Claude dentro de un chat. ¿Y cuando abres otro?</p>
+        <div class="nota ok">
+          <p><strong>La idea central:</strong> dentro de un chat, Claude tiene en cuenta todo lo que ya se dijo en ese chat. Un chat nuevo no trae la conversación de otro, pero la memoria (activada por defecto) puede aportar datos que Claude guardó de chats anteriores, y un proyecto aporta sus instrucciones y sus archivos. Si quieres empezar sin memoria, usa un chat de incógnito.</p>
+        </div>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Dónde escribes</th><th>Además de tu mensaje, a Claude le puede llegar…</th></tr></thead>
+            <tbody>
+              <tr><td>El mismo chat</td><td>Todo el historial de ese chat.</td></tr>
+              <tr><td>Un chat nuevo normal</td><td>No la conversación de otro chat. La memoria, activada por defecto también en el plan gratis, puede aportar contexto que guardó de chats anteriores, organizado por temas (no conversaciones enteras).</td></tr>
+              <tr><td>Un chat dentro de un proyecto</td><td>Las instrucciones y los archivos del proyecto; cada proyecto tiene su propia memoria. El plan gratis permite hasta 5 proyectos.</td></tr>
+              <tr><td>Un chat de incógnito</td><td>Ni la memoria ni otras conversaciones: no usa la memoria ni se guarda en ella. Claude sí ve tu perfil (estilos y preferencias). No está disponible dentro de los proyectos.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>En los cuatro casos le llega también la instrucción de sistema de claude.ai.</p>
+        <p><strong>Fuentes oficiales de la tabla:</strong> la documentación de Claude (<span lang="en">Context windows</span> y <span lang="en">Using the Messages API</span>) para el mismo chat; el centro de ayuda de Claude (artículos sobre la memoria, los proyectos y los chats de incógnito) para los otros tres casos, y la página de planes para el límite de 5 proyectos.</p>
+        <p>Buscar en chats anteriores es una función de los planes de pago. Cómo se usan la memoria y los proyectos se ve en el curso IA: Claude; aquí solo importa qué le llega a Claude.</p>
+        <h3>Por qué importa para escribir prompts</h3>
+        <p>Para probar un prompt de forma justa, sin que influya lo que hablaste antes, usa un chat de incógnito. Y si comparas dos versiones de un prompt, pruébalas en las mismas condiciones: cada una en un chat de incógnito nuevo.</p>
+        <div class="nota alerta">
+          <p><strong>Errores frecuentes:</strong></p>
+          <ul>
+            <li>Decir «Claude no recuerda nada de otras conversaciones» como regla absoluta: con la memoria activada por defecto, puede aportar datos de chats anteriores.</li>
+            <li>Creer que el chat de incógnito no sabe nada de ti: ve tu perfil (estilos y preferencias).</li>
+            <li>Olvidar la seguridad: la memoria guarda contexto de tus chats, y ese es un motivo más para no escribir datos personales.</li>
+          </ul>
+        </div>
+        <p><strong>Aplicación profesional:</strong> antes de guardar un prompt en tu biblioteca (el proyecto final del curso), pruébalo en un chat limpio: así sabes que funciona por lo que dice, no por lo que Claude ya sabía de ti.</p>
+      </div>
+      <h3>Actividad: ¿le llega a Claude?</h3>
+      <div data-actividad="chats"></div>
+    </section>
+
+    <!-- ================= 4. DEMOSTRACIÓN PRÁCTICA ================= -->
+    <section id="b-demo" class="bloque" aria-labelledby="t-demo">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-demo">Demostración: el mismo prompt, otro resultado</h2>
+      <div class="lectura">
+        <p>Vamos a resolver el caso de Sofía y a ver, paso a paso, cómo cambia lo que recibe Claude. Los prompts van en recuadros; lo que hace Claude <strong>se describe</strong>: tú lo comprobarás en la práctica autónoma.</p>
+
+        <h3>Paso 1 · Antes: el prompt suelto</h3>
+        <p><strong>Dónde:</strong> un chat de incógnito nuevo (sin memoria). <strong>Prompt:</strong></p>
+        <pre class="log" aria-label="Prompt del paso 1" data-decir="Dame tres títulos.">Dame tres títulos.</pre>
+        <p><strong>Qué recibe Claude:</strong> la instrucción de sistema de claude.ai, tu perfil (estilos y preferencias) y esas tres palabras. Nada sobre el cuento: el incógnito no usa la memoria y un chat nuevo no trae la conversación de otro.</p>
+        <div class="nota ok">
+          <p><strong>Resultado esperado (descrito):</strong> Claude no tiene de qué partir; puede pasar que te pregunte para qué son los títulos o que proponga títulos sobre cualquier tema. Ninguna de las dos cosas es un fallo: responde a lo que recibió. Eso le pasó a Sofía.</p>
+        </div>
+
+        <h3>Paso 2 · Después: el mismo prompt, con historial</h3>
+        <p><strong>Dónde:</strong> otro chat de incógnito nuevo. <strong>Mensaje 1:</strong></p>
+        <pre class="log" aria-label="Mensaje 1 del paso 2" data-decir="Estoy escribiendo un cuento para niños de 8 años. Trata de un faro que tiene miedo a la oscuridad.">Estoy escribiendo un cuento para niños de 8 años. Trata de un faro que tiene miedo a la oscuridad.</pre>
+        <p>Claude responde (descrito: por ejemplo, comenta la idea o se ofrece a ayudar). <strong>Mensaje 2:</strong></p>
+        <pre class="log" aria-label="Mensaje 2 del paso 2" data-decir="Dame tres títulos.">Dame tres títulos.</pre>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Turno</th><th>Lo que recibe Claude</th></tr></thead>
+            <tbody>
+              <tr><td>Turno 1</td><td>Mensaje 1</td></tr>
+              <tr><td>Turno 2</td><td>Mensaje 1 + respuesta 1 + mensaje 2</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nota ok">
+          <p><strong>Resultado esperado (descrito):</strong> títulos relacionados con el faro y la oscuridad, por ejemplo uno como «El faro que no quería apagarse» (ejemplo redactado para la clase, no es una respuesta real).</p>
+          <p><strong>Conclusión:</strong> el prompt «Dame tres títulos» fue idéntico en los dos pasos. Lo que cambió fue lo que Claude recibió.</p>
+        </div>
+
+        <h3>Paso 3 · Una palabra cambia la tarea</h3>
+        <p>Ahora, la idea del ejemplo de la guía oficial, adaptada a un párrafo, en versión «antes y después». Este es el párrafo de trabajo: es inventado y tiene seis errores de ortografía a propósito.</p>
+        <div class="nota">
+          <p>«Ayer fuimos al parke con mi ermano y comimos elado. Despues jugamos a la pelota asta que se iso de noche.»</p>
+        </div>
+        <p><strong>Antes:</strong></p>
+        <pre class="log" aria-label="Prompt antes" data-decir="¿Puedes sugerir algunos cambios a este párrafo? Y debajo, el párrafo de trabajo.">¿Puedes sugerir algunos cambios a este párrafo?
+Ayer fuimos al parke con mi ermano y comimos elado. Despues jugamos a la pelota asta que se iso de noche.</pre>
+        <p><strong>Después:</strong></p>
+        <pre class="log" aria-label="Prompt después" data-decir="Corrige los errores de ortografía de este párrafo y escríbelo corregido. Y debajo, el mismo párrafo de trabajo.">Corrige los errores de ortografía de este párrafo y escríbelo corregido.
+Ayer fuimos al parke con mi ermano y comimos elado. Despues jugamos a la pelota asta que se iso de noche.</pre>
+        <p><strong>Qué cambia en la respuesta (descrito):</strong> con «sugerir», la guía oficial advierte que Claude a veces da sugerencias en lugar de hacer los cambios: puede llegarte una lista de propuestas sin el párrafo corregido. Con «corrige… y escríbelo corregido», lo esperable es el párrafo ya reescrito.</p>
+        <div class="nota ok">
+          <p><strong>Conclusión:</strong> no es magia: Claude responde a lo que escribes. «Sugerir» y «corregir» son tareas distintas. En la Clase 02 aprenderás a escribir instrucciones claras con método.</p>
+        </div>
+
+        <h3>Paso 4 · Comparar con una lista de comprobación</h3>
+        <p>Repite el prompt «después» en otro chat de incógnito nuevo. Las palabras, el orden o los comentarios pueden cambiar (puede pasar; no es una regla). Para saber si una respuesta sirve, no la comparas palabra por palabra: la revisas con una lista.</p>
+        <div class="reto">
+          <h4>Lista de comprobación</h4>
+          <ol>
+            <li><span aria-hidden="true">☐ </span>¿Corrigió las seis palabras con error (parque, hermano, helado, Después, hasta, hizo)?</li>
+            <li><span aria-hidden="true">☐ </span>¿Devolvió el párrafo completo, no solo una lista de cambios?</li>
+            <li><span aria-hidden="true">☐ </span>¿Mantuvo lo que cuenta el párrafo, sin inventar cosas nuevas?</li>
+          </ol>
+        </div>
+        <div class="nota ok">
+          <p><strong>Resultado esperado:</strong> si las dos respuestas cumplen los tres criterios, <strong>las dos sirven</strong>, aunque estén escritas con palabras distintas. Así se compara en este curso.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= VOCABULARIO ================= -->
+    <section id="b-vocab" class="bloque" aria-labelledby="t-vocab">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-vocab">Vocabulario del prompt</h2>
+      <p>La documentación oficial de Claude está casi toda en inglés, y muchos términos se usan tal cual. Pulsa el altavoz para escuchar cada uno.</p>
+      <ul class="vocab">
+        <li data-en="prompt"><span><span class="en" lang="en">prompt</span><span class="es">instrucción o mensaje que le escribes a Claude</span><span class="pr">prómpt</span></span></li>
+        <li data-en="prompt engineering"><span><span class="en" lang="en">prompt engineering</span><span class="es">ingeniería de prompts</span><span class="pr">prómpt en-yi-ní-ring</span></span></li>
+        <li data-en="user"><span><span class="en" lang="en">user</span><span class="es">usuario</span><span class="pr">iú-ser</span></span></li>
+        <li data-en="assistant"><span><span class="en" lang="en">assistant</span><span class="es">asistente</span><span class="pr">a-sís-tant</span></span></li>
+        <li data-en="system prompt"><span><span class="en" lang="en">system prompt</span><span class="es">instrucción de sistema</span><span class="pr">sís-tem prómpt</span></span></li>
+        <li data-en="context window"><span><span class="en" lang="en">context window</span><span class="es">ventana de contexto</span><span class="pr">cón-text uín-dou</span></span></li>
+        <li data-en="memory"><span><span class="en" lang="en">memory</span><span class="es">memoria</span><span class="pr">mé-mo-ri</span></span></li>
+        <li data-en="incognito chat"><span><span class="en" lang="en">incognito chat</span><span class="es">chat de incógnito</span><span class="pr">in-cog-ní-tou chat</span></span></li>
+      </ul>
+      <p>Frase completa: <span data-en="Claude only works with what it receives."><span lang="en">Claude only works with what it receives.</span> <em>(Claude solo trabaja con lo que recibe.)</em> </span></p>
+    </section>
+
+    <!-- ================= 6. PRÁCTICA AUTÓNOMA ================= -->
+    <section id="b-autonoma" class="bloque" aria-labelledby="t-autonoma">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-autonoma">Práctica autónoma: comprueba qué recibe Claude</h2>
+      <div class="lectura">
+        <p>En estos cinco minutos lee la consigna. La práctica (unos 30 minutos) la haces después de la clase, en el chat de Claude, con el plan gratis.</p>
+        <h3>Objetivo</h3>
+        <p>Comprobar por ti mismo que Claude responde a lo que recibe: el historial del chat y las palabras exactas de tu prompt cambian el resultado, y dos respuestas se comparan con una lista de comprobación.</p>
+        <h3>Dónde</h3>
+        <p>En el chat de Claude (web, escritorio o celular), con el plan gratis. Usa <strong>chats de incógnito</strong> para que la memoria no influya. Son unos siete mensajes; si llegas al límite, sigue más tarde: el plan gratis limita el uso cada 5 horas y cada semana. No hace falta ninguna alternativa: todo se hace con Claude gratis, sin funciones de pago.</p>
+        <h3>Qué hacer</h3>
+        <ol>
+          <li><strong>Prueba 1 · El historial cuenta.</strong> En un chat de incógnito nuevo escribe solo «Dame tres títulos.» y anota qué hizo Claude. Abre otro chat de incógnito nuevo; primero describe en un mensaje un cuento <strong>inventado por ti</strong> (por ejemplo, un robot jardinero) y, en el mensaje siguiente, escribe otra vez «Dame tres títulos.». Compara.</li>
+          <li><strong>Prueba 2 · Una palabra cambia la tarea.</strong> Con el párrafo del parque de la demostración (o uno que inventes, sin datos personales), prueba en un chat de incógnito «¿Puedes sugerir algunos cambios a este párrafo?» y, en otro chat de incógnito nuevo, «Corrige los errores de ortografía de este párrafo y escríbelo corregido.». Anota qué te dio cada uno: ¿sugerencias, el párrafo corregido o las dos cosas?</li>
+          <li><strong>Prueba 3 · Misma pregunta, otra respuesta.</strong> Repite el prompt «Corrige…» en un tercer chat de incógnito nuevo. Compara esa respuesta con la de la prueba 2 usando la lista de comprobación de la demostración (tres criterios), marcando «cumple» o «no cumple».</li>
+          <li>Escribe en «Mis notas», al final de la página, qué pasó en cada prueba, <strong>describiéndolo con tus palabras</strong>.</li>
+        </ol>
+        <p><strong>Reto extra (opcional):</strong> en un chat nuevo, pregúntale a Claude qué fecha es hoy sin decírsela. Anota qué respondió y relaciónalo con la instrucción de sistema de claude.ai.</p>
+        <div class="nota alerta">
+          <p><strong>Recuerda la regla:</strong> en ninguna prueba escribas contraseñas, tokens, claves ni datos personales: todo lo que uses debe ser inventado.</p>
+        </div>
+      </div>
+      <div class="reto">
+        <h4>Criterios para comprobar que lo hiciste bien</h4>
+        <ol>
+          <li>En tus notas describiste qué hizo Claude con «Dame tres títulos» sin historial y con historial.</li>
+          <li>Explicaste la diferencia con la idea de que, en cada turno, Claude recibe todo el historial del chat.</li>
+          <li>Anotaste qué te dio la versión «¿Puedes sugerir…?» y qué te dio la versión «Corrige… y escríbelo corregido».</li>
+          <li>Marcaste los tres criterios de la lista (cumple / no cumple) para las dos respuestas de la prueba 3, sin compararlas palabra por palabra.</li>
+          <li>Hiciste cada prueba en un chat de incógnito nuevo (o anotaste que la memoria podía haber influido).</li>
+          <li>Todo lo que escribiste en Claude era inventado: ni contraseñas, ni tokens, ni datos personales.</li>
+        </ol>
+        <p>Si cumples los seis criterios, ¡lo lograste! Al terminar, en tu sesión con el profesor de la academia (no en el chat de práctica), di «revisa mi avance».</p>
+      </div>
+    </section>
+
+    <!-- ================= 7. EVALUACIÓN ================= -->
+    <section id="b-examen" class="bloque" aria-labelledby="t-examen">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-examen">Evaluación final</h2>
+      <p>Doce preguntas: conceptos, casos prácticos y problemas de aplicación. Solo cuenta tu primera respuesta, y cada una te explica el porqué.</p>
+      <div data-quiz="examen"></div>
+    </section>
+
+    <!-- ================= 8. RESUMEN ================= -->
+    <section id="b-resumen" class="bloque" aria-labelledby="t-resumen">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-resumen">Resumen de la clase</h2>
+      <div class="lectura">
+        <h3>Conceptos que debes recordar</h3>
+        <ul>
+          <li>Un prompt es el texto que le escribes a Claude: preguntas, instrucciones y datos. Es lo que Claude recibe de ti.</li>
+          <li>La ingeniería de prompts estructura las instrucciones para obtener mejores resultados; el primer intento rara vez sale perfecto.</li>
+          <li>Claude genera su respuesta a partir de lo que recibe: si cambian tus palabras, puede cambiar la respuesta («sugerir» no es «corregir»).</li>
+          <li>Una conversación son turnos del usuario y del asistente; empieza el usuario. En cada turno, Claude recibe todo el historial del chat.</li>
+          <li>La instrucción de sistema va antes y aparte de los turnos. En claude.ai la pone Anthropic; tú escribes los turnos del usuario.</li>
+          <li>Un chat nuevo no trae la conversación de otro, pero la memoria (activada por defecto) y los proyectos pueden aportar información. El chat de incógnito no usa la memoria.</li>
+          <li>Claude puede equivocarse y no siempre responde igual: compara con una lista de comprobación y verifica lo importante.</li>
+          <li>Nunca escribas contraseñas, tokens, claves ni datos personales.</li>
+        </ul>
+        <h3>Ya deberías ser capaz de</h3>
+        <ul>
+          <li>Explicar con tus palabras qué es un prompt y señalar sus ingredientes.</li>
+          <li>Decir qué recibe Claude en el mismo chat, en un chat nuevo, en un proyecto y en un chat de incógnito.</li>
+          <li>Preparar una prueba justa de un prompt en un chat de incógnito y comparar dos respuestas con una lista de comprobación.</li>
+        </ul>
+        <h3>Prepárate para la Clase 02</h3>
+        <p>En la próxima clase, «Preguntas e instrucciones claras: de lo vago a lo bien definido», aprenderás a convertir una petición vaga en una instrucción clara. Anota tres peticiones que le harías a Claude en tu día a día o en tus cursos, tal como te salen ahora, sin datos personales: las mejorarás allí.</p>
+      </div>
+    </section>
+
+    <!-- ================= VIDEOS COMPLEMENTARIOS ================= -->
+    <section id="videos" class="bloque fuentes" aria-labelledby="t-videos">
+      <p class="kicker">Material complementario · fuera del reloj</p>
+      <h2 id="t-videos">🎬 Video complementario</h2>
+      <p>El video complementa la clase: no la reemplaza. Se verificó el 12 de noviembre de 2026 con la herramienta de la academia: existe, está disponible y sus datos son los de la ficha. Lo que enseña se revisó con su título y su descripción; no se vio completo.</p>
+      <ul class="lista-fuentes">
+        <li><a href="https://www.youtube.com/watch?v=jrucUmU_l8s" target="_blank" rel="noopener">[S2/L01] Ingeniería de prompts: Para la vida real - ¿Qué es un prompt?<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Canal: DevTalles (terceros) · en español (tiene además una pista de audio en inglés) · 4:22 · publicado el 24/04/2026 · verificado el 12/11/2026</span>
+          <span class="origen">Subtítulos en español: sí, automáticos (no hay subtítulos manuales).</span>
+          <span class="origen">Qué enseña (según su título y su descripción): la primera lección de un curso de ingeniería de prompts sencillo y práctico, «¿Qué es un prompt?». Refuerza el bloque «¿Qué es un prompt?».</span>
+          <span class="origen">Avisos: no es específico de Claude (habla de varias herramientas de IA). Su descripción enlaza un curso de pago de DevTalles: esta clase enlaza solo este video gratuito de YouTube, nunca el curso de pago.</span>
+          <span class="origen">Alternativa escrita, por si el video desaparece: la «Descripción general de la ingeniería de prompts» de Anthropic, en español, y la sección «<span lang="en">What is prompt engineering?</span>» del blog oficial de Claude (las dos están en la sección de fuentes).</span></li>
+      </ul>
+    </section>
+
+    <!-- ================= 9. FUENTES VERIFICADAS ================= -->
+    <section id="fuentes" class="bloque fuentes" aria-labelledby="t-fuentes">
+      <p class="kicker">Lectura extra · fuera del reloj</p>
+      <h2 id="t-fuentes">📚 Fuentes verificadas</h2>
+      <p>Cada afirmación de esta clase se comprobó leyendo estas fuentes el 12 de noviembre de 2026. Las funciones y los planes de Claude cambian con frecuencia: si lees esto mucho después, vuelve a comprobarlos. Estado <strong>verificado</strong> significa que el dato se leyó en una fuente oficial; <strong>parcialmente verificado</strong>, que la fuente confirma una parte y se explica qué falta. Las que están en inglés las puedes leer en español: en el navegador, haz clic derecho y elige <strong>Traducir a español</strong>.</p>
+
+      <h3>Anthropic (oficial): tutorial interactivo de ingeniería de prompts</h3>
+      <ul class="lista-fuentes">
+        <li><a href="https://github.com/anthropics/prompt-eng-interactive-tutorial/blob/master/Anthropic%201P/01_Basic_Prompt_Structure.ipynb" target="_blank" rel="noopener"><span lang="en">Chapter 1: Basic Prompt Structure</span><span class="sr-only"> (se abre en otra pestaña)</span></a>
+          (<a href="https://raw.githubusercontent.com/anthropics/prompt-eng-interactive-tutorial/master/Anthropic%201P/01_Basic_Prompt_Structure.ipynb" target="_blank" rel="noopener">versión de texto<span class="sr-only"> (se abre en otra pestaña)</span></a>)
+          <span class="origen">Anthropic · tutorial en GitHub · sin fecha en el archivo; último cambio del repositorio: 08/04/2024 · consultado el 12/11/2026 · en inglés</span>
+          <span class="origen">Respalda: que en sus ejercicios el prompt es el texto que va en el mensaje del usuario; los turnos de usuario y asistente, que empiezan por el usuario; la instrucción de sistema (contexto, instrucciones y pautas antes de la pregunta) y que, bien escrita, puede mejorar el rendimiento.</span>
+          <span class="origen">Aviso: se escribió para Claude 3 y sus ejercicios usan la API; la academia toma solo sus conceptos.</span>
+          <span class="origen">Estado: verificado (conceptos).</span></li>
+        <li><a href="https://raw.githubusercontent.com/anthropics/prompt-eng-interactive-tutorial/master/Anthropic%201P/02_Being_Clear_and_Direct.ipynb" target="_blank" rel="noopener"><span lang="en">Chapter 2: Being Clear and Direct</span><span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Anthropic · tutorial en GitHub (enlace a la versión de texto del cuaderno; también se llega desde el repositorio del tutorial) · sin fecha (repositorio actualizado por última vez el 08/04/2024) · consultado el 12/11/2026 · en inglés</span>
+          <span class="origen">Respalda: que Claude no tiene más contexto que lo que le dices literalmente, y la comparación con una persona nueva en el trabajo. Es la fuente principal de la Clase 02.</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://github.com/anthropics/prompt-eng-interactive-tutorial" target="_blank" rel="noopener"><span lang="en">Anthropic's Interactive Prompt Engineering Tutorial</span><span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Anthropic · repositorio en GitHub · último cambio: 08/04/2024 · consultado el 12/11/2026 · en inglés</span>
+          <span class="origen">Respalda: la estructura del tutorial (capítulo 1 «<span lang="en">Basic Prompt Structure</span>», capítulo 2 «<span lang="en">Being Clear and Direct</span>») y que usa Claude 3 Haiku.</span>
+          <span class="origen">Estado: verificado.</span></li>
+      </ul>
+
+      <h3>Anthropic (oficial): documentación de Claude</h3>
+      <ul class="lista-fuentes">
+        <li><a href="https://platform.claude.com/docs/es/build-with-claude/prompt-engineering/claude-prompting-best-practices" target="_blank" rel="noopener">Mejores prácticas de prompting<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          (versión en inglés: <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices" target="_blank" rel="noopener"><span lang="en">Prompting best practices</span><span class="sr-only"> (se abre en otra pestaña)</span></a>)
+          <span class="origen">Anthropic · documentación de Claude · sin fecha visible · consultado el 12/11/2026 · en español y en inglés</span>
+          <span class="origen">Respalda: pensar en Claude como un empleado brillante pero nuevo; que con «¿puedes sugerir algunos cambios?» Claude a veces sugiere en lugar de cambiar; que las respuestas prellenadas ya no se admiten en los modelos actuales (por eso la clase no las enseña).</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://platform.claude.com/docs/es/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener">Descripción general de la ingeniería de prompts<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Anthropic · documentación de Claude · sin fecha visible · consultado el 12/11/2026 · en español</span>
+          <span class="origen">Respalda: que el tutorial se escribió para los modelos Claude 3 y que, donde difiera, manda «Mejores prácticas de prompting». Uso: alternativa escrita al video.</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://platform.claude.com/docs/en/build-with-claude/context-windows" target="_blank" rel="noopener"><span lang="en">Context windows</span><span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Anthropic · documentación de Claude · sin fecha visible · consultado el 12/11/2026 · en inglés</span>
+          <span class="origen">Respalda: que en cada turno la entrada es todo el historial más el mensaje nuevo y la respuesta pasa al turno siguiente; la ventana de contexto como «memoria de trabajo»; que más contexto no siempre es mejor; que interfaces como claude.ai pueden gestionarla dejando fuera lo más antiguo.</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://platform.claude.com/docs/en/about-claude/glossary" target="_blank" rel="noopener"><span lang="en">Glossary</span><span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Anthropic · documentación de Claude · sin fecha visible · consultado el 12/11/2026 · en inglés</span>
+          <span class="origen">Respalda: el preentrenamiento (predecir la siguiente palabra), la ventana de contexto, el uso del término prompt y que, incluso con entradas idénticas, la salida puede variar (descrito para la API).</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://platform.claude.com/docs/en/build-with-claude/working-with-messages" target="_blank" rel="noopener"><span lang="en">Using the Messages API</span><span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Anthropic · documentación de la API · sin fecha visible · consultado el 12/11/2026 · en inglés</span>
+          <span class="origen">Respalda: los turnos de usuario y asistente y que en cada llamada se envía todo el historial de la conversación. Es documentación de la API: solo respalda los conceptos; la academia no la usa.</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://platform.claude.com/docs/en/release-notes/system-prompts" target="_blank" rel="noopener"><span lang="en">System prompts</span> (notas de versión)<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Anthropic · documentación de Claude · sin fecha en la introducción · consultado el 12/11/2026 · en inglés</span>
+          <span class="origen">Respalda: que claude.ai y las apps móviles usan una instrucción de sistema al empezar cada conversación (fecha, código en <span lang="en">Markdown</span>), que se actualiza de vez en cuando y que no se aplica a la API.</span>
+          <span class="origen">Estado: verificado.</span></li>
+      </ul>
+
+      <h3>Anthropic (oficial): centro de ayuda de Claude y planes</h3>
+      <ul class="lista-fuentes">
+        <li><a href="https://support.claude.com/en/articles/7996853-introduction-to-prompt-design" target="_blank" rel="noopener"><span lang="en">Introduction to prompt design</span><span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Anthropic · centro de ayuda de Claude · actualizada el 16/03/2026 · consultado el 12/11/2026 · en inglés</span>
+          <span class="origen">Respalda: la comparación de Claude con un contratista recién contratado sin contexto sobre ti ni tu tarea.</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://support.claude.com/en/articles/8525154-claude-is-providing-incorrect-or-misleading-responses-what-s-going-on" target="_blank" rel="noopener"><span lang="en">Claude is providing incorrect or misleading responses. What's going on?</span><span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Anthropic · centro de ayuda de Claude · actualizada el 16/03/2026 · consultado el 12/11/2026 · en inglés</span>
+          <span class="origen">Respalda: que Claude puede «alucinar» y escribir cosas que parecen correctas y están muy equivocadas, que no es la única fuente de verdad y que hay que revisar los consejos importantes y las fuentes citadas.</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context" target="_blank" rel="noopener"><span lang="en">Use Claude's chat search and memory to build on previous context</span><span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Anthropic · centro de ayuda de Claude · la página dice «<span lang="en">Updated yesterday</span>», sin fecha exacta · consultado el 12/11/2026 · en inglés</span>
+          <span class="origen">Respalda: que la memoria está en el plan gratis y viene activada por defecto, que guarda contexto de trabajo por temas, que cada proyecto tiene su propia memoria, que la búsqueda de chats es de los planes de pago y que los chats de incógnito quedan fuera.</span>
+          <span class="origen">Estado: parcialmente verificado: confirma las funciones y los planes, pero no dice de forma explícita que, sin ellas, Claude no recuerde otras conversaciones.</span></li>
+        <li><a href="https://support.claude.com/en/articles/9517075-what-are-projects" target="_blank" rel="noopener"><span lang="en">What are projects?</span><span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Anthropic · centro de ayuda de Claude · «<span lang="en">Updated over a week ago</span>», sin fecha exacta · consultado el 12/11/2026 · en inglés</span>
+          <span class="origen">Respalda: que los proyectos tienen sus propias instrucciones y su base de conocimiento, y que el plan gratis permite hasta cinco.</span>
+          <span class="origen">Estado: parcialmente verificado: no aclara si los chats de un mismo proyecto ven el contenido de los otros chats (la clase no lo enseña).</span></li>
+        <li><a href="https://support.claude.com/en/articles/12260368-use-incognito-chats" target="_blank" rel="noopener"><span lang="en">Use incognito chats</span><span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Anthropic · centro de ayuda de Claude · «<span lang="en">Updated over a week ago</span>», sin fecha exacta · consultado el 12/11/2026 · en inglés</span>
+          <span class="origen">Respalda: que el chat de incógnito está en todos los planes, incluido el gratis; que no usa la memoria ni se guarda en ella; que Claude sí ve tu perfil; que no está disponible dentro de los proyectos.</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://claude.com/pricing" target="_blank" rel="noopener"><span lang="en">Plans &amp; pricing</span><span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Anthropic · sin fecha visible · consultado el 12/11/2026 · en inglés</span>
+          <span class="origen">Respalda: el plan gratis (0 USD) con chat en la web, el escritorio y el celular, uso limitado cada 5 horas y cada semana, memoria entre conversaciones y hasta 5 proyectos.</span>
+          <span class="origen">Estado: verificado. Los planes cambian con frecuencia.</span></li>
+      </ul>
+
+      <h3>Anthropic (oficial): blog de Claude</h3>
+      <ul class="lista-fuentes">
+        <li><a href="https://claude.com/blog/best-practices-for-prompt-engineering" target="_blank" rel="noopener"><span lang="en">Best practices for prompt engineering for 2026</span><span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Anthropic · blog de Claude · publicado el 10/11/2025 (puede haberse actualizado sin indicarlo) · autor: no figura · consultado el 12/11/2026 · en inglés</span>
+          <span class="origen">Respalda: qué es la ingeniería de prompts; la diferencia entre una instrucción vaga y una bien hecha; que un prompt mal planteado puede exigir varias idas y vueltas; no suponer que la IA lee la mente; que el primer prompt rara vez funciona perfecto.</span>
+          <span class="origen">Nota: presenta el prellenado como técnica, pero la documentación («Mejores prácticas de prompting» y «<span lang="en">Using the Messages API</span>») indica que ya no se admite en los modelos actuales: en eso manda la documentación.</span>
+          <span class="origen">Estado: verificado.</span></li>
+      </ul>
+    </section>
+
+    <!-- ================= CIERRE ================= -->
+    <section id="cierre" class="bloque" aria-labelledby="t-cierre">
+      <p class="kicker">Cierre</p>
+      <h2 id="t-cierre">Mis notas y mis pruebas con Claude</h2>
+      <label for="notas">Escribe aquí qué hizo Claude en cada prueba (descríbelo con tus palabras), tus dudas o lo que más te costó:</label>
+      <textarea id="notas" data-notas="generales" placeholder="Prueba 1 (historial): sin historial… / con historial… · Prueba 2 (sugerir o corregir): … · Prueba 3 (lista): criterio 1… criterio 2… criterio 3… · ¿Usé incógnito? … · Dudas: …"></textarea>
+      <p>Tu avance se guarda solo. Al terminar, en tu sesión con el profesor de la academia, di «revisa mi avance».</p>
+      <div id="resumen"></div>
+    </section>
+  </main>
+</div>
+
+<p class="pie">Prompt//Academia · Clase 01 · Los prompts y los casos son didácticos y ficticios; las respuestas de Claude se describen, no se copian.</p>
+
+<script>
+window.CLASE = {
+  id: 'prompt-01',
+  titulo: 'Prompt Engineering · Clase 01: ¿Qué es un prompt?',
+  bloques: [
+    { id: 'b-bienvenida', titulo: 'Presentación y punto de partida', min: 10 },
+    { id: 'b-prompt', titulo: '¿Qué es un prompt?', min: 15 },
+    { id: 'b-lectura', titulo: 'Cómo lee Claude lo que escribes', min: 15 },
+    { id: 'b-turnos', titulo: 'Una conversación por turnos', min: 15 },
+    { id: 'b-descanso', titulo: 'Descanso', min: 10 },
+    { id: 'b-chats', titulo: 'Qué recibe Claude en cada chat', min: 15 },
+    { id: 'b-demo', titulo: 'Demostración: el mismo prompt, otro resultado', min: 15 },
+    { id: 'b-vocab', titulo: 'Vocabulario del prompt', min: 5 },
+    { id: 'b-autonoma', titulo: 'Práctica autónoma', min: 5 },
+    { id: 'b-examen', titulo: 'Evaluación final', min: 10 },
+    { id: 'b-resumen', titulo: 'Resumen', min: 5 }
+  ],
+  actividades: {
+    ingredientes: {
+      titulo: '¿Qué ingredientes tiene este prompt?',
+      preguntas: [{ label: 'Este prompt contiene…', corto: 'Contiene', multiple: true,
+        opciones: ['Una pregunta', 'Una instrucción (un pedido o una orden)', 'Datos o un texto para trabajar'] }],
+      items: [
+        { titulo: '«¿Por qué el cielo se ve azul?»',
+          respuestas: [['Una pregunta']],
+          pista: '¿Le pide hacer algo? ¿Le pasa algún texto, lista o número para trabajar?',
+          explica: 'Es solo una pregunta: no le pide una tarea ni le pasa ningún material.' },
+        { titulo: '«Escribe un poema de cuatro versos sobre la lluvia.»',
+          respuestas: [['Una instrucción (un pedido o una orden)']],
+          pista: 'Fíjate en el primer verbo. ¿Hay algún texto que Claude tenga que revisar o transformar?',
+          explica: 'Es una instrucción («escribe»). La lluvia es el tema del pedido, no un texto que Claude deba transformar.' },
+        { titulo: '«Traduce al inglés: "La reunión es el martes."»',
+          respuestas: [['Una instrucción (un pedido o una orden)', 'Datos o un texto para trabajar']],
+          pista: 'Hay un pedido y también algo sobre lo que se hace ese pedido.',
+          explica: 'Instrucción («traduce») más datos: la frase que hay que traducir.' },
+        { titulo: '«¿Qué errores de ortografía tiene esta frase? "Ayer fuimos al parke y comimos elado."»',
+          respuestas: [['Una pregunta', 'Datos o un texto para trabajar']],
+          pista: 'Mira cómo está escrita la primera parte y qué va entre comillas.',
+          explica: 'Es una pregunta sobre un texto que le pasas: pregunta más datos.' },
+        { titulo: '«Ordena de menor a mayor: 8, 3, 5, 1.»',
+          respuestas: [['Una instrucción (un pedido o una orden)', 'Datos o un texto para trabajar']],
+          pista: 'Los números también son material para trabajar.',
+          explica: 'Instrucción («ordena») más datos (los números).' },
+        { titulo: '«Dame tres ideas para celebrar un cumpleaños en casa.»',
+          respuestas: [['Una instrucción (un pedido o una orden)']],
+          pista: '¿Le pasas algún texto o lista para que trabaje con ella?',
+          explica: 'Es un pedido («dame»). El cumpleaños es el tema, no un material que Claude deba transformar.' }
+      ]
+    },
+    ideas: {
+      titulo: '¿Correcta o incorrecta?',
+      preguntas: [{ label: 'Esta idea es…', corto: 'Idea', opciones: ['Correcta', 'Incorrecta'] }],
+      items: [
+        { titulo: 'Claude sabe lo que quieres aunque no lo escribas.',
+          respuestas: [['Incorrecta']],
+          pista: '¿Con qué material trabaja Claude para responder?',
+          explica: 'Claude no lee la mente: trabaja con lo que recibe. Lo que no escribes no le llega.' },
+        { titulo: 'Si cambias las palabras de tu prompt, puede cambiar la respuesta.',
+          respuestas: [['Correcta']],
+          pista: 'Recuerda: Claude genera su respuesta a partir de lo que recibe.',
+          explica: 'Si cambian tus palabras, cambia el material con el que trabaja Claude, y su respuesta puede cambiar.' },
+        { titulo: 'Si preguntas «¿puedes sugerir algunos cambios?», Claude siempre hace los cambios directamente.',
+          respuestas: [['Incorrecta']],
+          pista: 'Recuerda el ejemplo de la guía oficial: ¿qué se pidió en realidad?',
+          explica: 'La guía oficial advierte que, con esa forma de pedir, Claude a veces da sugerencias en lugar de hacer los cambios.' },
+        { titulo: 'Una buena forma de imaginar a Claude: un colaborador brillante, pero nuevo, que no conoce tus normas ni tu forma de trabajar.',
+          respuestas: [['Correcta']],
+          pista: 'Piensa en el modelo mental que propone la guía oficial.',
+          explica: 'Es la comparación de la guía oficial: muy capaz, pero sin contexto sobre ti ni sobre tu tarea. (Es una comparación: Claude no es una persona.)' },
+        { titulo: 'Si Claude responde con mucha seguridad, la respuesta es correcta.',
+          respuestas: [['Incorrecta']],
+          pista: '¿Qué dice el centro de ayuda sobre las alucinaciones?',
+          explica: 'Claude puede escribir cosas que parecen correctas y están muy equivocadas. Lo importante se comprueba.' },
+        { titulo: 'Si la misma pregunta recibe dos respuestas con palabras distintas, seguro que una de las dos está mal.',
+          respuestas: [['Incorrecta']],
+          pista: '¿Cómo se comparan respuestas en este curso?',
+          explica: 'La salida puede variar aunque la entrada sea la misma. Se compara con una lista de comprobación: si las dos cumplen lo que necesitas, las dos sirven.' },
+        { titulo: 'El primer prompt rara vez sale perfecto: ajustarlo es normal.',
+          respuestas: [['Correcta']],
+          pista: '¿Qué dice el blog oficial sobre iterar?',
+          explica: 'No iterar es un error frecuente: el primer prompt rara vez funciona perfecto.' }
+      ]
+    },
+    partes: {
+      titulo: '¿Qué parte de la conversación es?',
+      preguntas: [{ label: 'Esto es…', corto: 'Parte',
+        opciones: ['Turno del usuario', 'Turno del asistente', 'Instrucción de sistema', 'Nada: Claude no lo recibe'] }],
+      items: [
+        { titulo: 'Lo que escribes en la caja del chat y envías',
+          respuestas: [['Turno del usuario']],
+          pista: '¿Quién lo escribe: tú o Claude?',
+          explica: 'Lo que tú escribes y envías es un turno del usuario.' },
+        { titulo: 'La respuesta que Claude escribe después de tu mensaje',
+          respuestas: [['Turno del asistente']],
+          pista: '¿Quién habla aquí?',
+          explica: 'Lo que responde Claude es el turno del asistente, y pasa a formar parte de lo que recibe en el turno siguiente.' },
+        { titulo: 'Información actual, como la fecha, que claude.ai le da a Claude al empezar cada conversación',
+          respuestas: [['Instrucción de sistema']],
+          pista: 'No la escribes tú ni la responde Claude, y llega antes de tu primer mensaje.',
+          explica: 'Es la instrucción de sistema que Anthropic usa en claude.ai al empezar cada conversación.' },
+        { titulo: 'Una frase que escribiste en la caja del chat, pero que borraste antes de enviar',
+          respuestas: [['Nada: Claude no lo recibe']],
+          pista: '¿Llegó a enviarse?',
+          explica: 'Lo que no envías no forma parte de la conversación: Claude no lo recibe.' },
+        { titulo: 'El primer turno de cualquier conversación',
+          respuestas: [['Turno del usuario']],
+          pista: '¿Quién empieza: tú o Claude?',
+          explica: 'La conversación empieza con un turno del usuario. La instrucción de sistema no es un turno: va aparte.' },
+        { titulo: 'Un resumen que Claude te escribió hace tres mensajes en este mismo chat',
+          respuestas: [['Turno del asistente']],
+          pista: '¿Quién escribió ese resumen?',
+          explica: 'Es un turno del asistente. Como sigues en el mismo chat, forma parte del historial que Claude recibe ahora.' }
+      ]
+    },
+    chats: {
+      titulo: '¿Le llega a Claude?',
+      preguntas: [{ label: '¿Le llega a Claude?', corto: '¿Le llega?',
+        opciones: ['Sí, le llega', 'Puede llegarle, por la memoria', 'No le llega'] }],
+      items: [
+        { titulo: 'Algo que escribiste hace diez mensajes en este mismo chat',
+          respuestas: [['Sí, le llega']],
+          pista: '¿Qué recibe Claude en cada turno dentro de un chat?',
+          explica: 'En cada turno recibe todo el historial del chat. (Solo en conversaciones larguísimas la interfaz podría dejar fuera lo más antiguo.)' },
+        { titulo: 'Lo que le contaste ayer en otro chat, cuando abres un chat nuevo normal sin cambiar ninguna configuración',
+          respuestas: [['Puede llegarle, por la memoria']],
+          pista: '¿Cómo viene la memoria en el plan gratis?',
+          explica: 'Un chat nuevo no trae la conversación de otro, pero la memoria, activada por defecto, puede aportar datos que Claude guardó de chats anteriores.' },
+        { titulo: 'Lo que le contaste ayer en otro chat, cuando abres un chat de incógnito',
+          respuestas: [['No le llega']],
+          pista: '¿Qué hace el chat de incógnito con la memoria?',
+          explica: 'Un chat nuevo no trae la conversación de otro, y el incógnito no usa la memoria. (Claude sí ve tu perfil: estilos y preferencias.)' },
+        { titulo: 'Las instrucciones y los archivos de un proyecto, cuando escribes en un chat de ese proyecto',
+          respuestas: [['Sí, le llega']],
+          pista: '¿Qué aporta un proyecto a sus chats?',
+          explica: 'Un proyecto aporta sus instrucciones y sus archivos a los chats que abres dentro de él.' },
+        { titulo: 'Lo que pensabas pedirle, pero no llegaste a escribir',
+          respuestas: [['No le llega']],
+          pista: '¿Claude lee la mente?',
+          explica: 'Claude solo cuenta con lo que recibe. Lo que no escribes no le llega.' },
+        { titulo: 'La fecha de hoy, en un chat normal de claude.ai, aunque tú no la escribas',
+          respuestas: [['Sí, le llega']],
+          pista: 'Recuerda la instrucción de sistema de claude.ai.',
+          explica: 'La instrucción de sistema de claude.ai da información actual, como la fecha, al empezar cada conversación.' }
+      ]
+    }
+  },
+  quizzes: {
+    examen: {
+      titulo: 'Evaluación final',
+      preguntas: [
+        { q: '¿Qué es un prompt?',
+          opciones: ['Un programa que se instala en el computador o en el celular para usar Claude',
+                     'El texto que le escribes a Claude y a partir del cual genera su respuesta',
+                     'La respuesta que Claude te escribe en el chat justo después de leer tu pregunta',
+                     'La contraseña secreta que protege tu cuenta de Claude'],
+          correcta: 1,
+          explica: 'Un prompt es todo lo que le escribes a Claude: preguntas, instrucciones y datos. Claude responde a partir de eso.' },
+        { q: '¿Qué es la ingeniería de prompts?',
+          opciones: ['Programar desde cero una inteligencia artificial nueva, línea por línea de código',
+                     'Reparar los computadores donde funcionan los modelos de IA',
+                     'Escribir siempre los prompts lo más largos posible, para que no le falte nada a Claude',
+                     'Estructurar las instrucciones para obtener mejores resultados de un modelo de IA'],
+          correcta: 3,
+          explica: 'Es la meta de este curso: estructurar tus instrucciones (cómo formulas, el estilo, el contexto) para obtener mejores resultados.' },
+        { q: 'En una conversación con Claude, ¿quién tiene el primer turno?',
+          opciones: ['El usuario: la conversación empieza con su turno',
+                     'Claude, que saluda primero en cada chat',
+                     'La instrucción de sistema, como primer turno del chat',
+                     'Nadie: todo se envía junto al final'],
+          correcta: 0,
+          explica: 'Los turnos del usuario y del asistente se alternan, y el primero es el del usuario. La instrucción de sistema no es un turno: va aparte.' },
+        { q: '¿Por qué lo que dijiste antes en el mismo chat influye en la respuesta de Claude?',
+          opciones: ['Porque Claude adivina lo que estás pensando mientras le escribes cada mensaje',
+                     'Porque Claude busca tus mensajes anteriores en internet',
+                     'Porque en cada turno recibe todo el historial del chat más tu mensaje nuevo',
+                     'Porque la instrucción de sistema copia y guarda todos tus mensajes anteriores'],
+          correcta: 2,
+          explica: 'En cada turno, Claude recibe el historial completo del chat más tu mensaje nuevo; su respuesta pasa a formar parte del turno siguiente.' },
+        { q: '¿Qué es la instrucción de sistema (system prompt)?',
+          opciones: ['El sistema operativo que tienes instalado en tu celular o en tu computador',
+                     'El primer turno del asistente, con el que Claude abre cada conversación',
+                     'Un mensaje de error que aparece cuando el chat falla',
+                     'Pautas que Claude recibe antes de tu pregunta, aparte de los turnos'],
+          correcta: 3,
+          explica: 'Es una forma de dar a Claude contexto, instrucciones y pautas antes de la pregunta del usuario. No es un turno: va aparte.' },
+        { q: 'En claude.ai, ¿quién pone la instrucción de sistema que se usa al empezar cada conversación?',
+          opciones: ['Tú, con tu primer mensaje del chat',
+                     'Anthropic, que la actualiza de vez en cuando',
+                     'El último usuario que usó Claude antes que tú',
+                     'Nadie: en el chat no existe ninguna'],
+          correcta: 1,
+          explica: 'claude.ai y las apps móviles usan una instrucción de sistema de Anthropic (por ejemplo, con la fecha), que se actualiza de vez en cuando. Tú escribes los turnos del usuario.' },
+        { q: 'Abres un chat nuevo normal en el plan gratis, con la memoria como viene por defecto. ¿Qué es correcto?',
+          opciones: ['No trae otros chats, pero la memoria puede aportar datos guardados',
+                     'Trae completa, palabra por palabra, la conversación que tuviste ayer en otro chat',
+                     'No le puede llegar nada de chats anteriores en ningún caso',
+                     'Solo puede recordar algo si pagas un plan de Claude'],
+          correcta: 0,
+          explica: 'Un chat nuevo no trae la conversación de otro, pero la memoria, activada por defecto también en el plan gratis, puede aportar datos guardados de chats anteriores.' },
+        { q: 'Quieres probar un prompt sin que influya lo que Claude guardó de chats anteriores. ¿Dónde lo pruebas?',
+          opciones: ['En el mismo chat donde lo hablaste antes',
+                     'En un proyecto con sus propias instrucciones',
+                     'En cualquier chat, escribiendo en mayúsculas',
+                     'En un chat de incógnito nuevo'],
+          correcta: 3,
+          explica: 'El chat de incógnito no usa la memoria ni se guarda en ella. El mismo chat arrastra su historial y un proyecto aporta sus instrucciones y su propia memoria.' },
+        { q: 'Caso práctico: Marta (ficticia) escribe «¿Puedes sugerir algunos cambios a este párrafo?» y recibe una lista de sugerencias, pero no el párrafo cambiado. ¿Qué explica mejor lo que pasó?',
+          opciones: ['Claude no leyó el párrafo completo porque era demasiado corto para él',
+                     'El plan gratis no permite que Claude reescriba ni corrija párrafos completos',
+                     'Pidió sugerencias, y con esa forma de pedir Claude a veces solo sugiere',
+                     'Claude se confundió de tarea por un error en la conexión a internet'],
+          correcta: 2,
+          explica: 'Es el ejemplo de la guía oficial: con «¿puedes sugerir cambios?», Claude a veces da sugerencias en lugar de hacerlos. Claude responde a lo que escribes.' },
+        { q: 'Caso práctico: ayer Pedro (ficticio) le contó a Claude, en otro chat, el cuento que está escribiendo. Hoy abre un chat de incógnito nuevo y escribe solo «Dame tres títulos». Los títulos no tienen nada que ver con su cuento. ¿Por qué?',
+          opciones: ['Le faltó escribir «por favor» al final de su mensaje',
+                     'Solo cuenta con lo que recibe, y el incógnito no usa la memoria',
+                     'Claude no sabe inventar buenos títulos para cuentos infantiles como el suyo',
+                     'La instrucción de sistema de claude.ai le prohíbe hablar de cuentos'],
+          correcta: 1,
+          explica: 'Un chat nuevo no trae la conversación de otro y el incógnito no usa la memoria: Claude solo tenía «Dame tres títulos».' },
+        { q: 'Caso práctico: Ana (ficticia) prueba el mismo prompt en dos chats de incógnito y recibe dos respuestas con palabras distintas. ¿Cómo debe compararlas?',
+          opciones: ['Revisando si cada una cumple su lista de comprobación',
+                     'Exigiendo que sean idénticas palabra por palabra',
+                     'Quedándose siempre con la respuesta más larga',
+                     'Descartando las dos, porque una tiene que estar mal'],
+          correcta: 0,
+          explica: 'La salida puede variar aunque la entrada sea la misma. Si las dos cumplen los criterios de la lista, las dos sirven.' },
+        { q: '¿Cuál de estas acciones sigue la regla de seguridad del curso?',
+          opciones: ['Pegar un token que no funciona para que Claude lo revise',
+                     'Copiar sin revisar una cifra importante porque Claude la dio con seguridad',
+                     'Practicar con datos inventados y comprobar lo importante en una fuente confiable',
+                     'Escribir la contraseña del correo para que Claude te ayude a recordarla'],
+          correcta: 2,
+          explica: 'Contraseñas y tokens nunca se escriben en un chat, y Claude puede equivocarse con total seguridad: lo importante se comprueba.' }
+      ]
+    }
+  }
+};
+</script>
+<script src="../../../recursos/sync.js"></script>
+<script src="../../../recursos/academia.js"></script>
+</body>
+</html>
