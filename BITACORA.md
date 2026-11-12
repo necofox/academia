@@ -40,10 +40,12 @@ Una academia personal para aprender **desde cero**, con Claude como profesor y e
 | JavaScript | 7 · 37 (74 h) | 01–04 → M1·1 a M1·4 | M1·5 Bucles |
 | Python | 9 · 38 (76 h) + electiva de 3 | 01–04 → M1·1 a M1·4 | M1·5 Bucles |
 | Redes y Telecomunicaciones | 11 · 51 (102 h) | 01–03 → M1·1 a M1·3 | M1·4 Ethernet y switching |
-| IA: Claude y productividad | 11 · 55 (110 h) | 01–02 → M1·1 a M1·2 | M1·3 Primeros pasos en el chat |
+| Inteligencia Artificial: Claude | 21 · 71 (142 h), en 5 bloques | 01–02 → M1·1 a M1·2 | M1·3 Primeros pasos: conversaciones, archivos, búsqueda web y estilos |
+| Prompt Engineering | 6 · 32 (64 h) | — | M1·1 ¿Qué es un prompt? Cómo interpreta Claude lo que escribes |
 
 Los módulos y el orden de todas las clases están en `recursos/catalogo.js` (aprobados en
-`PROPUESTA-ORGANIZACION-CURRICULAR.md`; Redes e IA, en `PROPUESTA-AMPLIACION-6-CURSOS.md`). El número de archivo (`clase-04`) no cambia aunque la
+`PROPUESTA-ORGANIZACION-CURRICULAR.md`; Redes, en `PROPUESTA-AMPLIACION-6-CURSOS.md`; Inteligencia
+Artificial: Claude y Prompt Engineering, en `DIAGNOSTICO-ESTRUCTURA-ACADEMICA.md`). El número de archivo (`clase-04`) no cambia aunque la
 clase se muestre en otro lugar del módulo.
 
 El temario completo de cada curso está en `cursos/<curso>/ruta-aprendizaje.md`.
@@ -181,10 +183,13 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
 - Recursos audiovisuales de JavaScript, Python y Ciberseguridad: registrados en el catálogo para todas las
   clases (también las que aún no existen). Quedan 17 clases sin video, con el motivo anotado en el catálogo y en
   las rutas (sobre todo proyectos). Al crear cada clase, sus videos del catálogo pasan a su página.
-- **Objetivo principal pendiente:** completar Redes y Telecomunicaciones e IA: Claude. Que estén en el menú
-  no significa que estén hechos: faltan 101 clases (Redes 48 e IA 53). La ampliación no está terminada hasta
-  que todo el contenido esté creado, integrado y probado. Falta el horario de ambos y
-  saber qué plan de Claude usa el alumno.
+- **Objetivo principal pendiente:** completar Redes y Telecomunicaciones, Inteligencia Artificial: Claude y
+  Prompt Engineering. Que estén en el menú no significa que estén hechos: de 154 clases planificadas hay 5
+  creadas y faltan 149 (Redes 48, Inteligencia Artificial: Claude 69 y Prompt Engineering 32). La ampliación
+  no está terminada hasta que todo el contenido esté creado, integrado y probado. El horario semanal de los
+  cursos nuevos lo define el alumno más adelante.
+- **Lote 2:** falta la Etapa 5 (verificación final y borrado de los archivos temporales, que están fuera del
+  proyecto).
 
 ---
 
@@ -464,3 +469,38 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   Aclaración registrada: la academia no usa Claude ni ninguna API para funcionar (solo la API de GitHub, gratis,
   para sincronizar); el plan de Claude solo importa para las prácticas de los cursos de IA.
   Probado en la vista previa, en escritorio y a 360 px. Menú real, catálogo, IA 01 e IA 02 sin cambios.
+
+### 2026-11-12 (estructura de IA aprobada y Lote 2: etapas 0 a 3)
+- **Estructura aprobada por el alumno:** tres cursos en la ampliación: Redes y Telecomunicaciones (sin
+  cambios), **Inteligencia Artificial: Claude** (id `ia`, 21 módulos en 5 bloques, 71 clases) y **Prompt
+  Engineering** (id `prompt`, 6 módulos, las 32 clases de prompting del curso anterior, recuperadas sin
+  recortes). Borrador `propuestas/ia-3-cursos.borrador.js` e informe `DIAGNOSTICO-ESTRUCTURA-ACADEMICA.md`
+  (commits `831963a`, `2f462ce` y `05e83d1`). La propuesta de 6 cursos, su borrador y las carpetas del Lote 1
+  se conservan como historial.
+- **Lote 2**, autorizado por etapas, con punto de control al final de cada una:
+  - Etapa 0: comprobaciones de solo lectura (todo correcto) y etiqueta local `respaldo-antes-lote-2` →
+    `05e83d1` (no publicada).
+  - Etapa 1 (`e0a5d69`): catálogo real con los tres cursos, generado desde el borrador aprobado; rutas de
+    `ia` y `prompt` regeneradas solo entre sus marcas; `?v=` del menú; `revisar-coherencia.js` omite
+    `prompt`. La primera comparación estricta falló solo por el orden de las claves en los módulos de Prompt
+    (valores idénticos): se detuvo, se ajustó el script temporal para conservar el orden y la comparación
+    estricta pasó.
+  - Etapa 2 (`349066f`): guías de IA y de Prompt Engineering, y la frase de la ruta de Redes («la técnica
+    está en el curso Prompt Engineering»). Se quitó una referencia errónea, presente desde `424a88b`, que
+    remitía los datos sensibles a Ciberseguridad M7·3 (esa clase trata de indicadores de compromiso); se
+    conserva la regla «los datos sensibles nunca se pegan en Claude».
+  - Etapa 3 (`2c4ae91`) y su corrección (`bd4b1f8`): nota de planes de IA 02, línea 139. El texto
+    definitivo, indicado por el alumno, es: «con el plan gratuito puedes estudiar todo y hacer las prácticas
+    compatibles. Para las prácticas de Claude Code, agentes y automatización se recomienda Claude Pro. Y
+    siempre hay una alternativa gratuita: diseñar y probar la instrucción en el chat.» Solo cambió esa
+    línea; el script `window.CLASE` es idéntico.
+  - Etapa 4: este registro, `CLAUDE.md`, el diagnóstico y `herramientas/RESULTADOS-LOTE-2.md`.
+- **Resultado:** el menú muestra 7 cursos. Objetivo: 154 clases planificadas (Redes 51, Inteligencia
+  Artificial: Claude 71 y Prompt Engineering 32), 5 creadas y 149 pendientes. Pruebas: clases 22/22,
+  sincronización 15/15, rutas 7/7 y catálogo correcto; huella de los identificadores de avance
+  `d355163a…7933d`, idéntica a la línea base. Sin push (GitHub sigue en `43e8d6e`) y `academia-progreso`
+  sin cambios (`14d8233`).
+- **Observaciones:** el diagnóstico decía «33 comprobaciones» del borrador; son 32 (error de escritura,
+  corregido en la Etapa 4). Una comprobación de huellas falló al principio por el formato de `sha256sum` en
+  Windows y se repitió correctamente. Falta la Etapa 5 (verificación final y borrado de los archivos
+  temporales).

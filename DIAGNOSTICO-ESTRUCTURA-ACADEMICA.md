@@ -1,7 +1,9 @@
 # Estructura académica definitiva y diagnóstico (antes del Lote 2)
 
-> **Estado: ESTRUCTURA APROBADA por el alumno el 12/11/2026, con condiciones (sección 9). El Lote 2 NO está
-> autorizado:** nada se ha migrado al catálogo ni al menú real.
+> **Estado (actualizado en la Etapa 4 del Lote 2):** estructura aprobada por el alumno el 12/11/2026, con
+> condiciones (sección 9). El Lote 2 se autorizó después y se ejecuta por etapas: las etapas 1 a 3 ya
+> integraron la estructura en el catálogo y el menú reales (sección 9.4). Lo que sigue en este encabezado y en
+> las secciones 1 a 8 describe la propuesta tal como se aprobó, antes del Lote 2.
 >
 > **Versión 2 · 12/11/2026.** Consolida la revisión anterior (la versión 1 está en el historial: commit `d111a0d`).
 > **No se modificó la plataforma real:** menú, catálogo, motor, rutas, sincronización, IA 01, IA 02 y los demás
@@ -401,7 +403,7 @@ se tocan. Significa lo mismo que «Claude gratis».
 
 ---
 
-## 5. Correcciones puntuales (no aplicadas: esperan tu aprobación)
+## 5. Correcciones puntuales (estado actualizado en la Etapa 4 del Lote 2)
 
 ### A. IA 02: el aviso del plan
 
@@ -410,16 +412,24 @@ se tocan. Significa lo mismo que «Claude gratis».
   > «**Para este curso:** los Módulos 1 a 8 se hacen con el plan gratuito. Solo los Módulos 9 y 10, de Claude
   > Code, necesitan un plan de pago. Y siempre hay una alternativa gratuita: diseñar y probar la instrucción en
   > el chat.»
-- **Texto corregido APROBADO por el alumno (12/11/2026), redactado por él:**
-  > «**Para este curso:** con el plan gratuito puedes estudiar todo y realizar las prácticas compatibles. Para
-  > las prácticas de Claude Code, agentes y automatización se recomienda Claude Pro, según las funciones y los
-  > límites disponibles. Cuando una práctica no esté disponible en el plan gratuito, se ofrecerá una alternativa
-  > guiada o una demostración para que puedas comprender el procedimiento.»
-- **Estado:** aprobado para aplicarse **en el Lote 2**. Todavía no se aplica: IA 02 sigue con el texto original.
-  Debe dejar claro que Claude Pro es recomendado, no obligatorio para estudiar el contenido de la academia.
-- *Propuesta anterior, reemplazada por la del alumno:* «…con el plan gratuito puedes estudiar todo y hacer las
-  prácticas compatibles. Para las prácticas de Claude Code, agentes y automatización se recomienda Claude Pro. Y
-  siempre hay una alternativa gratuita: diseñar y probar la instrucción en el chat.»
+- **Texto DEFINITIVO, aplicado en IA 02 con el commit `bd4b1f8`** (Lote 2, corrección de la Etapa 3). Es el
+  texto exacto indicado por el alumno, que cerró la Etapa 3 con él:
+  > «**Para este curso:** con el plan gratuito puedes estudiar todo y hacer las prácticas compatibles. Para las
+  > prácticas de Claude Code, agentes y automatización se recomienda Claude Pro. Y siempre hay una alternativa
+  > gratuita: diseñar y probar la instrucción en el chat.»
+- **Estado:** aplicado. Claude Pro queda como recomendado, no obligatorio para estudiar el contenido de la
+  academia. Solo cambió la línea 139; el script `window.CLASE` (actividades, examen, reloj e identificadores)
+  es idéntico.
+- **Trazabilidad de la redacción:**
+  1. Primera propuesta (12/11/2026): la misma redacción que quedó como definitiva.
+  2. El alumno la reemplazó por una redacción propia y la aprobó: «…con el plan gratuito puedes estudiar todo
+     y realizar las prácticas compatibles. Para las prácticas de Claude Code, agentes y automatización se
+     recomienda Claude Pro, según las funciones y los límites disponibles. Cuando una práctica no esté
+     disponible en el plan gratuito, se ofrecerá una alternativa guiada o una demostración para que puedas
+     comprender el procedimiento.»
+  3. Etapa 3 del Lote 2: esa redacción se aplicó con el commit `2c4ae91` (opción A elegida por el alumno).
+  4. Corrección de la Etapa 3: por indicación expresa del alumno se aplicó el texto definitivo de arriba, con el
+     commit `bd4b1f8`.
 - **Por qué hay que corregirlo:**
   1. Cita los «Módulos 1 a 8» y «9 y 10» del curso antiguo de 11 módulos. En la estructura definitiva, Claude
      Code son los Módulos 5 a 9, y los módulos de prompting pasan a otro curso: los números serían falsos.
@@ -473,7 +483,12 @@ página.
 
 ## 7. Verificación (script, 12/11/2026)
 
-Las 33 comprobaciones pasaron:
+Las 32 comprobaciones pasaron:
+
+> **Corrección (Etapa 4 del Lote 2):** antes decía «33 comprobaciones». Fue un error de escritura: el script
+> tiene **32** comprobaciones y todas pasaron, también al repetirlo en la Etapa 0 del Lote 2. Es una
+> verificación distinta de la de la Etapa 2, donde se comprobaron **32 referencias** de los textos de guía
+> contra el catálogo real, y todas coinciden.
 
 - Los cursos Ciberseguridad, Inglés, JavaScript, Python y Redes son **idénticos** al catálogo real.
 - IA 01 e IA 02 son **idénticas** (n, archivo, id, etiqueta, videos, módulo y orden).
@@ -520,6 +535,10 @@ Las 33 comprobaciones pasaron:
 ---
 
 ## 8. Diagnóstico final
+
+> **Actualización (Lote 2):** lo que la tabla 8.1 llama «preparado en borradores» ya está integrado en el
+> catálogo y el menú reales (Etapa 1, commit `e0a5d69`), y los pasos de la sección 8.6 se ejecutan por etapas
+> (sección 9.4). Las cifras de clases (154 planificadas, 5 creadas y 149 pendientes) no cambian.
 
 ### 8.1 Los cuatro estados del contenido
 
@@ -578,7 +597,8 @@ En un solo paso, con respaldo previo:
 ## 9. Registro de decisiones del alumno (12/11/2026)
 
 **Mensaje del alumno:** «Aprobación de estructura académica — sin ejecutar Lote 2». La aprobación cubre solo la
-estructura académica y las decisiones de esta sección. **El Lote 2 no está autorizado.**
+estructura académica y las decisiones de esta sección. **El Lote 2 no está autorizado** (en ese momento; se
+autorizó después por etapas: ver la sección 9.4).
 
 ### 9.1 Aprobado
 
@@ -593,7 +613,7 @@ estructura académica y las decisiones de esta sección. **El Lote 2 no está au
 | 7 | **Conservar las carpetas y archivos de los lotes anteriores como historial** | No eliminar nada: borrador de 6 cursos, sus vistas previas y las carpetas `claudecode`, `extensiones`, `agentes` y `automatizacion` |
 | 8 | **Duración:** 120 minutos por clase | Estándar académico de los cursos de 2 horas |
 | 9 | **Conservación** | Identificadores, referencias, actividades, evaluaciones y progreso. Sin reconstruir, reorganizar de nuevo ni duplicar contenidos |
-| 10 | **Texto nuevo de la nota de IA 02** (redacción del alumno, sección 5A) | Se aplica **solo en el Lote 2**, que se autoriza por separado. Debe dejar claro que Pro es recomendado, no obligatorio |
+| 10 | **Texto nuevo de la nota de IA 02** (sección 5A) | Se aplica **solo en el Lote 2**, que se autoriza por separado. Debe dejar claro que Pro es recomendado, no obligatorio. **Aplicado:** el texto definitivo es el del commit `bd4b1f8` (ver la trazabilidad en la sección 5A) |
 
 La **clase 1.3** mantiene el título original del catálogo real («Primeros pasos: conversaciones, archivos,
 búsqueda web y estilos»), que es el de la estructura aprobada. No se cambió nada.
@@ -602,13 +622,32 @@ búsqueda web y estilos»), que es el de la estructura aprobada. No se cambió n
 
 | # | Pendiente | Qué se necesita |
 |---|---|---|
-| 1 | **Aplicar el texto aprobado en IA 02** | Se hace dentro del Lote 2. Hasta entonces, IA 02 no se modifica |
+| 1 | **Aplicar el texto aprobado en IA 02** | **Hecho** en la Etapa 3 del Lote 2 (`2c4ae91`) y su corrección (`bd4b1f8`) |
 | 2 | **Horario semanal personal** (`horario.md`) | Lo define el alumno más adelante. **No configurarlo ni proponer horarios.** No es la duración de las clases, que sigue en 120 minutos |
-| 3 | **Autorización del Lote 2** (sección 8.6) | Autorización expresa del alumno |
-| 4 | **Bitácora** | Se actualiza cuando se autorice el siguiente lote |
+| 3 | **Autorización del Lote 2** (sección 8.6) | **Autorizado** por etapas, con punto de control al final de cada una. Etapas 0 a 3 hechas; la Etapa 4 es esta actualización; falta la Etapa 5 |
+| 4 | **Bitácora** | **Actualizada** en la Etapa 4 del Lote 2 |
 
-### 9.3 Intacto (verificado el 12/11/2026)
+### 9.3 Intacto antes del Lote 2 (verificado el 12/11/2026)
 
 Catálogo real, menú, motor, rutas reales, sincronización con `academia-progreso`, configuración de los
 repositorios, IA 01, IA 02, los cuatro cursos originales, Redes, la bitácora y todos los respaldos y archivos de
 los lotes anteriores.
+
+### 9.4 Ejecución del Lote 2 (12/11/2026)
+
+Autorizado por el alumno por etapas, con punto de control al final de cada una. Resultados completos y
+evidencias: `herramientas/RESULTADOS-LOTE-2.md`.
+
+| Etapa | Commit | Qué se hizo |
+|---|---|---|
+| 0 | — | Comprobaciones de solo lectura (todo correcto) y etiqueta local `respaldo-antes-lote-2` → `05e83d1`, no publicada |
+| 1 | `e0a5d69` | Catálogo real con los tres cursos (equivalencia estricta con el borrador aprobado), rutas de `ia` y `prompt` regeneradas solo entre marcas, `?v=` del menú y `revisar-coherencia.js` |
+| 2 | `349066f` | Guías de IA y de Prompt Engineering y frase de la ruta de Redes; se quitó la referencia errónea a Ciberseguridad M7·3 y se conservó la regla de datos sensibles |
+| 3 | `2c4ae91` y `bd4b1f8` | Nota de planes de IA 02 (línea 139); el texto definitivo es el de `bd4b1f8` (sección 5A) |
+| 4 | Commit de esta actualización | `CLAUDE.md`, la bitácora, este diagnóstico y `herramientas/RESULTADOS-LOTE-2.md` |
+| 5 | Pendiente | Verificación final y borrado de los archivos temporales |
+
+Resultado tras las etapas 1 a 3: el menú muestra 7 cursos; Redes 11/51, Inteligencia Artificial: Claude 21/71 y
+Prompt Engineering 6/32; 154 clases planificadas, 5 creadas y 149 pendientes. Pruebas: clases 22/22,
+sincronización 15/15 y rutas 7/7. La huella de los identificadores de avance (`d355163a…7933d`) es idéntica
+a la línea base. Sin push y sin cambios en `academia-progreso`.

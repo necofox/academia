@@ -33,7 +33,16 @@ Háblame siempre en **español**, de forma sencilla, didáctica y con ejemplos.
 | JavaScript (desarrollo web) | `cursos/javascript/` | En curso |
 | Python (desarrollo de software) | `cursos/python/` | En curso |
 | Redes y Telecomunicaciones | `cursos/redes/` | En curso |
-| IA: Claude y productividad | `cursos/ia/` | En curso |
+| Inteligencia Artificial: Claude | `cursos/ia/` | En curso |
+| Prompt Engineering | `cursos/prompt/` | Por empezar |
+
+**Formación en IA** (estructura aprobada el 12/11/2026, ver `DIAGNOSTICO-ESTRUCTURA-ACADEMICA.md`):
+- **Inteligencia Artificial: Claude:** 21 módulos en 5 bloques (Fundamentos, Claude Code, Herramientas,
+  Skills y MCP, Agentes, Automatización) y 71 clases; el proyecto final es un equipo de cinco agentes
+  supervisados.
+- **Prompt Engineering:** curso independiente con las 32 clases de prompting.
+- Integrada en el catálogo y el menú con el Lote 2 (etapas 1 a 3 completadas); el detalle está en
+  `herramientas/RESULTADOS-LOTE-2.md` y en la bitácora.
 
 El horario de clases está en `horario.md`.
 
@@ -85,8 +94,13 @@ El horario de clases está en `horario.md`.
   La página define `window.CLASE` con sus bloques, actividades, exámenes y terminales
   (ver `clase-01.html` como modelo). No dupliques el motor en cada página.
 - Duración: **ciberseguridad 2 horas** por clase; **inglés 1 hora** por clase;
-  **JavaScript, Python, Redes e IA 2 horas** por clase.
+  **JavaScript, Python, Redes, Inteligencia Artificial: Claude y Prompt Engineering 2 horas** por clase.
   La suma de los minutos de los bloques debe dar exactamente esa duración.
+- **Cursos de IA (Inteligencia Artificial: Claude y Prompt Engineering):** cada clase indica en su ficha
+  qué cuenta de Claude conviene para practicar: «Claude gratis» o «Recomendado: Claude Pro», con una
+  alternativa guiada o una demostración cuando la práctica usa una función que no está en el plan gratis.
+  Verifica la etiqueta al crear cada clase. La academia no exige ninguna suscripción ni depende de una
+  API de pago.
 - Palabras o frases en inglés dentro de la teoría: márcalas con `<span lang="en">…</span>`
   para que se lean con voz inglesa. Con `data-en="…"` (y `data-lento`) llevan botones de audio.
 - Componentes del motor: `data-actividad`, `data-quiz`, `data-terminal` (simulada; opciones
