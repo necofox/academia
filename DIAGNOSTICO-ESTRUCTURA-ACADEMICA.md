@@ -1,5 +1,8 @@
 # Estructura académica definitiva y diagnóstico (antes del Lote 2)
 
+> **Estado: ESTRUCTURA APROBADA por el alumno el 12/11/2026, con condiciones (sección 9). El Lote 2 NO está
+> autorizado:** nada se ha migrado al catálogo ni al menú real.
+>
 > **Versión 2 · 12/11/2026.** Consolida la revisión anterior (la versión 1 está en el historial: commit `d111a0d`).
 > **No se modificó la plataforma real:** menú, catálogo, motor, rutas, sincronización, IA 01, IA 02 y los demás
 > cursos siguen idénticos. No se migró, borró ni publicó nada.
@@ -541,17 +544,9 @@ práctica autónoma con criterios para comprobarla (con su etiqueta de cuenta y 
 resumen, videos y fuentes verificadas. Las evaluaciones de módulo o de bloque y los proyectos ya están
 planificados como clases dentro de esas 149. Los apuntes en Word se generan al terminar cada clase.
 
-### 8.5 Decisiones que requieren tu aprobación
+### 8.5 Decisiones
 
-1. La **estructura definitiva de 3 cursos** (secciones 1 y 2).
-2. Las **etiquetas de cuenta de Claude** (sección 4).
-3. La **corrección de IA 02** (sección 5A).
-4. **Conservar el título original** de la clase 1.3 (sección 5B). Ya está así en el borrador.
-5. El **nombre del curso**: «Inteligencia Artificial: Claude» (hoy se llama «IA: Claude y productividad»).
-6. Qué hacer con las carpetas `claudecode`, `extensiones`, `agentes` y `automatizacion` del Lote 1. Recomendación:
-   conservarlas como historial y no usarlas; borrarlas solo si lo pides.
-7. El **horario** del curso Prompt Engineering.
-8. Después, el **Lote 2**.
+El estado de cada decisión (aprobada o pendiente) está en la **sección 9**.
 
 ### 8.6 Qué haría el Lote 2 (cuando lo autorices)
 
@@ -571,3 +566,42 @@ En un solo paso, con respaldo previo:
 - **149 clases por crear:**
   - a 1 o 2 clases por revisión (el ritmo actual): unas **75 a 150 revisiones**;
   - a 3 o 4 clases del mismo módulo por revisión: unas **40 a 50 revisiones**.
+
+---
+
+## 9. Registro de decisiones del alumno (12/11/2026)
+
+**Mensaje del alumno:** «Aprobación de estructura académica — sin ejecutar Lote 2». La aprobación cubre solo la
+estructura académica y las decisiones de esta sección. **El Lote 2 no está autorizado.**
+
+### 9.1 Aprobado
+
+| # | Decisión | Condición del alumno |
+|---|---|---|
+| 1 | **Siete cursos en total:** los 4 originales más Redes y Telecomunicaciones, Inteligencia Artificial: Claude y Prompt Engineering | Conservar los 4 cursos originales y sus contenidos |
+| 2 | **Redes y Telecomunicaciones:** 11 módulos, 51 clases, 102 h | Mantener las 3 clases creadas; las 48 restantes se desarrollan progresivamente |
+| 3 | **Inteligencia Artificial: Claude:** 21 módulos en 5 bloques, 71 clases | Mantener IA 01 e IA 02. Incluir Claude Code, permisos, hooks, Skills, MCP, agentes, subagentes y automatización. Proyecto final: un equipo de cinco agentes supervisados |
+| 4 | **Prompt Engineering:** curso independiente, 6 módulos, 32 clases | Sin reducir ni eliminar contenidos: diseño web, automatización, oportunidades laborales, productividad, verificación de fuentes, biblioteca de prompts y proyectos. No es un módulo del curso de Claude |
+| 5 | **Nombre del curso:** «Inteligencia Artificial: Claude» | — |
+| 6 | **Indicaciones de plan de Claude por clase** (sección 4) | **Verificar cada caso** al crear la clase. Claude gratis basta para el material y las actividades sin funciones exclusivas. Pro solo se indica como recomendado cuando una práctica lo justifique de verdad. La academia no exige suscripción, no depende de una API de pago y, cuando una práctica necesite una función que no está en el plan gratis, ofrece una alternativa guiada o una demostración |
+| 7 | **Conservar las carpetas y archivos de los lotes anteriores como historial** | No eliminar nada: borrador de 6 cursos, sus vistas previas y las carpetas `claudecode`, `extensiones`, `agentes` y `automatizacion` |
+| 8 | **Duración:** 120 minutos por clase | Estándar académico de los cursos de 2 horas |
+| 9 | **Conservación** | Identificadores, referencias, actividades, evaluaciones y progreso. Sin reconstruir, reorganizar de nuevo ni duplicar contenidos |
+
+La **clase 1.3** mantiene el título original del catálogo real («Primeros pasos: conversaciones, archivos,
+búsqueda web y estilos»), que es el de la estructura aprobada. No se cambió nada.
+
+### 9.2 Pendiente
+
+| # | Pendiente | Qué se necesita |
+|---|---|---|
+| 1 | **Corrección de IA 02** (sección 5A) | El alumno pidió ver el texto original y la propuesta antes de decidir. **No se cambia todavía** |
+| 2 | **Horario** (`horario.md`) | Aclaración: no es la duración de las clases, que sigue en 120 minutos. Es el horario semanal personal (qué días y a qué hora estudias cada curso). Según `CLAUDE.md`, al agregar un curso se pregunta en qué horario lo quieres. Es opcional y no afecta el funcionamiento. **No se hizo ningún cambio** |
+| 3 | **Autorización del Lote 2** (sección 8.6) | Autorización expresa del alumno |
+| 4 | **Bitácora** | Se actualiza cuando se autorice el siguiente lote |
+
+### 9.3 Intacto (verificado el 12/11/2026)
+
+Catálogo real, menú, motor, rutas reales, sincronización con `academia-progreso`, configuración de los
+repositorios, IA 01, IA 02, los cuatro cursos originales, Redes, la bitácora y todos los respaldos y archivos de
+los lotes anteriores.
