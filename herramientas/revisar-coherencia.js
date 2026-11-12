@@ -13,8 +13,8 @@ const win = {};
 const iCat = process.argv.indexOf('--catalogo');
 const archivoCatalogo = iCat > 0 ? path.resolve(process.argv[iCat + 1]) : path.join(raiz, 'recursos/catalogo.js');
 new Function('window', fs.readFileSync(archivoCatalogo, 'utf8'))(win);
-// Redes e IA (cursos 5 y 6) vienen de PROPUESTA-AMPLIACION-6-CURSOS.md, no de esta propuesta: aquí se omiten
-const CAT = win.CATALOGO.filter((c) => !["redes", "ia"].includes(c.id));
+// Redes, IA y Prompt Engineering no vienen de esta propuesta (ver DIAGNOSTICO-ESTRUCTURA-ACADEMICA.md): aquí se omiten
+const CAT = win.CATALOGO.filter((c) => !["redes", "ia", "prompt"].includes(c.id));
 const P = fs.readFileSync(path.join(raiz, 'PROPUESTA-ORGANIZACION-CURRICULAR.md'), 'utf8').replace(/\r\n/g, '\n');
 
 const norm = (s) => String(s || '').replace(/[*`"«»“”]/g, '').replace(/\s+/g, ' ').trim().replace(/\.$/, '').toLowerCase();

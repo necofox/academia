@@ -17,230 +17,366 @@ la acompañan (fundamentos, espacio de trabajo, skills, agentes y proyecto).
 
 ## Meta del curso
 
-Usar Claude de forma eficaz, segura y responsable, con una formación completa en ingeniería de instrucciones (prompt engineering) en seis niveles: desde formular una pregunta clara hasta diseñar, evaluar, corregir y reutilizar instrucciones profesionales, y aplicar el context engineering con Claude Code y sus agentes, sin depender de la API de pago.
+Usar Claude con criterio y seguridad, desde el chat hasta Claude Code, y ampliar sus capacidades con herramientas, skills y MCP para diseñar, coordinar y automatizar un equipo de agentes especializados, siempre con supervisión humana y sin depender de la API de pago.
 
-- **Duración:** 11 módulos · 55 clases · 110 h de clase (2 h por clase). La práctica autónoma de cada clase se suma aparte.
-- **Clases listas:** 2 de 55.
+- **Duración:** 21 módulos · 71 clases · 142 h de clase (2 h por clase). La práctica autónoma de cada clase se suma aparte.
+- **Clases listas:** 2 de 71.
 - **Siguiente clase por crear:** Módulo 1 · Clase 3: Primeros pasos: conversaciones, archivos, búsqueda web y estilos.
-- **Proyecto final del curso:** Biblioteca profesional de prompts para Claude: instrucciones para investigación, análisis de documentos, programación, revisión de código, automatización, planificación de proyectos, y agentes y subagentes, cada una con sus criterios de prueba. Incluye la transformación documentada de instrucciones deficientes en profesionales. Tiene una versión completa con el plan gratuito; la parte de agentes con Claude Code requiere un plan de pago.
+- **Proyecto final del curso:** Equipo de cinco agentes (coordinador, investigador, analista, programador y revisor de calidad), construido por etapas: la aplicación base (bloque Claude Code), el kit de skills y MCP, los tres primeros agentes y el equipo completo automatizado, con permisos, aprobaciones humanas, validación y pruebas de extremo a extremo.
 
 ## Resumen de módulos
 
 | Módulo | Clases | Horas | Listas | Necesitas antes |
 |---|---|---|---|---|
 | Módulo 1 · Fundamentos de la IA generativa y de Claude | 4 | 8 | 2 | Ninguno obligatorio |
-| Módulo 2 · Prompting · Nivel 1: Fundamentos | 4 | 8 | 0 | Módulo 1 |
-| Módulo 3 · Prompting · Nivel 2: Técnicas fundamentales | 5 | 10 | 0 | Módulo 2 |
-| Módulo 4 · Espacio de trabajo con Claude: proyectos, artefactos, memoria y conectores | 4 | 8 | 0 | Módulo 2 |
-| Módulo 5 · Prompting · Nivel 3: Prompting estructurado | 6 | 12 | 0 | Módulo 3 |
-| Módulo 6 · Prompting · Nivel 4: Avanzado | 6 | 12 | 0 | Módulo 5 |
-| Módulo 7 · Skills: procedimientos reutilizables | 3 | 6 | 0 | Módulos 4 y 6 |
-| Módulo 8 · Prompting · Nivel 5: Aplicaciones profesionales | 7 | 14 | 0 | Módulo 6 |
-| Módulo 9 · Prompting · Nivel 6: Context engineering y Claude Code | 7 | 14 | 0 | Módulo 6 |
-| Módulo 10 · Agentes, subagentes y automatización | 5 | 10 | 0 | Módulo 9 |
-| Módulo 11 · Proyecto integrador: biblioteca profesional de prompts | 4 | 8 | 0 | Módulos 7 y 8 |
-| **Total** | **55** | **110** | **2** | |
+| Módulo 2 · Fundamentos · Trabajar con Claude día a día | 3 | 6 | 0 | Módulo 1 |
+| Módulo 3 · Fundamentos · Claude para estudiar, investigar y producir | 4 | 8 | 0 | Módulo 2 |
+| Módulo 4 · Fundamentos · Uso responsable y funciones avanzadas | 2 | 4 | 0 | Módulo 3 |
+| Módulo 5 · Claude Code · Primeros pasos | 4 | 8 | 0 | Módulo 4 |
+| Módulo 6 · Claude Code · Trabajar con proyectos | 4 | 8 | 0 | Módulo 5 |
+| Módulo 7 · Claude Code · Contexto y memoria | 3 | 6 | 0 | Módulo 6 |
+| Módulo 8 · Claude Code · Herramientas, permisos y hooks | 4 | 8 | 0 | Módulo 7 |
+| Módulo 9 · Claude Code · Buenas prácticas y aplicación base | 2 | 4 | 0 | Módulo 8 |
+| Módulo 10 · Herramientas, Skills y MCP · Herramientas | 3 | 6 | 0 | Módulo 4 |
+| Módulo 11 · Herramientas, Skills y MCP · Skills | 4 | 8 | 0 | Módulo 10 |
+| Módulo 12 · Herramientas, Skills y MCP · MCP (Model Context Protocol) | 5 | 10 | 0 | Módulo 10 |
+| Módulo 13 · Herramientas, Skills y MCP · Plugins y kit del equipo | 2 | 4 | 0 | Módulos 11 y 12 |
+| Módulo 14 · Agentes · Qué es un agente | 4 | 8 | 0 | Módulos 9 y 13 |
+| Módulo 15 · Agentes · Subagentes | 4 | 8 | 0 | Módulo 14 |
+| Módulo 16 · Agentes · Coordinación | 3 | 6 | 0 | Módulo 15 |
+| Módulo 17 · Agentes · Supervisión y tres primeros agentes | 2 | 4 | 0 | Módulo 16 |
+| Módulo 18 · Automatización · Fundamentos | 3 | 6 | 0 | Módulo 17 |
+| Módulo 19 · Automatización · Control y seguridad | 3 | 6 | 0 | Módulo 18 |
+| Módulo 20 · Automatización · Proyecto integrador I: el equipo completo | 4 | 8 | 0 | Módulo 19 |
+| Módulo 21 · Automatización · Proyecto integrador II: automatización y control | 4 | 8 | 0 | Módulo 20 |
+| **Total** | **71** | **142** | **2** | |
 
 ## Módulo 1 · Fundamentos de la IA generativa y de Claude (4 clases · 8 h)
 
-- **Objetivo:** Entender qué es Claude, qué puede y qué no puede hacer, y usarlo de forma segura y responsable.
-- **Competencias:** Explicar qué es un modelo de lenguaje y sus límites (errores inventados o «alucinaciones», fecha de conocimiento); distinguir Claude (chat) de Claude Code y lo que incluye cada plan; configurar la privacidad; aplicar el marco de fluidez en IA (Delegación, Descripción, Discernimiento y Diligencia) y la política de uso.
-- **Al terminar serás capaz de:** Usar Claude con criterio, sabiendo cuándo confiar y cuándo verificar.
+- **Objetivo:** Entender qué es Claude, cómo funciona, sus límites, planes y modelos, y dar los primeros pasos.
+- **Competencias:** Explicar qué es un modelo de lenguaje y sus límites; elegir plan y modelo; usar la interfaz, la configuración y las conversaciones; comparar Claude con otras herramientas de IA.
+- **Al terminar serás capaz de:** Elegir y configurar Claude con criterio para tus tareas.
 - **Necesitas antes:** Ninguno. Una cuenta de Claude; el plan gratuito sirve.
-- **Práctica:** Comparar respuestas con y sin búsqueda web; revisar tu configuración de privacidad; detectar errores en respuestas de ejemplo.
-- **Evaluación del módulo:** Examen de conceptos y análisis de tres respuestas: cuál es confiable y por qué.
-- **Fuentes previstas** (se verifican al crear cada clase): Claude Academy: «AI Fluency: Framework and foundations» y «AI capabilities and limitations» (oficial); Elements of AI (Universidad de Helsinki); página de planes; centro de privacidad; política de uso.
+- **Evaluación del módulo:** Examen de conceptos y elección argumentada de plan y modelo para tres casos.
+- **Fuentes previstas** (se verifican al crear cada clase): Documentación oficial de Anthropic (glosario, modelos, planes, centro de ayuda), NIST.
 
 | Clase | Tema | Plan de Claude | Temario oficial que cubre | Videos | Estado |
 |---|---|---|---|---|---|
 | M1·1 | ¿Qué es la IA generativa? Modelos de lenguaje, capacidades y límites | Gratis · Chat de Claude | — | [▶ 1](https://www.youtube.com/watch?v=0K5Knnq2ZRk) | ✔ Lista: `clases/clase-01.html` (id `ia-01`) |
 | M1·2 | Claude y Claude Code: planes, apps, modelos y límites de uso | Gratis · Chat de Claude | — | [▶ 1](https://www.youtube.com/watch?v=vW4MFfw8taU) [▶ 2](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=2018s) | ✔ Lista: `clases/clase-02.html` (id `ia-02`) |
-| M1·3 | Primeros pasos: conversaciones, archivos, búsqueda web y estilos | Gratis · Chat de Claude | — | — | Próximamente · **siguiente por crear** |
-| M1·4 | Fluidez en IA y uso responsable: el marco 4D, privacidad, verificación y política de uso | Gratis · Chat de Claude | — | [▶ 1](https://www.youtube.com/watch?v=W4Ua6XFfX9w) [▶ 2](https://www.youtube.com/watch?v=EljzyfdYkrc) | Próximamente |
+| M1·3 | Primeros pasos: conversaciones, archivos, búsqueda web y estilos | Claude gratis · Chat de Claude | — | — | Próximamente · **siguiente por crear** |
+| M1·4 | Claude frente a otras herramientas de IA: criterios para elegir | Claude gratis · Chat de Claude | — | — | Próximamente |
 
-## Módulo 2 · Prompting · Nivel 1: Fundamentos (4 clases · 8 h)
+## Módulo 2 · Fundamentos · Trabajar con Claude día a día (3 clases · 6 h)
 
-- **Objetivo:** Comunicarte con Claude con instrucciones claras, con contexto, objetivo, restricciones y un resultado esperado.
-- **Competencias:** Explicar qué es un prompt y cómo funciona una conversación con Claude; distinguir una instrucción vaga de una bien definida; dar contexto, objetivo y restricciones; definir el resultado esperado; reconocer los errores frecuentes al comunicarse con una IA.
-- **Al terminar serás capaz de:** Convertir una petición vaga en una instrucción clara que funcione a la primera.
+- **Objetivo:** Organizar el trabajo con proyectos y trabajar con archivos y artefactos.
+- **Competencias:** Crear proyectos con instrucciones y conocimiento; analizar archivos; crear artefactos.
+- **Al terminar serás capaz de:** Usar proyectos, archivos y artefactos para tu trabajo diario.
 - **Necesitas antes:** Módulo 1.
-- **Práctica:** Reescribir diez peticiones vagas de la vida diaria y de tus cursos, comparando el resultado antes y después con una lista de comprobación.
-- **Evaluación del módulo:** Mejorar cinco instrucciones reales y explicar qué cambió y por qué.
-- **Fuentes previstas** (se verifican al crear cada clase): Tutorial interactivo de Anthropic (capítulos 1 y 2); guía oficial «Prompting best practices»; DevTalles (terceros).
+- **Evaluación del módulo:** Un proyecto de Claude con instrucciones y un artefacto creado a partir de un archivo propio.
+- **Fuentes previstas** (se verifican al crear cada clase): Centro de ayuda de Claude: proyectos, archivos y artefactos.
 
 | Clase | Tema | Plan de Claude | Temario oficial que cubre | Videos | Estado |
 |---|---|---|---|---|---|
-| M2·1 | ¿Qué es un prompt? Cómo interpreta Claude lo que escribes | Gratis · Chat de Claude | Tutorial de Anthropic, cap. 1: Basic Prompt Structure | [▶ 1](https://www.youtube.com/watch?v=jrucUmU_l8s) | Próximamente |
-| M2·2 | Preguntas e instrucciones claras: de lo vago a lo bien definido | Gratis · Chat de Claude | Tutorial de Anthropic, cap. 2: Being Clear and Direct | [▶ 1](https://www.youtube.com/watch?v=A-uJeV7pSEY) | Próximamente |
-| M2·3 | Contexto, objetivo y restricciones | Gratis · Chat de Claude | Prompting best practices: «Add context to improve performance» | [▶ 1](https://www.youtube.com/watch?v=1bXdjvRBvWk) | Próximamente |
-| M2·4 | Definir el resultado esperado y evitar errores frecuentes (evaluación del módulo) | Gratis · Chat de Claude | — | [▶ 1](https://www.youtube.com/watch?v=UeuZM5Ulf6A) | Próximamente |
+| M2·1 | Proyectos: instrucciones y conocimiento permanentes | Claude gratis (hasta 5 proyectos) · Chat de Claude | — | — | Próximamente |
+| M2·2 | Archivos y documentos: PDF, hojas de cálculo e imágenes | Claude gratis (con límites de uso) · Chat de Claude | — | — | Próximamente |
+| M2·3 | Artefactos y ejecución de código | Claude gratis (hay que activar la ejecución de código) · Chat de Claude | — | — | Próximamente |
 
-## Módulo 3 · Prompting · Nivel 2: Técnicas fundamentales (5 clases · 10 h)
+## Módulo 3 · Fundamentos · Claude para estudiar, investigar y producir (4 clases · 8 h)
 
-- **Objetivo:** Dominar las técnicas básicas que hacen que una instrucción sea precisa y repetible.
-- **Competencias:** Asignar roles y responsabilidades; dar instrucciones directas y específicas; delimitar el alcance; usar ejemplos de entrada y salida (few-shot); fijar restricciones y criterios de aceptación; definir el formato de la respuesta; separar instrucciones, datos y contenido de referencia.
-- **Al terminar serás capaz de:** Elegir y combinar la técnica adecuada para cada tarea.
+- **Objetivo:** Usar Claude para estudiar, investigar, redactar y resolver problemas, verificando siempre.
+- **Competencias:** Estudiar con Claude como tutor; investigar con fuentes verificables; redactar y revisar textos propios; comprobar razonamientos.
+- **Al terminar serás capaz de:** Aplicar Claude a tus estudios y trabajos sin perder el criterio propio.
 - **Necesitas antes:** Módulo 2.
-- **Práctica:** Para una misma tarea, probar la instrucción sin técnica y con cada técnica, y registrar en una tabla qué mejoró.
-- **Evaluación del módulo:** Construir una instrucción con rol, ejemplos, criterios de aceptación y formato, y demostrar que cumple los criterios en tres casos distintos.
-- **Fuentes previstas** (se verifican al crear cada clase): Tutorial interactivo de Anthropic (capítulos 2 a 5 y 7); guía oficial «Prompting best practices»; video oficial «Prompting 101».
+- **Evaluación del módulo:** Tres tareas reales (estudio, investigación y redacción) con su verificación documentada.
+- **Fuentes previstas** (se verifican al crear cada clase): Centro de ayuda de Claude (búsqueda web, Research), Reduce hallucinations (Anthropic).
 
 | Clase | Tema | Plan de Claude | Temario oficial que cubre | Videos | Estado |
 |---|---|---|---|---|---|
-| M3·1 | Roles y responsabilidades: asignar un papel a Claude | Gratis · Chat de Claude | Tutorial de Anthropic, cap. 3: Assigning Roles | [▶ 1](https://www.youtube.com/watch?v=ysPbXH0LpIE) | Próximamente |
-| M3·2 | Instrucciones directas y específicas; contexto y alcance | Gratis · Chat de Claude | Prompting best practices: «Be clear and direct» | — | Próximamente |
-| M3·3 | Ejemplos de entrada y salida (few-shot) | Gratis · Chat de Claude | Tutorial de Anthropic, cap. 7: Using Examples | — | Próximamente |
-| M3·4 | Restricciones, criterios de aceptación y formato de la respuesta | Gratis · Chat de Claude | Tutorial de Anthropic, cap. 5: Formatting Output (la parte «Speaking for Claude» ya no aplica a los modelos actuales) | [▶ 1](https://www.youtube.com/watch?v=JgM54aFX924) | Próximamente |
-| M3·5 | Separar instrucciones, datos y contenido de referencia (evaluación del módulo) | Gratis · Chat de Claude | Tutorial de Anthropic, cap. 4: Separating Data from Instructions | — | Próximamente |
+| M3·1 | Estudiar con Claude: explicaciones, resúmenes y autoevaluación | Claude gratis · Chat de Claude | — | — | Próximamente |
+| M3·2 | Investigar y verificar fuentes | Claude gratis con búsqueda web; Research requiere Claude Pro (opcional) · Chat de Claude | — | — | Próximamente |
+| M3·3 | Redactar y revisar textos manteniendo tu voz | Claude gratis · Chat de Claude | — | — | Próximamente |
+| M3·4 | Resolver problemas y comprobar el razonamiento | Claude gratis · Chat de Claude | — | — | Próximamente |
 
-## Módulo 4 · Espacio de trabajo con Claude: proyectos, artefactos, memoria y conectores (4 clases · 8 h)
+## Módulo 4 · Fundamentos · Uso responsable y funciones avanzadas (2 clases · 4 h)
 
-- **Objetivo:** Organizar tu trabajo con Claude para no repetir contexto y guardar tus instrucciones.
-- **Competencias:** Crear proyectos con instrucciones y conocimiento; crear artefactos y archivos con ejecución de código; usar la memoria; conectar Claude con otras apps mediante conectores (MCP); saber cuándo convienen Research, Claude in Chrome y Cowork según el plan.
-- **Al terminar serás capaz de:** Montar un espacio de trabajo con Claude para cada curso de la academia.
-- **Necesitas antes:** Módulo 2.
-- **Práctica:** Un proyecto por curso con sus instrucciones; un artefacto de repaso; un conector de prueba.
-- **Evaluación del módulo:** Presentar tu espacio de trabajo y un artefacto útil para estudiar.
-- **Fuentes previstas** (se verifican al crear cada clase): Centro de ayuda de Claude: Projects, Artifacts, memoria, conectores personalizados (MCP remoto), Research, Claude in Chrome y Cowork.
-
-| Clase | Tema | Plan de Claude | Temario oficial que cubre | Videos | Estado |
-|---|---|---|---|---|---|
-| M4·1 | Proyectos: instrucciones y conocimiento permanentes | Gratis (hasta 5 proyectos) · Chat de Claude | — | — | Próximamente |
-| M4·2 | Artefactos y archivos: documentos, páginas y datos con ejecución de código | Gratis (hay que activar la ejecución de código) · Chat de Claude | — | — | Próximamente |
-| M4·3 | Memoria y conectores (MCP) en Claude | Gratis con límites (1 conector propio; buscar chats anteriores es de pago) · Chat de Claude | — | — | Próximamente |
-| M4·4 | Research, Claude in Chrome y Cowork: cuándo valen la pena (evaluación del módulo) | Pago (Pro o superior); la clase muestra la alternativa gratuita · Chat de Claude y app de escritorio | — | — | Próximamente |
-
-## Módulo 5 · Prompting · Nivel 3: Prompting estructurado (6 clases · 12 h)
-
-- **Objetivo:** Diseñar instrucciones estructuradas y reutilizables para tareas largas y con varias condiciones.
-- **Competencias:** Organizar instrucciones con etiquetas XML; crear plantillas reutilizables; escribir prompts con varias condiciones; analizar documentos extensos; investigar, comparar y sintetizar; generar informes, tablas, planes y documentación; detectar y eliminar ambigüedades y contradicciones.
-- **Al terminar serás capaz de:** Escribir plantillas de instrucciones que otra persona pueda reutilizar sin explicaciones.
+- **Objetivo:** Usar Claude de forma responsable y decidir qué funciones avanzadas valen la pena.
+- **Competencias:** Aplicar el marco de fluidez en IA (4D) y la política de uso; proteger la privacidad; evaluar memoria, conectores, Claude in Chrome y Cowork.
+- **Al terminar serás capaz de:** Usar Claude con seguridad y decidir cuándo conviene una función de pago.
 - **Necesitas antes:** Módulo 3.
-- **Práctica:** Convertir tres instrucciones de los niveles anteriores en plantillas con etiquetas XML y probarlas con documentos reales (PDF y Word).
-- **Evaluación del módulo:** Plantilla de análisis de un documento extenso, con condiciones, formato fijo y una prueba de que no tiene contradicciones.
-- **Proyecto:** Plantillas para investigación y para informes, que se suman a tu biblioteca.
-- **Fuentes previstas** (se verifican al crear cada clase): Guía oficial «Prompting best practices» («Structure prompts with XML tags», «Long context prompting»); tutorial de Anthropic (capítulo 9).
+- **Evaluación del módulo:** Kit de estudio: un proyecto de Claude con instrucciones, materiales de un curso y un método de verificación de fuentes.
+- **Fuentes previstas** (se verifican al crear cada clase): Anthropic Academy «AI Fluency», política de uso, centro de ayuda (memoria, conectores, Chrome, Cowork).
 
 | Clase | Tema | Plan de Claude | Temario oficial que cubre | Videos | Estado |
 |---|---|---|---|---|---|
-| M5·1 | Etiquetas XML para organizar instrucciones | Gratis · Chat de Claude | Prompting best practices: «Structure prompts with XML tags» | [▶ 1](https://www.youtube.com/watch?v=ysPbXH0LpIE) | Próximamente |
-| M5·2 | Plantillas reutilizables y prompts con varias condiciones | Gratis · Chat de Claude | Tutorial de Anthropic, cap. 9: Building Complex Prompts | — | Próximamente |
-| M5·3 | Analizar documentos extensos (PDF y Word) | Gratis (con límites de uso) · Chat de Claude | Prompting best practices: «Long context prompting» | — | Próximamente |
-| M5·4 | Prompts para investigar, comparar y sintetizar | Gratis con búsqueda web; Research es de pago (opcional) · Chat de Claude | — | — | Próximamente |
-| M5·5 | Prompts para informes, tablas, planes y documentación | Gratis · Chat de Claude | — | — | Próximamente |
-| M5·6 | Evitar ambigüedades y contradicciones (evaluación del módulo) | Gratis · Chat de Claude | — | — | Próximamente |
+| M4·1 | Fluidez en IA y uso responsable: el marco 4D, privacidad, verificación y política de uso | Claude gratis · Chat de Claude | — | [▶ 1](https://www.youtube.com/watch?v=W4Ua6XFfX9w) [▶ 2](https://www.youtube.com/watch?v=EljzyfdYkrc) | Próximamente |
+| M4·2 | Memoria, conectores, Claude in Chrome y Cowork: cuándo valen la pena (evaluación del bloque) | Claude gratis con límites; Claude in Chrome y Cowork requieren Claude Pro · Chat de Claude | — | — | Próximamente |
 
-## Módulo 6 · Prompting · Nivel 4: Avanzado (6 clases · 12 h)
+## Módulo 5 · Claude Code · Primeros pasos (4 clases · 8 h)
 
-- **Objetivo:** Resolver tareas complejas con procesos de varias etapas y medir la calidad de las instrucciones.
-- **Competencias:** Descomponer problemas complejos; encadenar prompts; mejorar por iteraciones; detectar errores y alucinaciones; verificar información con fuentes; definir criterios de éxito y casos de prueba; evaluar la calidad de las respuestas; mantener una biblioteca de prompts con versiones.
-- **Al terminar serás capaz de:** Demostrar con pruebas que una instrucción funciona, en lugar de suponerlo.
+- **Objetivo:** Entender qué es Claude Code e instalarlo.
+- **Competencias:** Distinguir Chat, Code y Cowork; usar la terminal; instalar, autenticar y dar las primeras órdenes.
+- **Al terminar serás capaz de:** Instalar Claude Code y dar órdenes básicas con seguridad.
+- **Necesitas antes:** Módulo 4. Recomendado: Prompt Engineering, Módulos 1 a 3; JavaScript o Python, Módulo 1, y la clase de Git. La práctica recomienda Claude Pro.
+- **Evaluación del módulo:** Primera sesión supervisada en una carpeta de prueba.
+- **Fuentes previstas** (se verifican al crear cada clase): Documentación de Claude Code (overview, setup).
+
+| Clase | Tema | Plan de Claude | Temario oficial que cubre | Videos | Estado |
+|---|---|---|---|---|---|
+| M5·1 | Qué es Claude Code; Chat, Code y Cowork | Claude gratis · Chat de Claude | — | [▶ 1](https://www.youtube.com/watch?v=vW4MFfw8taU) [▶ 2](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=0s) | Próximamente |
+| M5·2 | Terminal y comandos básicos (nivelación) | No necesita Claude (terminal del computador); se puede saltar con JavaScript M5·1 · Terminal del computador | — | [▶ 1](https://www.youtube.com/watch?v=3GymExBkKjE&t=1440s) | Próximamente |
+| M5·3 | Instalación, autenticación e interfaz | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | [▶ 1](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=755s) [▶ 2](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=1115s) | Próximamente |
+| M5·4 | Acciones, modos, comandos básicos y modelos | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | [▶ 1](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=1384s) [▶ 2](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=2018s) | Próximamente |
+
+## Módulo 6 · Claude Code · Trabajar con proyectos (4 clases · 8 h)
+
+- **Objetivo:** Desarrollar con Claude Code planificando y revisando cada cambio.
+- **Competencias:** Crear proyectos; leer y modificar archivos; usar el modo plan; controlar cambios con checkpoints y Git; depurar y probar.
+- **Al terminar serás capaz de:** Desarrollar una funcionalidad con plan, revisión y pruebas.
 - **Necesitas antes:** Módulo 5.
-- **Práctica:** Una hoja de evaluación propia (casos de prueba, criterios y resultados) para comparar versiones de una instrucción directamente en el chat, sin la API.
-- **Evaluación del módulo:** Mejorar una instrucción en tres versiones y demostrar con la hoja de evaluación cuál cumple mejor los criterios.
-- **Proyecto:** Primera versión de tu biblioteca, con criterios de prueba por instrucción.
-- **Fuentes previstas** (se verifican al crear cada clase): Tutorial de Anthropic (capítulos 6 y 8, y apéndice «Chaining Prompts»); documentación oficial «Define success criteria and build evaluations»; artículo oficial «Building effective agents» (encadenamiento de prompts).
+- **Evaluación del módulo:** Una funcionalidad implementada con plan aprobado y pruebas.
+- **Fuentes previstas** (se verifican al crear cada clase): Claude Code best practices.
 
 | Clase | Tema | Plan de Claude | Temario oficial que cubre | Videos | Estado |
 |---|---|---|---|---|---|
-| M6·1 | Descomponer problemas complejos y encadenar prompts | Gratis · Chat de Claude | Tutorial de Anthropic, apéndice: Chaining Prompts | — | Próximamente |
-| M6·2 | Razonamiento paso a paso y mejora por iteraciones | Gratis · Chat de Claude | Tutorial de Anthropic, cap. 6: Precognition (Thinking Step by Step) | [▶ 1](https://www.youtube.com/watch?v=T9aRN5JkmL8&t=737s) | Próximamente |
-| M6·3 | Alucinaciones: detectarlas y reducirlas | Gratis · Chat de Claude | Tutorial de Anthropic, cap. 8: Avoiding Hallucinations | [▶ 1](https://www.youtube.com/watch?v=Y0KidGr9Z2Y) | Próximamente |
-| M6·4 | Verificar información y trabajar con fuentes | Gratis · Chat de Claude | — | — | Próximamente |
-| M6·5 | Criterios de éxito, casos de prueba y evaluación de calidad | Gratis (en el chat, con una hoja de evaluación) · Chat de Claude | Documentación oficial: «Define success criteria and build evaluations» | [▶ 1](https://www.youtube.com/watch?v=KIGBsQqZcNA) | Próximamente |
-| M6·6 | Biblioteca de prompts reutilizables y control de versiones (evaluación del módulo) | Gratis · Chat de Claude (proyectos) | — | — | Próximamente |
+| M6·1 | Crear un proyecto; leer y modificar archivos | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | [▶ 1](https://www.youtube.com/watch?v=DAQJvGjlgVM) | Próximamente |
+| M6·2 | Modo plan: planificar, revisar y aprobar | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | [▶ 1](https://www.youtube.com/watch?v=gv0WHhKelSE) [▶ 2](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=2733s) | Próximamente |
+| M6·3 | Checkpoints, Git y control de cambios | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | [▶ 1](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=3550s) | Próximamente |
+| M6·4 | Desarrollo, depuración y pruebas | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | — | Próximamente |
 
-## Módulo 7 · Skills: procedimientos reutilizables (3 clases · 6 h)
+## Módulo 7 · Claude Code · Contexto y memoria (3 clases · 6 h)
 
-- **Objetivo:** Convertir tus mejores instrucciones en skills para que Claude las aplique solo cuando corresponde.
-- **Competencias:** Explicar qué es un skill y cuándo se activa; usar skills incluidos; convertir una instrucción probada en un skill (SKILL.md); agregar archivos de apoyo y pruebas.
-- **Al terminar serás capaz de:** Crear un skill que automatice una tarea repetida de tu estudio.
-- **Necesitas antes:** Módulos 4 y 6.
-- **Práctica:** Convertir en skill la instrucción que transforma el resumen de una clase en apuntes con el formato de la academia.
-- **Evaluación del módulo:** Skill propio funcionando, con instrucciones y casos de prueba.
-- **Fuentes previstas** (se verifican al crear cada clase): Centro de ayuda: «What are skills?» y «Use skills in Claude»; documentación de Claude Code: Skills; Claude Academy: «Introduction to agent skills».
+- **Objetivo:** Gestionar el contexto y la memoria del proyecto.
+- **Competencias:** Explicar la ventana de contexto y el context engineering; escribir CLAUDE.md; definir reglas y Auto Memory.
+- **Al terminar serás capaz de:** Dar a Claude Code el contexto justo para tu proyecto.
+- **Necesitas antes:** Módulo 6.
+- **Evaluación del módulo:** Un CLAUDE.md breve y reglas de proyecto revisadas.
+- **Fuentes previstas** (se verifican al crear cada clase): Effective context engineering for AI agents; documentación de Claude Code (memory).
 
 | Clase | Tema | Plan de Claude | Temario oficial que cubre | Videos | Estado |
 |---|---|---|---|---|---|
-| M7·1 | ¿Qué es un skill? Usar los skills incluidos | Gratis (hay que activar la ejecución de código) · Chat de Claude | — | — | Próximamente |
-| M7·2 | Convertir una instrucción probada en un skill (SKILL.md) | Gratis (hay que activar la ejecución de código) · Chat de Claude | — | — | Próximamente |
-| M7·3 | Skills con archivos de apoyo y pruebas (evaluación del módulo) | Gratis; usarlos en Claude Code requiere plan de pago · Chat de Claude | — | — | Próximamente |
+| M7·1 | Contexto, memoria de trabajo y context engineering | Claude gratis (parte conceptual) · recomendado Claude Pro para la práctica en Claude Code · Chat de Claude o Claude Code | — | [▶ 1](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=4146s) | Próximamente |
+| M7·2 | CLAUDE.md y referencias a archivos | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | [▶ 1](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=4611s) | Próximamente |
+| M7·3 | Reglas de proyecto y Auto Memory | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | [▶ 1](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=5498s) | Próximamente |
 
-## Módulo 8 · Prompting · Nivel 5: Aplicaciones profesionales (7 clases · 14 h)
+## Módulo 8 · Claude Code · Herramientas, permisos y hooks (4 clases · 8 h)
 
-- **Objetivo:** Diseñar instrucciones profesionales para los trabajos reales de tus otros cursos y de tu vida laboral.
-- **Competencias:** Escribir instrucciones para desarrollar software (HTML, CSS, JavaScript y Python); analizar y corregir código; diseñar páginas web; automatizar tareas; investigar temas técnicos; analizar documentos PDF y Word; elaborar informes y documentación; gestionar proyectos; analizar oportunidades laborales y de negocio; organizar tu productividad personal.
-- **Al terminar serás capaz de:** Tener una instrucción probada para cada tipo de trabajo que haces con frecuencia.
-- **Necesitas antes:** Módulo 6. Para las clases de programación se recomienda el Módulo 1 de JavaScript o de Python: aquí no se enseña a programar, se enseña a pedir y a revisar.
-- **Práctica:** Cada clase usa material real de otro curso de la academia (un ejercicio de JavaScript, un registro de Ciberseguridad, un plan de red) y termina con una instrucción probada para la biblioteca.
-- **Evaluación del módulo:** Resolver un encargo profesional ficticio con instrucciones propias y demostrar que el resultado cumple los criterios.
-- **Proyecto:** Las instrucciones de este módulo pasan a tu biblioteca.
-- **Fuentes previstas** (se verifican al crear cada clase): Guía oficial «Prompting best practices»; materiales de los cursos de JavaScript, Python, Ciberseguridad y Redes de la academia.
+- **Objetivo:** Supervisar herramientas, permisos, hooks y skills.
+- **Competencias:** Observar y aprobar herramientas; configurar reglas allow, ask y deny; crear hooks de protección; usar y ejecutar skills y comandos.
+- **Al terminar serás capaz de:** Trabajar con Claude Code bajo reglas que tú controlas.
+- **Necesitas antes:** Módulo 7.
+- **Evaluación del módulo:** Configuración de permisos y un hook que bloquea una acción peligrosa.
+- **Fuentes previstas** (se verifican al crear cada clase): Documentación de Claude Code (permissions, hooks, skills).
 
 | Clase | Tema | Plan de Claude | Temario oficial que cubre | Videos | Estado |
 |---|---|---|---|---|---|
-| M8·1 | Prompts para desarrollar software: HTML, CSS, JavaScript y Python | Gratis · Chat de Claude | — | — | Próximamente |
-| M8·2 | Prompts para analizar, revisar y corregir código | Gratis · Chat de Claude | — | — | Próximamente |
-| M8·3 | Prompts para diseñar páginas web: estructura, estilo y accesibilidad | Gratis · Chat de Claude (artefactos) | — | — | Próximamente |
-| M8·4 | Prompts para automatizar tareas: scripts, fórmulas y flujos | Gratis · Chat de Claude | — | — | Próximamente |
-| M8·5 | Investigación técnica y análisis de documentos PDF y Word | Gratis (con límites de uso) · Chat de Claude | — | — | Próximamente |
-| M8·6 | Informes, documentación y gestión de proyectos | Gratis · Chat de Claude | — | — | Próximamente |
-| M8·7 | Oportunidades laborales, negocios y productividad personal (evaluación del módulo) | Gratis · Chat de Claude | — | — | Próximamente |
+| M8·1 | Observar y aprobar las herramientas mientras trabajas | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | — | Próximamente |
+| M8·2 | Permisos y aprobaciones | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | [▶ 1](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=2509s) [▶ 2](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=10826s) | Próximamente |
+| M8·3 | Hooks y controles de ejecución | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | [▶ 1](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=10144s) | Próximamente |
+| M8·4 | Usar, configurar y ejecutar skills y comandos | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | [▶ 1](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=6167s) | Próximamente |
 
-## Módulo 9 · Prompting · Nivel 6: Context engineering y Claude Code (7 clases · 14 h)
+## Módulo 9 · Claude Code · Buenas prácticas y aplicación base (2 clases · 4 h)
 
-- **Objetivo:** Pasar de escribir instrucciones a diseñar el contexto completo con el que trabaja un agente de programación.
-- **Competencias:** Diferenciar prompt engineering y context engineering; diferenciar Claude y Claude Code, con sus requisitos y límites por plan; dar el contexto de un proyecto con CLAUDE.md y reglas; usar skills y comandos reutilizables; planificar antes de implementar; controlar permisos y supervisar acciones; proteger con hooks; conectar herramientas con MCP.
-- **Al terminar serás capaz de:** Configurar un proyecto para que Claude Code trabaje bien y de forma segura.
-- **Necesitas antes:** Módulo 6. Desde la clase 2 se necesita un plan de pago (Pro o superior). Recomendado: el Módulo 1 de JavaScript o de Python.
-- **Práctica:** Un proyecto de práctica en una carpeta aparte (nunca la academia real), configurado paso a paso: CLAUDE.md, reglas, un skill, un hook y un servidor MCP.
-- **Evaluación del módulo:** Entregar el proyecto de práctica configurado y una tarea resuelta con modo plan, con las acciones revisadas.
-- **Fuentes previstas** (se verifican al crear cada clase): Artículo oficial «Effective context engineering for AI agents» (29/09/2025); documentación de Claude Code: Best practices, Memory, Skills, Hooks, MCP y Permissions; MoureDev (terceros, capítulos indicados).
+- **Objetivo:** Aplicar buenas prácticas y entregar la aplicación base sobre la que trabajará el equipo de agentes.
+- **Competencias:** Aplicar una lista de seguridad; desarrollar y mantener un proyecto supervisado.
+- **Al terminar serás capaz de:** Entregar la aplicación base con CLAUDE.md, permisos, un hook de protección y pruebas.
+- **Necesitas antes:** Módulo 8.
+- **Evaluación del módulo:** Proyecto del bloque: la aplicación base.
+- **Proyecto:** Primera pieza del proyecto de cinco agentes (ver más arriba).
+- **Fuentes previstas** (se verifican al crear cada clase): Claude Code best practices.
 
 | Clase | Tema | Plan de Claude | Temario oficial que cubre | Videos | Estado |
 |---|---|---|---|---|---|
-| M9·1 | De prompt engineering a context engineering; Claude frente a Claude Code | Gratis (parte conceptual) · Chat de Claude | Artículo oficial «Effective context engineering for AI agents» | — | Próximamente |
-| M9·2 | Instalar Claude Code: permisos y supervisión de acciones | Pago (Pro o superior) · Claude Code | — | [▶ 1](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=755s) [▶ 2](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=2509s) [▶ 3](https://www.youtube.com/watch?v=DAQJvGjlgVM) | Próximamente |
-| M9·3 | Contexto del proyecto: CLAUDE.md, reglas y memoria | Pago (Pro o superior) · Claude Code | Documentación de Claude Code: Best practices («Keep CLAUDE.md short») y Memory | [▶ 1](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=4611s) | Próximamente |
-| M9·4 | Planificar antes de implementar: modo plan y verificación | Pago (Pro o superior) · Claude Code | — | [▶ 1](https://www.youtube.com/watch?v=gv0WHhKelSE) [▶ 2](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=2733s) | Próximamente |
-| M9·5 | Skills y comandos reutilizables en Claude Code | Pago (Pro o superior) · Claude Code | — | [▶ 1](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=7019s) | Próximamente |
-| M9·6 | Hooks y mecanismos de protección | Pago (Pro o superior) · Claude Code | Documentación de Claude Code: Best practices («Enforce the rules that can't have exceptions») y Hooks | [▶ 1](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=10144s) | Próximamente |
-| M9·7 | MCP y herramientas externas (evaluación del módulo) | Pago (Pro o superior) · Claude Code | — | [▶ 1](https://www.youtube.com/watch?v=T4-BdZQUCSE) [▶ 2](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=7775s) | Próximamente |
+| M9·1 | Buenas prácticas y seguridad | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | [▶ 1](https://www.youtube.com/watch?v=gv0WHhKelSE) | Próximamente |
+| M9·2 | Proyecto: la aplicación base del equipo (evaluación del bloque) | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | — | Próximamente |
 
-## Módulo 10 · Agentes, subagentes y automatización (5 clases · 10 h)
+## Módulo 10 · Herramientas, Skills y MCP · Herramientas (3 clases · 6 h)
 
-- **Objetivo:** Delegar trabajo en agentes y subagentes, evaluar lo que entregan y automatizar tareas con seguridad.
-- **Competencias:** Explicar cómo trabaja un agente y sus riesgos; delegar en subagentes; diseñar flujos con varios agentes (encadenamiento, enrutamiento, paralelización, orquestador-trabajadores y evaluador-optimizador); evaluar resultados de agentes; automatizar con tareas programadas, scripts y GitHub Actions, conociendo los límites de uso.
-- **Al terminar serás capaz de:** Diseñar, evaluar y dejar funcionando un flujo con varios agentes.
-- **Necesitas antes:** Módulo 9.
-- **Práctica:** Dos subagentes propios (uno investiga en solo lectura y otro revisa) y una comparación con hacer la tarea en una sola conversación.
-- **Evaluación del módulo:** Flujo con al menos dos subagentes, con criterios de evaluación de su resultado y una automatización documentada (qué hace, cuándo corre, qué consume y cómo se apaga).
-- **Fuentes previstas** (se verifican al crear cada clase): Artículo oficial «Building effective agents» (19/12/2024); documentación de Claude Code: Sub-agents, tareas programadas, Headless y GitHub Actions; videos oficiales de Anthropic.
+- **Objetivo:** Entender cómo usa Claude las herramientas y cómo restringirlas.
+- **Competencias:** Explicar el ciclo de uso de herramientas; usar las integradas del chat; distinguir integradas y externas; restringir herramientas en Claude Code.
+- **Al terminar serás capaz de:** Decidir qué herramientas necesita una tarea y limitarlas.
+- **Necesitas antes:** Módulo 4. Para las clases que se hacen en Claude Code conviene el bloque Claude Code (Módulos 5 a 9).
+- **Evaluación del módulo:** Mapa de herramientas de una tarea con sus restricciones.
+- **Fuentes previstas** (se verifican al crear cada clase): Documentación de Claude (tool use), documentación de Claude Code (permissions).
 
 | Clase | Tema | Plan de Claude | Temario oficial que cubre | Videos | Estado |
 |---|---|---|---|---|---|
-| M10·1 | Cómo trabaja un agente: herramientas, bucle agéntico y riesgos | Pago (Pro o superior) · Claude Code | Artículo oficial «Building effective agents» | [▶ 1](https://www.youtube.com/watch?v=LP5OCa20Zpg) [▶ 2](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=499s) | Próximamente |
-| M10·2 | Subagentes y delegación de tareas | Pago (Pro o superior) · Claude Code | — | [▶ 1](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=9225s) | Próximamente |
-| M10·3 | Flujos con varios agentes: orquestar y combinar resultados | Pago (Pro o superior) · Claude Code | — | [▶ 1](https://www.youtube.com/watch?v=D7_ipDqhtwk) | Próximamente |
-| M10·4 | Evaluar los resultados de los agentes | Pago (Pro o superior) · Claude Code | Documentación oficial: «Define success criteria and build evaluations» | — | Próximamente |
-| M10·5 | Automatizar: tareas programadas, scripts y GitHub Actions (evaluación del módulo) | Pago (Pro o superior) · Claude Code | — | [▶ 1](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=10578s) | Próximamente |
+| M10·1 | Qué es una herramienta y cómo la usa Claude | Claude gratis · Chat de Claude | — | — | Próximamente |
+| M10·2 | Herramientas integradas del chat | Claude gratis · Chat de Claude | — | — | Próximamente |
+| M10·3 | Integradas, externas y cómo restringirlas | Claude gratis para el diseño · recomendado Claude Pro para la práctica en Claude Code · Chat de Claude o Claude Code | — | — | Próximamente |
 
-## Módulo 11 · Proyecto integrador: biblioteca profesional de prompts (4 clases · 8 h)
+## Módulo 11 · Herramientas, Skills y MCP · Skills (4 clases · 8 h)
 
-- **Objetivo:** Construir, probar y defender tu propia biblioteca profesional de prompts para Claude.
-- **Competencias:** Diseñar una biblioteca por casos de uso; escribir criterios de prueba; transformar instrucciones deficientes en profesionales y justificar cada cambio; medir si el resultado cumple los criterios; presentar el trabajo.
-- **Al terminar serás capaz de:** Entregar una biblioteca profesional de prompts probada y documentada.
-- **Necesitas antes:** Módulos 7 y 8. La parte de agentes y automatización requiere los Módulos 9 y 10 y un plan de pago; el resto se hace con el plan gratuito.
-- **Práctica:** Avances semanales revisados con la rúbrica del proyecto.
-- **Evaluación del módulo:** Rúbrica: cobertura de los casos de uso, calidad de cada instrucción, pruebas y resultados, transformaciones justificadas, seguridad y presentación.
+- **Objetivo:** Diseñar, crear y reutilizar skills.
+- **Competencias:** Distinguir skill, herramienta y agente; escribir SKILL.md; crear y probar skills en el chat; diseñar skills especializadas para Claude Code.
+- **Al terminar serás capaz de:** Convertir un procedimiento probado en una skill reutilizable.
+- **Necesitas antes:** Módulo 10.
+- **Evaluación del módulo:** Una skill propia con su descripción, archivos de apoyo y pruebas.
+- **Fuentes previstas** (se verifican al crear cada clase): Documentación de Claude Code (skills), centro de ayuda (skills).
+
+| Clase | Tema | Plan de Claude | Temario oficial que cubre | Videos | Estado |
+|---|---|---|---|---|---|
+| M11·1 | Qué es una skill; skill, herramienta y agente | Claude gratis (hay que activar la ejecución de código) · Chat de Claude | — | [▶ 1](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=7019s) | Próximamente |
+| M11·2 | Estructura de una skill: SKILL.md y archivos de apoyo | Claude gratis (hay que activar la ejecución de código) · Chat de Claude | — | — | Próximamente |
+| M11·3 | Crear y probar skills en el chat | Claude gratis (hay que activar la ejecución de código) · Chat de Claude | — | — | Próximamente |
+| M11·4 | Diseñar skills especializadas y reutilizables | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | [▶ 1](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=8485s) | Próximamente |
+
+## Módulo 12 · Herramientas, Skills y MCP · MCP (Model Context Protocol) (5 clases · 10 h)
+
+- **Objetivo:** Comprender MCP y conectar Claude con datos y servicios de forma segura.
+- **Competencias:** Explicar MCP y su arquitectura; agregar un conector; configurar servidores en Claude Code; evaluar su seguridad.
+- **Al terminar serás capaz de:** Conectar Claude a una fuente externa confiable con MCP.
+- **Necesitas antes:** Módulo 10.
+- **Evaluación del módulo:** Una conexión MCP documentada con su evaluación de seguridad.
+- **Fuentes previstas** (se verifican al crear cada clase): modelcontextprotocol.io (arquitectura), documentación de Claude Code (MCP), centro de ayuda (conectores).
+
+| Clase | Tema | Plan de Claude | Temario oficial que cubre | Videos | Estado |
+|---|---|---|---|---|---|
+| M12·1 | Qué es MCP y qué problema resuelve | Claude gratis · Chat de Claude | — | [▶ 1](https://www.youtube.com/watch?v=T4-BdZQUCSE) | Próximamente |
+| M12·2 | Arquitectura de MCP: host, cliente, servidor y primitivas | Claude gratis · Chat de Claude | — | — | Próximamente |
+| M12·3 | Conectores en Claude: un servidor MCP remoto | Claude gratis (1 conector personalizado) · Chat de Claude | — | [▶ 1](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=8485s) | Próximamente |
+| M12·4 | MCP en Claude Code: claude mcp add y ámbitos | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | [▶ 1](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=7775s) | Próximamente |
+| M12·5 | Seguridad y permisos en MCP | Claude gratis para el diseño · recomendado Claude Pro para la práctica en Claude Code · Chat de Claude o Claude Code | — | — | Próximamente |
+
+## Módulo 13 · Herramientas, Skills y MCP · Plugins y kit del equipo (2 clases · 4 h)
+
+- **Objetivo:** Empaquetar componentes y construir el kit del equipo de agentes.
+- **Competencias:** Instalar y evaluar plugins; integrar skills y MCP en un kit probado.
+- **Al terminar serás capaz de:** Entregar el kit que usarán los agentes.
+- **Necesitas antes:** Módulos 11 y 12.
+- **Evaluación del módulo:** Proyecto del bloque: dos skills (investigar con fuentes y revisar calidad) y una conexión MCP confiable.
+- **Proyecto:** Segunda pieza del proyecto de cinco agentes (ver más arriba).
+- **Fuentes previstas** (se verifican al crear cada clase): Documentación de Claude Code (plugins).
+
+| Clase | Tema | Plan de Claude | Temario oficial que cubre | Videos | Estado |
+|---|---|---|---|---|---|
+| M13·1 | Plugins: skills, MCP, hooks y subagentes en un paquete | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | [▶ 1](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=9023s) | Próximamente |
+| M13·2 | Proyecto: el kit del equipo (evaluación del bloque) | Claude gratis para el diseño · recomendado Claude Pro para la práctica en Claude Code · Chat de Claude o Claude Code | — | — | Próximamente |
+
+## Módulo 14 · Agentes · Qué es un agente (4 clases · 8 h)
+
+- **Objetivo:** Comprender qué es un agente, cómo se compone y sus riesgos.
+- **Competencias:** Distinguir agente, chatbot y flujo; describir su arquitectura; planificar tareas; identificar riesgos y consumo.
+- **Al terminar serás capaz de:** Decidir cuándo conviene un agente y cómo componerlo.
+- **Necesitas antes:** Módulos 9 y 13. Recomendado: Prompt Engineering, Módulo 4 (criterios de éxito y evaluación).
+- **Evaluación del módulo:** Diseño en papel de un agente con sus componentes y riesgos.
+- **Fuentes previstas** (se verifican al crear cada clase): Building effective agents (Anthropic), documentación de Claude Code.
+
+| Clase | Tema | Plan de Claude | Temario oficial que cubre | Videos | Estado |
+|---|---|---|---|---|---|
+| M14·1 | Agente, chatbot y flujo de trabajo | Claude gratis · Chat de Claude | Artículo oficial «Building effective agents» | [▶ 1](https://www.youtube.com/watch?v=LP5OCa20Zpg) [▶ 2](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=499s) | Próximamente |
+| M14·2 | Arquitectura de un agente | Claude gratis · Chat de Claude | — | [▶ 1](https://www.youtube.com/watch?v=D7_ipDqhtwk) | Próximamente |
+| M14·3 | Planificación y ejecución de tareas | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | — | Próximamente |
+| M14·4 | Riesgos y límites de los agentes | Claude gratis · Chat de Claude | — | — | Próximamente |
+
+## Módulo 15 · Agentes · Subagentes (4 clases · 8 h)
+
+- **Objetivo:** Crear subagentes especializados con capacidades limitadas.
+- **Competencias:** Explicar el contexto propio de un subagente; crearlo; asignarle herramientas, skills y conexiones; diseñar la entrega de resultados.
+- **Al terminar serás capaz de:** Crear subagentes especializados que devuelvan resultados útiles.
+- **Necesitas antes:** Módulo 14.
+- **Evaluación del módulo:** Un subagente de solo lectura con su formato de entrega.
+- **Fuentes previstas** (se verifican al crear cada clase): Documentación de Claude Code (sub-agents).
+
+| Clase | Tema | Plan de Claude | Temario oficial que cubre | Videos | Estado |
+|---|---|---|---|---|---|
+| M15·1 | Qué son los subagentes | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | [▶ 1](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=9225s) | Próximamente |
+| M15·2 | Crear subagentes especializados | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | — | Próximamente |
+| M15·3 | Roles, responsabilidades y capacidades de cada subagente | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | — | Próximamente |
+| M15·4 | Contexto y transferencia de resultados | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | — | Próximamente |
+
+## Módulo 16 · Agentes · Coordinación (3 clases · 6 h)
+
+- **Objetivo:** Coordinar varios agentes y evaluar su trabajo.
+- **Competencias:** Elegir patrones de delegación; coordinar agentes; evaluar resultados con criterios.
+- **Al terminar serás capaz de:** Coordinar varios agentes y medir la calidad de su trabajo.
+- **Necesitas antes:** Módulo 15.
+- **Evaluación del módulo:** Un flujo con dos subagentes y su evaluación.
+- **Fuentes previstas** (se verifican al crear cada clase): Building effective agents; documentación de Claude Code (sub-agents, agent teams).
+
+| Clase | Tema | Plan de Claude | Temario oficial que cubre | Videos | Estado |
+|---|---|---|---|---|---|
+| M16·1 | Delegación y patrones de trabajo | Claude gratis para el diseño · recomendado Claude Pro para la práctica en Claude Code · Chat de Claude o Claude Code | — | [▶ 1](https://www.youtube.com/watch?v=D7_ipDqhtwk) | Próximamente |
+| M16·2 | Coordinación y comunicación entre agentes | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | [▶ 1](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=9225s) | Próximamente |
+| M16·3 | Evaluación y control de calidad de agentes | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | Documentación oficial: «Define success criteria and build evaluations» | — | Próximamente |
+
+## Módulo 17 · Agentes · Supervisión y tres primeros agentes (2 clases · 4 h)
+
+- **Objetivo:** Diseñar la supervisión humana y crear los tres primeros agentes del equipo.
+- **Competencias:** Colocar aprobaciones en un diseño; construir y evaluar tres subagentes que trabajen juntos.
+- **Al terminar serás capaz de:** Entregar investigador, analista y revisor funcionando.
+- **Necesitas antes:** Módulo 16.
+- **Evaluación del módulo:** Proyecto del bloque: investigador, analista y revisor de calidad.
+- **Proyecto:** Tercera pieza del proyecto de cinco agentes (ver más arriba).
+- **Fuentes previstas** (se verifican al crear cada clase): Documentación de Claude Code (permissions, sub-agents).
+
+| Clase | Tema | Plan de Claude | Temario oficial que cubre | Videos | Estado |
+|---|---|---|---|---|---|
+| M17·1 | Supervisión humana al diseñar sistemas de agentes | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | — | Próximamente |
+| M17·2 | Proyecto: investigador, analista y revisor (evaluación del bloque) | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | — | Próximamente |
+
+## Módulo 18 · Automatización · Fundamentos (3 clases · 6 h)
+
+- **Objetivo:** Diseñar y programar automatizaciones con Claude.
+- **Competencias:** Elegir qué automatizar; diseñar flujos; programar tareas con Claude y conocer sus límites.
+- **Al terminar serás capaz de:** Programar una automatización sencilla y explicar sus límites.
+- **Necesitas antes:** Módulo 17. Usa los hooks y permisos del Módulo 8.
+- **Evaluación del módulo:** Una automatización sencilla documentada (qué hace, cuándo corre, qué consume y cómo se apaga).
+- **Fuentes previstas** (se verifican al crear cada clase): Documentación de Claude Code (scheduled tasks, GitHub Actions), centro de ayuda (Cowork).
+
+| Clase | Tema | Plan de Claude | Temario oficial que cubre | Videos | Estado |
+|---|---|---|---|---|---|
+| M18·1 | Qué es automatizar con IA | Claude gratis · Chat de Claude | — | — | Próximamente |
+| M18·2 | Diseñar flujos de trabajo | Claude gratis · Chat de Claude | — | — | Próximamente |
+| M18·3 | Automatizar con Claude: tareas programadas, /loop, Cowork y GitHub Actions | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | [▶ 1](https://www.youtube.com/watch?v=TCq7eZ9Lhc8&t=10578s) | Próximamente |
+
+## Módulo 19 · Automatización · Control y seguridad (3 clases · 6 h)
+
+- **Objetivo:** Proteger y supervisar las automatizaciones.
+- **Competencias:** Diseñar aprobaciones en procesos desatendidos; aplicar permisos, hooks y límites; evaluar riesgos de seguridad.
+- **Al terminar serás capaz de:** Proteger una automatización con aprobaciones y controles.
+- **Necesitas antes:** Módulo 18.
+- **Evaluación del módulo:** Análisis de riesgos y controles de un flujo.
+- **Fuentes previstas** (se verifican al crear cada clase): Documentación de Claude Code (permissions, hooks, MCP).
+
+| Clase | Tema | Plan de Claude | Temario oficial que cubre | Videos | Estado |
+|---|---|---|---|---|---|
+| M19·1 | Aprobaciones en procesos desatendidos | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | — | Próximamente |
+| M19·2 | Controles de una automatización: permisos, hooks y límites | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | — | Próximamente |
+| M19·3 | Seguridad de las automatizaciones | Claude gratis · Chat de Claude | — | — | Próximamente |
+
+## Módulo 20 · Automatización · Proyecto integrador I: el equipo completo (4 clases · 8 h)
+
+- **Objetivo:** Completar el equipo de cinco agentes.
+- **Competencias:** Definir responsabilidades y contratos; crear el coordinador y el programador; integrar los agentes del bloque Agentes.
+- **Al terminar serás capaz de:** Tener los cinco agentes trabajando en un mismo flujo.
+- **Necesitas antes:** Módulo 19.
+- **Evaluación del módulo:** Revisión del equipo con un caso real.
+- **Fuentes previstas** (se verifican al crear cada clase): Documentación de Claude Code (sub-agents, permissions).
+
+| Clase | Tema | Plan de Claude | Temario oficial que cubre | Videos | Estado |
+|---|---|---|---|---|---|
+| M20·1 | Del kit y los tres agentes al equipo completo | Claude gratis · Chat de Claude | — | — | Próximamente |
+| M20·2 | El coordinador | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | — | Próximamente |
+| M20·3 | El programador: implementar solo lo autorizado | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | — | Próximamente |
+| M20·4 | Integrar al investigador, el analista y el revisor | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | — | Próximamente |
+
+## Módulo 21 · Automatización · Proyecto integrador II: automatización y control (4 clases · 8 h)
+
+- **Objetivo:** Automatizar, validar y supervisar el equipo.
+- **Competencias:** Validar resultados y manejar errores; automatizar el flujo; probarlo de extremo a extremo; defender el diseño.
+- **Al terminar serás capaz de:** Entregar un equipo de agentes funcional y supervisado.
+- **Necesitas antes:** Módulo 20.
+- **Evaluación del módulo:** Proyecto integrador con rúbrica y defensa.
 - **Proyecto:** Proyecto final del curso (ver más arriba).
+- **Fuentes previstas** (se verifican al crear cada clase): Documentación de Claude Code.
 
 | Clase | Tema | Plan de Claude | Temario oficial que cubre | Videos | Estado |
 |---|---|---|---|---|---|
-| M11·1 | Diseño de la biblioteca: casos de uso, plantillas y criterios de prueba | Gratis · Chat de Claude (proyectos) | — | — | Próximamente |
-| M11·2 | Construcción y pruebas: investigación, documentos, programación, revisión de código y planificación | Gratis · Chat de Claude | — | — | Próximamente |
-| M11·3 | Automatización, agentes y subagentes; de instrucción deficiente a profesional | Gratis (diseño y prueba en el chat) o pago (ejecución con Claude Code) · Chat de Claude o Claude Code | — | — | Próximamente |
-| M11·4 | Presentación y defensa: cambios justificados y resultados medidos | Gratis · Chat de Claude | — | — | Próximamente |
+| M21·1 | Validación de resultados y manejo de errores | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | — | Próximamente |
+| M21·2 | Automatizar el flujo del equipo | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | — | Próximamente |
+| M21·3 | Pruebas de extremo a extremo y supervisión | Recomendado: Claude Pro (la práctica usa Claude Code, que no está en el plan gratis) · alternativa: demostración guiada · Claude Code | — | — | Próximamente |
+| M21·4 | Presentación y defensa del equipo (evaluación final) | Claude gratis para el diseño · recomendado Claude Pro para la práctica en Claude Code · Chat de Claude o Claude Code | — | — | Próximamente |
 
 <!-- FIN: generado desde recursos/catalogo.js -->
 
