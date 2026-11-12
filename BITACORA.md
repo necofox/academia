@@ -559,4 +559,5 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
 - **Decisión del alumno (mismo día):** en cada curso se completan todas las clases de los Módulos 1 y 2 antes de
   pasar a otros módulos. Faltan 53: Ciberseguridad 4, Inglés 13, JavaScript 9, Python 7, Redes 7, IA: Claude 5 y
   Prompt Engineering 8. Las clases que ya existen en otros módulos (Ciberseguridad M3·1) se conservan.
-- Sin push. Pendiente de la aprobación del piloto por el alumno.
+- **Piloto aprobado por el alumno** el mismo día (commit `5ee9893`). El equipo puede seguir con la siguiente clase,
+  de una en una. Sin push.
