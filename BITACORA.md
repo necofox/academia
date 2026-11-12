@@ -427,3 +427,32 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   el Curso 6 completa el equipo de cinco agentes. Tabla de requisitos y viabilidad técnica verificada.
 - Resultado: 6 cursos, 26 módulos, **91 clases** (182 h); 39 con video verificado y 52 pendientes.
   **Sigue pendiente de aprobación. No se modificó el catálogo, el menú, el motor ni ninguna clase.**
+
+### 2026-11-12 (formación en IA: aprobación condicionada y Lote 1, estructura técnica)
+- El alumno aprobó la versión 2 de forma condicionada, para implementarla por lotes. Antes pidió: verificar planes
+  y costos, la viabilidad del proyecto de cinco agentes sin API de pago, la conservación de los videos y el
+  procedimiento para conservar IA 01/02, el id `ia`, el avance, las rutas, el motor y la sincronización.
+  Respuesta en `VIABILIDAD-Y-CONSERVACION-IA.md`: **sin impedimentos graves**. Pro no es ilimitado (sesión de 5 h,
+  límite semanal, compartido entre apps, y los subagentes gastan del mismo límite). MCP es opcional y se hace con
+  servidores locales gratuitos. La automatización usa tareas de escritorio, `/loop` o GitHub Actions con el token
+  de la suscripción.
+- Etiqueta de respaldo `respaldo-antes-ia-6-cursos` (commit `07fd805`).
+- **Lote 1 (preparación, sin migrar):**
+  - Borrador `propuestas/ia-6-cursos.borrador.js` con los 6 cursos, 26 módulos y 91 clases. Reutiliza los objetos
+    de IA 01 e IA 02 sin cambiarlos, trae los `ref` de las clases que pasan al Curso 2 y conserva los 39 videos
+    verificados, entre ellos el del alumno para Plugins (MoureDev, 2:30:23). El menú no lo carga.
+  - Carpetas `cursos/prompt`, `claudecode`, `extensiones`, `agentes` y `automatizacion`, con `instrucciones.md`,
+    `ruta-aprendizaje.md` (generada desde el borrador) y `progreso.md`.
+  - Temas `.tema-prompt`, `.tema-claudecode`, `.tema-extensiones`, `.tema-agentes` y `.tema-automatizacion` en
+    `academia.css`, solo con líneas nuevas y contraste mayor de 8:1. Duraciones de 120 min en `pruebas-clases.html`.
+  - `generar-rutas.js` acepta `--con <borrador>` y `--solo <ids>`. Sin opciones funciona igual que antes.
+  - Vista previa aislada del menú con 11 cursos: `propuestas/vista-previa-ia-6-cursos.html`, generada con
+    `node propuestas/generar-vista-previa-ia.js`.
+- Ajuste de orden en el Curso 1 (riesgo R1): el Módulo 1 se sigue llamando «Fundamentos de la IA generativa y de
+  Claude», y la clase 1.3 pasa a ser «Primeros pasos en el chat…», como anuncia IA 02. Así IA 02 sigue siendo
+  correcta, salvo la frase de la línea 139, que espera la decisión del alumno.
+- Pruebas: `pruebas-clases` 22/22, `pruebas-sync` 15/15, `revisar-catalogo` correcto (línea base intacta),
+  `generar-rutas --comprobar` 6/6 y `revisar-coherencia` coherente. IA 01, IA 02, `academia.js`, `sync.js`,
+  `catalogo.js`, `inicio.html` y la ruta de IA son idénticos a la etiqueta, y los otros cinco cursos no cambiaron.
+  **No se migró nada: el menú real sigue con 6 cursos.** Próximo paso, el Lote 2 (migración en un solo paso),
+  cuando el alumno lo autorice.

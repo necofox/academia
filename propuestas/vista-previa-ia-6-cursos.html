@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vista previa: IA en 6 cursos</title>
+<link rel="stylesheet" href="../recursos/academia.css">
+<style>
+  .marco-previa { width: 100%; height: 80vh; min-height: 520px; border: 2px dashed var(--warn); border-radius: 12px; background: var(--bg); }
+</style>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+<header class="top">
+  <div class="marca"><span class="logo" aria-hidden="true">&lt;/&gt;</span><span>MI<span class="acento">//</span>ACADEMIA</span></div>
+  <a class="btn-mini" href="../inicio.html">☰ Menú real</a>
+</header>
+<main id="contenido" class="menu">
+  <div class="portada">
+    <p class="kicker">Propuesta · no es el menú real</p>
+    <h1>Vista previa: la formación en IA en seis cursos</h1>
+    <p class="sub">Así se vería tu menú después de la migración (Lote 2): el curso «IA 1 · Fundamentos y uso de Claude» conserva IA 01 e IA 02, y se agregan los cursos IA 2 a IA 6. Es tu <code>inicio.html</code> real con el borrador del catálogo.</p>
+  </div>
+  <div class="nota alerta" role="note">
+    <p><strong>Funciona aislada:</strong> dentro del marco el menú usa un almacenamiento temporal en memoria (nunca el de tu navegador), no sincroniza con GitHub, tiene los enlaces desactivados y no cambia ningún archivo. Por eso no aparece tu avance ni el panel de GitHub. Las clases nuevas dicen «Próximamente».</p>
+    <p>Detalle: <code>PROPUESTA-IA-6-CURSOS.md</code> y <code>VIABILIDAD-Y-CONSERVACION-IA.md</code>.</p>
+  </div>
+  <p class="marcador">Abrir directo un curso:
+    <a href="vista-previa-ia-6-cursos.html?curso=ia">IA 1</a> ·
+    <a href="vista-previa-ia-6-cursos.html?curso=prompt">IA 2</a> ·
+    <a href="vista-previa-ia-6-cursos.html?curso=claudecode">IA 3</a> ·
+    <a href="vista-previa-ia-6-cursos.html?curso=extensiones">IA 4</a> ·
+    <a href="vista-previa-ia-6-cursos.html?curso=agentes">IA 5</a> ·
+    <a href="vista-previa-ia-6-cursos.html?curso=automatizacion">IA 6</a></p>
+  <iframe id="previa" class="marco-previa" title="Vista previa del menú con los seis cursos de IA" src="vista-previa-ia-menu.html"></iframe>
+</main>
+<script>
+// El menú de la vista previa es un archivo generado (vista-previa-ia-menu.html). Aquí solo se le pasa ?curso=.
+(() => {
+  const pedido = new URLSearchParams(location.search).get('curso');
+  if (pedido && /^[a-z-]{2,20}$/.test(pedido)) document.getElementById('previa').src = 'vista-previa-ia-menu.html?curso=' + pedido;
+})();
+</script>
+</body>
+</html>

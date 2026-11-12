@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="es">
+<head>
+<!-- ARCHIVO GENERADO por propuestas/generar-vista-previa-ia.js a partir de inicio.html. No editar a mano. -->
+<base href="../">
+<script>/* AISLAMIENTO DE LA VISTA PREVIA: va antes que todo */
+(function () {
+  var d = {};
+  var pedido = new URLSearchParams(location.search).get("curso"); // ?curso=prompt abre ese curso
+  if (pedido && /^[a-z-]{2,20}$/.test(pedido)) d["academia:menu:curso"] = JSON.stringify(pedido);
+  var f = { getItem: function (k) { return Object.prototype.hasOwnProperty.call(d, k) ? d[k] : null; }, setItem: function (k, v) { d[k] = String(v); },
+    removeItem: function (k) { delete d[k]; }, clear: function () { d = {}; }, key: function (i) { return Object.keys(d)[i] || null; } };
+  Object.defineProperty(f, "length", { get: function () { return Object.keys(d).length; } });
+  try { Object.defineProperty(window, "localStorage", { value: f, configurable: true }); } catch (e) {}
+  if (window.localStorage !== f) { location.replace("about:blank"); return; } // si no se puede aislar, no se muestra
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("a[href]");
+    if (!a || a.getAttribute("href").charAt(0) === "#") return;
+    e.preventDefault();
+    var t = document.querySelector(".aviso-previa");
+    if (!t) { t = document.createElement("p"); t.className = "aviso-previa"; t.setAttribute("role", "status"); document.body.append(t); }
+    t.textContent = "En la vista previa los enlaces están desactivados: aquí solo se muestra cómo se verían los cursos y módulos.";
+  }, true);
+})();
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mi Academia · Menú</title>
+<link rel="stylesheet" href="recursos/academia.css?v=2026-11-11b">
+<style>/* Ajustes de la vista previa */
+#sync{display:none}
+.aviso-previa{position:fixed;left:16px;right:16px;bottom:16px;z-index:60;background:var(--panel2);border:1px solid var(--warn);border-radius:10px;padding:12px 16px}
+</style>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="top">
+  <div class="marca"><span class="logo" aria-hidden="true">&lt;/&gt;</span><span>MI<span class="acento">//</span>ACADEMIA</span></div>
+  <div class="r-item"><span class="r-lab">Hora</span><span id="hora" class="r-val">--:--</span></div>
+</header>
+
+<main id="contenido" class="menu">
+  <div class="portada">
+    <p class="kicker">Menú principal</p>
+    <h1>¿Qué vamos a aprender hoy?</h1>
+    <p class="sub">Elige un curso, abre un módulo y entra a la clase. Las clases que ya hiciste muestran tu nota.</p>
+  </div>
+
+  <section id="diferencias" class="bloque diferencias" aria-labelledby="t-dif" hidden>
+    <h2 id="t-dif">⚠ Tus equipos guardaron cosas distintas</h2>
+    <p class="sub">No se perdió nada: guardé las dos versiones. Elige qué conservar en cada caso. Lo que no elijas sigue guardado en el historial.</p>
+    <p id="dif-msg" role="status" class="marcador"></p>
+    <ol id="lista-dif" class="lista-dif"></ol>
+  </section>
+
+  <div id="sugerencia" class="sugerencia"></div>
+
+  <h2 id="t-cursos">1. Elige un curso</h2>
+  <ul id="cursos" class="cursos" aria-labelledby="t-cursos"></ul>
+
+  <section id="panel" class="bloque" aria-labelledby="t-clases">
+    <h2 id="t-clases" tabindex="-1"></h2>
+    <p id="curso-desc" class="sub"></p>
+    <p id="curso-datos" class="meta"></p>
+    <div id="modulos" class="modulos"></div>
+    <p class="meta">Las clases marcadas «Próximamente» se crean en orden: pídeselas a Claude cuando quieras.</p>
+  </section>
+
+  <section id="sync" class="bloque sync-panel" aria-labelledby="t-sync">
+    <h2 id="t-sync">☁ Mi avance en todos mis equipos</h2>
+    <p id="sync-estado" role="status"></p>
+    <div id="sync-conectar">
+      <p>Pega tu clave de GitHub (token) <strong>una sola vez en cada equipo</strong>. Así tus exámenes, notas y retos se guardan en tu repositorio privado y se ven igual en todas tus computadoras.</p>
+      <label for="sync-token">Clave de GitHub (token)</label>
+      <input id="sync-token" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_…">
+      <div class="acciones"><button id="sync-btn" type="button" class="btn">Conectar este equipo</button></div>
+      <p id="sync-msg" role="status"></p>
+    </div>
+    <div id="sync-conectado" hidden>
+      <div class="acciones">
+        <button id="sync-ahora" type="button" class="btn btn-sec">Guardar ahora</button>
+        <button id="sync-quitar" type="button" class="btn-mini">Desconectar este equipo</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<p class="pie">Abre las clases en Microsoft Edge para escuchar las voces más naturales.</p>
+
+<!-- "?v=" obliga al navegador a usar la versión nueva tras publicar (cambiarlo al modificar estos archivos) -->
+<script src="recursos/catalogo.js?v=2026-11-11b"></script>
+<script src="propuestas/ia-6-cursos.borrador.js"></script>
+<script>
+((window.AcademiaSync && window.AcademiaSync.listo) || Promise.resolve()).then(() => {
+  'use strict';
+  const CAT = window.CATALOGO || [];
+  // Si llega un catálogo del formato anterior (sin módulos, por ejemplo desde la caché), se
+  // muestra igual: todas sus clases en un solo grupo.
+  CAT.forEach((curso) => {
+    if (!Array.isArray(curso.modulos)) curso.modulos = [{ n: 1, titulo: 'Clases del curso', objetivo: curso.desc || '', clases: curso.clases || [] }];
+    if (!curso.horasClase) curso.horasClase = /^1 h/.test(curso.duracion || '') ? 1 : 2;
+    curso.clases = curso.modulos.flatMap((m) => m.clases.map((c, i) => Object.assign(c, { modulo: c.modulo === undefined ? m.n : c.modulo, orden: c.orden || i + 1 })));
+  });
+  const leer = (k, d) => { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } };
+  const guardar = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* sin almacenamiento */ } };
+  const el = (tag, attrs, ...kids) => {
+    const e = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs || {})) { if (v === null || v === undefined || v === false) continue; if (k === 'class') e.className = v; else if (k === 'text') e.textContent = v; else e.setAttribute(k, v); }
+    kids.flat().forEach((x) => { if (x !== null && x !== undefined) e.append(x instanceof Node ? x : document.createTextNode(String(x))); });
+    return e;
+  };
+
+  // Estado de una clase según lo que guardó la propia página de la clase
+  function estado(c) {
+    if (!c.archivo) return { tipo: 'prox', texto: 'Próximamente' };
+    const res = leer('academia:' + c.id + ':res', {});
+    const crono = leer('academia:' + c.id + ':crono', null);
+    const examen = res.examen;
+    if (examen) return { tipo: 'hecha', texto: 'Terminada · examen ' + examen.ok + '/' + examen.total };
+    if (crono && (crono.acumulado > 0 || crono.inicio)) return { tipo: 'empezada', texto: 'Empezada · continúa donde te quedaste' };
+    return { tipo: 'nueva', texto: 'Disponible · sin empezar' };
+  }
+
+  // Nombres que ve el alumno: "Módulo 2 · Clase 4" (el número del archivo no cambia)
+  const nombreModulo = (m) => (m.n === 'E' ? 'Electiva' : 'Módulo ' + m.n);
+  const nombreClase = (c) => (c.modulo === 'E' ? 'Electiva' : 'Módulo ' + c.modulo) + ' · Clase ' + c.orden;
+  const plural = (n, uno, varios) => n + ' ' + (n === 1 ? uno : varios);
+  const obligatorios = (curso) => curso.modulos.filter((m) => !m.opcional);
+  const resumenCurso = (curso) => {
+    const total = obligatorios(curso).reduce((a, m) => a + m.clases.length, 0);
+    return { modulos: obligatorios(curso).length, total, listas: curso.clases.filter((c) => c.archivo).length, hechas: curso.clases.filter((c) => estado(c).tipo === 'hecha').length };
+  };
+  // La siguiente clase de un curso: la primera lista y sin terminar, en el orden de los módulos
+  const siguienteDe = (curso) => curso.clases.find((c) => c.archivo && estado(c).tipo !== 'hecha');
+
+  const ul = document.getElementById('cursos');
+  const botones = CAT.map((curso) => {
+    const r = resumenCurso(curso);
+    const b = el('button', { type: 'button', class: 'curso-btn ' + curso.tema, 'aria-pressed': 'false', 'aria-controls': 'panel' },
+      el('span', { class: 'icono', 'aria-hidden': 'true', text: curso.icono }),
+      el('span', { class: 'nombre', text: curso.nombre }),
+      el('span', { class: 'desc', text: curso.desc }),
+      el('span', { class: 'datos', text: curso.duracion + ' · ' + plural(r.modulos, 'módulo', 'módulos') + ' · ' + r.listas + ' de ' + r.total + ' clases listas · ' + plural(r.hechas, 'terminada', 'terminadas') }));
+    b.addEventListener('click', () => elegir(curso.id, true));
+    ul.append(el('li', {}, b));
+    return { id: curso.id, b };
+  });
+
+  const panel = document.getElementById('panel');
+  function elegir(id, mover) {
+    const curso = CAT.find((c) => c.id === id) || CAT[0];
+    guardar('academia:menu:curso', curso.id);
+    botones.forEach((x) => x.b.setAttribute('aria-pressed', x.id === curso.id ? 'true' : 'false'));
+    panel.className = 'bloque ' + curso.tema;
+    document.getElementById('t-clases').textContent = '2. Elige un módulo y una clase de ' + curso.nombre;
+    document.getElementById('curso-desc').textContent = curso.desc + ' (' + curso.duracion + ')';
+    const r = resumenCurso(curso);
+    document.getElementById('curso-datos').textContent = plural(r.modulos, 'módulo', 'módulos') + ' · ' + r.total + ' clases · ' + (r.total * curso.horasClase) + ' h · ' + r.listas + ' lista(s) · ' + plural(r.hechas, 'terminada', 'terminadas');
+    const sigue = siguienteDe(curso);
+    const cont = document.getElementById('modulos');
+    cont.replaceChildren();
+    curso.modulos.forEach((m) => {
+      const listas = m.clases.filter((c) => c.archivo).length;
+      const hechas = m.clases.filter((c) => estado(c).tipo === 'hecha').length;
+      const barra = el('span');
+      barra.style.width = Math.round(100 * hechas / m.clases.length) + '%';
+      const resumen = el('summary', {},
+        el('span', { class: 'mod-cab' }, el('span', { class: 'mod-flecha', 'aria-hidden': 'true', text: '▸' }), el('span', { text: nombreModulo(m) + (m.opcional ? ' · opcional' : '') })),
+        el('span', { class: 'mod-titulo', text: m.titulo }),
+        el('span', { class: 'mod-datos', text: plural(m.clases.length, 'clase', 'clases') + ' · ' + (m.clases.length * curso.horasClase) + ' h · ' + (listas ? listas + ' lista(s) · ' + plural(hechas, 'terminada', 'terminadas') : 'próximamente') }),
+        el('span', { class: 'mod-barra', 'aria-hidden': 'true' }, barra));
+      const ol = el('ol', { class: 'clases', 'aria-label': 'Clases de ' + nombreModulo(m) + ': ' + m.titulo });
+      m.clases.forEach((c) => {
+        const est = estado(c);
+        const esSiguiente = c === sigue;
+        const num = el('span', { class: 'num', text: nombreClase(c) });
+        const info = el('div', {}, num, c.n ? el('span', { class: 'pagina', text: '(en la página: Clase ' + c.n + ')' }) : null,
+          el('strong', { text: c.titulo }), el('span', { class: 'estado', text: (esSiguiente ? 'Te toca esta · ' : '') + est.texto }));
+        const accion = c.archivo
+          ? el('a', { class: 'btn', href: c.archivo }, est.tipo === 'hecha' ? '↺ Repasar' : est.tipo === 'empezada' ? '▶ Continuar' : '▶ Empezar', el('span', { class: 'sr-only', text: ': ' + c.titulo }))
+          : null;
+        ol.append(el('li', { class: 'clase-item' + (c.archivo ? '' : ' prox') + (esSiguiente ? ' siguiente' : '') }, info, accion));
+      });
+      const det = el('details', { class: 'modulo' + (listas ? '' : ' sin-clases') }, resumen,
+        el('div', { class: 'mod-cuerpo' }, el('p', { class: 'mod-objetivo', text: 'Objetivo: ' + m.objetivo }), ol));
+      det.open = listas > 0; // abiertos: los módulos que ya tienen clases listas
+      cont.append(det);
+    });
+    if (mover) {
+      panel.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+      document.getElementById('t-clases').focus({ preventScroll: true });
+    }
+  }
+
+  // Sugerencia: la primera clase disponible y no terminada de cada curso con clases listas
+  const sug = document.getElementById('sugerencia');
+  const pendientes = CAT.map((curso) => ({ curso, c: siguienteDe(curso) })).filter((x) => x.c);
+  if (pendientes.length) {
+    sug.append(el('h2', { text: 'Para hoy te sugiero' }));
+    const lista = el('div', { class: 'acciones' });
+    pendientes.forEach(({ curso, c }) => lista.append(el('a', { class: 'btn btn-sec ' + curso.tema, href: c.archivo }, curso.icono + ' ' + curso.nombre + ' · ' + nombreClase(c), el('span', { class: 'sr-only', text: ': ' + c.titulo }))));
+    sug.append(lista);
+  }
+
+  elegir(leer('academia:menu:curso', CAT[0] && CAT[0].id), false);
+
+  const hora = document.getElementById('hora');
+  const tick = () => { hora.textContent = new Date().toLocaleTimeString('es', { hour: '2-digit', minute: '2-digit' }); };
+  tick(); setInterval(tick, 15000);
+
+  // Panel de sincronización con GitHub
+  const S = window.AcademiaSync;
+  const est = document.getElementById('sync-estado');
+  const bloqueConectar = document.getElementById('sync-conectar');
+  const bloqueConectado = document.getElementById('sync-conectado');
+  const msg = document.getElementById('sync-msg');
+  const pintarSync = () => {
+    const d = S && S.ultimoEstado();
+    est.textContent = S ? (d ? d.texto : '') + (S.conectado() ? ' · Repositorio privado: ' + S.repo : '') : 'La sincronización no está disponible.';
+    bloqueConectar.hidden = !S || S.conectado();
+    bloqueConectado.hidden = !S || !S.conectado();
+  };
+  document.addEventListener('academia-sync', pintarSync);
+  pintarSync();
+
+  // Diferencias entre equipos (recursos/diferencias.js): se muestran las dos versiones y el alumno decide
+  if (S && S.diferencias && window.AcademiaDiferencias) {
+    const avisoDif = window.AcademiaDiferencias.crear({
+      sync: S, catalogo: CAT,
+      seccion: document.getElementById('diferencias'), lista: document.getElementById('lista-dif'),
+      mensaje: document.getElementById('dif-msg'), titulo: document.getElementById('t-dif'),
+      alDecidir: () => elegir(leer('academia:menu:curso', CAT[0] && CAT[0].id), false)
+    });
+    // Si llegan diferencias nuevas al sincronizar, se vuelve a dibujar la lista (sin mover el foco si no cambió)
+    document.addEventListener('academia-sync', () => { if (S.diferencias().map((x) => x.id).join(',') !== avisoDif.ids()) avisoDif.pintar(); });
+  }
+
+  if (S) {
+    const inp = document.getElementById('sync-token');
+    const btn = document.getElementById('sync-btn');
+    btn.addEventListener('click', async () => {
+      btn.disabled = true; msg.textContent = 'Comprobando la clave…';
+      const r = await S.conectar(inp.value);
+      msg.textContent = r.mensaje; btn.disabled = false;
+      if (r.ok) { inp.value = ''; setTimeout(() => location.reload(), 1200); }
+    });
+    document.getElementById('sync-ahora').addEventListener('click', () => S.subirAhora());
+    document.getElementById('sync-quitar').addEventListener('click', () => {
+      if (window.confirm('¿Desconectar este equipo? Tu avance seguirá guardado en GitHub y en este navegador.')) { S.desconectar(); pintarSync(); }
+    });
+  }
+});
+</script>
+</body>
+</html>

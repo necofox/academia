@@ -268,6 +268,12 @@ textarea.codigo-js {
 .tema-python { --accent: #ffd43b; --accent2: #7db8ff; }
 .tema-redes { --accent: #6ea8fe; --accent2: #9ad1ff; }
 .tema-ia { --accent: #c9a7ff; --accent2: #ffb38a; }
+/* Cursos IA 2 a IA 6 (preparados; se activan al migrar el catálogo) */
+.tema-prompt { --accent: #ff9ad5; --accent2: #c9a7ff; }
+.tema-claudecode { --accent: #7ee0c3; --accent2: #c9a7ff; }
+.tema-extensiones { --accent: #ffd27a; --accent2: #c9a7ff; }
+.tema-agentes { --accent: #9ec5ff; --accent2: #ffb38a; }
+.tema-automatizacion { --accent: #ffa98a; --accent2: #c9a7ff; }
 
 /* ---------- Menú de inicio ---------- */
 .menu { max-width: 1100px; margin: 0 auto; padding: 16px; }

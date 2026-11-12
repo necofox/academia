@@ -13,7 +13,13 @@ const FIN = '<!-- FIN: generado desde recursos/catalogo.js -->';
 
 const win = {};
 new Function('window', fs.readFileSync(path.join(raiz, 'recursos/catalogo.js'), 'utf8'))(win);
-const CAT = win.CATALOGO;
+// Opcional, para preparar cursos antes de activarlos (sin opciones, todo funciona igual que siempre):
+//   --con propuestas/<borrador>.js  carga además un borrador de catálogo (después de catalogo.js)
+//   --solo id1,id2                  procesa solo esos cursos
+const opcion = (nombre) => { const i = process.argv.indexOf(nombre); return i > 0 ? process.argv[i + 1] : null; };
+if (opcion('--con')) new Function('window', fs.readFileSync(path.resolve(raiz, opcion('--con')), 'utf8'))(win);
+const SOLO = opcion('--solo') ? opcion('--solo').split(',') : null;
+const CAT = win.CATALOGO.filter((c) => !SOLO || SOLO.includes(c.id));
 
 const lista = (nums) => (nums.length === 1 ? 'Módulo ' + nums[0] : 'Módulos ' + nums.slice(0, -1).join(', ') + ' y ' + nums[nums.length - 1]);
 // Sin previos: "Ninguno." o, si hay una nota (por ejemplo, una recomendación), solo la nota
