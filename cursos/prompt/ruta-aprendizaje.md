@@ -1,13 +1,15 @@
-# Ruta de aprendizaje: IA 2 · Prompt Engineering
+# Ruta de aprendizaje: Prompt Engineering, desde cero
 
-Cada clase dura **2 horas**. Curso 2 de 6 de la formación en IA, aprobado en
-`PROPUESTA-IA-6-CURSOS.md` (versión 2). **Necesitas antes:** IA 1 · Fundamentos y uso de Claude.
+Cada clase dura **2 horas**. Curso independiente aprobado el 12/11/2026
+(`DIAGNOSTICO-ESTRUCTURA-ACADEMICA.md`), con las 32 clases de prompting del antiguo curso
+«IA: Claude y productividad» en seis niveles. **Necesitas antes:** nada obligatorio; se recomienda
+Inteligencia Artificial: Claude, Módulo 1.
 
 - **Clases:** usan el siguiente número de archivo libre (`clase-01`, `clase-02`…) con el id
   `prompt-01`, `prompt-02`… y ocupan el lugar que les toca dentro de su módulo.
-- **Plan de Claude:** la columna «Plan de Claude» dice si la clase se hace con el plan gratuito o
-  necesita uno de pago (Pro o superior). **Ninguna clase necesita la API de pago.** Pro tiene
-  límites de uso (no es ilimitado).
+- **Cuenta de Claude:** para practicar basta con Claude gratis. La columna «Plan de Claude» indica
+  la condición de cada clase. **Ninguna clase necesita la API de pago.** Pro tiene límites de uso
+  (no es ilimitado).
 - **Seguridad:** nunca pegues en Claude tokens, contraseñas ni datos personales; Claude Code se
   practica solo en carpetas de prueba.
 - Las funciones y los límites de Claude cambian: cada clase se vuelve a verificar al crearla.
@@ -149,3 +151,11 @@ Diseñar instrucciones que produzcan resultados precisos, útiles y reproducible
 | M6·4 | Presentación y defensa: cambios justificados y resultados medidos | Claude gratis · Chat de Claude | — | — | Próximamente |
 
 <!-- FIN: generado desde recursos/catalogo.js -->
+
+## Contenidos que se comparten con otros cursos (sin duplicarlos)
+
+- **Inteligencia Artificial: Claude:** enseña a usar Claude y sus funciones; sus bloques Claude Code
+  y Agentes aplican las técnicas de este curso.
+- **Programación:** las clases del Módulo 5 no enseñan a programar; enseñan a pedir y revisar código
+  con ejercicios de JavaScript y Python.
+- **Operación de redes:** Redes (Módulo 10 · Clase 6) aplica estas técnicas al tema 5.2 del CCNA v2.0.

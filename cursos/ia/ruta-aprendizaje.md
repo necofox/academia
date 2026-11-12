@@ -1,14 +1,16 @@
-# Ruta de aprendizaje: IA, Claude y productividad, desde cero
+# Ruta de aprendizaje: Inteligencia Artificial: Claude, desde cero
 
-Cada clase dura **2 horas**. El curso se organiza por **módulos**, aprobados en
-`PROPUESTA-AMPLIACION-6-CURSOS.md` (sección 4). La formación de ingeniería de instrucciones
-(prompt engineering) ocupa seis niveles: Módulos 2, 3, 5, 6, 8 y 9. Los Módulos 1, 4, 7, 10 y 11
-la acompañan (fundamentos, espacio de trabajo, skills, agentes y proyecto).
+Cada clase dura **2 horas**. El curso se organiza en **21 módulos agrupados en 5 bloques**,
+aprobados el 12/11/2026 (`DIAGNOSTICO-ESTRUCTURA-ACADEMICA.md`): Fundamentos (Módulos 1 a 4),
+Claude Code (5 a 9), Herramientas, Skills y MCP (10 a 13), Agentes (14 a 17) y Automatización
+(18 a 21). El proyecto final es un equipo de cinco agentes supervisados. La técnica de
+instrucciones se enseña en el curso independiente **Prompt Engineering**.
 
-- **Clases:** usan el siguiente número de archivo libre (`clase-01`, `clase-02`…) con el id
-  `ia-01`, `ia-02`… y ocupan el lugar que les toca dentro de su módulo.
-- **Plan de Claude:** la columna «Plan de Claude» dice si la clase se hace con el plan gratuito o
-  necesita uno de pago (Pro o superior). **Ninguna clase necesita la API de pago.**
+- **Clases:** usan el siguiente número de archivo libre (`clase-03`, `clase-04`…) con el id
+  `ia-03`, `ia-04`… y ocupan el lugar que les toca dentro de su módulo.
+- **Cuenta de Claude:** la columna «Plan de Claude» dice si la práctica se hace con Claude gratis o
+  si se recomienda Claude Pro, con su alternativa por demostración. La academia no exige ninguna
+  suscripción. **Ninguna clase necesita la API de pago.**
 - **Seguridad:** nunca pegues en Claude tokens, contraseñas ni datos personales; Claude Code se
   practica solo en carpetas de prueba.
 - Las funciones y los límites de Claude cambian: cada clase se vuelve a verificar al crearla.
@@ -382,13 +384,15 @@ Usar Claude con criterio y seguridad, desde el chat hasta Claude Code, y ampliar
 
 ## Contenidos que se comparten con otros cursos (sin duplicarlos)
 
+- **Prompt Engineering:** la técnica de instrucciones está en ese curso. Antes del bloque Claude
+  Code conviene haber hecho sus Módulos 1 a 3, y antes del bloque Agentes, su Módulo 4.
 - **Programación:** este curso no enseña a programar; enseña a pedir, revisar y corregir código
-  con ejercicios de JavaScript y Python (Módulo 8). Para Claude Code (Módulos 9 y 10) conviene
-  el Módulo 1 de JavaScript o de Python.
+  con Claude. Para el bloque Claude Code conviene el Módulo 1 de JavaScript o de Python.
 - **Git y GitHub:** se enseñan en JavaScript (Módulo 5 · Clase 2) y Python (Módulo 5 · Clase 1);
-  aquí solo se usan junto a Claude Code.
-- **Verificación de fuentes:** el Módulo 6 · Clase 4 aplica con Claude la misma norma de fuentes
-  de la academia (`PROMPT-MAESTRO.md`).
-- **Datos sensibles:** la misma regla que Ciberseguridad (Módulo 7 · Clase 3).
-- **Instrucciones para operar redes:** Redes (Módulo 10 · Clase 6) aplica las técnicas de este
-  curso al tema 5.2 del CCNA v2.0.
+  aquí solo se usan junto a Claude Code (Módulo 6 · Clase 3).
+- **Verificación de fuentes:** el Módulo 3 · Clase 2 aplica con Claude la misma norma de fuentes
+  de la academia (`PROMPT-MAESTRO.md`); las instrucciones que exigen fuentes se trabajan en
+  Prompt Engineering (Módulo 4 · Clase 4).
+- **Datos sensibles:** nunca se pegan en Claude (regla de seguridad de este curso).
+- **Operación de redes:** Redes (Módulo 10 · Clase 6) aplica las técnicas de Prompt Engineering y
+  las ideas de agentes de este curso al tema 5.2 del CCNA v2.0.

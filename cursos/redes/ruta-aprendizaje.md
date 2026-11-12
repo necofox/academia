@@ -249,5 +249,5 @@ Diseñar, configurar, administrar y diagnosticar la red de una empresa pequeña 
   equipos (ACL y seguridad de capa 2, Módulo 10).
 - **Automatización:** Python enseña a programarla; aquí se ven controladores y Ansible
   (Módulo 10 · Clase 5).
-- **Instrucciones para IA (tema 5.2 del CCNA v2.0):** la técnica está en el curso de Claude; aquí
+- **Instrucciones para IA (tema 5.2 del CCNA v2.0):** la técnica está en el curso Prompt Engineering; aquí
   se aplica a la operación de redes (Módulo 10 · Clase 6).

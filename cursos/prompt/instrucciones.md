@@ -1,16 +1,17 @@
-# Curso IA 2 · Prompt Engineering — cómo darlo
+# Curso de Prompt Engineering — cómo darlo
 
 > **Norma principal:** `PROMPT-MAESTRO.md` (información verificada con fuentes, estructura de
 > 9 secciones, control de calidad y no publicar sin autorización). Si algo de este archivo lo
 > contradice, manda el prompt maestro.
 
 Objetivo: diseñar instrucciones que produzcan resultados **precisos, útiles y reproducibles**, con técnicas fundamentales, estructuradas y avanzadas, y **evaluarlas** con criterios y casos de prueba.
-Es el curso 2 de 6 de la formación en IA (`PROPUESTA-IA-6-CURSOS.md`, versión 2, aprobada
-el 12/11/2026 para implementación progresiva).
+Es un curso independiente, aprobado el 12/11/2026 (`DIAGNOSTICO-ESTRUCTURA-ACADEMICA.md`). Sus 32
+clases son las de prompting del antiguo curso «IA: Claude y productividad» (niveles 1 a 5 y el
+proyecto), con sus títulos, referencias y videos.
 
-- **Necesitas antes:** IA 1 · Fundamentos y uso de Claude.
-- **Plan de Claude:** Gratuito en todas sus clases.
-- **Proyecto del curso:** Biblioteca profesional de prompts (ver la ruta y la sección 12 de la propuesta).
+- **Necesitas antes:** nada obligatorio. Recomendado: Inteligencia Artificial: Claude, Módulo 1.
+- **Cuenta de Claude:** para practicar basta con Claude gratis.
+- **Proyecto del curso:** biblioteca profesional de prompts (Módulo 6).
 
 ## Al empezar cada clase
 
@@ -24,25 +25,25 @@ Las 9 secciones del prompt maestro: presentación, activación, desarrollo teór
 práctica, actividades, práctica autónoma (con criterios para comprobarla), evaluación, resumen y
 fuentes verificadas. Además:
 
-- **Plan y lugar de práctica** en la ficha de la clase (campos `plan` y `donde` del catálogo).
+- **Cuenta de Claude y lugar de práctica** en la ficha de la clase (campos `plan` y `donde` del catálogo).
 - **La página enseña y evalúa; la práctica se hace en Claude**, con criterios para comprobarla.
 - Términos en inglés de la documentación oficial con `<span lang="en">`.
-- **Videos complementarios verificados**: los de la propuesta (sección 15) se vuelven a comprobar;
-  si la clase no tiene video, se busca al crearla. Si no hay uno adecuado, se deja anotado en la
-  clase el pendiente con su justificación (una clase no se termina sin esa búsqueda).
+- **Videos complementarios verificados**: los del catálogo se vuelven a comprobar al crear la clase;
+  si la clase no tiene video, se busca. Si no hay uno adecuado, se deja anotado en la clase el
+  pendiente con su justificación (una clase no se termina sin esa búsqueda).
 - **Mini-examen**, **apuntes en Word** en `apuntes/NN-tema.docx` y **actualiza `progreso.md`**.
 - Clases nuevas: el siguiente número de archivo libre (`clase-01`, `clase-02`…), con el id
-  `<curso>-01`, `<curso>-02`… (ver la ruta).
+  `prompt-01`, `prompt-02`… (ver la ruta).
 
-## Planes y costos (verificado el 12/11/2026; se vuelve a verificar al crear cada clase)
+## Cuentas de Claude (la academia no exige ninguna suscripción)
 
-- **Ninguna clase necesita la API de pago** ni servicios externos obligatorios.
-- **«Gratis»**: se hace con el plan gratuito de Claude. **«Pago»**: necesita Pro o superior.
+- **Ninguna clase necesita la API de pago** ni servicios externos de pago.
+- Etiquetas aprobadas: «Claude gratis» (con su condición, si la tiene). En la clase 6·3, «Claude
+  gratis para el diseño · recomendado Claude Pro para la práctica en Claude Code»: las instrucciones
+  se diseñan y prueban en el chat, y ejecutarlas en Claude Code es opcional.
+- La etiqueta de cada clase se verifica al crearla.
 - **Pro no es ilimitado:** tiene un límite por sesión de 5 horas y límites semanales, compartidos
-  entre claude.ai, Claude Code y la app de escritorio. Los subagentes consumen del mismo límite.
-- Si una clase es de pago, ofrece siempre la alternativa gratuita (diseñar y probar en el chat)
-  o explica qué parte no se puede hacer sin pagar.
-- Detalle completo: `VIABILIDAD-Y-CONSERVACION-IA.md`.
+  entre claude.ai, Claude Code y la app de escritorio.
 
 ## Regla de seguridad (obligatoria en todos los cursos de IA)
 
@@ -59,10 +60,16 @@ support.claude.com y claude.com/pricing) lo que se enseña, y anota la fecha de 
 
 ## Relación con los otros cursos (sin duplicar)
 
-- Viene de **IA 1**: aquí no se repite qué es Claude ni cómo usar proyectos o archivos.
-- Prepara **IA 3 (Claude Code)**: claridad (1.2), roles (2.1), formatos (2.3), XML y plantillas (3.1 y 3.2).
-- Prepara **IA 4 y 5**: plantillas (3.2), descomposición (4.1) y criterios de éxito (4.4).
-- Las clases de programación (5.1) no enseñan a programar: enseñan a pedir y revisar código (JavaScript y Python).
+- **Inteligencia Artificial: Claude** enseña a usar Claude y sus funciones; aquí no se repite qué es
+  Claude ni cómo usar proyectos o archivos.
+- Su bloque **Claude Code** aprovecha estos módulos: claridad (Módulo 1 · Clase 2), roles (2·1),
+  restricciones y formato (2·4), etiquetas XML (3·1) y plantillas (3·2).
+- Su bloque **Agentes** aprovecha: descomponer y encadenar (Módulo 4 · Clase 1) y criterios de
+  éxito y evaluación (4·5).
+- Las clases de programación (Módulo 5 · Clases 1 y 2) no enseñan a programar: enseñan a pedir y
+  revisar código (JavaScript y Python).
+- **Redes** (Módulo 10 · Clase 6) aplica estas técnicas a la operación de redes (tema 5.2 del
+  CCNA v2.0).
 
 ## Estilo
 
