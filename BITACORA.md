@@ -615,4 +615,4 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   avance guardado siga sirviendo. Se comprueba con una herramienta local de solo lectura
   (`.claude/equipo/herramientas/huella-clase.js`), probada con las 23 clases.
 - Candidatas: Ciberseguridad 02–05 y Inglés, JavaScript y Python 01–04 (14 clases). Todavía no se actualizó ninguna.
-- Publicación de este cambio: pendiente de autorización del alumno.
+- Publicado con autorización del alumno (12/11/2026).
