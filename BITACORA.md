@@ -504,3 +504,16 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   corregido en la Etapa 4). Una comprobación de huellas falló al principio por el formato de `sha256sum` en
   Windows y se repitió correctamente. Falta la Etapa 5 (verificación final y borrado de los archivos
   temporales).
+
+### 2026-11-12 (JavaScript y Python 01–04: fuentes reforzadas)
+- A pedido del alumno, con Ciberseguridad como modelo: 31 fuentes nuevas, cada una leída antes de agregarla para
+  comprobar que respalda lo que enseña la clase (MDN, javascript.info, Node.js, OWASP, documentación oficial de
+  Python, PEP 8, Visual Studio Marketplace y Real Python). JavaScript pasa de 16 a 33 fuentes y Python, de 17 a
+  31. Las alternativas escritas de los videos ahora enlazan directamente a la guía de JavaScript de MDN y al
+  tutorial oficial de Python.
+- Solo cambiaron la sección de fuentes y las líneas de alternativa escrita. El script `window.CLASE`
+  (actividades, exámenes, reloj e identificadores) es idéntico. Pruebas: clases 22/22, identificadores de avance
+  idénticos, catálogo correcto y rutas 7/7.
+- **Pendiente de decisión del alumno:** Python 02 dice que los nombres de variables «no llevan tildes». La
+  documentación oficial (Análisis léxico, 2.3) permite caracteres no ASCII en los nombres; es una buena
+  práctica, no una regla del lenguaje. No se cambió el texto de la clase.
