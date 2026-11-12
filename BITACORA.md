@@ -456,3 +456,11 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   `catalogo.js`, `inicio.html` y la ruta de IA son idénticos a la etiqueta, y los otros cinco cursos no cambiaron.
   **No se migró nada: el menú real sigue con 6 cursos.** Próximo paso, el Lote 2 (migración en un solo paso),
   cuando el alumno lo autorice.
+
+### 2026-11-12 (borrador de IA: aviso de cuenta de Claude)
+- A pedido del alumno, la descripción de cada curso de IA (en el borrador) indica qué cuenta de Claude conviene
+  para las prácticas: basta Claude gratis en IA 1 e IA 2; en IA 4 la mayor parte es gratis; en IA 3, IA 5 e IA 6
+  se recomienda Claude Pro, con la alternativa gratuita (diseñar en el chat y seguir las demostraciones).
+  Aclaración registrada: la academia no usa Claude ni ninguna API para funcionar (solo la API de GitHub, gratis,
+  para sincronizar); el plan de Claude solo importa para las prácticas de los cursos de IA.
+  Probado en la vista previa, en escritorio y a 360 px. Menú real, catálogo, IA 01 e IA 02 sin cambios.

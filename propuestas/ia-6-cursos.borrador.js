@@ -20,7 +20,7 @@
   // ---------- Curso 1 · Fundamentos y uso de Claude (id `ia`) ----------
   Object.assign(ia, {
     nombre: 'IA 1 · Fundamentos y uso de Claude',
-    desc: 'Desde cero: qué es Claude, cómo funciona y cómo usarlo bien para estudiar, investigar y trabajar.',
+    desc: 'Desde cero: qué es Claude, cómo funciona y cómo usarlo bien para estudiar, investigar y trabajar. Para practicar basta con Claude gratis.',
     meta: 'Usar Claude correctamente en actividades cotidianas y académicas, con criterio y seguridad: conocer sus capacidades y límites, sus planes y modelos, y aprovechar proyectos, archivos y búsqueda web.',
     proyectoFinal: 'Un «kit de estudio» propio: un proyecto de Claude con instrucciones, materiales de un curso y un método de verificación de fuentes.',
     modulos: [
@@ -67,7 +67,7 @@
   const nuevos = [
     // ---------- Curso 2 · Prompt Engineering ----------
     { id: 'prompt', nombre: 'IA 2 · Prompt Engineering', icono: '✍️', tema: 'tema-prompt',
-      desc: 'Diseñar instrucciones precisas, útiles y reproducibles, y evaluarlas como un profesional.',
+      desc: 'Diseñar instrucciones precisas, útiles y reproducibles, y evaluarlas como un profesional. Para practicar basta con Claude gratis.',
       duracion: '2 h por clase', horasClase: 2,
       meta: 'Diseñar instrucciones que produzcan resultados precisos, útiles y reproducibles, con técnicas fundamentales, estructuradas y avanzadas, y evaluarlas con criterios y casos de prueba.',
       proyectoFinal: 'Biblioteca profesional de prompts versionada, con criterios de prueba y resultados medidos.',
@@ -115,7 +115,7 @@
       ] },
     // ---------- Curso 3 · Claude Code ----------
     { id: 'claudecode', nombre: 'IA 3 · Claude Code y desarrollo asistido', icono: '⌨️', tema: 'tema-claudecode',
-      desc: 'Desarrollar y mantener proyectos con Claude Code, siempre con supervisión.',
+      desc: 'Desarrollar y mantener proyectos con Claude Code, siempre con supervisión. Recomendado: Claude Pro, porque Claude Code no está en el plan gratis; con Claude gratis haces 2 clases y sigues las demás como demostración.',
       duracion: '2 h por clase', horasClase: 2,
       meta: 'Usar Claude Code para crear, desarrollar, depurar y mantener proyectos con supervisión: contexto, CLAUDE.md, permisos, hooks, skills y buenas prácticas de seguridad.',
       proyectoFinal: 'La aplicación base del equipo de agentes: una app pequeña desarrollada con Claude Code, con CLAUDE.md, permisos, un hook de protección y pruebas.',
@@ -160,7 +160,7 @@
       ] },
     // ---------- Curso 4 · Herramientas, Skills y MCP ----------
     { id: 'extensiones', nombre: 'IA 4 · Herramientas, Skills y MCP', icono: '🧩', tema: 'tema-extensiones',
-      desc: 'Ampliar lo que Claude puede hacer: herramientas, skills propias y conexiones MCP.',
+      desc: 'Ampliar lo que Claude puede hacer: herramientas, skills propias y conexiones MCP. Con Claude gratis haces la mayor parte; Claude Pro, recomendado para las clases de Claude Code.',
       duracion: '2 h por clase', horasClase: 2,
       meta: 'Comprender y ampliar las capacidades de Claude: cómo usa herramientas, cómo diseñar y crear skills reutilizables, y cómo conectarlo con datos y servicios mediante MCP, con seguridad.',
       proyectoFinal: 'El kit del equipo de agentes: una skill de investigación, una skill de calidad y una conexión MCP confiable.',
@@ -198,7 +198,7 @@
       ] },
     // ---------- Curso 5 · Agentes y subagentes ----------
     { id: 'agentes', nombre: 'IA 5 · Agentes y subagentes', icono: '🕸️', tema: 'tema-agentes',
-      desc: 'Diseñar, crear, coordinar y evaluar agentes especializados que trabajan juntos.',
+      desc: 'Diseñar, crear, coordinar y evaluar agentes especializados que trabajan juntos. Recomendado: Claude Pro; con Claude gratis diseñas los agentes en el chat y sigues las demostraciones.',
       duracion: '2 h por clase', horasClase: 2,
       meta: 'Diseñar sistemas de agentes especializados que trabajen de forma coordinada y supervisada: arquitectura, subagentes, delegación, coordinación, evaluación y supervisión humana.',
       proyectoFinal: 'Los tres primeros agentes del equipo: investigador, analista y revisor de calidad, con el kit del curso IA 4.',
@@ -235,7 +235,7 @@
       ] },
     // ---------- Curso 6 · Automatización y proyecto integrador ----------
     { id: 'automatizacion', nombre: 'IA 6 · Automatización y proyecto integrador', icono: '⚙️', tema: 'tema-automatizacion',
-      desc: 'Automatizar procesos con IA y construir un equipo de cinco agentes supervisado.',
+      desc: 'Automatizar procesos con IA y construir un equipo de cinco agentes supervisado. Recomendado: Claude Pro; con Claude gratis diseñas los flujos en el chat y sigues las demostraciones.',
       duracion: '2 h por clase', horasClase: 2,
       meta: 'Combinar todo lo aprendido para crear soluciones completas: diseñar y programar automatizaciones supervisadas, protegerlas y construir un equipo funcional de cinco agentes especializados.',
       proyectoFinal: 'Equipo de cinco agentes: coordinador, investigador, analista, programador y revisor de calidad, automatizado, con permisos, aprobaciones humanas, validación y pruebas de extremo a extremo.',
