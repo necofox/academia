@@ -132,8 +132,8 @@ y después `herramientas/pruebas-sync.html` (15 escenarios).
   un perfil por curso. Están en `.claude/agents/`, `.claude/equipo/` y `.claude/skills/producir-clase/`, que son
   archivos **locales de la PC principal** (`.claude/` está en `.gitignore`). Por eso esta bitácora es el
   registro compartido de lo que hace el equipo.
-- **Los agentes solo trabajan con el comando `/producir-clase <curso> [módulo] [cantidad]`**, que escribe el
-  alumno. Sin el comando, ninguna sesión los lanza. Cada ejecución termina en un commit local y un informe; el
+- **Los agentes solo trabajan con los comandos que escribe el alumno:** `/producir-clase <curso> [módulo]
+  [cantidad]` (clases nuevas) y `/actualizar-clase <id>` (poner al día una clase existente). Sin el comando, ninguna sesión los lanza. Cada ejecución termina en un commit local y un informe; el
   push lo autoriza el alumno aparte.
 - **Orden de producción:** en cada curso, primero todas las clases de los Módulos 1 y 2; después, los demás
   módulos en orden. Las clases que ya existen en otros módulos se conservan.
@@ -146,6 +146,10 @@ y después `herramientas/pruebas-sync.html` (15 escenarios).
 `/producir-clase <curso> [módulo] [cantidad]`. El equipo sigue los pasos de abajo, actualiza esta bitácora y
 deja un commit local. **Publicar** solo con la autorización del alumno: antes del push se anota la publicación
 en el registro de cambios y, después, se comprueba el despliegue de GitHub Pages.
+
+**Poner al día una clase antigua** con la estructura de 9 secciones: el alumno escribe `/actualizar-clase <id>`
+(por ejemplo, `ciber-02`). Se añade lo que falta sin cambiar actividades, examen, terminales, editores ni notas,
+para que el avance guardado siga sirviendo; el catálogo y las rutas no cambian.
 
 **Crear una clase nueva** (seguir las 8 fases de `PROMPT-MAESTRO.md`; resumen técnico:)
 1. Investigar y verificar el tema en fuentes confiables ANTES de escribir.
@@ -179,7 +183,8 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   (Ciberseguridad 01, Redes 01–03, IA 01–02 y Prompt 01). Las otras 14 (Ciberseguridad 02–05 y Inglés,
   JavaScript y Python 01–04) siguen con el formato anterior: sin conocimientos previos ni práctica autónoma con
   criterios, y con objetivos solo en la clase 01 de cada curso. Ponerlas al día es modificar clases existentes:
-  solo si el alumno lo pide. Lo que sigue es el detalle de la auditoría original.
+  solo si el alumno lo pide, con `/actualizar-clase <id>`. A Ciberseguridad 02–05 también les falta la ficha
+  completa de sus fuentes (fecha de consulta y estado). Lo que sigue es el detalle de la auditoría original.
 - Ninguna clase tiene todavía: "conocimientos previos", "práctica autónoma con criterios para
   comprobarla" ni una sección de "resumen" de contenidos (lo que hay es el generador de resumen
   del avance).
@@ -600,3 +605,14 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   publicar) y sección 6 (estado de la estructura de las 23 clases y cuentas de lo que falta). El coordinador la
   mantiene al cerrar cada clase.
 - Publicado con autorización del alumno (12/11/2026).
+
+### 2026-11-12 (comando para poner al día las clases antiguas)
+- **Comando `/actualizar-clase <id>`** (`.claude/skills/actualizar-clase/`, local; solo lo activa el alumno): el equipo
+  de agentes pone al día **una** clase existente con las 9 partes del prompt maestro. Añade lo que falta
+  (conocimientos previos, objetivos, activación, errores frecuentes, aplicaciones profesionales, práctica autónoma
+  con criterios y fichas de fuentes completas).
+- **Lo protegido no cambia:** `archivo`, `id`, actividades, exámenes, terminales, editores y notas, para que el
+  avance guardado siga sirviendo. Se comprueba con una herramienta local de solo lectura
+  (`.claude/equipo/herramientas/huella-clase.js`), probada con las 23 clases.
+- Candidatas: Ciberseguridad 02–05 y Inglés, JavaScript y Python 01–04 (14 clases). Todavía no se actualizó ninguna.
+- Publicación de este cambio: pendiente de autorización del alumno.
