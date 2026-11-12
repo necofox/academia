@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vista previa: estructura definitiva</title>
+<link rel="stylesheet" href="../recursos/academia.css">
+<style>
+  .marco-previa { width: 100%; height: 80vh; min-height: 520px; border: 2px dashed var(--warn); border-radius: 12px; background: var(--bg); }
+</style>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+<header class="top">
+  <div class="marca"><span class="logo" aria-hidden="true">&lt;/&gt;</span><span>MI<span class="acento">//</span>ACADEMIA</span></div>
+  <a class="btn-mini" href="../inicio.html">☰ Menú real</a>
+</header>
+<main id="contenido" class="menu">
+  <div class="portada">
+    <p class="kicker">Propuesta · no es el menú real</p>
+    <h1>Vista previa: la estructura definitiva (3 cursos)</h1>
+    <p class="sub">Así se vería tu menú después del Lote 2: Redes sin cambios, «Inteligencia Artificial: Claude» (21 módulos en 5 bloques, con IA 01 e IA 02 en su lugar) y «Prompt Engineering» (las 32 clases originales). Es tu <code>inicio.html</code> real con el borrador del catálogo.</p>
+  </div>
+  <div class="nota alerta" role="note">
+    <p><strong>Funciona aislada:</strong> dentro del marco el menú usa un almacenamiento temporal en memoria (nunca el de tu navegador), no sincroniza con GitHub, tiene los enlaces desactivados y no cambia ningún archivo. Por eso no aparece tu avance ni el panel de GitHub. Las clases nuevas dicen «Próximamente».</p>
+    <p>Detalle: <code>DIAGNOSTICO-ESTRUCTURA-ACADEMICA.md</code>.</p>
+  </div>
+  <p class="marcador">Abrir directo un curso:
+    <a href="vista-previa-3-cursos.html?curso=redes">Redes y Telecomunicaciones</a> ·
+    <a href="vista-previa-3-cursos.html?curso=ia">Inteligencia Artificial: Claude</a> ·
+    <a href="vista-previa-3-cursos.html?curso=prompt">Prompt Engineering</a></p>
+  <iframe id="previa" class="marco-previa" title="Vista previa del menú con la estructura definitiva" src="vista-previa-3-cursos-menu.html"></iframe>
+</main>
+<script>
+// El menú de la vista previa es un archivo generado (vista-previa-3-cursos-menu.html). Aquí solo se le pasa ?curso=.
+(() => {
+  const pedido = new URLSearchParams(location.search).get('curso');
+  if (pedido && /^[a-z-]{2,20}$/.test(pedido)) document.getElementById('previa').src = 'vista-previa-3-cursos-menu.html?curso=' + pedido;
+})();
+</script>
+</body>
+</html>
