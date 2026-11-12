@@ -599,4 +599,4 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
 - **Bitácora al día:** sección 1 (los 7 cursos), sección 4 (decisiones del equipo), sección 5 (cómo producir y
   publicar) y sección 6 (estado de la estructura de las 23 clases y cuentas de lo que falta). El coordinador la
   mantiene al cerrar cada clase.
-- Publicación de este cambio: pendiente de autorización del alumno.
+- Publicado con autorización del alumno (12/11/2026).
