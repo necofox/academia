@@ -258,10 +258,11 @@ de Ciberseguridad 01.
 ## 8. Texto propuesto para la línea 139 de IA 02
 
 > **Actual:** «Para este curso: los Módulos 1 a 8 se hacen con el plan gratuito. Solo los Módulos 9 y 10, de
-> Claude Code, necesitan un plan de pago.»
+> Claude Code, necesitan un plan de pago. Y siempre hay una alternativa gratuita: diseñar y probar la
+> instrucción en el chat.»
 >
 > **Propuesto:** «Para este curso: con el plan gratuito puedes estudiar todo y hacer las prácticas compatibles.
-> Para las prácticas de Claude Code, agentes y automatización se recomienda Claude Pro; cada una ofrece una
-> alternativa por demostración.»
+> Para las prácticas de Claude Code, agentes y automatización se recomienda Claude Pro. Y siempre hay una
+> alternativa gratuita: diseñar y probar la instrucción en el chat.»
 
-Es un cambio de una frase. No afecta el `id`, las actividades, el examen, el reloj ni tu avance.
+Cambian solo las dos primeras oraciones; la última se conserva igual. No afecta el `id`, las actividades, el examen, el reloj ni tu avance.
