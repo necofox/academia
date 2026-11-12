@@ -18,15 +18,15 @@ simulada de cada clase, en **Cisco Packet Tracer** y con los comandos de Windows
 Diseñar, configurar, administrar y diagnosticar la red de una empresa pequeña o mediana, con una base alineada al temario oficial del examen CCNA 200-301 v2.0 de Cisco y práctica en Cisco Packet Tracer.
 
 - **Duración:** 11 módulos · 51 clases · 102 h de clase (2 h por clase). La práctica autónoma de cada clase se suma aparte.
-- **Clases listas:** 2 de 51.
-- **Siguiente clase por crear:** Módulo 1 · Clase 3: Medios físicos: cobre, fibra óptica e inalámbrico; cables y fallas de interfaz.
+- **Clases listas:** 3 de 51.
+- **Siguiente clase por crear:** Módulo 1 · Clase 4: Ethernet y switching: tramas, direcciones MAC y tabla MAC.
 - **Proyecto final del curso:** Red de una empresa ficticia con sede central y sucursal: VLAN, enrutamiento OSPF, IPv4 e IPv6, NAT, Wi-Fi, seguridad y monitoreo, con informe técnico y defensa oral.
 
 ## Resumen de módulos
 
 | Módulo | Clases | Horas | Listas | Necesitas antes |
 |---|---|---|---|---|
-| Módulo 1 · Fundamentos de redes | 5 | 10 | 2 | Ninguno obligatorio |
+| Módulo 1 · Fundamentos de redes | 5 | 10 | 3 | Ninguno obligatorio |
 | Módulo 2 · Direccionamiento IPv4 y subnetting | 5 | 10 | 0 | Módulo 1 |
 | Módulo 3 · Transporte y servicios básicos | 4 | 8 | 0 | Módulo 2 |
 | Módulo 4 · Configuración de dispositivos Cisco | 4 | 8 | 0 | Módulo 2 |
@@ -37,7 +37,7 @@ Diseñar, configurar, administrar y diagnosticar la red de una empresa pequeña 
 | Módulo 9 · Telecomunicaciones, WAN e Internet | 4 | 8 | 0 | Módulo 3 |
 | Módulo 10 · Seguridad, operación y automatización | 6 | 12 | 0 | Módulos 4, 5 y 6 |
 | Módulo 11 · Diseño, diagnóstico y proyecto empresarial | 6 | 12 | 0 | Módulos 7, 8, 9 y 10 |
-| **Total** | **51** | **102** | **2** | |
+| **Total** | **51** | **102** | **3** | |
 
 ## Módulo 1 · Fundamentos de redes (5 clases · 10 h)
 
@@ -53,8 +53,8 @@ Diseñar, configurar, administrar y diagnosticar la red de una empresa pequeña 
 |---|---|---|---|---|
 | M1·1 | ¿Qué es una red? Componentes, tipos (LAN, WAN, WLAN) y topologías | CCNA v1.1 1.1–1.2 | [▶ 1](https://www.youtube.com/watch?v=H8W9oMNSuwo) | ✔ Lista: `clases/clase-01.html` (id `redes-01`) |
 | M1·2 | Modelos OSI y TCP/IP: capas, encapsulamiento y protocolos | — | [▶ 1](https://www.youtube.com/watch?v=4GEHbsBF0Yw) [▶ 2](https://www.youtube.com/watch?v=iNh-62Mf0O4) | ✔ Lista: `clases/clase-02.html` (id `redes-02`) |
-| M1·3 | Medios físicos: cobre, fibra óptica e inalámbrico; cables y fallas de interfaz | CCNA v2.0 1.1 | [▶ 1](https://www.youtube.com/watch?v=ieTH5lVhNaY) [▶ 2](https://www.youtube.com/watch?v=CdAl3cECvJI) | Próximamente · **siguiente por crear** |
-| M1·4 | Ethernet y switching: tramas, direcciones MAC y tabla MAC | CCNA v1.1 1.13 | [▶ 1](https://www.youtube.com/watch?v=w_CArT71qHc) [▶ 2](https://www.youtube.com/watch?v=u2n762WG0Vo) | Próximamente |
+| M1·3 | Medios físicos: cobre, fibra óptica e inalámbrico; cables y fallas de interfaz | CCNA v2.0 1.1 | [▶ 1](https://www.youtube.com/watch?v=ieTH5lVhNaY&t=557s) [▶ 2](https://www.youtube.com/watch?v=CdAl3cECvJI) | ✔ Lista: `clases/clase-03.html` (id `redes-03`) |
+| M1·4 | Ethernet y switching: tramas, direcciones MAC y tabla MAC | CCNA v1.1 1.13 | [▶ 1](https://www.youtube.com/watch?v=w_CArT71qHc) [▶ 2](https://www.youtube.com/watch?v=u2n762WG0Vo) | Próximamente · **siguiente por crear** |
 | M1·5 | Cisco Packet Tracer: tu primera red y los comandos de diagnóstico del PC | CCNA v2.0 1.6 | [▶ 1](https://www.youtube.com/watch?v=a1Im6GYaSno) | Próximamente |
 
 ## Módulo 2 · Direccionamiento IPv4 y subnetting (5 clases · 10 h)

@@ -39,7 +39,7 @@ Una academia personal para aprender **desde cero**, con Claude como profesor y e
 | Inglés | 5 · 40 (40 h) | 01–04 → M1·1 a M1·4 | M1·5 El verbo *to be* completo |
 | JavaScript | 7 · 37 (74 h) | 01–04 → M1·1 a M1·4 | M1·5 Bucles |
 | Python | 9 · 38 (76 h) + electiva de 3 | 01–04 → M1·1 a M1·4 | M1·5 Bucles |
-| Redes y Telecomunicaciones | 11 · 51 (102 h) | 01–02 → M1·1 a M1·2 | M1·3 Medios físicos |
+| Redes y Telecomunicaciones | 11 · 51 (102 h) | 01–03 → M1·1 a M1·3 | M1·4 Ethernet y switching |
 | IA: Claude y productividad | 11 · 55 (110 h) | 01–02 → M1·1 a M1·2 | M1·3 Primeros pasos en el chat |
 
 Los módulos y el orden de todas las clases están en `recursos/catalogo.js` (aprobados en
@@ -182,7 +182,7 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   clases (también las que aún no existen). Quedan 17 clases sin video, con el motivo anotado en el catálogo y en
   las rutas (sobre todo proyectos). Al crear cada clase, sus videos del catálogo pasan a su página.
 - **Objetivo principal pendiente:** completar Redes y Telecomunicaciones e IA: Claude. Que estén en el menú
-  no significa que estén hechos: faltan 102 clases (Redes 49 e IA 53). La ampliación no está terminada hasta
+  no significa que estén hechos: faltan 101 clases (Redes 48 e IA 53). La ampliación no está terminada hasta
   que todo el contenido esté creado, integrado y probado. Falta el horario de ambos y
   saber qué plan de Claude usa el alumno.
 
@@ -397,3 +397,13 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
 - Catálogo y rutas actualizados. Ninguna clase anterior cambió. Pruebas: pruebas-clases 21/21, pruebas-sync
   15/15, catálogo, rutas y coherencia correctos, revisión visual en escritorio y a 360 px.
 - Punto de control: el alumno revisa estas dos clases antes de seguir con las clases 03.
+
+### 2026-11-11 (Redes 03)
+- **`redes-03`** «Medios físicos: cobre, fibra óptica e inalámbrico; cables y fallas de interfaz»
+  (`cursos/redes/clases/clase-03.html`): 120 min, 9 secciones, 3 actividades (medio, cable y falla probable),
+  terminal simulada con Get-NetAdapter, lectura simulada de contadores de un puerto, examen de 12 preguntas y
+  videos de Jeremy's IT Lab (desde «UTP Cables») y NASeros. Fuentes: guía de Cisco de problemas de puertos,
+  Fluke Networks (T568A/T568B), Cisco (fibra multimodo OM1–OM5), ITU-T G.652, IEEE 802.3 y 802.11, Wi-Fi Alliance,
+  Microsoft (Get-NetAdapter) y temario CCNA v2.0 1.1. Cable cruzado, Auto MDI-X y alcance de la monomodo:
+  parcialmente verificados (subtítulos del video).
+- Pruebas: pruebas-clases 22/22 (redes-03 sin errores, 360 px OK). Ninguna otra clase cambió.

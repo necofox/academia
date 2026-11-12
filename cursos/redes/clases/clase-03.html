@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redes · Clase 03 · Medios físicos</title>
+<link rel="stylesheet" href="../../../recursos/academia.css">
+</head>
+<body class="tema-redes">
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="top">
+  <div class="marca"><span class="logo" aria-hidden="true">&lt;/&gt;</span><span>REDES<span class="acento">//</span>ACADEMIA</span></div>
+  <div id="reloj" class="reloj-zona"></div>
+  <div id="voz"></div>
+  <a class="btn-mini" href="../../../inicio.html">☰ Menú</a>
+</header>
+
+<div class="layout">
+  <nav id="agenda" class="agenda" aria-label="Agenda de la clase"></nav>
+
+  <main id="contenido">
+    <div class="portada">
+      <p class="kicker">Módulo 1 · Fundamentos de redes · Clase 03</p>
+      <h1>Medios físicos: cobre, fibra e inalámbrico</h1>
+      <p class="sub">Por dónde viajan los bits, qué cable usar en cada caso y cómo reconocer las fallas típicas de una interfaz. Duración: 2 horas.</p>
+    </div>
+
+    <!-- ================= 1. PRESENTACIÓN Y 2. ACTIVACIÓN ================= -->
+    <section id="b-bienvenida" class="bloque" aria-labelledby="t-bienvenida">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-bienvenida">Presentación y repaso</h2>
+      <div class="lectura">
+        <p>En la Clase 02 viste que todo mensaje termina convertido en bits en la capa 1, la física. Hoy bajamos a esa capa: vas a conocer los tres caminos por los que viajan los bits, el cobre, la fibra óptica y el aire, y a reconocer las fallas físicas más comunes, que son también las más frecuentes en el trabajo diario.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Ficha de la clase</th><th>Detalle</th></tr></thead>
+            <tbody>
+              <tr><td>Número y título</td><td>Clase 03: Medios físicos: cobre, fibra óptica e inalámbrico; cables y fallas de interfaz.</td></tr>
+              <tr><td>Módulo</td><td>Módulo 1 · Fundamentos de redes (clase 3 de 5).</td></tr>
+              <tr><td>Duración</td><td>120 minutos, con un descanso de 10.</td></tr>
+              <tr><td>Conocimientos previos</td><td>Clases 01 y 02: componentes de una red, capas de OSI y TCP/IP, y encapsulamiento.</td></tr>
+              <tr><td>Temario oficial que cubre</td><td>Tema 1.1 del CCNA 200-301 v2.0: diagnosticar problemas de interfaces y cables de cobre y fibra.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Repaso rápido de la Clase 02</h3>
+        <ul>
+          <li>¿Cómo se llama el mensaje en la capa de enlace? ¿Y en la física?</li>
+          <li>¿Qué estándar del IEEE corresponde a Ethernet y cuál al Wi-Fi?</li>
+          <li>¿Por qué se recomienda diagnosticar de abajo hacia arriba?</li>
+        </ul>
+        <details class="revelar no-leer"><summary>Ver las respuestas</summary><p>Trama y bits. Ethernet es 802.3 y Wi-Fi es 802.11. Porque si la capa física falla, nada de lo que está arriba puede funcionar: conviene descartar primero lo más básico.</p></details>
+        <h3>Objetivos: al terminar podrás</h3>
+        <ul>
+          <li>Comparar el cobre, la fibra óptica y el inalámbrico: ventajas, límites y usos.</li>
+          <li>Reconocer un cable UTP, sus categorías, el conector RJ-45 y los esquemas T568A y T568B.</li>
+          <li>Elegir entre cable directo y cruzado, y explicar qué hace Auto MDI-X.</li>
+          <li>Diferenciar la fibra monomodo de la multimodo.</li>
+          <li>Identificar fallas de interfaz: errores CRC, colisiones, dúplex desajustado, velocidad, distancia y estado del puerto.</li>
+        </ul>
+        <h3>Antes de empezar, piensa</h3>
+        <ul>
+          <li>¿Has visto alguna vez un cable de red? ¿Cuántos colores tienen los hilos que hay dentro?</li>
+          <li>¿Por qué crees que los proveedores de internet ofrecen «fibra óptica» como algo mejor?</li>
+        </ul>
+        <div class="nota alerta">
+          <p><strong>Situación de partida (caso ficticio):</strong> en «La Espiga» pusieron una computadora nueva en el almacén, al fondo del local. Funciona, pero lentísima y a ratos se desconecta. Las demás computadoras andan bien. El técnico sospecha de la capa física. ¿Será el cable? ¿La distancia? ¿Una configuración? Al final de la clase lo diagnosticarás tú.</p>
+        </div>
+        <h3>Cómo usar esta página</h3>
+        <ul>
+          <li>Pulsa «Iniciar clase» en el reloj de arriba: te avisará al cambiar de bloque.</li>
+          <li>El botón «Escuchar esta parte» lee la teoría en voz alta. Los términos en inglés se leen con voz inglesa.</li>
+          <li>Las salidas de equipos y de la terminal son simulaciones con datos ficticios.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= 3. DESARROLLO TEÓRICO (I) ================= -->
+    <section id="b-medios" class="bloque" aria-labelledby="t-medios">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-medios">Tres caminos para los bits</h2>
+      <div class="lectura">
+        <p>Los bits se pueden transportar de tres formas: como <strong>señales eléctricas</strong> por un cable de cobre, como <strong>pulsos de luz</strong> por una fibra de vidrio, o como <strong>ondas de radio</strong> por el aire. Es como mandar un mensaje con un tambor, con una linterna o gritando: cada medio tiene su alcance y sus problemas.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Medio</th><th>Cómo viaja la señal</th><th>Fortaleza</th><th>Debilidad</th><th>Uso típico</th></tr></thead>
+            <tbody>
+              <tr><td>Cobre (UTP)</td><td>Señales eléctricas</td><td>Barato y fácil de instalar</td><td>Alcance corto (100 m) y sensible a interferencias</td><td>Conectar computadoras, impresoras y teléfonos dentro de una oficina</td></tr>
+              <tr><td>Fibra óptica</td><td>Pulsos de luz</td><td>Gran alcance y velocidad; no le afectan las interferencias eléctricas</td><td>Más cara y delicada de instalar</td><td>Enlaces entre edificios, entre pisos y redes de los proveedores</td></tr>
+              <tr><td>Inalámbrico (Wi-Fi)</td><td>Ondas de radio</td><td>Movilidad, sin cables</td><td>Comparte el aire: paredes, distancia y otros equipos lo afectan</td><td>Celulares, laptops y dispositivos que se mueven</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nota">
+          <p><strong>Ejemplo didáctico:</strong> en una oficina típica se combinan los tres: fibra desde la calle hasta el edificio, cobre desde el switch hasta cada escritorio y Wi-Fi para los celulares. Las ventajas y debilidades de la tabla se detallan, con sus fuentes, en los bloques siguientes.</p>
+        </div>
+      </div>
+      <h3>Actividad: ¿qué medio conviene?</h3>
+      <div data-actividad="medio"></div>
+    </section>
+
+    <!-- ================= 3. DESARROLLO TEÓRICO (II) ================= -->
+    <section id="b-cobre" class="bloque" aria-labelledby="t-cobre">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-cobre">El cable de cobre: UTP y RJ-45</h2>
+      <div class="lectura">
+        <p>El cable de red más común es el <strong>UTP</strong>, del inglés <span lang="en">Unshielded Twisted Pair</span>: par trenzado sin blindaje. Por dentro tiene <strong>8 hilos</strong> de colores, agrupados en 4 pares trenzados. El trenzado ayuda a reducir las interferencias. En cada extremo lleva un conector <strong>RJ-45</strong>.</p>
+        <h3>Categorías y distancia máxima</h3>
+        <p>Los cables UTP se clasifican en categorías (5, 5e, 6, 6A…): las más altas soportan más velocidad. Lo que no cambia es la <strong>distancia máxima: 100 metros</strong>. La documentación de Cisco indica 100 m para los cables de categoría 5, 5e y 6, tanto a 100 Mb/s como a 1 Gb/s.</p>
+        <div class="nota alerta">
+          <p><strong>Error frecuente:</strong> creer que un cable de categoría más alta permite tramos más largos. La categoría mejora la velocidad que soporta, pero el límite de un tramo sigue siendo de 100 m. Si necesitas llegar más lejos, se usa un switch intermedio o fibra.</p>
+        </div>
+        <h3>Los esquemas T568A y T568B</h3>
+        <p>Los 8 hilos se ordenan en el conector según uno de dos esquemas estándar. Según Fluke Networks, la única diferencia entre T568A y T568B es el orden en que los hilos se conectan al RJ-45: los pares naranja y verde están intercambiados. Ambos tienen el mismo rendimiento, pero no conviene mezclarlos en una misma instalación.</p>
+        <h3>Cable directo, cable cruzado y Auto MDI-X</h3>
+        <ul>
+          <li><strong>Cable directo</strong> (<span lang="en">straight-through</span>): cada pin se conecta con el mismo pin en el otro extremo. Es el que se usa para conectar una computadora a un switch.</li>
+          <li><strong>Cable cruzado</strong> (<span lang="en">crossover</span>): intercambia los pines de envío y recepción. Antes se necesitaba para unir dos equipos del mismo tipo, por ejemplo dos switches.</li>
+          <li><strong>Auto MDI-X:</strong> la mayoría de los equipos actuales detectan solos el tipo de cable y se adaptan, así que casi nunca hace falta pensar en cuál usar.</li>
+        </ul>
+        <div class="nota">
+          <p><strong>Para el examen y para la vida real:</strong> conviene conocer el cable directo y el cruzado aunque Auto MDI-X los haga casi intercambiables, porque los equipos antiguos o con esa función desactivada siguen necesitando el cable correcto.</p>
+        </div>
+      </div>
+      <h3>Actividad: ¿qué cable usarías?</h3>
+      <div data-actividad="cable"></div>
+    </section>
+
+    <!-- ================= 3. DESARROLLO TEÓRICO (III) ================= -->
+    <section id="b-fibra" class="bloque" aria-labelledby="t-fibra">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-fibra">La fibra óptica</h2>
+      <div class="lectura">
+        <p>La fibra óptica es un hilo de vidrio muy fino que guía la luz. Como no usa electricidad, no le afectan las interferencias eléctricas y llega mucho más lejos que el cobre. Hay dos tipos principales:</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th></th><th>Multimodo</th><th>Monomodo</th></tr></thead>
+            <tbody>
+              <tr><td>Núcleo</td><td>Más ancho: 50 o 62,5 micrómetros (µm)</td><td>Muy estrecho: según Cisco, transporta un solo «modo» de luz</td></tr>
+              <tr><td>Fuente de luz</td><td>Al principio LED; hoy láseres VCSEL, que permiten más velocidad</td><td>Láser</td></tr>
+              <tr><td>Alcance</td><td>Cientos de metros: por ejemplo, la OM3 llega a 300 m y la OM4 a 400 m a 10 Gb/s</td><td>Mucho mayor: kilómetros</td></tr>
+              <tr><td>Costo</td><td>Más barata</td><td>Más cara</td></tr>
+              <tr><td>Uso típico</td><td>Dentro de un edificio o un centro de datos</td><td>Entre edificios, ciudades y redes de proveedores</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nota ok">
+          <p><strong>Datos verificados:</strong> la norma ISO/IEC 11801 define cinco clases de fibra multimodo, de OM1 a OM5. Las OM1 y OM2 usan núcleos de 50 o 62,5 µm, y las OM3, OM4 y OM5 solo de 50 µm (Cisco). La fibra monomodo está definida en la recomendación ITU-T G.652 de la UIT, cuya versión vigente es de agosto de 2024.</p>
+        </div>
+        <div class="nota alerta">
+          <p><strong>Ojo con la fibra:</strong> nunca mires de frente el extremo de una fibra conectada a un equipo encendido. Algunas fuentes de luz son láseres invisibles que pueden dañar la vista. Esta es una precaución de seguridad general.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DESCANSO ================= -->
+    <section id="b-descanso" class="bloque descanso" aria-labelledby="t-descanso">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <p class="grande" aria-hidden="true">☕</p>
+      <h2 id="t-descanso">Descanso de 10 minutos</h2>
+      <p>Levántate, toma agua y descansa la vista. Mira algo lejano durante 20 segundos.</p>
+      <p>Reto mental: si tuvieras que unir dos edificios separados por 2 km, ¿qué medio elegirías y por qué?</p>
+    </section>
+
+    <!-- ================= 3. DESARROLLO TEÓRICO (IV) ================= -->
+    <section id="b-aire" class="bloque" aria-labelledby="t-aire">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-aire">El medio inalámbrico</h2>
+      <div class="lectura">
+        <p>El Wi-Fi transmite por ondas de radio. Lo define el grupo de trabajo IEEE 802.11, el de los estándares de redes locales inalámbricas. Para que sea más fácil de recordar, la Wi-Fi Alliance le pone nombres comerciales a cada generación.</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Generación</th><th>Estándar IEEE</th><th>Bandas</th></tr></thead>
+            <tbody>
+              <tr><td>Wi-Fi 6 (2018)</td><td>802.11ax</td><td>2,4 y 5 GHz; con Wi-Fi 6 se sumó también la banda de 6 GHz</td></tr>
+              <tr><td>Wi-Fi 7 (2024)</td><td>802.11be</td><td>2,4, 5 y 6 GHz</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Lo que afecta al Wi-Fi</h3>
+        <ul>
+          <li><strong>La distancia y los obstáculos:</strong> paredes, muebles metálicos y pisos debilitan la señal.</li>
+          <li><strong>Las interferencias:</strong> otras redes cercanas y algunos aparatos, como los microondas, que usan frecuencias parecidas.</li>
+          <li><strong>El medio compartido:</strong> todos los equipos conectados al mismo punto de acceso comparten el aire.</li>
+        </ul>
+        <div class="nota">
+          <p><strong>Ejemplo didáctico:</strong> la banda de 2,4 GHz atraviesa mejor las paredes pero suele estar más congestionada; las de 5 y 6 GHz ofrecen más velocidad pero llegan menos lejos. Por eso muchos routers emiten en varias bandas a la vez.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 3. DESARROLLO TEÓRICO (V) ================= -->
+    <section id="b-fallas" class="bloque" aria-labelledby="t-fallas">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-fallas">Fallas de interfaz y de cable</h2>
+      <div class="lectura">
+        <p>Una <strong>interfaz</strong> es el puerto de un equipo donde se conecta el medio. El temario CCNA v2.0 pide saber diagnosticar problemas de interfaces y cables, de cobre y de fibra: colisiones, errores, dúplex desajustado, velocidad, distancia, estado de la interfaz, niveles de señal, distribución de pines y tipos de cable. Estos son los principales, según la guía de Cisco:</p>
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Síntoma</th><th>Qué significa</th><th>Causas probables</th></tr></thead>
+            <tbody>
+              <tr><td>Puerto «notconnect»</td><td>El puerto no está conectado a nada.</td><td>Cable mal conectado o desconectado.</td></tr>
+              <tr><td>Errores CRC</td><td>Las tramas llegan dañadas: ruido o problemas de transmisión.</td><td>Cable o interfaz defectuosos, o un dúplex desajustado.</td></tr>
+              <tr><td>Colisiones</td><td>Son normales en modo semidúplex (<span lang="en">half-duplex</span>), pero no deben aparecer en dúplex completo (<span lang="en">full-duplex</span>).</td><td>Enlace muy cargado o dúplex desajustado.</td></tr>
+              <tr><td>Colisiones tardías</td><td>Dos equipos transmiten a la vez y ninguno lo detecta a tiempo.</td><td>Cable demasiado largo o dúplex desajustado.</td></tr>
+              <tr><td>Dúplex desajustado</td><td>Un extremo trabaja en dúplex completo y el otro en semidúplex.</td><td>Configuración distinta en cada extremo. Resultado: rendimiento muy lento, conexión intermitente y desconexiones.</td></tr>
+              <tr><td>Puerto «err-disabled»</td><td>El switch apagó el puerto al detectar ciertos errores.</td><td>Por ejemplo, un dúplex desajustado. Hay que reactivarlo a mano o configurar la recuperación automática.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nota">
+          <p><strong>Dúplex, en simple:</strong> en dúplex completo se puede hablar y escuchar a la vez, como en una llamada telefónica. En semidúplex se habla por turnos, como con un walkie-talkie. Cisco recomienda que ambos extremos de un enlace tengan la misma configuración.</p>
+        </div>
+        <div class="nota alerta">
+          <p><strong>Error frecuente:</strong> reiniciar todo antes de mirar la capa física. Lo primero es revisar el cable, la luz del puerto y los contadores de errores: muchas «fallas de internet» son un cable dañado o demasiado largo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 4. DEMOSTRACIÓN PRÁCTICA ================= -->
+    <section id="b-demo" class="bloque" aria-labelledby="t-demo">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-demo">Demostración: la computadora del almacén</h2>
+      <div class="lectura">
+        <p>Volvamos a «La Espiga». El técnico revisa el puerto del switch donde está conectada la computadora del almacén. En el Módulo 4 aprenderás a obtener esta información tú mismo; por ahora, aprende a leerla. Esta es una <strong>simulación</strong>:</p>
+      </div>
+      <pre class="log" aria-label="Salida simulada de un puerto de switch">Switch# show interfaces GigabitEthernet0/8
+GigabitEthernet0/8 is up, line protocol is up (connected)
+  Half-duplex, 100Mb/s, media type is 10/100/1000BaseTX
+     2391 input errors, 2380 CRC, 0 frame, 0 overrun, 0 ignored
+     0 output errors, 1288 collisions, 0 interface resets
+     0 babbles, 412 late collision, 0 deferred</pre>
+      <div class="lectura">
+        <div class="tabla">
+          <table>
+            <thead><tr><th>Lo que ve</th><th>Lo que significa</th></tr></thead>
+            <tbody>
+              <tr><td><code>up, line protocol is up</code></td><td>El puerto está activo: hay enlace físico.</td></tr>
+              <tr><td><code>Half-duplex, 100Mb/s</code></td><td>Trabaja en semidúplex y a 100 Mb/s, aunque el puerto admite 1 Gb/s. Sospechoso.</td></tr>
+              <tr><td><code>2380 CRC</code></td><td>Muchas tramas dañadas: cable, interfaz o dúplex desajustado.</td></tr>
+              <tr><td><code>412 late collision</code></td><td>Colisiones tardías: cable demasiado largo o dúplex desajustado.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nota ok">
+          <p><strong>Diagnóstico:</strong> el técnico mide el cable: <strong>130 metros</strong>, más del límite de 100 m. Además, la tarjeta de red de la computadora estaba fijada a mano en semidúplex. Solución: poner un switch pequeño a mitad de camino para que ningún tramo pase de 100 m, y dejar la tarjeta en autonegociación, igual que el switch. Después, los contadores de errores dejan de subir.</p>
+        </div>
+        <h3>Y desde la computadora</h3>
+        <p>En Windows, el comando de PowerShell <code>Get-NetAdapter</code> obtiene las propiedades básicas de las tarjetas de red, como su estado y su velocidad. Practica en esta terminal simulada:</p>
+      </div>
+      <div data-terminal="pc"></div>
+      <h3>Actividad: ¿cuál es la falla más probable?</h3>
+      <div data-actividad="falla"></div>
+    </section>
+
+    <!-- ================= VOCABULARIO ================= -->
+    <section id="b-vocab" class="bloque" aria-labelledby="t-vocab">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-vocab">Vocabulario de redes</h2>
+      <p>Pulsa el altavoz para escuchar cada término. Así aparecen en los equipos y en el examen CCNA.</p>
+      <ul class="vocab">
+        <li data-en="twisted pair"><span><span class="en" lang="en">twisted pair</span><span class="es">par trenzado</span><span class="pr">tuíst-ed per</span></span></li>
+        <li data-en="fiber optic"><span><span class="en" lang="en">fiber optic</span><span class="es">fibra óptica</span><span class="pr">fái-ber óp-tic</span></span></li>
+        <li data-en="single-mode"><span><span class="en" lang="en">single-mode</span><span class="es">monomodo</span><span class="pr">sín-gol móud</span></span></li>
+        <li data-en="multimode"><span><span class="en" lang="en">multimode</span><span class="es">multimodo</span><span class="pr">mál-ti-moud</span></span></li>
+        <li data-en="crossover cable"><span><span class="en" lang="en">crossover cable</span><span class="es">cable cruzado</span><span class="pr">crós-ou-ver kéi-bol</span></span></li>
+        <li data-en="duplex mismatch"><span><span class="en" lang="en">duplex mismatch</span><span class="es">dúplex desajustado</span><span class="pr">diú-plex mís-match</span></span></li>
+        <li data-en="interface"><span><span class="en" lang="en">interface</span><span class="es">interfaz, puerto</span><span class="pr">ín-ter-feis</span></span></li>
+        <li data-en="collision"><span><span class="en" lang="en">collision</span><span class="es">colisión</span><span class="pr">co-lí-shon</span></span></li>
+      </ul>
+      <p>Frase completa: <span data-en="The cable is longer than one hundred meters.">The cable is longer than one hundred meters. <em>(El cable mide más de cien metros.)</em> </span></p>
+    </section>
+
+    <!-- ================= 6. PRÁCTICA AUTÓNOMA ================= -->
+    <section id="b-autonoma" class="bloque" aria-labelledby="t-autonoma">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-autonoma">Práctica autónoma: los medios de tu casa</h2>
+      <div class="lectura">
+        <p>Ahora te toca a ti. En estos cinco minutos lee la consigna; la práctica la haces después, a tu ritmo.</p>
+        <h3>Objetivo</h3>
+        <p>Identificar los medios físicos de tu propia red y revisar el estado de tu tarjeta de red.</p>
+        <h3>Qué hacer</h3>
+        <ul>
+          <li>Busca un cable de red en tu casa. Mira por el plástico del conector RJ-45 el orden de los colores y averigua si sigue T568A o T568B.</li>
+          <li>Lee lo que está impreso en el cable: suele indicar la categoría (por ejemplo, «CAT 6»).</li>
+          <li>Pregunta o averigua si tu internet llega por fibra, por cobre o por otro medio.</li>
+          <li>En tu computador, abre PowerShell y ejecuta <code>Get-NetAdapter</code>. Anota el estado y la velocidad de tu tarjeta (no copies la dirección MAC).</li>
+          <li>Escribe todo en «Mis notas»: el mapa de tu red de la Clase 01, ahora con el medio de cada enlace.</li>
+        </ul>
+      </div>
+      <div class="reto">
+        <h4>Criterios para comprobar que lo hiciste bien</h4>
+        <ul>
+          <li>Identificaste el esquema del cable (T568A o T568B) y explicaste cómo lo reconociste.</li>
+          <li>Anotaste la categoría del cable o dijiste que no venía impresa.</li>
+          <li>Indicaste el medio de cada enlace de tu mapa: cobre, fibra o Wi-Fi.</li>
+          <li>Anotaste el estado y la velocidad de tu tarjeta de red y explicaste si son los esperados.</li>
+          <li>Propusiste una mejora física para tu red, si la hay, y la justificaste.</li>
+        </ul>
+        <p>Si cumples los cinco criterios, ¡lo lograste! Al terminar, dile a Claude «revisa mi avance» y te dará retroalimentación.</p>
+      </div>
+    </section>
+
+    <!-- ================= 7. EVALUACIÓN ================= -->
+    <section id="b-examen" class="bloque" aria-labelledby="t-examen">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-examen">Evaluación final</h2>
+      <p>Doce preguntas: conceptos, casos prácticos y problemas de aplicación. Solo cuenta tu primera respuesta, y cada una te explica el porqué.</p>
+      <div data-quiz="examen"></div>
+    </section>
+
+    <!-- ================= 8. RESUMEN ================= -->
+    <section id="b-resumen" class="bloque" aria-labelledby="t-resumen">
+      <div class="bloque-cab"><p class="kicker"></p></div>
+      <h2 id="t-resumen">Resumen de la clase</h2>
+      <div class="lectura">
+        <h3>Conceptos que debes recordar</h3>
+        <ul>
+          <li>Los bits viajan como electricidad (cobre), luz (fibra) u ondas de radio (Wi-Fi).</li>
+          <li>El UTP tiene 8 hilos en 4 pares trenzados, usa conector RJ-45 y su tramo máximo es de 100 m.</li>
+          <li>T568A y T568B solo se diferencian en los pares naranja y verde; no conviene mezclarlos.</li>
+          <li>Cable directo: PC a switch. Cable cruzado: antes, entre equipos iguales. Auto MDI-X detecta el cable solo.</li>
+          <li>Fibra multimodo: núcleo de 50 o 62,5 µm, cientos de metros. Monomodo: núcleo muy fino, láser, kilómetros.</li>
+          <li>Wi-Fi (IEEE 802.11) usa las bandas de 2,4, 5 y 6 GHz; Wi-Fi 7 es 802.11be.</li>
+          <li>Fallas típicas: puerto desconectado, errores CRC, colisiones, colisiones tardías, dúplex desajustado y err-disabled.</li>
+        </ul>
+        <h3>Ya deberías ser capaz de</h3>
+        <ul>
+          <li>Elegir el medio y el cable adecuados para cada caso.</li>
+          <li>Leer los contadores de una interfaz y proponer una causa probable.</li>
+          <li>Diagnosticar una falla física empezando por el cable.</li>
+        </ul>
+        <h3>Prepárate para la Clase 04</h3>
+        <p>En la próxima clase subirás a la capa 2: Ethernet, las tramas, las direcciones MAC y cómo un switch decide por qué puerto enviar cada trama.</p>
+      </div>
+    </section>
+
+    <!-- ================= VIDEOS COMPLEMENTARIOS ================= -->
+    <section id="videos" class="bloque fuentes" aria-labelledby="t-videos">
+      <p class="kicker">Material complementario · fuera del reloj</p>
+      <h2 id="t-videos">🎬 Videos complementarios</h2>
+      <p>Los videos complementan la clase: no la reemplazan. Se verificaron el 11 de noviembre de 2026 con la herramienta de la academia: existen, están disponibles y sus datos son los de la ficha. Su contenido se comprobó con sus capítulos oficiales y sus subtítulos; no se vieron completos.</p>
+      <ul class="lista-fuentes">
+        <li><a href="https://www.youtube.com/watch?v=ieTH5lVhNaY&amp;t=557s" target="_blank" rel="noopener">Free CCNA | Interfaces and Cables | Day 2 | CCNA 200-301 Complete Course<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Canal: Jeremy's IT Lab (curso gratuito de CCNA de referencia, terceros) · en inglés · 35:51 · empieza en el minuto 9:17 · publicado el 20/10/2019 · verificado el 11/11/2026</span>
+          <span class="origen">Subtítulos en español: solo con la traducción automática de YouTube; también tiene doblaje automático al español.</span>
+          <span class="origen">Qué enseña: cables UTP (9:17), cable directo (14:15), cable cruzado (16:08), Auto MDI-X (18:15), fibra multimodo (22:51) y monomodo (23:51), y la comparación entre UTP y fibra (26:37).</span>
+          <span class="origen">Alternativa escrita, por si el video desaparece: la guía de Cisco y el artículo de Fluke Networks (en las fuentes).</span></li>
+        <li><a href="https://www.youtube.com/watch?v=CdAl3cECvJI" target="_blank" rel="noopener">Introducción a las redes de fibra óptica ⚡️ Curso de redes desde 0 | Cap 17 |<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Canal: NASeros (educador especializado en redes, terceros) · en español · 23:01 · publicado el 26/12/2022 · verificado el 11/11/2026</span>
+          <span class="origen">Subtítulos: sí, escritos en español.</span>
+          <span class="origen">Qué enseña: cables ópticos frente a cobre, interferencias, pérdidas y la diferencia entre fibra monomodo y multimodo (desde 13:11).</span>
+          <span class="origen">Alternativa escrita, por si el video desaparece: el documento de Cisco sobre fibra multimodo y la ITU-T G.652 (en las fuentes).</span></li>
+      </ul>
+    </section>
+
+    <!-- ================= 9. FUENTES VERIFICADAS ================= -->
+    <section id="fuentes" class="bloque fuentes" aria-labelledby="t-fuentes">
+      <p class="kicker">Lectura extra · fuera del reloj</p>
+      <h2 id="t-fuentes">📚 Fuentes verificadas</h2>
+      <p>Cada afirmación de esta clase se comprobó leyendo estas fuentes el 11 de noviembre de 2026. <strong>Verificado</strong> significa que el dato se leyó en una fuente oficial o primaria; <strong>parcialmente verificado</strong>, que se comprobó en una fuente secundaria. Las que están en inglés las puedes leer en español: clic derecho y <strong>Traducir a español</strong>.</p>
+      <ul class="lista-fuentes">
+        <li><a href="https://www.cisco.com/c/en/us/support/docs/switches/catalyst-6500-series-switches/12027-53.html" target="_blank" rel="noopener">Troubleshoot Switch Port and Interface Problems<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Cisco · actualizado el 03/11/2023 · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: el estado «notconnect»; qué indican los errores CRC, las colisiones y las colisiones tardías; los síntomas del dúplex desajustado; el estado err-disabled y su recuperación; la recomendación de igual configuración en ambos extremos; y los 100 m de los cables de categoría 5, 5e y 6.</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://www.flukenetworks.com/knowledge-base/application-or-standards-articles-copper/differences-between-wiring-codes-t568a-vs" target="_blank" rel="noopener">Differences Between Wiring Codes T568A vs T568B<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Fluke Networks · 29/01/2014 · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: que T568A y T568B solo se diferencian en los pares naranja y verde, que tienen el mismo rendimiento y que no son intercambiables en una instalación.</span>
+          <span class="origen">Estado: verificado (fabricante especializado en certificación de cableado).</span></li>
+        <li><a href="https://www.cisco.com/c/en/us/products/collateral/interfaces-modules/transceiver-modules/diff-om4-om5-multimode-fiber-wp.html" target="_blank" rel="noopener">Understanding the Differences Between OM4 and OM5 Multimode Fiber<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Cisco · actualizado el 17/06/2022 · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: las clases OM1 a OM5 de la ISO/IEC 11801, los núcleos de 50 y 62,5 µm, las fuentes LED y VCSEL, los alcances de OM3 (300 m) y OM4 (400 m) a 10 Gb/s y que la monomodo transporta un solo modo.</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://www.itu.int/rec/T-REC-G.652" target="_blank" rel="noopener">ITU-T G.652: Characteristics of a single-mode optical fibre and cable<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">UIT (ITU-T) · versión vigente: 08/2024 · página actualizada el 04/07/2025 · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: que la fibra monomodo está normalizada por la UIT y su versión vigente.</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://www.ieee802.org/3/" target="_blank" rel="noopener">IEEE 802.3 Ethernet Working Group<span class="sr-only"> (se abre en otra pestaña)</span></a> y
+          <a href="https://www.ieee802.org/11/" target="_blank" rel="noopener">IEEE 802.11 Working Group<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">IEEE · 802.3 actualizado el 25/10/2026 · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: que 802.3 desarrolla los estándares de Ethernet y 802.11 los de redes locales inalámbricas, y que 802.11be-2024 es conocido como Wi-Fi 7.</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><a href="https://www.wi-fi.org/wi-fi-macphy" target="_blank" rel="noopener">Wi-Fi (MAC/PHY)<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Wi-Fi Alliance · © 2026 · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: que Wi-Fi 6 (2018) sumó la banda de 6 GHz a las de 2,4 y 5 GHz, y que Wi-Fi 7 (2024) trabaja en las tres.</span>
+          <span class="origen">Estado: verificado. La equivalencia «Wi-Fi 6 = 802.11ax» no aparece en esta página: queda como parcialmente verificada (dato conocido del sector, sin fuente oficial leída hoy).</span></li>
+        <li><a href="https://learn.microsoft.com/en-us/powershell/module/netadapter/get-netadapter" target="_blank" rel="noopener">Get-NetAdapter<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Microsoft Learn · actualizado el 14/05/2025 · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: que Get-NetAdapter obtiene las propiedades básicas de las tarjetas de red.</span>
+          <span class="origen">Estado: verificado. La salida de la terminal es una simulación.</span></li>
+        <li><a href="https://learningnetwork.cisco.com/s/ccna-v2-exam-topics" target="_blank" rel="noopener">200-301 CCNA v2.0 Exam Topics<span class="sr-only"> (se abre en otra pestaña)</span></a>
+          <span class="origen">Cisco Learning Network · primera fecha de examen: 03/02/2027 · consultado el 11/11/2026 · en inglés</span>
+          <span class="origen">Respalda: el tema 1.1, diagnosticar problemas de interfaces y cables (colisiones, errores, dúplex, velocidad, distancia, interfaz, niveles de señal, pines y tipos de cable).</span>
+          <span class="origen">Estado: verificado.</span></li>
+        <li><span>Cable directo, cable cruzado, Auto MDI-X y alcance de la fibra monomodo</span>
+          <span class="origen">Estado: parcialmente verificado. Se comprobaron en los subtítulos del video de Jeremy's IT Lab (capítulos «Straight-through cable», «Crossover cable», «Auto MDI-X» y «Single-Mode Fiber»); las fuentes oficiales leídas hoy no los detallan.</span></li>
+      </ul>
+    </section>
+
+    <!-- ================= CIERRE ================= -->
+    <section id="cierre" class="bloque" aria-labelledby="t-cierre">
+      <p class="kicker">Cierre</p>
+      <h2 id="t-cierre">Mis notas y mis medios</h2>
+      <label for="notas">Escribe aquí tu práctica autónoma, tus dudas o lo que más te costó:</label>
+      <textarea id="notas" data-notas="generales" placeholder="Esquema de mi cable: … · Categoría: … · Medio de mi internet: … · Get-NetAdapter: estado… velocidad… · Mi mapa con medios: …"></textarea>
+      <p>Tu avance se guarda solo. Al terminar, dile a Claude «revisa mi avance».</p>
+      <div id="resumen"></div>
+    </section>
+  </main>
+</div>
+
+<p class="pie">Redes//Academia · Clase 03 · Las salidas de equipos y de la terminal son simulaciones con datos ficticios.</p>
+
+<script>
+window.CLASE = {
+  id: 'redes-03',
+  titulo: 'Redes · Clase 03: Medios físicos',
+  bloques: [
+    { id: 'b-bienvenida', titulo: 'Presentación y repaso', min: 10 },
+    { id: 'b-medios', titulo: 'Tres caminos para los bits', min: 10 },
+    { id: 'b-cobre', titulo: 'Cobre: UTP y RJ-45', min: 15 },
+    { id: 'b-fibra', titulo: 'Fibra óptica', min: 15 },
+    { id: 'b-descanso', titulo: 'Descanso', min: 10 },
+    { id: 'b-aire', titulo: 'Inalámbrico', min: 10 },
+    { id: 'b-fallas', titulo: 'Fallas de interfaz', min: 15 },
+    { id: 'b-demo', titulo: 'Demostración y terminal', min: 10 },
+    { id: 'b-vocab', titulo: 'Vocabulario de redes', min: 5 },
+    { id: 'b-autonoma', titulo: 'Práctica autónoma', min: 5 },
+    { id: 'b-examen', titulo: 'Evaluación final', min: 10 },
+    { id: 'b-resumen', titulo: 'Resumen', min: 5 }
+  ],
+  terminales: {
+    pc: {
+      titulo: 'Windows PowerShell (simulación)',
+      prompt: 'PS C:\\Users\\almacen>',
+      bienvenida: 'Computadora del almacén de «La Espiga» (simulación con datos ficticios). Escribe help para ver los comandos.',
+      ayuda: 'Comandos de esta práctica:\n  Get-NetAdapter\n  Get-NetAdapter -Name Wi-Fi',
+      error: "{cmd} : El término '{cmd}' no se reconoce.\n💡 Escribe help para ver los comandos de esta práctica.",
+      comandos: {
+        'Get-NetAdapter': {
+          salida: 'Name      InterfaceDescription                Status        LinkSpeed\n----      --------------------                ------        ---------\nEthernet  Intel(R) Ethernet Connection        Up            100 Mbps\nWi-Fi     Intel(R) Wi-Fi 6 AX201              Disconnected  0 bps',
+          explica: 'La tarjeta de cable (Ethernet) está activa, pero solo a 100 Mbps aunque podría ir a 1 Gbps: una pista de que algo pasa con el cable o la configuración. El Wi-Fi está desconectado.'
+        },
+        'Get-NetAdapter -Name Wi-Fi': {
+          alias: ['get-netadapter -name wi-fi'],
+          salida: 'Name   InterfaceDescription      Status        LinkSpeed\n----   --------------------      ------        ---------\nWi-Fi  Intel(R) Wi-Fi 6 AX201    Disconnected  0 bps',
+          explica: 'Con -Name ves una sola tarjeta. Disconnected y 0 bps: no está conectada a ninguna red inalámbrica.'
+        }
+      },
+      misiones: [
+        { texto: 'Mira todas las tarjetas de red con Get-NetAdapter.', cmd: 'Get-NetAdapter' },
+        { texto: 'Mira solo la tarjeta Wi-Fi.', cmd: 'Get-NetAdapter -Name Wi-Fi' }
+      ]
+    }
+  },
+  actividades: {
+    medio: {
+      titulo: '¿Qué medio conviene?',
+      preguntas: [{ label: 'Usaría…', corto: 'Medio', opciones: ['Cobre (UTP)', 'Fibra óptica', 'Inalámbrico (Wi-Fi)'] }],
+      items: [
+        { titulo: 'Conectar una computadora fija a un switch que está a 15 metros', respuestas: [['Cobre (UTP)']], pista: 'Distancia corta y equipo que no se mueve.', explica: 'A 15 m, el UTP es barato, simple y suficiente.' },
+        { titulo: 'Unir dos edificios de una universidad separados por 2 kilómetros', respuestas: [['Fibra óptica']], pista: '¿El cobre llega a 2 km?', explica: 'El cobre llega a 100 m; para kilómetros se usa fibra, en este caso monomodo.' },
+        { titulo: 'Dar internet a los celulares de los clientes de un café', respuestas: [['Inalámbrico (Wi-Fi)']], pista: 'Los dispositivos se mueven.', explica: 'Para equipos móviles, el medio natural es el Wi-Fi.' },
+        { titulo: 'Un enlace junto a motores industriales que generan mucha interferencia eléctrica', respuestas: [['Fibra óptica']], pista: '¿Qué medio no usa electricidad?', explica: 'La fibra usa luz: no le afectan las interferencias eléctricas.' },
+        { titulo: 'Conectar una impresora de oficina al switch del mismo piso', respuestas: [['Cobre (UTP)']], pista: 'Distancia corta, equipo fijo.', explica: 'Equipo fijo y cercano: UTP.' }
+      ]
+    },
+    cable: {
+      titulo: '¿Qué cable usarías? (equipos sin Auto MDI-X)',
+      preguntas: [{ label: 'Necesitas un cable…', corto: 'Cable', opciones: ['Directo', 'Cruzado'] }],
+      items: [
+        { titulo: 'Una computadora a un switch', respuestas: [['Directo']], pista: 'Es la conexión más común de una oficina.', explica: 'PC a switch: cable directo.' },
+        { titulo: 'Dos switches antiguos entre sí', respuestas: [['Cruzado']], pista: 'Dos equipos del mismo tipo.', explica: 'Entre equipos del mismo tipo, sin Auto MDI-X, se usa cable cruzado.' },
+        { titulo: 'Una impresora de red a un switch', respuestas: [['Directo']], pista: 'La impresora se comporta como una computadora.', explica: 'Dispositivo final a switch: cable directo.' },
+        { titulo: 'Dos computadoras directamente, sin switch', respuestas: [['Cruzado']], pista: 'Ambas envían por los mismos pines.', explica: 'Dos equipos iguales: hay que cruzar envío y recepción.' }
+      ]
+    },
+    falla: {
+      titulo: '¿Cuál es la falla más probable?',
+      variante: 'consola',
+      preguntas: [{ label: 'La causa más probable es…', corto: 'Causa', columna: true, opciones: ['Cable desconectado o mal conectado', 'Dúplex desajustado', 'Cable demasiado largo o dañado', 'Interfaz Wi-Fi desconectada'] }],
+      items: [
+        { etiqueta: 'PUERTO', nivel: 'media', titulo: 'Puerto de la recepción', meta: 'Simulación con datos ficticios', log: 'Gi0/3   notconnect   1   auto   auto   10/100/1000BaseTX', respuestas: [['Cable desconectado o mal conectado']], pista: '¿Qué significa «notconnect»?', explica: 'notconnect: el puerto no está conectado a nada. Lo primero es revisar el cable.' },
+        { etiqueta: 'PUERTO', nivel: 'media', titulo: 'Enlace entre dos switches', meta: 'Simulación con datos ficticios', log: 'Lado A: Full-duplex, 100Mb/s\nLado B: Half-duplex, 100Mb/s · 870 late collision\nSíntoma: muy lento e intermitente', respuestas: [['Dúplex desajustado']], pista: 'Compara los dos lados.', explica: 'Un lado en dúplex completo y el otro en semidúplex: dúplex desajustado. Las colisiones tardías aparecen en el lado semidúplex.' },
+        { etiqueta: 'PUERTO', nivel: 'media', titulo: 'Oficina del segundo piso', meta: 'Simulación con datos ficticios', log: 'Full-duplex, 1000Mb/s\n1832 input errors, 1830 CRC\nMedición del cable: 145 m', respuestas: [['Cable demasiado largo o dañado']], pista: 'Revisa la medición del cable.', explica: '145 m supera el límite de 100 m del UTP; los errores CRC indican tramas dañadas.' },
+        { etiqueta: 'PC', nivel: 'media', titulo: 'Laptop de la gerencia', meta: 'Simulación con datos ficticios', log: 'Name   Status        LinkSpeed\nWi-Fi  Disconnected  0 bps', respuestas: [['Interfaz Wi-Fi desconectada']], pista: 'Mira el estado de la tarjeta.', explica: 'La tarjeta Wi-Fi está desconectada: no se unió a ninguna red.' }
+      ]
+    }
+  },
+  quizzes: {
+    examen: {
+      titulo: 'Evaluación final',
+      preguntas: [
+        { q: '¿Cómo viajan los bits por la fibra óptica?', opciones: ['Como señales eléctricas', 'Como pulsos de luz', 'Como ondas de sonido', 'Como ondas de radio'], correcta: 1, explica: 'La fibra guía pulsos de luz por un hilo de vidrio.' },
+        { q: '¿Cuál es la distancia máxima de un tramo de cable UTP?', opciones: ['10 m', '100 m', '1 km', 'Depende del color'], correcta: 1, explica: '100 m para las categorías 5, 5e y 6, según Cisco.' },
+        { q: '¿Cuántos hilos tiene un cable UTP de red?', opciones: ['2', '4', '8', '16'], correcta: 2, explica: '8 hilos agrupados en 4 pares trenzados.' },
+        { q: '¿En qué se diferencian T568A y T568B?', opciones: ['En el tipo de conector', 'En que los pares naranja y verde están intercambiados', 'En la velocidad máxima', 'En que uno es para fibra'], correcta: 1, explica: 'Según Fluke Networks, solo cambia el orden de los pares naranja y verde.' },
+        { q: '¿Qué hace Auto MDI-X?', opciones: ['Cifra la conexión', 'Detecta el tipo de cable y se adapta', 'Aumenta la distancia a 200 m', 'Convierte cobre en fibra'], correcta: 1, explica: 'Permite que los equipos se adapten solos al cable directo o cruzado.' },
+        { q: '¿Qué fibra tiene el núcleo más estrecho y llega más lejos?', opciones: ['Multimodo', 'Monomodo', 'Las dos igual', 'Ninguna'], correcta: 1, explica: 'La monomodo tiene un núcleo muy fino que transporta un solo modo de luz y llega a kilómetros.' },
+        { q: '¿Qué estándar del IEEE se conoce como Wi-Fi 7?', opciones: ['802.3', '802.11be', '802.1Q', '802.15'], correcta: 1, explica: 'El IEEE indica que 802.11be-2024 es conocido como Wi-Fi 7.' },
+        { q: '¿Qué indican muchos errores CRC en un puerto?', opciones: ['Que todo funciona', 'Tramas dañadas: cable, interfaz o dúplex desajustado', 'Que falta configurar la IP', 'Que el Wi-Fi está apagado'], correcta: 1, explica: 'Según Cisco, el CRC indica problemas de transmisión: cables, interfaz o un dúplex desajustado.' },
+        { q: 'En un puerto en dúplex completo, ¿deberían aparecer colisiones?', opciones: ['Sí, siempre', 'No; si aparecen, algo está mal', 'Solo de noche', 'Solo con fibra'], correcta: 1, explica: 'Las colisiones son normales en semidúplex, pero no deben verse en dúplex completo.' },
+        { q: 'Caso práctico: un enlace es muy lento e intermitente; un lado está en full-duplex y el otro en half-duplex. ¿Qué pasa?', opciones: ['Cable cruzado', 'Dúplex desajustado', 'Wi-Fi saturado', 'IP duplicada'], correcta: 1, explica: 'Es un dúplex desajustado: Cisco describe como síntomas el rendimiento muy lento y la conexión intermitente.' },
+        { q: 'Caso práctico: necesitas conectar un equipo a 180 m del switch con cobre. ¿Qué haces?', opciones: ['Usar un cable de categoría más alta', 'Poner un switch intermedio o usar fibra', 'Pintar el cable', 'Nada, funciona igual'], correcta: 1, explica: 'Ningún tramo de UTP debe pasar de 100 m: un switch a mitad de camino o fibra.' },
+        { q: '¿Qué significa «duplex mismatch»?', opciones: ['Cable cruzado', 'Dúplex desajustado', 'Fibra rota', 'Puerto apagado'], correcta: 1, explica: 'Duplex mismatch es dúplex desajustado.' }
+      ]
+    }
+  }
+};
+</script>
+<script src="../../../recursos/sync.js"></script>
+<script src="../../../recursos/academia.js"></script>
+</body>
+</html>

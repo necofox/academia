@@ -516,7 +516,7 @@ window.CATALOGO = [
         clases: [
           { n: '01', titulo: '¿Qué es una red? Componentes, tipos (LAN, WAN, WLAN) y topologías', archivo: 'cursos/redes/clases/clase-01.html', id: 'redes-01', ref: 'CCNA v1.1 1.1–1.2', videos: ['H8W9oMNSuwo'] },
           { n: '02', titulo: 'Modelos OSI y TCP/IP: capas, encapsulamiento y protocolos', archivo: 'cursos/redes/clases/clase-02.html', id: 'redes-02', videos: ['4GEHbsBF0Yw', 'iNh-62Mf0O4'] },
-          { titulo: 'Medios físicos: cobre, fibra óptica e inalámbrico; cables y fallas de interfaz', ref: 'CCNA v2.0 1.1', videos: ['ieTH5lVhNaY', 'CdAl3cECvJI'] },
+          { n: '03', titulo: 'Medios físicos: cobre, fibra óptica e inalámbrico; cables y fallas de interfaz', archivo: 'cursos/redes/clases/clase-03.html', id: 'redes-03', ref: 'CCNA v2.0 1.1', videos: ['ieTH5lVhNaY@557', 'CdAl3cECvJI'] },
           { titulo: 'Ethernet y switching: tramas, direcciones MAC y tabla MAC', ref: 'CCNA v1.1 1.13', videos: ['w_CArT71qHc', 'u2n762WG0Vo'] },
           { titulo: 'Cisco Packet Tracer: tu primera red y los comandos de diagnóstico del PC', ref: 'CCNA v2.0 1.6', videos: ['a1Im6GYaSno'] }
         ] },
