@@ -407,3 +407,12 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   Microsoft (Get-NetAdapter) y temario CCNA v2.0 1.1. Cable cruzado, Auto MDI-X y alcance de la monomodo:
   parcialmente verificados (subtítulos del video).
 - Pruebas: pruebas-clases 22/22 (redes-03 sin errores, 360 px OK). Ninguna otra clase cambió.
+
+### 2026-11-11 (propuesta: formación en IA en seis cursos)
+- Nueva propuesta `PROPUESTA-IA-6-CURSOS.md`: el curso «IA: Claude y productividad» se reorganiza en seis cursos
+  (Fundamentos y uso de Claude; Prompt Engineering; Claude Code; Agentes y subagentes; Herramientas, Skills y MCP;
+  Automatización y proyecto integrador): 26 módulos y 95 clases. Incluye auditoría del temario actual, definiciones
+  verificadas de cada componente, dependencias, gratis o de pago, biblioteca audiovisual y plan de integración que
+  conserva IA 01 e IA 02 (id `ia`).
+- El video indicado por el alumno (MoureDev, 2:30:23) corresponde al capítulo «Plugins»: se propone para el
+  Curso 5 · 4.1. **Pendiente de aprobación. No se modificó el catálogo, el menú, el motor ni ninguna clase.**
