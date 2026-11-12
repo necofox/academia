@@ -410,17 +410,23 @@ se tocan. Significa lo mismo que «Claude gratis».
   > «**Para este curso:** los Módulos 1 a 8 se hacen con el plan gratuito. Solo los Módulos 9 y 10, de Claude
   > Code, necesitan un plan de pago. Y siempre hay una alternativa gratuita: diseñar y probar la instrucción en
   > el chat.»
-- **Texto corregido completo:**
-  > «**Para este curso:** con el plan gratuito puedes estudiar todo y hacer las prácticas compatibles. Para las
-  > prácticas de Claude Code, agentes y automatización se recomienda Claude Pro. Y siempre hay una alternativa
-  > gratuita: diseñar y probar la instrucción en el chat.»
+- **Texto corregido APROBADO por el alumno (12/11/2026), redactado por él:**
+  > «**Para este curso:** con el plan gratuito puedes estudiar todo y realizar las prácticas compatibles. Para
+  > las prácticas de Claude Code, agentes y automatización se recomienda Claude Pro, según las funciones y los
+  > límites disponibles. Cuando una práctica no esté disponible en el plan gratuito, se ofrecerá una alternativa
+  > guiada o una demostración para que puedas comprender el procedimiento.»
+- **Estado:** aprobado para aplicarse **en el Lote 2**. Todavía no se aplica: IA 02 sigue con el texto original.
+  Debe dejar claro que Claude Pro es recomendado, no obligatorio para estudiar el contenido de la academia.
+- *Propuesta anterior, reemplazada por la del alumno:* «…con el plan gratuito puedes estudiar todo y hacer las
+  prácticas compatibles. Para las prácticas de Claude Code, agentes y automatización se recomienda Claude Pro. Y
+  siempre hay una alternativa gratuita: diseñar y probar la instrucción en el chat.»
 - **Por qué hay que corregirlo:**
   1. Cita los «Módulos 1 a 8» y «9 y 10» del curso antiguo de 11 módulos. En la estructura definitiva, Claude
      Code son los Módulos 5 a 9, y los módulos de prompting pasan a otro curso: los números serían falsos.
   2. Dice que esos módulos «necesitan un plan de pago», cuando la regla acordada es que Pro es
      **recomendado**, con alternativa.
-- **Qué no cambia:** el `id`, las actividades, el examen, el reloj y tu avance. Solo cambian dos oraciones; la
-  última se conserva.
+- **Qué no cambia:** el `id`, las actividades, el examen, el reloj y tu avance. Solo se reemplaza el texto de esa
+  nota; se conserva su etiqueta «**Para este curso:**».
 
 ### B. Clase 1.3: el título
 
@@ -556,7 +562,7 @@ En un solo paso, con respaldo previo:
 2. Regenerar las rutas de `ia` y `prompt` (la de `prompt` ya existe y se actualiza).
 3. Pasar a `cursos/ia/instrucciones.md` lo útil de las carpetas del Lote 1.
 4. Actualizar la tabla de `CLAUDE.md` y la bitácora, y subir la versión del menú.
-5. Aplicar la corrección de IA 02, si la apruebas.
+5. Aplicar en IA 02 el texto aprobado (sección 5A): solo esa nota, sin tocar nada más de la clase.
 6. Ejecutar todas las pruebas y revisar en el navegador, en escritorio y a 360 px.
 7. Commit local, sin push.
 
@@ -587,6 +593,7 @@ estructura académica y las decisiones de esta sección. **El Lote 2 no está au
 | 7 | **Conservar las carpetas y archivos de los lotes anteriores como historial** | No eliminar nada: borrador de 6 cursos, sus vistas previas y las carpetas `claudecode`, `extensiones`, `agentes` y `automatizacion` |
 | 8 | **Duración:** 120 minutos por clase | Estándar académico de los cursos de 2 horas |
 | 9 | **Conservación** | Identificadores, referencias, actividades, evaluaciones y progreso. Sin reconstruir, reorganizar de nuevo ni duplicar contenidos |
+| 10 | **Texto nuevo de la nota de IA 02** (redacción del alumno, sección 5A) | Se aplica **solo en el Lote 2**, que se autoriza por separado. Debe dejar claro que Pro es recomendado, no obligatorio |
 
 La **clase 1.3** mantiene el título original del catálogo real («Primeros pasos: conversaciones, archivos,
 búsqueda web y estilos»), que es el de la estructura aprobada. No se cambió nada.
@@ -595,8 +602,8 @@ búsqueda web y estilos»), que es el de la estructura aprobada. No se cambió n
 
 | # | Pendiente | Qué se necesita |
 |---|---|---|
-| 1 | **Corrección de IA 02** (sección 5A) | El alumno pidió ver el texto original y la propuesta antes de decidir. **No se cambia todavía** |
-| 2 | **Horario** (`horario.md`) | Aclaración: no es la duración de las clases, que sigue en 120 minutos. Es el horario semanal personal (qué días y a qué hora estudias cada curso). Según `CLAUDE.md`, al agregar un curso se pregunta en qué horario lo quieres. Es opcional y no afecta el funcionamiento. **No se hizo ningún cambio** |
+| 1 | **Aplicar el texto aprobado en IA 02** | Se hace dentro del Lote 2. Hasta entonces, IA 02 no se modifica |
+| 2 | **Horario semanal personal** (`horario.md`) | Lo define el alumno más adelante. **No configurarlo ni proponer horarios.** No es la duración de las clases, que sigue en 120 minutos |
 | 3 | **Autorización del Lote 2** (sección 8.6) | Autorización expresa del alumno |
 | 4 | **Bitácora** | Se actualiza cuando se autorice el siguiente lote |
 
