@@ -26,6 +26,9 @@ Una academia personal para aprender **desde cero**, con Claude como profesor y e
 | Inglés básico | Desde cero, con audio | 1 hora |
 | JavaScript | Desarrollo web (frontend y Node.js) | 2 horas |
 | Python | Desarrollo de software | 2 horas |
+| Redes y Telecomunicaciones | De cero a la red de una pyme (base CCNA 200-301 v2.0) | 2 horas |
+| Inteligencia Artificial: Claude | Del chat a Claude Code y un equipo de agentes supervisados | 2 horas |
+| Prompt Engineering | Instrucciones precisas, evaluadas y reutilizables | 2 horas |
 
 - **Enlace para estudiar (todas las computadoras y el celular):** https://necofox.github.io/academia/
 - **Carpeta en la PC principal:** `C:\Users\alvar\OneDrive\Desktop\Cyberseguridad`
@@ -124,8 +127,25 @@ y después `herramientas/pruebas-sync.html` (15 escenarios).
   Mantener la coherencia si se vuelven a usar.
 - **Python se practica en la PC real** (Python 3.12/3.14 y VS Code ya instalados); la página
   trae un simulador del modo interactivo solo para los ejemplos.
+- **Equipo de 6 agentes para producir clases** (12/11/2026; piloto Prompt Engineering 01 aprobado):
+  coordinador, investigador, disenador-pedagogico, desarrollador, revisor e integrador, con reglas comunes y
+  un perfil por curso. Están en `.claude/agents/`, `.claude/equipo/` y `.claude/skills/producir-clase/`, que son
+  archivos **locales de la PC principal** (`.claude/` está en `.gitignore`). Por eso esta bitácora es el
+  registro compartido de lo que hace el equipo.
+- **Los agentes solo trabajan con el comando `/producir-clase <curso> [módulo] [cantidad]`**, que escribe el
+  alumno. Sin el comando, ninguna sesión los lanza. Cada ejecución termina en un commit local y un informe; el
+  push lo autoriza el alumno aparte.
+- **Orden de producción:** en cada curso, primero todas las clases de los Módulos 1 y 2; después, los demás
+  módulos en orden. Las clases que ya existen en otros módulos se conservan.
+- **Bitácora al día en cada avance:** los agentes la leen antes de empezar; el coordinador la actualiza al
+  cerrar cada clase (secciones 2 y 6, y registro de cambios), y antes de cada push se anota la publicación.
 
 ## 5. Cómo hacer las tareas frecuentes
+
+**Crear una clase nueva con el equipo de agentes** (forma habitual desde el 12/11/2026): el alumno escribe
+`/producir-clase <curso> [módulo] [cantidad]`. El equipo sigue los pasos de abajo, actualiza esta bitácora y
+deja un commit local. **Publicar** solo con la autorización del alumno: antes del push se anota la publicación
+en el registro de cambios y, después, se comprueba el despliegue de GitHub Pages.
 
 **Crear una clase nueva** (seguir las 8 fases de `PROMPT-MAESTRO.md`; resumen técnico:)
 1. Investigar y verificar el tema en fuentes confiables ANTES de escribir.
@@ -155,6 +175,11 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
 ## 6. Pendientes
 
 **Adecuación de las 17 clases al prompt maestro** (auditoría del 2026-11-10):
+- **Actualización del 12/11/2026:** de las 23 clases creadas, 9 siguen la estructura completa de 9 secciones
+  (Ciberseguridad 01, Redes 01–03, IA 01–02 y Prompt 01). Las otras 14 (Ciberseguridad 02–05 y Inglés,
+  JavaScript y Python 01–04) siguen con el formato anterior: sin conocimientos previos ni práctica autónoma con
+  criterios, y con objetivos solo en la clase 01 de cada curso. Ponerlas al día es modificar clases existentes:
+  solo si el alumno lo pide. Lo que sigue es el detalle de la auditoría original.
 - Ninguna clase tiene todavía: "conocimientos previos", "práctica autónoma con criterios para
   comprobarla" ni una sección de "resumen" de contenidos (lo que hay es el generador de resumen
   del avance).
@@ -184,10 +209,13 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   clases (también las que aún no existen). Quedan 17 clases sin video, con el motivo anotado en el catálogo y en
   las rutas (sobre todo proyectos). Al crear cada clase, sus videos del catálogo pasan a su página.
 - **Objetivo principal pendiente:** completar Redes y Telecomunicaciones, Inteligencia Artificial: Claude y
-  Prompt Engineering. Que estén en el menú no significa que estén hechos: de 154 clases planificadas hay 5
-  creadas y faltan 149 (Redes 48, Inteligencia Artificial: Claude 69 y Prompt Engineering 32). La ampliación
+  Prompt Engineering. Que estén en el menú no significa que estén hechos: de 154 clases planificadas hay 6
+  creadas y faltan 148 (Redes 48, Inteligencia Artificial: Claude 69 y Prompt Engineering 31). La ampliación
   no está terminada hasta que todo el contenido esté creado, integrado y probado. El horario semanal de los
   cursos nuevos lo define el alumno más adelante.
+- **Módulos 1 y 2 primero** (decisión del 12/11/2026): faltan 53 clases en esos módulos (Ciberseguridad 4,
+  Inglés 13, JavaScript 9, Python 7, Redes 7, IA: Claude 5 y Prompt Engineering 8). En toda la academia hay 23
+  de 313 clases creadas.
 - **Lote 2:** terminado. Las etapas 0-A, 0-B y 1 a 5 están completadas; el cierre es el commit `92e7ff7`. El
   detalle está en `herramientas/RESULTADOS-LOTE-2.md`.
 
@@ -561,3 +589,14 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   Prompt Engineering 8. Las clases que ya existen en otros módulos (Ciberseguridad M3·1) se conservan.
 - **Piloto aprobado por el alumno** el mismo día (commit `5ee9893`). El equipo puede seguir con la siguiente clase,
   de una en una. Sin push.
+
+### 2026-11-12 (publicación del piloto, comando del equipo y bitácora al día)
+- **Publicado con autorización del alumno:** push de `5ee9893` y `b3d801c` (GitHub `main`: `f4433a2` → `b3d801c`),
+  sin etiquetas ni force. GitHub Pages desplegó con éxito y Prompt Engineering 01 responde en el enlace publicado.
+- **Comando `/producir-clase <curso> [módulo] [cantidad]`** (`.claude/skills/producir-clase/`, local): activa el
+  equipo de agentes. Solo lo puede activar el alumno; sin el comando, los agentes no trabajan. Produce 1 clase por
+  defecto y 3 como máximo, y termina en un commit local y un informe.
+- **Bitácora al día:** sección 1 (los 7 cursos), sección 4 (decisiones del equipo), sección 5 (cómo producir y
+  publicar) y sección 6 (estado de la estructura de las 23 clases y cuentas de lo que falta). El coordinador la
+  mantiene al cerrar cada clase.
+- Publicación de este cambio: pendiente de autorización del alumno.
