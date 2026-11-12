@@ -517,3 +517,9 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
 - **Pendiente de decisión del alumno:** Python 02 dice que los nombres de variables «no llevan tildes». La
   documentación oficial (Análisis léxico, 2.3) permite caracteres no ASCII en los nombres; es una buena
   práctica, no una regla del lenguaje. No se cambió el texto de la clase.
+- **Corregido el mismo día, a pedido del alumno:** la regla de Python 02 (línea 46) ahora dice que los nombres
+  no pueden empezar con número ni llevar espacios, y que Python 3 acepta tildes y ñ, aunque conviene evitarlas
+  (la clase usa `anio`). Se comprobó ejecutando Python 3.12 (`año = 5` funciona). La fuente de Análisis léxico
+  ahora indica también que los nombres admiten caracteres no ASCII. La pista del reto («sin tildes ni ñ») se
+  dejó igual porque es un consejo coherente. El script `window.CLASE` no cambió; clases 22/22 e identificadores
+  de avance idénticos.
