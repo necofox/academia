@@ -633,21 +633,35 @@ Catálogo real, menú, motor, rutas reales, sincronización con `academia-progre
 repositorios, IA 01, IA 02, los cuatro cursos originales, Redes, la bitácora y todos los respaldos y archivos de
 los lotes anteriores.
 
-### 9.4 Ejecución del Lote 2 (12/11/2026)
+### 9.4 Ejecución del Lote 2 (12/11/2026) · **terminado**
 
-Autorizado por el alumno por etapas, con punto de control al final de cada una. Resultados completos y
+Autorizado por el alumno por etapas, con punto de control al final de cada una. **El Lote 2 está terminado:**
+las etapas 0-A, 0-B y 1 a 5 están completadas y el cierre es el commit `92e7ff7`. Resultados completos y
 evidencias: `herramientas/RESULTADOS-LOTE-2.md`.
+
+> Esta sección refleja el estado vigente. Lo que digan las secciones anteriores sobre etapas pendientes
+> corresponde al momento en que se escribieron.
 
 | Etapa | Commit | Qué se hizo |
 |---|---|---|
-| 0 | — | Comprobaciones de solo lectura (todo correcto) y etiqueta local `respaldo-antes-lote-2` → `05e83d1`, no publicada |
+| 0-A | — | Comprobaciones de solo lectura (todo correcto) |
+| 0-B | — | Etiqueta local `respaldo-antes-lote-2` → `05e83d1`, no publicada |
 | 1 | `e0a5d69` | Catálogo real con los tres cursos (equivalencia estricta con el borrador aprobado), rutas de `ia` y `prompt` regeneradas solo entre marcas, `?v=` del menú y `revisar-coherencia.js` |
 | 2 | `349066f` | Guías de IA y de Prompt Engineering y frase de la ruta de Redes; se quitó la referencia errónea a Ciberseguridad M7·3 y se conservó la regla de datos sensibles |
 | 3 | `2c4ae91` y `bd4b1f8` | Nota de planes de IA 02 (línea 139); el texto definitivo es el de `bd4b1f8` (sección 5A) |
-| 4 | Commit de esta actualización | `CLAUDE.md`, la bitácora, este diagnóstico y `herramientas/RESULTADOS-LOTE-2.md` |
-| 5 | Pendiente | Verificación final y borrado de los archivos temporales |
+| 4 | `d6d07b0` | `CLAUDE.md`, la bitácora, este diagnóstico y `herramientas/RESULTADOS-LOTE-2.md` |
+| 5 | `92e7ff7` | Verificación final sobre el estado definitivo y borrado de los archivos temporales exclusivos del Lote 2 |
 
 Resultado tras las etapas 1 a 3: el menú muestra 7 cursos; Redes 11/51, Inteligencia Artificial: Claude 21/71 y
 Prompt Engineering 6/32; 154 clases planificadas, 5 creadas y 149 pendientes. Pruebas: clases 22/22,
 sincronización 15/15 y rutas 7/7. La huella de los identificadores de avance (`d355163a…7933d`) es idéntica
 a la línea base. Sin push y sin cambios en `academia-progreso`.
+
+**Verificación final (Etapa 5, `92e7ff7`)** sobre el estado definitivo, que incluye también `5fdc761` y `a57d0b2`,
+aprobados aparte:
+- Catálogo correcto, equivalencia estricta con el borrador aprobado 10/10, rutas 7/7 y coherencia correcta.
+- `window.CLASE` idéntico en las 22 clases y núcleo (motor, sincronización y estilos) sin cambios.
+- Clases 22/22, con la huella de identificadores idéntica, y sincronización 15/15.
+- Menú real con 7 cursos, sin desborde a 302, 360 y 1280 px, y foco de teclado visible.
+- Se borraron los temporales exclusivos del Lote 2, fuera del proyecto.
+- GitHub sigue en `43e8d6e` (sin push) y `academia-progreso` sin cambios (`14d8233`).

@@ -188,8 +188,8 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   creadas y faltan 149 (Redes 48, Inteligencia Artificial: Claude 69 y Prompt Engineering 32). La ampliación
   no está terminada hasta que todo el contenido esté creado, integrado y probado. El horario semanal de los
   cursos nuevos lo define el alumno más adelante.
-- **Lote 2:** falta la Etapa 5 (verificación final y borrado de los archivos temporales, que están fuera del
-  proyecto).
+- **Lote 2:** terminado. Las etapas 0-A, 0-B y 1 a 5 están completadas; el cierre es el commit `92e7ff7`. El
+  detalle está en `herramientas/RESULTADOS-LOTE-2.md`.
 
 ---
 
@@ -523,3 +523,17 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   ahora indica también que los nombres admiten caracteres no ASCII. La pista del reto («sin tildes ni ñ») se
   dejó igual porque es un consejo coherente. El script `window.CLASE` no cambió; clases 22/22 e identificadores
   de avance idénticos.
+
+### 2026-11-12 (Lote 2 terminado: Etapa 5)
+- **Lote 2 terminado:** etapas 0-A, 0-B y 1 a 5 completadas. Commits: `e0a5d69` (Etapa 1), `349066f` (Etapa 2),
+  `2c4ae91` y `bd4b1f8` (Etapa 3), `d6d07b0` (Etapa 4) y `92e7ff7` (Etapa 5, cierre).
+- **Etapa 5 (`92e7ff7`):** verificación final sobre el estado definitivo, que ya incluye `5fdc761` y `a57d0b2`:
+  - Catálogo correcto, equivalencia estricta 10/10, rutas 7/7 y coherencia correcta.
+  - `window.CLASE` idéntico en las 22 clases y núcleo sin cambios.
+  - Clases 22/22, con la huella de identificadores de avance `d355163a…7933d` idéntica a la línea base, y
+    sincronización 15/15.
+  - Menú real con 7 cursos, sin desborde a 302, 360 y 1280 px, y foco de teclado visible.
+  - Se borraron los temporales exclusivos del Lote 2 (carpeta `lote2/` con 41 archivos y 3 scripts), fuera del
+    proyecto; se conservó lo que no era exclusivo.
+  - Resultados completos en `herramientas/RESULTADOS-LOTE-2.md`.
+- Sin push (GitHub sigue en `43e8d6e`) y `academia-progreso` sin cambios (`14d8233`).
