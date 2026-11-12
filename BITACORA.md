@@ -416,3 +416,14 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   conserva IA 01 e IA 02 (id `ia`).
 - El video indicado por el alumno (MoureDev, 2:30:23) corresponde al capítulo «Plugins»: se propone para el
   Curso 5 · 4.1. **Pendiente de aprobación. No se modificó el catálogo, el menú, el motor ni ninguna clase.**
+
+### 2026-11-12 (revisión de la propuesta de IA: versión 2)
+- Auditoría pedagógica, técnica y estructural de `PROPUESTA-IA-6-CURSOS.md`, aplicada como versión 2 (la versión 1
+  queda en el commit `487415d`). Se corrigieron 9 problemas: clases repetidas (herramientas de Claude Code,
+  restricciones, supervisión humana, diseño de equipos, manejo de errores), una clase demasiado delgada, la
+  diferencia entre usar y crear skills, la terminal como nivelación y un proyecto que repetía agentes.
+- Nuevo orden: Herramientas, Skills y MCP (Curso 4) antes de Agentes (Curso 5), con argumentos en el documento.
+- Proyecto integrador progresivo: cada curso construye una pieza (app base, kit de skills y MCP, tres subagentes) y
+  el Curso 6 completa el equipo de cinco agentes. Tabla de requisitos y viabilidad técnica verificada.
+- Resultado: 6 cursos, 26 módulos, **91 clases** (182 h); 39 con video verificado y 52 pendientes.
+  **Sigue pendiente de aprobación. No se modificó el catálogo, el menú, el motor ni ninguna clase.**
