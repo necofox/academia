@@ -51,9 +51,9 @@ Diseñar, configurar, administrar y diagnosticar la red de una empresa pequeña 
 
 | Clase | Tema | Temario oficial que cubre | Videos | Estado |
 |---|---|---|---|---|
-| M1·1 | ¿Qué es una red? Componentes, tipos (LAN, WAN, WLAN) y topologías | CCNA v1.1 1.1–1.2 | [▶ 1](https://www.youtube.com/watch?v=H8W9oMNSuwo) | ✔ Lista: `clases/clase-01.html` (id `redes-01`) |
-| M1·2 | Modelos OSI y TCP/IP: capas, encapsulamiento y protocolos | — | [▶ 1](https://www.youtube.com/watch?v=4GEHbsBF0Yw) [▶ 2](https://www.youtube.com/watch?v=iNh-62Mf0O4) | ✔ Lista: `clases/clase-02.html` (id `redes-02`) |
-| M1·3 | Medios físicos: cobre, fibra óptica e inalámbrico; cables y fallas de interfaz | CCNA v2.0 1.1 | [▶ 1](https://www.youtube.com/watch?v=ieTH5lVhNaY&t=557s) [▶ 2](https://www.youtube.com/watch?v=CdAl3cECvJI) | ✔ Lista: `clases/clase-03.html` (id `redes-03`) |
+| M1·1 | ¿Qué es una red? Componentes, tipos (LAN, WAN, WLAN) y topologías | CCNA v1.1 1.1–1.2 | [▶ 1](https://www.youtube.com/watch?v=oz5w7TXRWwQ) [▶ 2](https://www.youtube.com/watch?v=l6brkMOJCIo) | ✔ Lista: `clases/clase-01.html` (id `redes-01`) |
+| M1·2 | Modelos OSI y TCP/IP: capas, encapsulamiento y protocolos | — | [▶ 1](https://www.youtube.com/watch?v=qiIfPe6NjeM) [▶ 2](https://www.youtube.com/watch?v=7yeC5ohURAg) | ✔ Lista: `clases/clase-02.html` (id `redes-02`) |
+| M1·3 | Medios físicos: cobre, fibra óptica e inalámbrico; cables y fallas de interfaz | CCNA v2.0 1.1 | [▶ 1](https://www.youtube.com/watch?v=PxUu8Kw9ymM) [▶ 2](https://www.youtube.com/watch?v=JFI9g1OqskE) | ✔ Lista: `clases/clase-03.html` (id `redes-03`) |
 | M1·4 | Ethernet y switching: tramas, direcciones MAC y tabla MAC | CCNA v1.1 1.13 | [▶ 1](https://www.youtube.com/watch?v=w_CArT71qHc) [▶ 2](https://www.youtube.com/watch?v=u2n762WG0Vo) | Próximamente · **siguiente por crear** |
 | M1·5 | Cisco Packet Tracer: tu primera red y los comandos de diagnóstico del PC | CCNA v2.0 1.6 | [▶ 1](https://www.youtube.com/watch?v=a1Im6GYaSno) | Próximamente |
 

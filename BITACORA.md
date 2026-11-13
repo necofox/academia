@@ -655,3 +655,25 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
 - Siguen anteriores a 2023 los videos de las clases creadas de Inglés (4), Python (recurso principal) y Redes (5).
 - Publicación de este cambio: pendiente de autorización del alumno.
 
+### 2026-11-13 (videos de Redes: reemplazo con la regla de 2023)
+- **Reemplazados los 5 videos anteriores a 2023** de Redes 01, 02 y 03 (solo la sección de videos; actividades,
+  exámenes, terminales y notas idénticos según la huella de cada clase):
+  - Redes 01: Jeremy's IT Lab, CCNA Day 1 (2019, en inglés) → MundoTech X «Hardware de redes: guía completa» (2025) y
+    Cookie conectada «Redes PAN, LAN, MAN y WAN» (2025).
+  - Redes 02: UPV «Modelo OSI» (2016) y NASeros «OSI y TCP/IP» (2021) → Cookie conectada «Modelos OSI y TCP/IP» (2025) y
+    RedesCiber «El ABC de la encapsulación en TCP/IP» (2024).
+  - Redes 03: Jeremy's IT Lab, CCNA Day 2 (2019, en inglés) y NASeros «fibra óptica» (2022) → AulaTech FP «Medios de
+    transmisión: cobre, fibra e inalámbricos en una LAN» (2026) y Pedro Lino Cáceres «Medios de transmisión en redes:
+    WiFi, cobre y fibra óptica» (2026).
+- Ahora los seis videos de Redes 01–03 están en español (antes, dos estaban en inglés).
+- Verificados con `herramientas/verificar-videos.py`. Su contenido se comprobó con el título, la descripción y los
+  capítulos (y los subtítulos en el de OSI de Cookie conectada): YouTube bloqueó temporalmente la descarga de
+  subtítulos (error 429) y no se forzó. Cada ficha dice cómo se comprobó.
+- Catálogo (solo los videos de redes-01 a 03), ruta de Redes regenerada y `?v=2026-11-13b` en `inicio.html`. Los
+  videos antiguos que el catálogo cita en clases futuras de Redes se cambiarán al crear cada clase.
+- **Pruebas:** pruebas-clases 23/23 (repetida tras vaciar la caché del navegador), huella de las 22 clases anteriores
+  idéntica (`d355163a…7933d`) y de las 23 (`62112f2a…90710`); catálogo, coherencia y rutas 7/7 correctos; sección de
+  videos sin desborde a 360 px y sin errores de consola.
+- Siguen anteriores a 2023 los videos de las clases creadas de Inglés (4) y el recurso principal de Python, Módulo 1.
+- Publicación de este cambio: pendiente de autorización del alumno.
+
