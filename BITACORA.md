@@ -713,3 +713,15 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   coherencia y rutas 7/7 correctos.
 - Publicación de este cambio: pendiente de autorización del alumno.
 
+### 2026-11-13 (videos repetidos en una sola ficha)
+- **Observación del alumno:** en Python 01 el mismo curso aparecía 3 veces y en JavaScript se repetía 2 veces (eran
+  capítulos distintos del mismo video, con el mismo título, y parecían videos repetidos).
+- **Corregido:** cada curso largo aparece ahora **una sola vez por clase**, con sus capítulos como enlaces al minuto
+  exacto («Qué enseña, por capítulos»). Clases: JavaScript 01, 02 y 03; Python 01 y 03; y Ciberseguridad 04 (curso de
+  Bash de MoureDev, mismo caso). En las que quedó un solo video, la sección dice «Video complementario».
+- No cambió ningún video, minuto, fuente ni alternativa escrita (eran idénticas dentro de cada grupo); los videos
+  elegidos por el alumno se mantienen. El catálogo y las rutas no cambian (la ruta ya lista cada capítulo con su minuto).
+- **Pruebas:** pruebas-clases 23/23 con las páginas recargadas sin caché, huella de las 23 clases idéntica
+  (`62112f2a…90710`), sin desborde a 360 px y sin errores de consola.
+- Publicación de este cambio: pendiente de autorización del alumno.
+
