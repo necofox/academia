@@ -135,6 +135,8 @@ y después `herramientas/pruebas-sync.html` (15 escenarios).
 - **Los agentes solo trabajan con los comandos que escribe el alumno:** `/producir-clase <curso> [módulo]
   [cantidad]` (clases nuevas) y `/actualizar-clase <id>` (poner al día una clase existente). Sin el comando, ninguna sesión los lanza. Cada ejecución termina en un commit local y un informe; el
   push lo autoriza el alumno aparte.
+- **Videos complementarios desde el 1 de enero de 2023** (regla del alumno, 13/11/2026, también a futuro): un video
+  anterior se reemplaza o queda como pendiente justificado.
 - **Orden de producción:** en cada curso, primero todas las clases de los Módulos 1 y 2; después, los demás
   módulos en orden. Las clases que ya existen en otros módulos se conservan.
 - **Bitácora al día en cada avance:** los agentes la leen antes de empezar; el coordinador la actualiza al
@@ -616,3 +618,17 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   (`.claude/equipo/herramientas/huella-clase.js`), probada con las 23 clases.
 - Candidatas: Ciberseguridad 02–05 y Inglés, JavaScript y Python 01–04 (14 clases). Todavía no se actualizó ninguna.
 - Publicado con autorización del alumno (12/11/2026).
+
+### 2026-11-13 (auditoría de videos con la regla «desde el 1 de enero de 2023»)
+- **Regla nueva del alumno:** los videos complementarios deben estar publicados desde el 1 de enero de 2023, también
+  los que se agreguen en el futuro. Anotada en `CLAUDE.md`, en la sección 4 de esta bitácora y en las fichas locales
+  del investigador y del revisor.
+- **Auditoría (solo lectura):** se verificaron con `herramientas/verificar-videos.py` los 178 videos distintos de la
+  academia (170 del catálogo y 8 que solo están en las páginas de Inglés). Cumplen 82, son anteriores a 2023 95 y
+  1 ya no está disponible (`DAQJvGjlgVM`, IA M6·1, pide iniciar sesión).
+- **Clases creadas:** de 38 enlaces de video en las 23 páginas, 21 no cumplen. Hay 9 clases sin ningún video que
+  cumpla: Ciberseguridad 02, 03 y 05; Inglés 03; Python 01 y 03; Redes 01, 02 y 03.
+- **Clases futuras (catálogo):** 92 enlaces anteriores a 2023 y 63 clases sin ningún video que cumpla. El recurso
+  principal de Python, Módulo 1 (`Kp4Mvapo5kc`, elegido por el alumno), es del 30/09/2022.
+- No se cambió ningún video todavía. Publicación de este cambio: pendiente de autorización del alumno.
+
