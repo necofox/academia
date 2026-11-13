@@ -632,7 +632,7 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   cumpla: Ciberseguridad 02, 03 y 05; Inglés 03; Python 01 y 03; Redes 01, 02 y 03.
 - **Clases futuras (catálogo):** 92 enlaces anteriores a 2023 y 63 clases sin ningún video que cumpla. El recurso
   principal de Python, Módulo 1 (`Kp4Mvapo5kc`, elegido por el alumno), es del 30/09/2022.
-- No se cambió ningún video todavía. Publicación de este cambio: pendiente de autorización del alumno.
+- No se cambió ningún video todavía. Publicado con autorización del alumno (13/11/2026).
 
 ### 2026-11-13 (videos de Ciberseguridad: reemplazo con la regla de 2023)
 - **Reemplazados los 8 videos anteriores a 2023** de las clases creadas de Ciberseguridad. Solo cambió la sección de
@@ -655,7 +655,7 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   (`d355163a…7933d`) y huella de las 23 clases `62112f2a…90710` (nueva línea base); catálogo correcto, coherencia
   correcta, rutas 7/7; sección de videos sin desborde a 360 px y sin errores de consola.
 - Siguen anteriores a 2023 los videos de las clases creadas de Inglés (4), Python (recurso principal) y Redes (5).
-- Publicación de este cambio: pendiente de autorización del alumno.
+- Publicado con autorización del alumno (13/11/2026).
 
 ### 2026-11-13 (videos de Redes: reemplazo con la regla de 2023)
 - **Reemplazados los 5 videos anteriores a 2023** de Redes 01, 02 y 03 (solo la sección de videos; actividades,
@@ -677,7 +677,7 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   idéntica (`d355163a…7933d`) y de las 23 (`62112f2a…90710`); catálogo, coherencia y rutas 7/7 correctos; sección de
   videos sin desborde a 360 px y sin errores de consola.
 - Siguen anteriores a 2023 los videos de las clases creadas de Inglés (4) y el recurso principal de Python, Módulo 1.
-- Publicación de este cambio: pendiente de autorización del alumno.
+- Publicado con autorización del alumno (13/11/2026).
 
 ### 2026-11-13 (videos de Inglés: reemplazo con la regla de 2023)
 - **Reemplazados los 4 videos anteriores a 2023** de Inglés 02, 03 y 04 (solo la sección de videos; actividades,
@@ -697,7 +697,7 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   (`62112f2a…90710`), sección de videos sin desborde a 360 px y sin errores de consola.
 - Con esto, **todas las clases creadas cumplen la regla**, salvo el recurso principal de Python, Módulo 1 (MoureDev,
   30/09/2022), elegido por el alumno: queda pendiente de su decisión.
-- Publicación de este cambio: pendiente de autorización del alumno.
+- Publicado con autorización del alumno (13/11/2026).
 
 ### 2026-11-13 (excepción: los videos elegidos por el alumno no se cambian)
 - **Decisión del alumno:** los videos que él eligió o sugirió no se cambian, aunque sean anteriores a 2023. Hoy son:
@@ -711,7 +711,7 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   catálogo para clases futuras, que se cambian al crear cada clase.
 - Catálogo (solo la nota del recurso principal de Python), ruta de Python regenerada y `?v=2026-11-13c`; catálogo,
   coherencia y rutas 7/7 correctos.
-- Publicación de este cambio: pendiente de autorización del alumno.
+- Publicado con autorización del alumno (13/11/2026).
 
 ### 2026-11-13 (videos repetidos en una sola ficha)
 - **Observación del alumno:** en Python 01 el mismo curso aparecía 3 veces y en JavaScript se repetía 2 veces (eran
@@ -723,5 +723,5 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   elegidos por el alumno se mantienen. El catálogo y las rutas no cambian (la ruta ya lista cada capítulo con su minuto).
 - **Pruebas:** pruebas-clases 23/23 con las páginas recargadas sin caché, huella de las 23 clases idéntica
   (`62112f2a…90710`), sin desborde a 360 px y sin errores de consola.
-- Publicación de este cambio: pendiente de autorización del alumno.
+- Publicado con autorización del alumno (13/11/2026).
 
