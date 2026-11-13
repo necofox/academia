@@ -744,5 +744,5 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   con el `progreso.json` del repositorio privado sin modificarlo. El tutor todavía no se ha usado con una clase real.
 - Pendiente de decidir: mostrar las observaciones también dentro de la clase (necesita un cambio en el motor y
   guardarlas en el repositorio privado) y guardar qué preguntas del examen se fallan (cambio en el motor).
-- Publicación de este cambio: pendiente de autorización del alumno.
+- Publicado con autorización del alumno (13/11/2026).
 
