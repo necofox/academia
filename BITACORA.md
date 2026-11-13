@@ -135,6 +135,9 @@ y después `herramientas/pruebas-sync.html` (15 escenarios).
 - **Los agentes solo trabajan con los comandos que escribe el alumno:** `/producir-clase <curso> [módulo]
   [cantidad]` (clases nuevas) y `/actualizar-clase <id>` (poner al día una clase existente). Sin el comando, ninguna sesión los lanza. Cada ejecución termina en un commit local y un informe; el
   push lo autoriza el alumno aparte.
+- **Agente tutor y comando `/revisar-avance <id>`** (13/11/2026): corrige el avance del alumno en una clase y deja sus
+  observaciones en un documento de repaso en Word y PDF (`cursos/<curso>/apuntes/`) y en `progreso.md`, todo privado.
+  Solo lee `academia-progreso`; nunca escribe en él.
 - **Videos complementarios desde el 1 de enero de 2023** (regla del alumno, 13/11/2026, también a futuro): un video
   anterior se reemplaza o queda como pendiente justificado. Excepción: los videos que eligió o sugirió el alumno no se
   cambian (los recursos principales del Módulo 1 de JavaScript y de Python, de MoureDev, y el curso de Claude Code de
@@ -177,7 +180,8 @@ para que el avance guardado siga sirviendo; el catálogo y las rutas no cambian.
 clases), agregarlo a la tabla de `CLAUDE.md`, a `recursos/catalogo.js` y un tema
 `.tema-<curso>` en `academia.css`. Preguntar duración y horario.
 
-**Revisar el avance del alumno** ("revisa mi avance"): `git pull` en `..\academia-progreso`,
+**Revisar el avance del alumno:** con el comando `/revisar-avance <id>` (el tutor corrige la clase y deja el Word y el
+PDF de repaso en `apuntes/` y las observaciones en `progreso.md`). A mano ("revisa mi avance"): `git pull` en `..\academia-progreso`,
 leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
 
 ## 6. Pendientes
@@ -724,4 +728,21 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
 - **Pruebas:** pruebas-clases 23/23 con las páginas recargadas sin caché, huella de las 23 clases idéntica
   (`62112f2a…90710`), sin desborde a 360 px y sin errores de consola.
 - Publicado con autorización del alumno (13/11/2026).
+
+### 2026-11-13 (agente tutor: corrige el avance y deja un Word y un PDF de repaso)
+- **Pedido del alumno:** un agente que corrija su avance (práctica autónoma, examen…), le diga cómo va y le deje las
+  observaciones de la clase, exportables a Word o PDF para repasar.
+- **Creado** (archivos locales en `.claude/`): el agente `tutor`, el comando `/revisar-avance <id>` (solo lo activa
+  el alumno) y dos herramientas locales: `leer-avance.py` (lee el avance de una clase en `progreso.json`, solo
+  lectura) y `documento-repaso.py` (crea el Word con python-docx y el PDF con Microsoft Word; no sobrescribe).
+- **Qué corrige:** actividades (aciertos al primer intento), examen (nota; las preguntas falladas no se guardan hoy),
+  práctica autónoma (notas del alumno contra cada criterio de la clase), terminal y código, y el tiempo de clase.
+- **Dónde deja todo (privado, en `.gitignore`):** `cursos/<curso>/apuntes/NN-tema-repaso-AAAA-MM-DD.docx` y `.pdf`
+  (cómo vas, corrección de la práctica, qué repasar, resumen, preguntas de repaso con respuesta y siguientes pasos)
+  y una sección «Observaciones del profesor» en `progreso.md`.
+- Se probaron las herramientas: el Word y el PDF se generan bien (con datos de prueba) y el lector de avance funciona
+  con el `progreso.json` del repositorio privado sin modificarlo. El tutor todavía no se ha usado con una clase real.
+- Pendiente de decidir: mostrar las observaciones también dentro de la clase (necesita un cambio en el motor y
+  guardarlas en el repositorio privado) y guardar qué preguntas del examen se fallan (cambio en el motor).
+- Publicación de este cambio: pendiente de autorización del alumno.
 
