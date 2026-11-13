@@ -677,3 +677,23 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
 - Siguen anteriores a 2023 los videos de las clases creadas de Inglés (4) y el recurso principal de Python, Módulo 1.
 - Publicación de este cambio: pendiente de autorización del alumno.
 
+### 2026-11-13 (videos de Inglés: reemplazo con la regla de 2023)
+- **Reemplazados los 4 videos anteriores a 2023** de Inglés 02, 03 y 04 (solo la sección de videos; actividades,
+  exámenes y notas idénticos según la huella de cada clase). Se mantiene el patrón «el de español te explica; el de
+  inglés te entrena el oído»:
+  - Inglés 02: Francisco Ochoa, curso desde cero (2020) → Inglés Fácil con Monica Cely «Lección 4: Verbo TO BE» (2025).
+    Se mantiene Teacher Ramires «La presentación personal» (2025).
+  - Inglés 03: Marcus Carter, abecedario (2022) → INGLÉS con IBO «El abecedario en inglés fácil» (2024); High Flyer
+    English (2022) → English Explained Vids «Spelling Names Practice» (2024, inglés estadounidense, subtítulos escritos
+    en español). La ficha recuerda que la Z es «zi» (estadounidense) o «zed» (británico).
+  - Inglés 04: Michael DiGiacomo, thirteen y thirty (2018) → ESLTeacherTom «Thirteen or Thirty?» (2025). Se mantiene
+    Academia La Profe Mónica, números del 1 al 100 (2023).
+- Verificados con `herramientas/verificar-videos.py`; su contenido se comprobó con el título, la descripción y los
+  capítulos, porque YouTube siguió bloqueando la lectura de subtítulos (error 429). Inglés no tiene videos en el
+  catálogo, así que el catálogo y las rutas no cambiaron.
+- **Pruebas:** pruebas-clases 23/23 (con las páginas recargadas sin caché), huella de las 23 clases idéntica
+  (`62112f2a…90710`), sección de videos sin desborde a 360 px y sin errores de consola.
+- Con esto, **todas las clases creadas cumplen la regla**, salvo el recurso principal de Python, Módulo 1 (MoureDev,
+  30/09/2022), elegido por el alumno: queda pendiente de su decisión.
+- Publicación de este cambio: pendiente de autorización del alumno.
+
