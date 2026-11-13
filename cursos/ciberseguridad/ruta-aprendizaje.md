@@ -50,7 +50,7 @@ Llegar al nivel de entrada de un analista SOC. La referencia es el rol "Defensiv
 
 | Clase | Tema | Videos | Estado |
 |---|---|---|---|
-| M1·1 | ¿Qué es la ciberseguridad? La tríada CIA | [▶ 1](https://www.youtube.com/watch?v=TM-OT1U3P0k) [▶ 2](https://www.youtube.com/watch?v=9hJ4fgfePfg) [▶ 3](https://www.youtube.com/watch?v=_MJt0ugOc_E) | ✔ Lista: `clases/clase-01.html` (id `ciber-01`) |
+| M1·1 | ¿Qué es la ciberseguridad? La tríada CIA | [▶ 1](https://www.youtube.com/watch?v=6pfBS8Qy_UI) [▶ 2](https://www.youtube.com/watch?v=qXTkQoJdLZo) [▶ 3](https://www.youtube.com/watch?v=_MJt0ugOc_E) | ✔ Lista: `clases/clase-01.html` (id `ciber-01`) |
 | M1·2 | Principios y marcos de seguridad: defensa en profundidad, mínimo privilegio, NIST CSF 2.0 y ética | [▶ 1](https://www.youtube.com/watch?v=dDHMro1NxM0) [▶ 2](https://www.youtube.com/watch?v=pPPiaGU12Og) [▶ 3](https://www.youtube.com/watch?v=rvsaVA_orPU) | Próximamente · **siguiente por crear** |
 | M1·3 | Gestión del riesgo e higiene digital: contraseñas, MFA, actualizaciones y copias de seguridad | [▶ 1](https://www.youtube.com/watch?v=wZU25uB_iuA) [▶ 2](https://www.youtube.com/watch?v=aGggJPdW6MQ) [▶ 3](https://www.youtube.com/watch?v=YH_4JWKfzIk) | Próximamente |
 
@@ -58,8 +58,8 @@ Llegar al nivel de entrada de un analista SOC. La referencia es el rol "Defensiv
 
 | Clase | Video | Canal · duración · idioma | Desde | Ayuda a comprender | Contraste documental |
 |---|---|---|---|---|---|
-| M1·1 | [Introducción a la ciberseguridad](https://www.youtube.com/watch?v=TM-OT1U3P0k) | INCIBE · 12:14 · español | inicio | qué es la ciberseguridad y por qué la información es un activo | [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework) |
-| M1·1 | [Conceptos de amenaza, riesgo y vulnerabilidad (URJCx)](https://www.youtube.com/watch?v=9hJ4fgfePfg) | universidadurjc · 2:35 · español | inicio | diferencias entre amenaza, riesgo y vulnerabilidad (lección universitaria) | [NIST SP 800-30 Rev. 1: Guide for Conducting Risk Assessments](https://csrc.nist.gov/pubs/sp/800/30/r1/final) |
+| M1·1 | [¿Qué es la ciberseguridad? Conceptos y objetivos \| Curso CIBERSEGURIDAD desde 0 2025](https://www.youtube.com/watch?v=6pfBS8Qy_UI) | RINKU · 4:53 · español | inicio | qué es la ciberseguridad, por qué todo está expuesto y cuáles son sus objetivos | [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework) |
+| M1·1 | [🔐 RIESGOS, AMENAZAS y VULNERABILIDADES \| SEGURIDAD INFORMÁTICA🛡️](https://www.youtube.com/watch?v=qXTkQoJdLZo) | TodoCode · 10:48 · español | inicio | qué son la amenaza, la vulnerabilidad y el riesgo, y cómo se relacionan | [NIST SP 800-30 Rev. 1: Guide for Conducting Risk Assessments](https://csrc.nist.gov/pubs/sp/800/30/r1/final) |
 | M1·1 | [¿Qué es la triada CIA en ciberseguridad? \| Curso CIBERSEGURIDAD desde 0 2025](https://www.youtube.com/watch?v=_MJt0ugOc_E) | RINKU · 5:01 · español | inicio | la tríada CIA: confidencialidad, integridad y disponibilidad | [NIST CSRC: glosario, confidentiality / integrity / availability](https://csrc.nist.gov/glossary/term/confidentiality) |
 | M1·2 | [NIST Cybersecurity Framework 2.0 \| Todo lo que necesitas saber sobre la nueva versión](https://www.youtube.com/watch?v=dDHMro1NxM0) | SEGURIDAD CERO · 24:22 · español | inicio | el marco NIST CSF 2.0 y sus funciones, incluida la nueva función Gobernar | [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework) |
 | M1·2 | [The NIST Cybersecurity Framework (CSF) 2.0](https://www.youtube.com/watch?v=pPPiaGU12Og) | National Institute of Standards and Technology · 3:54 · inglés | inicio | presentación oficial del NIST CSF 2.0 (en inglés) | [NIST Cybersecurity Framework](https://www.nist.gov/cyberframework) |
@@ -80,8 +80,8 @@ Llegar al nivel de entrada de un analista SOC. La referencia es el rol "Defensiv
 
 | Clase | Tema | Videos | Estado |
 |---|---|---|---|
-| M2·1 | El computador por dentro: procesos, usuarios y permisos | [▶ 1](https://www.youtube.com/watch?v=CUsHYhyyQA0) | ✔ Lista: `clases/clase-02.html` (id `ciber-02`) |
-| M2·2 | Línea de comandos: PowerShell para analistas | [▶ 1](https://www.youtube.com/watch?v=Hk7bHAFNuVA) [▶ 2](https://www.youtube.com/watch?v=1zVIKuHU30E) | ✔ Lista: `clases/clase-03.html` (id `ciber-03`) |
+| M2·1 | El computador por dentro: procesos, usuarios y permisos | [▶ 1](https://www.youtube.com/watch?v=6ryVGNDEXj8) [▶ 2](https://www.youtube.com/watch?v=X1CIHh0XzkU) | ✔ Lista: `clases/clase-02.html` (id `ciber-02`) |
+| M2·2 | Línea de comandos: PowerShell para analistas | [▶ 1](https://www.youtube.com/watch?v=HFt3jRJXFN8) | ✔ Lista: `clases/clase-03.html` (id `ciber-03`) |
 | M2·3 | Windows a fondo: servicios, registro, tareas programadas y persistencia | [▶ 1](https://www.youtube.com/watch?v=LFjflD8_RqU&t=923s) | Próximamente |
 | M2·4 | Linux básico para seguridad | [▶ 1](https://www.youtube.com/watch?v=M3AayeYuzMI) [▶ 2](https://www.youtube.com/watch?v=ABgLEKFhlZE&t=2934s) [▶ 3](https://www.youtube.com/watch?v=ABgLEKFhlZE&t=10885s) | ✔ Lista: `clases/clase-04.html` (id `ciber-04`) |
 | M2·5 | Linux para analistas: procesos, servicios, journalctl, cron y persistencia | [▶ 1](https://www.youtube.com/watch?v=k_jFLEVJ7UE&t=955s) | Próximamente |
@@ -90,9 +90,9 @@ Llegar al nivel de entrada de un analista SOC. La referencia es el rol "Defensiv
 
 | Clase | Video | Canal · duración · idioma | Desde | Ayuda a comprender | Contraste documental |
 |---|---|---|---|---|---|
-| M2·1 | [Primeros pasos en Windows PowerShell \| 1/14 \| UPV](https://www.youtube.com/watch?v=CUsHYhyyQA0) | Universitat Politècnica de València - UPV · 9:37 · español | inicio | primeros pasos en PowerShell (lección universitaria) | las fuentes de la clase |
-| M2·2 | [Sintaxis de los mandatos en Windows PowerShell \| 4/14 \| UPV](https://www.youtube.com/watch?v=Hk7bHAFNuVA) | Universitat Politècnica de València - UPV · 10:05 · español | inicio | sintaxis de los comandos de PowerShell | las fuentes de la clase |
-| M2·2 | [El sistema de ayuda de Windows PowerShell \| 3/14 \| UPV](https://www.youtube.com/watch?v=1zVIKuHU30E) | Universitat Politècnica de València - UPV · 8:19 · español | inicio | el sistema de ayuda de PowerShell | las fuentes de la clase |
+| M2·1 | [Comandos Básicos de PowerShell en Windows 11 \| Guía Completa para Principiantes](https://www.youtube.com/watch?v=6ryVGNDEXj8) | La Bitácora de Tomás · 12:44 · español | inicio | primeros comandos de PowerShell, incluidos los procesos (Get-Process) | las fuentes de la clase |
+| M2·1 | [🔐USUARIOS, ROLES y PERMISOS \| SEGURIDAD INFORMÁTICA🛡️](https://www.youtube.com/watch?v=X1CIHh0XzkU) | TodoCode · 8:50 · español | inicio | usuarios, roles y permisos | las fuentes de la clase |
+| M2·2 | [Explicacion 1 Comandos Windows - PowerShell:get-command, get-help, get-location, set-location, alias](https://www.youtube.com/watch?v=HFt3jRJXFN8) | Luis J Solsona · 27:16 · español | inicio | sintaxis de los comandos de PowerShell, Get-Command, Get-Help y moverse por carpetas | las fuentes de la clase |
 | M2·3 | [Windows Threat Detection 3 \| TryHackMe \| SOC Level 1 2025](https://www.youtube.com/watch?v=LFjflD8_RqU&t=923s) | WireDogSec · 37:37 · inglés | 15:23 | detectar persistencia en Windows: servicios, tareas programadas, claves Run y carpetas de inicio | [MITRE ATT&CK: Persistence (TA0003)](https://attack.mitre.org/tactics/TA0003/) |
 | M2·4 | [🐧 Curso de LINUX desde CERO para PRINCIPIANTES](https://www.youtube.com/watch?v=M3AayeYuzMI) | El Pingüino de Mario · 33:17 · español | inicio | Linux desde cero: comandos y permisos | las fuentes de la clase |
 | M2·4 | [Curso de BASH y Terminal desde CERO en Español](https://www.youtube.com/watch?v=ABgLEKFhlZE&t=2934s) | MoureDev by Brais Moure · 5:51:25 · español | 48:54 | comandos de navegación | las fuentes de la clase |
@@ -111,7 +111,7 @@ Llegar al nivel de entrada de un analista SOC. La referencia es el rol "Defensiv
 
 | Clase | Tema | Videos | Estado |
 |---|---|---|---|
-| M3·1 | Redes I: IP, MAC, puertos y protocolos | [▶ 1](https://www.youtube.com/watch?v=gVUE2IDwWA0) [▶ 2](https://www.youtube.com/watch?v=-7DiO35rbN8) [▶ 3](https://www.youtube.com/watch?v=iNh-62Mf0O4) | ✔ Lista: `clases/clase-05.html` (id `ciber-05`) |
+| M3·1 | Redes I: IP, MAC, puertos y protocolos | [▶ 1](https://www.youtube.com/watch?v=KKXOyTQqtV8) [▶ 2](https://www.youtube.com/watch?v=1UJmcapzleA) [▶ 3](https://www.youtube.com/watch?v=qiIfPe6NjeM) | ✔ Lista: `clases/clase-05.html` (id `ciber-05`) |
 | M3·2 | Redes II: DNS, HTTP y HTTPS (TLS y certificados) | [▶ 1](https://www.youtube.com/watch?v=gAstDaSaaWU) [▶ 2](https://www.youtube.com/watch?v=6HJAWFenYx8) | Próximamente |
 | M3·3 | Servicios y arquitectura de red: DHCP, ARP, NAT, VPN, segmentación y firewalls | [▶ 1](https://www.youtube.com/watch?v=OsaOKS7Q-cE) [▶ 2](https://www.youtube.com/watch?v=Z6j3ZsqJMKg) | Próximamente |
 | M3·4 | Análisis de tráfico con Wireshark (capturas de ejemplo) | [▶ 1](https://www.youtube.com/watch?v=u0aHPeuAU1E) [▶ 2](https://www.youtube.com/watch?v=mwqBUih8FG8) | Próximamente |
@@ -121,9 +121,9 @@ Llegar al nivel de entrada de un analista SOC. La referencia es el rol "Defensiv
 
 | Clase | Video | Canal · duración · idioma | Desde | Ayuda a comprender | Contraste documental |
 |---|---|---|---|---|---|
-| M3·1 | [Qué es la IP pública. Curso de redes desde 0 \| Cap 1 \|](https://www.youtube.com/watch?v=gVUE2IDwWA0) | NASeros · 16:49 · español | inicio | qué es la IP pública | las fuentes de la clase |
-| M3·1 | [Qué es un puerto y un socket. Curso de redes desde 0 \| Cap 5 \|](https://www.youtube.com/watch?v=-7DiO35rbN8) | NASeros · 12:42 · español | inicio | puertos y sockets | las fuentes de la clase |
-| M3·1 | [Modelo de capas OSI y TCP/IP. Curso de redes desde 0 \| Cap 12 \|](https://www.youtube.com/watch?v=iNh-62Mf0O4) | NASeros · 24:02 · español | inicio | modelos OSI y TCP/IP | las fuentes de la clase |
+| M3·1 | [Qué es una DIRECCIÓN IP y Qué Tipos Existen: Pública y Privada 🌌](https://www.youtube.com/watch?v=KKXOyTQqtV8) | Contando Bits · 14:37 · español | inicio | qué es una IP, IP pública y privada, NAT y MAC | las fuentes de la clase |
+| M3·1 | [Puertos & protocolos  - Todo lo que debes saber en 5 minutos](https://www.youtube.com/watch?v=1UJmcapzleA) | Cookie conectada · 4:34 · español | inicio | puertos y protocolos (TCP y UDP) | las fuentes de la clase |
+| M3·1 | [Modelos OSI y TCP/IP - Todo lo que debes saber en 9 minutos](https://www.youtube.com/watch?v=qiIfPe6NjeM) | Cookie conectada · 9:48 · español | inicio | modelos OSI y TCP/IP | las fuentes de la clase |
 | M3·2 | [Protocolo DNS - Cómo funciona - Fundamentos de Networking para redes IP](https://www.youtube.com/watch?v=gAstDaSaaWU) | RedesCiber - Tu Academia de Redes y Ciberseguridad · 12:33 · español | inicio | cómo funciona el protocolo DNS | [MDN: DNS (glosario, en inglés)](https://developer.mozilla.org/en-US/docs/Glossary/DNS) |
 | M3·2 | [SSL, TLS, HTTPS, HTTP - Explicado Fácilmente](https://www.youtube.com/watch?v=6HJAWFenYx8) | Profe Sang · 8:50 · español | inicio | HTTP, HTTPS, SSL y TLS explicados | [MDN: Transport Layer Security (glosario, en inglés)](https://developer.mozilla.org/en-US/docs/Glossary/TLS); [MDN: Generalidades del protocolo HTTP](https://developer.mozilla.org/es/docs/Web/HTTP/Guides/Overview) |
 | M3·3 | [Seguridad perimetral: Firewalls y DMZ (URJCx)](https://www.youtube.com/watch?v=OsaOKS7Q-cE) | universidadurjc · 5:07 · español | inicio | seguridad perimetral: firewalls y DMZ (lección de un curso universitario) | [NIST SP 800-41 Rev. 1: Guidelines on Firewalls and Firewall Policy](https://csrc.nist.gov/pubs/sp/800/41/r1/final) |

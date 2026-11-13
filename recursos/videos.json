@@ -1,17 +1,6 @@
 {
  "_descripcion": "Fichas verificadas de los videos complementarios de JavaScript, Python y Ciberseguridad (catalogo.js los cita por su código) y fuentes documentales usadas para contrastar cada tema. Datos de herramientas/verificar-videos.py.",
  "videos": {
-  "-7DiO35rbN8": {
-   "titulo": "Qué es un puerto y un socket. Curso de redes desde 0 | Cap 5 |",
-   "canal": "NASeros",
-   "duracion": "12:42",
-   "publicado": "2020-05-27",
-   "idioma": "español",
-   "subtitulosEs": "Sí, en español (escritos)",
-   "dobladoEs": false,
-   "verificado": "2026-11-11",
-   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
-  },
   "-oK6zL01fNM": {
    "titulo": "Curso HTML & CSS ( 1 / 5 ): Fundamentos HTML - jonmircha",
    "canal": "jonmircha",
@@ -111,17 +100,6 @@
    "verificado": "2026-11-11",
    "contenidoComprobadoCon": "capítulos oficiales"
   },
-  "1zVIKuHU30E": {
-   "titulo": "El sistema de ayuda de Windows PowerShell | 3/14 | UPV",
-   "canal": "Universitat Politècnica de València - UPV",
-   "duracion": "8:19",
-   "publicado": "2017-10-04",
-   "idioma": "español",
-   "subtitulosEs": "Sí, en español (escritos)",
-   "dobladoEs": false,
-   "verificado": "2026-11-11",
-   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
-  },
   "2eRE-yLoTlM": {
    "titulo": "¿Qué es MITRE ATT&CK y por qué está en boca de todos en ciberseguridad?",
    "canal": "Hablemos de Ciberseguridad",
@@ -199,17 +177,6 @@
    "verificado": "2026-11-11",
    "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
   },
-  "9hJ4fgfePfg": {
-   "titulo": "Conceptos de amenaza, riesgo y vulnerabilidad (URJCx)",
-   "canal": "universidadurjc",
-   "duracion": "2:35",
-   "publicado": "2016-02-26",
-   "idioma": "español",
-   "subtitulosEs": "Sí, en español (automáticos)",
-   "dobladoEs": false,
-   "verificado": "2026-11-11",
-   "contenidoComprobadoCon": "subtítulos"
-  },
   "AAtvnv6LNMk": {
    "titulo": "Qué es Flexbox y para qué sirve | Curso Flexbox CSS (1/13)",
    "canal": "jonmircha",
@@ -239,17 +206,6 @@
    "publicado": "2020-07-07",
    "idioma": "español",
    "subtitulosEs": "Sí, en español (automáticos)",
-   "dobladoEs": false,
-   "verificado": "2026-11-11",
-   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
-  },
-  "CUsHYhyyQA0": {
-   "titulo": "Primeros pasos en Windows PowerShell | 1/14 | UPV",
-   "canal": "Universitat Politècnica de València - UPV",
-   "duracion": "9:37",
-   "publicado": "2017-10-04",
-   "idioma": "español",
-   "subtitulosEs": "Sí, en español (escritos)",
    "dobladoEs": false,
    "verificado": "2026-11-11",
    "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
@@ -294,17 +250,6 @@
    "publicado": "2020-07-15",
    "idioma": "español",
    "subtitulosEs": "Sí, en español (automáticos)",
-   "dobladoEs": false,
-   "verificado": "2026-11-11",
-   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
-  },
-  "Hk7bHAFNuVA": {
-   "titulo": "Sintaxis de los mandatos en Windows PowerShell | 4/14 | UPV",
-   "canal": "Universitat Politècnica de València - UPV",
-   "duracion": "10:05",
-   "publicado": "2017-10-19",
-   "idioma": "español",
-   "subtitulosEs": "Sí, en español (escritos)",
    "dobladoEs": false,
    "verificado": "2026-11-11",
    "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
@@ -506,17 +451,6 @@
    "dobladoEs": false,
    "verificado": "2026-11-11",
    "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
-  },
-  "TM-OT1U3P0k": {
-   "titulo": "Introducción a la ciberseguridad",
-   "canal": "INCIBE",
-   "duracion": "12:14",
-   "publicado": "2015-12-04",
-   "idioma": "español",
-   "subtitulosEs": "Sí, en español (automáticos)",
-   "dobladoEs": false,
-   "verificado": "2026-11-11",
-   "contenidoComprobadoCon": "subtítulos"
   },
   "TNtrAvNNxTY": {
    "titulo": "Entornos Virtuales con Python (Módulo virtualenv) ✅ | Curso Python 3 🐍 # 63",
@@ -724,7 +658,7 @@
    "idioma": "español",
    "subtitulosEs": "Sí, en español (automáticos)",
    "dobladoEs": false,
-   "verificado": "2026-11-11",
+   "verificado": "2026-11-13",
    "contenidoComprobadoCon": "subtítulos"
   },
   "_t9l2TwGioc": {
@@ -877,28 +811,6 @@
    "publicado": "2021-12-13",
    "idioma": "español",
    "subtitulosEs": "Sí, en español (automáticos)",
-   "dobladoEs": false,
-   "verificado": "2026-11-11",
-   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
-  },
-  "gVUE2IDwWA0": {
-   "titulo": "Qué es la IP pública. Curso de redes desde 0 | Cap 1 |",
-   "canal": "NASeros",
-   "duracion": "16:49",
-   "publicado": "2020-05-13",
-   "idioma": "español",
-   "subtitulosEs": "Sí, en español (escritos)",
-   "dobladoEs": false,
-   "verificado": "2026-11-11",
-   "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
-  },
-  "iNh-62Mf0O4": {
-   "titulo": "Modelo de capas OSI y TCP/IP. Curso de redes desde 0 | Cap 12 |",
-   "canal": "NASeros",
-   "duracion": "24:02",
-   "publicado": "2021-01-10",
-   "idioma": "español",
-   "subtitulosEs": "Sí, en español (escritos)",
    "dobladoEs": false,
    "verificado": "2026-11-11",
    "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
@@ -1177,6 +1089,94 @@
    "dobladoEs": false,
    "verificado": "2026-11-11",
    "contenidoComprobadoCon": "título y descripción (lección de un solo tema)"
+  },
+  "6pfBS8Qy_UI": {
+   "titulo": "¿Qué es la ciberseguridad? Conceptos y objetivos | Curso CIBERSEGURIDAD desde 0 2025",
+   "canal": "RINKU",
+   "duracion": "4:53",
+   "publicado": "2025-07-06",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-13",
+   "contenidoComprobadoCon": "subtítulos"
+  },
+  "qXTkQoJdLZo": {
+   "titulo": "🔐 RIESGOS, AMENAZAS y VULNERABILIDADES | SEGURIDAD INFORMÁTICA🛡️",
+   "canal": "TodoCode",
+   "duracion": "10:48",
+   "publicado": "2024-05-03",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-13",
+   "contenidoComprobadoCon": "subtítulos"
+  },
+  "6ryVGNDEXj8": {
+   "titulo": "Comandos Básicos de PowerShell en Windows 11 | Guía Completa para Principiantes",
+   "canal": "La Bitácora de Tomás",
+   "duracion": "12:44",
+   "publicado": "2025-02-12",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-13",
+   "contenidoComprobadoCon": "subtítulos"
+  },
+  "X1CIHh0XzkU": {
+   "titulo": "🔐USUARIOS, ROLES y PERMISOS | SEGURIDAD INFORMÁTICA🛡️",
+   "canal": "TodoCode",
+   "duracion": "8:50",
+   "publicado": "2024-05-30",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-13",
+   "contenidoComprobadoCon": "subtítulos"
+  },
+  "HFt3jRJXFN8": {
+   "titulo": "Explicacion 1 Comandos Windows - PowerShell:get-command, get-help, get-location, set-location, alias",
+   "canal": "Luis J Solsona",
+   "duracion": "27:16",
+   "publicado": "2025-01-27",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-13",
+   "contenidoComprobadoCon": "subtítulos"
+  },
+  "KKXOyTQqtV8": {
+   "titulo": "Qué es una DIRECCIÓN IP y Qué Tipos Existen: Pública y Privada 🌌",
+   "canal": "Contando Bits",
+   "duracion": "14:37",
+   "publicado": "2024-04-19",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (automáticos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-13",
+   "contenidoComprobadoCon": "subtítulos"
+  },
+  "1UJmcapzleA": {
+   "titulo": "Puertos & protocolos  - Todo lo que debes saber en 5 minutos",
+   "canal": "Cookie conectada",
+   "duracion": "4:34",
+   "publicado": "2025-10-13",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (escritos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-13",
+   "contenidoComprobadoCon": "subtítulos"
+  },
+  "qiIfPe6NjeM": {
+   "titulo": "Modelos OSI y TCP/IP - Todo lo que debes saber en 9 minutos",
+   "canal": "Cookie conectada",
+   "duracion": "9:48",
+   "publicado": "2025-06-03",
+   "idioma": "español",
+   "subtitulosEs": "Sí, en español (escritos)",
+   "dobladoEs": false,
+   "verificado": "2026-11-13",
+   "contenidoComprobadoCon": "subtítulos"
   }
  },
  "fuentes": {

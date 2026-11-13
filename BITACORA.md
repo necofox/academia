@@ -632,3 +632,26 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   principal de Python, Módulo 1 (`Kp4Mvapo5kc`, elegido por el alumno), es del 30/09/2022.
 - No se cambió ningún video todavía. Publicación de este cambio: pendiente de autorización del alumno.
 
+### 2026-11-13 (videos de Ciberseguridad: reemplazo con la regla de 2023)
+- **Reemplazados los 8 videos anteriores a 2023** de las clases creadas de Ciberseguridad. Solo cambió la sección de
+  videos (fuera del reloj); actividades, exámenes, terminales y notas quedaron idénticos (huella de cada clase).
+  - Ciberseguridad 01: INCIBE (2015) y URJC (2016) → RINKU «¿Qué es la ciberseguridad?» (2025) y TodoCode «Riesgos,
+    amenazas y vulnerabilidades» (2024). Se mantiene RINKU «Tríada CIA» (2025).
+  - Ciberseguridad 02: UPV (2017) → «Comandos básicos de PowerShell en Windows 11» (La Bitácora de Tomás, 2025) y, nuevo,
+    TodoCode «Usuarios, roles y permisos» (2024).
+  - Ciberseguridad 03: dos videos de la UPV (2017) → Luis J Solsona «Comandos Windows - PowerShell: get-command,
+    get-help…» (2025), que cubre los dos temas.
+  - Ciberseguridad 05: tres videos de NASeros (2020–2021) → Contando Bits «Qué es una dirección IP… pública y privada»
+    (2024) y Cookie conectada «Puertos y protocolos» (2025) y «Modelos OSI y TCP/IP» (2025).
+- Cada video nuevo se verificó con `herramientas/verificar-videos.py` (disponible, en español, con subtítulos y
+  publicado desde 2023) y su contenido se comprobó leyendo sus subtítulos. Las fichas se actualizaron en las páginas,
+  en el catálogo y en `recursos/videos.json` (se quitaron las 8 fichas viejas); la ruta de Ciberseguridad se regeneró
+  y el `?v=` del catálogo en `inicio.html` pasó a `2026-11-13a`.
+- Se corrigió de paso una alternativa escrita de Ciberseguridad 03 que citaba una página de Get-Help que la clase no
+  tiene entre sus fuentes.
+- **Pruebas:** pruebas-clases 23/23; huella de identificadores de las 22 clases anteriores idéntica a la línea base
+  (`d355163a…7933d`) y huella de las 23 clases `62112f2a…90710` (nueva línea base); catálogo correcto, coherencia
+  correcta, rutas 7/7; sección de videos sin desborde a 360 px y sin errores de consola.
+- Siguen anteriores a 2023 los videos de las clases creadas de Inglés (4), Python (recurso principal) y Redes (5).
+- Publicación de este cambio: pendiente de autorización del alumno.
+
