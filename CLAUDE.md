@@ -120,7 +120,8 @@ El horario de clases está en `horario.md`.
 - **Videos complementarios:** solo videos publicados **desde el 1 de enero de 2023** (regla del alumno, 13/11/2026; vale
   también para los que se agreguen en el futuro). La fecha de publicación la da
   `herramientas/verificar-videos.py`. Un video anterior se reemplaza; si no hay uno adecuado, se deja
-  anotado el pendiente con su justificación.
+  anotado el pendiente con su justificación. **Excepción: los videos que eligió o sugirió el alumno no se cambian**, aunque sean anteriores a 2023
+  (hoy: los recursos principales del Módulo 1 de JavaScript y de Python, de MoureDev, y el curso de Claude Code de MoureDev en IA 02).
 - Al terminar, yo pego en el chat el "resumen" que genera la página: úsalo para actualizar
   `progreso.md` y generar los apuntes en Word.
 - Verifica cada clase nueva en el navegador, en escritorio y a 360 px de ancho.

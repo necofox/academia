@@ -376,7 +376,7 @@ window.CATALOGO = [
     proyectoFinal: 'Aplicación con API, base de datos y automatización. Por ejemplo, un sistema de inventario con reportes automáticos.',
     modulos: [
       { n: 1, titulo: 'Fundamentos',
-        videoPrincipal: 'Kp4Mvapo5kc', videoPrincipalNota: 'Recurso audiovisual principal del Módulo 1, elegido por el alumno: cada clase del módulo enlaza el capítulo que le corresponde.',
+        videoPrincipal: 'Kp4Mvapo5kc', videoPrincipalNota: 'Recurso audiovisual principal del Módulo 1, elegido por el alumno: cada clase del módulo enlaza el capítulo que le corresponde. Es de 2022, pero se mantiene por decisión del alumno (excepción a la regla de videos desde 2023).',
         objetivo: 'Escribir y ejecutar programas con lógica básica.',
         competencias: 'Entorno de trabajo (terminal y VS Code), variables y tipos, entrada de datos, operadores, f-strings, condicionales, bucles, funciones y excepciones.',
         logro: 'Escribir programas con lógica, funciones y manejo de errores.',

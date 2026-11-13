@@ -136,7 +136,9 @@ y después `herramientas/pruebas-sync.html` (15 escenarios).
   [cantidad]` (clases nuevas) y `/actualizar-clase <id>` (poner al día una clase existente). Sin el comando, ninguna sesión los lanza. Cada ejecución termina en un commit local y un informe; el
   push lo autoriza el alumno aparte.
 - **Videos complementarios desde el 1 de enero de 2023** (regla del alumno, 13/11/2026, también a futuro): un video
-  anterior se reemplaza o queda como pendiente justificado.
+  anterior se reemplaza o queda como pendiente justificado. Excepción: los videos que eligió o sugirió el alumno no se
+  cambian (los recursos principales del Módulo 1 de JavaScript y de Python, de MoureDev, y el curso de Claude Code de
+  MoureDev en IA 02).
 - **Orden de producción:** en cada curso, primero todas las clases de los Módulos 1 y 2; después, los demás
   módulos en orden. Las clases que ya existen en otros módulos se conservan.
 - **Bitácora al día en cada avance:** los agentes la leen antes de empezar; el coordinador la actualiza al
@@ -695,5 +697,19 @@ leer `progreso.json`, actualizar `progreso.md` y generar los apuntes en Word.
   (`62112f2a…90710`), sección de videos sin desborde a 360 px y sin errores de consola.
 - Con esto, **todas las clases creadas cumplen la regla**, salvo el recurso principal de Python, Módulo 1 (MoureDev,
   30/09/2022), elegido por el alumno: queda pendiente de su decisión.
+- Publicación de este cambio: pendiente de autorización del alumno.
+
+### 2026-11-13 (excepción: los videos elegidos por el alumno no se cambian)
+- **Decisión del alumno:** los videos que él eligió o sugirió no se cambian, aunque sean anteriores a 2023. Hoy son:
+  los recursos principales del Módulo 1 de JavaScript (`1glVfFxj8a4`, MoureDev, 2024) y de Python (`Kp4Mvapo5kc`,
+  MoureDev, 30/09/2022) y el curso de Claude Code de MoureDev en IA 02 (`TCq7eZ9Lhc8`, 2026).
+- Por eso **el recurso principal de Python se mantiene**: no se aplicó el cambio a midudev que se había empezado a
+  preparar (no se llegó a modificar ningún archivo). La nota del catálogo y la ruta de Python lo indican.
+- Anotada en `CLAUDE.md`, en la sección 4 de esta bitácora y en las reglas y fichas locales del equipo de agentes.
+- Comprobado que ninguno de esos videos se había cambiado en los reemplazos de Ciberseguridad, Redes e Inglés.
+- Con esto, todas las clases creadas cumplen la regla de videos (con su excepción). Quedan los videos antiguos del
+  catálogo para clases futuras, que se cambian al crear cada clase.
+- Catálogo (solo la nota del recurso principal de Python), ruta de Python regenerada y `?v=2026-11-13c`; catálogo,
+  coherencia y rutas 7/7 correctos.
 - Publicación de este cambio: pendiente de autorización del alumno.
 

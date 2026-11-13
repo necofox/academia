@@ -59,7 +59,7 @@ Desarrollar programas y aplicaciones con buenas prácticas profesionales. La sec
 
 #### Recursos audiovisuales del módulo
 
-**Recurso principal:** [Curso COMPLETO de PYTHON desde CERO para PRINCIPIANTES](https://www.youtube.com/watch?v=Kp4Mvapo5kc) · MoureDev by Brais Moure · 10:07:34. Recurso audiovisual principal del Módulo 1, elegido por el alumno: cada clase del módulo enlaza el capítulo que le corresponde.
+**Recurso principal:** [Curso COMPLETO de PYTHON desde CERO para PRINCIPIANTES](https://www.youtube.com/watch?v=Kp4Mvapo5kc) · MoureDev by Brais Moure · 10:07:34. Recurso audiovisual principal del Módulo 1, elegido por el alumno: cada clase del módulo enlaza el capítulo que le corresponde. Es de 2022, pero se mantiene por decisión del alumno (excepción a la regla de videos desde 2023).
 
 | Clase | Video | Canal · duración · idioma | Desde | Ayuda a comprender | Contraste documental |
 |---|---|---|---|---|---|
